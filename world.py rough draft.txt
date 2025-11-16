@@ -1,0 +1,92 @@
+from typing import List, Dict, Tuple
+
+class Tile:
+    def __init__(self, x: int, y: int, region: str, biome: str, danger_level: int):
+        self.x = x
+        self.y = y
+        self.region = region
+        self.biome = biome
+        self.danger_level = danger_level
+        self.description = ""
+        self.safezone = False
+        self.npcs: List[str] = []
+        self.services: List[str] = []
+        self.enemies: List[str] = []
+
+    def to_dict(self):
+        return {
+            "x": self.x,
+            "y": self.y,
+            "region": self.region,
+            "biome": self.biome,
+            "danger_level": self.danger_level,
+            "description": self.description,
+            "safezone": self.safezone,
+            "npcs": self.npcs,
+            "services": self.services,
+            "enemies": self.enemies
+        }
+
+class World:
+    def __init__(self, width: int = 300, height: int = 300):
+        self.width = width
+        self.height = height
+        self.world_map: Dict[Tuple[int, int], Tile] = {}
+        self._initialize_static_world()
+
+    def add_tile(self, x: int, y: int, region: str, biome: str, danger_level: int,
+                 description: str = "", safezone: bool = False,
+                 npcs: List[str] = None, services: List[str] = None,
+                 enemies: List[str] = None):
+        tile = Tile(x, y, region, biome, danger_level)
+        tile.description = description
+        tile.safezone = safezone
+        tile.npcs = npcs or []
+        tile.services = services or []
+        tile.enemies = enemies or []
+        self.world_map[(x, y)] = tile
+
+    def get_tile(self, x: int, y: int) -> Tile:
+        return self.world_map.get((x, y))
+
+    def _initialize_static_world(self):
+        # Major Towns with finalized descriptions
+        self.add_tile(260, 75, "Emberhold", "town", 1,
+                      "Emberhold is a citadel of obsidian and flame. Carved into the very bones of a volcano, its streets glow with molten rivers that slither through basalt gutters. Blacksmiths chant over glowing forges, and red-robed sentries watch from flame-lit towers. This is a city born of fire — relentless, enduring, and fierce.",
+                      safezone=True,
+                      npcs=["Blacksmith", "Merchant", "Quest Giver", "Enchanter", "Jarlmog the Castle Wizard"],
+                      services=["shop", "quests", "crafting", "enchanting", "fast_travel"])
+
+        self.add_tile(60, 240, "Frostmarch", "town", 1,
+                      "Frostmarch rises from the tundra like a blade of ice — sharp, cold, and resolute. Snow-covered stone towers pierce the skies, and ever-burning braziers line the ramparts. The scent of pine and steel fills the air, and frost clings to every bootstep.",
+                      safezone=True, npcs=["Ice Trader", "Runeforge Smith"], services=["shop", "fast_travel", "quests"])
+
+        self.add_tile(30, 60, "Whisperwind", "town", 1,
+                      "Whisperwind is nestled among towering whitebark trees and drifting blossoms. Treehouses and rope bridges form its canopy streets, and the melodies of flutes echo through the leaves. Nature and civilization exist in perfect balance here.",
+                      safezone=True, npcs=["Herbalist", "Scout Trainer"], services=["shop", "quests", "fast_travel"])
+
+        self.add_tile(270, 250, "Hollowshade", "town", 1,
+                      "Wrapped in mist and lit by lanterns that never go out, Hollowshade feels like a memory whispered from beyond. Shadows dance through alleyways, and every corner hums with secrets. The dead are honored, the lost are remembered.",
+                      safezone=True, npcs=["Ghost Seer", "Shade Alchemist"], services=["shop", "quests", "fast_travel"])
+
+        self.add_tile(150, 150, "Ironvale", "town", 1,
+                      "Ironvale is carved into the iron cliffs of the Redcrag Gorge. Chains and pulleys creak across its caverns as miners and smiths move gear and ore. Sparks fly from the forges, and the clang of hammer on anvil never stops.",
+                      safezone=True, npcs=["Ore Buyer", "Gearmaster Grobnar"], services=["shop", "crafting", "fast_travel"])
+
+        self.add_tile(200, 40, "Sunmere", "town", 1,
+                      "Sunmere gleams like a coin tossed to the sea. Its harbors are filled with sails and spice-scented markets, and its golden buildings reflect the ocean light. Bards play beside docks where treasure hunters and pirates drink together.",
+                      safezone=True, npcs=["Fisher King", "Seaside Mage"], services=["shop", "quests", "fast_travel"])
+
+        # Sample Static Dungeons
+        self.add_tile(262, 78, "Cracked Furnace", "volcanic", 4, "A fissure leaking heat and smoke from beneath Emberhold.", enemies=["Fire Imp", "Magma Beetle"])
+        self.add_tile(59, 238, "Frozen Hollow", "glacial", 3, "An ice cave glimmering with crystalized monsters.", enemies=["Frost Spider", "Ice Wraith"])
+        self.add_tile(32, 62, "Whispering Tomb", "forest", 3, "An overgrown ruin haunted by the spirits of ancient druids.", enemies=["Wraith", "Specter"])
+
+        # Populate wild tiles with enemies
+        wild_coords = [
+            (259, 74), (261, 76), (263, 77), (58, 239), (61, 241), (33, 61), (31, 63), (150, 149), (151, 151)
+        ]
+        for x, y in wild_coords:
+            self.add_tile(x, y, "Wilderness", "plains", 2, enemies=["Goblin Scout", "Wild Wolf"])
+
+        # Additional wild zones, dungeon spawns, ruins, and special landmarks should be defined and expanded manually
