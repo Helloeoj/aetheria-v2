@@ -121,16 +121,17 @@ class InventoryMenu:
         self.status_text = result
         self._refresh_combat_view()
 
-    def _handle_unequip(self, slot_name: str):
+    def _handle_unequip(self, slot: str):
         if self.inventory_module is None:
             self.status_text = "Inventory module not found; cannot unequip."
             return
 
-        unequip_slot = getattr(self.inventory_module, "unequip_slot", None)
-        if not callable(unequip_slot):
-            self.status_text = "unequip_slot not available on inventory module."
+        unequip_item = getattr(self.inventory_module, "unequip_item", None)
+        if not callable(unequip_item):
+            self.status_text = "unequip_item not available on inventory module."
             return
-        result = unequip_slot(self.game.player, slot_name)
+
+        result = unequip_item(self.game.player, slot)
         self.status_text = result
         self._refresh_combat_view()
 
@@ -275,11 +276,14 @@ class InventoryMenu:
         self.backpack_boxes = []
 
         # Show inventory from player.backpack (list of items)
-        backpack = getattr(self.game.player, "backpack", [])
-        if backpack:
+        backpack = getattr(self.game.player, "backpack", {})
+        if isinstance(backpack, dict):
+            items = sorted(backpack.items(), key=lambda kv: kv[0])
+        elif isinstance(backpack, list):
             counts = {}
             for item in backpack:
-                counts[item.name] = counts.get(item.name, 0) + 1
+                name = getattr(item, "name", str(item))
+                counts[name] = counts.get(name, 0) + 1
             items = sorted(counts.items(), key=lambda kv: kv[0])
 
         if not items:
