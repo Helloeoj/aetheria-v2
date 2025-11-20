@@ -20,6 +20,7 @@ from aetheria_core.monsters import (
     create_monster_instance,
 )
 from aetheria_core.combat_engine import CombatEngine, CombatActor
+from loot.loot_tables import roll_loot
 from ui_spawn_menu import SpawnMenu
 from ui_item_menu import ItemMenu
 from ui_inventory_menu import InventoryMenu
@@ -45,184 +46,7 @@ RANGED_MAGIC_RANGE_TILES = 20.0
 # ============================================================
 # SPRITE CLASSES
 # ============================================================
-class ActorSprite(arcade.SpriteSolidColor):
-    def __init__(self, width, height, color, entity_id):
-        super().__init__(width, height, color)
-        self.entity_id = entity_id  # Unique ID from combat actor
-
-
-# ============================================================
-# MAIN WINDOW
-# ============================================================
 class AetheriaWindow(arcade.Window):
-    def __init__(self):
-        super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, "Aetheria (Arcade Test Client)")
-
-        # ======================================
-        # Combat Engine
-        # ======================================
-        self.combat = CombatEngine()
-
-        # ======================================
-        # Player Initialization
-        # ======================================
-        self.player = Player(name="Player")
-        self.player.entity_id = "player"
-
-        sprite = ActorSprite(TILE_SIZE, TILE_SIZE, PLAYER_COLOR, self.player.entity_id)
-        sprite.center_x = 10 * TILE_SIZE
-        sprite.center_y = 10 * TILE_SIZE
-        self.player.sprite = sprite
-
-        # Add player to combat engine
-        player_stats = self.player.get_combat_stats()
-        self.combat.register_actor(
-            self._create_actor_from_stats(
-                entity_id="player",
-                name=self.player.name,
-                x=self.player.x,
-                y=self.player.y,
-                stats=player_stats,
-                is_monster=False,
-                monster_attack_type=None,
-            )
-        )
-
-        # ======================================
-        # Sprite Lists
-        # ======================================
-        self.player_sprites = arcade.SpriteList()
-        self.monster_sprites = arcade.SpriteList()
-        self.projectile_sprites = arcade.SpriteList()
-
-        # World state for the combat engine
-        self.monsters = []
-
-        self.player_sprites.append(self.player.sprite)
-
-        # ======================================
-        # Movement + Tick System
-        # ======================================
-        self.held_keys = set()
-        self.last_tick_time = time.time()
-
-        # ======================================
-        # Targeting System
-        # ======================================
-        self.target_list = []        # list of monster entity_ids
-        self.target_index = -1       # index into target_list
-        self.auto_chase_target = False
-
-        # ======================================
-        # Dev Menus
-        # ======================================
-        self.spawn_menu = SpawnMenu(self, MONSTER_DATABASE)  # F5
-        self.item_menu = ItemMenu(self, ITEMS)               # F6
-        self.inventory_menu = InventoryMenu(self)            # I
-
-    def _create_actor_from_stats(
-        self,
-        entity_id: str,
-        name: str,
-        x: int,
-        y: int,
-        stats: dict,
-        is_monster: bool,
-        monster_attack_type: str | None,
-    ) -> CombatActor:
-        health = stats.get("health", {})
-        return CombatActor(
-            entity_id=entity_id,
-            name=name,
-            x=x,
-            y=y,
-            hp=int(health.get("current", 1)),
-            max_hp=int(health.get("max", 1)),
-            attack_style=stats.get("style", "slash"),
-            min_damage=int(stats.get("min_damage", 1)),
-            max_damage=int(stats.get("max_damage", 1)),
-            accuracy=float(stats.get("accuracy", 0.1)),
-            crit_chance=float(stats.get("crit_chance", 0.05)),
-            crit_multiplier=float(
-                stats.get("crit_multiplier", 1.5)
-            ),
-            resistances=stats.get("resistances", {}) or {},
-            attack_speed=int(stats.get("attack_speed", 5)),
-            is_monster=is_monster,
-            monster_attack_type=monster_attack_type,
-        )
-
-    def _refresh_player_actor_from_player(self):
-        actor = self.combat.actors.get("player")
-        if not actor:
-            return
-
-        stats = self.player.get_combat_stats()
-        health = stats.get("health", {})
-
-        actor.name = self.player.name
-        actor.hp = int(health.get("current", actor.hp))
-        actor.max_hp = int(health.get("max", actor.max_hp))
-        actor.attack_style = stats.get("style", actor.attack_style)
-        actor.min_damage = int(stats.get("min_damage", actor.min_damage))
-        actor.max_damage = int(stats.get("max_damage", actor.max_damage))
-        actor.accuracy = float(stats.get("accuracy", actor.accuracy))
-        actor.crit_chance = float(stats.get("crit_chance", actor.crit_chance))
-        actor.crit_multiplier = float(
-            stats.get("crit_multiplier", actor.crit_multiplier)
-        )
-        actor.resistances = stats.get("resistances", actor.resistances) or {}
-        actor.attack_speed = int(stats.get("attack_speed", actor.attack_speed))
-
-    # ============================================================
-    # MONSTER TARGETING HELPERS
-    # ============================================================
-    def _register_monster_for_targeting(self, monster_obj):
-        if getattr(monster_obj, "entity_id", None) and monster_obj.entity_id not in self.target_list:
-            self.target_list.append(monster_obj.entity_id)
-
-    def _unregister_monster_for_targeting(self, entity_id):
-        if entity_id in self.target_list:
-            self.target_list.remove(entity_id)
-
-        if self.player.current_target == entity_id:
-            self._clear_target()
-
-    def _update_target_highlight(self):
-        for sprite in self.monster_sprites:
-            if sprite.entity_id == self.player.current_target:
-                sprite.color = MONSTER_TARGETED_COLOR
-            else:
-                sprite.color = MONSTER_COLOR
-
-    def _set_target(self, entity_id):
-        self.player.current_target = entity_id
-        self._update_target_highlight()
-
-    def _clear_target(self):
-        self.player.current_target = None
-        self._update_target_highlight()
-
-    def _cycle_target(self):
-        if not self.target_list:
-            return
-
-        self.target_index = (self.target_index + 1) % len(self.target_list)
-        self._set_target(self.target_list[self.target_index])
-
-    # ============================================================
-    # SPAWNING
-    # ============================================================
-    def spawn_monster_by_id(self, monster_id):
-        monster_data = get_monster_by_id(monster_id)
-        if monster_data is None:
-            print(f"[Error] No monster with ID {monster_id}")
-            return
-
-        x, y = 15, 15
-
-        monster = create_monster_instance(monster_id, x, y)
-        monster.entity_id = str(uuid.uuid4())
         entity_id = monster.entity_id
 
         self.monsters.append(monster)
@@ -247,6 +71,12 @@ class AetheriaWindow(arcade.Window):
 
         self._register_monster_for_targeting(monster)
         print(f"[Spawned] {monster.name} (ID {monster_id})")
+
+    def _find_monster_by_entity_id(self, entity_id):
+        for monster in self.monsters:
+            if getattr(monster, "entity_id", None) == entity_id:
+                return monster
+        return None
 
     def _despawn_monster(self, entity_id):
         self.monsters = [m for m in self.monsters if getattr(m, "entity_id", None) != entity_id]
@@ -273,6 +103,23 @@ class AetheriaWindow(arcade.Window):
 
             if entity_id == "player":
                 continue
+
+            monster = self._find_monster_by_entity_id(entity_id)
+            if monster is not None:
+                loot = roll_loot(monster)
+                gold_amount = int(loot.get("gold", 0) or 0)
+                self.player.gold = getattr(self.player, "gold", 0) + gold_amount
+
+                item_drop = loot.get("item")
+                quantity = max(1, int(loot.get("quantity", 1) or 1)) if item_drop else 0
+                if item_drop is not None:
+                    self.player.add_item(item_drop.name, quantity)
+                    qty_label = f"{quantity}x " if quantity > 1 else ""
+                    print(
+                        f"[Loot] {monster.name} dropped {gold_amount} gold and {qty_label}{item_drop.name}."
+                    )
+                else:
+                    print(f"[Loot] {monster.name} dropped {gold_amount} gold.")
 
             self._despawn_monster(entity_id)
 

@@ -4,11 +4,11 @@
 # Hybrid Tier-Based Loot System:
 # - Gold always drops
 # - 40% chance to roll an item
-# - Tier-weighted loot selection (70% same tier, 20% lower, 10% lowest)
+# - Tier-weighted loot selection (65% same tier, 20% lower, 15% tier 1 bias)
 # - Weapons/armor: 1/50 (2%)
 # - Accessories: 1/150 (~0.66%)
 # - All other items: common
-# - Artifacts only drop from special sources (not normal monsters)
+# - Artifacts/Starforged tiers are excluded unless the monster is tier 7+
 # ============================================================
 
 import random
@@ -46,7 +46,7 @@ artifact_items = []  # special sources only — never drop normally
 for item in ITEMS.values():
 
     # ARTIFACTS — never in normal monster tables
-    if item.is_artifact:
+    if getattr(item, "is_artifact", False):
         artifact_items.append(item)
         continue
 
@@ -54,19 +54,22 @@ for item in ITEMS.values():
     if t < 1 or t > 7:
         continue
 
+    item_type = (item.item_type or "").lower()
+    item_slot = (getattr(item, "slot", "") or "").lower()
+
     # Weapon classification
-    if item.item_type == "weapon":
+    if item_type == "weapon":
         tier_weapons[t].append(item)
         continue
 
-    # Armor classification
-    if item.item_type == "armor":
-        tier_armor[t].append(item)
+    # Accessories live in the accessory table even if their item_type is Armor
+    if item_type == "accessory" or item_slot in ("ring", "neck", "cape"):
+        tier_accessories[t].append(item)
         continue
 
-    # Accessories
-    if item.item_type == "accessory":
-        tier_accessories[t].append(item)
+    # Armor classification
+    if item_type == "armor":
+        tier_armor[t].append(item)
         continue
 
     # General items (food, crafting, misc)
@@ -75,7 +78,7 @@ for item in ITEMS.values():
 
 # ============================================================
 # WEIGHTED TIER SELECTION
-# (70% same-tier, 20% lower-tier, 10% lowest-tier)
+# (65% same-tier, 20% lower-tier, 15% tier-1 bias)
 # ============================================================
 
 def choose_loot_tier(monster_tier):
@@ -87,11 +90,13 @@ def choose_loot_tier(monster_tier):
 
     roll = random.random()
 
-    same = 0.70
-    lower = 0.20
-    lowest = 0.10
+    if monster_tier <= 1:
+        return 1
 
-    # 70% — same tier
+    same = 0.65
+    lower = 0.20
+
+    # 65% — same tier
     if roll < same:
         return monster_tier
 
@@ -99,7 +104,7 @@ def choose_loot_tier(monster_tier):
     if roll < same + lower and monster_tier > 1:
         return monster_tier - 1
 
-    # 10% — lowest tier always accessible
+    # 15% — lowest tier always accessible
     return 1
 
 
@@ -148,6 +153,16 @@ def roll_accessory(tier):
     return random.choice(pool)
 
 
+def _determine_stack_size(item):
+    """Return a stack size for general items; equipment always drops as 1."""
+
+    item_type = (getattr(item, "item_type", "") or "").lower()
+    if item_type in ("crafting", "food"):
+        return random.randint(1, 3)
+
+    return 1
+
+
 # ============================================================
 # MAIN FUNCTION — ROLL LOOT FOR ANY MONSTER
 # ============================================================
@@ -157,22 +172,23 @@ def roll_loot(monster):
     Returns a dictionary:
     {
         "gold": int,
-        "item": optional Item or None
+        "item": optional Item or None,
+        "quantity": int (1+ for stackable general items)
     }
     """
-    tier = monster.tier
+    tier = getattr(monster, "tier", 1) or 1
 
     # ------------------------------
     # Always drop gold
     # ------------------------------
-    gmin, gmax = GOLD_TABLE[tier]
+    gmin, gmax = GOLD_TABLE.get(tier, GOLD_TABLE[max(GOLD_TABLE)])
     gold_amount = random.randint(gmin, gmax)
 
     # ------------------------------
     # 60% chance → gold only
     # ------------------------------
     if random.random() > 0.40:
-        return {"gold": gold_amount, "item": None}
+        return {"gold": gold_amount, "item": None, "quantity": 0}
 
     # ------------------------------
     # 40% chance → roll item
@@ -185,14 +201,19 @@ def roll_loot(monster):
 
     # 2% weapon/armor roll
     if weapon_roll:
-        return {"gold": gold_amount, "item": roll_weapon_or_armor(chosen_tier)}
+        return {"gold": gold_amount, "item": roll_weapon_or_armor(chosen_tier), "quantity": 1}
 
     # 0.66% accessory roll
     if accessory_roll:
-        return {"gold": gold_amount, "item": roll_accessory(chosen_tier)}
+        return {"gold": gold_amount, "item": roll_accessory(chosen_tier), "quantity": 1}
 
     # Common general item
-    return {"gold": gold_amount, "item": roll_basic_item(chosen_tier)}
+    general_item = roll_basic_item(chosen_tier)
+    return {
+        "gold": gold_amount,
+        "item": general_item,
+        "quantity": _determine_stack_size(general_item),
+    }
 
 
 # ============================================================

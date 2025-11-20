@@ -212,10 +212,11 @@ class Player:
     # --------------------------------------------------------
     # PUBLIC: GIVE + EQUIP (used by dev UI)
     # --------------------------------------------------------
-    def give_and_equip(self, item_name, slot=None):
+    def give_and_equip(self, item_ref, slot=None):
         """
         Dev helper used by Arcade item menu and CLI:
-          - gives 1x item_name to backpack
+          - accepts an Item instance, item name, or item_id
+          - gives 1x item to backpack
           - equips it via the shared inventory module.
         """
         try:
@@ -231,8 +232,33 @@ class Player:
                     from player import inventory as inv_mod
                 except ModuleNotFoundError:
                     # All three failed: we *really* have no inventory module
-                    self.add_item(item_name, 1)
-                    return f"Gave {item_name}, but inventory module not available."
+                    self.add_item(getattr(item_ref, "name", str(item_ref)), 1)
+                    return "Gave item, but inventory module not available."
+
+        # Resolve the item name so backpack + equip logic stays consistent
+        from aetheria_core.items import Item, ITEMS
+
+        resolved_item = None
+        if isinstance(item_ref, Item):
+            resolved_item = item_ref
+        elif isinstance(item_ref, str):
+            resolved_item = ITEMS.get(item_ref)
+        else:
+            try:
+                item_id = int(item_ref)
+            except (TypeError, ValueError):
+                item_id = None
+
+            if item_id is not None:
+                for itm in ITEMS.values():
+                    if getattr(itm, "item_id", None) == item_id:
+                        resolved_item = itm
+                        break
+
+        if resolved_item is None:
+            return f"Item '{item_ref}' does not exist."
+
+        item_name = resolved_item.name
 
         # If we got here, one of the imports above worked
         add_to_backpack = getattr(inv_mod, "add_to_backpack")
