@@ -1,17 +1,24 @@
-from typing import Optional
-from player.player import Player
-from items.items import ITEMS, Item
-from items.equipment_utils import is_two_handed
+# inventory.py
+
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
+from aetheria_core.items import Item, ITEMS
+from equipment_utils import is_two_handed
+
+if TYPE_CHECKING:
+    from aetheria_core.player import Player
 
 
-def add_to_backpack(player: Player, item_name: str, amount: int = 1) -> None:
+def add_to_backpack(player: "Player", item_name: str, amount: int = 1) -> None:
     """Add items to the player's backpack stack."""
     if amount <= 0:
         return
     player.backpack[item_name] = player.backpack.get(item_name, 0) + amount
 
 
-def remove_from_backpack(player: Player, item_name: str, amount: int = 1) -> bool:
+def remove_from_backpack(player: "Player", item_name: str, amount: int = 1) -> bool:
     """
     Remove items from the player's backpack stack.
 
@@ -33,7 +40,7 @@ def remove_from_backpack(player: Player, item_name: str, amount: int = 1) -> boo
     return True
 
 
-def equip_item(player: Player, item_name: str) -> str:
+def equip_item(player: "Player", item_name: str) -> str:
     """
     Equip ONE item from the player's backpack into the correct equipment slot.
 
@@ -172,7 +179,7 @@ def equip_item(player: Player, item_name: str) -> str:
     return f"{item.name} cannot be equipped."
 
 
-def unequip_slot(player: Player, slot_name: str) -> str:
+def unequip_slot(player: "Player", slot_name: str) -> str:
     """
     Unequip whatever is in the given slot and return it to the backpack.
     """

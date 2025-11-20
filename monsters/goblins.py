@@ -1,97 +1,160 @@
-from .monster import Monster, register_monster
-# === GOBLINS ===
-register_monster(Monster(
-    name="Goblin Scout",
-    tier=1,
-    level=5,
-    health=60,
-    armor=0,
-    resistances={'slash': 0.02, 'blunt': -0.05, 'stab': 0.0, 'magic': -0.1, 'ranged': 0.0},
-    damage_type="stab",
-    min_damage=2,
-    max_damage=6,
-    accuracy=0.18,
-    crit_chance=0.05,
-    crit_multiplier=1.5,
-    status_effects=[],
-))
+# ============================================================
+# AETHERIA — GOBLIN FAMILY
+# ============================================================
+# Wired for:
+#   - monsters/monster.py  (Monster class)
+#   - aetheria_core.monsters loader (MONSTER_FAMILY)
+# ============================================================
 
-register_monster(Monster(
-    name="Goblin Worker",
-    tier=2,
-    level=10,
-    health=100,
-    armor=0,
-    resistances={'slash': 0.05, 'blunt': 0.1, 'stab': 0.0, 'magic': -0.05, 'ranged': 0.05},
-    damage_type="stab",
-    min_damage=5,
-    max_damage=9,
-    accuracy=0.24,
-    crit_chance=0.05,
-    crit_multiplier=1.5,
-    status_effects=[],
-))
+from .monster import Monster  # this is monsters/monster.py
 
-register_monster(Monster(
-    name="Goblin Warrior",
-    tier=3,
-    level=15,
-    health=140,
-    armor=0,
-    resistances={'slash': 0.15, 'blunt': 0.1, 'stab': 0.1, 'magic': -0.1, 'ranged': 0.0},
-    damage_type="stab",
-    min_damage=7,
-    max_damage=11,
-    accuracy=0.30,
-    crit_chance=0.05,
-    crit_multiplier=1.5,
-    status_effects=[],
-))
+# Core dict used by loaders
+MONSTER_FAMILY = {
 
-register_monster(Monster(
-    name="Goblin Ranger",
-    tier=4,
-    level=20,
-    health=180,
-    armor=0,
-    resistances={'slash': 0.05, 'blunt': -0.05, 'stab': 0.05, 'magic': 0.0, 'ranged': 0.15},
-    damage_type="ranged",
-    min_damage=10,
-    max_damage=14,
-    accuracy=0.36,
-    crit_chance=0.05,
-    crit_multiplier=1.5,
-    status_effects=[],
-))
+    # --------------------------------------------------------
+    # Goblin Scout  (Tier 1)
+    # --------------------------------------------------------
+    2: Monster(
+        name="Goblin Scout",
+        tier=1,
+        level=5,
+        max_hp=60,
+        min_damage=2,
+        max_damage=6,
+        damage_type="stab",
+        accuracy=0.30,
+        resistances={
+            "slash": 0.20,
+            "stab": 0.10,
+            "blunt": 0.00,
+            "magic": -0.10,
+            "ranged": 0.05,
+        },
+        attack_speed=5,
+        projectile_speed=0,
+        attack_range=2,
+    ),
 
-register_monster(Monster(
-    name="Goblin Mage",
-    tier=5,
-    level=25,
-    health=220,
-    armor=0,
-    resistances={'slash': -0.1, 'blunt': -0.05, 'stab': -0.05, 'magic': 0.15, 'ranged': 0.0},
-    damage_type="magic",
-    min_damage=12,
-    max_damage=16,
-    accuracy=0.42,
-    crit_chance=0.05,
-    crit_multiplier=1.5,
-    status_effects=[],
-))
+    # --------------------------------------------------------
+    # Goblin Worker (Tier 2)
+    # --------------------------------------------------------
+    15: Monster(
+        name="Goblin Worker",
+        tier=2,
+        level=10,
+        max_hp=100,
+        min_damage=5,
+        max_damage=9,
+        damage_type="stab",
+        accuracy=0.35,
+        resistances={
+            "slash": 0.25,
+            "stab": 0.15,
+            "blunt": 0.05,
+            "magic": -0.05,
+            "ranged": 0.10,
+        },
+        attack_speed=5,
+        projectile_speed=0,
+        attack_range=2,
+    ),
 
-register_monster(Monster(
-    name="Goblin Chieftain",
-    tier=5,
-    level=30,
-    health=260,
-    armor=0,
-    resistances={'slash': 0.1, 'blunt': 0.1, 'stab': 0.1, 'magic': 0.1, 'ranged': 0.1},
-    damage_type="hybrid",  # You can define special logic for hybrids in your combat engine
-    min_damage=15,
-    max_damage=19,
-    accuracy=0.48,
-    crit_chance=0.05,
-    crit_multiplier=1.5,
-    status_effects=[],
-))
+    # --------------------------------------------------------
+    # Goblin Warrior  (Tier 3)
+    # --------------------------------------------------------
+    29: Monster(
+        name="Goblin Warrior",
+        tier=3,
+        level=15,
+        max_hp=140,
+        min_damage=7,
+        max_damage=11,
+        damage_type="stab",
+        accuracy=0.40,
+        resistances={
+            "slash": 0.30,
+            "stab": 0.20,
+            "blunt": 0.05,
+            "magic": -0.05,
+            "ranged": 0.10,
+        },
+        attack_speed=5,
+        projectile_speed=0,
+        attack_range=2,
+    ),
+
+    # --------------------------------------------------------
+    # Goblin Ranger (Tier 4)
+    # --------------------------------------------------------
+    42: Monster(
+        name="Goblin Ranger",
+        tier=4,
+        level=20,
+        max_hp=180,
+        min_damage=10,
+        max_damage=14,
+        damage_type="ranged",
+        accuracy=0.40,
+        resistances={
+            "slash": 0.15,
+            "stab": 0.15,
+            "blunt": 0.10,
+            "magic": -0.05,
+            "ranged": 0.20,
+        },
+        attack_speed=5,
+        projectile_speed=2.5,
+        attack_range=18,
+    ),
+
+    # --------------------------------------------------------
+    # Goblin Mage (Tier 5)
+    # --------------------------------------------------------
+    56: Monster(
+        name="Goblin Mage",
+        tier=5,
+        level=25,
+        max_hp=220,
+        min_damage=12,
+        max_damage=16,
+        damage_type="magic",
+        accuracy=0.45,
+        resistances={
+            "slash": 0.10,
+            "stab": 0.10,
+            "blunt": 0.05,
+            "magic": 0.25,
+            "ranged": 0.00,
+        },
+        attack_speed=5,
+        projectile_speed=2.0,
+        attack_range=20,
+    ),
+
+    # --------------------------------------------------------
+    # Goblin Chieftain (Tier 5)
+    # --------------------------------------------------------
+    60: Monster(
+        name="Goblin Chieftain",
+        tier=5,
+        level=30,
+        max_hp=260,
+        min_damage=15,
+        max_damage=19,
+        damage_type="hybrid",  # melee hybrid for now
+        accuracy=0.50,
+        resistances={
+            "slash": 0.30,
+            "stab": 0.20,
+            "blunt": 0.10,
+            "magic": -0.15,
+            "ranged": 0.15,
+        },
+        attack_speed=5,
+        projectile_speed=0,
+        attack_range=2,
+    ),
+}
+
+# Backwards-compat alias some tools might expect
+MONSTERS = MONSTER_FAMILY
