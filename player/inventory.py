@@ -1,28 +1,57 @@
-# inventory.py
+"""
+Simple inventory + equipment helpers for the core :class:`Player`.
+
+This module is intentionally lightweight so new contributors can read it
+quickly. It exposes a handful of free functions that operate on a
+``Player`` instance:
+
+- ``add_to_backpack``: add or stack loose items in the backpack.
+- ``remove_from_backpack``: safely remove from a stack.
+- ``equip_item``: move one item from the backpack into the right slot.
+- ``unequip_slot``: move whatever is in a slot back to the backpack.
+
+Where does this file live?
+==========================
+The path inside the repository is ``player/inventory.py``. If you have
+cloned the repo, you can open or replace the file at:
+
+    aetheria-game/player/inventory.py
+
+The functions below are used by the ``aetheria_core.player.Player`` class
+(as well as other helpers) to equip and unequip gear.
+"""
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Callable, Dict, Optional
 
 from aetheria_core.items import Item, ITEMS
-from equipment_utils import is_two_handed
+from items.equipment_utils import is_two_handed
 
 if TYPE_CHECKING:
     from aetheria_core.player import Player
 
 
+# ---------------------------------------------------------------------------
+# Backpack helpers
+# ---------------------------------------------------------------------------
+
 def add_to_backpack(player: "Player", item_name: str, amount: int = 1) -> None:
-    """Add items to the player's backpack stack."""
+    """Add a quantity of an item to the player's backpack stack.
+
+    A non-positive ``amount`` is ignored so callers do not have to pre-check
+    values.
+    """
     if amount <= 0:
         return
     player.backpack[item_name] = player.backpack.get(item_name, 0) + amount
 
 
 def remove_from_backpack(player: "Player", item_name: str, amount: int = 1) -> bool:
-    """
-    Remove items from the player's backpack stack.
+    """Attempt to remove items from the backpack stack.
 
-    Returns True if successful, False if not enough items.
+    Returns ``True`` when the items were removed (or ``amount`` was not
+    positive), and ``False`` when the player did not have enough in the stack.
     """
     if amount <= 0:
         return True
@@ -40,202 +69,154 @@ def remove_from_backpack(player: "Player", item_name: str, amount: int = 1) -> b
     return True
 
 
-def equip_item(player: "Player", item_name: str) -> str:
-    """
-    Equip ONE item from the player's backpack into the correct equipment slot.
+# ---------------------------------------------------------------------------
+# Equipment helpers
+# ---------------------------------------------------------------------------
 
-    - All items are stackable in backpack.
-    - Equipment slots NEVER stack (they hold at most 1 item), except quiver.
-    - Equipping removes 1 item from the backpack stack (or moves full stack into quiver).
+def _unequip_and_store(player: "Player", slot_name: str, current_item: Optional[Item]) -> None:
+    """Return the current item in ``slot_name`` back to the backpack."""
+    if current_item is not None:
+        add_to_backpack(player, current_item.name, 1)
+        setattr(player, slot_name, None)
+
+
+def _set_slot(player: "Player", slot_name: str, item: Item) -> None:
+    """Equip ``item`` into ``slot_name`` without touching the backpack."""
+    setattr(player, slot_name, item)
+
+
+def equip_item(player: "Player", item_name: str) -> str:
+    """Equip one item from the backpack into the appropriate equipment slot.
+
+    Rules implemented here:
+    - Backpack stacks items; equipment slots (except quiver) do not stack.
+    - Equipping consumes **one** item from the backpack stack unless the
+      quiver is filled, in which case the entire stack is moved.
+    - Two-handed weapons clear the shield slot before equipping.
     """
     if item_name not in ITEMS:
         return f"Item '{item_name}' does not exist."
 
-    item: Item = ITEMS[item_name]
-
-    if item.slot is None:
-        return f"{item.name} cannot be equipped."
-
     stack_count = player.backpack.get(item_name, 0)
     if stack_count <= 0:
-        return f"{player.name} has no {item.name} to equip."
+        return f"{player.name} has no {item_name} to equip."
 
+    item: Item = ITEMS[item_name]
     slot = item.slot
 
-    # --- QUIVER: holds a stack of a single ammo type ---
+    if slot is None:
+        return f"{item.name} cannot be equipped."
+
+    # ----------------------
+    # Quiver (stacked ammo)
+    # ----------------------
     if slot == "quiver":
         if player.quiver_item is not None:
             if player.quiver_item.name == item_name:
-                # Same ammo type: top up from backpack into quiver
                 player.quiver_amount += stack_count
                 del player.backpack[item_name]
-                return (
-                    f"Loaded {stack_count} more {item.name} into quiver "
-                    f"(total {player.quiver_amount})."
-                )
-            else:
-                # Different ammo type: return old ammo to backpack first
-                add_to_backpack(player, player.quiver_item.name, player.quiver_amount)
-                player.quiver_item = None
-                player.quiver_amount = 0
+                return f"Loaded {stack_count} more {item.name} into quiver (total {player.quiver_amount})."
 
-        # Move entire stack into quiver
+            add_to_backpack(player, player.quiver_item.name, player.quiver_amount)
+            player.quiver_item = None
+            player.quiver_amount = 0
+
         player.quiver_item = item
         player.quiver_amount = stack_count
         del player.backpack[item_name]
         return f"Loaded {player.quiver_amount}x {item.name} into quiver."
 
-    # Helper: unequip a slot if it has something
-    def _unequip_slot_if_filled(slot_name: str):
-        unequip_slot(player, slot_name)
+    # Helper to unequip with nice reuse
+    def clear_slot(slot_name: str) -> None:
+        current: Optional[Item] = getattr(player, slot_name)
+        _unequip_and_store(player, slot_name, current)
 
-    # --- WEAPON SLOT ---
+    # ----------------------
+    # Weapon slot
+    # ----------------------
     if slot == "weapon":
-        if stack_count <= 0:
-            return f"{player.name} has no {item.name} to equip."
-
         if is_two_handed(item):
-            # Two-handed weapon: clear weapon & shield
-            _unequip_slot_if_filled("weapon")
-            _unequip_slot_if_filled("shield")
+            clear_slot("weapon")
+            clear_slot("shield")
         else:
-            # One-handed weapon: if current weapon is two-handed, unequip it first
-            if player.weapon is not None and is_two_handed(player.weapon):
-                _unequip_slot_if_filled("weapon")
-            else:
-                _unequip_slot_if_filled("weapon")
+            clear_slot("weapon")
 
         if not remove_from_backpack(player, item_name, 1):
             return f"{player.name} has no {item.name} to equip."
-        player.weapon = item
+
+        _set_slot(player, "weapon", item)
         return f"{player.name} equipped {item.name} as weapon."
 
-    # --- SHIELD SLOT ---
+    # ----------------------
+    # Shield slot
+    # ----------------------
     if slot == "shield":
         if player.weapon is not None and is_two_handed(player.weapon):
             return f"Cannot equip {item.name} because {player.weapon.name} is two-handed."
 
-        _unequip_slot_if_filled("shield")
+        clear_slot("shield")
 
         if not remove_from_backpack(player, item_name, 1):
-            return f"{player.name} has no {item.name} to equip."
-        player.shield = item
+            return f"{player.name} has no {item_name} to equip."
+
+        _set_slot(player, "shield", item)
         return f"{player.name} equipped {item.name} as shield."
 
-    # --- ARMOR SLOTS ---
-    if slot == "head":
-        _unequip_slot_if_filled("head")
-        if not remove_from_backpack(player, item_name, 1):
-            return f"{player.name} has no {item.name} to equip."
-        player.head = item
-        return f"{player.name} equipped {item.name} on head."
+    # ----------------------
+    # Armor slots (single)
+    # ----------------------
+    single_slots: Dict[str, str] = {
+        "head": "head",
+        "chest": "chest",
+        "legs": "legs",
+        "cape": "cape",
+        "neck": "neck",
+    }
+    if slot in single_slots:
+        target = single_slots[slot]
+        clear_slot(target)
 
-    if slot == "chest":
-        _unequip_slot_if_filled("chest")
         if not remove_from_backpack(player, item_name, 1):
-            return f"{player.name} has no {item.name} to equip."
-        player.chest = item
-        return f"{player.name} equipped {item.name} on chest."
+            return f"{player.name} has no {item_name} to equip."
 
-    if slot == "legs":
-        _unequip_slot_if_filled("legs")
-        if not remove_from_backpack(player, item_name, 1):
-            return f"{player.name} has no {item.name} to equip."
-        player.legs = item
-        return f"{player.name} equipped {item.name} on legs."
+        _set_slot(player, target, item)
+        return f"{player.name} equipped {item.name} on {target}."
 
-    if slot == "cape":
-        _unequip_slot_if_filled("cape")
-        if not remove_from_backpack(player, item_name, 1):
-            return f"{player.name} has no {item.name} to equip."
-        player.cape = item
-        return f"{player.name} equipped {item.name} as cape."
-
-    if slot == "neck":
-        _unequip_slot_if_filled("neck")
-        if not remove_from_backpack(player, item_name, 1):
-            return f"{player.name} has no {item.name} to equip."
-        player.neck = item
-        return f"{player.name} equipped {item.name} as necklace."
-
-    # --- RING SLOTS ---
+    # ----------------------
+    # Ring slots (two available)
+    # ----------------------
     if slot == "ring":
         if not remove_from_backpack(player, item_name, 1):
-            return f"{player.name} has no {item.name} to equip."
+            return f"{player.name} has no {item_name} to equip."
 
         if player.ring1 is None:
-            player.ring1 = item
+            _set_slot(player, "ring1", item)
             return f"{player.name} equipped {item.name} in ring slot 1."
 
         if player.ring2 is None:
-            player.ring2 = item
+            _set_slot(player, "ring2", item)
             return f"{player.name} equipped {item.name} in ring slot 2."
 
-        # Both full: replace ring1
         add_to_backpack(player, player.ring1.name, 1)
-        player.ring1 = item
+        _set_slot(player, "ring1", item)
         return f"{player.name} replaced ring slot 1 with {item.name}."
 
     return f"{item.name} cannot be equipped."
 
 
 def unequip_slot(player: "Player", slot_name: str) -> str:
-    """
-    Unequip whatever is in the given slot and return it to the backpack.
-    """
-    if slot_name == "head" and player.head is not None:
-        add_to_backpack(player, player.head.name, 1)
-        name = player.head.name
-        player.head = None
-        return f"Unequipped {name} from head."
-
-    if slot_name == "chest" and player.chest is not None:
-        add_to_backpack(player, player.chest.name, 1)
-        name = player.chest.name
-        player.chest = None
-        return f"Unequipped {name} from chest."
-
-    if slot_name == "legs" and player.legs is not None:
-        add_to_backpack(player, player.legs.name, 1)
-        name = player.legs.name
-        player.legs = None
-        return f"Unequipped {name} from legs."
-
-    if slot_name == "cape" and player.cape is not None:
-        add_to_backpack(player, player.cape.name, 1)
-        name = player.cape.name
-        player.cape = None
-        return f"Unequipped {name} from cape."
-
-    if slot_name == "neck" and player.neck is not None:
-        add_to_backpack(player, player.neck.name, 1)
-        name = player.neck.name
-        player.neck = None
-        return f"Unequipped {name} from neck."
-
-    if slot_name == "ring1" and player.ring1 is not None:
-        add_to_backpack(player, player.ring1.name, 1)
-        name = player.ring1.name
-        player.ring1 = None
-        return f"Unequipped {name} from ring slot 1."
-
-    if slot_name == "ring2" and player.ring2 is not None:
-        add_to_backpack(player, player.ring2.name, 1)
-        name = player.ring2.name
-        player.ring2 = None
-        return f"Unequipped {name} from ring slot 2."
-
-    if slot_name == "weapon" and player.weapon is not None:
-        add_to_backpack(player, player.weapon.name, 1)
-        name = player.weapon.name
-        player.weapon = None
-        return f"Unequipped {name} from weapon slot."
-
-    if slot_name == "shield" and player.shield is not None:
-        add_to_backpack(player, player.shield.name, 1)
-        name = player.shield.name
-        player.shield = None
-        return f"Unequipped {name} from shield slot."
+    """Unequip whatever is in ``slot_name`` and return it to the backpack."""
+    slot_map: Dict[str, Callable[["Player"], Optional[Item]]] = {
+        "head": lambda p: p.head,
+        "chest": lambda p: p.chest,
+        "legs": lambda p: p.legs,
+        "cape": lambda p: p.cape,
+        "neck": lambda p: p.neck,
+        "ring1": lambda p: p.ring1,
+        "ring2": lambda p: p.ring2,
+        "weapon": lambda p: p.weapon,
+        "shield": lambda p: p.shield,
+    }
 
     if slot_name == "quiver" and player.quiver_item is not None and player.quiver_amount > 0:
         add_to_backpack(player, player.quiver_item.name, player.quiver_amount)
@@ -245,4 +226,14 @@ def unequip_slot(player: "Player", slot_name: str) -> str:
         player.quiver_amount = 0
         return f"Unequipped quiver: returned {amount}x {name} to backpack."
 
-    return f"Nothing to unequip from {slot_name}."
+    getter = slot_map.get(slot_name)
+    if getter is None:
+        return f"Unknown slot '{slot_name}'."
+
+    current_item = getter(player)
+    if current_item is None:
+        return f"Nothing to unequip from {slot_name}."
+
+    add_to_backpack(player, current_item.name, 1)
+    setattr(player, slot_name, None)
+    return f"Unequipped {current_item.name} from {slot_name}."

@@ -1,13 +1,16 @@
 """
-Core game logic for Aetheria: players, items, monsters, combat.
+Core game logic for Aetheria: players, items, monsters, combat, inventory.
 
-This package only wraps your existing modules:
-- No input() / print()
-- No windowing / UI
+This package only wraps your existing modules.
+It contains no input() / print() and no UI code.
 
-Both your CMD test runner and Arcade client can import from here.
+Both your CMD test runner and your Arcade client can import from here.
 """
 
-from . import player, items, monsters, combat
+from . import player
+from . import items
+from . import monsters
+from . import combat
+from . import inventory
 
-__all__ = ["player", "items", "monsters", "combat"]
+__all__ = ["player", "items", "monsters", "combat", "inventory"]
