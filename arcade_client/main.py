@@ -1,9 +1,9 @@
 import arcade
+import math
+import os
+import sys
 import time
 import uuid
-import sys
-import os
-import math
 
 # Make sure Python can see the parent folder (which contains aetheria_core)
 CURRENT_DIR = os.path.dirname(__file__)
@@ -11,19 +11,14 @@ PARENT_DIR = os.path.dirname(CURRENT_DIR)
 if PARENT_DIR not in sys.path:
     sys.path.insert(0, PARENT_DIR)
 
-from aetheria_core.player import Player
+from aetheria_core.combat_engine import CombatActor, CombatEngine
 from aetheria_core.items import ITEMS
-from aetheria_core.monsters import (
-    MONSTER_DATABASE,
-    get_monster_by_id,
-    get_monster_id_by_name,
-    create_monster_instance,
-)
-from aetheria_core.combat_engine import CombatEngine, CombatActor
+from aetheria_core.monsters import MONSTER_DATABASE, create_monster_instance, get_monster_by_id
+from aetheria_core.player import Player
 from loot.loot_tables import roll_loot
-from ui_spawn_menu import SpawnMenu
-from ui_item_menu import ItemMenu
 from ui_inventory_menu import InventoryMenu
+from ui_item_menu import ItemMenu
+from ui_spawn_menu import SpawnMenu
 
 # ============================================================
 # CONSTANTS
@@ -43,15 +38,178 @@ MELEE_STYLES = ("slash", "stab", "blunt")
 MELEE_RANGE_TILES = 2.0
 RANGED_MAGIC_RANGE_TILES = 20.0
 
+
 # ============================================================
 # SPRITE CLASSES
 # ============================================================
+class ActorSprite(arcade.SpriteSolidColor):
+    def __init__(self, width, height, color, entity_id):
+        super().__init__(width, height, color)
+        self.entity_id = entity_id  # Unique ID from combat actor
+
+
+# ============================================================
+# MAIN WINDOW
+# ============================================================
 class AetheriaWindow(arcade.Window):
-        entity_id = monster.entity_id
+    def __init__(self):
+        super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, "Aetheria (Arcade Test Client)")
+
+        # ======================================
+        # Combat Engine
+        # ======================================
+        self.combat = CombatEngine()
+
+        # ======================================
+        # Player Initialization
+        # ======================================
+        self.player = Player(name="Player")
+        self.player.entity_id = "player"
+
+        sprite = ActorSprite(TILE_SIZE, TILE_SIZE, PLAYER_COLOR, self.player.entity_id)
+        sprite.center_x = self.player.x * TILE_SIZE
+        sprite.center_y = self.player.y * TILE_SIZE
+        self.player.sprite = sprite
+
+        player_stats = self.player.get_combat_stats()
+        self.combat.register_actor(
+            self._create_actor_from_stats(
+                entity_id="player",
+                name=self.player.name,
+                x=self.player.x,
+                y=self.player.y,
+                stats=player_stats,
+            )
+        )
+
+        # ======================================
+        # Sprite Lists
+        # ======================================
+        self.player_sprites = arcade.SpriteList()
+        self.monster_sprites = arcade.SpriteList()
+        self.projectile_sprites = arcade.SpriteList()
+
+        self.player_sprites.append(self.player.sprite)
+
+        # Track monsters for AI + loot
+        self.monsters = []
+
+        # ======================================
+        # Movement + Tick System
+        # ======================================
+        self.held_keys = set()
+        self.last_tick_time = time.time()
+
+        # ======================================
+        # Targeting System
+        # ======================================
+        self.target_list = []  # list of monster entity_ids
+        self.target_index = -1  # index into target_list
+        self.auto_chase_target = False
+
+        # ======================================
+        # Dev Menus
+        # ======================================
+        self.spawn_menu = SpawnMenu(self, MONSTER_DATABASE)  # F5
+        self.item_menu = ItemMenu(self, ITEMS)  # F6
+        self.inventory_menu = InventoryMenu(self)  # I
+
+    # ============================================================
+    # HELPERS
+    # ============================================================
+    def _create_actor_from_stats(
+        self,
+        entity_id,
+        name,
+        x,
+        y,
+        stats,
+        is_monster=False,
+        monster_attack_type=None,
+    ):
+        health = stats.get("health", {}) or {}
+        return CombatActor(
+            entity_id=entity_id,
+            name=name,
+            x=x,
+            y=y,
+            hp=int(health.get("current", health.get("max", 1))),
+            max_hp=int(health.get("max", health.get("current", 1))),
+            attack_style=stats.get("style", "slash"),
+            min_damage=int(stats.get("min_damage", 0)),
+            max_damage=int(stats.get("max_damage", 1)),
+            accuracy=float(stats.get("accuracy", 0.5)),
+            crit_chance=float(stats.get("crit_chance", 0.0)),
+            crit_multiplier=float(stats.get("crit_multiplier", 1.5)),
+            resistances=stats.get("resistances", {}) or {},
+            attack_speed=int(stats.get("attack_speed", 4)),
+            is_monster=is_monster,
+            monster_attack_type=monster_attack_type,
+        )
+
+    def _get_sprite_for_actor(self, actor):
+        if actor.entity_id == "player":
+            return self.player.sprite
+
+        for sprite in self.monster_sprites:
+            if getattr(sprite, "entity_id", None) == actor.entity_id:
+                return sprite
+        return None
+
+    # ============================================================
+    # MONSTER TARGETING HELPERS
+    # ============================================================
+    def _register_monster_for_targeting(self, monster_obj):
+        if getattr(monster_obj, "entity_id", None) and monster_obj.entity_id not in self.target_list:
+            self.target_list.append(monster_obj.entity_id)
+
+    def _unregister_monster_for_targeting(self, entity_id):
+        if entity_id in self.target_list:
+            self.target_list.remove(entity_id)
+
+        if self.player.current_target == entity_id:
+            self._clear_target()
+
+    def _update_target_highlight(self):
+        for sprite in self.monster_sprites:
+            if sprite.entity_id == self.player.current_target:
+                sprite.color = MONSTER_TARGETED_COLOR
+            else:
+                sprite.color = MONSTER_COLOR
+
+    def _set_target(self, entity_id):
+        self.player.current_target = entity_id
+        self._update_target_highlight()
+
+    def _clear_target(self):
+        self.player.current_target = None
+        self._update_target_highlight()
+
+    def _cycle_target(self):
+        if not self.target_list:
+            return
+
+        self.target_index = (self.target_index + 1) % len(self.target_list)
+        self._set_target(self.target_list[self.target_index])
+
+    # ============================================================
+    # SPAWNING
+    # ============================================================
+    def spawn_monster_by_id(self, monster_id):
+        if get_monster_by_id(monster_id) is None:
+            print(f"[Error] No monster with ID {monster_id}")
+            return
+
+        x, y = 15, 15
+
+        monster = create_monster_instance(monster_id, x, y)
+        monster.entity_id = f"monster_{uuid.uuid4().hex[:8]}"
+        monster.monster_id = monster_id
+        monster.attack_style = monster.damage_type
 
         self.monsters.append(monster)
 
-        sprite = ActorSprite(TILE_SIZE, TILE_SIZE, MONSTER_COLOR, entity_id)
+        sprite = ActorSprite(TILE_SIZE, TILE_SIZE, MONSTER_COLOR, monster.entity_id)
         sprite.center_x = x * TILE_SIZE
         sprite.center_y = y * TILE_SIZE
 
@@ -59,7 +217,7 @@ class AetheriaWindow(arcade.Window):
 
         self.combat.register_actor(
             self._create_actor_from_stats(
-                entity_id=entity_id,
+                entity_id=monster.entity_id,
                 name=monster.name,
                 x=x,
                 y=y,
@@ -132,15 +290,7 @@ class AetheriaWindow(arcade.Window):
 
         # Move all actors (including player)
         for actor in self.combat.actors.values():
-            sprite = None
-            if actor.entity_id == "player":
-                sprite = self.player.sprite
-            else:
-                for s in self.monster_sprites:
-                    if getattr(s, "entity_id", None) == actor.entity_id:
-                        sprite = s
-                        break
-
+            sprite = self._get_sprite_for_actor(actor)
             if sprite:
                 sprite.center_x = actor.x * TILE_SIZE
                 sprite.center_y = actor.y * TILE_SIZE
@@ -187,6 +337,7 @@ class AetheriaWindow(arcade.Window):
         if self.inventory_menu.visible:
             self.inventory_menu.on_key_press(key, modifiers)
             return
+
         # Toggle menus
         if key == arcade.key.F5:
             self.spawn_menu.toggle()
@@ -199,6 +350,7 @@ class AetheriaWindow(arcade.Window):
         if key == arcade.key.I:
             self.inventory_menu.toggle()
             return
+
         # Targeting
         if key == arcade.key.T:
             self._cycle_target()
@@ -206,6 +358,7 @@ class AetheriaWindow(arcade.Window):
         if key == arcade.key.U:
             self._clear_target()
             return
+
         # Attack
         if key == arcade.key.SPACE:
             actor = self.combat.actors.get("player")
@@ -235,6 +388,7 @@ class AetheriaWindow(arcade.Window):
             # Auto-chase the current target
             self.auto_chase_target = True
             return
+
     def on_mouse_press(self, x, y, button, modifiers):
         if self.inventory_menu.visible:
             if self.inventory_menu.on_mouse_press(x, y, button, modifiers):
@@ -249,15 +403,7 @@ class AetheriaWindow(arcade.Window):
     # ============================================================
     def _draw_health_bars(self):
         for actor in self.combat.actors.values():
-            sprite = None
-            if actor.entity_id == "player":
-                sprite = self.player.sprite
-            else:
-                for s in self.monster_sprites:
-                    if getattr(s, "entity_id", None) == actor.entity_id:
-                        sprite = s
-                        break
-
+            sprite = self._get_sprite_for_actor(actor)
             if not sprite:
                 continue
 
