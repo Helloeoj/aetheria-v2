@@ -14,6 +14,7 @@ class SpawnMenu:
     def toggle(self):
         self.visible = not self.visible
         self.status_text = "Type monster ID and press Enter to spawn."
+        self.input_text = ""
 
     # -------------------------------------------------------------
     # INPUT HANDLERS
@@ -38,14 +39,14 @@ class SpawnMenu:
             self.input_text = ""
             return True
 
-        # Handle numeric input
+        # Handle numeric input (numpad + top row)
         if arcade.key.NUM_0 <= key <= arcade.key.NUM_9:
             digit = key - arcade.key.NUM_0
             self.input_text += str(digit)
             return True
 
-        if arcade.key.NUM_0 <= key <= arcade.key.NUM_9:
-            digit = key - arcade.key.NUM_0
+        if arcade.key.KEY_0 <= key <= arcade.key.KEY_9:
+            digit = key - arcade.key.KEY_0
             self.input_text += str(digit)
             return True
 

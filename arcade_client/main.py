@@ -248,11 +248,40 @@ class AetheriaWindow(arcade.Window):
         self._register_monster_for_targeting(monster)
         print(f"[Spawned] {monster.name} (ID {monster_id})")
 
+    def _despawn_monster(self, entity_id):
+        self.monsters = [m for m in self.monsters if getattr(m, "entity_id", None) != entity_id]
+
+        for sprite in list(self.monster_sprites):
+            if getattr(sprite, "entity_id", None) == entity_id:
+                self.monster_sprites.remove(sprite)
+                break
+
+        self.combat.remove_actor(entity_id)
+        self._unregister_monster_for_targeting(entity_id)
+        if self.auto_chase_target and self.player.current_target is None:
+            self.auto_chase_target = False
+
+    def _handle_combat_events(self, events):
+        for event in events:
+            if event.get("type") != "entity_died":
+                continue
+
+            entity_id = event.get("entity_id")
+            actor = self.combat.actors.get(entity_id)
+            if actor:
+                actor.hp = max(0, actor.hp)
+
+            if entity_id == "player":
+                continue
+
+            self._despawn_monster(entity_id)
+
     # ============================================================
     # MOVEMENT + TICK ENGINE
     # ============================================================
     def _do_tick(self):
         events = self.combat.process_tick(self)
+        self._handle_combat_events(events)
 
         # Move all actors (including player)
         for actor in self.combat.actors.values():
@@ -301,17 +330,16 @@ class AetheriaWindow(arcade.Window):
 
         # Menus take priority
         if self.spawn_menu.visible:
-            if self.spawn_menu.on_key_press(key, modifiers):
-                return
+            self.spawn_menu.on_key_press(key, modifiers)
+            return
 
         if self.item_menu.visible:
-            if self.item_menu.on_key_press(key, modifiers):
-                return
+            self.item_menu.on_key_press(key, modifiers)
+            return
 
         if self.inventory_menu.visible:
-            if self.inventory_menu.on_key_press(key, modifiers):
-                return
-
+            self.inventory_menu.on_key_press(key, modifiers)
+            return
         # Toggle menus
         if key == arcade.key.F5:
             self.spawn_menu.toggle()
@@ -324,16 +352,13 @@ class AetheriaWindow(arcade.Window):
         if key == arcade.key.I:
             self.inventory_menu.toggle()
             return
-
         # Targeting
         if key == arcade.key.T:
             self._cycle_target()
             return
-
         if key == arcade.key.U:
             self._clear_target()
             return
-
         # Attack
         if key == arcade.key.SPACE:
             actor = self.combat.actors.get("player")
@@ -363,15 +388,6 @@ class AetheriaWindow(arcade.Window):
             # Auto-chase the current target
             self.auto_chase_target = True
             return
-
-        # Spawn helpers
-        if key == arcade.key.KEY_1:
-            self.spawn_monster_by_id(2)
-        elif key == arcade.key.KEY_2:
-            self.spawn_monster_by_id(42)
-        elif key == arcade.key.KEY_3:
-            self.spawn_monster_by_id(56)
-
     def on_mouse_press(self, x, y, button, modifiers):
         if self.inventory_menu.visible:
             if self.inventory_menu.on_mouse_press(x, y, button, modifiers):
@@ -399,6 +415,7 @@ class AetheriaWindow(arcade.Window):
                 continue
 
             hp_ratio = actor.hp / actor.max_hp if actor.max_hp > 0 else 0
+            hp_ratio = max(0.0, min(1.0, hp_ratio))
             bar_width = TILE_SIZE
             bar_height = 5
             bar_x = sprite.center_x
