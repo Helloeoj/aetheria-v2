@@ -117,7 +117,6 @@ class InventoryMenu:
         if not callable(equip_item):
             self.status_text = "equip_item not available on inventory module."
             return
-
         result = equip_item(self.game.player, item_name)
         self.status_text = result
         self._refresh_combat_view()
@@ -131,7 +130,6 @@ class InventoryMenu:
         if not callable(unequip_slot):
             self.status_text = "unequip_slot not available on inventory module."
             return
-
         result = unequip_slot(self.game.player, slot_name)
         self.status_text = result
         self._refresh_combat_view()
@@ -154,18 +152,18 @@ class InventoryMenu:
         top = height - 30
 
         # Background panel
-        arcade.draw_lrbt_rectangle_filled(
+        arcade.draw_lbwh_rectangle_filled(
             left,
-            right,
             bottom,
-            top,
+            right - left,
+            top - bottom,
             arcade.color.DARK_SLATE_GRAY,
         )
-        arcade.draw_lrbt_rectangle_outline(
+        arcade.draw_lbwh_rectangle_outline(
             left,
-            right,
             bottom,
-            top,
+            right - left,
+            top - bottom,
             arcade.color.LIGHT_GRAY,
             border_width=2,
         )
@@ -200,14 +198,6 @@ class InventoryMenu:
         padding_y = 10
         cols = 2
 
-        arcade.draw_text(
-            "Equipment",
-            start_x,
-            start_y,
-            arcade.color.WHITE,
-            font_size=14,
-        )
-
         y = start_y - 30
         self.slot_boxes = {}
 
@@ -219,18 +209,18 @@ class InventoryMenu:
             top = y - row * (slot_height + padding_y)
             bottom = top - slot_height
 
-            arcade.draw_lrbt_rectangle_filled(
+            arcade.draw_lbwh_rectangle_filled(
                 left,
-                right,
                 bottom,
-                top,
+                right - left,
+                top - bottom,
                 arcade.color.GRAY,
             )
-            arcade.draw_lrbt_rectangle_outline(
+            arcade.draw_lbwh_rectangle_outline(
                 left,
-                right,
                 bottom,
-                top,
+                right - left,
+                top - bottom,
                 arcade.color.WHITE,
                 border_width=2,
             )
@@ -258,36 +248,40 @@ class InventoryMenu:
                 bottom + 14,
                 arcade.color.LIGHT_GRAY,
                 font_size=12,
-                width=slot_width - 16,
-                multiline=True,
             )
 
             self.slot_boxes[attr] = (left, right, bottom, top)
 
-    def _draw_backpack_section(
-        self, end_x: float, start_y: float, min_x: float, min_y: float
-    ):
-        section_left = min_x + 450
-        section_right = end_x
-        section_top = start_y
-
+    def _draw_backpack_section(self, right_edge: float, top: float, left_edge: float, bottom: float):
+        title = "Backpack Items"
         arcade.draw_text(
-            "Backpack",
-            section_left,
-            section_top,
+            title,
+            left_edge,
+            top,
             arcade.color.WHITE,
             font_size=14,
         )
 
-        grid_padding = 10
+        # Grid settings
         cols = 4
-        cell_width = (section_right - section_left - grid_padding * (cols - 1)) / cols
+        cell_width = 140
         cell_height = 60
+        grid_padding = 12
 
+        section_left = right_edge - (cols * cell_width + (cols - 1) * grid_padding)
+        y = top - 30
+
+        items = []
         self.backpack_boxes = []
-        y = section_top - 28
 
-        items = sorted(self.game.player.backpack.items())
+        # Show inventory from player.backpack (list of items)
+        backpack = getattr(self.game.player, "backpack", [])
+        if backpack:
+            counts = {}
+            for item in backpack:
+                counts[item.name] = counts.get(item.name, 0) + 1
+            items = sorted(counts.items(), key=lambda kv: kv[0])
+
         if not items:
             arcade.draw_text(
                 "Backpack is empty.",
@@ -306,18 +300,18 @@ class InventoryMenu:
             top = y - row * (cell_height + grid_padding)
             bottom = top - cell_height
 
-            arcade.draw_lrbt_rectangle_filled(
+            arcade.draw_lbwh_rectangle_filled(
                 left,
-                right,
                 bottom,
-                top,
+                right - left,
+                top - bottom,
                 arcade.color.DARK_BLUE_GRAY,
             )
-            arcade.draw_lrbt_rectangle_outline(
+            arcade.draw_lbwh_rectangle_outline(
                 left,
-                right,
                 bottom,
-                top,
+                right - left,
+                top - bottom,
                 arcade.color.LIGHT_GRAY,
                 border_width=1,
             )
@@ -340,5 +334,8 @@ class InventoryMenu:
             )
 
             self.backpack_boxes.append(
-                {"name": name, "qty": qty, "rect": (left, right, bottom, top)}
+                {
+                    "name": name,
+                    "rect": (left, right, bottom, top),
+                }
             )

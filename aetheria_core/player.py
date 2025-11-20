@@ -213,7 +213,6 @@ class Player:
     # PUBLIC: GIVE + EQUIP (used by dev UI)
     # --------------------------------------------------------
     def give_and_equip(self, item_name, slot=None):
-    import aetheria_core.inventory as inv_mod
         """
         Dev helper used by Arcade item menu and CLI:
           - gives 1x item_name to backpack

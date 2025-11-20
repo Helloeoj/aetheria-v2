@@ -80,6 +80,9 @@ class CombatEngine:
     def add_actor(self, actor: CombatActor):
         self.actors[actor.entity_id] = actor
 
+    # Backwards compatibility for older callers
+    register_actor = add_actor
+
     def remove_actor(self, entity_id):
         if entity_id in self.actors:
             del self.actors[entity_id]

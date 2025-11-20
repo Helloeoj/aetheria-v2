@@ -75,14 +75,16 @@ class AetheriaWindow(arcade.Window):
         self.player.sprite = sprite
 
         # Add player to combat engine
+        player_stats = self.player.get_combat_stats()
         self.combat.register_actor(
-            CombatActor(
+            self._create_actor_from_stats(
                 entity_id="player",
                 name=self.player.name,
-                max_hp=self.player.max_hp,
-                attack_style=self.player.attack_style,
-                x=10,
-                y=10,
+                x=self.player.x,
+                y=self.player.y,
+                stats=player_stats,
+                is_monster=False,
+                monster_attack_type=None,
             )
         )
 
@@ -92,6 +94,9 @@ class AetheriaWindow(arcade.Window):
         self.player_sprites = arcade.SpriteList()
         self.monster_sprites = arcade.SpriteList()
         self.projectile_sprites = arcade.SpriteList()
+
+        # World state for the combat engine
+        self.monsters = []
 
         self.player_sprites.append(self.player.sprite)
 
@@ -114,6 +119,60 @@ class AetheriaWindow(arcade.Window):
         self.spawn_menu = SpawnMenu(self, MONSTER_DATABASE)  # F5
         self.item_menu = ItemMenu(self, ITEMS)               # F6
         self.inventory_menu = InventoryMenu(self)            # I
+
+    def _create_actor_from_stats(
+        self,
+        entity_id: str,
+        name: str,
+        x: int,
+        y: int,
+        stats: dict,
+        is_monster: bool,
+        monster_attack_type: str | None,
+    ) -> CombatActor:
+        health = stats.get("health", {})
+        return CombatActor(
+            entity_id=entity_id,
+            name=name,
+            x=x,
+            y=y,
+            hp=int(health.get("current", 1)),
+            max_hp=int(health.get("max", 1)),
+            attack_style=stats.get("style", "slash"),
+            min_damage=int(stats.get("min_damage", 1)),
+            max_damage=int(stats.get("max_damage", 1)),
+            accuracy=float(stats.get("accuracy", 0.1)),
+            crit_chance=float(stats.get("crit_chance", 0.05)),
+            crit_multiplier=float(
+                stats.get("crit_multiplier", 1.5)
+            ),
+            resistances=stats.get("resistances", {}) or {},
+            attack_speed=int(stats.get("attack_speed", 5)),
+            is_monster=is_monster,
+            monster_attack_type=monster_attack_type,
+        )
+
+    def _refresh_player_actor_from_player(self):
+        actor = self.combat.actors.get("player")
+        if not actor:
+            return
+
+        stats = self.player.get_combat_stats()
+        health = stats.get("health", {})
+
+        actor.name = self.player.name
+        actor.hp = int(health.get("current", actor.hp))
+        actor.max_hp = int(health.get("max", actor.max_hp))
+        actor.attack_style = stats.get("style", actor.attack_style)
+        actor.min_damage = int(stats.get("min_damage", actor.min_damage))
+        actor.max_damage = int(stats.get("max_damage", actor.max_damage))
+        actor.accuracy = float(stats.get("accuracy", actor.accuracy))
+        actor.crit_chance = float(stats.get("crit_chance", actor.crit_chance))
+        actor.crit_multiplier = float(
+            stats.get("crit_multiplier", actor.crit_multiplier)
+        )
+        actor.resistances = stats.get("resistances", actor.resistances) or {}
+        actor.attack_speed = int(stats.get("attack_speed", actor.attack_speed))
 
     # ============================================================
     # MONSTER TARGETING HELPERS
@@ -162,8 +221,11 @@ class AetheriaWindow(arcade.Window):
 
         x, y = 15, 15
 
-        monster = create_monster_instance(monster_data, x, y)
+        monster = create_monster_instance(monster_id, x, y)
+        monster.entity_id = str(uuid.uuid4())
         entity_id = monster.entity_id
+
+        self.monsters.append(monster)
 
         sprite = ActorSprite(TILE_SIZE, TILE_SIZE, MONSTER_COLOR, entity_id)
         sprite.center_x = x * TILE_SIZE
@@ -172,13 +234,14 @@ class AetheriaWindow(arcade.Window):
         self.monster_sprites.append(sprite)
 
         self.combat.register_actor(
-            CombatActor(
+            self._create_actor_from_stats(
                 entity_id=entity_id,
                 name=monster.name,
-                max_hp=monster.max_hp,
-                attack_style=monster.attack_style,
                 x=x,
                 y=y,
+                stats=monster.get_combat_stats(),
+                is_monster=True,
+                monster_attack_type=monster.damage_type,
             )
         )
 
@@ -189,7 +252,7 @@ class AetheriaWindow(arcade.Window):
     # MOVEMENT + TICK ENGINE
     # ============================================================
     def _do_tick(self):
-        self.combat.process_tick()
+        events = self.combat.process_tick(self)
 
         # Move all actors (including player)
         for actor in self.combat.actors.values():
@@ -280,37 +343,34 @@ class AetheriaWindow(arcade.Window):
             target_id = self.player.current_target
             target_actor = self.combat.actors.get(target_id) if target_id else None
 
-            if not target_actor:
-                print("[Attack] No target selected.")
+            # No target -> queue auto-chase to closest monster
+            if target_actor is None:
+                closest = None
+                closest_dist = 999
+                for entity_id, a in self.combat.actors.items():
+                    if not a.is_monster:
+                        continue
+                    dist = abs(a.x - actor.x) + abs(a.y - actor.y)
+                    if dist < closest_dist:
+                        closest_dist = dist
+                        closest = a
+                if closest:
+                    self.player.current_target = closest.entity_id
+                    self.auto_chase_target = True
+                    print(f"[Auto] chasing {closest.name}")
                 return
 
-            dx = target_actor.x - actor.x
-            dy = target_actor.y - actor.y
-            dist = math.hypot(dx, dy)
-
-            if actor.attack_style in MELEE_STYLES:
-                if dist <= MELEE_RANGE_TILES:
-                    actor.next_attack_tick = 0
-                else:
-                    print(f"[Melee] Out of range ({dist:.1f} tiles). Auto-chasing.")
-                    self.auto_chase_target = True
-            else:
-                if dist > RANGED_MAGIC_RANGE_TILES:
-                    print(f"[Ranged/Magic] Target out of range ({dist:.1f} tiles).")
-                else:
-                    actor.next_attack_tick = 0
-
+            # Auto-chase the current target
+            self.auto_chase_target = True
             return
 
-        # Quick test spawns if menus closed
-        menus_closed = not (self.spawn_menu.visible or self.item_menu.visible)
-        if menus_closed:
-            if key == arcade.key.KEY_1:
-                self.spawn_monster_by_id(2)
-            elif key == arcade.key.KEY_2:
-                self.spawn_monster_by_id(42)
-            elif key == arcade.key.KEY_3:
-                self.spawn_monster_by_id(56)
+        # Spawn helpers
+        if key == arcade.key.KEY_1:
+            self.spawn_monster_by_id(2)
+        elif key == arcade.key.KEY_2:
+            self.spawn_monster_by_id(42)
+        elif key == arcade.key.KEY_3:
+            self.spawn_monster_by_id(56)
 
     def on_mouse_press(self, x, y, button, modifiers):
         if self.inventory_menu.visible:
@@ -344,24 +404,31 @@ class AetheriaWindow(arcade.Window):
             bar_x = sprite.center_x
             bar_y = sprite.center_y + TILE_SIZE / 2 + 6
 
-            arcade.draw_xywh_rectangle_filled(
-                bar_x - bar_width / 2,
-                bar_y,
+            left = bar_x - bar_width / 2
+            bottom = bar_y
+
+            # Background bar (full health)
+            arcade.draw_lbwh_rectangle_filled(
+                left,
+                bottom,
                 bar_width,
                 bar_height,
                 arcade.color.RED,
             )
 
-            arcade.draw_xywh_rectangle_filled(
-                bar_x - bar_width / 2,
-                bar_y,
-                bar_width * hp_ratio,
+            # Foreground bar (current health)
+            green_width = bar_width * hp_ratio
+            arcade.draw_lbwh_rectangle_filled(
+                left,
+                bottom,
+                green_width,
                 bar_height,
                 arcade.color.GREEN,
             )
 
     def on_draw(self):
-        arcade.start_render()
+        # Clear the window each frame (arcade.start_render is deprecated in window classes)
+        self.clear()
 
         # Grid
         for x in range(0, SCREEN_WIDTH, TILE_SIZE):
