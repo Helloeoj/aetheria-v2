@@ -5,16 +5,16 @@ import sys
 import time
 import uuid
 
-# Make sure Python can see the parent folder (which contains aetheria_core)
+# Make sure Python can see the parent folder (which contains aetheria_core, items, loot, etc.)
 CURRENT_DIR = os.path.dirname(__file__)
 PARENT_DIR = os.path.dirname(CURRENT_DIR)
 if PARENT_DIR not in sys.path:
     sys.path.insert(0, PARENT_DIR)
 
 from aetheria_core.combat_engine import CombatActor, CombatEngine
-from aetheria_core.items import ITEMS
 from aetheria_core.monsters import MONSTER_DATABASE, create_monster_instance, get_monster_by_id
 from aetheria_core.player import Player
+from items import ITEMS
 from loot.loot_tables import roll_loot
 from ui_inventory_menu import InventoryMenu
 from ui_item_menu import ItemMenu
