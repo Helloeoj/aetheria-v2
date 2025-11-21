@@ -1,5 +1,5 @@
 """
-Core game logic for Aetheria: players, items, monsters, combat, inventory.
+Core game logic for Aetheria: players, items, monsters, combat, inventory, world, stats.
 
 This package only wraps your existing modules.
 It contains no input() / print() and no UI code.
@@ -12,6 +12,15 @@ from . import items
 from . import monsters
 from . import combat
 from . import inventory
+from . import world
 from . import stats
 
-__all__ = ["player", "items", "monsters", "combat", "inventory", "stats"]
+__all__ = [
+    "player",
+    "items",
+    "monsters",
+    "combat",
+    "inventory",
+    "world",
+    "stats",
+]

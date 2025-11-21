@@ -1,90 +1,153 @@
-"""
-World state container and rules for tick timing and tile-based movement.
-
-This module avoids any UI dependencies so it can be reused by the Arcade
-client, CLI simulators, or headless tests.
-"""
+"""World state representation shared across clients and server."""
 from __future__ import annotations
 
-import time
 from dataclasses import dataclass, field
-from typing import Any, List, Optional, Tuple
-
-from aetheria_core.combat_engine import CombatEngine, CombatActor
+from typing import Dict, List, Tuple, Optional, Any
 
 
 @dataclass
-class WorldState:
-    player: Any
-    monsters: List[Any] = field(default_factory=list)
-    width: int = 300
-    height: int = 300
-    tick_duration: float = 0.6
-    combat: CombatEngine = field(default_factory=CombatEngine)
+class Tile:
+    x: int
+    y: int
+    region: str
+    biome: str
+    danger_level: int
+    description: str = ""
+    safezone: bool = False
+    npcs: List[str] = field(default_factory=list)
+    services: List[str] = field(default_factory=list)
+    enemies: List[str] = field(default_factory=list)
 
-    _last_tick_timestamp: float = field(default_factory=time.time, init=False)
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "x": self.x,
+            "y": self.y,
+            "region": self.region,
+            "biome": self.biome,
+            "danger_level": self.danger_level,
+            "description": self.description,
+            "safezone": self.safezone,
+            "npcs": self.npcs,
+            "services": self.services,
+            "enemies": self.enemies,
+        }
 
-    # --------------------------------------------------------
-    # Actor registration helpers
-    # --------------------------------------------------------
-    def register_player_actor(self, actor: CombatActor) -> None:
-        self.combat.register_actor(actor)
 
-    def register_monster_actor(self, monster_obj: Any, actor: CombatActor) -> None:
-        self.monsters.append(monster_obj)
-        self.combat.register_actor(actor)
+class World:
+    def __init__(self, width: int = 300, height: int = 300) -> None:
+        self.width = width
+        self.height = height
+        self.world_map: Dict[Tuple[int, int], Tile] = {}
+        self._ticks: int = 0
+        self._initialize_static_world()
 
-    def remove_monster(self, entity_id: str) -> None:
-        self.monsters = [m for m in self.monsters if getattr(m, "entity_id", None) != entity_id]
-        self.combat.remove_actor(entity_id)
+    def add_tile(
+        self,
+        x: int,
+        y: int,
+        region: str,
+        biome: str,
+        danger_level: int,
+        description: str = "",
+        safezone: bool = False,
+        npcs: Optional[List[str]] = None,
+        services: Optional[List[str]] = None,
+        enemies: Optional[List[str]] = None,
+    ) -> None:
+        tile = Tile(
+            x=x,
+            y=y,
+            region=region,
+            biome=biome,
+            danger_level=danger_level,
+            description=description,
+            safezone=safezone,
+            npcs=npcs or [],
+            services=services or [],
+            enemies=enemies or [],
+        )
+        self.world_map[(x, y)] = tile
 
-    # --------------------------------------------------------
-    # Tick handling
-    # --------------------------------------------------------
-    def tick_due(self, now: Optional[float] = None) -> bool:
-        now = now or time.time()
-        return (now - self._last_tick_timestamp) >= self.tick_duration
+    def get_tile(self, x: int, y: int) -> Optional[Tile]:
+        return self.world_map.get((x, y))
 
-    def tick(self, now: Optional[float] = None) -> List[dict]:
-        now = now or time.time()
-        if not self.tick_due(now):
-            return []
+    def tick(self) -> Dict[str, Any]:
+        self._ticks += 1
+        return {
+            "tick": self._ticks,
+            "towns": [tile.region for tile in self.world_map.values() if tile.safezone],
+            "tiles": len(self.world_map),
+        }
 
-        self._last_tick_timestamp = now
-        return self.combat.process_tick(self)
+    def _initialize_static_world(self) -> None:
+        self.add_tile(
+            260,
+            75,
+            "Emberhold",
+            "town",
+            1,
+            "Emberhold is a citadel of obsidian and flame. Carved into the very bones of a volcano, its streets glow with molten rivers that slither through basalt gutters. Blacksmiths chant over glowing forges, and red-robed sentries watch from flame-lit towers.",
+            safezone=True,
+            npcs=["Blacksmith", "Merchant", "Quest Giver", "Enchanter", "Jarlmog the Castle Wizard"],
+            services=["shop", "quests", "crafting", "enchanting", "fast_travel"],
+        )
+        self.add_tile(
+            60,
+            240,
+            "Frostmarch",
+            "town",
+            1,
+            "Frostmarch rises from the tundra like a blade of ice — sharp, cold, and resolute. Snow-covered stone towers pierce the skies, and ever-burning braziers line the ramparts.",
+            safezone=True,
+            npcs=["Ice Trader", "Runeforge Smith"],
+            services=["shop", "fast_travel", "quests"],
+        )
+        self.add_tile(
+            30,
+            60,
+            "Whisperwind",
+            "town",
+            1,
+            "Whisperwind is nestled among towering whitebark trees and drifting blossoms. Treehouses and rope bridges form its canopy streets, and the melodies of flutes echo through the leaves.",
+            safezone=True,
+            npcs=["Herbalist", "Scout Trainer"],
+            services=["shop", "quests", "fast_travel"],
+        )
+        self.add_tile(
+            270,
+            250,
+            "Hollowshade",
+            "town",
+            1,
+            "Wrapped in mist and lit by lanterns that never go out, Hollowshade feels like a memory whispered from beyond.",
+            safezone=True,
+            npcs=["Ghost Seer", "Shade Alchemist"],
+            services=["shop", "quests", "fast_travel"],
+        )
+        self.add_tile(
+            150,
+            150,
+            "Ironvale",
+            "town",
+            1,
+            "Ironvale is carved into the iron cliffs of the Redcrag Gorge. Chains and pulleys creak across its caverns as miners and smiths move gear and ore.",
+            safezone=True,
+            npcs=["Ore Buyer", "Gearmaster Grobnar"],
+            services=["shop", "crafting", "fast_travel"],
+        )
+        self.add_tile(
+            200,
+            40,
+            "Sunmere",
+            "town",
+            1,
+            "Sunmere gleams like a coin tossed to the sea. Its harbors are filled with sails and spice-scented markets, and its golden buildings reflect the ocean light.",
+            safezone=True,
+            npcs=["Fisher King", "Seaside Mage"],
+            services=["shop", "quests", "fast_travel"],
+        )
+        for x, y in [(259, 74), (261, 76), (263, 77), (58, 239), (61, 241), (33, 61), (31, 63), (150, 149), (151, 151)]:
+            self.add_tile(x, y, "Wilderness", "plains", 2, enemies=["Goblin Scout", "Wild Wolf"])
 
-    # --------------------------------------------------------
-    # Movement rules
-    # --------------------------------------------------------
-    def move_actor(self, entity_id: str, dx: int, dy: int) -> Tuple[int, int]:
-        actor = self.combat.actors.get(entity_id)
-        if actor is None:
-            return 0, 0
 
-        new_x = self._clamp(actor.x + dx, 0, self.width - 1)
-        new_y = self._clamp(actor.y + dy, 0, self.height - 1)
-
-        actor.x = new_x
-        actor.y = new_y
-        self._sync_entity_position(entity_id, new_x, new_y)
-        return new_x, new_y
-
-    def _sync_entity_position(self, entity_id: str, x: int, y: int) -> None:
-        if getattr(self.player, "entity_id", None) == entity_id:
-            setattr(self.player, "x", x)
-            setattr(self.player, "y", y)
-            return
-
-        for monster in self.monsters:
-            if getattr(monster, "entity_id", None) == entity_id:
-                setattr(monster, "x", x)
-                setattr(monster, "y", y)
-                break
-
-    @staticmethod
-    def _clamp(value: int, min_value: int, max_value: int) -> int:
-        if value < min_value:
-            return min_value
-        if value > max_value:
-            return max_value
-        return value
+__all__ = ["Tile", "World"]
