@@ -12,5 +12,6 @@ from . import items
 from . import monsters
 from . import combat
 from . import inventory
+from . import stats
 
-__all__ = ["player", "items", "monsters", "combat", "inventory"]
+__all__ = ["player", "items", "monsters", "combat", "inventory", "stats"]
