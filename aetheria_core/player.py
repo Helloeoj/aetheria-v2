@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
-from typing import Dict, Optional
+from typing import Dict, List, Optional
 
+from aetheria_core import inventory as inventory_helpers
 from aetheria_core.items import ITEMS, Item
+from aetheria_core import stats
 
 
 class Player:
@@ -140,43 +142,10 @@ class Player:
                 yield itm
 
     # --------------------------------------------------------
-    # INTERNAL: GEAR BONUSES
-    # --------------------------------------------------------
-    def _get_gear_attack_bonuses(self) -> Dict[str, int]:
-        total = {"slash": 0, "stab": 0, "blunt": 0, "magic": 0, "ranged": 0}
-        for item in self._iter_equipped_items():
-            bonuses = getattr(item, "attack_bonuses", {}) or {}
-            for k in total:
-                total[k] += int(bonuses.get(k, 0))
-        return total
-
-    def _get_gear_defence_bonuses(self) -> Dict[str, float]:
-        total = {"slash": 0.0, "stab": 0.0, "blunt": 0.0, "magic": 0.0, "ranged": 0.0}
-        for item in self._iter_equipped_items():
-            bonuses = getattr(item, "defence_bonuses", {}) or {}
-            for k in total:
-                total[k] += float(bonuses.get(k, 0.0))
-
-        for k in total:
-            if total[k] < -0.50:
-                total[k] = -0.50
-            if total[k] > 0.80:
-                total[k] = 0.80
-        return total
-
-    def _get_total_accuracy_bonus(self) -> float:
-        bonus = 0.0
-        for item in self._iter_equipped_items():
-            bonus += float(getattr(item, "accuracy_bonus", 0.0) or 0.0)
-        return bonus
-
-    # --------------------------------------------------------
     # INTERNAL: WEAPON INFO
     # --------------------------------------------------------
     def _get_weapon_speed(self) -> int:
-        if self.weapon is None or not isinstance(self.weapon, Item):
-            return 4
-        return int(self.weapon.speed or 4)
+        return stats.weapon_speed_in_ticks(self.weapon)
 
     def _get_current_style(self) -> str:
         desired = self.attack_style or "slash"
@@ -186,20 +155,41 @@ class Player:
         if self.weapon is None or not isinstance(self.weapon, Item):
             return "blunt"
 
-        bonuses = getattr(self.weapon, "attack_bonuses", {}) or {}
-
-        if bonuses.get(desired, 0) > 0:
+        valid_styles = stats.valid_styles_for_weapon(self.weapon)
+        if desired in valid_styles:
             return desired
 
-        best_style = desired
-        best_value = -999
+        bonuses = getattr(self.weapon, "attack_bonuses", {}) or {}
+        best_style = valid_styles[0] if valid_styles else desired
+        best_value = bonuses.get(best_style, -999)
         for style, value in bonuses.items():
-            if style in ("slash", "stab", "blunt", "magic", "ranged"):
-                if value > best_value:
-                    best_style = style
-                    best_value = value
+            if style in valid_styles and value > best_value:
+                best_style = style
+                best_value = value
 
         return best_style
+
+    # --------------------------------------------------------
+    # PUBLIC: ATTACK STYLE + WEAPON INFO
+    # --------------------------------------------------------
+    def get_valid_styles_for_weapon(self) -> Dict[str, List[str]]:
+        return {
+            "weapon": self.weapon.name if self.weapon else None,
+            "styles": stats.valid_styles_for_weapon(self.weapon),
+        }
+
+    def set_attack_style(self, style: str) -> bool:
+        valid_styles = stats.valid_styles_for_weapon(self.weapon)
+        if style in valid_styles:
+            self.attack_style = style
+            return True
+        return False
+
+    def get_attack_range(self) -> float:
+        return stats.get_attack_range(self._get_current_style(), self.weapon)
+
+    def get_projectile_speed(self) -> float:
+        return stats.get_projectile_speed(self.weapon)
 
     # --------------------------------------------------------
     # PUBLIC: EQUIPPED NAMES (for UI / saves)
@@ -219,25 +209,6 @@ class Player:
           - gives 1x item to backpack
           - equips it via the shared inventory module.
         """
-        try:
-            # Preferred: inventory.py inside the aetheria_core package
-            from aetheria_core import inventory as inv_mod
-        except ModuleNotFoundError:
-            try:
-                # Fallback: inventory.py at project root
-                import inventory as inv_mod
-            except ModuleNotFoundError:
-                try:
-                    # Last try: player/inventory.py style layout
-                    from player import inventory as inv_mod
-                except ModuleNotFoundError:
-                    # All three failed: we *really* have no inventory module
-                    self.add_item(getattr(item_ref, "name", str(item_ref)), 1)
-                    return "Gave item, but inventory module not available."
-
-        # Resolve the item name so backpack + equip logic stays consistent
-        from aetheria_core.items import Item, ITEMS
-
         resolved_item = None
         if isinstance(item_ref, Item):
             resolved_item = item_ref
@@ -260,12 +231,8 @@ class Player:
 
         item_name = resolved_item.name
 
-        # If we got here, one of the imports above worked
-        add_to_backpack = getattr(inv_mod, "add_to_backpack")
-        equip_item = getattr(inv_mod, "equip_item")
-
-        add_to_backpack(self, item_name, 1)
-        msg = equip_item(self, item_name)
+        inventory_helpers.add_to_backpack(self, item_name, 1)
+        msg = inventory_helpers.equip_item(self, item_name)
         return msg
 
     # --------------------------------------------------------
@@ -276,8 +243,8 @@ class Player:
         strength_level = self.levels["strength"]
         defence_level = self.levels["defence"]
 
-        gear_atk = self._get_gear_attack_bonuses()
-        gear_def = self._get_gear_defence_bonuses()
+        gear_atk = stats.aggregate_attack_bonuses(self._iter_equipped_items())
+        gear_def = stats.aggregate_defence_bonuses(self._iter_equipped_items())
 
         style = self._get_current_style()
         attack_speed = self._get_weapon_speed()
@@ -292,7 +259,7 @@ class Player:
         else:
             base_accuracy = attack_roll / (attack_roll + 2000)
 
-        base_accuracy += self._get_total_accuracy_bonus()
+        base_accuracy += stats.total_accuracy_bonus(self._iter_equipped_items())
         accuracy = max(0.05, min(0.99, base_accuracy))
 
         # Max hit
