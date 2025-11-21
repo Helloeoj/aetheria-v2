@@ -2,7 +2,6 @@ import arcade
 import math
 import os
 import sys
-import time
 import uuid
 
 # Make sure Python can see the parent folder (which contains aetheria_core, items, loot, etc.)
@@ -11,9 +10,10 @@ PARENT_DIR = os.path.dirname(CURRENT_DIR)
 if PARENT_DIR not in sys.path:
     sys.path.insert(0, PARENT_DIR)
 
-from aetheria_core.combat_engine import CombatActor, CombatEngine
+from aetheria_core.combat_engine import CombatActor
 from aetheria_core.monsters import MONSTER_DATABASE, create_monster_instance, get_monster_by_id
 from aetheria_core.player import Player
+from aetheria_core.world import WorldState
 from items import ITEMS
 from loot.loot_tables import roll_loot
 from ui_inventory_menu import InventoryMenu
@@ -56,11 +56,6 @@ class AetheriaWindow(arcade.Window):
         super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, "Aetheria (Arcade Test Client)")
 
         # ======================================
-        # Combat Engine
-        # ======================================
-        self.combat = CombatEngine()
-
-        # ======================================
         # Player Initialization
         # ======================================
         self.player = Player(name="Player")
@@ -72,7 +67,15 @@ class AetheriaWindow(arcade.Window):
         self.player.sprite = sprite
 
         player_stats = self.player.get_combat_stats()
-        self.combat.register_actor(
+
+        # ======================================
+        # World State
+        # ======================================
+        self.monsters = []
+        self.world = WorldState(player=self.player, monsters=self.monsters, tick_duration=TICK_DURATION)
+        self.combat = self.world.combat
+
+        self.world.register_player_actor(
             self._create_actor_from_stats(
                 entity_id="player",
                 name=self.player.name,
@@ -91,14 +94,10 @@ class AetheriaWindow(arcade.Window):
 
         self.player_sprites.append(self.player.sprite)
 
-        # Track monsters for AI + loot
-        self.monsters = []
-
         # ======================================
         # Movement + Tick System
         # ======================================
         self.held_keys = set()
-        self.last_tick_time = time.time()
 
         # ======================================
         # Targeting System
@@ -207,15 +206,14 @@ class AetheriaWindow(arcade.Window):
         monster.monster_id = monster_id
         monster.attack_style = monster.damage_type
 
-        self.monsters.append(monster)
-
         sprite = ActorSprite(TILE_SIZE, TILE_SIZE, MONSTER_COLOR, monster.entity_id)
         sprite.center_x = x * TILE_SIZE
         sprite.center_y = y * TILE_SIZE
 
         self.monster_sprites.append(sprite)
 
-        self.combat.register_actor(
+        self.world.register_monster_actor(
+            monster,
             self._create_actor_from_stats(
                 entity_id=monster.entity_id,
                 name=monster.name,
@@ -224,7 +222,7 @@ class AetheriaWindow(arcade.Window):
                 stats=monster.get_combat_stats(),
                 is_monster=True,
                 monster_attack_type=monster.damage_type,
-            )
+            ),
         )
 
         self._register_monster_for_targeting(monster)
@@ -237,14 +235,13 @@ class AetheriaWindow(arcade.Window):
         return None
 
     def _despawn_monster(self, entity_id):
-        self.monsters = [m for m in self.monsters if getattr(m, "entity_id", None) != entity_id]
+        self.world.remove_monster(entity_id)
 
         for sprite in list(self.monster_sprites):
             if getattr(sprite, "entity_id", None) == entity_id:
                 self.monster_sprites.remove(sprite)
                 break
 
-        self.combat.remove_actor(entity_id)
         self._unregister_monster_for_targeting(entity_id)
         if self.auto_chase_target and self.player.current_target is None:
             self.auto_chase_target = False
@@ -285,7 +282,9 @@ class AetheriaWindow(arcade.Window):
     # MOVEMENT + TICK ENGINE
     # ============================================================
     def _do_tick(self):
-        events = self.combat.process_tick(self)
+        events = self.world.tick()
+        if not events:
+            return
         self._handle_combat_events(events)
 
         # Move all actors (including player)
@@ -313,11 +312,14 @@ class AetheriaWindow(arcade.Window):
             dx += 1
 
         if dx or dy:
-            actor.x += 1 if dx > 0 else -1 if dx < 0 else 0
-            actor.y += 1 if dy > 0 else -1 if dy < 0 else 0
+            new_x, new_y = self.world.move_actor(
+                "player",
+                1 if dx > 0 else -1 if dx < 0 else 0,
+                1 if dy > 0 else -1 if dy < 0 else 0,
+            )
 
-            self.player.sprite.center_x = actor.x * TILE_SIZE
-            self.player.sprite.center_y = actor.y * TILE_SIZE
+            self.player.sprite.center_x = new_x * TILE_SIZE
+            self.player.sprite.center_y = new_y * TILE_SIZE
 
     # ============================================================
     # INPUT
@@ -465,9 +467,7 @@ class AetheriaWindow(arcade.Window):
         self._move_player()
 
         # Tick engine
-        if time.time() - self.last_tick_time >= TICK_DURATION:
-            self.last_tick_time = time.time()
-            self._do_tick()
+        self._do_tick()
 
         # Auto-chase for melee
         if self.auto_chase_target:
@@ -484,11 +484,14 @@ class AetheriaWindow(arcade.Window):
                     self.auto_chase_target = False
                     actor.next_attack_tick = 0
                 else:
-                    actor.x += 1 if dx > 0 else -1 if dx < 0 else 0
-                    actor.y += 1 if dy > 0 else -1 if dy < 0 else 0
+                    new_x, new_y = self.world.move_actor(
+                        actor.entity_id,
+                        1 if dx > 0 else -1 if dx < 0 else 0,
+                        1 if dy > 0 else -1 if dy < 0 else 0,
+                    )
 
-                    self.player.sprite.center_x = actor.x * TILE_SIZE
-                    self.player.sprite.center_y = actor.y * TILE_SIZE
+                    self.player.sprite.center_x = new_x * TILE_SIZE
+                    self.player.sprite.center_y = new_y * TILE_SIZE
 
 
 def main():

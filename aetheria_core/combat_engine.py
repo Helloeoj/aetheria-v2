@@ -6,6 +6,8 @@ from dataclasses import dataclass
 import math
 import uuid
 
+from aetheria_core.combat import apply_hit_to_target, calculate_hit_outcome
+
 
 # ------------------------------------------------------------
 # DATA CLASSES
@@ -130,18 +132,27 @@ class CombatEngine:
 
             # Check hit
             if target and distance(proj, target) < 0.5:
-                dmg, crit = self._roll_damage(attacker, target, proj.damage, proj.accuracy, proj.damage_type)
-                target.hp -= dmg
+                outcome = calculate_hit_outcome(
+                    attacker,
+                    target,
+                    forced_damage=proj.damage,
+                    forced_accuracy=proj.accuracy,
+                    damage_type=proj.damage_type,
+                )
+                state = apply_hit_to_target(target, outcome)
 
                 events.append({
                     "type": "projectile_hit",
                     "projectile_id": pid,
                     "target_id": target.entity_id,
-                    "damage": dmg,
-                    "crit": crit
+                    "damage": outcome.damage,
+                    "crit": outcome.crit,
+                    "hit": outcome.hit,
+                    "status_effects": outcome.status_effects,
+                    "hp_after": state["hp_after"],
                 })
 
-                if target.hp <= 0:
+                if state["hp_after"] <= 0:
                     events.append({
                         "type": "entity_died",
                         "entity_id": target.entity_id,
@@ -257,18 +268,21 @@ class CombatEngine:
                 continue
 
             # Melee = instant hit
-            dmg, crit = self._roll_damage(actor, target)
-            target.hp -= dmg
+            outcome = calculate_hit_outcome(actor, target)
+            state = apply_hit_to_target(target, outcome)
 
             events.append({
                 "type": "entity_hit",
                 "attacker_id": actor.entity_id,
                 "target_id": target.entity_id,
-                "damage": dmg,
-                "crit": crit
+                "damage": outcome.damage,
+                "crit": outcome.crit,
+                "hit": outcome.hit,
+                "status_effects": outcome.status_effects,
+                "hp_after": state["hp_after"],
             })
 
-            if target.hp <= 0:
+            if state["hp_after"] <= 0:
                 events.append({
                     "type": "entity_died",
                     "entity_id": target.entity_id,
@@ -276,33 +290,6 @@ class CombatEngine:
                 })
 
         return events
-
-    # --------------------------------------------------------
-    # DAMAGE CALCULATION
-    # --------------------------------------------------------
-    def _roll_damage(self, attacker, target, forced_damage=None, forced_accuracy=None, dmg_type=None):
-        import random
-
-        accuracy = forced_accuracy if forced_accuracy is not None else attacker.accuracy
-        damage_type = dmg_type if dmg_type else attacker.attack_style
-
-        # Resistances reduce accuracy multiplicatively
-        resist = target.resistances.get(damage_type, 0)
-        effective_acc = max(0.05, accuracy - resist)
-
-        # Hit or miss
-        if random.random() > effective_acc:
-            return 0, False
-
-        # Damage roll
-        base = forced_damage if forced_damage is not None else random.randint(attacker.min_damage, attacker.max_damage)
-
-        # Crit?
-        crit = (random.random() < attacker.crit_chance)
-        if crit:
-            base = int(base * attacker.crit_multiplier)
-
-        return base, crit
 
     # --------------------------------------------------------
     # PROJECTILE SPAWN
@@ -343,7 +330,7 @@ class CombatEngine:
         attacker = self.actors.get(attacker_id)
         defender = self.actors.get(defender_id)
 
-        dmg, crit = self._roll_damage(attacker, defender)
-        defender.hp -= dmg
+        outcome = calculate_hit_outcome(attacker, defender)
+        state = apply_hit_to_target(defender, outcome)
 
-        return dmg, crit, (defender.hp <= 0)
+        return outcome.damage, outcome.crit, (state["hp_after"] <= 0)
