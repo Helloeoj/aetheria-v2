@@ -1,0 +1,11 @@
+; Engine configuration file.
+; It's best edited using Godot Editor.
+; If you edit it manually, tread lightly!
+
+config_version=5
+
+[application]
+config/name="Aetheria Client"
+
+[autoload]
+NetworkManager="res://autoload/network_manager.gd"
