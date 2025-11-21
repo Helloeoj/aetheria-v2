@@ -13,6 +13,7 @@ from . import monsters
 from . import combat
 from . import inventory
 from . import world
+from . import loot
 from . import stats
 
 __all__ = [
@@ -22,5 +23,6 @@ __all__ = [
     "combat",
     "inventory",
     "world",
+    "loot",
     "stats",
 ]
