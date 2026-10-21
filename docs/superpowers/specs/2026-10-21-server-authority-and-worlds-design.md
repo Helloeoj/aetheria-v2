@@ -2,13 +2,13 @@
 
 Date: 2026-10-21
 
-Status: Proposed design; awaiting user review. No networking implementation or capacity validation is claimed.
+Status: Design direction accepted with the user's requirement to expand both players per world and the number of worlds. Revised specification and milestone 1 plan record that requirement; implementation awaits plan review and execution-method selection. No networking implementation or capacity validation is claimed.
 
 ## Purpose and requirements
 
-The user wants Aetheria's gameplay to run on a trusted server so modified clients cannot decide gameplay outcomes. The agreed starting load-test target is 50 simultaneous players. The long-term goal is thousands online at the same time, using selectable worlds in the style requested by the user.
+The user wants Aetheria's gameplay to run on a trusted server so modified clients cannot decide gameplay outcomes. The agreed starting load-test target is 50 simultaneous players. The long-term goal is thousands online at the same time, using selectable worlds in the style requested by the user. The user explicitly requires growth in BOTH players per world and the number of worlds, with maintainable expansion points from the first implementation.
 
-This design interprets that goal as thousands across multiple worlds, not thousands guaranteed in one crowded area. Each world is an independent simulation of the same game map. Players in different worlds cannot interact with each other's actors or drops. Regions and dungeons are locations within a world; changing region does not switch worlds.
+Each world is an independent logical simulation of the same game map. A world must retain its identity as its player capacity increases or its simulation moves across processes. Players in different worlds cannot interact with each other's actors or drops. Regions and dungeons are locations within a world; changing region or server worker does not switch worlds. Thousands across the service is the initial long-term population goal; capacity within one world and one crowded area must be measured separately.
 
 Assumptions for review:
 
@@ -18,7 +18,7 @@ Assumptions for review:
 - Online character saves are separate from local development/test characters. Local saves and debug tools cannot grant online progress.
 - The initial client target is the existing desktop Godot game. Browser/mobile transports are separate future requirements.
 
-The 50-player number is a test target, not an advertised capacity. Increasing a configured connection limit does not establish playable capacity.
+The 50-player number is the first validation milestone, not a permanent limit or an advertised capacity. Larger worlds are a first-class design objective. Raising the configured admission cap is a small operational change only after load tests establish sufficient simulation, persistence and network capacity; it is not a substitute for those improvements.
 
 ## Current repository evidence
 
@@ -37,23 +37,39 @@ The dormant Python tree under `legacy/` is reference material, not the active se
 
 ## Approaches considered
 
-1. **Dedicated Godot worlds with shared character services — recommended.** Reuse the current GDScript rules and map collision. Extract simulation from UI, make actor storage support multiple players, and add a trusted entry point for all commands. Multiple independent world processes provide the growth path.
+1. **Dedicated Godot worlds with shared character services — recommended.** Reuse the current GDScript rules and map collision. Extract simulation from UI, make actor storage support multiple players, and add a trusted entry point for all commands. Grow each world through optimization, relevant-entity replication and, when needed, region workers; also add more independent worlds.
 2. **Separate Python gameplay server.** Possible, but would require porting and maintaining combat, timing, collision and item rules in another implementation. No running Python server currently provides this functionality.
-3. **One seamless distributed simulation.** A different product requirement involving cross-process region ownership and transfers while players share one world. It adds substantial complexity and is unnecessary for selectable worlds.
+3. **Distributed region workers from the first release.** Supports dividing one world's load across processes early, but immediately requires routing, ownership transfers and cross-region interaction rules. Preserve the required boundaries in option 1; implement distributed workers when measured demand justifies their complexity.
 
 Choose option 1. Start with one world process and stable boundaries for shared account and character ownership. Do not introduce orchestration clusters or distributed simulation before measurements justify them.
 
 ## World structure and growth
 
-Each configured world has a stable ID, display name, endpoint, region label, content/protocol version, measured player count, admission cap, and status (`starting`, `online`, `full`, `draining`, or `offline`). Initial admission cap: 50 authenticated active players; pending handshakes have a separate bounded limit. Counts and admission are server-owned; the displayed count is advisory and a successful reservation decides admission.
+Each configured world has a stable ID, display name, endpoint, region label, content/protocol version, measured player count, admission cap, and status (`starting`, `online`, `full`, `draining`, or `offline`). The initial `max_players` configuration default is 50 authenticated active players; pending handshakes have a separate bounded limit. `max_players` is validated server configuration, not a hard-coded gameplay/protocol constant. Counts and admission are server-owned; the displayed count is advisory and a successful reservation decides admission.
 
-One world starts as one headless Godot process. A machine can run more than one process only when CPU, memory and bandwidth measurements leave sufficient headroom. Different worlds can later move to different machines without changing character identity or the client command contract.
+One world starts as one headless Godot process, but logical world IDs, region/instance IDs and worker IDs are distinct from the start. A machine can run more than one process only when CPU, memory and bandwidth measurements leave sufficient headroom. Different worlds can later move to different machines, and regions within one world can later gain separate workers, without changing account/character IDs or asking players to select a different world.
 
-Example arithmetic, not capacity evidence: 20 worlds with 50 active players each would give 1,000 simultaneous players in total. This does not establish that one machine could host those 20 worlds. Per-world caps can increase after load testing.
+Capacity growth follows two independent tracks: raise one world's tested population through 50, 100, 200 and later evidence-based milestones; add worlds to raise total service capacity. These are benchmark stages, not promised limits or throughput. The implementation must not make an expanding game depend on an increasing number of worlds capped at 50.
 
 Players receive updates about nearby relevant entities in their current region/instance. Private inventory and progression state is sent only to the owning player. Combat targets and interactions must still be validated against authoritative region, range and visibility; receiving an entity ID never grants authority over it.
 
-For the first worlds, region simulations stay inside their world's process. Dungeon instance IDs are scoped by world and party/instance. Moving a busy region into another process is a later design if one world reaches its measured simulation limit.
+For the first worlds, region simulations stay inside their world's process. Dungeon instance IDs are scoped by world and party/instance. Define region ownership, state-transfer and command-routing interfaces initially, using in-process adapters. A future worker implementation can replace those adapters. Entity/world identities and client action semantics do not include machine addresses, scene-node paths, or assumptions that every region is in the same process. The client endpoint may use a gateway or receive a server-authorized redirect if physical routing changes.
+
+Each entity has exactly one authoritative region owner. Later cross-worker region transfers must use fenced ownership, sequenced handoff and revisioned state so two workers cannot apply the same action. Cross-region projectiles, targeting and party-instance transitions require explicit interaction rules and failure tests before distributed regions are enabled. The first implementation provides clear contracts; it does not pretend these runtime guarantees already exist.
+
+Splitting regions helps players spread throughout a larger world. It does not automatically solve a single crowded city or boss encounter. Such hotspots require separate profiling of spatial queries, collision, AI, replication and persistence, with a later design for finer spatial partitioning if optimization alone is insufficient. Retain a measured safe admission cap until the relevant tests pass.
+
+## Expansion and maintainability requirements
+
+- Configuration owns per-world `max_players`, simulation and snapshot rates, spatial relevance radius, input/queue budgets and admission limits. Values have validated ranges; changing world population does not require editing combat, inventory or UI code. Unsafe live changes are applied during a controlled restart rather than mutating storage layout during play.
+- Player storage is keyed by stable IDs, not fixed arrays of 50 slots. No packet field, UI list, actor registry or database schema assumes a maximum population of 50. Configured transport and memory limits are checked explicitly and fail with a clear diagnostic.
+- The session gateway maps authenticated connections to stable character/world/region IDs. The command router resolves region ownership; gameplay handlers do not access global scene paths, sockets or physical worker endpoints. A network connection is replaceable without creating a new character.
+- A region simulation receives an explicit command and fixed-step clock and emits authoritative events/state. Its gameplay interface works in-process first and can later sit behind a worker adapter. Do not run speculative parallel writes against the same region state.
+- Use spatial indexing for nearby-entity queries and per-client interest tracking. Replication sends changes within an explicit byte/entity budget and supports baseline resynchronization; it must not broadcast every actor to every player each step. Priority rules preserve authoritative results and important nearby events under load.
+- Reuse shared character/transaction services for both larger worlds and additional worlds. Measure backend contention and connection pools; adding world processes cannot bypass ownership or create independent copies of a character's inventory.
+- New regions, instances, item catalogs and activity handlers register through explicit versioned data/service interfaces. Enabling a new activity requires a server validator and an authority test; unknown network action names remain rejected. Expansion content must not require rewriting the connection manager.
+- Version protocol, persistent schema and content manifests. Pin a world's compatible versions, define migrations, and reject mismatched clients clearly. Growth must not rely on silently interpreting old save or packet layouts as new ones.
+- For each new process boundary, document ownership, ordering, retry/deduplication, timeouts and recovery before rollout. Replace focused adapters and data definitions rather than introducing a universal plugin framework or implementing distributed infrastructure before it is required.
 
 ## Components and authority boundaries
 
@@ -62,6 +78,7 @@ For the first worlds, region simulations stay inside their world's process. Dung
 | Client connection/presentation | Send input intents, show authoritative state, reconcile prediction, show world list | Versioned protocol and trusted service endpoints |
 | World command gateway | Bind connection to authenticated account/character; validate schema, ownership, sequence, limits and command permissions | Session authority and authoritative simulation |
 | World simulation | Own players by unique entity ID, monsters, collision, combat, drops, activities, server time and random outcomes | Existing gameplay rules and server-loaded map data |
+| Region registry/router | Resolve logical world/region/instance IDs to their sole simulation owner; use an in-process adapter initially | Region ownership records and versioned command/state contracts |
 | Replication service | Send relevant snapshots/events and owner-only character updates; support joining and resynchronization | Authoritative world state and spatial relevance |
 | Shared session/character service | Authenticate/admit, prevent simultaneous ownership, persist character transactions, fence stale writers, coordinate world hops | Transactional database and server credentials |
 | World directory | Publish healthy available worlds and route selection/admission | World heartbeats and session service |
@@ -116,13 +133,14 @@ When a world drains, remove it from new admission and finish or safely terminate
 
 These are delivery boundaries, not claims that the whole migration fits a small network-handler patch. Produce the first implementation plan after this architecture is reviewed. Later plans refine the next milestone using the measured results.
 
-1. **Authoritative foundation and two-client slice.** Separate headless server startup from client UI, establish versioned command/replication contracts, session-to-player binding and multiple player state, server-owned movement/collision, and a server tick. Use isolated server-issued test identities initially. Unmigrated online gameplay actions are explicitly unavailable; they cannot fall back to local authority. This is a foundation test, not a secure full-game release.
+1. **Authoritative foundation and two-client slice.** Separate headless server startup from client UI, establish versioned command/replication contracts, session-to-player binding and multiple player state, server-owned movement/collision, and a server tick. Include validated population configuration, stable world/region/actor IDs, an in-process region router, bounded spatial replication and tests demonstrating no fixed 50-player storage limit. Use isolated server-issued test identities initially. Unmigrated online gameplay actions are explicitly unavailable; they cannot fall back to local authority. This is a foundation test, not a secure full-game release.
 2. **Complete existing gameplay migration.** Move combat/AI/loot, inventory/equipment/food, crafting, fishing/cooking, progression and region/dungeon travel behind validated server services. Preserve existing content and balance. Remove online mutation paths through debug/practice UI. Recheck cooking and catacombs changes at integration. Test two clients competing for the same drop or station reservation.
 3. **Shared characters and selectable worlds.** Add production-capable identity, transactional saves, exclusive ownership, directory/world list, two independent world processes, reconnect and safe hops. Keep the contracts from milestone 1; shared online progress is not enabled before ownership and transaction safety pass tests. Isolated test characters remain clearly separate.
 4. **50-player acceptance and deployment.** Exercise the migrated game with authenticated simulated clients and real client smoke tests. Publish measured hardware/workload/latency results and a justified admission cap. Fifty is a target to pass, not a guarantee.
-5. **Growth across worlds.** Provision more worlds against measured shared-service and host capacity; test hundreds and then thousands of connections across worlds, login bursts and persistence load. Increase per-world density only after separate hotspot tests pass.
+5. **Growth within each world.** Benchmark 100 and then 200 players in one logical world, followed by larger evidence-based stages. Profile simulation, crowded areas, replication and persistence separately. Improve data structures and batching, raise tested caps, and introduce region workers through the existing routing/ownership interfaces only when the results require them. Do not reduce game rules or change world identity merely to claim a larger population.
+6. **Growth in world count.** Provision additional worlds against measured shared-service and host capacity; test hundreds and then thousands of connections across the service, login bursts and persistence load. Track larger-world tests independently so this milestone cannot substitute for milestone 5.
 
-The long-term architecture makes milestones 3-5 possible. It does not require building worldwide deployment, automatic scaling, a seamless distributed map, player trading, a marketplace, or social systems in milestone 1.
+The long-term architecture makes milestones 3-6 possible. It does not require building worldwide deployment, automatic scaling, distributed region runtime, player trading, a marketplace, or social systems in milestone 1. The region and configuration boundaries needed for future growth are part of milestone 1.
 
 ## Acceptance and evidence
 
@@ -135,11 +153,14 @@ Tests must inspect actual server-owned state and use real network sessions where
 - **Gameplay regressions:** run existing relevant combat, inventory, crafting, fishing/cooking, skill and interaction tests, editor parse/import checks and main-scene startup. Preserve native/ADC diagnostics and keep generated evidence outside source control.
 - **Normal load:** ramp 1, 10, 25 and 50 clients; hold 50 for at least 60 minutes with movement, combat, loot and activities. Record server CPU/RSS, bandwidth, queue sizes, simulation step distribution, RPC rates, database latency/errors and client-observed response times after warmup.
 - **Crowded area:** separately run 50 clients in one region with representative monsters/projectiles, then spread clients across regions. A dispersed test cannot certify crowded combat capacity.
+- **Expandable world population:** use test configurations above 50 (at least 51 and 200) to verify admission accounting, dynamic actor storage, owner-state routing and world-list counts without editing gameplay code. These correctness tests are separate from the actual 100/200-player performance gates. Verify invalid/unsupported caps fail at startup with diagnostics; changing a cap never changes character IDs, persistence schema or command fields.
+- **Region routing and future workers:** two regions in the same world isolate commands by logical identity; replacing an in-process test adapter preserves actor IDs and command results. Reject a command routed with an obsolete owner generation. Actual worker handoff, cross-region interactions and failure recovery need distributed integration tests before deploying a distributed world.
+- **Expansion content and relevance:** registering an additional region or approved activity does not require editing transport code; an unknown action is rejected. Replication omits distant/private state and respects configured budgets when relevant-entity count grows; resynchronization restores a coherent baseline.
 - **Timing budget:** for the chosen fixed-step duration, require p99 simulation work under 80% of that duration, no accumulating step/command backlog, no unexplained authoritative desynchronization, no transaction/ownership violations, no script errors and no continuing memory growth after warmup. Define measured response-time criteria for the actual test network in the implementation plan. Record configured step/snapshot rates and entity/activity counts with the result.
 - **Network impairment:** test latency, jitter, packet loss, reconnect and stalled clients; command queues and retransmissions must remain bounded. Activity timing tests include realistic latency without trusting client clocks.
-- **Scale:** report total online across worlds separately from active players per world and per area. Multi-world arithmetic and ENet limits are not throughput benchmarks.
+- **Scale:** report total online across worlds separately from active players per world and per area. Compare one world at 50/100/200 and later tested populations, and separately compare increasing world count. Multi-world arithmetic and ENet limits are not throughput benchmarks. A future gateway layout must account for transport connection ceilings without encoding that transport's connection limit as a permanent logical-world player limit.
 
-No gameplay code, deployment or benchmarks are part of this design-only change. The next gate is user review of this written specification, then an implementation plan for milestone 1 and a choice of execution method.
+No gameplay code, deployment or benchmarks are part of this design-only change. The user's approval and expansion correction authorize updating this specification and preparing the milestone 1 implementation plan. Implementation follows review of that written plan and selection of an execution method.
 
 ## Engine references
 
