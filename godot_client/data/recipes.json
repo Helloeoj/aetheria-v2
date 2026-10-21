@@ -309,16 +309,19 @@
     "id": "smelt_bronze",
     "name": "Bronze Ingots",
     "station": "furnace",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Bronze Ore"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Bronze Ore",
+        "quantity": 1
+      }
     ],
-    "planned_outputs": [
-      "Bronze Ingot"
-    ],
-    "reason": "Ore/alloy ingredients and output yields await approval; no fuel cost is assumed."
+    "outputs": [
+      {
+        "item": "Bronze Ingot",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "bronze_shortsword",
@@ -539,16 +542,19 @@
     "id": "smelt_iron",
     "name": "Iron Ingots",
     "station": "furnace",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Iron Ore"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Iron Ore",
+        "quantity": 1
+      }
     ],
-    "planned_outputs": [
-      "Iron Ingot"
-    ],
-    "reason": "Ore/alloy ingredients and output yields await approval; no fuel cost is assumed."
+    "outputs": [
+      {
+        "item": "Iron Ingot",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "iron_dagger",
@@ -799,16 +805,19 @@
     "id": "smelt_steel",
     "name": "Steel Ingots",
     "station": "furnace",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Steel Ore"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Steel Ore",
+        "quantity": 1
+      }
     ],
-    "planned_outputs": [
-      "Steel Ingot"
-    ],
-    "reason": "Ore/alloy ingredients and output yields await approval; no fuel cost is assumed."
+    "outputs": [
+      {
+        "item": "Steel Ingot",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "steel_dagger",
@@ -1059,16 +1068,19 @@
     "id": "smelt_blacksteel",
     "name": "Blacksteel Ingots",
     "station": "furnace",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Blacksteel Ore"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Blacksteel Ore",
+        "quantity": 1
+      }
     ],
-    "planned_outputs": [
-      "Blacksteel Ingot"
-    ],
-    "reason": "Ore/alloy ingredients and output yields await approval; no fuel cost is assumed."
+    "outputs": [
+      {
+        "item": "Blacksteel Ingot",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "blacksteel_dagger",
@@ -1319,16 +1331,19 @@
     "id": "smelt_mithril",
     "name": "Mithril Ingots",
     "station": "furnace",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Mithril Ore"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Mithril Ore",
+        "quantity": 1
+      }
     ],
-    "planned_outputs": [
-      "Mithril Ingot"
-    ],
-    "reason": "Ore/alloy ingredients and output yields await approval; no fuel cost is assumed."
+    "outputs": [
+      {
+        "item": "Mithril Ingot",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "mithril_dagger",
@@ -1579,16 +1594,19 @@
     "id": "smelt_adamantite",
     "name": "Adamantite Ingots",
     "station": "furnace",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Adamantite Ore"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Adamantite Ore",
+        "quantity": 1
+      }
     ],
-    "planned_outputs": [
-      "Adamantite Ingot"
-    ],
-    "reason": "Ore/alloy ingredients and output yields await approval; no fuel cost is assumed."
+    "outputs": [
+      {
+        "item": "Adamantite Ingot",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "adamantite_dagger",
@@ -1839,16 +1857,19 @@
     "id": "smelt_starforged",
     "name": "Starforged Ingots",
     "station": "furnace",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Starforged Ore"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Starforged Ore",
+        "quantity": 1
+      }
     ],
-    "planned_outputs": [
-      "Starforged Ingot"
-    ],
-    "reason": "Ore/alloy ingredients and output yields await approval; no fuel cost is assumed."
+    "outputs": [
+      {
+        "item": "Starforged Ingot",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "starforged_dagger",
@@ -3506,4 +3527,3 @@
     "reason": "Higher-tier staff body materials, log species, tier mapping and quantities await approval."
   }
 ]
-

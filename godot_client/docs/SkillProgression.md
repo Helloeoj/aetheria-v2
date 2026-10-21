@@ -1,11 +1,12 @@
 # Skill Progression
 
-Aetheria has eight independent player skills: Health, Attack, Strength, Defense,
-Range, Magic, Fishing, and Cooking. Each skill has its own level and experience total,
-while all eight share the same level 1–100 experience curve. Fishing and Cooking do not
+Aetheria has nine independent player skills: Health, Attack, Strength, Defense,
+Range, Magic, Fishing, Cooking, and Smithing. Each has its own level and experience total,
+while all nine share the same level 1–100 experience curve. Fishing, Cooking and Smithing do not
 contribute to combat level; see [Fishing.md](Fishing.md) for its minigame,
 rod controls, bait requirements, and cast-distance rules.
 See [Cooking.md](Cooking.md) for fish recipes, burn mastery and campfire integration.
+See [Smithing.md](Smithing.md) for heat control, forging, quenching and XP pacing.
 
 ## Overall combat level
 

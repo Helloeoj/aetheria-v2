@@ -62,8 +62,13 @@ func _run() -> void:
 		check(button != null, "Approved recipe has a real button")
 		if button != null:
 			button.pressed.emit()
-			check(int(game.player.backpack.get("Bronze Longsword", 0)) == 1, "UI crafts longsword through service")
+			check(int(game.player.backpack.get("Bronze Longsword", 0)) == 0, "UI defers longsword until guided forging and quench")
 			check(int(game.player.backpack.get("Bronze Ingot", 0)) == 0, "UI spends exactly three ingots")
+			var session: RefCounted = game.crafting_panel.smithing.session
+			for index in range(session.total_hits()):
+				session.strike(session.target_position())
+			session.advance(10.0)
+			check(int(game.player.backpack.get("Bronze Longsword", 0)) == 1, "UI completes longsword through guided service")
 		game.crafting_panel.close()
 		game.player.x += 50
 		game.request_crafting(anvil)

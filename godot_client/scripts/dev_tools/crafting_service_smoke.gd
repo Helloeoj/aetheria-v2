@@ -73,10 +73,26 @@ func check_starter_transactions() -> void:
 		check(bool(service.craft(player, recipe_id, "leatherworking").ok), "Approved leather armor crafts: " + recipe_id)
 	check(not player.backpack.has("Tanned Leather") and player.backpack.get("Tanned Leather Coif", 0) == 1 and player.backpack.get("Tanned Leather Tunic", 0) == 1 and player.backpack.get("Tanned Leather Chaps", 0) == 1, "Coif, tunic and chaps consume exactly ten leather total")
 	player.add_item("Bronze Ingot", 5)
-	check(bool(service.craft(player, "bronze_dagger", "anvil", 2).ok), "Two daggers cost two bronze ingots")
-	check(bool(service.craft(player, "bronze_longsword", "anvil").ok), "Longsword uses remaining three bronze ingots")
+	check(forge(player, "bronze_dagger") and forge(player, "bronze_dagger"), "Two guided daggers cost two bronze ingots")
+	check(forge(player, "bronze_longsword"), "Guided longsword uses remaining three bronze ingots")
 	check(not player.backpack.has("Bronze Ingot") and player.backpack.get("Bronze Dagger", 0) == 2 and player.backpack.get("Bronze Longsword", 0) == 1, "Approved bronze costs and batch yields are exact")
-	check(player.skill_experience == xp, "Crafting does not invent skill XP")
+	check(player.get_skill_experience("smithing") > 0, "Guided smithing awards its configured XP")
+	xp.erase("smithing")
+	var other_xp: Dictionary = player.skill_experience.duplicate(true)
+	other_xp.erase("smithing")
+	check(other_xp == xp, "Crafting preserves all other skill XP")
+
+func forge(player: RefCounted, recipe_id: String) -> bool:
+	var station: Node2D = load("res://scripts/crafting_station.gd").new()
+	station.setup("anvil", "Anvil", player.get_position())
+	var session: RefCounted = load("res://scripts/smithing_session.gd").new(player, station)
+	var error: String = session.start(recipe_id)
+	if error.is_empty():
+		for index in range(session.total_hits()):
+			session.strike(session.target_position())
+		session.advance(10.0)
+	station.free()
+	return error.is_empty() and session.state == session.State.FINISHED
 
 func check_rejections() -> void:
 	var player: RefCounted = player_script.new()
