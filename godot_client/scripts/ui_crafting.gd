@@ -9,9 +9,12 @@ var station: Node2D
 var content: VBoxContainer
 var status: Label
 var amount: SpinBox
+var smithing: Control
+var recipe_scroll: ScrollContainer
 
 func configure(owner_game: Node) -> void:
 	game = owner_game
+	theme = FantasyUI.make_theme()
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	var shade := ColorRect.new()
@@ -42,12 +45,17 @@ func configure(owner_game: Node) -> void:
 	status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	box.add_child(status)
 	var scroll := ScrollContainer.new()
+	recipe_scroll = scroll
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	box.add_child(scroll)
 	content = VBoxContainer.new()
 	content.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	content.add_theme_constant_override("separation", 8)
 	scroll.add_child(content)
+	smithing = preload("res://scripts/ui_smithing.gd").new()
+	box.add_child(smithing)
+	smithing.configure(game)
+	smithing.recipes_requested.connect(_show_recipes)
 	hide()
 
 func show_station(target: Node2D) -> void:
@@ -55,10 +63,17 @@ func show_station(target: Node2D) -> void:
 	if not _can_use():
 		return
 	status.text = station.station_name
-	_rebuild()
+	amount.max_value = 10 if station.station_id == "furnace" else (1 if station.station_id == "anvil" else 100)
+	if smithing.session != null and smithing.session.station == station and smithing.session.is_active():
+		smithing.show()
+		recipe_scroll.hide()
+		amount.hide()
+	else:
+		_show_recipes()
 	show()
 
 func close() -> void:
+	smithing.suspend()
 	hide()
 	station = null
 	if game != null:
@@ -100,6 +115,12 @@ func _rebuild() -> void:
 			for entry: Dictionary in recipe.get("inputs", []):
 				ingredients.append("%d %s" % [int(entry.quantity), entry.item])
 			button.text += " — " + ", ".join(ingredients)
+			if station.station_id in ["furnace", "anvil"]:
+				var item := GameData.get_item_by_name(String(recipe.outputs[0].item))
+				var tier := int(item.get("tier", 1))
+				var required := SmithingRules.required_level(tier)
+				button.text += " | Smithing %d | %d XP/bar" % [required, SmithingRules.xp_per_bar(tier)]
+				button.disabled = game.player.get_skill_level("smithing") < required
 		else:
 			button.text += " — recipe quantities not yet set"
 		button.pressed.connect(_craft.bind(String(recipe.id)))
@@ -109,8 +130,21 @@ func _craft(recipe_id: String) -> void:
 	if not _can_use():
 		close()
 		return
+	if station.station_id in ["furnace", "anvil"]:
+		var error: String = smithing.begin(game.player, station, recipe_id, int(amount.value))
+		status.text = error if not error.is_empty() else station.station_name
+		if error.is_empty():
+			recipe_scroll.hide()
+			amount.hide()
+		return
 	var result: Dictionary = Crafting.craft(game.player, recipe_id, station.station_id, int(amount.value))
 	status.text = String(result.message)
+	_rebuild()
+
+func _show_recipes() -> void:
+	smithing.hide()
+	recipe_scroll.show()
+	amount.show()
 	_rebuild()
 
 func _purchase(item_name: String) -> void:

@@ -26,7 +26,7 @@ func check_catalog_and_progression() -> void:
 	var player := PlayerState.new()
 	check(player.get_skill_level("cooking") == 1 and player.get_skill_experience("cooking") == 0,
 		"Cooking starts at level 1 with independent XP")
-	check(player.get_skills_progress().size() == 8 and player.get_skill_progress("cooking").name == "Cooking",
+	check(player.get_skills_progress().size() == SkillProgression.SKILL_IDS.size() and player.get_skill_progress("cooking").name == "Cooking",
 		"Cooking participates in normal skill progression and journal data")
 	var combat_level := player.get_combat_level()
 	player.set_skill_level("cooking", 100)

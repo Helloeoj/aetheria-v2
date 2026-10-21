@@ -1,9 +1,9 @@
 # Equipment crafting
 
-The crafting service exchanges approved backpack ingredients atomically. It does
-not award XP or calculate craft duration; those decisions remain deferred.
-Pending recipe rows describe coverage without supplying invented quantities.
-There are 15 available exchanges and 209 pending routes.
+The crafting service exchanges approved backpack ingredients atomically. Furnace
+and anvil routes now use the guided [Smithing minigames](Smithing.md), including
+timing and per-bar XP. Other exchanges remain immediate and award no XP.
+Pending recipes remain disabled. There are 22 approved and 202 pending routes.
 
 ## Available exchanges
 
@@ -39,7 +39,7 @@ Staff assembly consumes its body and orb. A plain staff has no orb status effect
 The following routes appear as unavailable until ingredient quantities and yields
 are approved. Possessing materials does not enable them.
 
-- Furnace: each metal's ore/alloy ingredients into ingots. No fuel is assumed.
+- Furnace routes now use one corresponding ore per ingot, with no fuel added.
 - Anvil: ingots into metal weapons, armor, shields, arrowheads, crossbow metal
   components, and bolts. Bolts require the respective metal ingots; no wooden bolt
   shaft or feather requirement is added.
@@ -165,4 +165,4 @@ Inspect a plain Magic Orb in inventory to empower it using one corresponding sig
 
 The bait store lists the four purchasable rods and all three bait grades, excluding Demon Rod. The user requested waiting for prices, so purchases remain disabled while those catalog prices are unset. No provisional prices were assigned. Supply eligibility is enforced independently of prices.
 
-Recipe costs, real boss/cultist drop odds, higher armor balance and most production quantities remain explicit pending work. The service does not award crafting XP or use crafting timers.
+Higher equipment costs, boss/cultist drop odds, higher armor balance and other production quantities remain pending. Smithing uses its separate session, timing and XP; see [Smithing](Smithing.md). Other crafting exchanges remain immediate and award no XP.

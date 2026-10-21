@@ -55,6 +55,8 @@ func start(item_name: String, quantity: int = 1) -> String:
 		return "There is no cook."
 	if player.active_cooking_session != null and player.active_cooking_session.get_ref() != null:
 		return "You are already cooking."
+	if player.active_smithing_session != null and player.active_smithing_session.get_ref() != null:
+		return "Finish Smithing before cooking."
 	var error := _conditions_error()
 	if not error.is_empty():
 		return error

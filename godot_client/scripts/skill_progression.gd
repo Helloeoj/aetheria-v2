@@ -9,7 +9,7 @@ const TARGET_HOURS_TO_MAX := 80.0
 const MAX_EXPERIENCE := 19_450_000
 const LEVEL_CURVE_RATE := 0.06920900746073569
 
-const SKILL_IDS := ["health", "attack", "strength", "defense", "range", "magic", "fishing", "cooking"]
+const SKILL_IDS := ["health", "attack", "strength", "defense", "range", "magic", "fishing", "cooking", "smithing"]
 const COMBAT_SKILL_IDS := ["attack", "strength", "defense", "range", "magic"]
 const MIN_COMBAT_LEVEL := 1
 const MAX_COMBAT_LEVEL := 150
@@ -21,7 +21,8 @@ const SKILL_NAMES := {
 	"range": "Range",
 	"magic": "Magic",
 	"fishing": "Fishing",
-	"cooking": "Cooking"
+	"cooking": "Cooking",
+	"smithing": "Smithing"
 }
 
 # Approved baseline rewards. All runtime damage awards and UI rate labels use
