@@ -1,0 +1,51 @@
+{
+  "status": "installed",
+  "environment_only": true,
+  "source": "art_sources/golem-catacombs-floor01/blueprint.json",
+  "source_overview": "art_sources/golem-catacombs-floor01/overview-pillars-removed.png",
+  "world_size": [
+    9216,
+    7200
+  ],
+  "native_world_pixels_per_art_pixel": 0.75,
+  "layer_cells": {
+    "Ground": 40288,
+    "FloorDetails": 0,
+    "VolcanicRock": 21415,
+    "Walls": 3300
+  },
+  "overview_local_edit": {
+    "size": [
+      1422,
+      1106
+    ],
+    "unmasked_pixels_changed": 0,
+    "changed_pixels": 32237
+  },
+  "reused_sources": {
+    "Ground": {
+      "file": "art_sources/golem-catacombs-floor01/cobble-ground.png",
+      "method": "exact half-size nearest reduction, then627 to512 periodic overlap minimum-cut; no enlargement or blur"
+    },
+    "FloorDetails": {
+      "method": "empty paintable detail layer, reserved for local decals"
+    },
+    "VolcanicRock": {
+      "file": "GolemKingdom/Detail4x/Terrain/CavernRock.png",
+      "rect": [
+        4736,
+        448,
+        256,
+        256
+      ]
+    },
+    "Walls": {
+      "file": "GolemKingdom/Detail4x/Objects/north-approach-low-rail.png"
+    }
+  },
+  "build_script": "tools/build_catacombs_floor.py",
+  "limitations": [
+    "Overview is an art reference; native modular assembly preserves the room graph and scale, not every overview pixel.",
+    "Floor two and three are not installed. Northeast descent is sealed."
+  ]
+}

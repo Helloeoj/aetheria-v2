@@ -18,6 +18,9 @@ texture_filter = 1
 [node name="EastCave" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(3531, 1617)
 
+[node name="CatacombsReturn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(255, 2745)
+
 [node name="Combat" type="Node2D" parent="."]
 y_sort_enabled = true
 script = ExtResource("2_combat")
@@ -36,6 +39,17 @@ destination_spawn_id = "GolemCaveReturn"
 approach_offset = Vector2(-72, 96)
 interaction_radius = 96.0
 hit_polygon = PackedVector2Array(-42, -192, 84, -249, 84, 78, -87, 189, -192, 132, -90, 0)
+
+[node name="CatacombsEntrance" type="Node2D" parent="Combat"]
+position = Vector2(153, 2610)
+script = ExtResource("6_portal")
+portal_name = "Golem Catacombs"
+destination_scene = "res://scenes/CatacombsFloor01.tscn"
+destination_spawn_id = "Entrance"
+approach_offset = Vector2(102, 135)
+interaction_radius = 54.0
+click_rect = Rect2(-45, -75, 90, 75)
+metadata/source_object = "southwest-corridor-north-gateway"
 
 [node name="UI" type="CanvasLayer" parent="Combat"]
 

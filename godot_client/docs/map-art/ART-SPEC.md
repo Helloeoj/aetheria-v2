@@ -41,3 +41,11 @@ Match this dungeon's current restored art and shared crisp material. It is an in
 - Editable content: `res://scenes/GolemKingdomContent.tscn`. Keep floor/decks/stairs on their ground draw plane. Terrain painting does not automatically update authored barriers.
 
 Read [the dungeon asset guide](../../Assets/Maps/GolemKingdom/README.md) only for dungeon-specific implementation. For overworld details use [MapEditing.md](../MapEditing.md). The older WorldChunkSetup guide is not the current map-layout authority.
+
+## Profile: golem-catacombs-floor01
+
+- Independent volcanic dungeon; use the approved overview under `art_sources/golem-catacombs-floor01/` for materials and room flow. The two Great Crucible islands are removed; the northern gallery island stays.
+- Native art uses0.75 world pixels per artwork pixel, nearest filtering and the existing Golem Kingdom crisp material. Each32-pixel native cell covers24 world pixels. Camera3×–4×; no fog or reveal system.
+- Editable content: `res://scenes/CatacombsFloor01Content.tscn`. Ground, optional FloorDetails, VolcanicRock, Walls and individual Props remain separate. Wall bases and gateway posts collide; the ordinary floor stays clear.
+- Start with the compact `manifest.json` and [GolemCatacombs.md](../GolemCatacombs.md). Read the large walkable-cell layout only when changing topology. The portable builder regenerates geometry and routes together; preserve manual edits before rebuilding.
+- Only the first floor is installed. Northeast descent stays sealed until another floor is implemented. Keep all source artwork environment-only.
