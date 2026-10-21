@@ -18,6 +18,7 @@ All `res://` paths are inside `godot_client/`. This index routes to authoritativ
 | `dungeon-objects` | `res://Assets/Maps/GolemKingdom/Detail4x/Objects/` | Installed restored cutouts; reuse via existing nodes/anchors |
 | `dungeon-palette` | `res://Assets/Maps/GolemKingdom/Rendering/Palette512.json` | Existing 512-color rendering palette |
 | `tavern-interior` | `res://Assets/Maps/Tavern/Interior.png`, `layout.json` | User-approved installed interior; 0.75 world pixels/source pixel, nearest sampling; native UV foreground and physical bases. See [Taverns.md](../Taverns.md) before moving furniture. |
+| `golem-catacombs-floor01` | `res://Assets/Maps/GolemCatacombs/Floor01/manifest.json` | Installed first floor; native 32-pixel cells at 0.75 scale, separate ground/rock/walls/props. Two Great Crucible islands removed. Future descent sealed. See [GolemCatacombs.md](../GolemCatacombs.md). |
 
 For selected original/wilderness object metadata, parse only matching objects from `res://Assets/MapTiles/map_manifest.json` or `Wilderness/wilderness_manifest.json`. Existing scene tiles carry gameplay collision and sorting; a PNG alone does not.
 

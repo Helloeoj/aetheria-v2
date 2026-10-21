@@ -123,7 +123,9 @@ func request_travel(game: Node, destination_scene: String, spawn_id: String) -> 
 		interactions.cancel_walk()
 	game.set("spell_cast_requested", false)
 	_cover.show()
-	if destination_scene.contains("GolemKingdom"):
+	if destination_scene.contains("CatacombsFloor01"):
+		_loading_label.text = "Entering Golem Catacombs — Floor One…"
+	elif destination_scene.contains("GolemKingdom"):
 		_loading_label.text = "Entering Golem Kingdom…"
 	elif destination_scene.contains("TavernInterior"):
 		_loading_label.text = "Entering the tavern…"
