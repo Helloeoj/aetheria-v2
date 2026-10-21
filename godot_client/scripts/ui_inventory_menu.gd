@@ -305,7 +305,9 @@ func _build_inventory(player: PlayerState) -> void:
 	if selected.has("sell_value"):
 		details.add_child(_label("Sell value: %d gold each" % int(selected.sell_value), 13, FantasyUI.GOLD, true))
 	if selected.has("cooking_level"):
-		details.add_child(_label("Campfire cooking: level %d\nBurn chance now: %.1f%% (0%% at level %d)\nSuccessful cook: %d XP, %.1f seconds" % [int(selected.cooking_level), CookingSession.burn_chance(player.get_skill_level("cooking"), selected) * 100.0, int(selected.no_burn_level), int(selected.cooking_xp), float(selected.cooking_seconds)], 13, FantasyUI.TEAL, true))
+		var window := CookingSession.reaction_window(player.get_skill_level("cooking"), selected)
+		var timing := "Untimed flip (mastered)" if is_inf(window) else "Flip window: %.2f seconds" % window
+		details.add_child(_label("Cooking: level %d\n%s (mastery at level %d)\nSuccessful flip: %d XP, %.1f seconds heating" % [int(selected.cooking_level), timing, int(selected.no_burn_level), int(selected.cooking_xp), float(selected.cooking_seconds)], 13, FantasyUI.TEAL, true))
 	if selected.has("fishing_level"):
 		var requirement := "Fishing skill requirement: %d." if String(selected.get("type", "")) == "Food" else "Requires Fishing %d."
 		details.add_child(_label((requirement % int(selected.fishing_level)) + " " + String(selected.get("description", "")), 13, FantasyUI.TEAL, true))

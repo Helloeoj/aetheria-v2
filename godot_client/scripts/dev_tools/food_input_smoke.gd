@@ -109,7 +109,10 @@ func _run() -> void:
 	for species: String in ["Reedkip", "Sunfish"]:
 		var raw_name := "Raw " + species
 		check(cooking.start(raw_name, int(game.player.backpack[raw_name])).is_empty(), "Transferred fish can start cooking")
-		cooking.advance(6.0)
+		for fish_index in range(int(game.player.backpack[raw_name])):
+			cooking.advance(3.0)
+			cooking.flip()
+			cooking.advance(CookingSession.FEEDBACK_SECONDS)
 	var fishing_xp: int = game.player.get_skill_experience("fishing")
 	await frames()
 	check(game.player.get_quick_food() == "Reedkip", "The initial default selects the lowest-healing carried food")
