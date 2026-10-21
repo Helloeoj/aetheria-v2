@@ -39,29 +39,43 @@ func open(station: Node2D) -> void:
 	station.update_heat(game)
 	panel.open(station)
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
+	# One tick per presented frame; physics catch-up must not spend an unseen prompt.
 	advance(delta)
 
 func advance(delta: float) -> void:
-	if panel == null or not panel.visible:
+	if not _sync_attempt():
 		return
+	_record_results(panel.session.advance(delta))
+	panel.refresh()
+
+func flip() -> void:
+	if not _sync_attempt():
+		return
+	_record_results(panel.session.flip())
+	panel.refresh()
+
+func _sync_attempt() -> bool:
+	if panel == null or not panel.visible:
+		return false
 	var station: Node2D = panel.station
 	if not can_use(station):
 		panel.close()
-		return
+		return false
 	station.update_heat(game)
 	var actor: CombatActor = game.combat.actors.get(game.player.entity_id)
 	if actor != null:
 		game.player.x = actor.x
 		game.player.y = actor.y
 		game.player.current_hp = actor.hp
-	var results: Array[Dictionary] = panel.session.advance(delta)
+	return true
+
+func _record_results(results: Array[Dictionary]) -> void:
 	for result: Dictionary in results:
 		if int(result.experience) > 0:
 			game.skill_training_session.record_event({"type": "skill_experience_gained", "skill": "cooking", "experience_gained": int(result.experience)})
 	if not results.is_empty():
 		game._refresh_character_ui()
-	panel.refresh()
 
 func _exit_tree() -> void:
 	if is_instance_valid(panel) and panel.session != null:

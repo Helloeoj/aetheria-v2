@@ -470,8 +470,7 @@ func _diagnostic_context() -> Dictionary:
 func _input(event: InputEvent) -> void:
 	if cooking_controller != null and cooking_controller.panel.visible:
 		if event is InputEventKey:
-			if event.pressed and event.keycode == KEY_ESCAPE:
-				cooking_controller.panel.close()
+			cooking_controller.panel.handle_key(event)
 			get_viewport().set_input_as_handled()
 		return
 	if crafting_panel != null and crafting_panel.visible:
