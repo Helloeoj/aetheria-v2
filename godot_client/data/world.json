@@ -1,0 +1,260 @@
+{
+  "width": 300,
+  "height": 300,
+  "tiles": [
+    {
+      "x": 260,
+      "y": 75,
+      "region": "Emberhold",
+      "biome": "town",
+      "danger_level": 1,
+      "description": "Emberhold is a citadel of obsidian and flame. Carved into the very bones of a volcano, its streets glow with molten rivers that slither through basalt gutters. Blacksmiths chant over glowing forges, and red-robed sentries watch from flame-lit towers.",
+      "safezone": true,
+      "npcs": [
+        "Blacksmith",
+        "Merchant",
+        "Quest Giver",
+        "Enchanter",
+        "Jarlmog the Castle Wizard"
+      ],
+      "services": [
+        "shop",
+        "quests",
+        "crafting",
+        "enchanting",
+        "fast_travel"
+      ],
+      "enemies": []
+    },
+    {
+      "x": 60,
+      "y": 240,
+      "region": "Frostmarch",
+      "biome": "town",
+      "danger_level": 1,
+      "description": "Frostmarch rises from the tundra like a blade of ice — sharp, cold, and resolute. Snow-covered stone towers pierce the skies, and ever-burning braziers line the ramparts.",
+      "safezone": true,
+      "npcs": [
+        "Ice Trader",
+        "Runeforge Smith"
+      ],
+      "services": [
+        "shop",
+        "fast_travel",
+        "quests"
+      ],
+      "enemies": []
+    },
+    {
+      "x": 30,
+      "y": 60,
+      "region": "Whisperwind",
+      "biome": "town",
+      "danger_level": 1,
+      "description": "Whisperwind is nestled among towering whitebark trees and drifting blossoms. Treehouses and rope bridges form its canopy streets, and the melodies of flutes echo through the leaves.",
+      "safezone": true,
+      "npcs": [
+        "Herbalist",
+        "Scout Trainer"
+      ],
+      "services": [
+        "shop",
+        "quests",
+        "fast_travel"
+      ],
+      "enemies": []
+    },
+    {
+      "x": 270,
+      "y": 250,
+      "region": "Hollowshade",
+      "biome": "town",
+      "danger_level": 1,
+      "description": "Wrapped in mist and lit by lanterns that never go out, Hollowshade feels like a memory whispered from beyond.",
+      "safezone": true,
+      "npcs": [
+        "Ghost Seer",
+        "Shade Alchemist"
+      ],
+      "services": [
+        "shop",
+        "quests",
+        "fast_travel"
+      ],
+      "enemies": []
+    },
+    {
+      "x": 150,
+      "y": 150,
+      "region": "Ironvale",
+      "biome": "town",
+      "danger_level": 1,
+      "description": "Ironvale is carved into the iron cliffs of the Redcrag Gorge. Chains and pulleys creak across its caverns as miners and smiths move gear and ore.",
+      "safezone": true,
+      "npcs": [
+        "Ore Buyer",
+        "Gearmaster Grobnar"
+      ],
+      "services": [
+        "shop",
+        "crafting",
+        "fast_travel"
+      ],
+      "enemies": []
+    },
+    {
+      "x": 200,
+      "y": 40,
+      "region": "Sunmere",
+      "biome": "town",
+      "danger_level": 1,
+      "description": "Sunmere gleams like a coin tossed to the sea. Its harbors are filled with sails and spice-scented markets, and its golden buildings reflect the ocean light.",
+      "safezone": true,
+      "npcs": [
+        "Fisher King",
+        "Seaside Mage"
+      ],
+      "services": [
+        "shop",
+        "quests",
+        "fast_travel"
+      ],
+      "enemies": []
+    },
+    {
+      "x": 259,
+      "y": 74,
+      "region": "Wilderness",
+      "biome": "plains",
+      "danger_level": 2,
+      "description": "",
+      "safezone": false,
+      "npcs": [],
+      "services": [],
+      "enemies": [
+        "Goblin Scout",
+        "Wild Wolf"
+      ]
+    },
+    {
+      "x": 261,
+      "y": 76,
+      "region": "Wilderness",
+      "biome": "plains",
+      "danger_level": 2,
+      "description": "",
+      "safezone": false,
+      "npcs": [],
+      "services": [],
+      "enemies": [
+        "Goblin Scout",
+        "Wild Wolf"
+      ]
+    },
+    {
+      "x": 263,
+      "y": 77,
+      "region": "Wilderness",
+      "biome": "plains",
+      "danger_level": 2,
+      "description": "",
+      "safezone": false,
+      "npcs": [],
+      "services": [],
+      "enemies": [
+        "Goblin Scout",
+        "Wild Wolf"
+      ]
+    },
+    {
+      "x": 58,
+      "y": 239,
+      "region": "Wilderness",
+      "biome": "plains",
+      "danger_level": 2,
+      "description": "",
+      "safezone": false,
+      "npcs": [],
+      "services": [],
+      "enemies": [
+        "Goblin Scout",
+        "Wild Wolf"
+      ]
+    },
+    {
+      "x": 61,
+      "y": 241,
+      "region": "Wilderness",
+      "biome": "plains",
+      "danger_level": 2,
+      "description": "",
+      "safezone": false,
+      "npcs": [],
+      "services": [],
+      "enemies": [
+        "Goblin Scout",
+        "Wild Wolf"
+      ]
+    },
+    {
+      "x": 33,
+      "y": 61,
+      "region": "Wilderness",
+      "biome": "plains",
+      "danger_level": 2,
+      "description": "",
+      "safezone": false,
+      "npcs": [],
+      "services": [],
+      "enemies": [
+        "Goblin Scout",
+        "Wild Wolf"
+      ]
+    },
+    {
+      "x": 31,
+      "y": 63,
+      "region": "Wilderness",
+      "biome": "plains",
+      "danger_level": 2,
+      "description": "",
+      "safezone": false,
+      "npcs": [],
+      "services": [],
+      "enemies": [
+        "Goblin Scout",
+        "Wild Wolf"
+      ]
+    },
+    {
+      "x": 150,
+      "y": 149,
+      "region": "Wilderness",
+      "biome": "plains",
+      "danger_level": 2,
+      "description": "",
+      "safezone": false,
+      "npcs": [],
+      "services": [],
+      "enemies": [
+        "Goblin Scout",
+        "Wild Wolf"
+      ]
+    },
+    {
+      "x": 151,
+      "y": 151,
+      "region": "Wilderness",
+      "biome": "plains",
+      "danger_level": 2,
+      "description": "",
+      "safezone": false,
+      "npcs": [],
+      "services": [],
+      "enemies": [
+        "Goblin Scout",
+        "Wild Wolf"
+      ]
+    }
+  ]
+}

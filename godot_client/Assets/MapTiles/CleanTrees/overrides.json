@@ -1,0 +1,357 @@
+{
+  "overrides": [
+    {
+      "target": "res://Assets/MapTiles/Wilderness/PolishedObjects/Border_Outskirts_Trees_017_Complete.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Border_Outskirts_Trees_017_Complete.png",
+      "size": [
+        177,
+        184
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Wilderness/PolishedObjects/Border_Outskirts_Trees_018_Complete.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Border_Outskirts_Trees_018_Complete.png",
+      "size": [
+        199,
+        207
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Wilderness/PolishedObjects/Border_Outskirts_Trees_019_Complete.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Border_Outskirts_Trees_019_Complete.png",
+      "size": [
+        297,
+        307
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Wilderness/PolishedObjects/Border_Outskirts_Trees_020_Complete.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Border_Outskirts_Trees_020_Complete.png",
+      "size": [
+        177,
+        184
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Objects/Outskirts_Trees_023.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Outskirts_Trees_023.png",
+      "size": [
+        90,
+        105
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Objects/Outskirts_Trees_028.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Outskirts_Trees_028.png",
+      "size": [
+        64,
+        80
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Objects/Outskirts_Trees_029.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Outskirts_Trees_029.png",
+      "size": [
+        67,
+        84
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Objects/Outskirts_Trees_035.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Outskirts_Trees_035.png",
+      "size": [
+        128,
+        197
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Objects/Outskirts_Trees_041.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Outskirts_Trees_041.png",
+      "size": [
+        128,
+        135
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Objects/Outskirts_Trees_042.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Outskirts_Trees_042.png",
+      "size": [
+        264,
+        273
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Objects/Outskirts_Trees_046.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Outskirts_Trees_046.png",
+      "size": [
+        177,
+        184
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Objects/Outskirts_Trees_047.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Outskirts_Trees_047.png",
+      "size": [
+        129,
+        219
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Objects/Outskirts_Trees_049.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Outskirts_Trees_049.png",
+      "size": [
+        77,
+        82
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Objects/Outskirts_Trees_052.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Outskirts_Trees_052.png",
+      "size": [
+        58,
+        69
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Objects/Harbor_Trees_082.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Harbor_Trees_082.png",
+      "size": [
+        149,
+        122
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Objects/Harbor_Trees_089.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Harbor_Trees_089.png",
+      "size": [
+        186,
+        213
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Objects/Harbor_Trees_090.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Harbor_Trees_090.png",
+      "size": [
+        63,
+        90
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Objects/Harbor_Trees_091.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Harbor_Trees_091.png",
+      "size": [
+        144,
+        202
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Objects/Harbor_Trees_099.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Harbor_Trees_099.png",
+      "size": [
+        104,
+        129
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Objects/Harbor_Trees_102.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Harbor_Trees_102.png",
+      "size": [
+        222,
+        303
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Objects/Harbor_Trees_109.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Harbor_Trees_109.png",
+      "size": [
+        70,
+        46
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Wilderness/PolishedObjects/Outskirts_Trees_046_s1000.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Outskirts_Trees_046_s1000.png",
+      "size": [
+        177,
+        184
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Wilderness/PolishedObjects/Outskirts_Trees_042_s1125.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Outskirts_Trees_042_s1125.png",
+      "size": [
+        297,
+        307
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Wilderness/PolishedObjects/Outskirts_Trees_042_s875.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Outskirts_Trees_042_s875.png",
+      "size": [
+        231,
+        239
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Wilderness/PolishedObjects/Outskirts_Trees_046_s1250.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Outskirts_Trees_046_s1250.png",
+      "size": [
+        221,
+        230
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Wilderness/PolishedObjects/Outskirts_Trees_042_s1000.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Outskirts_Trees_042_s1000.png",
+      "size": [
+        264,
+        273
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Wilderness/PolishedObjects/Outskirts_Trees_023_s1000.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Outskirts_Trees_023_s1000.png",
+      "size": [
+        90,
+        105
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Wilderness/PolishedObjects/Outskirts_Trees_049_s1125.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Outskirts_Trees_049_s1125.png",
+      "size": [
+        87,
+        92
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Wilderness/PolishedObjects/Outskirts_Trees_052_s1125.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Outskirts_Trees_052_s1125.png",
+      "size": [
+        65,
+        78
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Wilderness/PolishedObjects/Outskirts_Trees_023_s1125.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Outskirts_Trees_023_s1125.png",
+      "size": [
+        101,
+        118
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Wilderness/PolishedObjects/Outskirts_Trees_041_s750.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Outskirts_Trees_041_s750.png",
+      "size": [
+        96,
+        101
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Wilderness/PolishedObjects/Outskirts_Trees_023_s750.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Outskirts_Trees_023_s750.png",
+      "size": [
+        68,
+        79
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Wilderness/PolishedObjects/Outskirts_Trees_042_s750.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Outskirts_Trees_042_s750.png",
+      "size": [
+        198,
+        205
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Wilderness/PolishedObjects/Outskirts_Trees_041_s1125.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Outskirts_Trees_041_s1125.png",
+      "size": [
+        144,
+        152
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Wilderness/PolishedObjects/Outskirts_Trees_046_s1125.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Outskirts_Trees_046_s1125.png",
+      "size": [
+        199,
+        207
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Wilderness/PolishedObjects/Outskirts_Trees_041_s1250.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Outskirts_Trees_041_s1250.png",
+      "size": [
+        160,
+        169
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Wilderness/PolishedObjects/Outskirts_Trees_046_s875.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Outskirts_Trees_046_s875.png",
+      "size": [
+        155,
+        161
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Wilderness/PolishedObjects/Outskirts_Trees_023_s875.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Outskirts_Trees_023_s875.png",
+      "size": [
+        79,
+        92
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Wilderness/PolishedObjects/Outskirts_Trees_041_s875.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Outskirts_Trees_041_s875.png",
+      "size": [
+        112,
+        118
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Wilderness/PolishedObjects/Outskirts_Trees_049_s1000.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Outskirts_Trees_049_s1000.png",
+      "size": [
+        77,
+        82
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Wilderness/PolishedObjects/Outskirts_Trees_052_s1250.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Outskirts_Trees_052_s1250.png",
+      "size": [
+        73,
+        86
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Wilderness/PolishedObjects/Outskirts_Trees_049_s875.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Outskirts_Trees_049_s875.png",
+      "size": [
+        67,
+        72
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Wilderness/PolishedObjects/Outskirts_Trees_023_s1250.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Overrides/Outskirts_Trees_023_s1250.png",
+      "size": [
+        113,
+        131
+      ]
+    },
+    {
+      "target": "res://Assets/MapTiles/Grass.png",
+      "texture": "res://Assets/MapTiles/CleanTrees/Terrain/Grass.png",
+      "size": [
+        1536,
+        2656
+      ],
+      "kind": "ground-shadow-cleanup"
+    }
+  ]
+}

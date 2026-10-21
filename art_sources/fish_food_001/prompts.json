@@ -1,0 +1,456 @@
+{
+  "schema_version": 1,
+  "batch": "fish_food_001",
+  "design_status": "user_approved",
+  "generation_status": "blocked_provider_quota",
+  "provider": "PixelLab AI object generator",
+  "generated_assets": 0,
+  "remaining_generations_at_check": 2.73,
+  "output_canvas": [
+    64,
+    64
+  ],
+  "visible_longest_side": 40,
+  "requests": [
+    {
+      "species": "Reedkip",
+      "state": "cooked",
+      "item_name": "Reedkip",
+      "reference_path": "godot_client/Assets/Items/fish_001/inventory/reedkip.png",
+      "tool": "mcp__pixellab__create_object_pro_flash",
+      "arguments": {
+        "name": "Reedkip - cooked",
+        "description": "Aetheria MMORPG inventory icon: cooked Reedkip. Species identity: A small, stubby olive-green fish with a cream belly, amber fins, and one dark stripe along its side. A modest little river catch. Treatment: Whole roasted fish with golden-brown skin, a few dark diagonal grill marks, warm cream highlights, lightly crisped fins, and subtle original species colors. Clearly cooked and appetizing; retain its distinctive whole-fish silhouette, head, fins and tail. Crisp hand-placed pixel-art style matching the reference, dark pixel outline, compact readable shading, left-facing side view, centered complete object with transparent background and clear margins. No plate, cutlery, skewer, garnish, scenery, text, watermark, or extra fish.",
+        "width": 64,
+        "height": 64,
+        "n_directions": 1,
+        "view": "side",
+        "max_colors": 32,
+        "style_options": {
+          "outline": true,
+          "shading": true,
+          "detail": true,
+          "color_palette": false
+        }
+      }
+    },
+    {
+      "species": "Reedkip",
+      "state": "burnt",
+      "item_name": "Burnt Reedkip",
+      "reference_path": "godot_client/Assets/Items/fish_001/inventory/reedkip.png",
+      "tool": "mcp__pixellab__create_object_pro_flash",
+      "arguments": {
+        "name": "Reedkip - burnt",
+        "description": "Aetheria MMORPG inventory icon: burnt Reedkip. Species identity: A small, stubby olive-green fish with a cream belly, amber fins, and one dark stripe along its side. A modest little river catch. Treatment: Whole burnt fish with charcoal-black skin, ash-gray highlights, dry cracked patches, and scorched fins. Retain its distinctive whole-fish silhouette, head, fins and tail, with faint species-specific markings for recognition. Clearly overcooked; no flames or smoke. Crisp hand-placed pixel-art style matching the reference, dark pixel outline, compact readable shading, left-facing side view, centered complete object with transparent background and clear margins. No plate, cutlery, skewer, garnish, scenery, text, watermark, or extra fish.",
+        "width": 64,
+        "height": 64,
+        "n_directions": 1,
+        "view": "side",
+        "max_colors": 32,
+        "style_options": {
+          "outline": true,
+          "shading": true,
+          "detail": true,
+          "color_palette": false
+        }
+      }
+    },
+    {
+      "species": "Marlo",
+      "state": "cooked",
+      "item_name": "Marlo",
+      "reference_path": "godot_client/Assets/Items/fish_001/inventory/marlo.png",
+      "tool": "mcp__pixellab__create_object_pro_flash",
+      "arguments": {
+        "name": "Marlo - cooked",
+        "description": "Aetheria MMORPG inventory icon: cooked Marlo. Species identity: A plump copper-orange fish with broad scales, short whiskers, and a thick fan-shaped tail. Rounded features give it a slightly grumpy expression. Treatment: Whole roasted fish with golden-brown skin, a few dark diagonal grill marks, warm cream highlights, lightly crisped fins, and subtle original species colors. Clearly cooked and appetizing; retain its distinctive whole-fish silhouette, head, fins and tail. Crisp hand-placed pixel-art style matching the reference, dark pixel outline, compact readable shading, left-facing side view, centered complete object with transparent background and clear margins. No plate, cutlery, skewer, garnish, scenery, text, watermark, or extra fish.",
+        "width": 64,
+        "height": 64,
+        "n_directions": 1,
+        "view": "side",
+        "max_colors": 32,
+        "style_options": {
+          "outline": true,
+          "shading": true,
+          "detail": true,
+          "color_palette": false
+        }
+      }
+    },
+    {
+      "species": "Marlo",
+      "state": "burnt",
+      "item_name": "Burnt Marlo",
+      "reference_path": "godot_client/Assets/Items/fish_001/inventory/marlo.png",
+      "tool": "mcp__pixellab__create_object_pro_flash",
+      "arguments": {
+        "name": "Marlo - burnt",
+        "description": "Aetheria MMORPG inventory icon: burnt Marlo. Species identity: A plump copper-orange fish with broad scales, short whiskers, and a thick fan-shaped tail. Rounded features give it a slightly grumpy expression. Treatment: Whole burnt fish with charcoal-black skin, ash-gray highlights, dry cracked patches, and scorched fins. Retain its distinctive whole-fish silhouette, head, fins and tail, with faint species-specific markings for recognition. Clearly overcooked; no flames or smoke. Crisp hand-placed pixel-art style matching the reference, dark pixel outline, compact readable shading, left-facing side view, centered complete object with transparent background and clear margins. No plate, cutlery, skewer, garnish, scenery, text, watermark, or extra fish.",
+        "width": 64,
+        "height": 64,
+        "n_directions": 1,
+        "view": "side",
+        "max_colors": 32,
+        "style_options": {
+          "outline": true,
+          "shading": true,
+          "detail": true,
+          "color_palette": false
+        }
+      }
+    },
+    {
+      "species": "Bracken",
+      "state": "cooked",
+      "item_name": "Bracken",
+      "reference_path": "godot_client/Assets/Items/fish_001/inventory/bracken.png",
+      "tool": "mcp__pixellab__create_object_pro_flash",
+      "arguments": {
+        "name": "Bracken - cooked",
+        "description": "Aetheria MMORPG inventory icon: cooked Bracken. Species identity: A long, narrow fish with a pointed snout, mottled brown-and-moss scales, and a ragged dorsal fin resembling a fern frond. Treatment: Whole roasted fish with golden-brown skin, a few dark diagonal grill marks, warm cream highlights, lightly crisped fins, and subtle original species colors. Clearly cooked and appetizing; retain its distinctive whole-fish silhouette, head, fins and tail. Crisp hand-placed pixel-art style matching the reference, dark pixel outline, compact readable shading, left-facing side view, centered complete object with transparent background and clear margins. No plate, cutlery, skewer, garnish, scenery, text, watermark, or extra fish.",
+        "width": 64,
+        "height": 64,
+        "n_directions": 1,
+        "view": "side",
+        "max_colors": 32,
+        "style_options": {
+          "outline": true,
+          "shading": true,
+          "detail": true,
+          "color_palette": false
+        }
+      }
+    },
+    {
+      "species": "Bracken",
+      "state": "burnt",
+      "item_name": "Burnt Bracken",
+      "reference_path": "godot_client/Assets/Items/fish_001/inventory/bracken.png",
+      "tool": "mcp__pixellab__create_object_pro_flash",
+      "arguments": {
+        "name": "Bracken - burnt",
+        "description": "Aetheria MMORPG inventory icon: burnt Bracken. Species identity: A long, narrow fish with a pointed snout, mottled brown-and-moss scales, and a ragged dorsal fin resembling a fern frond. Treatment: Whole burnt fish with charcoal-black skin, ash-gray highlights, dry cracked patches, and scorched fins. Retain its distinctive whole-fish silhouette, head, fins and tail, with faint species-specific markings for recognition. Clearly overcooked; no flames or smoke. Crisp hand-placed pixel-art style matching the reference, dark pixel outline, compact readable shading, left-facing side view, centered complete object with transparent background and clear margins. No plate, cutlery, skewer, garnish, scenery, text, watermark, or extra fish.",
+        "width": 64,
+        "height": 64,
+        "n_directions": 1,
+        "view": "side",
+        "max_colors": 32,
+        "style_options": {
+          "outline": true,
+          "shading": true,
+          "detail": true,
+          "color_palette": false
+        }
+      }
+    },
+    {
+      "species": "Kessa",
+      "state": "cooked",
+      "item_name": "Kessa",
+      "reference_path": "godot_client/Assets/Items/fish_001/inventory/kessa.png",
+      "tool": "mcp__pixellab__create_object_pro_flash",
+      "arguments": {
+        "name": "Kessa - cooked",
+        "description": "Aetheria MMORPG inventory icon: cooked Kessa. Species identity: A sleek crimson fish with cream chevrons along its sides, a sharp triangular dorsal fin, and a deeply forked tail. It should look fast and athletic. Treatment: Whole roasted fish with golden-brown skin, a few dark diagonal grill marks, warm cream highlights, lightly crisped fins, and subtle original species colors. Clearly cooked and appetizing; retain its distinctive whole-fish silhouette, head, fins and tail. Crisp hand-placed pixel-art style matching the reference, dark pixel outline, compact readable shading, left-facing side view, centered complete object with transparent background and clear margins. No plate, cutlery, skewer, garnish, scenery, text, watermark, or extra fish.",
+        "width": 64,
+        "height": 64,
+        "n_directions": 1,
+        "view": "side",
+        "max_colors": 32,
+        "style_options": {
+          "outline": true,
+          "shading": true,
+          "detail": true,
+          "color_palette": false
+        }
+      }
+    },
+    {
+      "species": "Kessa",
+      "state": "burnt",
+      "item_name": "Burnt Kessa",
+      "reference_path": "godot_client/Assets/Items/fish_001/inventory/kessa.png",
+      "tool": "mcp__pixellab__create_object_pro_flash",
+      "arguments": {
+        "name": "Kessa - burnt",
+        "description": "Aetheria MMORPG inventory icon: burnt Kessa. Species identity: A sleek crimson fish with cream chevrons along its sides, a sharp triangular dorsal fin, and a deeply forked tail. It should look fast and athletic. Treatment: Whole burnt fish with charcoal-black skin, ash-gray highlights, dry cracked patches, and scorched fins. Retain its distinctive whole-fish silhouette, head, fins and tail, with faint species-specific markings for recognition. Clearly overcooked; no flames or smoke. Crisp hand-placed pixel-art style matching the reference, dark pixel outline, compact readable shading, left-facing side view, centered complete object with transparent background and clear margins. No plate, cutlery, skewer, garnish, scenery, text, watermark, or extra fish.",
+        "width": 64,
+        "height": 64,
+        "n_directions": 1,
+        "view": "side",
+        "max_colors": 32,
+        "style_options": {
+          "outline": true,
+          "shading": true,
+          "detail": true,
+          "color_palette": false
+        }
+      }
+    },
+    {
+      "species": "Veilfin",
+      "state": "cooked",
+      "item_name": "Veilfin",
+      "reference_path": "godot_client/Assets/Items/fish_001/inventory/veilfin.png",
+      "tool": "mcp__pixellab__create_object_pro_flash",
+      "arguments": {
+        "name": "Veilfin - cooked",
+        "description": "Aetheria MMORPG inventory icon: cooked Veilfin. Species identity: A slender pearl-gray fish with lavender shading and oversized, translucent blue fins that trail like delicate silk. Its flowing silhouette is its defining feature. Treatment: Whole roasted fish with golden-brown skin, a few dark diagonal grill marks, warm cream highlights, lightly crisped fins, and subtle original species colors. Clearly cooked and appetizing; retain its distinctive whole-fish silhouette, head, fins and tail. Crisp hand-placed pixel-art style matching the reference, dark pixel outline, compact readable shading, left-facing side view, centered complete object with transparent background and clear margins. No plate, cutlery, skewer, garnish, scenery, text, watermark, or extra fish.",
+        "width": 64,
+        "height": 64,
+        "n_directions": 1,
+        "view": "side",
+        "max_colors": 32,
+        "style_options": {
+          "outline": true,
+          "shading": true,
+          "detail": true,
+          "color_palette": false
+        }
+      }
+    },
+    {
+      "species": "Veilfin",
+      "state": "burnt",
+      "item_name": "Burnt Veilfin",
+      "reference_path": "godot_client/Assets/Items/fish_001/inventory/veilfin.png",
+      "tool": "mcp__pixellab__create_object_pro_flash",
+      "arguments": {
+        "name": "Veilfin - burnt",
+        "description": "Aetheria MMORPG inventory icon: burnt Veilfin. Species identity: A slender pearl-gray fish with lavender shading and oversized, translucent blue fins that trail like delicate silk. Its flowing silhouette is its defining feature. Treatment: Whole burnt fish with charcoal-black skin, ash-gray highlights, dry cracked patches, and scorched fins. Retain its distinctive whole-fish silhouette, head, fins and tail, with faint species-specific markings for recognition. Clearly overcooked; no flames or smoke. Crisp hand-placed pixel-art style matching the reference, dark pixel outline, compact readable shading, left-facing side view, centered complete object with transparent background and clear margins. No plate, cutlery, skewer, garnish, scenery, text, watermark, or extra fish.",
+        "width": 64,
+        "height": 64,
+        "n_directions": 1,
+        "view": "side",
+        "max_colors": 32,
+        "style_options": {
+          "outline": true,
+          "shading": true,
+          "detail": true,
+          "color_palette": false
+        }
+      }
+    },
+    {
+      "species": "Lumara",
+      "state": "cooked",
+      "item_name": "Lumara",
+      "reference_path": "godot_client/Assets/Items/fish_001/inventory/lumara.png",
+      "tool": "mcp__pixellab__create_object_pro_flash",
+      "arguments": {
+        "name": "Lumara - cooked",
+        "description": "Aetheria MMORPG inventory icon: cooked Lumara. Species identity: A compact turquoise fish with a pale mint belly, rounded fins, and three softly luminous markings along its side. Bright, jewel-like eyes complete its appearance. Treatment: Whole roasted fish with golden-brown skin, a few dark diagonal grill marks, warm cream highlights, lightly crisped fins, and subtle original species colors. Clearly cooked and appetizing; retain its distinctive whole-fish silhouette, head, fins and tail. Crisp hand-placed pixel-art style matching the reference, dark pixel outline, compact readable shading, left-facing side view, centered complete object with transparent background and clear margins. No plate, cutlery, skewer, garnish, scenery, text, watermark, or extra fish.",
+        "width": 64,
+        "height": 64,
+        "n_directions": 1,
+        "view": "side",
+        "max_colors": 32,
+        "style_options": {
+          "outline": true,
+          "shading": true,
+          "detail": true,
+          "color_palette": false
+        }
+      }
+    },
+    {
+      "species": "Lumara",
+      "state": "burnt",
+      "item_name": "Burnt Lumara",
+      "reference_path": "godot_client/Assets/Items/fish_001/inventory/lumara.png",
+      "tool": "mcp__pixellab__create_object_pro_flash",
+      "arguments": {
+        "name": "Lumara - burnt",
+        "description": "Aetheria MMORPG inventory icon: burnt Lumara. Species identity: A compact turquoise fish with a pale mint belly, rounded fins, and three softly luminous markings along its side. Bright, jewel-like eyes complete its appearance. Treatment: Whole burnt fish with charcoal-black skin, ash-gray highlights, dry cracked patches, and scorched fins. Retain its distinctive whole-fish silhouette, head, fins and tail, with faint species-specific markings for recognition. Clearly overcooked; no flames or smoke. Crisp hand-placed pixel-art style matching the reference, dark pixel outline, compact readable shading, left-facing side view, centered complete object with transparent background and clear margins. No plate, cutlery, skewer, garnish, scenery, text, watermark, or extra fish.",
+        "width": 64,
+        "height": 64,
+        "n_directions": 1,
+        "view": "side",
+        "max_colors": 32,
+        "style_options": {
+          "outline": true,
+          "shading": true,
+          "detail": true,
+          "color_palette": false
+        }
+      }
+    },
+    {
+      "species": "Vesper",
+      "state": "cooked",
+      "item_name": "Vesper",
+      "reference_path": "godot_client/Assets/Items/fish_001/inventory/vesper.png",
+      "tool": "mcp__pixellab__create_object_pro_flash",
+      "arguments": {
+        "name": "Vesper - cooked",
+        "description": "Aetheria MMORPG inventory icon: cooked Vesper. Species identity: A deep violet fish with a dark back, broad angular fins, and small amber markings. Its swept fins create a silhouette reminiscent of bat wings. Treatment: Whole roasted fish with golden-brown skin, a few dark diagonal grill marks, warm cream highlights, lightly crisped fins, and subtle original species colors. Clearly cooked and appetizing; retain its distinctive whole-fish silhouette, head, fins and tail. Crisp hand-placed pixel-art style matching the reference, dark pixel outline, compact readable shading, left-facing side view, centered complete object with transparent background and clear margins. No plate, cutlery, skewer, garnish, scenery, text, watermark, or extra fish.",
+        "width": 64,
+        "height": 64,
+        "n_directions": 1,
+        "view": "side",
+        "max_colors": 32,
+        "style_options": {
+          "outline": true,
+          "shading": true,
+          "detail": true,
+          "color_palette": false
+        }
+      }
+    },
+    {
+      "species": "Vesper",
+      "state": "burnt",
+      "item_name": "Burnt Vesper",
+      "reference_path": "godot_client/Assets/Items/fish_001/inventory/vesper.png",
+      "tool": "mcp__pixellab__create_object_pro_flash",
+      "arguments": {
+        "name": "Vesper - burnt",
+        "description": "Aetheria MMORPG inventory icon: burnt Vesper. Species identity: A deep violet fish with a dark back, broad angular fins, and small amber markings. Its swept fins create a silhouette reminiscent of bat wings. Treatment: Whole burnt fish with charcoal-black skin, ash-gray highlights, dry cracked patches, and scorched fins. Retain its distinctive whole-fish silhouette, head, fins and tail, with faint species-specific markings for recognition. Clearly overcooked; no flames or smoke. Crisp hand-placed pixel-art style matching the reference, dark pixel outline, compact readable shading, left-facing side view, centered complete object with transparent background and clear margins. No plate, cutlery, skewer, garnish, scenery, text, watermark, or extra fish.",
+        "width": 64,
+        "height": 64,
+        "n_directions": 1,
+        "view": "side",
+        "max_colors": 32,
+        "style_options": {
+          "outline": true,
+          "shading": true,
+          "detail": true,
+          "color_palette": false
+        }
+      }
+    },
+    {
+      "species": "Moonfin",
+      "state": "cooked",
+      "item_name": "Moonfin",
+      "reference_path": "godot_client/Assets/Items/fish_001/inventory/moonfin.png",
+      "tool": "mcp__pixellab__create_object_pro_flash",
+      "arguments": {
+        "name": "Moonfin - cooked",
+        "description": "Aetheria MMORPG inventory icon: cooked Moonfin. Species identity: A silver-blue fish with an elegantly arched back, a crescent-shaped tail, and one oversized moon-white dorsal fin. Smooth, pale scales give it an otherworldly sheen. Treatment: Whole roasted fish with golden-brown skin, a few dark diagonal grill marks, warm cream highlights, lightly crisped fins, and subtle original species colors. Clearly cooked and appetizing; retain its distinctive whole-fish silhouette, head, fins and tail. Crisp hand-placed pixel-art style matching the reference, dark pixel outline, compact readable shading, left-facing side view, centered complete object with transparent background and clear margins. No plate, cutlery, skewer, garnish, scenery, text, watermark, or extra fish.",
+        "width": 64,
+        "height": 64,
+        "n_directions": 1,
+        "view": "side",
+        "max_colors": 32,
+        "style_options": {
+          "outline": true,
+          "shading": true,
+          "detail": true,
+          "color_palette": false
+        }
+      }
+    },
+    {
+      "species": "Moonfin",
+      "state": "burnt",
+      "item_name": "Burnt Moonfin",
+      "reference_path": "godot_client/Assets/Items/fish_001/inventory/moonfin.png",
+      "tool": "mcp__pixellab__create_object_pro_flash",
+      "arguments": {
+        "name": "Moonfin - burnt",
+        "description": "Aetheria MMORPG inventory icon: burnt Moonfin. Species identity: A silver-blue fish with an elegantly arched back, a crescent-shaped tail, and one oversized moon-white dorsal fin. Smooth, pale scales give it an otherworldly sheen. Treatment: Whole burnt fish with charcoal-black skin, ash-gray highlights, dry cracked patches, and scorched fins. Retain its distinctive whole-fish silhouette, head, fins and tail, with faint species-specific markings for recognition. Clearly overcooked; no flames or smoke. Crisp hand-placed pixel-art style matching the reference, dark pixel outline, compact readable shading, left-facing side view, centered complete object with transparent background and clear margins. No plate, cutlery, skewer, garnish, scenery, text, watermark, or extra fish.",
+        "width": 64,
+        "height": 64,
+        "n_directions": 1,
+        "view": "side",
+        "max_colors": 32,
+        "style_options": {
+          "outline": true,
+          "shading": true,
+          "detail": true,
+          "color_palette": false
+        }
+      }
+    },
+    {
+      "species": "Velora",
+      "state": "cooked",
+      "item_name": "Velora",
+      "reference_path": "godot_client/Assets/Items/fish_001/inventory/velora.png",
+      "tool": "mcp__pixellab__create_object_pro_flash",
+      "arguments": {
+        "name": "Velora - cooked",
+        "description": "Aetheria MMORPG inventory icon: cooked Velora. Species identity: A regal emerald fish with large jade scales edged in gold, a crown-shaped dorsal crest, and a broad, layered tail. It should resemble a living treasure. Treatment: Whole roasted fish with golden-brown skin, a few dark diagonal grill marks, warm cream highlights, lightly crisped fins, and subtle original species colors. Clearly cooked and appetizing; retain its distinctive whole-fish silhouette, head, fins and tail. Crisp hand-placed pixel-art style matching the reference, dark pixel outline, compact readable shading, left-facing side view, centered complete object with transparent background and clear margins. No plate, cutlery, skewer, garnish, scenery, text, watermark, or extra fish.",
+        "width": 64,
+        "height": 64,
+        "n_directions": 1,
+        "view": "side",
+        "max_colors": 32,
+        "style_options": {
+          "outline": true,
+          "shading": true,
+          "detail": true,
+          "color_palette": false
+        }
+      }
+    },
+    {
+      "species": "Velora",
+      "state": "burnt",
+      "item_name": "Burnt Velora",
+      "reference_path": "godot_client/Assets/Items/fish_001/inventory/velora.png",
+      "tool": "mcp__pixellab__create_object_pro_flash",
+      "arguments": {
+        "name": "Velora - burnt",
+        "description": "Aetheria MMORPG inventory icon: burnt Velora. Species identity: A regal emerald fish with large jade scales edged in gold, a crown-shaped dorsal crest, and a broad, layered tail. It should resemble a living treasure. Treatment: Whole burnt fish with charcoal-black skin, ash-gray highlights, dry cracked patches, and scorched fins. Retain its distinctive whole-fish silhouette, head, fins and tail, with faint species-specific markings for recognition. Clearly overcooked; no flames or smoke. Crisp hand-placed pixel-art style matching the reference, dark pixel outline, compact readable shading, left-facing side view, centered complete object with transparent background and clear margins. No plate, cutlery, skewer, garnish, scenery, text, watermark, or extra fish.",
+        "width": 64,
+        "height": 64,
+        "n_directions": 1,
+        "view": "side",
+        "max_colors": 32,
+        "style_options": {
+          "outline": true,
+          "shading": true,
+          "detail": true,
+          "color_palette": false
+        }
+      }
+    },
+    {
+      "species": "Sunfish",
+      "state": "cooked",
+      "item_name": "Sunfish",
+      "reference_path": "godot_client/Assets/Items/fish_001/inventory/sunfish.png",
+      "tool": "mcp__pixellab__create_object_pro_flash",
+      "arguments": {
+        "name": "Sunfish - cooked",
+        "description": "Aetheria MMORPG inventory icon: cooked Sunfish. Species identity: A large, nearly circular fish with brilliant golden scales, an ivory belly, and orange-red fins spreading outward like a sunburst. Its bold shape should immediately distinguish it from Marlo. Treatment: Whole roasted fish with golden-brown skin, a few dark diagonal grill marks, warm cream highlights, lightly crisped fins, and subtle original species colors. Clearly cooked and appetizing; retain its distinctive whole-fish silhouette, head, fins and tail. Crisp hand-placed pixel-art style matching the reference, dark pixel outline, compact readable shading, left-facing side view, centered complete object with transparent background and clear margins. No plate, cutlery, skewer, garnish, scenery, text, watermark, or extra fish.",
+        "width": 64,
+        "height": 64,
+        "n_directions": 1,
+        "view": "side",
+        "max_colors": 32,
+        "style_options": {
+          "outline": true,
+          "shading": true,
+          "detail": true,
+          "color_palette": false
+        }
+      }
+    },
+    {
+      "species": "Sunfish",
+      "state": "burnt",
+      "item_name": "Burnt Sunfish",
+      "reference_path": "godot_client/Assets/Items/fish_001/inventory/sunfish.png",
+      "tool": "mcp__pixellab__create_object_pro_flash",
+      "arguments": {
+        "name": "Sunfish - burnt",
+        "description": "Aetheria MMORPG inventory icon: burnt Sunfish. Species identity: A large, nearly circular fish with brilliant golden scales, an ivory belly, and orange-red fins spreading outward like a sunburst. Its bold shape should immediately distinguish it from Marlo. Treatment: Whole burnt fish with charcoal-black skin, ash-gray highlights, dry cracked patches, and scorched fins. Retain its distinctive whole-fish silhouette, head, fins and tail, with faint species-specific markings for recognition. Clearly overcooked; no flames or smoke. Crisp hand-placed pixel-art style matching the reference, dark pixel outline, compact readable shading, left-facing side view, centered complete object with transparent background and clear margins. No plate, cutlery, skewer, garnish, scenery, text, watermark, or extra fish.",
+        "width": 64,
+        "height": 64,
+        "n_directions": 1,
+        "view": "side",
+        "max_colors": 32,
+        "style_options": {
+          "outline": true,
+          "shading": true,
+          "detail": true,
+          "color_palette": false
+        }
+      }
+    }
+  ]
+}

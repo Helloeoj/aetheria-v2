@@ -1,0 +1,29 @@
+{
+  "sections": [
+    {
+      "id": "D4D5",
+      "origin": [
+        768,
+        -384
+      ],
+      "size": [
+        768,
+        384
+      ],
+      "layers": [
+        {
+          "name": "Grass",
+          "texture": "res://Assets/MapTiles/ReviewSections/D4D5/Grass.png"
+        },
+        {
+          "name": "PathsAndQuays",
+          "texture": "res://Assets/MapTiles/ReviewSections/D4D5/Paths.png"
+        },
+        {
+          "name": "GroundDetails",
+          "texture": "res://Assets/MapTiles/ReviewSections/D4D5/GroundDetails.png"
+        }
+      ]
+    }
+  ]
+}

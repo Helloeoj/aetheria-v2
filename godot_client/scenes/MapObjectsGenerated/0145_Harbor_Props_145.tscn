@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/MapTiles/Objects/Harbor_Props_145.png" id="1_qg1tt"]
+
+[node name="Harbor_Props_145" type="Node2D"]
+y_sort_enabled = true
+texture_filter = 1
+metadata/kind = "Props"
+
+[node name="Footprint" type="StaticBody2D" parent="." groups=["map_object", "world_solid"]]
+position = Vector2(6, 9)
+collision_mask = 0
+metadata/kind = "Props"
+
+[node name="Visual" type="Sprite2D" parent="Footprint"]
+position = Vector2(-51, -54)
+texture = ExtResource("1_qg1tt")
+centered = false
+
+[node name="SolidPolygon1" type="CollisionPolygon2D" parent="Footprint"]
+polygon = PackedVector2Array(-22.2, -25.2, 22.2, -25.2, 22.2, 0, -22.2, 0)

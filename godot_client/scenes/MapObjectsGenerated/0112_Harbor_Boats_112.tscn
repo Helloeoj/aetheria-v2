@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/MapTiles/Objects/Harbor_Boats_112.png" id="1_q2755"]
+
+[node name="Harbor_Boats_112" type="Node2D"]
+y_sort_enabled = true
+texture_filter = 1
+metadata/kind = "Boats"
+
+[node name="Footprint" type="StaticBody2D" parent="." groups=["map_object"]]
+position = Vector2(5, -10)
+collision_mask = 0
+metadata/kind = "Boats"
+
+[node name="Visual" type="Sprite2D" parent="Footprint"]
+position = Vector2(-164, -219)
+texture = ExtResource("1_q2755")
+centered = false

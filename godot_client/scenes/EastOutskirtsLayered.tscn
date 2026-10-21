@@ -1,0 +1,129 @@
+[gd_scene load_steps=15 format=3 uid="uid://b2cmijgymeb0q"]
+
+[ext_resource type="Script" uid="uid://fiyvgsy2evop" path="res://scripts/main.gd" id="7_combat"]
+[ext_resource type="Script" uid="uid://dkoen8ba025fg" path="res://scripts/ui_spawn_menu.gd" id="8_spawn"]
+[ext_resource type="Script" uid="uid://bhsnj86quaeq7" path="res://scripts/ui_item_menu.gd" id="9_item"]
+[ext_resource type="Script" uid="uid://sb3oogpe55yw" path="res://scripts/ui_inventory_menu.gd" id="10_inventory"]
+[ext_resource type="PackedScene" uid="uid://cfk18arfl2b4h" path="res://scenes/EastOutskirtsBlockout.tscn" id="11_collision_map"]
+[ext_resource type="PackedScene" path="res://scenes/ValtheirisWorldContent.tscn" id="12_playable_map"]
+[ext_resource type="Script" path="res://scripts/fishing_spot.gd" id="13_fishing"]
+[ext_resource type="PackedScene" path="res://scenes/GolemCaveEntrance.tscn" id="14_golem_cave"]
+[ext_resource type="Script" path="res://scripts/cave_portal.gd" id="15_tavern"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_map_vertical_bounds"]
+size = Vector2(32, 2656)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_map_horizontal_bounds"]
+size = Vector2(1536, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_extended_vertical_bounds"]
+size = Vector2(32, 5728)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_extended_horizontal_bounds"]
+size = Vector2(3072, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_unbuilt_southwest"]
+size = Vector2(1536, 2656)
+
+[node name="EastOutskirtsLayered" type="Node2D"]
+y_sort_enabled = true
+texture_filter = 1
+
+[node name="PlayableMapContent" parent="." instance=ExtResource("12_playable_map")]
+
+[node name="CollisionGeometry" parent="." instance=ExtResource("11_collision_map")]
+process_mode = 4
+visible = false
+
+[node name="MapBounds" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="WestBoundary" type="CollisionShape2D" parent="MapBounds"]
+position = Vector2(-16, 1328)
+shape = SubResource("RectangleShape2D_map_vertical_bounds")
+
+[node name="EastBoundary" type="CollisionShape2D" parent="MapBounds"]
+position = Vector2(1552, -208)
+shape = SubResource("RectangleShape2D_extended_vertical_bounds")
+
+[node name="NorthBoundary" type="CollisionShape2D" parent="MapBounds"]
+position = Vector2(0, -3088)
+shape = SubResource("RectangleShape2D_extended_horizontal_bounds")
+
+[node name="SouthBoundary" type="CollisionShape2D" parent="MapBounds"]
+position = Vector2(768, 2672)
+shape = SubResource("RectangleShape2D_map_horizontal_bounds")
+
+[node name="NorthwestBoundary" type="CollisionShape2D" parent="MapBounds"]
+position = Vector2(-1552, -208)
+shape = SubResource("RectangleShape2D_extended_vertical_bounds")
+
+[node name="UnbuiltSouthwest" type="CollisionShape2D" parent="MapBounds"]
+position = Vector2(-768, 1328)
+shape = SubResource("RectangleShape2D_unbuilt_southwest")
+
+[node name="Combat" type="Node2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("7_combat")
+map_origin = Vector2(-1536, -3072)
+map_width = 3072.0
+map_height = 5728.0
+
+[node name="GolemCaveEntrance" parent="Combat" instance=ExtResource("14_golem_cave")]
+position = Vector2(128, -2520)
+
+[node name="TavernEntrance" type="Node2D" parent="Combat"]
+position = Vector2(-632, -2450)
+script = ExtResource("15_tavern")
+portal_name = "Tavern"
+destination_scene = "res://scenes/TavernInterior.tscn"
+destination_spawn_id = "Entrance"
+approach_offset = Vector2(0, 65)
+interaction_radius = 48.0
+click_rect = Rect2(-25, -64, 52, 64)
+
+[node name="RiverFishingSpot" type="Node2D" parent="Combat"]
+position = Vector2(1300, 260)
+script = ExtResource("13_fishing")
+spot_name = "Outskirts riverbank"
+shore_offset = Vector2(-100, 0)
+
+[node name="LowerRiverFishingSpot" type="Node2D" parent="Combat"]
+position = Vector2(1400, 650)
+script = ExtResource("13_fishing")
+spot_name = "Lower river shallows"
+shore_offset = Vector2(-110, 0)
+
+[node name="UI" type="CanvasLayer" parent="Combat"]
+
+[node name="SpawnMenu" type="Control" parent="Combat/UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("8_spawn")
+
+[node name="ItemMenu" type="Control" parent="Combat/UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("9_item")
+
+[node name="InventoryMenu" type="Control" parent="Combat/UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("10_inventory")
+
+[node name="MapCamera" type="Camera2D" parent="."]
+position = Vector2(768, 512)
+zoom = Vector2(1.5, 1.5)
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="GolemCaveReturn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(128, -2430)
+
+[node name="TavernReturn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(-632, -2374)
+
+[editable path="PlayableMapContent"]

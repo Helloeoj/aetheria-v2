@@ -1,0 +1,1882 @@
+{
+  "schema_version": 1,
+  "skins": {
+    "peasant": {
+      "source": "manually authored frame sockets; PixelLab export has no bone data",
+      "poses": {
+        "res://Assets/Characters/peasant/rotations/south.png": {
+          "right_hand": [
+            17,
+            43
+          ],
+          "left_hand": [
+            46,
+            43
+          ],
+          "head": [
+            31,
+            21
+          ],
+          "chest": [
+            32,
+            36
+          ],
+          "waist": [
+            32,
+            43
+          ],
+          "back": [
+            32,
+            31
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/south/frame_000.png": {
+          "right_hand": [
+            27,
+            47
+          ],
+          "left_hand": [
+            51,
+            44
+          ],
+          "head": [
+            38,
+            26
+          ],
+          "chest": [
+            38,
+            41
+          ],
+          "waist": [
+            38,
+            48
+          ],
+          "back": [
+            38,
+            37
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/south/frame_001.png": {
+          "right_hand": [
+            25,
+            45
+          ],
+          "left_hand": [
+            52,
+            45
+          ],
+          "head": [
+            38,
+            25
+          ],
+          "chest": [
+            38,
+            40
+          ],
+          "waist": [
+            38,
+            47
+          ],
+          "back": [
+            38,
+            36
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/south/frame_002.png": {
+          "right_hand": [
+            24,
+            44
+          ],
+          "left_hand": [
+            50,
+            46
+          ],
+          "head": [
+            38,
+            25
+          ],
+          "chest": [
+            38,
+            41
+          ],
+          "waist": [
+            38,
+            47
+          ],
+          "back": [
+            38,
+            37
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/south/frame_003.png": {
+          "right_hand": [
+            24,
+            44
+          ],
+          "left_hand": [
+            45,
+            47
+          ],
+          "head": [
+            37,
+            26
+          ],
+          "chest": [
+            37,
+            42
+          ],
+          "waist": [
+            37,
+            48
+          ],
+          "back": [
+            37,
+            38
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/south/frame_004.png": {
+          "right_hand": [
+            24,
+            44
+          ],
+          "left_hand": [
+            46,
+            47
+          ],
+          "head": [
+            38,
+            26
+          ],
+          "chest": [
+            38,
+            42
+          ],
+          "waist": [
+            38,
+            49
+          ],
+          "back": [
+            38,
+            38
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/south/frame_005.png": {
+          "right_hand": [
+            23,
+            43
+          ],
+          "left_hand": [
+            48,
+            47
+          ],
+          "head": [
+            37,
+            25
+          ],
+          "chest": [
+            37,
+            41
+          ],
+          "waist": [
+            37,
+            48
+          ],
+          "back": [
+            37,
+            37
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/south/frame_006.png": {
+          "right_hand": [
+            23,
+            45
+          ],
+          "left_hand": [
+            49,
+            46
+          ],
+          "head": [
+            37,
+            25
+          ],
+          "chest": [
+            37,
+            41
+          ],
+          "waist": [
+            37,
+            48
+          ],
+          "back": [
+            37,
+            37
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/south/frame_007.png": {
+          "right_hand": [
+            25,
+            46
+          ],
+          "left_hand": [
+            52,
+            46
+          ],
+          "head": [
+            38,
+            25
+          ],
+          "chest": [
+            38,
+            41
+          ],
+          "waist": [
+            38,
+            48
+          ],
+          "back": [
+            38,
+            37
+          ]
+        },
+        "res://Assets/Characters/peasant/rotations/south-east.png": {
+          "right_hand": [
+            20,
+            46
+          ],
+          "left_hand": [
+            43,
+            41
+          ],
+          "head": [
+            32,
+            21
+          ],
+          "chest": [
+            33,
+            35
+          ],
+          "waist": [
+            32,
+            42
+          ],
+          "back": [
+            30,
+            32
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/south-east/frame_000.png": {
+          "right_hand": [
+            23,
+            50
+          ],
+          "left_hand": [
+            56,
+            46
+          ],
+          "head": [
+            43,
+            29
+          ],
+          "chest": [
+            40,
+            44
+          ],
+          "waist": [
+            40,
+            50
+          ],
+          "back": [
+            35,
+            41
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/south-east/frame_001.png": {
+          "right_hand": [
+            25,
+            50
+          ],
+          "left_hand": [
+            55,
+            46
+          ],
+          "head": [
+            43,
+            29
+          ],
+          "chest": [
+            41,
+            43
+          ],
+          "waist": [
+            41,
+            50
+          ],
+          "back": [
+            36,
+            40
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/south-east/frame_002.png": {
+          "right_hand": [
+            28,
+            51
+          ],
+          "left_hand": [
+            52,
+            46
+          ],
+          "head": [
+            42,
+            29
+          ],
+          "chest": [
+            41,
+            44
+          ],
+          "waist": [
+            41,
+            50
+          ],
+          "back": [
+            36,
+            41
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/south-east/frame_003.png": {
+          "right_hand": [
+            32,
+            51
+          ],
+          "left_hand": [
+            50,
+            46
+          ],
+          "head": [
+            43,
+            30
+          ],
+          "chest": [
+            42,
+            45
+          ],
+          "waist": [
+            41,
+            51
+          ],
+          "back": [
+            37,
+            42
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/south-east/frame_004.png": {
+          "right_hand": [
+            35,
+            51
+          ],
+          "left_hand": [
+            50,
+            47
+          ],
+          "head": [
+            43,
+            31
+          ],
+          "chest": [
+            42,
+            45
+          ],
+          "waist": [
+            41,
+            51
+          ],
+          "back": [
+            37,
+            42
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/south-east/frame_005.png": {
+          "right_hand": [
+            31,
+            51
+          ],
+          "left_hand": [
+            49,
+            46
+          ],
+          "head": [
+            43,
+            30
+          ],
+          "chest": [
+            42,
+            44
+          ],
+          "waist": [
+            41,
+            51
+          ],
+          "back": [
+            37,
+            41
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/south-east/frame_006.png": {
+          "right_hand": [
+            28,
+            51
+          ],
+          "left_hand": [
+            52,
+            46
+          ],
+          "head": [
+            44,
+            29
+          ],
+          "chest": [
+            42,
+            44
+          ],
+          "waist": [
+            41,
+            50
+          ],
+          "back": [
+            37,
+            41
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/south-east/frame_007.png": {
+          "right_hand": [
+            26,
+            50
+          ],
+          "left_hand": [
+            54,
+            46
+          ],
+          "head": [
+            43,
+            30
+          ],
+          "chest": [
+            42,
+            44
+          ],
+          "waist": [
+            41,
+            51
+          ],
+          "back": [
+            36,
+            41
+          ]
+        },
+        "res://Assets/Characters/peasant/rotations/east.png": {
+          "right_hand": [
+            34,
+            46
+          ],
+          "left_hand": [
+            38,
+            42
+          ],
+          "head": [
+            34,
+            20
+          ],
+          "chest": [
+            33,
+            35
+          ],
+          "waist": [
+            31,
+            42
+          ],
+          "back": [
+            25,
+            32
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/east/frame_000.png": {
+          "right_hand": [
+            32,
+            53
+          ],
+          "left_hand": [
+            51,
+            42
+          ],
+          "head": [
+            43,
+            28
+          ],
+          "chest": [
+            44,
+            43
+          ],
+          "waist": [
+            41,
+            50
+          ],
+          "back": [
+            35,
+            39
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/east/frame_001.png": {
+          "right_hand": [
+            38,
+            52
+          ],
+          "left_hand": [
+            47,
+            43
+          ],
+          "head": [
+            44,
+            27
+          ],
+          "chest": [
+            44,
+            42
+          ],
+          "waist": [
+            41,
+            49
+          ],
+          "back": [
+            35,
+            38
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/east/frame_002.png": {
+          "right_hand": [
+            44,
+            50
+          ],
+          "left_hand": [
+            43,
+            43
+          ],
+          "head": [
+            44,
+            27
+          ],
+          "chest": [
+            44,
+            42
+          ],
+          "waist": [
+            40,
+            49
+          ],
+          "back": [
+            34,
+            38
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/east/frame_003.png": {
+          "right_hand": [
+            48,
+            48
+          ],
+          "left_hand": [
+            39,
+            47
+          ],
+          "head": [
+            44,
+            27
+          ],
+          "chest": [
+            44,
+            43
+          ],
+          "waist": [
+            41,
+            50
+          ],
+          "back": [
+            35,
+            39
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/east/frame_004.png": {
+          "right_hand": [
+            51,
+            47
+          ],
+          "left_hand": [
+            35,
+            48
+          ],
+          "head": [
+            44,
+            28
+          ],
+          "chest": [
+            45,
+            44
+          ],
+          "waist": [
+            42,
+            51
+          ],
+          "back": [
+            35,
+            40
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/east/frame_005.png": {
+          "right_hand": [
+            47,
+            49
+          ],
+          "left_hand": [
+            37,
+            47
+          ],
+          "head": [
+            44,
+            28
+          ],
+          "chest": [
+            44,
+            44
+          ],
+          "waist": [
+            41,
+            51
+          ],
+          "back": [
+            35,
+            40
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/east/frame_006.png": {
+          "right_hand": [
+            43,
+            51
+          ],
+          "left_hand": [
+            43,
+            44
+          ],
+          "head": [
+            44,
+            28
+          ],
+          "chest": [
+            44,
+            44
+          ],
+          "waist": [
+            41,
+            51
+          ],
+          "back": [
+            35,
+            40
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/east/frame_007.png": {
+          "right_hand": [
+            36,
+            52
+          ],
+          "left_hand": [
+            50,
+            44
+          ],
+          "head": [
+            44,
+            28
+          ],
+          "chest": [
+            44,
+            44
+          ],
+          "waist": [
+            41,
+            50
+          ],
+          "back": [
+            35,
+            40
+          ]
+        },
+        "res://Assets/Characters/peasant/rotations/north-east.png": {
+          "right_hand": [
+            43,
+            44
+          ],
+          "left_hand": [
+            19,
+            37
+          ],
+          "head": [
+            33,
+            15
+          ],
+          "chest": [
+            31,
+            33
+          ],
+          "waist": [
+            31,
+            39
+          ],
+          "back": [
+            30,
+            31
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/north-east/frame_000.png": {
+          "right_hand": [
+            55,
+            49
+          ],
+          "left_hand": [
+            25,
+            46
+          ],
+          "head": [
+            42,
+            23
+          ],
+          "chest": [
+            40,
+            39
+          ],
+          "waist": [
+            40,
+            46
+          ],
+          "back": [
+            39,
+            36
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/north-east/frame_001.png": {
+          "right_hand": [
+            54,
+            50
+          ],
+          "left_hand": [
+            27,
+            46
+          ],
+          "head": [
+            41,
+            23
+          ],
+          "chest": [
+            40,
+            39
+          ],
+          "waist": [
+            40,
+            46
+          ],
+          "back": [
+            39,
+            36
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/north-east/frame_002.png": {
+          "right_hand": [
+            52,
+            50
+          ],
+          "left_hand": [
+            27,
+            45
+          ],
+          "head": [
+            41,
+            23
+          ],
+          "chest": [
+            40,
+            39
+          ],
+          "waist": [
+            40,
+            46
+          ],
+          "back": [
+            39,
+            36
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/north-east/frame_003.png": {
+          "right_hand": [
+            50,
+            52
+          ],
+          "left_hand": [
+            30,
+            44
+          ],
+          "head": [
+            42,
+            24
+          ],
+          "chest": [
+            40,
+            39
+          ],
+          "waist": [
+            40,
+            46
+          ],
+          "back": [
+            39,
+            36
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/north-east/frame_004.png": {
+          "right_hand": [
+            47,
+            53
+          ],
+          "left_hand": [
+            32,
+            43
+          ],
+          "head": [
+            42,
+            24
+          ],
+          "chest": [
+            40,
+            39
+          ],
+          "waist": [
+            40,
+            46
+          ],
+          "back": [
+            39,
+            36
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/north-east/frame_005.png": {
+          "right_hand": [
+            48,
+            52
+          ],
+          "left_hand": [
+            30,
+            43
+          ],
+          "head": [
+            43,
+            23
+          ],
+          "chest": [
+            41,
+            39
+          ],
+          "waist": [
+            41,
+            46
+          ],
+          "back": [
+            40,
+            36
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/north-east/frame_006.png": {
+          "right_hand": [
+            51,
+            52
+          ],
+          "left_hand": [
+            29,
+            44
+          ],
+          "head": [
+            42,
+            23
+          ],
+          "chest": [
+            40,
+            39
+          ],
+          "waist": [
+            40,
+            46
+          ],
+          "back": [
+            39,
+            36
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/north-east/frame_007.png": {
+          "right_hand": [
+            53,
+            50
+          ],
+          "left_hand": [
+            27,
+            45
+          ],
+          "head": [
+            41,
+            22
+          ],
+          "chest": [
+            40,
+            38
+          ],
+          "waist": [
+            40,
+            46
+          ],
+          "back": [
+            39,
+            35
+          ]
+        },
+        "res://Assets/Characters/peasant/rotations/north.png": {
+          "right_hand": [
+            48,
+            42
+          ],
+          "left_hand": [
+            17,
+            42
+          ],
+          "head": [
+            31,
+            16
+          ],
+          "chest": [
+            32,
+            33
+          ],
+          "waist": [
+            32,
+            39
+          ],
+          "back": [
+            32,
+            31
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/north/frame_000.png": {
+          "right_hand": [
+            50,
+            42
+          ],
+          "left_hand": [
+            26,
+            43
+          ],
+          "head": [
+            38,
+            21
+          ],
+          "chest": [
+            38,
+            36
+          ],
+          "waist": [
+            38,
+            44
+          ],
+          "back": [
+            38,
+            34
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/north/frame_001.png": {
+          "right_hand": [
+            50,
+            40
+          ],
+          "left_hand": [
+            26,
+            39
+          ],
+          "head": [
+            38,
+            21
+          ],
+          "chest": [
+            38,
+            36
+          ],
+          "waist": [
+            38,
+            44
+          ],
+          "back": [
+            38,
+            34
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/north/frame_002.png": {
+          "right_hand": [
+            51,
+            39
+          ],
+          "left_hand": [
+            25,
+            42
+          ],
+          "head": [
+            38,
+            21
+          ],
+          "chest": [
+            38,
+            36
+          ],
+          "waist": [
+            38,
+            44
+          ],
+          "back": [
+            38,
+            34
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/north/frame_003.png": {
+          "right_hand": [
+            50,
+            37
+          ],
+          "left_hand": [
+            24,
+            46
+          ],
+          "head": [
+            37,
+            21
+          ],
+          "chest": [
+            37,
+            36
+          ],
+          "waist": [
+            37,
+            44
+          ],
+          "back": [
+            37,
+            34
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/north/frame_004.png": {
+          "right_hand": [
+            50,
+            38
+          ],
+          "left_hand": [
+            23,
+            47
+          ],
+          "head": [
+            38,
+            21
+          ],
+          "chest": [
+            38,
+            36
+          ],
+          "waist": [
+            38,
+            44
+          ],
+          "back": [
+            38,
+            34
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/north/frame_005.png": {
+          "right_hand": [
+            50,
+            37
+          ],
+          "left_hand": [
+            24,
+            46
+          ],
+          "head": [
+            38,
+            20
+          ],
+          "chest": [
+            38,
+            36
+          ],
+          "waist": [
+            38,
+            44
+          ],
+          "back": [
+            38,
+            34
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/north/frame_006.png": {
+          "right_hand": [
+            51,
+            38
+          ],
+          "left_hand": [
+            24,
+            44
+          ],
+          "head": [
+            38,
+            21
+          ],
+          "chest": [
+            38,
+            36
+          ],
+          "waist": [
+            38,
+            44
+          ],
+          "back": [
+            38,
+            34
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/north/frame_007.png": {
+          "right_hand": [
+            50,
+            40
+          ],
+          "left_hand": [
+            25,
+            40
+          ],
+          "head": [
+            38,
+            21
+          ],
+          "chest": [
+            38,
+            36
+          ],
+          "waist": [
+            38,
+            44
+          ],
+          "back": [
+            38,
+            34
+          ]
+        },
+        "res://Assets/Characters/peasant/rotations/north-west.png": {
+          "right_hand": [
+            44,
+            37
+          ],
+          "left_hand": [
+            20,
+            44
+          ],
+          "head": [
+            30,
+            15
+          ],
+          "chest": [
+            33,
+            33
+          ],
+          "waist": [
+            33,
+            39
+          ],
+          "back": [
+            34,
+            31
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/north-west/frame_000.png": {
+          "right_hand": [
+            54,
+            46
+          ],
+          "left_hand": [
+            24,
+            49
+          ],
+          "head": [
+            37,
+            23
+          ],
+          "chest": [
+            40,
+            39
+          ],
+          "waist": [
+            40,
+            46
+          ],
+          "back": [
+            41,
+            36
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/north-west/frame_001.png": {
+          "right_hand": [
+            53,
+            46
+          ],
+          "left_hand": [
+            25,
+            50
+          ],
+          "head": [
+            38,
+            23
+          ],
+          "chest": [
+            40,
+            39
+          ],
+          "waist": [
+            40,
+            46
+          ],
+          "back": [
+            41,
+            36
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/north-west/frame_002.png": {
+          "right_hand": [
+            52,
+            45
+          ],
+          "left_hand": [
+            28,
+            50
+          ],
+          "head": [
+            38,
+            23
+          ],
+          "chest": [
+            40,
+            39
+          ],
+          "waist": [
+            40,
+            46
+          ],
+          "back": [
+            41,
+            36
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/north-west/frame_003.png": {
+          "right_hand": [
+            50,
+            44
+          ],
+          "left_hand": [
+            29,
+            52
+          ],
+          "head": [
+            37,
+            24
+          ],
+          "chest": [
+            40,
+            39
+          ],
+          "waist": [
+            40,
+            46
+          ],
+          "back": [
+            41,
+            36
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/north-west/frame_004.png": {
+          "right_hand": [
+            48,
+            43
+          ],
+          "left_hand": [
+            32,
+            53
+          ],
+          "head": [
+            37,
+            24
+          ],
+          "chest": [
+            40,
+            39
+          ],
+          "waist": [
+            40,
+            46
+          ],
+          "back": [
+            41,
+            36
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/north-west/frame_005.png": {
+          "right_hand": [
+            49,
+            43
+          ],
+          "left_hand": [
+            31,
+            52
+          ],
+          "head": [
+            36,
+            23
+          ],
+          "chest": [
+            39,
+            39
+          ],
+          "waist": [
+            39,
+            46
+          ],
+          "back": [
+            40,
+            36
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/north-west/frame_006.png": {
+          "right_hand": [
+            50,
+            44
+          ],
+          "left_hand": [
+            28,
+            52
+          ],
+          "head": [
+            37,
+            23
+          ],
+          "chest": [
+            40,
+            39
+          ],
+          "waist": [
+            40,
+            46
+          ],
+          "back": [
+            41,
+            36
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/north-west/frame_007.png": {
+          "right_hand": [
+            52,
+            45
+          ],
+          "left_hand": [
+            26,
+            50
+          ],
+          "head": [
+            38,
+            22
+          ],
+          "chest": [
+            40,
+            38
+          ],
+          "waist": [
+            40,
+            46
+          ],
+          "back": [
+            41,
+            35
+          ]
+        },
+        "res://Assets/Characters/peasant/rotations/west.png": {
+          "right_hand": [
+            24,
+            42
+          ],
+          "left_hand": [
+            33,
+            46
+          ],
+          "head": [
+            29,
+            20
+          ],
+          "chest": [
+            30,
+            35
+          ],
+          "waist": [
+            32,
+            42
+          ],
+          "back": [
+            38,
+            32
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/west/frame_000.png": {
+          "right_hand": [
+            28,
+            42
+          ],
+          "left_hand": [
+            47,
+            53
+          ],
+          "head": [
+            36,
+            28
+          ],
+          "chest": [
+            35,
+            43
+          ],
+          "waist": [
+            38,
+            50
+          ],
+          "back": [
+            44,
+            39
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/west/frame_001.png": {
+          "right_hand": [
+            32,
+            43
+          ],
+          "left_hand": [
+            41,
+            52
+          ],
+          "head": [
+            35,
+            27
+          ],
+          "chest": [
+            35,
+            42
+          ],
+          "waist": [
+            38,
+            49
+          ],
+          "back": [
+            44,
+            38
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/west/frame_002.png": {
+          "right_hand": [
+            36,
+            43
+          ],
+          "left_hand": [
+            35,
+            50
+          ],
+          "head": [
+            35,
+            27
+          ],
+          "chest": [
+            35,
+            42
+          ],
+          "waist": [
+            39,
+            49
+          ],
+          "back": [
+            45,
+            38
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/west/frame_003.png": {
+          "right_hand": [
+            40,
+            47
+          ],
+          "left_hand": [
+            31,
+            48
+          ],
+          "head": [
+            35,
+            27
+          ],
+          "chest": [
+            35,
+            43
+          ],
+          "waist": [
+            38,
+            50
+          ],
+          "back": [
+            44,
+            39
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/west/frame_004.png": {
+          "right_hand": [
+            44,
+            48
+          ],
+          "left_hand": [
+            28,
+            47
+          ],
+          "head": [
+            35,
+            28
+          ],
+          "chest": [
+            34,
+            44
+          ],
+          "waist": [
+            37,
+            51
+          ],
+          "back": [
+            44,
+            40
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/west/frame_005.png": {
+          "right_hand": [
+            42,
+            47
+          ],
+          "left_hand": [
+            32,
+            49
+          ],
+          "head": [
+            35,
+            28
+          ],
+          "chest": [
+            35,
+            44
+          ],
+          "waist": [
+            38,
+            51
+          ],
+          "back": [
+            44,
+            40
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/west/frame_006.png": {
+          "right_hand": [
+            36,
+            44
+          ],
+          "left_hand": [
+            36,
+            51
+          ],
+          "head": [
+            35,
+            28
+          ],
+          "chest": [
+            35,
+            44
+          ],
+          "waist": [
+            38,
+            51
+          ],
+          "back": [
+            44,
+            40
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/west/frame_007.png": {
+          "right_hand": [
+            29,
+            44
+          ],
+          "left_hand": [
+            43,
+            52
+          ],
+          "head": [
+            35,
+            28
+          ],
+          "chest": [
+            35,
+            44
+          ],
+          "waist": [
+            38,
+            50
+          ],
+          "back": [
+            44,
+            40
+          ]
+        },
+        "res://Assets/Characters/peasant/rotations/south-west.png": {
+          "right_hand": [
+            20,
+            41
+          ],
+          "left_hand": [
+            44,
+            46
+          ],
+          "head": [
+            31,
+            21
+          ],
+          "chest": [
+            30,
+            35
+          ],
+          "waist": [
+            31,
+            42
+          ],
+          "back": [
+            33,
+            32
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/south-west/frame_000.png": {
+          "right_hand": [
+            23,
+            46
+          ],
+          "left_hand": [
+            56,
+            50
+          ],
+          "head": [
+            36,
+            29
+          ],
+          "chest": [
+            39,
+            44
+          ],
+          "waist": [
+            39,
+            50
+          ],
+          "back": [
+            44,
+            41
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/south-west/frame_001.png": {
+          "right_hand": [
+            24,
+            46
+          ],
+          "left_hand": [
+            54,
+            50
+          ],
+          "head": [
+            36,
+            29
+          ],
+          "chest": [
+            38,
+            43
+          ],
+          "waist": [
+            38,
+            50
+          ],
+          "back": [
+            43,
+            40
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/south-west/frame_002.png": {
+          "right_hand": [
+            27,
+            46
+          ],
+          "left_hand": [
+            51,
+            51
+          ],
+          "head": [
+            37,
+            29
+          ],
+          "chest": [
+            38,
+            44
+          ],
+          "waist": [
+            38,
+            50
+          ],
+          "back": [
+            43,
+            41
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/south-west/frame_003.png": {
+          "right_hand": [
+            29,
+            46
+          ],
+          "left_hand": [
+            47,
+            51
+          ],
+          "head": [
+            36,
+            30
+          ],
+          "chest": [
+            37,
+            45
+          ],
+          "waist": [
+            38,
+            51
+          ],
+          "back": [
+            42,
+            42
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/south-west/frame_004.png": {
+          "right_hand": [
+            29,
+            47
+          ],
+          "left_hand": [
+            44,
+            51
+          ],
+          "head": [
+            36,
+            31
+          ],
+          "chest": [
+            37,
+            45
+          ],
+          "waist": [
+            38,
+            51
+          ],
+          "back": [
+            42,
+            42
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/south-west/frame_005.png": {
+          "right_hand": [
+            30,
+            46
+          ],
+          "left_hand": [
+            48,
+            51
+          ],
+          "head": [
+            36,
+            30
+          ],
+          "chest": [
+            37,
+            44
+          ],
+          "waist": [
+            38,
+            51
+          ],
+          "back": [
+            42,
+            41
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/south-west/frame_006.png": {
+          "right_hand": [
+            27,
+            46
+          ],
+          "left_hand": [
+            51,
+            51
+          ],
+          "head": [
+            35,
+            29
+          ],
+          "chest": [
+            37,
+            44
+          ],
+          "waist": [
+            38,
+            50
+          ],
+          "back": [
+            42,
+            41
+          ]
+        },
+        "res://Assets/Characters/peasant/animations/walk/south-west/frame_007.png": {
+          "right_hand": [
+            25,
+            46
+          ],
+          "left_hand": [
+            53,
+            50
+          ],
+          "head": [
+            36,
+            30
+          ],
+          "chest": [
+            37,
+            44
+          ],
+          "waist": [
+            38,
+            51
+          ],
+          "back": [
+            43,
+            41
+          ]
+        }
+      }
+    }
+  }
+}

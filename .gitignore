@@ -1,4 +1,41 @@
 __pycache__/
 *.py[cod]
 *.pyo
+.pytest_cache/
+.venv/
+venv/
+node_modules/
 .DS_Store
+.Thumbs.db
+Thumbs.db
+
+# Godot regenerates these caches. Keep .uid and source-side *.import settings.
+.godot/
+.import/
+export.cfg
+/build/
+/dist/
+/exports/
+
+# Local credentials and editor/temporary files; examples may be versioned.
+.env
+.env.*
+!.env.example
+!.env.sample
+*.pem
+*.p12
+*.pfx
+export_credentials.cfg
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+
+# ADC runtime output belongs in user://; exclude optional local test/report copies too.
+**/.adc-output/
+**/diagnostics-output/
+
+# Regenerated art-validation reports; keep the tests, catalogs and source assets.
+/godot_client/data/*_validation.json

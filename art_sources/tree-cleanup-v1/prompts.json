@@ -1,0 +1,112 @@
+{
+  "mode": "built-in image_gen",
+  "trees": [
+    {
+      "name": "Outskirts_Trees_023",
+      "source": "raw/Outskirts_Trees_023.png",
+      "prompt": "Use case: background-extraction / precise-object-edit.\nAsset type: production transparent PNG tree sprite for an existing top-down fantasy Godot map.\nEdit target: the attached original Outskirts_Trees_023.png.\nClean this EXACT tree into a genuinely reusable, sharply cut transparent sprite. Retain its existing leaf clusters, overall round crown silhouette, muted olive-green palette, pixel-art texture, trunk, roots, viewing angle and light direction. Do not invent a different tree.\nRemove EVERY non-tree artifact: all stray grass/earth pixels, tan dirt smudges attached to the outer leaves, rectangular or angular extraction remnants, neighboring foliage scraps, halos, and any ground shadow or dark oval beneath/around the roots. The only opaque pixels should be the actual tree itself: leaves, branches, trunk and roots. Inner canopy shading is part of the tree and should stay.\nFinish each outer leaf contour cleanly with no dirt-colored fringe, no green background mat, no blurry feathering. No cast ground shadow at all. No grass tufts or flowers. No extra objects, no checkerboard baked into the picture. Output real transparent alpha, with the entire tree comfortably inside the canvas, no clipping. Preserve the familiar small-pixel, hand-crafted look; avoid smooth painterly reinterpretation. Remove the disconnected leaf strip across the top and finish the main tree crown cleanly.",
+      "size": [
+        90,
+        105
+      ],
+      "anchor": [
+        41,
+        95
+      ]
+    },
+    {
+      "name": "Outskirts_Trees_041",
+      "source": "raw/Outskirts_Trees_041.png",
+      "prompt": "Use case: background-extraction / precise-object-edit.\nAsset type: production transparent PNG tree sprite for an existing top-down fantasy Godot map.\nEdit target: the attached original Outskirts_Trees_041.png.\nClean this EXACT tree into a genuinely reusable, sharply cut transparent sprite. Retain its existing leaf clusters, overall round crown silhouette, muted olive-green palette, pixel-art texture, trunk, roots, viewing angle and light direction. Do not invent a different tree.\nRemove EVERY non-tree artifact: all stray grass/earth pixels, tan dirt smudges attached to the outer leaves, rectangular or angular extraction remnants, neighboring foliage scraps, halos, and any ground shadow or dark oval beneath/around the roots. The only opaque pixels should be the actual tree itself: leaves, branches, trunk and roots. Inner canopy shading is part of the tree and should stay.\nFinish each outer leaf contour cleanly with no dirt-colored fringe, no green background mat, no blurry feathering. No cast ground shadow at all. No grass tufts or flowers. No extra objects, no checkerboard baked into the picture. Output real transparent alpha, with the entire tree comfortably inside the canvas, no clipping. Preserve the familiar small-pixel, hand-crafted look; avoid smooth painterly reinterpretation.",
+      "size": [
+        128,
+        135
+      ],
+      "anchor": [
+        63,
+        127
+      ]
+    },
+    {
+      "name": "Outskirts_Trees_042",
+      "source": "raw/Outskirts_Trees_042.png",
+      "prompt": "Use case: background-extraction / precise-object-edit.\nAsset type: production transparent PNG tree sprite for an existing top-down fantasy Godot map.\nEdit target: the attached original Outskirts_Trees_042.png.\nClean this EXACT tree into a genuinely reusable, sharply cut transparent sprite. Retain its existing leaf clusters, overall round crown silhouette, muted olive-green palette, pixel-art texture, trunk, roots, viewing angle and light direction. Do not invent a different tree.\nRemove EVERY non-tree artifact: all stray grass/earth pixels, tan dirt smudges attached to the outer leaves, rectangular or angular extraction remnants, neighboring foliage scraps, halos, and any ground shadow or dark oval beneath/around the roots. The only opaque pixels should be the actual tree itself: leaves, branches, trunk and roots. Inner canopy shading is part of the tree and should stay.\nFinish each outer leaf contour cleanly with no dirt-colored fringe, no green background mat, no blurry feathering. No cast ground shadow at all. No grass tufts or flowers. No extra objects, no checkerboard baked into the picture. Output real transparent alpha, with the entire tree comfortably inside the canvas, no clipping. Preserve the familiar small-pixel, hand-crafted look; avoid smooth painterly reinterpretation.",
+      "size": [
+        264,
+        273
+      ],
+      "anchor": [
+        127,
+        255
+      ]
+    },
+    {
+      "name": "Outskirts_Trees_046",
+      "source": "raw/Outskirts_Trees_046.png",
+      "prompt": "Use case: background-extraction / precise-object-edit.\nAsset type: production transparent PNG tree sprite for an existing top-down fantasy Godot map.\nEdit target: the attached original Outskirts_Trees_046.png.\nClean this EXACT tree into a genuinely reusable, sharply cut transparent sprite. Retain its existing leaf clusters, overall round crown silhouette, muted olive-green palette, pixel-art texture, trunk, roots, viewing angle and light direction. Do not invent a different tree.\nRemove EVERY non-tree artifact: all stray grass/earth pixels, tan dirt smudges attached to the outer leaves, rectangular or angular extraction remnants, neighboring foliage scraps, halos, and any ground shadow or dark oval beneath/around the roots. The only opaque pixels should be the actual tree itself: leaves, branches, trunk and roots. Inner canopy shading is part of the tree and should stay.\nFinish each outer leaf contour cleanly with no dirt-colored fringe, no green background mat, no blurry feathering. No cast ground shadow at all. No grass tufts or flowers. No extra objects, no checkerboard baked into the picture. Output real transparent alpha, with the entire tree comfortably inside the canvas, no clipping. Preserve the familiar small-pixel, hand-crafted look; avoid smooth painterly reinterpretation.",
+      "size": [
+        177,
+        184
+      ],
+      "anchor": [
+        89,
+        166
+      ]
+    },
+    {
+      "name": "Outskirts_Trees_049",
+      "source": "raw/Outskirts_Trees_049.png",
+      "prompt": "Use case: background-extraction / precise-object-edit.\nAsset type: production transparent PNG tree sprite for an existing top-down fantasy Godot map.\nEdit target: the attached original Outskirts_Trees_049.png.\nClean this EXACT tree into a genuinely reusable, sharply cut transparent sprite. Retain its existing leaf clusters, overall round crown silhouette, muted olive-green palette, pixel-art texture, trunk, roots, viewing angle and light direction. Do not invent a different tree.\nRemove EVERY non-tree artifact: all stray grass/earth pixels, tan dirt smudges attached to the outer leaves, rectangular or angular extraction remnants, neighboring foliage scraps, halos, and any ground shadow or dark oval beneath/around the roots. The only opaque pixels should be the actual tree itself: leaves, branches, trunk and roots. Inner canopy shading is part of the tree and should stay.\nFinish each outer leaf contour cleanly with no dirt-colored fringe, no green background mat, no blurry feathering. No cast ground shadow at all. No grass tufts or flowers. No extra objects, no checkerboard baked into the picture. Output real transparent alpha, with the entire tree comfortably inside the canvas, no clipping. Preserve the familiar small-pixel, hand-crafted look; avoid smooth painterly reinterpretation.",
+      "size": [
+        77,
+        82
+      ],
+      "anchor": [
+        37,
+        70
+      ]
+    },
+    {
+      "name": "Outskirts_Trees_052",
+      "source": "raw/Outskirts_Trees_052.png",
+      "prompt": "Use case: background-extraction / precise-object-edit.\nAsset type: production transparent PNG tree sprite for an existing top-down fantasy Godot map.\nEdit target: the attached original Outskirts_Trees_052.png.\nClean this EXACT tree into a genuinely reusable, sharply cut transparent sprite. Retain its existing leaf clusters, overall round crown silhouette, muted olive-green palette, pixel-art texture, trunk, roots, viewing angle and light direction. Do not invent a different tree.\nRemove EVERY non-tree artifact: all stray grass/earth pixels, tan dirt smudges attached to the outer leaves, rectangular or angular extraction remnants, neighboring foliage scraps, halos, and any ground shadow or dark oval beneath/around the roots. The only opaque pixels should be the actual tree itself: leaves, branches, trunk and roots. Inner canopy shading is part of the tree and should stay.\nFinish each outer leaf contour cleanly with no dirt-colored fringe, no green background mat, no blurry feathering. No cast ground shadow at all. No grass tufts or flowers. No extra objects, no checkerboard baked into the picture. Output real transparent alpha, with the entire tree comfortably inside the canvas, no clipping. Preserve the familiar small-pixel, hand-crafted look; avoid smooth painterly reinterpretation.",
+      "size": [
+        58,
+        69
+      ],
+      "anchor": [
+        30,
+        61
+      ]
+    }
+  ],
+  "ground": [
+    {
+      "side": "north",
+      "source": "raw/ground-north.png",
+      "prompt": "Use case: precise-object-edit.\nAsset type: transparent ground-only terrain atlas from an existing fantasy Godot map.\nEdit target: attached ground-north-input.png.\nRemove all baked tree shadows and extracted-tree remnants from the GRASS. The picture is a ground layer with ghost silhouettes where trees were removed: dark crown-shaped rings, leaf contour fragments, brown trunk smudges, repeated mirrored dark canopy shapes, and pasted grass patches. Repaint ONLY those residual tree/shadow areas as clean, coherent, naturally varied fine pixel-art grass, matching the ORIGINAL surrounding grass's exact muted yellow-green/olive palette, scale, blade density and sharpness. Make the grass feel like continuous intact native game art with no tree-shaped darkening or circular patch edges.\nKeep the overall terrain layout, all existing paths/dirt/cobble/shore stones/bank edges, exact opaque ground outline and transparent holes unchanged. Do not add any trees, bushes, props, animals, flowers, roots, tree-shaped shadows, dark ovals, radial circles, ornamental patches, blurred textures, oversized grass blades, checkerboards or new objects. Preserve alpha transparency for all currently empty spaces. The result must be a ground-only layer with no trees or ground shadows."
+    },
+    {
+      "side": "south",
+      "source": "raw/ground-south.png",
+      "prompt": "Use case: precise-object-edit.\nAsset type: transparent ground-only terrain atlas from an existing fantasy Godot map.\nEdit target: attached ground-south-input.png.\nRemove all baked tree shadows and extracted-tree remnants from the GRASS. The picture is a ground layer with ghost silhouettes where trees were removed: dark crown-shaped rings, leaf contour fragments, brown trunk smudges, repeated mirrored dark canopy shapes, and pasted grass patches. Repaint ONLY those residual tree/shadow areas as clean, coherent, naturally varied fine pixel-art grass, matching the ORIGINAL surrounding grass's exact muted yellow-green/olive palette, scale, blade density and sharpness. Make the grass feel like continuous intact native game art with no tree-shaped darkening or circular patch edges.\nKeep the overall terrain layout, all existing paths/dirt/cobble/shore stones/bank edges, exact opaque ground outline and transparent holes unchanged. Do not add any trees, bushes, props, animals, flowers, roots, tree-shaped shadows, dark ovals, radial circles, ornamental patches, blurred textures, oversized grass blades, checkerboards or new objects. Preserve alpha transparency for all currently empty spaces. The result must be a ground-only layer with no trees or ground shadows."
+    },
+    {
+      "side": "connection-fringe",
+      "source": "raw/ground-fringe.png",
+      "prompt": "Use case: precise-object-edit.\nEdit target: attached 256×256 ground-only grass patch.\nThere is a small unwanted tan/brown vertical tree-trunk remnant at about x126,y55 (near horizontal center, in the top quarter of the patch). Remove that entire tan/brown stroke and its dark leaf-shaped fringe and replace it with normal green grass matching the immediate surrounding texture. Also remove any other dark tree-outline fragment in this patch. This should be pure clean ground with no evidence that a tree used to be here.\nKeep the exact existing rich olive/yellow-green fine-pixel grass palette and tiny blade/detail scale; preserve the rest of the grass. Do not add paths, dirt, trunks, roots, branches, fallen sticks, stones, shrubs, flowers, shadows or any object. No tan vertical strokes. No smearing, giant blades, blur, or radial pattern. One flat continuous native-game grass texture, crisp at its original small scale.",
+      "input_world_rect": [
+        800,
+        0,
+        256,
+        256
+      ],
+      "edited_world_rect": [
+        915,
+        31,
+        24,
+        48
+      ]
+    }
+  ]
+}

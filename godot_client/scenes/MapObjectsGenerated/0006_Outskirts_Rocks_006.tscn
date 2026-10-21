@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/MapTiles/Objects/Outskirts_Rocks_006.png" id="1_ip8w2"]
+
+[node name="Outskirts_Rocks_006" type="Node2D"]
+y_sort_enabled = true
+texture_filter = 1
+metadata/kind = "Rocks"
+
+[node name="Footprint" type="StaticBody2D" parent="." groups=["map_object", "world_solid"]]
+position = Vector2(3, -1)
+collision_mask = 0
+metadata/kind = "Rocks"
+
+[node name="Visual" type="Sprite2D" parent="Footprint"]
+position = Vector2(-5, -9)
+texture = ExtResource("1_ip8w2")
+centered = false
+
+[node name="SolidPolygon1" type="CollisionPolygon2D" parent="Footprint"]
+polygon = PackedVector2Array(-3.8, -5.984, 3.8, -5.984, 3.8, 0, -3.8, 0)

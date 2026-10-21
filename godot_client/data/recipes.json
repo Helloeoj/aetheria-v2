@@ -1,0 +1,3509 @@
+[
+  {
+    "id": "tan_starter_hide",
+    "name": "Tanned Leather",
+    "station": "leatherworking",
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Starter Hide",
+        "quantity": 1
+      }
+    ],
+    "outputs": [
+      {
+        "item": "Tanned Leather",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": "tanned_leather_coif",
+    "name": "Tanned Leather Coif",
+    "station": "leatherworking",
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Tanned Leather",
+        "quantity": 2
+      }
+    ],
+    "outputs": [
+      {
+        "item": "Tanned Leather Coif",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": "tanned_leather_tunic",
+    "name": "Tanned Leather Tunic",
+    "station": "leatherworking",
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Tanned Leather",
+        "quantity": 5
+      }
+    ],
+    "outputs": [
+      {
+        "item": "Tanned Leather Tunic",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": "tanned_leather_chaps",
+    "name": "Tanned Leather Chaps",
+    "station": "leatherworking",
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Tanned Leather",
+        "quantity": 3
+      }
+    ],
+    "outputs": [
+      {
+        "item": "Tanned Leather Chaps",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": "bronze_dagger",
+    "name": "Bronze Dagger",
+    "station": "anvil",
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Bronze Ingot",
+        "quantity": 1
+      }
+    ],
+    "outputs": [
+      {
+        "item": "Bronze Dagger",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": "bronze_longsword",
+    "name": "Bronze Longsword",
+    "station": "anvil",
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Bronze Ingot",
+        "quantity": 3
+      }
+    ],
+    "outputs": [
+      {
+        "item": "Bronze Longsword",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": "empower_fire_orb",
+    "name": "Fire Orb",
+    "station": "enchanting",
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Magic Orb",
+        "quantity": 1
+      },
+      {
+        "item": "Fire Sigil",
+        "quantity": 1
+      }
+    ],
+    "outputs": [
+      {
+        "item": "Fire Orb",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": "empower_ice_orb",
+    "name": "Ice Orb",
+    "station": "enchanting",
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Magic Orb",
+        "quantity": 1
+      },
+      {
+        "item": "Ice Sigil",
+        "quantity": 1
+      }
+    ],
+    "outputs": [
+      {
+        "item": "Ice Orb",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": "empower_lightning_orb",
+    "name": "Lightning Orb",
+    "station": "enchanting",
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Magic Orb",
+        "quantity": 1
+      },
+      {
+        "item": "Lightning Sigil",
+        "quantity": 1
+      }
+    ],
+    "outputs": [
+      {
+        "item": "Lightning Orb",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": "empower_hurricane_orb",
+    "name": "Hurricane Orb",
+    "station": "enchanting",
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Magic Orb",
+        "quantity": 1
+      },
+      {
+        "item": "Hurricane Sigil",
+        "quantity": 1
+      }
+    ],
+    "outputs": [
+      {
+        "item": "Hurricane Orb",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": "apprentice_magic_staff",
+    "name": "Apprentice Magic Staff",
+    "station": "fletching",
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Wooden Staff Body",
+        "quantity": 1
+      },
+      {
+        "item": "Magic Orb",
+        "quantity": 1
+      }
+    ],
+    "outputs": [
+      {
+        "item": "Apprentice Magic Staff",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": "apprentice_magic_staff_fire",
+    "name": "Apprentice Magic Staff (Fire)",
+    "station": "fletching",
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Wooden Staff Body",
+        "quantity": 1
+      },
+      {
+        "item": "Fire Orb",
+        "quantity": 1
+      }
+    ],
+    "outputs": [
+      {
+        "item": "Apprentice Magic Staff (Fire)",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": "apprentice_magic_staff_ice",
+    "name": "Apprentice Magic Staff (Ice)",
+    "station": "fletching",
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Wooden Staff Body",
+        "quantity": 1
+      },
+      {
+        "item": "Ice Orb",
+        "quantity": 1
+      }
+    ],
+    "outputs": [
+      {
+        "item": "Apprentice Magic Staff (Ice)",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": "apprentice_magic_staff_lightning",
+    "name": "Apprentice Magic Staff (Lightning)",
+    "station": "fletching",
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Wooden Staff Body",
+        "quantity": 1
+      },
+      {
+        "item": "Lightning Orb",
+        "quantity": 1
+      }
+    ],
+    "outputs": [
+      {
+        "item": "Apprentice Magic Staff (Lightning)",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": "apprentice_magic_staff_hurricane",
+    "name": "Apprentice Magic Staff (Hurricane)",
+    "station": "fletching",
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Wooden Staff Body",
+        "quantity": 1
+      },
+      {
+        "item": "Hurricane Orb",
+        "quantity": 1
+      }
+    ],
+    "outputs": [
+      {
+        "item": "Apprentice Magic Staff (Hurricane)",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": "smelt_bronze",
+    "name": "Bronze Ingots",
+    "station": "furnace",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Bronze Ore"
+    ],
+    "planned_outputs": [
+      "Bronze Ingot"
+    ],
+    "reason": "Ore/alloy ingredients and output yields await approval; no fuel cost is assumed."
+  },
+  {
+    "id": "bronze_shortsword",
+    "name": "Bronze Shortsword",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Bronze Ingot"
+    ],
+    "planned_outputs": [
+      "Bronze Shortsword"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "bronze_mace",
+    "name": "Bronze Mace",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Bronze Ingot"
+    ],
+    "planned_outputs": [
+      "Bronze Mace"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "bronze_warmaul",
+    "name": "Bronze Warmaul",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Bronze Ingot"
+    ],
+    "planned_outputs": [
+      "Bronze Warmaul"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "bronze_helmet",
+    "name": "Bronze Helmet",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Bronze Ingot"
+    ],
+    "planned_outputs": [
+      "Bronze Helmet"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "bronze_platebody",
+    "name": "Bronze Platebody",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Bronze Ingot"
+    ],
+    "planned_outputs": [
+      "Bronze Platebody"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "bronze_platelegs",
+    "name": "Bronze Platelegs",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Bronze Ingot"
+    ],
+    "planned_outputs": [
+      "Bronze Platelegs"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "bronze_kiteshield",
+    "name": "Bronze Kiteshield",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Bronze Ingot"
+    ],
+    "planned_outputs": [
+      "Bronze Kiteshield"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "bronze_square_shield",
+    "name": "Bronze Square Shield",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Bronze Ingot"
+    ],
+    "planned_outputs": [
+      "Bronze Square Shield"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "bronze_arrowheads",
+    "name": "Bronze Arrowheads",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Bronze Ingot"
+    ],
+    "planned_outputs": [
+      "Bronze Arrowheads"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "bronze_bolts",
+    "name": "Bronze Bolts",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Bronze Ingot"
+    ],
+    "planned_outputs": [
+      "Bronze Bolts"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "bronze_arrows",
+    "name": "Bronze Arrows",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Arrow Shafts",
+      "Feathers",
+      "Bronze Arrowheads"
+    ],
+    "planned_outputs": [
+      "Bronze Arrows"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "bronze_bow",
+    "name": "Bronze Bow",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Appropriate logs (species pending)",
+      "Bowstring"
+    ],
+    "planned_outputs": [
+      "Bronze Bow"
+    ],
+    "reason": "Log species, tier mapping and ingredient quantities await approval."
+  },
+  {
+    "id": "bronze_crossbow_limbs",
+    "name": "Bronze Crossbow Limbs",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Bronze Ingot"
+    ],
+    "planned_outputs": [
+      "Bronze Crossbow Limbs"
+    ],
+    "reason": "Metal components and yields await approval; component item definitions are pending."
+  },
+  {
+    "id": "bronze_crossbow",
+    "name": "Bronze Crossbow",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Wooden Stock",
+      "Bronze Crossbow Limbs",
+      "Bowstring"
+    ],
+    "planned_outputs": [
+      "Bronze Crossbow"
+    ],
+    "reason": "Stock/component definitions, log tier mapping and quantities await approval."
+  },
+  {
+    "id": "smelt_iron",
+    "name": "Iron Ingots",
+    "station": "furnace",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Iron Ore"
+    ],
+    "planned_outputs": [
+      "Iron Ingot"
+    ],
+    "reason": "Ore/alloy ingredients and output yields await approval; no fuel cost is assumed."
+  },
+  {
+    "id": "iron_dagger",
+    "name": "Iron Dagger",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Iron Ingot"
+    ],
+    "planned_outputs": [
+      "Iron Dagger"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "iron_shortsword",
+    "name": "Iron Shortsword",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Iron Ingot"
+    ],
+    "planned_outputs": [
+      "Iron Shortsword"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "iron_longsword",
+    "name": "Iron Longsword",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Iron Ingot"
+    ],
+    "planned_outputs": [
+      "Iron Longsword"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "iron_mace",
+    "name": "Iron Mace",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Iron Ingot"
+    ],
+    "planned_outputs": [
+      "Iron Mace"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "iron_warmaul",
+    "name": "Iron Warmaul",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Iron Ingot"
+    ],
+    "planned_outputs": [
+      "Iron Warmaul"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "iron_helmet",
+    "name": "Iron Helmet",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Iron Ingot"
+    ],
+    "planned_outputs": [
+      "Iron Helmet"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "iron_platebody",
+    "name": "Iron Platebody",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Iron Ingot"
+    ],
+    "planned_outputs": [
+      "Iron Platebody"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "iron_platelegs",
+    "name": "Iron Platelegs",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Iron Ingot"
+    ],
+    "planned_outputs": [
+      "Iron Platelegs"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "iron_kiteshield",
+    "name": "Iron Kiteshield",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Iron Ingot"
+    ],
+    "planned_outputs": [
+      "Iron Kiteshield"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "iron_square_shield",
+    "name": "Iron Square Shield",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Iron Ingot"
+    ],
+    "planned_outputs": [
+      "Iron Square Shield"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "iron_arrowheads",
+    "name": "Iron Arrowheads",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Iron Ingot"
+    ],
+    "planned_outputs": [
+      "Iron Arrowheads"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "iron_bolts",
+    "name": "Iron Bolts",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Iron Ingot"
+    ],
+    "planned_outputs": [
+      "Iron Bolts"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "iron_arrows",
+    "name": "Iron Arrows",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Arrow Shafts",
+      "Feathers",
+      "Iron Arrowheads"
+    ],
+    "planned_outputs": [
+      "Iron Arrows"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "iron_bow",
+    "name": "Iron Bow",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Appropriate logs (species pending)",
+      "Bowstring"
+    ],
+    "planned_outputs": [
+      "Iron Bow"
+    ],
+    "reason": "Log species, tier mapping and ingredient quantities await approval."
+  },
+  {
+    "id": "iron_crossbow_limbs",
+    "name": "Iron Crossbow Limbs",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Iron Ingot"
+    ],
+    "planned_outputs": [
+      "Iron Crossbow Limbs"
+    ],
+    "reason": "Metal components and yields await approval; component item definitions are pending."
+  },
+  {
+    "id": "iron_crossbow",
+    "name": "Iron Crossbow",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Wooden Stock",
+      "Iron Crossbow Limbs",
+      "Bowstring"
+    ],
+    "planned_outputs": [
+      "Iron Crossbow"
+    ],
+    "reason": "Stock/component definitions, log tier mapping and quantities await approval."
+  },
+  {
+    "id": "smelt_steel",
+    "name": "Steel Ingots",
+    "station": "furnace",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Steel Ore"
+    ],
+    "planned_outputs": [
+      "Steel Ingot"
+    ],
+    "reason": "Ore/alloy ingredients and output yields await approval; no fuel cost is assumed."
+  },
+  {
+    "id": "steel_dagger",
+    "name": "Steel Dagger",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Steel Ingot"
+    ],
+    "planned_outputs": [
+      "Steel Dagger"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "steel_shortsword",
+    "name": "Steel Shortsword",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Steel Ingot"
+    ],
+    "planned_outputs": [
+      "Steel Shortsword"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "steel_longsword",
+    "name": "Steel Longsword",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Steel Ingot"
+    ],
+    "planned_outputs": [
+      "Steel Longsword"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "steel_mace",
+    "name": "Steel Mace",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Steel Ingot"
+    ],
+    "planned_outputs": [
+      "Steel Mace"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "steel_warmaul",
+    "name": "Steel Warmaul",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Steel Ingot"
+    ],
+    "planned_outputs": [
+      "Steel Warmaul"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "steel_helmet",
+    "name": "Steel Helmet",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Steel Ingot"
+    ],
+    "planned_outputs": [
+      "Steel Helmet"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "steel_platebody",
+    "name": "Steel Platebody",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Steel Ingot"
+    ],
+    "planned_outputs": [
+      "Steel Platebody"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "steel_platelegs",
+    "name": "Steel Platelegs",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Steel Ingot"
+    ],
+    "planned_outputs": [
+      "Steel Platelegs"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "steel_kiteshield",
+    "name": "Steel Kiteshield",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Steel Ingot"
+    ],
+    "planned_outputs": [
+      "Steel Kiteshield"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "steel_square_shield",
+    "name": "Steel Square Shield",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Steel Ingot"
+    ],
+    "planned_outputs": [
+      "Steel Square Shield"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "steel_arrowheads",
+    "name": "Steel Arrowheads",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Steel Ingot"
+    ],
+    "planned_outputs": [
+      "Steel Arrowheads"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "steel_bolts",
+    "name": "Steel Bolts",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Steel Ingot"
+    ],
+    "planned_outputs": [
+      "Steel Bolts"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "steel_arrows",
+    "name": "Steel Arrows",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Arrow Shafts",
+      "Feathers",
+      "Steel Arrowheads"
+    ],
+    "planned_outputs": [
+      "Steel Arrows"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "steel_bow",
+    "name": "Steel Bow",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Appropriate logs (species pending)",
+      "Bowstring"
+    ],
+    "planned_outputs": [
+      "Steel Bow"
+    ],
+    "reason": "Log species, tier mapping and ingredient quantities await approval."
+  },
+  {
+    "id": "steel_crossbow_limbs",
+    "name": "Steel Crossbow Limbs",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Steel Ingot"
+    ],
+    "planned_outputs": [
+      "Steel Crossbow Limbs"
+    ],
+    "reason": "Metal components and yields await approval; component item definitions are pending."
+  },
+  {
+    "id": "steel_crossbow",
+    "name": "Steel Crossbow",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Wooden Stock",
+      "Steel Crossbow Limbs",
+      "Bowstring"
+    ],
+    "planned_outputs": [
+      "Steel Crossbow"
+    ],
+    "reason": "Stock/component definitions, log tier mapping and quantities await approval."
+  },
+  {
+    "id": "smelt_blacksteel",
+    "name": "Blacksteel Ingots",
+    "station": "furnace",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Blacksteel Ore"
+    ],
+    "planned_outputs": [
+      "Blacksteel Ingot"
+    ],
+    "reason": "Ore/alloy ingredients and output yields await approval; no fuel cost is assumed."
+  },
+  {
+    "id": "blacksteel_dagger",
+    "name": "Blacksteel Dagger",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Blacksteel Ingot"
+    ],
+    "planned_outputs": [
+      "Blacksteel Dagger"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "blacksteel_shortsword",
+    "name": "Blacksteel Shortsword",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Blacksteel Ingot"
+    ],
+    "planned_outputs": [
+      "Blacksteel Shortsword"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "blacksteel_longsword",
+    "name": "Blacksteel Longsword",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Blacksteel Ingot"
+    ],
+    "planned_outputs": [
+      "Blacksteel Longsword"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "blacksteel_mace",
+    "name": "Blacksteel Mace",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Blacksteel Ingot"
+    ],
+    "planned_outputs": [
+      "Blacksteel Mace"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "blacksteel_warmaul",
+    "name": "Blacksteel Warmaul",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Blacksteel Ingot"
+    ],
+    "planned_outputs": [
+      "Blacksteel Warmaul"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "blacksteel_helmet",
+    "name": "Blacksteel Helmet",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Blacksteel Ingot"
+    ],
+    "planned_outputs": [
+      "Blacksteel Helmet"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "blacksteel_platebody",
+    "name": "Blacksteel Platebody",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Blacksteel Ingot"
+    ],
+    "planned_outputs": [
+      "Blacksteel Platebody"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "blacksteel_platelegs",
+    "name": "Blacksteel Platelegs",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Blacksteel Ingot"
+    ],
+    "planned_outputs": [
+      "Blacksteel Platelegs"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "blacksteel_kiteshield",
+    "name": "Blacksteel Kiteshield",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Blacksteel Ingot"
+    ],
+    "planned_outputs": [
+      "Blacksteel Kiteshield"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "blacksteel_square_shield",
+    "name": "Blacksteel Square Shield",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Blacksteel Ingot"
+    ],
+    "planned_outputs": [
+      "Blacksteel Square Shield"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "blacksteel_arrowheads",
+    "name": "Blacksteel Arrowheads",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Blacksteel Ingot"
+    ],
+    "planned_outputs": [
+      "Blacksteel Arrowheads"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "blacksteel_bolts",
+    "name": "Blacksteel Bolts",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Blacksteel Ingot"
+    ],
+    "planned_outputs": [
+      "Blacksteel Bolts"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "blacksteel_arrows",
+    "name": "Blacksteel Arrows",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Arrow Shafts",
+      "Feathers",
+      "Blacksteel Arrowheads"
+    ],
+    "planned_outputs": [
+      "Blacksteel Arrows"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "blacksteel_bow",
+    "name": "Blacksteel Bow",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Appropriate logs (species pending)",
+      "Bowstring"
+    ],
+    "planned_outputs": [
+      "Blacksteel Bow"
+    ],
+    "reason": "Log species, tier mapping and ingredient quantities await approval."
+  },
+  {
+    "id": "blacksteel_crossbow_limbs",
+    "name": "Blacksteel Crossbow Limbs",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Blacksteel Ingot"
+    ],
+    "planned_outputs": [
+      "Blacksteel Crossbow Limbs"
+    ],
+    "reason": "Metal components and yields await approval; component item definitions are pending."
+  },
+  {
+    "id": "blacksteel_crossbow",
+    "name": "Blacksteel Crossbow",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Wooden Stock",
+      "Blacksteel Crossbow Limbs",
+      "Bowstring"
+    ],
+    "planned_outputs": [
+      "Blacksteel Crossbow"
+    ],
+    "reason": "Stock/component definitions, log tier mapping and quantities await approval."
+  },
+  {
+    "id": "smelt_mithril",
+    "name": "Mithril Ingots",
+    "station": "furnace",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Mithril Ore"
+    ],
+    "planned_outputs": [
+      "Mithril Ingot"
+    ],
+    "reason": "Ore/alloy ingredients and output yields await approval; no fuel cost is assumed."
+  },
+  {
+    "id": "mithril_dagger",
+    "name": "Mithril Dagger",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Mithril Ingot"
+    ],
+    "planned_outputs": [
+      "Mithril Dagger"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "mithril_shortsword",
+    "name": "Mithril Shortsword",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Mithril Ingot"
+    ],
+    "planned_outputs": [
+      "Mithril Shortsword"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "mithril_longsword",
+    "name": "Mithril Longsword",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Mithril Ingot"
+    ],
+    "planned_outputs": [
+      "Mithril Longsword"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "mithril_mace",
+    "name": "Mithril Mace",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Mithril Ingot"
+    ],
+    "planned_outputs": [
+      "Mithril Mace"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "mithril_warmaul",
+    "name": "Mithril Warmaul",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Mithril Ingot"
+    ],
+    "planned_outputs": [
+      "Mithril Warmaul"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "mithril_helmet",
+    "name": "Mithril Helmet",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Mithril Ingot"
+    ],
+    "planned_outputs": [
+      "Mithril Helmet"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "mithril_platebody",
+    "name": "Mithril Platebody",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Mithril Ingot"
+    ],
+    "planned_outputs": [
+      "Mithril Platebody"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "mithril_platelegs",
+    "name": "Mithril Platelegs",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Mithril Ingot"
+    ],
+    "planned_outputs": [
+      "Mithril Platelegs"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "mithril_kiteshield",
+    "name": "Mithril Kiteshield",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Mithril Ingot"
+    ],
+    "planned_outputs": [
+      "Mithril Kiteshield"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "mithril_square_shield",
+    "name": "Mithril Square Shield",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Mithril Ingot"
+    ],
+    "planned_outputs": [
+      "Mithril Square Shield"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "mithril_arrowheads",
+    "name": "Mithril Arrowheads",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Mithril Ingot"
+    ],
+    "planned_outputs": [
+      "Mithril Arrowheads"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "mithril_bolts",
+    "name": "Mithril Bolts",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Mithril Ingot"
+    ],
+    "planned_outputs": [
+      "Mithril Bolts"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "mithril_arrows",
+    "name": "Mithril Arrows",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Arrow Shafts",
+      "Feathers",
+      "Mithril Arrowheads"
+    ],
+    "planned_outputs": [
+      "Mithril Arrows"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "mithril_bow",
+    "name": "Mithril Bow",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Appropriate logs (species pending)",
+      "Bowstring"
+    ],
+    "planned_outputs": [
+      "Mithril Bow"
+    ],
+    "reason": "Log species, tier mapping and ingredient quantities await approval."
+  },
+  {
+    "id": "mithril_crossbow_limbs",
+    "name": "Mithril Crossbow Limbs",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Mithril Ingot"
+    ],
+    "planned_outputs": [
+      "Mithril Crossbow Limbs"
+    ],
+    "reason": "Metal components and yields await approval; component item definitions are pending."
+  },
+  {
+    "id": "mithril_crossbow",
+    "name": "Mithril Crossbow",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Wooden Stock",
+      "Mithril Crossbow Limbs",
+      "Bowstring"
+    ],
+    "planned_outputs": [
+      "Mithril Crossbow"
+    ],
+    "reason": "Stock/component definitions, log tier mapping and quantities await approval."
+  },
+  {
+    "id": "smelt_adamantite",
+    "name": "Adamantite Ingots",
+    "station": "furnace",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Adamantite Ore"
+    ],
+    "planned_outputs": [
+      "Adamantite Ingot"
+    ],
+    "reason": "Ore/alloy ingredients and output yields await approval; no fuel cost is assumed."
+  },
+  {
+    "id": "adamantite_dagger",
+    "name": "Adamantite Dagger",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Adamantite Ingot"
+    ],
+    "planned_outputs": [
+      "Adamantite Dagger"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "adamantite_shortsword",
+    "name": "Adamantite Shortsword",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Adamantite Ingot"
+    ],
+    "planned_outputs": [
+      "Adamantite Shortsword"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "adamantite_longsword",
+    "name": "Adamantite Longsword",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Adamantite Ingot"
+    ],
+    "planned_outputs": [
+      "Adamantite Longsword"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "adamantite_mace",
+    "name": "Adamantite Mace",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Adamantite Ingot"
+    ],
+    "planned_outputs": [
+      "Adamantite Mace"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "adamantite_warmaul",
+    "name": "Adamantite Warmaul",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Adamantite Ingot"
+    ],
+    "planned_outputs": [
+      "Adamantite Warmaul"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "adamantite_helmet",
+    "name": "Adamantite Helmet",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Adamantite Ingot"
+    ],
+    "planned_outputs": [
+      "Adamantite Helmet"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "adamantite_platebody",
+    "name": "Adamantite Platebody",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Adamantite Ingot"
+    ],
+    "planned_outputs": [
+      "Adamantite Platebody"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "adamantite_platelegs",
+    "name": "Adamantite Platelegs",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Adamantite Ingot"
+    ],
+    "planned_outputs": [
+      "Adamantite Platelegs"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "adamantite_kiteshield",
+    "name": "Adamantite Kiteshield",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Adamantite Ingot"
+    ],
+    "planned_outputs": [
+      "Adamantite Kiteshield"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "adamantite_square_shield",
+    "name": "Adamantite Square Shield",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Adamantite Ingot"
+    ],
+    "planned_outputs": [
+      "Adamantite Square Shield"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "adamantite_arrowheads",
+    "name": "Adamantite Arrowheads",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Adamantite Ingot"
+    ],
+    "planned_outputs": [
+      "Adamantite Arrowheads"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "adamantite_bolts",
+    "name": "Adamantite Bolts",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Adamantite Ingot"
+    ],
+    "planned_outputs": [
+      "Adamantite Bolts"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "adamantite_arrows",
+    "name": "Adamantite Arrows",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Arrow Shafts",
+      "Feathers",
+      "Adamantite Arrowheads"
+    ],
+    "planned_outputs": [
+      "Adamantite Arrows"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "adamantite_bow",
+    "name": "Adamantite Bow",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Appropriate logs (species pending)",
+      "Bowstring"
+    ],
+    "planned_outputs": [
+      "Adamantite Bow"
+    ],
+    "reason": "Log species, tier mapping and ingredient quantities await approval."
+  },
+  {
+    "id": "adamantite_crossbow_limbs",
+    "name": "Adamantite Crossbow Limbs",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Adamantite Ingot"
+    ],
+    "planned_outputs": [
+      "Adamantite Crossbow Limbs"
+    ],
+    "reason": "Metal components and yields await approval; component item definitions are pending."
+  },
+  {
+    "id": "adamantite_crossbow",
+    "name": "Adamantite Crossbow",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Wooden Stock",
+      "Adamantite Crossbow Limbs",
+      "Bowstring"
+    ],
+    "planned_outputs": [
+      "Adamantite Crossbow"
+    ],
+    "reason": "Stock/component definitions, log tier mapping and quantities await approval."
+  },
+  {
+    "id": "smelt_starforged",
+    "name": "Starforged Ingots",
+    "station": "furnace",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Starforged Ore"
+    ],
+    "planned_outputs": [
+      "Starforged Ingot"
+    ],
+    "reason": "Ore/alloy ingredients and output yields await approval; no fuel cost is assumed."
+  },
+  {
+    "id": "starforged_dagger",
+    "name": "Starforged Dagger",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Starforged Ingot"
+    ],
+    "planned_outputs": [
+      "Starforged Dagger"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "starforged_shortsword",
+    "name": "Starforged Shortsword",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Starforged Ingot"
+    ],
+    "planned_outputs": [
+      "Starforged Shortsword"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "starforged_longsword",
+    "name": "Starforged Longsword",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Starforged Ingot"
+    ],
+    "planned_outputs": [
+      "Starforged Longsword"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "starforged_mace",
+    "name": "Starforged Mace",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Starforged Ingot"
+    ],
+    "planned_outputs": [
+      "Starforged Mace"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "starforged_warmaul",
+    "name": "Starforged Warmaul",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Starforged Ingot"
+    ],
+    "planned_outputs": [
+      "Starforged Warmaul"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "starforged_helmet",
+    "name": "Starforged Helmet",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Starforged Ingot"
+    ],
+    "planned_outputs": [
+      "Starforged Helmet"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "starforged_platebody",
+    "name": "Starforged Platebody",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Starforged Ingot"
+    ],
+    "planned_outputs": [
+      "Starforged Platebody"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "starforged_platelegs",
+    "name": "Starforged Platelegs",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Starforged Ingot"
+    ],
+    "planned_outputs": [
+      "Starforged Platelegs"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "starforged_kiteshield",
+    "name": "Starforged Kiteshield",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Starforged Ingot"
+    ],
+    "planned_outputs": [
+      "Starforged Kiteshield"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "starforged_square_shield",
+    "name": "Starforged Square Shield",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Starforged Ingot"
+    ],
+    "planned_outputs": [
+      "Starforged Square Shield"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "starforged_arrowheads",
+    "name": "Starforged Arrowheads",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Starforged Ingot"
+    ],
+    "planned_outputs": [
+      "Starforged Arrowheads"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "starforged_bolts",
+    "name": "Starforged Bolts",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Starforged Ingot"
+    ],
+    "planned_outputs": [
+      "Starforged Bolts"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "starforged_arrows",
+    "name": "Starforged Arrows",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Arrow Shafts",
+      "Feathers",
+      "Starforged Arrowheads"
+    ],
+    "planned_outputs": [
+      "Starforged Arrows"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "starforged_bow",
+    "name": "Starforged Bow",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Appropriate logs (species pending)",
+      "Bowstring"
+    ],
+    "planned_outputs": [
+      "Starforged Bow"
+    ],
+    "reason": "Log species, tier mapping and ingredient quantities await approval."
+  },
+  {
+    "id": "starforged_crossbow_limbs",
+    "name": "Starforged Crossbow Limbs",
+    "station": "anvil",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Starforged Ingot"
+    ],
+    "planned_outputs": [
+      "Starforged Crossbow Limbs"
+    ],
+    "reason": "Metal components and yields await approval; component item definitions are pending."
+  },
+  {
+    "id": "starforged_crossbow",
+    "name": "Starforged Crossbow",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Wooden Stock",
+      "Starforged Crossbow Limbs",
+      "Bowstring"
+    ],
+    "planned_outputs": [
+      "Starforged Crossbow"
+    ],
+    "reason": "Stock/component definitions, log tier mapping and quantities await approval."
+  },
+  {
+    "id": "cut_arrow_shafts",
+    "name": "Arrow Shafts",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Logs"
+    ],
+    "planned_outputs": [
+      "Arrow Shafts"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "shape_staff_body",
+    "name": "Wooden Staff Body",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Logs"
+    ],
+    "planned_outputs": [
+      "Wooden Staff Body"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "cut_crossbow_stock",
+    "name": "Wooden Stock",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Appropriate logs (species pending)"
+    ],
+    "planned_outputs": [
+      "Wooden Stock"
+    ],
+    "reason": "Stock item definition, log species and yields await approval."
+  },
+  {
+    "id": "make_bowstring",
+    "name": "Bowstring",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Animal Sinew"
+    ],
+    "planned_outputs": [
+      "Bowstring"
+    ],
+    "reason": "Sinew-to-bowstring quantities await approval. Sinew comes from animals/beasts, never humans or humanoids."
+  },
+  {
+    "id": "process_wolf_leather",
+    "name": "Wolf Leather",
+    "station": "leatherworking",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Wolf Hide"
+    ],
+    "planned_outputs": [
+      "Wolf Leather"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "wolf_leather_coif",
+    "name": "Wolf Leather Coif",
+    "station": "leatherworking",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Wolf Leather"
+    ],
+    "planned_outputs": [
+      "Wolf Leather Coif"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "wolf_leather_tunic",
+    "name": "Wolf Leather Tunic",
+    "station": "leatherworking",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Wolf Leather"
+    ],
+    "planned_outputs": [
+      "Wolf Leather Tunic"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "wolf_leather_chaps",
+    "name": "Wolf Leather Chaps",
+    "station": "leatherworking",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Wolf Leather"
+    ],
+    "planned_outputs": [
+      "Wolf Leather Chaps"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "process_direwolf_leather",
+    "name": "Direwolf Leather",
+    "station": "leatherworking",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Direwolf Hide"
+    ],
+    "planned_outputs": [
+      "Direwolf Leather"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "direwolf_leather_coif",
+    "name": "Direwolf Leather Coif",
+    "station": "leatherworking",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Direwolf Leather"
+    ],
+    "planned_outputs": [
+      "Direwolf Leather Coif"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "direwolf_leather_tunic",
+    "name": "Direwolf Leather Tunic",
+    "station": "leatherworking",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Direwolf Leather"
+    ],
+    "planned_outputs": [
+      "Direwolf Leather Tunic"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "direwolf_leather_chaps",
+    "name": "Direwolf Leather Chaps",
+    "station": "leatherworking",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Direwolf Leather"
+    ],
+    "planned_outputs": [
+      "Direwolf Leather Chaps"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "process_troll_leather",
+    "name": "Troll Leather",
+    "station": "leatherworking",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Troll Hide"
+    ],
+    "planned_outputs": [
+      "Troll Leather"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "troll_leather_coif",
+    "name": "Troll Leather Coif",
+    "station": "leatherworking",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Troll Leather"
+    ],
+    "planned_outputs": [
+      "Troll Leather Coif"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "troll_leather_tunic",
+    "name": "Troll Leather Tunic",
+    "station": "leatherworking",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Troll Leather"
+    ],
+    "planned_outputs": [
+      "Troll Leather Tunic"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "troll_leather_chaps",
+    "name": "Troll Leather Chaps",
+    "station": "leatherworking",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Troll Leather"
+    ],
+    "planned_outputs": [
+      "Troll Leather Chaps"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "process_dragon_scale_leather",
+    "name": "Dragon Scale Leather",
+    "station": "leatherworking",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Dragon Scales"
+    ],
+    "planned_outputs": [
+      "Dragon Scale Leather"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "dragon_scale_leather_coif",
+    "name": "Dragon Scale Leather Coif",
+    "station": "leatherworking",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Dragon Scale Leather"
+    ],
+    "planned_outputs": [
+      "Dragon Scale Leather Coif"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "dragon_scale_leather_tunic",
+    "name": "Dragon Scale Leather Tunic",
+    "station": "leatherworking",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Dragon Scale Leather"
+    ],
+    "planned_outputs": [
+      "Dragon Scale Leather Tunic"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "dragon_scale_leather_chaps",
+    "name": "Dragon Scale Leather Chaps",
+    "station": "leatherworking",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Dragon Scale Leather"
+    ],
+    "planned_outputs": [
+      "Dragon Scale Leather Chaps"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "process_demon_skin_leather",
+    "name": "Demon Skin Leather",
+    "station": "leatherworking",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Demon Skin"
+    ],
+    "planned_outputs": [
+      "Demon Skin Leather"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "demon_skin_leather_coif",
+    "name": "Demon Skin Leather Coif",
+    "station": "leatherworking",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Demon Skin Leather"
+    ],
+    "planned_outputs": [
+      "Demon Skin Leather Coif"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "demon_skin_leather_tunic",
+    "name": "Demon Skin Leather Tunic",
+    "station": "leatherworking",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Demon Skin Leather"
+    ],
+    "planned_outputs": [
+      "Demon Skin Leather Tunic"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "demon_skin_leather_chaps",
+    "name": "Demon Skin Leather Chaps",
+    "station": "leatherworking",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Demon Skin Leather"
+    ],
+    "planned_outputs": [
+      "Demon Skin Leather Chaps"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "aetherwyrm_leather_coif",
+    "name": "Aetherwyrm Leather Coif",
+    "station": "leatherworking",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Aetherwyrm Leather"
+    ],
+    "planned_outputs": [
+      "Aetherwyrm Leather Coif"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "aetherwyrm_leather_tunic",
+    "name": "Aetherwyrm Leather Tunic",
+    "station": "leatherworking",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Aetherwyrm Leather"
+    ],
+    "planned_outputs": [
+      "Aetherwyrm Leather Tunic"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "aetherwyrm_leather_chaps",
+    "name": "Aetherwyrm Leather Chaps",
+    "station": "leatherworking",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Aetherwyrm Leather"
+    ],
+    "planned_outputs": [
+      "Aetherwyrm Leather Chaps"
+    ],
+    "reason": "Ingredient quantities and yields await approval."
+  },
+  {
+    "id": "process_homespun_cloth",
+    "name": "Homespun Cloth",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Appropriate monster cloth/scraps (source pending)"
+    ],
+    "planned_outputs": [
+      "Homespun Cloth"
+    ],
+    "reason": "Raw cloth/scrap definitions and processing ratios await approval."
+  },
+  {
+    "id": "homespun_hood",
+    "name": "Homespun Hood",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Homespun Cloth"
+    ],
+    "planned_outputs": [
+      "Homespun Hood"
+    ],
+    "reason": "Garment quantities await approval; all capes use cloth."
+  },
+  {
+    "id": "homespun_robe_top",
+    "name": "Homespun Robe Top",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Homespun Cloth"
+    ],
+    "planned_outputs": [
+      "Homespun Robe Top"
+    ],
+    "reason": "Garment quantities await approval; all capes use cloth."
+  },
+  {
+    "id": "homespun_robe_bottom",
+    "name": "Homespun Robe Bottom",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Homespun Cloth"
+    ],
+    "planned_outputs": [
+      "Homespun Robe Bottom"
+    ],
+    "reason": "Garment quantities await approval; all capes use cloth."
+  },
+  {
+    "id": "homespun_cape",
+    "name": "Homespun Cape",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Homespun Cloth"
+    ],
+    "planned_outputs": [
+      "Homespun Cape"
+    ],
+    "reason": "Garment quantities await approval; all capes use cloth."
+  },
+  {
+    "id": "process_woven_cloth",
+    "name": "Woven Cloth",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Appropriate monster cloth/scraps (source pending)"
+    ],
+    "planned_outputs": [
+      "Woven Cloth"
+    ],
+    "reason": "Raw cloth/scrap definitions and processing ratios await approval."
+  },
+  {
+    "id": "woven_hood",
+    "name": "Woven Hood",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Woven Cloth"
+    ],
+    "planned_outputs": [
+      "Woven Hood"
+    ],
+    "reason": "Garment quantities await approval; all capes use cloth."
+  },
+  {
+    "id": "woven_robe_top",
+    "name": "Woven Robe Top",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Woven Cloth"
+    ],
+    "planned_outputs": [
+      "Woven Robe Top"
+    ],
+    "reason": "Garment quantities await approval; all capes use cloth."
+  },
+  {
+    "id": "woven_robe_bottom",
+    "name": "Woven Robe Bottom",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Woven Cloth"
+    ],
+    "planned_outputs": [
+      "Woven Robe Bottom"
+    ],
+    "reason": "Garment quantities await approval; all capes use cloth."
+  },
+  {
+    "id": "woven_cape",
+    "name": "Woven Cape",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Woven Cloth"
+    ],
+    "planned_outputs": [
+      "Woven Cape"
+    ],
+    "reason": "Garment quantities await approval; all capes use cloth."
+  },
+  {
+    "id": "adept_magic_staff",
+    "name": "Adept Magic Staff",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Tier 2 staff body (material mapping pending)",
+      "Magic Orb"
+    ],
+    "planned_outputs": [
+      "Adept Magic Staff"
+    ],
+    "reason": "Higher-tier staff body materials, log species, tier mapping and quantities await approval."
+  },
+  {
+    "id": "adept_magic_staff_fire",
+    "name": "Adept Magic Staff (Fire)",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Tier 2 staff body (material mapping pending)",
+      "Fire Orb"
+    ],
+    "planned_outputs": [
+      "Adept Magic Staff (Fire)"
+    ],
+    "reason": "Higher-tier staff body materials, log species, tier mapping and quantities await approval."
+  },
+  {
+    "id": "adept_magic_staff_ice",
+    "name": "Adept Magic Staff (Ice)",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Tier 2 staff body (material mapping pending)",
+      "Ice Orb"
+    ],
+    "planned_outputs": [
+      "Adept Magic Staff (Ice)"
+    ],
+    "reason": "Higher-tier staff body materials, log species, tier mapping and quantities await approval."
+  },
+  {
+    "id": "adept_magic_staff_lightning",
+    "name": "Adept Magic Staff (Lightning)",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Tier 2 staff body (material mapping pending)",
+      "Lightning Orb"
+    ],
+    "planned_outputs": [
+      "Adept Magic Staff (Lightning)"
+    ],
+    "reason": "Higher-tier staff body materials, log species, tier mapping and quantities await approval."
+  },
+  {
+    "id": "adept_magic_staff_hurricane",
+    "name": "Adept Magic Staff (Hurricane)",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Tier 2 staff body (material mapping pending)",
+      "Hurricane Orb"
+    ],
+    "planned_outputs": [
+      "Adept Magic Staff (Hurricane)"
+    ],
+    "reason": "Higher-tier staff body materials, log species, tier mapping and quantities await approval."
+  },
+  {
+    "id": "process_runic_cloth",
+    "name": "Runic Cloth",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Appropriate monster cloth/scraps (source pending)"
+    ],
+    "planned_outputs": [
+      "Runic Cloth"
+    ],
+    "reason": "Raw cloth/scrap definitions and processing ratios await approval."
+  },
+  {
+    "id": "runic_hood",
+    "name": "Runic Hood",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Runic Cloth"
+    ],
+    "planned_outputs": [
+      "Runic Hood"
+    ],
+    "reason": "Garment quantities await approval; all capes use cloth."
+  },
+  {
+    "id": "runic_robe_top",
+    "name": "Runic Robe Top",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Runic Cloth"
+    ],
+    "planned_outputs": [
+      "Runic Robe Top"
+    ],
+    "reason": "Garment quantities await approval; all capes use cloth."
+  },
+  {
+    "id": "runic_robe_bottom",
+    "name": "Runic Robe Bottom",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Runic Cloth"
+    ],
+    "planned_outputs": [
+      "Runic Robe Bottom"
+    ],
+    "reason": "Garment quantities await approval; all capes use cloth."
+  },
+  {
+    "id": "runic_cape",
+    "name": "Runic Cape",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Runic Cloth"
+    ],
+    "planned_outputs": [
+      "Runic Cape"
+    ],
+    "reason": "Garment quantities await approval; all capes use cloth."
+  },
+  {
+    "id": "runic_magic_staff",
+    "name": "Runic Magic Staff",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Tier 3 staff body (material mapping pending)",
+      "Magic Orb"
+    ],
+    "planned_outputs": [
+      "Runic Magic Staff"
+    ],
+    "reason": "Higher-tier staff body materials, log species, tier mapping and quantities await approval."
+  },
+  {
+    "id": "runic_magic_staff_fire",
+    "name": "Runic Magic Staff (Fire)",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Tier 3 staff body (material mapping pending)",
+      "Fire Orb"
+    ],
+    "planned_outputs": [
+      "Runic Magic Staff (Fire)"
+    ],
+    "reason": "Higher-tier staff body materials, log species, tier mapping and quantities await approval."
+  },
+  {
+    "id": "runic_magic_staff_ice",
+    "name": "Runic Magic Staff (Ice)",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Tier 3 staff body (material mapping pending)",
+      "Ice Orb"
+    ],
+    "planned_outputs": [
+      "Runic Magic Staff (Ice)"
+    ],
+    "reason": "Higher-tier staff body materials, log species, tier mapping and quantities await approval."
+  },
+  {
+    "id": "runic_magic_staff_lightning",
+    "name": "Runic Magic Staff (Lightning)",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Tier 3 staff body (material mapping pending)",
+      "Lightning Orb"
+    ],
+    "planned_outputs": [
+      "Runic Magic Staff (Lightning)"
+    ],
+    "reason": "Higher-tier staff body materials, log species, tier mapping and quantities await approval."
+  },
+  {
+    "id": "runic_magic_staff_hurricane",
+    "name": "Runic Magic Staff (Hurricane)",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Tier 3 staff body (material mapping pending)",
+      "Hurricane Orb"
+    ],
+    "planned_outputs": [
+      "Runic Magic Staff (Hurricane)"
+    ],
+    "reason": "Higher-tier staff body materials, log species, tier mapping and quantities await approval."
+  },
+  {
+    "id": "process_enchanted_cloth",
+    "name": "Enchanted Cloth",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Appropriate monster cloth/scraps (source pending)"
+    ],
+    "planned_outputs": [
+      "Enchanted Cloth"
+    ],
+    "reason": "Raw cloth/scrap definitions and processing ratios await approval."
+  },
+  {
+    "id": "enchanted_hood",
+    "name": "Enchanted Hood",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Enchanted Cloth"
+    ],
+    "planned_outputs": [
+      "Enchanted Hood"
+    ],
+    "reason": "Garment quantities await approval; all capes use cloth."
+  },
+  {
+    "id": "enchanted_robe_top",
+    "name": "Enchanted Robe Top",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Enchanted Cloth"
+    ],
+    "planned_outputs": [
+      "Enchanted Robe Top"
+    ],
+    "reason": "Garment quantities await approval; all capes use cloth."
+  },
+  {
+    "id": "enchanted_robe_bottom",
+    "name": "Enchanted Robe Bottom",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Enchanted Cloth"
+    ],
+    "planned_outputs": [
+      "Enchanted Robe Bottom"
+    ],
+    "reason": "Garment quantities await approval; all capes use cloth."
+  },
+  {
+    "id": "enchanted_cape",
+    "name": "Enchanted Cape",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Enchanted Cloth"
+    ],
+    "planned_outputs": [
+      "Enchanted Cape"
+    ],
+    "reason": "Garment quantities await approval; all capes use cloth."
+  },
+  {
+    "id": "enchanted_magic_staff",
+    "name": "Enchanted Magic Staff",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Tier 4 staff body (material mapping pending)",
+      "Magic Orb"
+    ],
+    "planned_outputs": [
+      "Enchanted Magic Staff"
+    ],
+    "reason": "Higher-tier staff body materials, log species, tier mapping and quantities await approval."
+  },
+  {
+    "id": "enchanted_magic_staff_fire",
+    "name": "Enchanted Magic Staff (Fire)",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Tier 4 staff body (material mapping pending)",
+      "Fire Orb"
+    ],
+    "planned_outputs": [
+      "Enchanted Magic Staff (Fire)"
+    ],
+    "reason": "Higher-tier staff body materials, log species, tier mapping and quantities await approval."
+  },
+  {
+    "id": "enchanted_magic_staff_ice",
+    "name": "Enchanted Magic Staff (Ice)",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Tier 4 staff body (material mapping pending)",
+      "Ice Orb"
+    ],
+    "planned_outputs": [
+      "Enchanted Magic Staff (Ice)"
+    ],
+    "reason": "Higher-tier staff body materials, log species, tier mapping and quantities await approval."
+  },
+  {
+    "id": "enchanted_magic_staff_lightning",
+    "name": "Enchanted Magic Staff (Lightning)",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Tier 4 staff body (material mapping pending)",
+      "Lightning Orb"
+    ],
+    "planned_outputs": [
+      "Enchanted Magic Staff (Lightning)"
+    ],
+    "reason": "Higher-tier staff body materials, log species, tier mapping and quantities await approval."
+  },
+  {
+    "id": "enchanted_magic_staff_hurricane",
+    "name": "Enchanted Magic Staff (Hurricane)",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Tier 4 staff body (material mapping pending)",
+      "Hurricane Orb"
+    ],
+    "planned_outputs": [
+      "Enchanted Magic Staff (Hurricane)"
+    ],
+    "reason": "Higher-tier staff body materials, log species, tier mapping and quantities await approval."
+  },
+  {
+    "id": "process_astral_cloth",
+    "name": "Astral Cloth",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Appropriate monster cloth/scraps (source pending)"
+    ],
+    "planned_outputs": [
+      "Astral Cloth"
+    ],
+    "reason": "Raw cloth/scrap definitions and processing ratios await approval."
+  },
+  {
+    "id": "astral_hood",
+    "name": "Astral Hood",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Astral Cloth"
+    ],
+    "planned_outputs": [
+      "Astral Hood"
+    ],
+    "reason": "Garment quantities await approval; all capes use cloth."
+  },
+  {
+    "id": "astral_robe_top",
+    "name": "Astral Robe Top",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Astral Cloth"
+    ],
+    "planned_outputs": [
+      "Astral Robe Top"
+    ],
+    "reason": "Garment quantities await approval; all capes use cloth."
+  },
+  {
+    "id": "astral_robe_bottom",
+    "name": "Astral Robe Bottom",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Astral Cloth"
+    ],
+    "planned_outputs": [
+      "Astral Robe Bottom"
+    ],
+    "reason": "Garment quantities await approval; all capes use cloth."
+  },
+  {
+    "id": "astral_cape",
+    "name": "Astral Cape",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Astral Cloth"
+    ],
+    "planned_outputs": [
+      "Astral Cape"
+    ],
+    "reason": "Garment quantities await approval; all capes use cloth."
+  },
+  {
+    "id": "astral_magic_staff",
+    "name": "Astral Magic Staff",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Tier 5 staff body (material mapping pending)",
+      "Magic Orb"
+    ],
+    "planned_outputs": [
+      "Astral Magic Staff"
+    ],
+    "reason": "Higher-tier staff body materials, log species, tier mapping and quantities await approval."
+  },
+  {
+    "id": "astral_magic_staff_fire",
+    "name": "Astral Magic Staff (Fire)",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Tier 5 staff body (material mapping pending)",
+      "Fire Orb"
+    ],
+    "planned_outputs": [
+      "Astral Magic Staff (Fire)"
+    ],
+    "reason": "Higher-tier staff body materials, log species, tier mapping and quantities await approval."
+  },
+  {
+    "id": "astral_magic_staff_ice",
+    "name": "Astral Magic Staff (Ice)",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Tier 5 staff body (material mapping pending)",
+      "Ice Orb"
+    ],
+    "planned_outputs": [
+      "Astral Magic Staff (Ice)"
+    ],
+    "reason": "Higher-tier staff body materials, log species, tier mapping and quantities await approval."
+  },
+  {
+    "id": "astral_magic_staff_lightning",
+    "name": "Astral Magic Staff (Lightning)",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Tier 5 staff body (material mapping pending)",
+      "Lightning Orb"
+    ],
+    "planned_outputs": [
+      "Astral Magic Staff (Lightning)"
+    ],
+    "reason": "Higher-tier staff body materials, log species, tier mapping and quantities await approval."
+  },
+  {
+    "id": "astral_magic_staff_hurricane",
+    "name": "Astral Magic Staff (Hurricane)",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Tier 5 staff body (material mapping pending)",
+      "Hurricane Orb"
+    ],
+    "planned_outputs": [
+      "Astral Magic Staff (Hurricane)"
+    ],
+    "reason": "Higher-tier staff body materials, log species, tier mapping and quantities await approval."
+  },
+  {
+    "id": "process_empyrean_cloth",
+    "name": "Empyrean Cloth",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Appropriate monster cloth/scraps (source pending)"
+    ],
+    "planned_outputs": [
+      "Empyrean Cloth"
+    ],
+    "reason": "Raw cloth/scrap definitions and processing ratios await approval."
+  },
+  {
+    "id": "empyrean_hood",
+    "name": "Empyrean Hood",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Empyrean Cloth"
+    ],
+    "planned_outputs": [
+      "Empyrean Hood"
+    ],
+    "reason": "Garment quantities await approval; all capes use cloth."
+  },
+  {
+    "id": "empyrean_robe_top",
+    "name": "Empyrean Robe Top",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Empyrean Cloth"
+    ],
+    "planned_outputs": [
+      "Empyrean Robe Top"
+    ],
+    "reason": "Garment quantities await approval; all capes use cloth."
+  },
+  {
+    "id": "empyrean_robe_bottom",
+    "name": "Empyrean Robe Bottom",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Empyrean Cloth"
+    ],
+    "planned_outputs": [
+      "Empyrean Robe Bottom"
+    ],
+    "reason": "Garment quantities await approval; all capes use cloth."
+  },
+  {
+    "id": "empyrean_cape",
+    "name": "Empyrean Cape",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Empyrean Cloth"
+    ],
+    "planned_outputs": [
+      "Empyrean Cape"
+    ],
+    "reason": "Garment quantities await approval; all capes use cloth."
+  },
+  {
+    "id": "empyrean_magic_staff",
+    "name": "Empyrean Magic Staff",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Tier 6 staff body (material mapping pending)",
+      "Magic Orb"
+    ],
+    "planned_outputs": [
+      "Empyrean Magic Staff"
+    ],
+    "reason": "Higher-tier staff body materials, log species, tier mapping and quantities await approval."
+  },
+  {
+    "id": "empyrean_magic_staff_fire",
+    "name": "Empyrean Magic Staff (Fire)",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Tier 6 staff body (material mapping pending)",
+      "Fire Orb"
+    ],
+    "planned_outputs": [
+      "Empyrean Magic Staff (Fire)"
+    ],
+    "reason": "Higher-tier staff body materials, log species, tier mapping and quantities await approval."
+  },
+  {
+    "id": "empyrean_magic_staff_ice",
+    "name": "Empyrean Magic Staff (Ice)",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Tier 6 staff body (material mapping pending)",
+      "Ice Orb"
+    ],
+    "planned_outputs": [
+      "Empyrean Magic Staff (Ice)"
+    ],
+    "reason": "Higher-tier staff body materials, log species, tier mapping and quantities await approval."
+  },
+  {
+    "id": "empyrean_magic_staff_lightning",
+    "name": "Empyrean Magic Staff (Lightning)",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Tier 6 staff body (material mapping pending)",
+      "Lightning Orb"
+    ],
+    "planned_outputs": [
+      "Empyrean Magic Staff (Lightning)"
+    ],
+    "reason": "Higher-tier staff body materials, log species, tier mapping and quantities await approval."
+  },
+  {
+    "id": "empyrean_magic_staff_hurricane",
+    "name": "Empyrean Magic Staff (Hurricane)",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Tier 6 staff body (material mapping pending)",
+      "Hurricane Orb"
+    ],
+    "planned_outputs": [
+      "Empyrean Magic Staff (Hurricane)"
+    ],
+    "reason": "Higher-tier staff body materials, log species, tier mapping and quantities await approval."
+  },
+  {
+    "id": "process_celestial_cloth",
+    "name": "Celestial Cloth",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Appropriate monster cloth/scraps (source pending)"
+    ],
+    "planned_outputs": [
+      "Celestial Cloth"
+    ],
+    "reason": "Raw cloth/scrap definitions and processing ratios await approval."
+  },
+  {
+    "id": "celestial_hood",
+    "name": "Celestial Hood",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Celestial Cloth"
+    ],
+    "planned_outputs": [
+      "Celestial Hood"
+    ],
+    "reason": "Garment quantities await approval; all capes use cloth."
+  },
+  {
+    "id": "celestial_robe_top",
+    "name": "Celestial Robe Top",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Celestial Cloth"
+    ],
+    "planned_outputs": [
+      "Celestial Robe Top"
+    ],
+    "reason": "Garment quantities await approval; all capes use cloth."
+  },
+  {
+    "id": "celestial_robe_bottom",
+    "name": "Celestial Robe Bottom",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Celestial Cloth"
+    ],
+    "planned_outputs": [
+      "Celestial Robe Bottom"
+    ],
+    "reason": "Garment quantities await approval; all capes use cloth."
+  },
+  {
+    "id": "celestial_cape",
+    "name": "Celestial Cape",
+    "station": "tailoring",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Celestial Cloth"
+    ],
+    "planned_outputs": [
+      "Celestial Cape"
+    ],
+    "reason": "Garment quantities await approval; all capes use cloth."
+  },
+  {
+    "id": "celestial_magic_staff",
+    "name": "Celestial Magic Staff",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Tier 7 staff body (material mapping pending)",
+      "Magic Orb"
+    ],
+    "planned_outputs": [
+      "Celestial Magic Staff"
+    ],
+    "reason": "Higher-tier staff body materials, log species, tier mapping and quantities await approval."
+  },
+  {
+    "id": "celestial_magic_staff_fire",
+    "name": "Celestial Magic Staff (Fire)",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Tier 7 staff body (material mapping pending)",
+      "Fire Orb"
+    ],
+    "planned_outputs": [
+      "Celestial Magic Staff (Fire)"
+    ],
+    "reason": "Higher-tier staff body materials, log species, tier mapping and quantities await approval."
+  },
+  {
+    "id": "celestial_magic_staff_ice",
+    "name": "Celestial Magic Staff (Ice)",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Tier 7 staff body (material mapping pending)",
+      "Ice Orb"
+    ],
+    "planned_outputs": [
+      "Celestial Magic Staff (Ice)"
+    ],
+    "reason": "Higher-tier staff body materials, log species, tier mapping and quantities await approval."
+  },
+  {
+    "id": "celestial_magic_staff_lightning",
+    "name": "Celestial Magic Staff (Lightning)",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Tier 7 staff body (material mapping pending)",
+      "Lightning Orb"
+    ],
+    "planned_outputs": [
+      "Celestial Magic Staff (Lightning)"
+    ],
+    "reason": "Higher-tier staff body materials, log species, tier mapping and quantities await approval."
+  },
+  {
+    "id": "celestial_magic_staff_hurricane",
+    "name": "Celestial Magic Staff (Hurricane)",
+    "station": "fletching",
+    "enabled": false,
+    "inputs": [],
+    "outputs": [],
+    "planned_inputs": [
+      "Tier 7 staff body (material mapping pending)",
+      "Hurricane Orb"
+    ],
+    "planned_outputs": [
+      "Celestial Magic Staff (Hurricane)"
+    ],
+    "reason": "Higher-tier staff body materials, log species, tier mapping and quantities await approval."
+  }
+]
+

@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/MapTiles/Objects/Outskirts_Rocks_008.png" id="1_f3wmi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e7xs7"]
+radius = 9.0
+
+[node name="Outskirts_Rocks_008" type="Node2D"]
+y_sort_enabled = true
+texture_filter = 1
+metadata/kind = "Rocks"
+
+[node name="Footprint" type="StaticBody2D" parent="." groups=["map_object", "world_solid"]]
+position = Vector2(15, 5)
+collision_mask = 0
+metadata/kind = "Rocks"
+
+[node name="Visual" type="Sprite2D" parent="Footprint"]
+position = Vector2(-8, -30)
+texture = ExtResource("1_f3wmi")
+centered = false
+
+[node name="SolidCircle0" type="CollisionShape2D" parent="Footprint"]
+position = Vector2(-12, 12)
+shape = SubResource("CircleShape2D_e7xs7")

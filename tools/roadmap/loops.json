@@ -1,0 +1,242 @@
+{
+  "expedition": {
+    "name": "Expedition",
+    "priority": "First · connect the whole session",
+    "question": "Stay for one more reward, or return with what I have?",
+    "steps": [
+      [
+        "Choose a goal",
+        "New",
+        "new"
+      ],
+      [
+        "Prepare supplies",
+        "New",
+        "new"
+      ],
+      [
+        "Travel + fight",
+        "Foundation exists",
+        "existing"
+      ],
+      [
+        "Collect rewards",
+        "Foundation exists",
+        "existing"
+      ],
+      [
+        "Return + recover",
+        "New",
+        "new"
+      ],
+      [
+        "Improve + repeat",
+        "Partial: XP + gear exist",
+        "partial"
+      ]
+    ],
+    "exists": "Movement, combat, loot pickup, equipment and XP.",
+    "gap": "A player-facing goal, preparation, a reason to return, and a next destination.",
+    "minimum": "One tavern → road → enemy pocket → useful reward → tavern circuit."
+  },
+  "economy": {
+    "name": "Economy and resupply",
+    "priority": "First · make loot and gold useful",
+    "question": "Keep this drop, sell it, or spend gold on the next trip?",
+    "steps": [
+      [
+        "Earn loot + gold",
+        "Foundation exists",
+        "existing"
+      ],
+      [
+        "Keep or sell",
+        "Sell missing",
+        "new"
+      ],
+      [
+        "Buy readiness",
+        "New",
+        "new"
+      ],
+      [
+        "Attempt harder trip",
+        "Needs encounter route",
+        "new"
+      ],
+      [
+        "Earn better rewards",
+        "Loot foundation exists",
+        "existing"
+      ],
+      [
+        "Reinvest",
+        "New",
+        "new"
+      ]
+    ],
+    "exists": "Numeric gold payouts and item ownership.",
+    "gap": "Connected buying/selling, authored prices and recurring useful purchases.",
+    "minimum": "One supply NPC: sell surplus, buy food and pay for safe recovery."
+  },
+  "production": {
+    "name": "Supply production",
+    "priority": "Next · add one useful noncombat activity",
+    "question": "Make supplies myself, or buy them and head out sooner?",
+    "steps": [
+      [
+        "Find resource",
+        "New",
+        "new"
+      ],
+      [
+        "Gather",
+        "New",
+        "new"
+      ],
+      [
+        "Prepare at station",
+        "New",
+        "new"
+      ],
+      [
+        "Make one food",
+        "New",
+        "new"
+      ],
+      [
+        "Use on adventure",
+        "Eat missing",
+        "new"
+      ],
+      [
+        "Replenish",
+        "New",
+        "new"
+      ]
+    ],
+    "exists": "Materials and food in the catalog; farm and river geography.",
+    "gap": "Interactable resource, recipe, station and a useful consumption action.",
+    "minimum": "One ingredient → one preparation station → one meal. No new skill roster required."
+  },
+  "discovery": {
+    "name": "Discovery and access",
+    "priority": "Next · give the map purpose",
+    "question": "Follow the known road, or investigate that side path?",
+    "steps": [
+      [
+        "Notice landmark",
+        "Map foundation exists",
+        "existing"
+      ],
+      [
+        "Investigate route",
+        "Movement exists",
+        "existing"
+      ],
+      [
+        "Overcome condition",
+        "New",
+        "new"
+      ],
+      [
+        "Find reward",
+        "Placement needed",
+        "new"
+      ],
+      [
+        "Unlock access",
+        "New",
+        "new"
+      ],
+      [
+        "Explore farther",
+        "New",
+        "new"
+      ]
+    ],
+    "exists": "Connected road, woodland, farm, tavern and outskirts scenery.",
+    "gap": "Discoveries with a payoff, access conditions and remembered unlocks.",
+    "minimum": "One side path or cache plus one earned shortcut; preserve the calm open landscape."
+  },
+  "mastery": {
+    "name": "Combat mastery",
+    "priority": "Next · make existing combat ask better questions",
+    "question": "Which style, position or target order solves this encounter?",
+    "steps": [
+      [
+        "Read threat",
+        "Cues need review",
+        "partial"
+      ],
+      [
+        "Choose loadout",
+        "Foundation exists",
+        "existing"
+      ],
+      [
+        "Use position",
+        "Terrain checks exist",
+        "existing"
+      ],
+      [
+        "Counter enemy",
+        "Roles partly exist",
+        "partial"
+      ],
+      [
+        "Win challenge",
+        "Authored encounter needed",
+        "new"
+      ],
+      [
+        "Try harder variant",
+        "New",
+        "new"
+      ]
+    ],
+    "exists": "Attack styles, resistances, ranged/hybrid behavior, cover collision, wall and knockback spells.",
+    "gap": "Authored encounters and readable cues that reward those tools.",
+    "minimum": "One melee threat and one ranged threat where cover and target order matter. Keep agreed spell roles."
+  },
+  "collection": {
+    "name": "Collection and long goals",
+    "priority": "Later · give repeated trips a destination",
+    "question": "Which enemy or route gets me the piece I still need?",
+    "steps": [
+      [
+        "Choose collection",
+        "Gear catalog exists",
+        "existing"
+      ],
+      [
+        "Learn reward source",
+        "New",
+        "new"
+      ],
+      [
+        "Target a creature",
+        "Loot tables exist",
+        "existing"
+      ],
+      [
+        "Track missing pieces",
+        "New",
+        "new"
+      ],
+      [
+        "Complete milestone",
+        "Gear assembly exists",
+        "partial"
+      ],
+      [
+        "Unlock new challenge",
+        "New",
+        "new"
+      ]
+    ],
+    "exists": "Tiered equipment and an agreed direction to spread higher-tier sets across creatures.",
+    "gap": "Player-facing reward sources, collection tracking and meaningful milestone payoffs.",
+    "minimum": "One visible equipment goal with known sources; reliable early progress alongside rare prizes."
+  }
+}

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/MapTiles/Wilderness/PolishedObjects/Outskirts_Trees_042_s1125.png" id="1_of6xk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o41sl"]
+radius = 19.137531
+
+[node name="Wilderness_JoinTree_03" type="Node2D"]
+y_sort_enabled = true
+texture_filter = 1
+metadata/kind = "Trees"
+
+[node name="Footprint" type="StaticBody2D" parent="." groups=["map_object", "world_solid"]]
+position = Vector2(-6, -8)
+collision_mask = 0
+metadata/kind = "Trees"
+
+[node name="Visual" type="Sprite2D" parent="Footprint"]
+position = Vector2(-143, -287)
+texture = ExtResource("1_of6xk")
+centered = false
+
+[node name="SolidCircle0" type="CollisionShape2D" parent="Footprint"]
+shape = SubResource("CircleShape2D_o41sl")

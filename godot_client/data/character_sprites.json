@@ -1,0 +1,3651 @@
+{
+  "schema_version": 1,
+  "directions": [
+    "south",
+    "south-east",
+    "east",
+    "north-east",
+    "north",
+    "north-west",
+    "west",
+    "south-west"
+  ],
+  "defaults": {
+    "player": "peasant"
+  },
+  "player_skins": [
+    "peasant",
+    "peasant_sword"
+  ],
+  "equipment_skins": {
+    "Iron Longsword": "peasant_sword"
+  },
+  "monster_skins": {
+    "Goblin Chieftain": "goblin_chieftain",
+    "Goblin Scout": "goblin_scout",
+    "Goblin Shaman": "goblin_shaman",
+    "Goblin Warrior": "goblin_warrior",
+    "Goblin Worker": "goblin_worker",
+    "Golem Boulderkin": "golem_stoneguard",
+    "Golem Runeshell": "golem_runeshell",
+    "Golem Shardling": "golem_shardling",
+    "Golem Stoneguard": "golem_stoneguard",
+    "Golem Titan": "golem_titan",
+    "Skeleton Acolyte": "skeleton_acolyte",
+    "Skeleton Captain": "skeleton_captain",
+    "Skeleton Footsoldier": "skeleton_footsoldier",
+    "Skeleton Knight": "skeleton_knight",
+    "Slime Caustic": "slime_caustic",
+    "Slime Gelwarden": "slime_gelwarden",
+    "Slime Glob": "slime_caustic",
+    "Slime Oozelord": "slime_oozelord",
+    "Slime Puddle": "slime_caustic",
+    "Wolf Direwolf": "wolf_direwolf",
+    "Wolf Elder Fang": "wolf_moonfang",
+    "Wolf Moonfang": "wolf_moonfang",
+    "Wraith Dreadshade": "wraith_dreadshade",
+    "Wraith Soulpiercer": "wraith_soulpiercer"
+  },
+  "skins": {
+    "golem_titan": {
+      "name": "Golem Titan",
+      "source_character_id": "16f5d16e-6e85-4a19-8a93-382c8398d82b",
+      "source_state_name": "Idle",
+      "source_folder": "characters/Idle/Idle",
+      "source_prompt": "Golem Titan (tier 8 of 8 golem)",
+      "size": [
+        60,
+        60
+      ],
+      "display_height": 80,
+      "foot_position": [
+        30.0,
+        57
+      ],
+      "rotations": {
+        "south": "res://Assets/Characters/golem_titan/rotations/south.png",
+        "south-east": "res://Assets/Characters/golem_titan/rotations/south-east.png",
+        "east": "res://Assets/Characters/golem_titan/rotations/east.png",
+        "north-east": "res://Assets/Characters/golem_titan/rotations/north-east.png",
+        "north": "res://Assets/Characters/golem_titan/rotations/north.png",
+        "north-west": "res://Assets/Characters/golem_titan/rotations/north-west.png",
+        "west": "res://Assets/Characters/golem_titan/rotations/west.png",
+        "south-west": "res://Assets/Characters/golem_titan/rotations/south-west.png"
+      },
+      "animations": {
+        "attack": {
+          "fps": 8,
+          "loop": false,
+          "directions": {
+            "south": [
+              "res://Assets/Characters/golem_titan/animations/attack/south/frame_000.png",
+              "res://Assets/Characters/golem_titan/animations/attack/south/frame_001.png",
+              "res://Assets/Characters/golem_titan/animations/attack/south/frame_002.png",
+              "res://Assets/Characters/golem_titan/animations/attack/south/frame_003.png",
+              "res://Assets/Characters/golem_titan/animations/attack/south/frame_004.png",
+              "res://Assets/Characters/golem_titan/animations/attack/south/frame_005.png",
+              "res://Assets/Characters/golem_titan/animations/attack/south/frame_006.png",
+              "res://Assets/Characters/golem_titan/animations/attack/south/frame_007.png",
+              "res://Assets/Characters/golem_titan/animations/attack/south/frame_008.png"
+            ],
+            "north": [
+              "res://Assets/Characters/golem_titan/animations/attack/north/frame_000.png",
+              "res://Assets/Characters/golem_titan/animations/attack/north/frame_001.png",
+              "res://Assets/Characters/golem_titan/animations/attack/north/frame_002.png",
+              "res://Assets/Characters/golem_titan/animations/attack/north/frame_003.png",
+              "res://Assets/Characters/golem_titan/animations/attack/north/frame_004.png",
+              "res://Assets/Characters/golem_titan/animations/attack/north/frame_005.png",
+              "res://Assets/Characters/golem_titan/animations/attack/north/frame_006.png",
+              "res://Assets/Characters/golem_titan/animations/attack/north/frame_007.png",
+              "res://Assets/Characters/golem_titan/animations/attack/north/frame_008.png",
+              "res://Assets/Characters/golem_titan/animations/attack/north/frame_009.png",
+              "res://Assets/Characters/golem_titan/animations/attack/north/frame_010.png"
+            ],
+            "west": [
+              "res://Assets/Characters/golem_titan/animations/attack/west/frame_000.png",
+              "res://Assets/Characters/golem_titan/animations/attack/west/frame_001.png",
+              "res://Assets/Characters/golem_titan/animations/attack/west/frame_002.png",
+              "res://Assets/Characters/golem_titan/animations/attack/west/frame_003.png",
+              "res://Assets/Characters/golem_titan/animations/attack/west/frame_004.png",
+              "res://Assets/Characters/golem_titan/animations/attack/west/frame_005.png",
+              "res://Assets/Characters/golem_titan/animations/attack/west/frame_006.png",
+              "res://Assets/Characters/golem_titan/animations/attack/west/frame_007.png",
+              "res://Assets/Characters/golem_titan/animations/attack/west/frame_008.png",
+              "res://Assets/Characters/golem_titan/animations/attack/west/frame_009.png",
+              "res://Assets/Characters/golem_titan/animations/attack/west/frame_010.png"
+            ]
+          }
+        }
+      },
+      "exported_animations": {
+        "The_golem_raises_both_heavy_fists_high_above_its_h": {
+          "south": [
+            "res://Assets/Characters/golem_titan/animations/attack/south/frame_000.png",
+            "res://Assets/Characters/golem_titan/animations/attack/south/frame_001.png",
+            "res://Assets/Characters/golem_titan/animations/attack/south/frame_002.png",
+            "res://Assets/Characters/golem_titan/animations/attack/south/frame_003.png",
+            "res://Assets/Characters/golem_titan/animations/attack/south/frame_004.png",
+            "res://Assets/Characters/golem_titan/animations/attack/south/frame_005.png",
+            "res://Assets/Characters/golem_titan/animations/attack/south/frame_006.png",
+            "res://Assets/Characters/golem_titan/animations/attack/south/frame_007.png",
+            "res://Assets/Characters/golem_titan/animations/attack/south/frame_008.png"
+          ],
+          "north": [
+            "res://Assets/Characters/golem_titan/animations/attack/north/frame_000.png",
+            "res://Assets/Characters/golem_titan/animations/attack/north/frame_001.png",
+            "res://Assets/Characters/golem_titan/animations/attack/north/frame_002.png",
+            "res://Assets/Characters/golem_titan/animations/attack/north/frame_003.png",
+            "res://Assets/Characters/golem_titan/animations/attack/north/frame_004.png",
+            "res://Assets/Characters/golem_titan/animations/attack/north/frame_005.png",
+            "res://Assets/Characters/golem_titan/animations/attack/north/frame_006.png",
+            "res://Assets/Characters/golem_titan/animations/attack/north/frame_007.png",
+            "res://Assets/Characters/golem_titan/animations/attack/north/frame_008.png",
+            "res://Assets/Characters/golem_titan/animations/attack/north/frame_009.png",
+            "res://Assets/Characters/golem_titan/animations/attack/north/frame_010.png"
+          ],
+          "west": [
+            "res://Assets/Characters/golem_titan/animations/attack/west/frame_000.png",
+            "res://Assets/Characters/golem_titan/animations/attack/west/frame_001.png",
+            "res://Assets/Characters/golem_titan/animations/attack/west/frame_002.png",
+            "res://Assets/Characters/golem_titan/animations/attack/west/frame_003.png",
+            "res://Assets/Characters/golem_titan/animations/attack/west/frame_004.png",
+            "res://Assets/Characters/golem_titan/animations/attack/west/frame_005.png",
+            "res://Assets/Characters/golem_titan/animations/attack/west/frame_006.png",
+            "res://Assets/Characters/golem_titan/animations/attack/west/frame_007.png",
+            "res://Assets/Characters/golem_titan/animations/attack/west/frame_008.png",
+            "res://Assets/Characters/golem_titan/animations/attack/west/frame_009.png",
+            "res://Assets/Characters/golem_titan/animations/attack/west/frame_010.png"
+          ]
+        }
+      },
+      "frame_sizes": {
+        "res://Assets/Characters/golem_titan/rotations/south.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/golem_titan/rotations/south-east.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/golem_titan/rotations/east.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/golem_titan/rotations/north-east.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/golem_titan/rotations/north.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/golem_titan/rotations/north-west.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/golem_titan/rotations/west.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/golem_titan/rotations/south-west.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/golem_titan/animations/attack/south/frame_000.png": [
+          80,
+          84
+        ],
+        "res://Assets/Characters/golem_titan/animations/attack/south/frame_001.png": [
+          80,
+          84
+        ],
+        "res://Assets/Characters/golem_titan/animations/attack/south/frame_002.png": [
+          80,
+          84
+        ],
+        "res://Assets/Characters/golem_titan/animations/attack/south/frame_003.png": [
+          80,
+          84
+        ],
+        "res://Assets/Characters/golem_titan/animations/attack/south/frame_004.png": [
+          80,
+          84
+        ],
+        "res://Assets/Characters/golem_titan/animations/attack/south/frame_005.png": [
+          80,
+          84
+        ],
+        "res://Assets/Characters/golem_titan/animations/attack/south/frame_006.png": [
+          80,
+          84
+        ],
+        "res://Assets/Characters/golem_titan/animations/attack/south/frame_007.png": [
+          80,
+          84
+        ],
+        "res://Assets/Characters/golem_titan/animations/attack/south/frame_008.png": [
+          80,
+          84
+        ],
+        "res://Assets/Characters/golem_titan/animations/attack/north/frame_000.png": [
+          76,
+          80
+        ],
+        "res://Assets/Characters/golem_titan/animations/attack/north/frame_001.png": [
+          76,
+          80
+        ],
+        "res://Assets/Characters/golem_titan/animations/attack/north/frame_002.png": [
+          76,
+          80
+        ],
+        "res://Assets/Characters/golem_titan/animations/attack/north/frame_003.png": [
+          76,
+          80
+        ],
+        "res://Assets/Characters/golem_titan/animations/attack/north/frame_004.png": [
+          76,
+          80
+        ],
+        "res://Assets/Characters/golem_titan/animations/attack/north/frame_005.png": [
+          76,
+          80
+        ],
+        "res://Assets/Characters/golem_titan/animations/attack/north/frame_006.png": [
+          76,
+          80
+        ],
+        "res://Assets/Characters/golem_titan/animations/attack/north/frame_007.png": [
+          76,
+          80
+        ],
+        "res://Assets/Characters/golem_titan/animations/attack/north/frame_008.png": [
+          76,
+          80
+        ],
+        "res://Assets/Characters/golem_titan/animations/attack/north/frame_009.png": [
+          76,
+          80
+        ],
+        "res://Assets/Characters/golem_titan/animations/attack/north/frame_010.png": [
+          76,
+          80
+        ],
+        "res://Assets/Characters/golem_titan/animations/attack/west/frame_000.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/golem_titan/animations/attack/west/frame_001.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/golem_titan/animations/attack/west/frame_002.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/golem_titan/animations/attack/west/frame_003.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/golem_titan/animations/attack/west/frame_004.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/golem_titan/animations/attack/west/frame_005.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/golem_titan/animations/attack/west/frame_006.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/golem_titan/animations/attack/west/frame_007.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/golem_titan/animations/attack/west/frame_008.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/golem_titan/animations/attack/west/frame_009.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/golem_titan/animations/attack/west/frame_010.png": [
+          80,
+          80
+        ]
+      },
+      "coverage": {
+        "rotation_directions": [
+          "south",
+          "south-east",
+          "east",
+          "north-east",
+          "north",
+          "north-west",
+          "west",
+          "south-west"
+        ],
+        "animated_directions": {
+          "idle": [],
+          "walk": [],
+          "attack": [
+            "south",
+            "north",
+            "west"
+          ]
+        },
+        "unassigned_animations": []
+      }
+    },
+    "golem_runeshell": {
+      "name": "Golem Runeshell",
+      "source_character_id": "218d6657-45c8-4f1d-91d2-0ea5b75bf96c",
+      "source_state_name": "Idle",
+      "source_folder": "characters/Idle_2/Idle",
+      "source_prompt": "A hulking stone golem with a jagged, rocky silhouette, glowing cyan runes etched into its chest and shoulders, thick heavy limbs in a wide, grounded stance, medium detail with cracked stone textures.",
+      "size": [
+        60,
+        60
+      ],
+      "display_height": 64,
+      "foot_position": [
+        30.0,
+        57
+      ],
+      "rotations": {
+        "south": "res://Assets/Characters/golem_runeshell/rotations/south.png",
+        "south-east": "res://Assets/Characters/golem_runeshell/rotations/south-east.png",
+        "east": "res://Assets/Characters/golem_runeshell/rotations/east.png",
+        "north-east": "res://Assets/Characters/golem_runeshell/rotations/north-east.png",
+        "north": "res://Assets/Characters/golem_runeshell/rotations/north.png",
+        "north-west": "res://Assets/Characters/golem_runeshell/rotations/north-west.png",
+        "west": "res://Assets/Characters/golem_runeshell/rotations/west.png",
+        "south-west": "res://Assets/Characters/golem_runeshell/rotations/south-west.png"
+      },
+      "animations": {},
+      "exported_animations": {},
+      "frame_sizes": {
+        "res://Assets/Characters/golem_runeshell/rotations/south.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/golem_runeshell/rotations/south-east.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/golem_runeshell/rotations/east.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/golem_runeshell/rotations/north-east.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/golem_runeshell/rotations/north.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/golem_runeshell/rotations/north-west.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/golem_runeshell/rotations/west.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/golem_runeshell/rotations/south-west.png": [
+          60,
+          60
+        ]
+      },
+      "coverage": {
+        "rotation_directions": [
+          "south",
+          "south-east",
+          "east",
+          "north-east",
+          "north",
+          "north-west",
+          "west",
+          "south-west"
+        ],
+        "animated_directions": {
+          "idle": [],
+          "walk": [],
+          "attack": []
+        },
+        "unassigned_animations": []
+      }
+    },
+    "golem_stoneguard": {
+      "name": "Golem Stoneguard",
+      "source_character_id": "35fc8022-b470-4d09-ad9b-f2a81e2422e3",
+      "source_state_name": "Idle",
+      "source_folder": "characters/Idle_4/Idle",
+      "source_prompt": "A stocky stone golem with a rugged, blocky silhouette, cracked granite texture, glowing amber core embedded in the chest, arms held in a defensive braced stance, low top-down perspective.",
+      "size": [
+        80,
+        80
+      ],
+      "display_height": 56,
+      "foot_position": [
+        40.0,
+        66
+      ],
+      "rotations": {
+        "south": "res://Assets/Characters/golem_stoneguard/rotations/south.png",
+        "south-east": "res://Assets/Characters/golem_stoneguard/rotations/south-east.png",
+        "east": "res://Assets/Characters/golem_stoneguard/rotations/east.png",
+        "north-east": "res://Assets/Characters/golem_stoneguard/rotations/north-east.png",
+        "north": "res://Assets/Characters/golem_stoneguard/rotations/north.png",
+        "north-west": "res://Assets/Characters/golem_stoneguard/rotations/north-west.png",
+        "west": "res://Assets/Characters/golem_stoneguard/rotations/west.png",
+        "south-west": "res://Assets/Characters/golem_stoneguard/rotations/south-west.png"
+      },
+      "animations": {},
+      "exported_animations": {},
+      "frame_sizes": {
+        "res://Assets/Characters/golem_stoneguard/rotations/south.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/golem_stoneguard/rotations/south-east.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/golem_stoneguard/rotations/east.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/golem_stoneguard/rotations/north-east.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/golem_stoneguard/rotations/north.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/golem_stoneguard/rotations/north-west.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/golem_stoneguard/rotations/west.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/golem_stoneguard/rotations/south-west.png": [
+          80,
+          80
+        ]
+      },
+      "coverage": {
+        "rotation_directions": [
+          "south",
+          "south-east",
+          "east",
+          "north-east",
+          "north",
+          "north-west",
+          "west",
+          "south-west"
+        ],
+        "animated_directions": {
+          "idle": [],
+          "walk": [],
+          "attack": []
+        },
+        "unassigned_animations": []
+      }
+    },
+    "golem_shardling": {
+      "name": "Golem Shardling",
+      "source_character_id": "541ed12a-5fc7-43aa-a205-310a8f955a34",
+      "source_state_name": "Idle",
+      "source_folder": "characters/Idle_5/Idle",
+      "source_prompt": "A miniature baby golem constructed from jagged, uneven stone shards, rounded rock limbs, single glowing crystal eye, clumsy waddling stance, low top-down perspective, selective outline.",
+      "size": [
+        60,
+        60
+      ],
+      "display_height": 36,
+      "foot_position": [
+        30.0,
+        55
+      ],
+      "rotations": {
+        "south": "res://Assets/Characters/golem_shardling/rotations/south.png",
+        "south-east": "res://Assets/Characters/golem_shardling/rotations/south-east.png",
+        "east": "res://Assets/Characters/golem_shardling/rotations/east.png",
+        "north-east": "res://Assets/Characters/golem_shardling/rotations/north-east.png",
+        "north": "res://Assets/Characters/golem_shardling/rotations/north.png",
+        "north-west": "res://Assets/Characters/golem_shardling/rotations/north-west.png",
+        "west": "res://Assets/Characters/golem_shardling/rotations/west.png",
+        "south-west": "res://Assets/Characters/golem_shardling/rotations/south-west.png"
+      },
+      "animations": {
+        "walk": {
+          "fps": 10,
+          "loop": true,
+          "directions": {
+            "south": [
+              "res://Assets/Characters/golem_shardling/animations/walk/south/frame_000.png",
+              "res://Assets/Characters/golem_shardling/animations/walk/south/frame_001.png",
+              "res://Assets/Characters/golem_shardling/animations/walk/south/frame_002.png",
+              "res://Assets/Characters/golem_shardling/animations/walk/south/frame_003.png",
+              "res://Assets/Characters/golem_shardling/animations/walk/south/frame_004.png",
+              "res://Assets/Characters/golem_shardling/animations/walk/south/frame_005.png",
+              "res://Assets/Characters/golem_shardling/animations/walk/south/frame_006.png",
+              "res://Assets/Characters/golem_shardling/animations/walk/south/frame_007.png"
+            ]
+          }
+        }
+      },
+      "exported_animations": {
+        "Walking": {
+          "south": [
+            "res://Assets/Characters/golem_shardling/animations/walk/south/frame_000.png",
+            "res://Assets/Characters/golem_shardling/animations/walk/south/frame_001.png",
+            "res://Assets/Characters/golem_shardling/animations/walk/south/frame_002.png",
+            "res://Assets/Characters/golem_shardling/animations/walk/south/frame_003.png",
+            "res://Assets/Characters/golem_shardling/animations/walk/south/frame_004.png",
+            "res://Assets/Characters/golem_shardling/animations/walk/south/frame_005.png",
+            "res://Assets/Characters/golem_shardling/animations/walk/south/frame_006.png",
+            "res://Assets/Characters/golem_shardling/animations/walk/south/frame_007.png"
+          ]
+        }
+      },
+      "frame_sizes": {
+        "res://Assets/Characters/golem_shardling/rotations/south.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/golem_shardling/rotations/south-east.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/golem_shardling/rotations/east.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/golem_shardling/rotations/north-east.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/golem_shardling/rotations/north.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/golem_shardling/rotations/north-west.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/golem_shardling/rotations/west.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/golem_shardling/rotations/south-west.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/golem_shardling/animations/walk/south/frame_000.png": [
+          72,
+          72
+        ],
+        "res://Assets/Characters/golem_shardling/animations/walk/south/frame_001.png": [
+          72,
+          72
+        ],
+        "res://Assets/Characters/golem_shardling/animations/walk/south/frame_002.png": [
+          72,
+          72
+        ],
+        "res://Assets/Characters/golem_shardling/animations/walk/south/frame_003.png": [
+          72,
+          72
+        ],
+        "res://Assets/Characters/golem_shardling/animations/walk/south/frame_004.png": [
+          72,
+          72
+        ],
+        "res://Assets/Characters/golem_shardling/animations/walk/south/frame_005.png": [
+          72,
+          72
+        ],
+        "res://Assets/Characters/golem_shardling/animations/walk/south/frame_006.png": [
+          72,
+          72
+        ],
+        "res://Assets/Characters/golem_shardling/animations/walk/south/frame_007.png": [
+          72,
+          72
+        ]
+      },
+      "coverage": {
+        "rotation_directions": [
+          "south",
+          "south-east",
+          "east",
+          "north-east",
+          "north",
+          "north-west",
+          "west",
+          "south-west"
+        ],
+        "animated_directions": {
+          "idle": [],
+          "walk": [
+            "south"
+          ],
+          "attack": []
+        },
+        "unassigned_animations": []
+      }
+    },
+    "peasant": {
+      "name": "Peasant",
+      "source_character_id": "723ffe6c-f28f-42b6-a37d-584b83db8c6c",
+      "source_state_name": "Idle",
+      "source_folder": "characters/Idle_6/Idle",
+      "source_prompt": "A chibi peasant human with oversized head proportions, wearing simple, worn-in burlap robes and a frayed rope belt, standing in a wide, stable stance with hands down by side, low top-down perspective.",
+      "size": [
+        64,
+        64
+      ],
+      "display_height": 48,
+      "foot_position": [
+        32.0,
+        58
+      ],
+      "rotations": {
+        "south": "res://Assets/Characters/peasant/rotations/south.png",
+        "south-east": "res://Assets/Characters/peasant/rotations/south-east.png",
+        "east": "res://Assets/Characters/peasant/rotations/east.png",
+        "north-east": "res://Assets/Characters/peasant/rotations/north-east.png",
+        "north": "res://Assets/Characters/peasant/rotations/north.png",
+        "north-west": "res://Assets/Characters/peasant/rotations/north-west.png",
+        "west": "res://Assets/Characters/peasant/rotations/west.png",
+        "south-west": "res://Assets/Characters/peasant/rotations/south-west.png"
+      },
+      "animations": {
+        "walk": {
+          "fps": 10,
+          "loop": true,
+          "directions": {
+            "south": [
+              "res://Assets/Characters/peasant/animations/walk/south/frame_000.png",
+              "res://Assets/Characters/peasant/animations/walk/south/frame_001.png",
+              "res://Assets/Characters/peasant/animations/walk/south/frame_002.png",
+              "res://Assets/Characters/peasant/animations/walk/south/frame_003.png",
+              "res://Assets/Characters/peasant/animations/walk/south/frame_004.png",
+              "res://Assets/Characters/peasant/animations/walk/south/frame_005.png",
+              "res://Assets/Characters/peasant/animations/walk/south/frame_006.png",
+              "res://Assets/Characters/peasant/animations/walk/south/frame_007.png"
+            ],
+            "south-east": [
+              "res://Assets/Characters/peasant/animations/walk/south-east/frame_000.png",
+              "res://Assets/Characters/peasant/animations/walk/south-east/frame_001.png",
+              "res://Assets/Characters/peasant/animations/walk/south-east/frame_002.png",
+              "res://Assets/Characters/peasant/animations/walk/south-east/frame_003.png",
+              "res://Assets/Characters/peasant/animations/walk/south-east/frame_004.png",
+              "res://Assets/Characters/peasant/animations/walk/south-east/frame_005.png",
+              "res://Assets/Characters/peasant/animations/walk/south-east/frame_006.png",
+              "res://Assets/Characters/peasant/animations/walk/south-east/frame_007.png"
+            ],
+            "east": [
+              "res://Assets/Characters/peasant/animations/walk/east/frame_000.png",
+              "res://Assets/Characters/peasant/animations/walk/east/frame_001.png",
+              "res://Assets/Characters/peasant/animations/walk/east/frame_002.png",
+              "res://Assets/Characters/peasant/animations/walk/east/frame_003.png",
+              "res://Assets/Characters/peasant/animations/walk/east/frame_004.png",
+              "res://Assets/Characters/peasant/animations/walk/east/frame_005.png",
+              "res://Assets/Characters/peasant/animations/walk/east/frame_006.png",
+              "res://Assets/Characters/peasant/animations/walk/east/frame_007.png"
+            ],
+            "north-east": [
+              "res://Assets/Characters/peasant/animations/walk/north-east/frame_000.png",
+              "res://Assets/Characters/peasant/animations/walk/north-east/frame_001.png",
+              "res://Assets/Characters/peasant/animations/walk/north-east/frame_002.png",
+              "res://Assets/Characters/peasant/animations/walk/north-east/frame_003.png",
+              "res://Assets/Characters/peasant/animations/walk/north-east/frame_004.png",
+              "res://Assets/Characters/peasant/animations/walk/north-east/frame_005.png",
+              "res://Assets/Characters/peasant/animations/walk/north-east/frame_006.png",
+              "res://Assets/Characters/peasant/animations/walk/north-east/frame_007.png"
+            ],
+            "north": [
+              "res://Assets/Characters/peasant/animations/walk/north/frame_000.png",
+              "res://Assets/Characters/peasant/animations/walk/north/frame_001.png",
+              "res://Assets/Characters/peasant/animations/walk/north/frame_002.png",
+              "res://Assets/Characters/peasant/animations/walk/north/frame_003.png",
+              "res://Assets/Characters/peasant/animations/walk/north/frame_004.png",
+              "res://Assets/Characters/peasant/animations/walk/north/frame_005.png",
+              "res://Assets/Characters/peasant/animations/walk/north/frame_006.png",
+              "res://Assets/Characters/peasant/animations/walk/north/frame_007.png"
+            ],
+            "north-west": [
+              "res://Assets/Characters/peasant/animations/walk/north-west/frame_000.png",
+              "res://Assets/Characters/peasant/animations/walk/north-west/frame_001.png",
+              "res://Assets/Characters/peasant/animations/walk/north-west/frame_002.png",
+              "res://Assets/Characters/peasant/animations/walk/north-west/frame_003.png",
+              "res://Assets/Characters/peasant/animations/walk/north-west/frame_004.png",
+              "res://Assets/Characters/peasant/animations/walk/north-west/frame_005.png",
+              "res://Assets/Characters/peasant/animations/walk/north-west/frame_006.png",
+              "res://Assets/Characters/peasant/animations/walk/north-west/frame_007.png"
+            ],
+            "west": [
+              "res://Assets/Characters/peasant/animations/walk/west/frame_000.png",
+              "res://Assets/Characters/peasant/animations/walk/west/frame_001.png",
+              "res://Assets/Characters/peasant/animations/walk/west/frame_002.png",
+              "res://Assets/Characters/peasant/animations/walk/west/frame_003.png",
+              "res://Assets/Characters/peasant/animations/walk/west/frame_004.png",
+              "res://Assets/Characters/peasant/animations/walk/west/frame_005.png",
+              "res://Assets/Characters/peasant/animations/walk/west/frame_006.png",
+              "res://Assets/Characters/peasant/animations/walk/west/frame_007.png"
+            ],
+            "south-west": [
+              "res://Assets/Characters/peasant/animations/walk/south-west/frame_000.png",
+              "res://Assets/Characters/peasant/animations/walk/south-west/frame_001.png",
+              "res://Assets/Characters/peasant/animations/walk/south-west/frame_002.png",
+              "res://Assets/Characters/peasant/animations/walk/south-west/frame_003.png",
+              "res://Assets/Characters/peasant/animations/walk/south-west/frame_004.png",
+              "res://Assets/Characters/peasant/animations/walk/south-west/frame_005.png",
+              "res://Assets/Characters/peasant/animations/walk/south-west/frame_006.png",
+              "res://Assets/Characters/peasant/animations/walk/south-west/frame_007.png"
+            ]
+          }
+        }
+      },
+      "exported_animations": {
+        "Running": {
+          "north-east": [
+            "res://Assets/Characters/peasant/animations/walk/north-east/frame_000.png",
+            "res://Assets/Characters/peasant/animations/walk/north-east/frame_001.png",
+            "res://Assets/Characters/peasant/animations/walk/north-east/frame_002.png",
+            "res://Assets/Characters/peasant/animations/walk/north-east/frame_003.png",
+            "res://Assets/Characters/peasant/animations/walk/north-east/frame_004.png",
+            "res://Assets/Characters/peasant/animations/walk/north-east/frame_005.png",
+            "res://Assets/Characters/peasant/animations/walk/north-east/frame_006.png",
+            "res://Assets/Characters/peasant/animations/walk/north-east/frame_007.png"
+          ],
+          "south": [
+            "res://Assets/Characters/peasant/animations/walk/south/frame_000.png",
+            "res://Assets/Characters/peasant/animations/walk/south/frame_001.png",
+            "res://Assets/Characters/peasant/animations/walk/south/frame_002.png",
+            "res://Assets/Characters/peasant/animations/walk/south/frame_003.png",
+            "res://Assets/Characters/peasant/animations/walk/south/frame_004.png",
+            "res://Assets/Characters/peasant/animations/walk/south/frame_005.png",
+            "res://Assets/Characters/peasant/animations/walk/south/frame_006.png",
+            "res://Assets/Characters/peasant/animations/walk/south/frame_007.png"
+          ],
+          "south-west": [
+            "res://Assets/Characters/peasant/animations/walk/south-west/frame_000.png",
+            "res://Assets/Characters/peasant/animations/walk/south-west/frame_001.png",
+            "res://Assets/Characters/peasant/animations/walk/south-west/frame_002.png",
+            "res://Assets/Characters/peasant/animations/walk/south-west/frame_003.png",
+            "res://Assets/Characters/peasant/animations/walk/south-west/frame_004.png",
+            "res://Assets/Characters/peasant/animations/walk/south-west/frame_005.png",
+            "res://Assets/Characters/peasant/animations/walk/south-west/frame_006.png",
+            "res://Assets/Characters/peasant/animations/walk/south-west/frame_007.png"
+          ],
+          "north-west": [
+            "res://Assets/Characters/peasant/animations/walk/north-west/frame_000.png",
+            "res://Assets/Characters/peasant/animations/walk/north-west/frame_001.png",
+            "res://Assets/Characters/peasant/animations/walk/north-west/frame_002.png",
+            "res://Assets/Characters/peasant/animations/walk/north-west/frame_003.png",
+            "res://Assets/Characters/peasant/animations/walk/north-west/frame_004.png",
+            "res://Assets/Characters/peasant/animations/walk/north-west/frame_005.png",
+            "res://Assets/Characters/peasant/animations/walk/north-west/frame_006.png",
+            "res://Assets/Characters/peasant/animations/walk/north-west/frame_007.png"
+          ],
+          "north": [
+            "res://Assets/Characters/peasant/animations/walk/north/frame_000.png",
+            "res://Assets/Characters/peasant/animations/walk/north/frame_001.png",
+            "res://Assets/Characters/peasant/animations/walk/north/frame_002.png",
+            "res://Assets/Characters/peasant/animations/walk/north/frame_003.png",
+            "res://Assets/Characters/peasant/animations/walk/north/frame_004.png",
+            "res://Assets/Characters/peasant/animations/walk/north/frame_005.png",
+            "res://Assets/Characters/peasant/animations/walk/north/frame_006.png",
+            "res://Assets/Characters/peasant/animations/walk/north/frame_007.png"
+          ],
+          "east": [
+            "res://Assets/Characters/peasant/animations/walk/east/frame_000.png",
+            "res://Assets/Characters/peasant/animations/walk/east/frame_001.png",
+            "res://Assets/Characters/peasant/animations/walk/east/frame_002.png",
+            "res://Assets/Characters/peasant/animations/walk/east/frame_003.png",
+            "res://Assets/Characters/peasant/animations/walk/east/frame_004.png",
+            "res://Assets/Characters/peasant/animations/walk/east/frame_005.png",
+            "res://Assets/Characters/peasant/animations/walk/east/frame_006.png",
+            "res://Assets/Characters/peasant/animations/walk/east/frame_007.png"
+          ],
+          "south-east": [
+            "res://Assets/Characters/peasant/animations/walk/south-east/frame_000.png",
+            "res://Assets/Characters/peasant/animations/walk/south-east/frame_001.png",
+            "res://Assets/Characters/peasant/animations/walk/south-east/frame_002.png",
+            "res://Assets/Characters/peasant/animations/walk/south-east/frame_003.png",
+            "res://Assets/Characters/peasant/animations/walk/south-east/frame_004.png",
+            "res://Assets/Characters/peasant/animations/walk/south-east/frame_005.png",
+            "res://Assets/Characters/peasant/animations/walk/south-east/frame_006.png",
+            "res://Assets/Characters/peasant/animations/walk/south-east/frame_007.png"
+          ],
+          "west": [
+            "res://Assets/Characters/peasant/animations/walk/west/frame_000.png",
+            "res://Assets/Characters/peasant/animations/walk/west/frame_001.png",
+            "res://Assets/Characters/peasant/animations/walk/west/frame_002.png",
+            "res://Assets/Characters/peasant/animations/walk/west/frame_003.png",
+            "res://Assets/Characters/peasant/animations/walk/west/frame_004.png",
+            "res://Assets/Characters/peasant/animations/walk/west/frame_005.png",
+            "res://Assets/Characters/peasant/animations/walk/west/frame_006.png",
+            "res://Assets/Characters/peasant/animations/walk/west/frame_007.png"
+          ]
+        }
+      },
+      "frame_sizes": {
+        "res://Assets/Characters/peasant/rotations/south.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/peasant/rotations/south-east.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/peasant/rotations/east.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/peasant/rotations/north-east.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/peasant/rotations/north.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/peasant/rotations/north-west.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/peasant/rotations/west.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/peasant/rotations/south-west.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/peasant/animations/walk/north-east/frame_000.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/north-east/frame_001.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/north-east/frame_002.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/north-east/frame_003.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/north-east/frame_004.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/north-east/frame_005.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/north-east/frame_006.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/north-east/frame_007.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/south/frame_000.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/peasant/animations/walk/south/frame_001.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/peasant/animations/walk/south/frame_002.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/peasant/animations/walk/south/frame_003.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/peasant/animations/walk/south/frame_004.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/peasant/animations/walk/south/frame_005.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/peasant/animations/walk/south/frame_006.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/peasant/animations/walk/south/frame_007.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/peasant/animations/walk/south-west/frame_000.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/south-west/frame_001.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/south-west/frame_002.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/south-west/frame_003.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/south-west/frame_004.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/south-west/frame_005.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/south-west/frame_006.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/south-west/frame_007.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/north-west/frame_000.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/north-west/frame_001.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/north-west/frame_002.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/north-west/frame_003.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/north-west/frame_004.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/north-west/frame_005.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/north-west/frame_006.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/north-west/frame_007.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/north/frame_000.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/peasant/animations/walk/north/frame_001.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/peasant/animations/walk/north/frame_002.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/peasant/animations/walk/north/frame_003.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/peasant/animations/walk/north/frame_004.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/peasant/animations/walk/north/frame_005.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/peasant/animations/walk/north/frame_006.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/peasant/animations/walk/north/frame_007.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/peasant/animations/walk/east/frame_000.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/east/frame_001.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/east/frame_002.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/east/frame_003.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/east/frame_004.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/east/frame_005.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/east/frame_006.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/east/frame_007.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/south-east/frame_000.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/south-east/frame_001.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/south-east/frame_002.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/south-east/frame_003.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/south-east/frame_004.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/south-east/frame_005.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/south-east/frame_006.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/south-east/frame_007.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/west/frame_000.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/west/frame_001.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/west/frame_002.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/west/frame_003.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/west/frame_004.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/west/frame_005.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/west/frame_006.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/peasant/animations/walk/west/frame_007.png": [
+          80,
+          80
+        ]
+      },
+      "coverage": {
+        "rotation_directions": [
+          "south",
+          "south-east",
+          "east",
+          "north-east",
+          "north",
+          "north-west",
+          "west",
+          "south-west"
+        ],
+        "animated_directions": {
+          "idle": [],
+          "walk": [
+            "south",
+            "south-east",
+            "east",
+            "north-east",
+            "north",
+            "north-west",
+            "west",
+            "south-west"
+          ],
+          "attack": []
+        },
+        "unassigned_animations": []
+      }
+    },
+    "peasant_sword": {
+      "name": "Peasant with Iron Longsword",
+      "source_character_id": "d9928773-a272-4ff5-9735-126b050e7f8e",
+      "source_state_name": "Holding an Iron Long",
+      "source_folder": "characters/Idle_6/Holding_an_Iron_Long",
+      "source_prompt": "A chibi peasant human with oversized head proportions, wearing simple, worn-in burlap robes and a frayed rope belt, standing in a wide, stable stance with hands down by side, low top-down perspective.",
+      "size": [
+        64,
+        64
+      ],
+      "display_height": 48,
+      "foot_position": [
+        32.0,
+        58
+      ],
+      "rotations": {
+        "south": "res://Assets/Characters/peasant_sword/rotations/south.png",
+        "south-east": "res://Assets/Characters/peasant_sword/rotations/south-east.png",
+        "east": "res://Assets/Characters/peasant_sword/rotations/east.png",
+        "north-east": "res://Assets/Characters/peasant_sword/rotations/north-east.png",
+        "north": "res://Assets/Characters/peasant_sword/rotations/north.png",
+        "north-west": "res://Assets/Characters/peasant_sword/rotations/north-west.png",
+        "west": "res://Assets/Characters/peasant_sword/rotations/west.png",
+        "south-west": "res://Assets/Characters/peasant_sword/rotations/south-west.png"
+      },
+      "animations": {
+        "walk": {
+          "fps": 10,
+          "loop": true,
+          "directions": {
+            "south": [
+              "res://Assets/Characters/peasant_sword/animations/walk/south/frame_000.png",
+              "res://Assets/Characters/peasant_sword/animations/walk/south/frame_001.png",
+              "res://Assets/Characters/peasant_sword/animations/walk/south/frame_002.png",
+              "res://Assets/Characters/peasant_sword/animations/walk/south/frame_003.png",
+              "res://Assets/Characters/peasant_sword/animations/walk/south/frame_004.png",
+              "res://Assets/Characters/peasant_sword/animations/walk/south/frame_005.png",
+              "res://Assets/Characters/peasant_sword/animations/walk/south/frame_006.png",
+              "res://Assets/Characters/peasant_sword/animations/walk/south/frame_007.png"
+            ],
+            "north": [
+              "res://Assets/Characters/peasant_sword/animations/walk/north/frame_000.png",
+              "res://Assets/Characters/peasant_sword/animations/walk/north/frame_001.png",
+              "res://Assets/Characters/peasant_sword/animations/walk/north/frame_002.png",
+              "res://Assets/Characters/peasant_sword/animations/walk/north/frame_003.png",
+              "res://Assets/Characters/peasant_sword/animations/walk/north/frame_004.png",
+              "res://Assets/Characters/peasant_sword/animations/walk/north/frame_005.png",
+              "res://Assets/Characters/peasant_sword/animations/walk/north/frame_006.png",
+              "res://Assets/Characters/peasant_sword/animations/walk/north/frame_007.png"
+            ]
+          }
+        }
+      },
+      "exported_animations": {
+        "Walking": {
+          "south": [
+            "res://Assets/Characters/peasant_sword/animations/walk/south/frame_000.png",
+            "res://Assets/Characters/peasant_sword/animations/walk/south/frame_001.png",
+            "res://Assets/Characters/peasant_sword/animations/walk/south/frame_002.png",
+            "res://Assets/Characters/peasant_sword/animations/walk/south/frame_003.png",
+            "res://Assets/Characters/peasant_sword/animations/walk/south/frame_004.png",
+            "res://Assets/Characters/peasant_sword/animations/walk/south/frame_005.png",
+            "res://Assets/Characters/peasant_sword/animations/walk/south/frame_006.png",
+            "res://Assets/Characters/peasant_sword/animations/walk/south/frame_007.png"
+          ],
+          "north": [
+            "res://Assets/Characters/peasant_sword/animations/walk/north/frame_000.png",
+            "res://Assets/Characters/peasant_sword/animations/walk/north/frame_001.png",
+            "res://Assets/Characters/peasant_sword/animations/walk/north/frame_002.png",
+            "res://Assets/Characters/peasant_sword/animations/walk/north/frame_003.png",
+            "res://Assets/Characters/peasant_sword/animations/walk/north/frame_004.png",
+            "res://Assets/Characters/peasant_sword/animations/walk/north/frame_005.png",
+            "res://Assets/Characters/peasant_sword/animations/walk/north/frame_006.png",
+            "res://Assets/Characters/peasant_sword/animations/walk/north/frame_007.png"
+          ]
+        }
+      },
+      "frame_sizes": {
+        "res://Assets/Characters/peasant_sword/rotations/south.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/peasant_sword/rotations/south-east.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/peasant_sword/rotations/east.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/peasant_sword/rotations/north-east.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/peasant_sword/rotations/north.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/peasant_sword/rotations/north-west.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/peasant_sword/rotations/west.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/peasant_sword/rotations/south-west.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/peasant_sword/animations/walk/south/frame_000.png": [
+          92,
+          92
+        ],
+        "res://Assets/Characters/peasant_sword/animations/walk/south/frame_001.png": [
+          92,
+          92
+        ],
+        "res://Assets/Characters/peasant_sword/animations/walk/south/frame_002.png": [
+          92,
+          92
+        ],
+        "res://Assets/Characters/peasant_sword/animations/walk/south/frame_003.png": [
+          92,
+          92
+        ],
+        "res://Assets/Characters/peasant_sword/animations/walk/south/frame_004.png": [
+          92,
+          92
+        ],
+        "res://Assets/Characters/peasant_sword/animations/walk/south/frame_005.png": [
+          92,
+          92
+        ],
+        "res://Assets/Characters/peasant_sword/animations/walk/south/frame_006.png": [
+          92,
+          92
+        ],
+        "res://Assets/Characters/peasant_sword/animations/walk/south/frame_007.png": [
+          92,
+          92
+        ],
+        "res://Assets/Characters/peasant_sword/animations/walk/north/frame_000.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/peasant_sword/animations/walk/north/frame_001.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/peasant_sword/animations/walk/north/frame_002.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/peasant_sword/animations/walk/north/frame_003.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/peasant_sword/animations/walk/north/frame_004.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/peasant_sword/animations/walk/north/frame_005.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/peasant_sword/animations/walk/north/frame_006.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/peasant_sword/animations/walk/north/frame_007.png": [
+          84,
+          84
+        ]
+      },
+      "coverage": {
+        "rotation_directions": [
+          "south",
+          "south-east",
+          "east",
+          "north-east",
+          "north",
+          "north-west",
+          "west",
+          "south-west"
+        ],
+        "animated_directions": {
+          "idle": [],
+          "walk": [
+            "south",
+            "north"
+          ],
+          "attack": []
+        },
+        "unassigned_animations": []
+      }
+    },
+    "wolf_direwolf": {
+      "name": "Wild Direwolf",
+      "source_character_id": "59a206ee-f71f-4505-a04b-d30eeeebf885",
+      "source_state_name": "Idle",
+      "source_folder": "characters/Idle_7/Idle",
+      "source_prompt": "Wild Direwolf",
+      "size": [
+        64,
+        64
+      ],
+      "display_height": 56,
+      "foot_position": [
+        32.0,
+        63
+      ],
+      "rotations": {
+        "south": "res://Assets/Characters/wolf_direwolf/rotations/south.png",
+        "south-east": "res://Assets/Characters/wolf_direwolf/rotations/south-east.png",
+        "east": "res://Assets/Characters/wolf_direwolf/rotations/east.png",
+        "north-east": "res://Assets/Characters/wolf_direwolf/rotations/north-east.png",
+        "north": "res://Assets/Characters/wolf_direwolf/rotations/north.png",
+        "north-west": "res://Assets/Characters/wolf_direwolf/rotations/north-west.png",
+        "west": "res://Assets/Characters/wolf_direwolf/rotations/west.png",
+        "south-west": "res://Assets/Characters/wolf_direwolf/rotations/south-west.png"
+      },
+      "animations": {},
+      "exported_animations": {},
+      "frame_sizes": {
+        "res://Assets/Characters/wolf_direwolf/rotations/south.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/wolf_direwolf/rotations/south-east.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/wolf_direwolf/rotations/east.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/wolf_direwolf/rotations/north-east.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/wolf_direwolf/rotations/north.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/wolf_direwolf/rotations/north-west.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/wolf_direwolf/rotations/west.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/wolf_direwolf/rotations/south-west.png": [
+          64,
+          64
+        ]
+      },
+      "coverage": {
+        "rotation_directions": [
+          "south",
+          "south-east",
+          "east",
+          "north-east",
+          "north",
+          "north-west",
+          "west",
+          "south-west"
+        ],
+        "animated_directions": {
+          "idle": [],
+          "walk": [],
+          "attack": []
+        },
+        "unassigned_animations": []
+      }
+    },
+    "wolf_moonfang": {
+      "name": "White Two-Tailed Wolf",
+      "source_character_id": "b813b8e7-c0fc-42f5-b649-96295dd1965f",
+      "source_state_name": "Idle",
+      "source_folder": "characters/Idle_8/Idle",
+      "source_prompt": "A white wolf with two tails and glowing red eyes, standing in a poised, noble stance, low top-down perspective, medium detail.",
+      "size": [
+        64,
+        64
+      ],
+      "display_height": 56,
+      "foot_position": [
+        32.0,
+        61
+      ],
+      "rotations": {
+        "south": "res://Assets/Characters/wolf_moonfang/rotations/south.png",
+        "south-east": "res://Assets/Characters/wolf_moonfang/rotations/south-east.png",
+        "east": "res://Assets/Characters/wolf_moonfang/rotations/east.png",
+        "north-east": "res://Assets/Characters/wolf_moonfang/rotations/north-east.png",
+        "north": "res://Assets/Characters/wolf_moonfang/rotations/north.png",
+        "north-west": "res://Assets/Characters/wolf_moonfang/rotations/north-west.png",
+        "west": "res://Assets/Characters/wolf_moonfang/rotations/west.png",
+        "south-west": "res://Assets/Characters/wolf_moonfang/rotations/south-west.png"
+      },
+      "animations": {
+        "idle": {
+          "fps": 8,
+          "loop": true,
+          "directions": {
+            "south": [
+              "res://Assets/Characters/wolf_moonfang/animations/idle/south/frame_000.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/south/frame_001.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/south/frame_002.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/south/frame_003.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/south/frame_004.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/south/frame_005.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/south/frame_006.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/south/frame_007.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/south/frame_008.png"
+            ],
+            "south-east": [
+              "res://Assets/Characters/wolf_moonfang/animations/idle/south-east/frame_000.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/south-east/frame_001.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/south-east/frame_002.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/south-east/frame_003.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/south-east/frame_004.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/south-east/frame_005.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/south-east/frame_006.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/south-east/frame_007.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/south-east/frame_008.png"
+            ],
+            "east": [
+              "res://Assets/Characters/wolf_moonfang/animations/idle/east/frame_000.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/east/frame_001.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/east/frame_002.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/east/frame_003.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/east/frame_004.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/east/frame_005.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/east/frame_006.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/east/frame_007.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/east/frame_008.png"
+            ],
+            "north-east": [
+              "res://Assets/Characters/wolf_moonfang/animations/idle/north-east/frame_000.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/north-east/frame_001.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/north-east/frame_002.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/north-east/frame_003.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/north-east/frame_004.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/north-east/frame_005.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/north-east/frame_006.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/north-east/frame_007.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/north-east/frame_008.png"
+            ],
+            "north": [
+              "res://Assets/Characters/wolf_moonfang/animations/idle/north/frame_000.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/north/frame_001.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/north/frame_002.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/north/frame_003.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/north/frame_004.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/north/frame_005.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/north/frame_006.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/north/frame_007.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/north/frame_008.png"
+            ],
+            "north-west": [
+              "res://Assets/Characters/wolf_moonfang/animations/idle/north-west/frame_000.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/north-west/frame_001.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/north-west/frame_002.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/north-west/frame_003.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/north-west/frame_004.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/north-west/frame_005.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/north-west/frame_006.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/north-west/frame_007.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/north-west/frame_008.png"
+            ],
+            "west": [
+              "res://Assets/Characters/wolf_moonfang/animations/idle/west-5e3d6f1d/frame_000.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/west-5e3d6f1d/frame_001.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/west-5e3d6f1d/frame_002.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/west-5e3d6f1d/frame_003.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/west-5e3d6f1d/frame_004.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/west-5e3d6f1d/frame_005.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/west-5e3d6f1d/frame_006.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/west-5e3d6f1d/frame_007.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/west-5e3d6f1d/frame_008.png"
+            ],
+            "south-west": [
+              "res://Assets/Characters/wolf_moonfang/animations/idle/south-west/frame_000.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/south-west/frame_001.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/south-west/frame_002.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/south-west/frame_003.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/south-west/frame_004.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/south-west/frame_005.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/south-west/frame_006.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/south-west/frame_007.png",
+              "res://Assets/Characters/wolf_moonfang/animations/idle/south-west/frame_008.png"
+            ]
+          }
+        }
+      },
+      "exported_animations": {
+        "The_creature_maintains_a_steady_idle_stance_while": {
+          "north-west": [
+            "res://Assets/Characters/wolf_moonfang/animations/idle/north-west/frame_000.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/north-west/frame_001.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/north-west/frame_002.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/north-west/frame_003.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/north-west/frame_004.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/north-west/frame_005.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/north-west/frame_006.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/north-west/frame_007.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/north-west/frame_008.png"
+          ],
+          "south-east": [
+            "res://Assets/Characters/wolf_moonfang/animations/idle/south-east/frame_000.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/south-east/frame_001.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/south-east/frame_002.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/south-east/frame_003.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/south-east/frame_004.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/south-east/frame_005.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/south-east/frame_006.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/south-east/frame_007.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/south-east/frame_008.png"
+          ],
+          "north": [
+            "res://Assets/Characters/wolf_moonfang/animations/idle/north/frame_000.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/north/frame_001.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/north/frame_002.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/north/frame_003.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/north/frame_004.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/north/frame_005.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/north/frame_006.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/north/frame_007.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/north/frame_008.png"
+          ],
+          "south-west": [
+            "res://Assets/Characters/wolf_moonfang/animations/idle/south-west/frame_000.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/south-west/frame_001.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/south-west/frame_002.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/south-west/frame_003.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/south-west/frame_004.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/south-west/frame_005.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/south-west/frame_006.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/south-west/frame_007.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/south-west/frame_008.png"
+          ],
+          "east": [
+            "res://Assets/Characters/wolf_moonfang/animations/idle/east/frame_000.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/east/frame_001.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/east/frame_002.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/east/frame_003.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/east/frame_004.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/east/frame_005.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/east/frame_006.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/east/frame_007.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/east/frame_008.png"
+          ],
+          "north-east": [
+            "res://Assets/Characters/wolf_moonfang/animations/idle/north-east/frame_000.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/north-east/frame_001.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/north-east/frame_002.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/north-east/frame_003.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/north-east/frame_004.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/north-east/frame_005.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/north-east/frame_006.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/north-east/frame_007.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/north-east/frame_008.png"
+          ],
+          "west-5e3d6f1d": [
+            "res://Assets/Characters/wolf_moonfang/animations/idle/west-5e3d6f1d/frame_000.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/west-5e3d6f1d/frame_001.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/west-5e3d6f1d/frame_002.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/west-5e3d6f1d/frame_003.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/west-5e3d6f1d/frame_004.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/west-5e3d6f1d/frame_005.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/west-5e3d6f1d/frame_006.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/west-5e3d6f1d/frame_007.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/west-5e3d6f1d/frame_008.png"
+          ],
+          "south": [
+            "res://Assets/Characters/wolf_moonfang/animations/idle/south/frame_000.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/south/frame_001.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/south/frame_002.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/south/frame_003.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/south/frame_004.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/south/frame_005.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/south/frame_006.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/south/frame_007.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/south/frame_008.png"
+          ],
+          "west-b799e8a2": [
+            "res://Assets/Characters/wolf_moonfang/animations/idle/west-b799e8a2/frame_000.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/west-b799e8a2/frame_001.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/west-b799e8a2/frame_002.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/west-b799e8a2/frame_003.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/west-b799e8a2/frame_004.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/west-b799e8a2/frame_005.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/west-b799e8a2/frame_006.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/west-b799e8a2/frame_007.png",
+            "res://Assets/Characters/wolf_moonfang/animations/idle/west-b799e8a2/frame_008.png"
+          ]
+        }
+      },
+      "frame_sizes": {
+        "res://Assets/Characters/wolf_moonfang/rotations/south.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/wolf_moonfang/rotations/south-east.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/wolf_moonfang/rotations/east.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/wolf_moonfang/rotations/north-east.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/wolf_moonfang/rotations/north.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/wolf_moonfang/rotations/north-west.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/wolf_moonfang/rotations/west.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/wolf_moonfang/rotations/south-west.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/north-west/frame_000.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/north-west/frame_001.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/north-west/frame_002.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/north-west/frame_003.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/north-west/frame_004.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/north-west/frame_005.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/north-west/frame_006.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/north-west/frame_007.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/north-west/frame_008.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/south-east/frame_000.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/south-east/frame_001.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/south-east/frame_002.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/south-east/frame_003.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/south-east/frame_004.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/south-east/frame_005.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/south-east/frame_006.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/south-east/frame_007.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/south-east/frame_008.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/north/frame_000.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/north/frame_001.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/north/frame_002.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/north/frame_003.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/north/frame_004.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/north/frame_005.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/north/frame_006.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/north/frame_007.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/north/frame_008.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/south-west/frame_000.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/south-west/frame_001.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/south-west/frame_002.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/south-west/frame_003.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/south-west/frame_004.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/south-west/frame_005.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/south-west/frame_006.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/south-west/frame_007.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/south-west/frame_008.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/east/frame_000.png": [
+          88,
+          88
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/east/frame_001.png": [
+          88,
+          88
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/east/frame_002.png": [
+          88,
+          88
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/east/frame_003.png": [
+          88,
+          88
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/east/frame_004.png": [
+          88,
+          88
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/east/frame_005.png": [
+          88,
+          88
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/east/frame_006.png": [
+          88,
+          88
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/east/frame_007.png": [
+          88,
+          88
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/east/frame_008.png": [
+          88,
+          88
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/north-east/frame_000.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/north-east/frame_001.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/north-east/frame_002.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/north-east/frame_003.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/north-east/frame_004.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/north-east/frame_005.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/north-east/frame_006.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/north-east/frame_007.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/north-east/frame_008.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/west-5e3d6f1d/frame_000.png": [
+          88,
+          88
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/west-5e3d6f1d/frame_001.png": [
+          88,
+          88
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/west-5e3d6f1d/frame_002.png": [
+          88,
+          88
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/west-5e3d6f1d/frame_003.png": [
+          88,
+          88
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/west-5e3d6f1d/frame_004.png": [
+          88,
+          88
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/west-5e3d6f1d/frame_005.png": [
+          88,
+          88
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/west-5e3d6f1d/frame_006.png": [
+          88,
+          88
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/west-5e3d6f1d/frame_007.png": [
+          88,
+          88
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/west-5e3d6f1d/frame_008.png": [
+          88,
+          88
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/south/frame_000.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/south/frame_001.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/south/frame_002.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/south/frame_003.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/south/frame_004.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/south/frame_005.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/south/frame_006.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/south/frame_007.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/south/frame_008.png": [
+          84,
+          84
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/west-b799e8a2/frame_000.png": [
+          88,
+          88
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/west-b799e8a2/frame_001.png": [
+          88,
+          88
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/west-b799e8a2/frame_002.png": [
+          88,
+          88
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/west-b799e8a2/frame_003.png": [
+          88,
+          88
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/west-b799e8a2/frame_004.png": [
+          88,
+          88
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/west-b799e8a2/frame_005.png": [
+          88,
+          88
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/west-b799e8a2/frame_006.png": [
+          88,
+          88
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/west-b799e8a2/frame_007.png": [
+          88,
+          88
+        ],
+        "res://Assets/Characters/wolf_moonfang/animations/idle/west-b799e8a2/frame_008.png": [
+          88,
+          88
+        ]
+      },
+      "coverage": {
+        "rotation_directions": [
+          "south",
+          "south-east",
+          "east",
+          "north-east",
+          "north",
+          "north-west",
+          "west",
+          "south-west"
+        ],
+        "animated_directions": {
+          "idle": [
+            "south",
+            "south-east",
+            "east",
+            "north-east",
+            "north",
+            "north-west",
+            "west",
+            "south-west"
+          ],
+          "walk": [],
+          "attack": []
+        },
+        "unassigned_animations": []
+      }
+    },
+    "wraith_soulpiercer": {
+      "name": "Wraith Soulpiercer",
+      "source_character_id": "b9ab5076-0855-4cf2-a335-27000ba3ef49",
+      "source_state_name": "Idle",
+      "source_folder": "characters/Idle_9/Idle",
+      "source_prompt": "A spectral wraith hovering in a low combat stance, tattered dark robes flowing with ethereal energy, glowing hollow eyes, holding a jagged soul-stealing dagger, crisp black outline.",
+      "size": [
+        64,
+        64
+      ],
+      "display_height": 56,
+      "foot_position": [
+        32.0,
+        60
+      ],
+      "rotations": {
+        "south": "res://Assets/Characters/wraith_soulpiercer/rotations/south.png",
+        "south-east": "res://Assets/Characters/wraith_soulpiercer/rotations/south-east.png",
+        "east": "res://Assets/Characters/wraith_soulpiercer/rotations/east.png",
+        "north-east": "res://Assets/Characters/wraith_soulpiercer/rotations/north-east.png",
+        "north": "res://Assets/Characters/wraith_soulpiercer/rotations/north.png",
+        "north-west": "res://Assets/Characters/wraith_soulpiercer/rotations/north-west.png",
+        "west": "res://Assets/Characters/wraith_soulpiercer/rotations/west.png",
+        "south-west": "res://Assets/Characters/wraith_soulpiercer/rotations/south-west.png"
+      },
+      "animations": {},
+      "exported_animations": {},
+      "frame_sizes": {
+        "res://Assets/Characters/wraith_soulpiercer/rotations/south.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/wraith_soulpiercer/rotations/south-east.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/wraith_soulpiercer/rotations/east.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/wraith_soulpiercer/rotations/north-east.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/wraith_soulpiercer/rotations/north.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/wraith_soulpiercer/rotations/north-west.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/wraith_soulpiercer/rotations/west.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/wraith_soulpiercer/rotations/south-west.png": [
+          64,
+          64
+        ]
+      },
+      "coverage": {
+        "rotation_directions": [
+          "south",
+          "south-east",
+          "east",
+          "north-east",
+          "north",
+          "north-west",
+          "west",
+          "south-west"
+        ],
+        "animated_directions": {
+          "idle": [],
+          "walk": [],
+          "attack": []
+        },
+        "unassigned_animations": []
+      }
+    },
+    "wraith_dreadshade": {
+      "name": "Wraith Dreadshade",
+      "source_character_id": "44f24c96-1a12-467f-b7c4-5c0b6a65394d",
+      "source_state_name": "Idle",
+      "source_folder": "characters/Idle_10/Idle",
+      "source_prompt": "A sinister wraith with tattered, flowing spectral robes, glowing ethereal violet wisps trailing from its sleeves, a jagged obsidian crown floating above a hollow, shadowed hood, and a menacing posture with clawed hands outstretched, low top-down perspective, crisp black outlines.",
+      "size": [
+        64,
+        64
+      ],
+      "display_height": 64,
+      "foot_position": [
+        32.0,
+        60
+      ],
+      "rotations": {
+        "south": "res://Assets/Characters/wraith_dreadshade/rotations/south.png",
+        "south-east": "res://Assets/Characters/wraith_dreadshade/rotations/south-east.png",
+        "east": "res://Assets/Characters/wraith_dreadshade/rotations/east.png",
+        "north-east": "res://Assets/Characters/wraith_dreadshade/rotations/north-east.png",
+        "north": "res://Assets/Characters/wraith_dreadshade/rotations/north.png",
+        "north-west": "res://Assets/Characters/wraith_dreadshade/rotations/north-west.png",
+        "west": "res://Assets/Characters/wraith_dreadshade/rotations/west.png",
+        "south-west": "res://Assets/Characters/wraith_dreadshade/rotations/south-west.png"
+      },
+      "animations": {},
+      "exported_animations": {},
+      "frame_sizes": {
+        "res://Assets/Characters/wraith_dreadshade/rotations/south.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/wraith_dreadshade/rotations/south-east.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/wraith_dreadshade/rotations/east.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/wraith_dreadshade/rotations/north-east.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/wraith_dreadshade/rotations/north.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/wraith_dreadshade/rotations/north-west.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/wraith_dreadshade/rotations/west.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/wraith_dreadshade/rotations/south-west.png": [
+          64,
+          64
+        ]
+      },
+      "coverage": {
+        "rotation_directions": [
+          "south",
+          "south-east",
+          "east",
+          "north-east",
+          "north",
+          "north-west",
+          "west",
+          "south-west"
+        ],
+        "animated_directions": {
+          "idle": [],
+          "walk": [],
+          "attack": []
+        },
+        "unassigned_animations": []
+      }
+    },
+    "skeleton_footsoldier": {
+      "name": "Skeleton Footsoldier",
+      "source_character_id": "5c79ab8e-464d-4597-a7ed-2abf40fcc1dc",
+      "source_state_name": "Idle",
+      "source_folder": "characters/Idle_11/Idle",
+      "source_prompt": "A skeleton footsoldier in a combat-ready stance, wearing rusted chainmail scraps and a cracked leather belt, holding a chipped iron shortsword, defined by crisp black outlines.",
+      "size": [
+        60,
+        60
+      ],
+      "display_height": 48,
+      "foot_position": [
+        30.0,
+        56
+      ],
+      "rotations": {
+        "south": "res://Assets/Characters/skeleton_footsoldier/rotations/south.png",
+        "south-east": "res://Assets/Characters/skeleton_footsoldier/rotations/south-east.png",
+        "east": "res://Assets/Characters/skeleton_footsoldier/rotations/east.png",
+        "north-east": "res://Assets/Characters/skeleton_footsoldier/rotations/north-east.png",
+        "north": "res://Assets/Characters/skeleton_footsoldier/rotations/north.png",
+        "north-west": "res://Assets/Characters/skeleton_footsoldier/rotations/north-west.png",
+        "west": "res://Assets/Characters/skeleton_footsoldier/rotations/west.png",
+        "south-west": "res://Assets/Characters/skeleton_footsoldier/rotations/south-west.png"
+      },
+      "animations": {},
+      "exported_animations": {},
+      "frame_sizes": {
+        "res://Assets/Characters/skeleton_footsoldier/rotations/south.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/skeleton_footsoldier/rotations/south-east.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/skeleton_footsoldier/rotations/east.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/skeleton_footsoldier/rotations/north-east.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/skeleton_footsoldier/rotations/north.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/skeleton_footsoldier/rotations/north-west.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/skeleton_footsoldier/rotations/west.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/skeleton_footsoldier/rotations/south-west.png": [
+          60,
+          60
+        ]
+      },
+      "coverage": {
+        "rotation_directions": [
+          "south",
+          "south-east",
+          "east",
+          "north-east",
+          "north",
+          "north-west",
+          "west",
+          "south-west"
+        ],
+        "animated_directions": {
+          "idle": [],
+          "walk": [],
+          "attack": []
+        },
+        "unassigned_animations": []
+      }
+    },
+    "skeleton_knight": {
+      "name": "Skeleton Knight",
+      "source_character_id": "602efcb3-e717-4c54-bd93-63df748c9a9f",
+      "source_state_name": "Idle",
+      "source_folder": "characters/Idle_12/Idle",
+      "source_prompt": "Skeleton Knight, wearing black knights armor",
+      "size": [
+        60,
+        60
+      ],
+      "display_height": 52,
+      "foot_position": [
+        30.0,
+        56
+      ],
+      "rotations": {
+        "south": "res://Assets/Characters/skeleton_knight/rotations/south.png",
+        "south-east": "res://Assets/Characters/skeleton_knight/rotations/south-east.png",
+        "east": "res://Assets/Characters/skeleton_knight/rotations/east.png",
+        "north-east": "res://Assets/Characters/skeleton_knight/rotations/north-east.png",
+        "north": "res://Assets/Characters/skeleton_knight/rotations/north.png",
+        "north-west": "res://Assets/Characters/skeleton_knight/rotations/north-west.png",
+        "west": "res://Assets/Characters/skeleton_knight/rotations/west.png",
+        "south-west": "res://Assets/Characters/skeleton_knight/rotations/south-west.png"
+      },
+      "animations": {},
+      "exported_animations": {},
+      "frame_sizes": {
+        "res://Assets/Characters/skeleton_knight/rotations/south.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/skeleton_knight/rotations/south-east.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/skeleton_knight/rotations/east.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/skeleton_knight/rotations/north-east.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/skeleton_knight/rotations/north.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/skeleton_knight/rotations/north-west.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/skeleton_knight/rotations/west.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/skeleton_knight/rotations/south-west.png": [
+          60,
+          60
+        ]
+      },
+      "coverage": {
+        "rotation_directions": [
+          "south",
+          "south-east",
+          "east",
+          "north-east",
+          "north",
+          "north-west",
+          "west",
+          "south-west"
+        ],
+        "animated_directions": {
+          "idle": [],
+          "walk": [],
+          "attack": []
+        },
+        "unassigned_animations": []
+      }
+    },
+    "skeleton_acolyte": {
+      "name": "Skeleton Acolyte",
+      "source_character_id": "b68ad133-4622-4f87-8b68-59c1ec78ca73",
+      "source_state_name": "Idle",
+      "source_folder": "characters/Idle_13/Idle",
+      "source_prompt": "A skeletal acolyte in tattered dark violet robes, hooded, clutching a jagged wooden staff, standing in a hunched, sinister pose.",
+      "size": [
+        56,
+        56
+      ],
+      "display_height": 50,
+      "foot_position": [
+        28.0,
+        53
+      ],
+      "rotations": {
+        "south": "res://Assets/Characters/skeleton_acolyte/rotations/south.png",
+        "south-east": "res://Assets/Characters/skeleton_acolyte/rotations/south-east.png",
+        "east": "res://Assets/Characters/skeleton_acolyte/rotations/east.png",
+        "north-east": "res://Assets/Characters/skeleton_acolyte/rotations/north-east.png",
+        "north": "res://Assets/Characters/skeleton_acolyte/rotations/north.png",
+        "north-west": "res://Assets/Characters/skeleton_acolyte/rotations/north-west.png",
+        "west": "res://Assets/Characters/skeleton_acolyte/rotations/west.png",
+        "south-west": "res://Assets/Characters/skeleton_acolyte/rotations/south-west.png"
+      },
+      "animations": {},
+      "exported_animations": {},
+      "frame_sizes": {
+        "res://Assets/Characters/skeleton_acolyte/rotations/south.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/skeleton_acolyte/rotations/south-east.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/skeleton_acolyte/rotations/east.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/skeleton_acolyte/rotations/north-east.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/skeleton_acolyte/rotations/north.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/skeleton_acolyte/rotations/north-west.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/skeleton_acolyte/rotations/west.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/skeleton_acolyte/rotations/south-west.png": [
+          56,
+          56
+        ]
+      },
+      "coverage": {
+        "rotation_directions": [
+          "south",
+          "south-east",
+          "east",
+          "north-east",
+          "north",
+          "north-west",
+          "west",
+          "south-west"
+        ],
+        "animated_directions": {
+          "idle": [],
+          "walk": [],
+          "attack": []
+        },
+        "unassigned_animations": []
+      }
+    },
+    "skeleton_captain": {
+      "name": "Skeleton Captain",
+      "source_character_id": "6aff34b7-7aca-48df-bb31-e9f9e66433e6",
+      "source_state_name": "Idle",
+      "source_folder": "characters/Idle_14/Idle",
+      "source_prompt": "A skeleton captain in matte black plate armor with ornate gold filigree, standing in a commanding posture, holding a long-poled halberd, hollow glowing-red eye sockets, low top-down perspective.",
+      "size": [
+        56,
+        56
+      ],
+      "display_height": 56,
+      "foot_position": [
+        28.0,
+        54
+      ],
+      "rotations": {
+        "south": "res://Assets/Characters/skeleton_captain/rotations/south.png",
+        "south-east": "res://Assets/Characters/skeleton_captain/rotations/south-east.png",
+        "east": "res://Assets/Characters/skeleton_captain/rotations/east.png",
+        "north-east": "res://Assets/Characters/skeleton_captain/rotations/north-east.png",
+        "north": "res://Assets/Characters/skeleton_captain/rotations/north.png",
+        "north-west": "res://Assets/Characters/skeleton_captain/rotations/north-west.png",
+        "west": "res://Assets/Characters/skeleton_captain/rotations/west.png",
+        "south-west": "res://Assets/Characters/skeleton_captain/rotations/south-west.png"
+      },
+      "animations": {},
+      "exported_animations": {},
+      "frame_sizes": {
+        "res://Assets/Characters/skeleton_captain/rotations/south.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/skeleton_captain/rotations/south-east.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/skeleton_captain/rotations/east.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/skeleton_captain/rotations/north-east.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/skeleton_captain/rotations/north.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/skeleton_captain/rotations/north-west.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/skeleton_captain/rotations/west.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/skeleton_captain/rotations/south-west.png": [
+          56,
+          56
+        ]
+      },
+      "coverage": {
+        "rotation_directions": [
+          "south",
+          "south-east",
+          "east",
+          "north-east",
+          "north",
+          "north-west",
+          "west",
+          "south-west"
+        ],
+        "animated_directions": {
+          "idle": [],
+          "walk": [],
+          "attack": []
+        },
+        "unassigned_animations": []
+      }
+    },
+    "slime_oozelord": {
+      "name": "Slime Oozelord",
+      "source_character_id": "69a9fbec-405d-4e88-ba7c-a355defcdc8b",
+      "source_state_name": "Idle",
+      "source_folder": "characters/Idle_15/Idle",
+      "source_prompt": "A sentient, translucent slime monster with a crown-like protrusion, low top-down perspective, wide stance, vibrant gel texture with internal highlights, black outline.",
+      "size": [
+        64,
+        64
+      ],
+      "display_height": 54,
+      "foot_position": [
+        32.0,
+        58
+      ],
+      "rotations": {
+        "south": "res://Assets/Characters/slime_oozelord/rotations/south.png",
+        "south-east": "res://Assets/Characters/slime_oozelord/rotations/south-east.png",
+        "east": "res://Assets/Characters/slime_oozelord/rotations/east.png",
+        "north-east": "res://Assets/Characters/slime_oozelord/rotations/north-east.png",
+        "north": "res://Assets/Characters/slime_oozelord/rotations/north.png",
+        "north-west": "res://Assets/Characters/slime_oozelord/rotations/north-west.png",
+        "west": "res://Assets/Characters/slime_oozelord/rotations/west.png",
+        "south-west": "res://Assets/Characters/slime_oozelord/rotations/south-west.png"
+      },
+      "animations": {},
+      "exported_animations": {},
+      "frame_sizes": {
+        "res://Assets/Characters/slime_oozelord/rotations/south.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/slime_oozelord/rotations/south-east.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/slime_oozelord/rotations/east.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/slime_oozelord/rotations/north-east.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/slime_oozelord/rotations/north.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/slime_oozelord/rotations/north-west.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/slime_oozelord/rotations/west.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/slime_oozelord/rotations/south-west.png": [
+          64,
+          64
+        ]
+      },
+      "coverage": {
+        "rotation_directions": [
+          "south",
+          "south-east",
+          "east",
+          "north-east",
+          "north",
+          "north-west",
+          "west",
+          "south-west"
+        ],
+        "animated_directions": {
+          "idle": [],
+          "walk": [],
+          "attack": []
+        },
+        "unassigned_animations": []
+      }
+    },
+    "slime_gelwarden": {
+      "name": "Slime Gelwarden",
+      "source_character_id": "d215ffc4-b805-4a89-a6c3-3d3a0c2944e4",
+      "source_state_name": "Idle",
+      "source_folder": "characters/Idle_16/Idle",
+      "source_prompt": "A robust, muscular slime bruiser with a translucent, viscous body, wearing heavy metallic pauldrons and a thick utility belt, standing in a wide, intimidating combat stance, low top-down perspective.",
+      "size": [
+        64,
+        64
+      ],
+      "display_height": 52,
+      "foot_position": [
+        32.0,
+        56
+      ],
+      "rotations": {
+        "south": "res://Assets/Characters/slime_gelwarden/rotations/south.png",
+        "south-east": "res://Assets/Characters/slime_gelwarden/rotations/south-east.png",
+        "east": "res://Assets/Characters/slime_gelwarden/rotations/east.png",
+        "north-east": "res://Assets/Characters/slime_gelwarden/rotations/north-east.png",
+        "north": "res://Assets/Characters/slime_gelwarden/rotations/north.png",
+        "north-west": "res://Assets/Characters/slime_gelwarden/rotations/north-west.png",
+        "west": "res://Assets/Characters/slime_gelwarden/rotations/west.png",
+        "south-west": "res://Assets/Characters/slime_gelwarden/rotations/south-west.png"
+      },
+      "animations": {
+        "walk": {
+          "fps": 10,
+          "loop": true,
+          "directions": {
+            "south": [
+              "res://Assets/Characters/slime_gelwarden/animations/walk/south/frame_000.png",
+              "res://Assets/Characters/slime_gelwarden/animations/walk/south/frame_001.png",
+              "res://Assets/Characters/slime_gelwarden/animations/walk/south/frame_002.png",
+              "res://Assets/Characters/slime_gelwarden/animations/walk/south/frame_003.png",
+              "res://Assets/Characters/slime_gelwarden/animations/walk/south/frame_004.png",
+              "res://Assets/Characters/slime_gelwarden/animations/walk/south/frame_005.png",
+              "res://Assets/Characters/slime_gelwarden/animations/walk/south/frame_006.png",
+              "res://Assets/Characters/slime_gelwarden/animations/walk/south/frame_007.png"
+            ]
+          }
+        }
+      },
+      "exported_animations": {
+        "Walking": {
+          "south": [
+            "res://Assets/Characters/slime_gelwarden/animations/walk/south/frame_000.png",
+            "res://Assets/Characters/slime_gelwarden/animations/walk/south/frame_001.png",
+            "res://Assets/Characters/slime_gelwarden/animations/walk/south/frame_002.png",
+            "res://Assets/Characters/slime_gelwarden/animations/walk/south/frame_003.png",
+            "res://Assets/Characters/slime_gelwarden/animations/walk/south/frame_004.png",
+            "res://Assets/Characters/slime_gelwarden/animations/walk/south/frame_005.png",
+            "res://Assets/Characters/slime_gelwarden/animations/walk/south/frame_006.png",
+            "res://Assets/Characters/slime_gelwarden/animations/walk/south/frame_007.png"
+          ]
+        }
+      },
+      "frame_sizes": {
+        "res://Assets/Characters/slime_gelwarden/rotations/south.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/slime_gelwarden/rotations/south-east.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/slime_gelwarden/rotations/east.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/slime_gelwarden/rotations/north-east.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/slime_gelwarden/rotations/north.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/slime_gelwarden/rotations/north-west.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/slime_gelwarden/rotations/west.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/slime_gelwarden/rotations/south-west.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/slime_gelwarden/animations/walk/south/frame_000.png": [
+          88,
+          88
+        ],
+        "res://Assets/Characters/slime_gelwarden/animations/walk/south/frame_001.png": [
+          88,
+          88
+        ],
+        "res://Assets/Characters/slime_gelwarden/animations/walk/south/frame_002.png": [
+          88,
+          88
+        ],
+        "res://Assets/Characters/slime_gelwarden/animations/walk/south/frame_003.png": [
+          88,
+          88
+        ],
+        "res://Assets/Characters/slime_gelwarden/animations/walk/south/frame_004.png": [
+          88,
+          88
+        ],
+        "res://Assets/Characters/slime_gelwarden/animations/walk/south/frame_005.png": [
+          88,
+          88
+        ],
+        "res://Assets/Characters/slime_gelwarden/animations/walk/south/frame_006.png": [
+          88,
+          88
+        ],
+        "res://Assets/Characters/slime_gelwarden/animations/walk/south/frame_007.png": [
+          88,
+          88
+        ]
+      },
+      "coverage": {
+        "rotation_directions": [
+          "south",
+          "south-east",
+          "east",
+          "north-east",
+          "north",
+          "north-west",
+          "west",
+          "south-west"
+        ],
+        "animated_directions": {
+          "idle": [],
+          "walk": [
+            "south"
+          ],
+          "attack": []
+        },
+        "unassigned_animations": []
+      }
+    },
+    "slime_caustic": {
+      "name": "Green Slime",
+      "source_character_id": "e8c509a6-6216-43ee-9e43-38a396152113",
+      "source_state_name": "Idle",
+      "source_folder": "characters/Idle_17/Idle",
+      "source_prompt": "An aggressive, amorphous pile of translucent green ooze, irregular blob shape with jagged protrusions, a single glowing yellow eye embedded in the center, low top-down perspective, wide stance with a slight bounce pose.",
+      "size": [
+        64,
+        64
+      ],
+      "display_height": 40,
+      "foot_position": [
+        32.0,
+        57
+      ],
+      "rotations": {
+        "south": "res://Assets/Characters/slime_caustic/rotations/south.png",
+        "south-east": "res://Assets/Characters/slime_caustic/rotations/south-east.png",
+        "east": "res://Assets/Characters/slime_caustic/rotations/east.png",
+        "north-east": "res://Assets/Characters/slime_caustic/rotations/north-east.png",
+        "north": "res://Assets/Characters/slime_caustic/rotations/north.png",
+        "north-west": "res://Assets/Characters/slime_caustic/rotations/north-west.png",
+        "west": "res://Assets/Characters/slime_caustic/rotations/west.png",
+        "south-west": "res://Assets/Characters/slime_caustic/rotations/south-west.png"
+      },
+      "animations": {
+        "idle": {
+          "fps": 8,
+          "loop": true,
+          "directions": {
+            "south": [
+              "res://Assets/Characters/slime_caustic/animations/idle/south/frame_000.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/south/frame_001.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/south/frame_002.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/south/frame_003.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/south/frame_004.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/south/frame_005.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/south/frame_006.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/south/frame_007.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/south/frame_008.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/south/frame_009.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/south/frame_010.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/south/frame_011.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/south/frame_012.png"
+            ],
+            "south-east": [
+              "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_000.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_001.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_002.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_003.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_004.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_005.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_006.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_007.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_008.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_009.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_010.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_011.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_012.png"
+            ],
+            "east": [
+              "res://Assets/Characters/slime_caustic/animations/idle/east/frame_000.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/east/frame_001.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/east/frame_002.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/east/frame_003.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/east/frame_004.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/east/frame_005.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/east/frame_006.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/east/frame_007.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/east/frame_008.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/east/frame_009.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/east/frame_010.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/east/frame_011.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/east/frame_012.png"
+            ],
+            "north": [
+              "res://Assets/Characters/slime_caustic/animations/idle/north/frame_000.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/north/frame_001.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/north/frame_002.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/north/frame_003.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/north/frame_004.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/north/frame_005.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/north/frame_006.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/north/frame_007.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/north/frame_008.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/north/frame_009.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/north/frame_010.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/north/frame_011.png",
+              "res://Assets/Characters/slime_caustic/animations/idle/north/frame_012.png"
+            ]
+          }
+        }
+      },
+      "exported_animations": {
+        "idle_animation_green_slime_monster_pulsing_spikes": {
+          "north": [
+            "res://Assets/Characters/slime_caustic/animations/idle/north/frame_000.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/north/frame_001.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/north/frame_002.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/north/frame_003.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/north/frame_004.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/north/frame_005.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/north/frame_006.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/north/frame_007.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/north/frame_008.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/north/frame_009.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/north/frame_010.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/north/frame_011.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/north/frame_012.png"
+          ],
+          "south": [
+            "res://Assets/Characters/slime_caustic/animations/idle/south/frame_000.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/south/frame_001.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/south/frame_002.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/south/frame_003.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/south/frame_004.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/south/frame_005.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/south/frame_006.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/south/frame_007.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/south/frame_008.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/south/frame_009.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/south/frame_010.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/south/frame_011.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/south/frame_012.png"
+          ],
+          "east": [
+            "res://Assets/Characters/slime_caustic/animations/idle/east/frame_000.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/east/frame_001.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/east/frame_002.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/east/frame_003.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/east/frame_004.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/east/frame_005.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/east/frame_006.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/east/frame_007.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/east/frame_008.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/east/frame_009.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/east/frame_010.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/east/frame_011.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/east/frame_012.png"
+          ],
+          "south-east": [
+            "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_000.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_001.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_002.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_003.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_004.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_005.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_006.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_007.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_008.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_009.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_010.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_011.png",
+            "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_012.png"
+          ]
+        }
+      },
+      "frame_sizes": {
+        "res://Assets/Characters/slime_caustic/rotations/south.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/slime_caustic/rotations/south-east.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/slime_caustic/rotations/east.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/slime_caustic/rotations/north-east.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/slime_caustic/rotations/north.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/slime_caustic/rotations/north-west.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/slime_caustic/rotations/west.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/slime_caustic/rotations/south-west.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/north/frame_000.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/north/frame_001.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/north/frame_002.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/north/frame_003.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/north/frame_004.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/north/frame_005.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/north/frame_006.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/north/frame_007.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/north/frame_008.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/north/frame_009.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/north/frame_010.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/north/frame_011.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/north/frame_012.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/south/frame_000.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/south/frame_001.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/south/frame_002.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/south/frame_003.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/south/frame_004.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/south/frame_005.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/south/frame_006.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/south/frame_007.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/south/frame_008.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/south/frame_009.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/south/frame_010.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/south/frame_011.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/south/frame_012.png": [
+          76,
+          76
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/east/frame_000.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/east/frame_001.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/east/frame_002.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/east/frame_003.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/east/frame_004.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/east/frame_005.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/east/frame_006.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/east/frame_007.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/east/frame_008.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/east/frame_009.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/east/frame_010.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/east/frame_011.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/east/frame_012.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_000.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_001.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_002.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_003.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_004.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_005.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_006.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_007.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_008.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_009.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_010.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_011.png": [
+          80,
+          80
+        ],
+        "res://Assets/Characters/slime_caustic/animations/idle/south-east/frame_012.png": [
+          80,
+          80
+        ]
+      },
+      "coverage": {
+        "rotation_directions": [
+          "south",
+          "south-east",
+          "east",
+          "north-east",
+          "north",
+          "north-west",
+          "west",
+          "south-west"
+        ],
+        "animated_directions": {
+          "idle": [
+            "south",
+            "south-east",
+            "east",
+            "north"
+          ],
+          "walk": [],
+          "attack": []
+        },
+        "unassigned_animations": []
+      }
+    },
+    "goblin_scout": {
+      "name": "Goblin Scout",
+      "source_character_id": "888f967f-f4b6-42d5-a6fa-a4989349d179",
+      "source_state_name": "Idle",
+      "source_folder": "characters/Idle_18/Idle",
+      "source_prompt": "pixel art sprite from a low top-down perspective, front-facing view looking directly at the camera, goblin archer welp, asymmetric design, single leather pauldron strictly on the left shoulder, bare right shoulder with absolutely no armor, holding wooden bow in the left hand only, 8-way directional rotation consistency, clear outlines, isolated on a solid black background",
+      "size": [
+        60,
+        60
+      ],
+      "display_height": 44,
+      "foot_position": [
+        30.0,
+        55
+      ],
+      "rotations": {
+        "south": "res://Assets/Characters/goblin_scout/rotations/south.png",
+        "south-east": "res://Assets/Characters/goblin_scout/rotations/south-east.png",
+        "east": "res://Assets/Characters/goblin_scout/rotations/east.png",
+        "north-east": "res://Assets/Characters/goblin_scout/rotations/north-east.png",
+        "north": "res://Assets/Characters/goblin_scout/rotations/north.png",
+        "north-west": "res://Assets/Characters/goblin_scout/rotations/north-west.png",
+        "west": "res://Assets/Characters/goblin_scout/rotations/west.png",
+        "south-west": "res://Assets/Characters/goblin_scout/rotations/south-west.png"
+      },
+      "animations": {},
+      "exported_animations": {},
+      "frame_sizes": {
+        "res://Assets/Characters/goblin_scout/rotations/south.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/goblin_scout/rotations/south-east.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/goblin_scout/rotations/east.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/goblin_scout/rotations/north-east.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/goblin_scout/rotations/north.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/goblin_scout/rotations/north-west.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/goblin_scout/rotations/west.png": [
+          60,
+          60
+        ],
+        "res://Assets/Characters/goblin_scout/rotations/south-west.png": [
+          60,
+          60
+        ]
+      },
+      "coverage": {
+        "rotation_directions": [
+          "south",
+          "south-east",
+          "east",
+          "north-east",
+          "north",
+          "north-west",
+          "west",
+          "south-west"
+        ],
+        "animated_directions": {
+          "idle": [],
+          "walk": [],
+          "attack": []
+        },
+        "unassigned_animations": []
+      }
+    },
+    "goblin_worker": {
+      "name": "Goblin Worker",
+      "source_character_id": "dd308266-39ee-481b-9d23-906d0d964bee",
+      "source_state_name": "Idle",
+      "source_folder": "characters/Idle_19/Idle",
+      "source_prompt": "pixel art sprite from a low top-down perspective, front-facing view looking directly at the camera, goblin worker, wearing a classic brown leather miner hat with a lit headlamp on the front, holding a heavy iron pickaxe strictly in the right hand only, left hand is empty, 8-way directional rotation consistency, clear outlines, isolated on a solid black background",
+      "size": [
+        56,
+        56
+      ],
+      "display_height": 44,
+      "foot_position": [
+        28.0,
+        53
+      ],
+      "rotations": {
+        "south": "res://Assets/Characters/goblin_worker/rotations/south.png",
+        "south-east": "res://Assets/Characters/goblin_worker/rotations/south-east.png",
+        "east": "res://Assets/Characters/goblin_worker/rotations/east.png",
+        "north-east": "res://Assets/Characters/goblin_worker/rotations/north-east.png",
+        "north": "res://Assets/Characters/goblin_worker/rotations/north.png",
+        "north-west": "res://Assets/Characters/goblin_worker/rotations/north-west.png",
+        "west": "res://Assets/Characters/goblin_worker/rotations/west.png",
+        "south-west": "res://Assets/Characters/goblin_worker/rotations/south-west.png"
+      },
+      "animations": {},
+      "exported_animations": {},
+      "frame_sizes": {
+        "res://Assets/Characters/goblin_worker/rotations/south.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/goblin_worker/rotations/south-east.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/goblin_worker/rotations/east.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/goblin_worker/rotations/north-east.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/goblin_worker/rotations/north.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/goblin_worker/rotations/north-west.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/goblin_worker/rotations/west.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/goblin_worker/rotations/south-west.png": [
+          56,
+          56
+        ]
+      },
+      "coverage": {
+        "rotation_directions": [
+          "south",
+          "south-east",
+          "east",
+          "north-east",
+          "north",
+          "north-west",
+          "west",
+          "south-west"
+        ],
+        "animated_directions": {
+          "idle": [],
+          "walk": [],
+          "attack": []
+        },
+        "unassigned_animations": []
+      }
+    },
+    "goblin_warrior": {
+      "name": "Goblin Warrior",
+      "source_character_id": "22405917-2761-4b8f-8c6f-15a071f39a37",
+      "source_state_name": "Idle",
+      "source_folder": "characters/Idle_20/Idle",
+      "source_prompt": "pixel art sprite from a low top-down perspective, front-facing view looking directly at the camera, goblin warrior cannon fodder minion, wearing a simple dented iron helmet and tattered leather tunic, holding a crude iron sword strictly in the right hand only, holding a basic round wooden shield strictly in the left hand only, 8-way directional rotation consistency, clear outlines, isolated on a solid black background\n",
+      "size": [
+        56,
+        56
+      ],
+      "display_height": 46,
+      "foot_position": [
+        28.0,
+        52
+      ],
+      "rotations": {
+        "south": "res://Assets/Characters/goblin_warrior/rotations/south.png",
+        "south-east": "res://Assets/Characters/goblin_warrior/rotations/south-east.png",
+        "east": "res://Assets/Characters/goblin_warrior/rotations/east.png",
+        "north-east": "res://Assets/Characters/goblin_warrior/rotations/north-east.png",
+        "north": "res://Assets/Characters/goblin_warrior/rotations/north.png",
+        "north-west": "res://Assets/Characters/goblin_warrior/rotations/north-west.png",
+        "west": "res://Assets/Characters/goblin_warrior/rotations/west.png",
+        "south-west": "res://Assets/Characters/goblin_warrior/rotations/south-west.png"
+      },
+      "animations": {},
+      "exported_animations": {},
+      "frame_sizes": {
+        "res://Assets/Characters/goblin_warrior/rotations/south.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/goblin_warrior/rotations/south-east.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/goblin_warrior/rotations/east.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/goblin_warrior/rotations/north-east.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/goblin_warrior/rotations/north.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/goblin_warrior/rotations/north-west.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/goblin_warrior/rotations/west.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/goblin_warrior/rotations/south-west.png": [
+          56,
+          56
+        ]
+      },
+      "coverage": {
+        "rotation_directions": [
+          "south",
+          "south-east",
+          "east",
+          "north-east",
+          "north",
+          "north-west",
+          "west",
+          "south-west"
+        ],
+        "animated_directions": {
+          "idle": [],
+          "walk": [],
+          "attack": []
+        },
+        "unassigned_animations": []
+      }
+    },
+    "goblin_shaman": {
+      "name": "Goblin Shaman",
+      "source_character_id": "002dc472-b405-4b99-bc49-a2561c5fda7e",
+      "source_state_name": "Idle",
+      "source_folder": "characters/Idle_21/Idle",
+      "source_prompt": "pixel art sprite from a low top-down perspective, front-facing view looking directly at the camera, goblin mage shaman, wearing a tattered purple hooded robe, holding a wooden magic staff with a glowing crystal top strictly in the right hand only, left hand is open casting small magical sparks, 8-way directional rotation consistency, clear outlines, isolated on a solid black background",
+      "size": [
+        56,
+        56
+      ],
+      "display_height": 46,
+      "foot_position": [
+        28.0,
+        52
+      ],
+      "rotations": {
+        "south": "res://Assets/Characters/goblin_shaman/rotations/south.png",
+        "south-east": "res://Assets/Characters/goblin_shaman/rotations/south-east.png",
+        "east": "res://Assets/Characters/goblin_shaman/rotations/east.png",
+        "north-east": "res://Assets/Characters/goblin_shaman/rotations/north-east.png",
+        "north": "res://Assets/Characters/goblin_shaman/rotations/north.png",
+        "north-west": "res://Assets/Characters/goblin_shaman/rotations/north-west.png",
+        "west": "res://Assets/Characters/goblin_shaman/rotations/west.png",
+        "south-west": "res://Assets/Characters/goblin_shaman/rotations/south-west.png"
+      },
+      "animations": {},
+      "exported_animations": {},
+      "frame_sizes": {
+        "res://Assets/Characters/goblin_shaman/rotations/south.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/goblin_shaman/rotations/south-east.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/goblin_shaman/rotations/east.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/goblin_shaman/rotations/north-east.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/goblin_shaman/rotations/north.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/goblin_shaman/rotations/north-west.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/goblin_shaman/rotations/west.png": [
+          56,
+          56
+        ],
+        "res://Assets/Characters/goblin_shaman/rotations/south-west.png": [
+          56,
+          56
+        ]
+      },
+      "coverage": {
+        "rotation_directions": [
+          "south",
+          "south-east",
+          "east",
+          "north-east",
+          "north",
+          "north-west",
+          "west",
+          "south-west"
+        ],
+        "animated_directions": {
+          "idle": [],
+          "walk": [],
+          "attack": []
+        },
+        "unassigned_animations": []
+      }
+    },
+    "goblin_chieftain": {
+      "name": "Goblin Chieftain",
+      "source_character_id": "50e00ee8-469f-46fd-b8a0-73adc007d361",
+      "source_state_name": "Idle",
+      "source_folder": "characters/Idle_22/Idle",
+      "source_prompt": "pixel art sprite from a low top-down perspective, front-facing view looking directly at the camera, goblin chieftain boss, wearing a simple white wolf-skull headdress on his head and a tattered crimson cape, holding a massive bone-handled battleaxe strictly in the right hand only, left hand rests by his side, 8-way directional rotation consistency, clear outlines, isolated on a solid black background",
+      "size": [
+        64,
+        64
+      ],
+      "display_height": 56,
+      "foot_position": [
+        32.0,
+        58
+      ],
+      "rotations": {
+        "south": "res://Assets/Characters/goblin_chieftain/rotations/south.png",
+        "south-east": "res://Assets/Characters/goblin_chieftain/rotations/south-east.png",
+        "east": "res://Assets/Characters/goblin_chieftain/rotations/east.png",
+        "north-east": "res://Assets/Characters/goblin_chieftain/rotations/north-east.png",
+        "north": "res://Assets/Characters/goblin_chieftain/rotations/north.png",
+        "north-west": "res://Assets/Characters/goblin_chieftain/rotations/north-west.png",
+        "west": "res://Assets/Characters/goblin_chieftain/rotations/west.png",
+        "south-west": "res://Assets/Characters/goblin_chieftain/rotations/south-west.png"
+      },
+      "animations": {},
+      "exported_animations": {},
+      "frame_sizes": {
+        "res://Assets/Characters/goblin_chieftain/rotations/south.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/goblin_chieftain/rotations/south-east.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/goblin_chieftain/rotations/east.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/goblin_chieftain/rotations/north-east.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/goblin_chieftain/rotations/north.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/goblin_chieftain/rotations/north-west.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/goblin_chieftain/rotations/west.png": [
+          64,
+          64
+        ],
+        "res://Assets/Characters/goblin_chieftain/rotations/south-west.png": [
+          64,
+          64
+        ]
+      },
+      "coverage": {
+        "rotation_directions": [
+          "south",
+          "south-east",
+          "east",
+          "north-east",
+          "north",
+          "north-west",
+          "west",
+          "south-west"
+        ],
+        "animated_directions": {
+          "idle": [],
+          "walk": [],
+          "attack": []
+        },
+        "unassigned_animations": []
+      }
+    }
+  },
+  "import_summary": {
+    "export_version": "3.1",
+    "export_date": "2026-10-18T04:16:51.882749",
+    "source_metadata_sha256": "2e797bb85668862c219cb3ba1e745b398bf38ab956c6c0d930f176b8b27cf9b6",
+    "source_state_records": 46,
+    "source_assets_sha256": "bc8d6789f553e01342a6584523c1934e73f9cab353ce683503c152fa9901d06c",
+    "unique_states": 23,
+    "duplicate_state_records": 23,
+    "referenced_pngs": 444,
+    "source_frame_references": 444,
+    "rotation_frames": 184,
+    "exported_animation_frames": 260,
+    "mapped_monsters": 25,
+    "unmapped_monsters": [
+      "Bandit Boss",
+      "Bandit Cutpurse",
+      "Bandit Enforcer",
+      "Bandit Footpad",
+      "Bandit Sharpshooter",
+      "Bandit Sorcerer",
+      "Bat Bloodfang",
+      "Bat Flutter",
+      "Bat Hellbat",
+      "Bat Nibbler",
+      "Bat Screecher",
+      "Bat Venomwing",
+      "Cultist Archpriest",
+      "Cultist Devotee",
+      "Cultist Hexblade",
+      "Cultist Initiate",
+      "Cultist Seer",
+      "Cultist Zealot",
+      "Harpy Chirp",
+      "Harpy Clawer",
+      "Harpy Matriarch",
+      "Harpy Screecher",
+      "Harpy Skyseer",
+      "Harpy Windrazor",
+      "Kobold Forager",
+      "Kobold King",
+      "Kobold Scrapper",
+      "Kobold Slinger",
+      "Kobold Sneak",
+      "Kobold Witchdoctor",
+      "Orc Brawler",
+      "Orc Grunt",
+      "Orc Skirmisher",
+      "Orc Slayer",
+      "Orc Warchief",
+      "Orc Warlock",
+      "Skeleton Boneshard",
+      "Skeleton Sniper",
+      "Slime Mimic",
+      "Spider Broodmother",
+      "Spider Creeper",
+      "Spider Fangmaw",
+      "Spider Poisonfang",
+      "Spider Silktomb",
+      "Spider Webspinner",
+      "Troll Basher",
+      "Troll Grub",
+      "Troll Matron",
+      "Troll Shaman",
+      "Troll Smasher",
+      "Troll Thrower",
+      "Wolf Alpha",
+      "Wolf Cub",
+      "Wolf Hunter",
+      "Wraith Echo",
+      "Wraith Phantom",
+      "Wraith Shade",
+      "Wraith Sorrow"
+    ],
+    "fallback_policy": "Use the exact-facing action when present, otherwise the exact-facing rotation. Never borrow another facing or generate missing frames."
+  }
+}

@@ -1,0 +1,378 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/Maps/Tavern/Interior.png" id="1_art"]
+
+[node name="TavernContent" type="Node2D"]
+y_sort_enabled = true
+texture_filter = 1
+scale = Vector2(0.75, 0.75)
+
+[node name="ApprovedArtwork" type="Sprite2D" parent="."]
+z_index = -20
+texture = ExtResource("1_art")
+centered = false
+
+[node name="BarCounter" type="Node2D" parent="."]
+position = Vector2(349.85714285714283, 282)
+
+[node name="Foreground" type="Polygon2D" parent="BarCounter"]
+texture = ExtResource("1_art")
+polygon = PackedVector2Array(-180.85714285714283, -124, -136.85714285714283, -124, -136.85714285714283, -62, 387.14285714285717, -60, 387.14285714285717, -9, -141.85714285714283, 0, -177.85714285714283, -19)
+uv = PackedVector2Array(169, 158, 213, 158, 213, 220, 737, 222, 737, 273, 208, 282, 172, 263)
+
+[node name="BarReturn" type="Node2D" parent="."]
+position = Vector2(193.0, 283)
+
+[node name="Foreground" type="Polygon2D" parent="BarReturn"]
+texture = ExtResource("1_art")
+polygon = PackedVector2Array(-21.0, -125, 21.0, -125, 21.0, 0, -21.0, 0)
+uv = PackedVector2Array(172, 158, 214, 158, 214, 283, 172, 283)
+
+[node name="BarStool1" type="Node2D" parent="."]
+position = Vector2(230.33333333333334, 321)
+
+[node name="Foreground" type="Polygon2D" parent="BarStool1"]
+texture = ExtResource("1_art")
+polygon = PackedVector2Array(-13.333333333333343, -43, 12.666666666666657, -47, 19.666666666666657, -31, 12.666666666666657, 0, -13.333333333333343, 0, -18.333333333333343, -28)
+uv = PackedVector2Array(217, 278, 243, 274, 250, 290, 243, 321, 217, 321, 212, 293)
+
+[node name="BarStool2" type="Node2D" parent="."]
+position = Vector2(287.3333333333333, 321)
+
+[node name="Foreground" type="Polygon2D" parent="BarStool2"]
+texture = ExtResource("1_art")
+polygon = PackedVector2Array(-13.333333333333314, -43, 12.666666666666686, -47, 19.666666666666686, -31, 12.666666666666686, 0, -13.333333333333314, 0, -18.333333333333314, -28)
+uv = PackedVector2Array(274, 278, 300, 274, 307, 290, 300, 321, 274, 321, 269, 293)
+
+[node name="BarStool3" type="Node2D" parent="."]
+position = Vector2(344.3333333333333, 321)
+
+[node name="Foreground" type="Polygon2D" parent="BarStool3"]
+texture = ExtResource("1_art")
+polygon = PackedVector2Array(-13.333333333333314, -43, 12.666666666666686, -47, 19.666666666666686, -31, 12.666666666666686, 0, -13.333333333333314, 0, -18.333333333333314, -28)
+uv = PackedVector2Array(331, 278, 357, 274, 364, 290, 357, 321, 331, 321, 326, 293)
+
+[node name="BarStool4" type="Node2D" parent="."]
+position = Vector2(401.3333333333333, 321)
+
+[node name="Foreground" type="Polygon2D" parent="BarStool4"]
+texture = ExtResource("1_art")
+polygon = PackedVector2Array(-13.333333333333314, -43, 12.666666666666686, -47, 19.666666666666686, -31, 12.666666666666686, 0, -13.333333333333314, 0, -18.333333333333314, -28)
+uv = PackedVector2Array(388, 278, 414, 274, 421, 290, 414, 321, 388, 321, 383, 293)
+
+[node name="BarStool5" type="Node2D" parent="."]
+position = Vector2(458.3333333333333, 321)
+
+[node name="Foreground" type="Polygon2D" parent="BarStool5"]
+texture = ExtResource("1_art")
+polygon = PackedVector2Array(-13.333333333333314, -43, 12.666666666666686, -47, 19.666666666666686, -31, 12.666666666666686, 0, -13.333333333333314, 0, -18.333333333333314, -28)
+uv = PackedVector2Array(445, 278, 471, 274, 478, 290, 471, 321, 445, 321, 440, 293)
+
+[node name="BarStool6" type="Node2D" parent="."]
+position = Vector2(515.3333333333334, 321)
+
+[node name="Foreground" type="Polygon2D" parent="BarStool6"]
+texture = ExtResource("1_art")
+polygon = PackedVector2Array(-13.333333333333371, -43, 12.666666666666629, -47, 19.66666666666663, -31, 12.666666666666629, 0, -13.333333333333371, 0, -18.33333333333337, -28)
+uv = PackedVector2Array(502, 278, 528, 274, 535, 290, 528, 321, 502, 321, 497, 293)
+
+[node name="BarStool7" type="Node2D" parent="."]
+position = Vector2(572.3333333333334, 321)
+
+[node name="Foreground" type="Polygon2D" parent="BarStool7"]
+texture = ExtResource("1_art")
+polygon = PackedVector2Array(-13.333333333333371, -43, 12.666666666666629, -47, 19.66666666666663, -31, 12.666666666666629, 0, -13.333333333333371, 0, -18.33333333333337, -28)
+uv = PackedVector2Array(559, 278, 585, 274, 592, 290, 585, 321, 559, 321, 554, 293)
+
+[node name="BarStool8" type="Node2D" parent="."]
+position = Vector2(629.3333333333334, 321)
+
+[node name="Foreground" type="Polygon2D" parent="BarStool8"]
+texture = ExtResource("1_art")
+polygon = PackedVector2Array(-13.333333333333371, -43, 12.666666666666629, -47, 19.66666666666663, -31, 12.666666666666629, 0, -13.333333333333371, 0, -18.33333333333337, -28)
+uv = PackedVector2Array(616, 278, 642, 274, 649, 290, 642, 321, 616, 321, 611, 293)
+
+[node name="BarStool9" type="Node2D" parent="."]
+position = Vector2(686.3333333333334, 321)
+
+[node name="Foreground" type="Polygon2D" parent="BarStool9"]
+texture = ExtResource("1_art")
+polygon = PackedVector2Array(-13.333333333333371, -43, 12.666666666666629, -47, 19.66666666666663, -31, 12.666666666666629, 0, -13.333333333333371, 0, -18.33333333333337, -28)
+uv = PackedVector2Array(673, 278, 699, 274, 706, 290, 699, 321, 673, 321, 668, 293)
+
+[node name="KitchenDivider" type="Node2D" parent="."]
+position = Vector2(829.5, 365)
+
+[node name="Foreground" type="Polygon2D" parent="KitchenDivider"]
+texture = ExtResource("1_art")
+polygon = PackedVector2Array(-27.5, -349, 27.5, -349, 27.5, 0, -27.5, 0)
+uv = PackedVector2Array(802, 16, 857, 16, 857, 365, 802, 365)
+
+[node name="KitchenRearCounter" type="Node2D" parent="."]
+position = Vector2(940.5, 214)
+
+[node name="Foreground" type="Polygon2D" parent="KitchenRearCounter"]
+texture = ExtResource("1_art")
+polygon = PackedVector2Array(-75.5, -86, 75.5, -86, 75.5, 0, -75.5, 0)
+uv = PackedVector2Array(865, 128, 1016, 128, 1016, 214, 865, 214)
+
+[node name="Stove" type="Node2D" parent="."]
+position = Vector2(1092.5, 214)
+
+[node name="Foreground" type="Polygon2D" parent="Stove"]
+texture = ExtResource("1_art")
+polygon = PackedVector2Array(-77.5, -81, 77.5, -81, 77.5, 0, -77.5, 0)
+uv = PackedVector2Array(1015, 133, 1170, 133, 1170, 214, 1015, 214)
+
+[node name="KitchenIsland" type="Node2D" parent="."]
+position = Vector2(1046.2, 335)
+
+[node name="Foreground" type="Polygon2D" parent="KitchenIsland"]
+texture = ExtResource("1_art")
+polygon = PackedVector2Array(-115.20000000000005, -75, 70.79999999999995, -75, 79.79999999999995, -58, 79.79999999999995, 0, -115.20000000000005, 0)
+uv = PackedVector2Array(931, 260, 1117, 260, 1126, 277, 1126, 335, 931, 335)
+
+[node name="KitchenSideCabinet" type="Node2D" parent="."]
+position = Vector2(1182.0, 330)
+
+[node name="Foreground" type="Polygon2D" parent="KitchenSideCabinet"]
+texture = ExtResource("1_art")
+polygon = PackedVector2Array(-12.0, -185, 12.0, -185, 12.0, 0, -12.0, 0)
+uv = PackedVector2Array(1170, 145, 1194, 145, 1194, 330, 1170, 330)
+
+[node name="Hearth" type="Node2D" parent="."]
+position = Vector2(614.25, 728)
+
+[node name="Foreground" type="Polygon2D" parent="Hearth"]
+texture = ExtResource("1_art")
+polygon = PackedVector2Array(-137.25, -168, 136.75, -168, 151.75, -158, 151.75, -13, 139.75, 0, -142.25, 0, -150.25, -11, -150.25, -155)
+uv = PackedVector2Array(477, 560, 751, 560, 766, 570, 766, 715, 754, 728, 472, 728, 464, 717, 464, 573)
+
+[node name="HearthNorthBench" type="Node2D" parent="."]
+position = Vector2(615.5, 537)
+
+[node name="Foreground" type="Polygon2D" parent="HearthNorthBench"]
+texture = ExtResource("1_art")
+polygon = PackedVector2Array(-138.5, -51, 138.5, -51, 138.5, 0, -138.5, 0)
+uv = PackedVector2Array(477, 486, 754, 486, 754, 537, 477, 537)
+
+[node name="HearthSouthBench" type="Node2D" parent="."]
+position = Vector2(615.5, 804)
+
+[node name="Foreground" type="Polygon2D" parent="HearthSouthBench"]
+texture = ExtResource("1_art")
+polygon = PackedVector2Array(-138.5, -54, 138.5, -54, 138.5, 0, -138.5, 0)
+uv = PackedVector2Array(477, 750, 754, 750, 754, 804, 477, 804)
+
+[node name="HearthWestBench" type="Node2D" parent="."]
+position = Vector2(414.5, 749)
+
+[node name="Foreground" type="Polygon2D" parent="HearthWestBench"]
+texture = ExtResource("1_art")
+polygon = PackedVector2Array(-19.5, -204, 19.5, -204, 19.5, 0, -19.5, 0)
+uv = PackedVector2Array(395, 545, 434, 545, 434, 749, 395, 749)
+
+[node name="HearthEastBench" type="Node2D" parent="."]
+position = Vector2(819.0, 749)
+
+[node name="Foreground" type="Polygon2D" parent="HearthEastBench"]
+texture = ExtResource("1_art")
+polygon = PackedVector2Array(-20.0, -204, 20.0, -204, 20.0, 0, -20.0, 0)
+uv = PackedVector2Array(799, 545, 839, 545, 839, 749, 799, 749)
+
+[node name="NorthwestTable" type="Node2D" parent="."]
+position = Vector2(159.71428571428572, 521)
+
+[node name="Foreground" type="Polygon2D" parent="NorthwestTable"]
+texture = ExtResource("1_art")
+polygon = PackedVector2Array(-57.71428571428572, -158, -26.714285714285722, -158, -26.714285714285722, -137, 47.28571428571428, -137, 49.28571428571428, -107, 84.28571428571428, -107, 84.28571428571428, -27, 48.28571428571428, -27, 48.28571428571428, 0, -21.714285714285722, 0, -21.714285714285722, -20, -74.71428571428572, -20, -74.71428571428572, -108, -57.71428571428572, -108)
+uv = PackedVector2Array(102, 363, 133, 363, 133, 384, 207, 384, 209, 414, 244, 414, 244, 494, 208, 494, 208, 521, 138, 521, 138, 501, 85, 501, 85, 413, 102, 413)
+
+[node name="WestLongTable" type="Node2D" parent="."]
+position = Vector2(179.57142857142858, 784)
+
+[node name="Foreground" type="Polygon2D" parent="WestLongTable"]
+texture = ExtResource("1_art")
+polygon = PackedVector2Array(-60.571428571428584, -186, -21.571428571428584, -186, -21.571428571428584, -174, 47.428571428571416, -174, 47.428571428571416, -142, 81.42857142857142, -142, 81.42857142857142, -50, 49.428571428571416, -50, 49.428571428571416, 0, -22.571428571428584, 0, -22.571428571428584, -27, -73.57142857142858, -27, -73.57142857142858, -149, -60.571428571428584, -149)
+uv = PackedVector2Array(119, 598, 158, 598, 158, 610, 227, 610, 227, 642, 261, 642, 261, 734, 229, 734, 229, 784, 157, 784, 157, 757, 106, 757, 106, 635, 119, 635)
+
+[node name="SouthwestTable" type="Node2D" parent="."]
+position = Vector2(181.6153846153846, 965)
+
+[node name="Foreground" type="Polygon2D" parent="SouthwestTable"]
+texture = ExtResource("1_art")
+polygon = PackedVector2Array(-26.615384615384613, -143, 2.384615384615387, -143, 2.384615384615387, -125, 46.38461538461539, -125, 60.38461538461539, -103, 60.38461538461539, -37, 39.38461538461539, -25, 26.384615384615387, 0, -18.615384615384613, 0, -18.615384615384613, -14, -73.61538461538461, -14, -73.61538461538461, -111, -26.615384615384613, -111)
+uv = PackedVector2Array(155, 822, 184, 822, 184, 840, 228, 840, 242, 862, 242, 928, 221, 940, 208, 965, 163, 965, 163, 951, 108, 951, 108, 854, 155, 854)
+
+[node name="NortheastTable" type="Node2D" parent="."]
+position = Vector2(1071.6, 522)
+
+[node name="Foreground" type="Polygon2D" parent="NortheastTable"]
+texture = ExtResource("1_art")
+polygon = PackedVector2Array(-15.599999999999909, -146, 16.40000000000009, -146, 16.40000000000009, -124, 72.40000000000009, -124, 84.40000000000009, -86, 76.40000000000009, -28, 24.40000000000009, -28, 24.40000000000009, 0, -19.59999999999991, 0, -19.59999999999991, -25, -70.59999999999991, -25, -70.59999999999991, -95, -51.59999999999991, -95, -51.59999999999991, -122, -15.599999999999909, -122)
+uv = PackedVector2Array(1056, 376, 1088, 376, 1088, 398, 1144, 398, 1156, 436, 1148, 494, 1096, 494, 1096, 522, 1052, 522, 1052, 497, 1001, 497, 1001, 427, 1020, 427, 1020, 400, 1056, 400)
+
+[node name="EastTable" type="Node2D" parent="."]
+position = Vector2(1071.6, 751)
+
+[node name="Foreground" type="Polygon2D" parent="EastTable"]
+texture = ExtResource("1_art")
+polygon = PackedVector2Array(-15.599999999999909, -146, 16.40000000000009, -146, 16.40000000000009, -124, 72.40000000000009, -124, 84.40000000000009, -86, 76.40000000000009, -28, 24.40000000000009, -28, 24.40000000000009, 0, -19.59999999999991, 0, -19.59999999999991, -25, -70.59999999999991, -25, -70.59999999999991, -95, -51.59999999999991, -95, -51.59999999999991, -122, -15.599999999999909, -122)
+uv = PackedVector2Array(1056, 605, 1088, 605, 1088, 627, 1144, 627, 1156, 665, 1148, 723, 1096, 723, 1096, 751, 1052, 751, 1052, 726, 1001, 726, 1001, 656, 1020, 656, 1020, 629, 1056, 629)
+
+[node name="SoutheastTable" type="Node2D" parent="."]
+position = Vector2(1071.6, 974)
+
+[node name="Foreground" type="Polygon2D" parent="SoutheastTable"]
+texture = ExtResource("1_art")
+polygon = PackedVector2Array(-15.599999999999909, -146, 16.40000000000009, -146, 16.40000000000009, -124, 72.40000000000009, -124, 84.40000000000009, -86, 76.40000000000009, -28, 24.40000000000009, -28, 24.40000000000009, 0, -19.59999999999991, 0, -19.59999999999991, -25, -70.59999999999991, -25, -70.59999999999991, -95, -51.59999999999991, -95, -51.59999999999991, -122, -15.599999999999909, -122)
+uv = PackedVector2Array(1056, 828, 1088, 828, 1088, 850, 1144, 850, 1156, 888, 1148, 946, 1096, 946, 1096, 974, 1052, 974, 1052, 949, 1001, 949, 1001, 879, 1020, 879, 1020, 852, 1056, 852)
+
+[node name="WestBooth" type="Node2D" parent="."]
+position = Vector2(246.5, 1082)
+
+[node name="Foreground" type="Polygon2D" parent="WestBooth"]
+texture = ExtResource("1_art")
+polygon = PackedVector2Array(-163.5, -109, 163.5, -109, 163.5, 0, -163.5, 0)
+uv = PackedVector2Array(83, 973, 410, 973, 410, 1082, 83, 1082)
+
+[node name="EastBooth" type="Node2D" parent="."]
+position = Vector2(1016.0, 1082)
+
+[node name="Foreground" type="Polygon2D" parent="EastBooth"]
+texture = ExtResource("1_art")
+polygon = PackedVector2Array(-172.0, -109, 172.0, -109, 172.0, 0, -172.0, 0)
+uv = PackedVector2Array(844, 973, 1188, 973, 1188, 1082, 844, 1082)
+
+[node name="NearWallWest" type="Node2D" parent="."]
+position = Vector2(0, 1190)
+
+[node name="Foreground" type="Polygon2D" parent="NearWallWest"]
+texture = ExtResource("1_art")
+polygon = PackedVector2Array(7, -140, 574, -140, 574, 0, 7, 0)
+uv = PackedVector2Array(7, 1050, 574, 1050, 574, 1190, 7, 1190)
+
+[node name="NearWallEast" type="Node2D" parent="."]
+position = Vector2(0, 1190)
+
+[node name="Foreground" type="Polygon2D" parent="NearWallEast"]
+texture = ExtResource("1_art")
+polygon = PackedVector2Array(670, -140, 1245, -140, 1245, 0, 670, 0)
+uv = PackedVector2Array(670, 1050, 1245, 1050, 1245, 1190, 670, 1190)
+
+[node name="PhysicalBases" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Base00" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(0, 0, 78, 0, 78, 1254, 0, 1254)
+
+[node name="Base01" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(1194, 0, 1254, 0, 1254, 1254, 1194, 1254)
+
+[node name="Base02" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(0, 0, 1254, 0, 1254, 164, 0, 164)
+
+[node name="Base03" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(78, 1082, 574, 1082, 574, 1254, 78, 1254)
+
+[node name="Base04" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(670, 1082, 1194, 1082, 1194, 1254, 670, 1254)
+
+[node name="Base05" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(574, 1140, 670, 1140, 670, 1254, 574, 1254)
+
+[node name="Base06" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(76, 181, 128, 181, 128, 331, 76, 331)
+
+[node name="Base07" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(76, 547, 94, 547, 94, 639, 76, 639)
+
+[node name="Base08" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(1155, 529, 1194, 529, 1194, 618, 1155, 618)
+
+[node name="Base09" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(172, 226, 738, 226, 738, 283, 172, 283)
+
+[node name="Base10" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(172, 158, 214, 158, 214, 283, 172, 283)
+
+[node name="Base11" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(217, 290, 242, 290, 242, 319, 217, 319)
+
+[node name="Base12" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(274, 290, 299, 290, 299, 319, 274, 319)
+
+[node name="Base13" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(331, 290, 356, 290, 356, 319, 331, 319)
+
+[node name="Base14" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(388, 290, 413, 290, 413, 319, 388, 319)
+
+[node name="Base15" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(445, 290, 470, 290, 470, 319, 445, 319)
+
+[node name="Base16" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(502, 290, 527, 290, 527, 319, 502, 319)
+
+[node name="Base17" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(559, 290, 584, 290, 584, 319, 559, 319)
+
+[node name="Base18" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(616, 290, 641, 290, 641, 319, 616, 319)
+
+[node name="Base19" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(673, 290, 698, 290, 698, 319, 673, 319)
+
+[node name="Base20" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(802, 0, 857, 0, 857, 365, 802, 365)
+
+[node name="Base21" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(865, 128, 1016, 128, 1016, 214, 865, 214)
+
+[node name="Base22" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(1015, 133, 1170, 133, 1170, 214, 1015, 214)
+
+[node name="Base23" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(933, 277, 1123, 277, 1123, 335, 933, 335)
+
+[node name="Base24" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(1170, 145, 1194, 145, 1194, 330, 1170, 330)
+
+[node name="Base25" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(472, 571, 758, 571, 758, 722, 472, 722)
+
+[node name="Base26" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(478, 506, 753, 506, 753, 537, 478, 537)
+
+[node name="Base27" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(478, 772, 753, 772, 753, 804, 478, 804)
+
+[node name="Base28" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(395, 550, 434, 550, 434, 749, 395, 749)
+
+[node name="Base29" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(799, 550, 839, 550, 839, 749, 799, 749)
+
+[node name="Base30" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(91, 399, 237, 399, 237, 516, 91, 516)
+
+[node name="Base31" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(110, 633, 255, 633, 255, 770, 110, 770)
+
+[node name="Base32" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(114, 855, 237, 855, 237, 951, 114, 951)
+
+[node name="Base33" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(1007, 411, 1152, 411, 1152, 512, 1007, 512)
+
+[node name="Base34" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(1007, 640, 1152, 640, 1152, 741, 1007, 741)
+
+[node name="Base35" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(1007, 863, 1152, 863, 1152, 964, 1007, 964)
+
+[node name="Base36" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(83, 993, 410, 993, 410, 1082, 83, 1082)
+
+[node name="Base37" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(844, 993, 1188, 993, 1188, 1082, 844, 1082)

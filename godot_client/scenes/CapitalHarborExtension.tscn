@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://k64kpualxs2n"]
+
+[ext_resource type="Texture2D" uid="uid://76qy6iuaaspr" path="res://Assets/MapLayers/CapitalHarbor/00_Ground.png" id="1_ground"]
+[ext_resource type="Texture2D" uid="uid://chgql1ws13ffv" path="res://Assets/MapLayers/CapitalHarbor/10_PathsAndQuays.png" id="2_paths"]
+[ext_resource type="Texture2D" uid="uid://b3qrqmuh0fqa" path="res://Assets/MapLayers/CapitalHarbor/20_Water.png" id="3_water"]
+[ext_resource type="Texture2D" uid="uid://cw0bm17vfgv2q" path="res://Assets/MapLayers/CapitalHarbor/30_WallsAndBuildings.png" id="4_buildings"]
+[ext_resource type="Texture2D" uid="uid://dn4en8v1vum4v" path="res://Assets/MapLayers/CapitalHarbor/35_DocksAndCranes.png" id="5_docks"]
+[ext_resource type="Texture2D" uid="uid://cy0su1wpj31d1" path="res://Assets/MapLayers/CapitalHarbor/40_Rocks.png" id="6_rocks"]
+[ext_resource type="Texture2D" uid="uid://dix6r67anbn12" path="res://Assets/MapLayers/CapitalHarbor/50_Vegetation.png" id="7_vegetation"]
+[ext_resource type="Texture2D" uid="uid://c5f5dcsw8yc08" path="res://Assets/MapLayers/CapitalHarbor/60_Boats.png" id="8_boats"]
+[ext_resource type="Texture2D" uid="uid://c71b8c3hfht6" path="res://Assets/MapLayers/CapitalHarbor/70_CargoAndProps.png" id="9_props"]
+
+[node name="CapitalHarborExtension" type="Node2D"]
+y_sort_enabled = true
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+
+[node name="Ground" type="Sprite2D" parent="."]
+texture = ExtResource("1_ground")
+centered = false
+
+[node name="PathsAndQuays" type="Sprite2D" parent="."]
+texture = ExtResource("2_paths")
+centered = false
+
+[node name="Water" type="Sprite2D" parent="."]
+texture = ExtResource("3_water")
+centered = false
+
+[node name="WallsAndBuildings" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("4_buildings")
+centered = false
+
+[node name="DocksAndCranes" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("5_docks")
+centered = false
+
+[node name="Rocks" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("6_rocks")
+centered = false
+
+[node name="Vegetation" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("7_vegetation")
+centered = false
+
+[node name="Boats" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("8_boats")
+centered = false
+
+[node name="CargoAndProps" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("9_props")
+centered = false

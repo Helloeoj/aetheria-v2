@@ -1,11 +1,49 @@
 ; Engine configuration file.
-; It's best edited using Godot Editor.
-; If you edit it manually, tread lightly!
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
 
 config_version=5
 
 [application]
-config/name="Aetheria Client"
+
+config/name="Aetheria (Arcade Test Client)"
+run/main_scene="res://scenes/EastOutskirtsLayered.tscn"
+config/features=PackedStringArray("4.5")
 
 [autoload]
-NetworkManager="res://autoload/network_manager.gd"
+
+DiagnosticCore="*res://diagnostics/diagnostic_core.gd"
+GameData="*res://scripts/game_data.gd"
+SceneTravel="*res://scripts/scene_travel.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/window_width_override=1280
+window/size/window_height_override=720
+
+[debug]
+
+file_logging/enable_file_logging=true
+file_logging/max_log_files=8
+
+[aetheria]
+
+diagnostics/enabled=true
+diagnostics/enabled.release=false
+diagnostics/event_history=64
+diagnostics/max_incidents=128
+diagnostics/flush_seconds=2.0
+diagnostics/retained_sessions=16
+diagnostics/storage_limit_mb=64
+diagnostics/include_warnings=false
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

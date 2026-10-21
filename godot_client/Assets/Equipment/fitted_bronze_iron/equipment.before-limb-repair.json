@@ -1,0 +1,7209 @@
+{
+  "version": 1,
+  "characterNativeScale": 1,
+  "catalogSource": "C:\\Users\\Riptide\\Desktop\\aetheria-game-main\\items\\items.py",
+  "items": [
+    {
+      "id": "bronze-helmet",
+      "name": "Bronze Helmet",
+      "tier": 1,
+      "material": "Bronze",
+      "slot": "head",
+      "visible": true,
+      "twoHanded": false,
+      "views": {
+        "south": [
+          {
+            "name": "helmet",
+            "file": "sprites/bronze/helmet/south/helmet.png",
+            "socket": "head",
+            "pivot": [
+              14,
+              16
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 70,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "south-west": [
+          {
+            "name": "helmet",
+            "file": "sprites/bronze/helmet/south-west/helmet.png",
+            "socket": "head",
+            "pivot": [
+              15,
+              16
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 70,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "west": [
+          {
+            "name": "helmet",
+            "file": "sprites/bronze/helmet/west/helmet.png",
+            "socket": "head",
+            "pivot": [
+              14,
+              16
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 70,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "north-west": [
+          {
+            "name": "helmet",
+            "file": "sprites/bronze/helmet/north-west/helmet.png",
+            "socket": "head",
+            "pivot": [
+              15,
+              16
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 70,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "north": [
+          {
+            "name": "helmet",
+            "file": "sprites/bronze/helmet/north/helmet.png",
+            "socket": "head",
+            "pivot": [
+              14,
+              16
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 70,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "north-east": [
+          {
+            "name": "helmet",
+            "file": "sprites/bronze/helmet/north-east/helmet.png",
+            "socket": "head",
+            "pivot": [
+              15,
+              16
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 70,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "east": [
+          {
+            "name": "helmet",
+            "file": "sprites/bronze/helmet/east/helmet.png",
+            "socket": "head",
+            "pivot": [
+              14,
+              16
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 70,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "south-east": [
+          {
+            "name": "helmet",
+            "file": "sprites/bronze/helmet/south-east/helmet.png",
+            "socket": "head",
+            "pivot": [
+              15,
+              16
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 70,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ]
+      },
+      "sourceObject": "8ae833e6-f1fd-4a45-9f1f-9390b6fd6506"
+    },
+    {
+      "id": "bronze-platebody",
+      "name": "Bronze Platebody",
+      "tier": 1,
+      "material": "Bronze",
+      "slot": "chest",
+      "visible": true,
+      "twoHanded": false,
+      "views": {
+        "south": [
+          {
+            "name": "breastplate",
+            "file": "sprites/bronze/platebody/south/breastplate.png",
+            "socket": "chest",
+            "pivot": [
+              10,
+              3
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 20,
+            "bone": null,
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "waist",
+            "file": "sprites/bronze/platebody/south/waist.png",
+            "socket": "pelvis",
+            "pivot": [
+              6,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 25,
+            "bone": null,
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "tasset_right",
+            "file": "sprites/bronze/platebody/south/tasset_right.png",
+            "socket": "hip_right",
+            "pivot": [
+              3,
+              2
+            ],
+            "offset": [
+              -3,
+              0
+            ],
+            "z": 26,
+            "bone": "knee_right",
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "tasset_left",
+            "file": "sprites/bronze/platebody/south/tasset_left.png",
+            "socket": "hip_left",
+            "pivot": [
+              2,
+              2
+            ],
+            "offset": [
+              3,
+              0
+            ],
+            "z": 26,
+            "bone": "knee_left",
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "shoulder_right",
+            "file": "sprites/bronze/platebody/south/shoulder_right.png",
+            "socket": "shoulder_right",
+            "pivot": [
+              6,
+              4
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 30,
+            "bone": "elbow_right",
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "shoulder_left",
+            "file": "sprites/bronze/platebody/south/shoulder_left.png",
+            "socket": "shoulder_left",
+            "pivot": [
+              4,
+              4
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 30,
+            "bone": "elbow_left",
+            "rotationLimit": 0.22
+          }
+        ],
+        "south-west": [
+          {
+            "name": "pauldron-right",
+            "file": "sprites/bronze/platebody/south-west/pauldron-right.png",
+            "socket": "shoulder_right",
+            "pivot": [
+              6,
+              4
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 35,
+            "bone": "elbow_right",
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "pauldron-left",
+            "file": "sprites/bronze/platebody/south-west/pauldron-left.png",
+            "socket": "shoulder_left",
+            "pivot": [
+              6,
+              3
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 35,
+            "bone": "elbow_left",
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "breastplate",
+            "file": "sprites/bronze/platebody/south-west/breastplate.png",
+            "socket": "chest",
+            "pivot": [
+              16,
+              7
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 30,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "waist",
+            "file": "sprites/bronze/platebody/south-west/waist.png",
+            "socket": "pelvis",
+            "pivot": [
+              12,
+              0
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 31,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "west": [
+          {
+            "name": "pauldron-left",
+            "file": "sprites/bronze/platebody/west/pauldron-left.png",
+            "socket": "shoulder_left",
+            "pivot": [
+              6,
+              5
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 35,
+            "bone": "elbow_left",
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "breastplate",
+            "file": "sprites/bronze/platebody/west/breastplate.png",
+            "socket": "chest",
+            "pivot": [
+              11,
+              7
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 30,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "waist",
+            "file": "sprites/bronze/platebody/west/waist.png",
+            "socket": "pelvis",
+            "pivot": [
+              9,
+              0
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 31,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "north-west": [
+          {
+            "name": "pauldron-right",
+            "file": "sprites/bronze/platebody/north-west/pauldron-right.png",
+            "socket": "shoulder_right",
+            "pivot": [
+              6,
+              3
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 35,
+            "bone": "elbow_right",
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "pauldron-left",
+            "file": "sprites/bronze/platebody/north-west/pauldron-left.png",
+            "socket": "shoulder_left",
+            "pivot": [
+              6,
+              4
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 35,
+            "bone": "elbow_left",
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "breastplate",
+            "file": "sprites/bronze/platebody/north-west/breastplate.png",
+            "socket": "chest",
+            "pivot": [
+              16,
+              6
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 30,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "waist",
+            "file": "sprites/bronze/platebody/north-west/waist.png",
+            "socket": "pelvis",
+            "pivot": [
+              15,
+              0
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 31,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "north": [
+          {
+            "name": "pauldron-right",
+            "file": "sprites/bronze/platebody/north/pauldron-right.png",
+            "socket": "shoulder_right",
+            "pivot": [
+              6,
+              4
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 35,
+            "bone": "elbow_right",
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "pauldron-left",
+            "file": "sprites/bronze/platebody/north/pauldron-left.png",
+            "socket": "shoulder_left",
+            "pivot": [
+              6,
+              4
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 35,
+            "bone": "elbow_left",
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "breastplate",
+            "file": "sprites/bronze/platebody/north/breastplate.png",
+            "socket": "chest",
+            "pivot": [
+              18,
+              7
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 30,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "waist",
+            "file": "sprites/bronze/platebody/north/waist.png",
+            "socket": "pelvis",
+            "pivot": [
+              10,
+              0
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 31,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "north-east": [
+          {
+            "name": "pauldron-right",
+            "file": "sprites/bronze/platebody/north-east/pauldron-right.png",
+            "socket": "shoulder_right",
+            "pivot": [
+              6,
+              3
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 35,
+            "bone": "elbow_right",
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "pauldron-left",
+            "file": "sprites/bronze/platebody/north-east/pauldron-left.png",
+            "socket": "shoulder_left",
+            "pivot": [
+              6,
+              3
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 35,
+            "bone": "elbow_left",
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "breastplate",
+            "file": "sprites/bronze/platebody/north-east/breastplate.png",
+            "socket": "chest",
+            "pivot": [
+              16,
+              6
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 30,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "waist",
+            "file": "sprites/bronze/platebody/north-east/waist.png",
+            "socket": "pelvis",
+            "pivot": [
+              10,
+              0
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 31,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "east": [
+          {
+            "name": "pauldron-right",
+            "file": "sprites/bronze/platebody/east/pauldron-right.png",
+            "socket": "shoulder_right",
+            "pivot": [
+              6,
+              5
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 35,
+            "bone": "elbow_right",
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "breastplate",
+            "file": "sprites/bronze/platebody/east/breastplate.png",
+            "socket": "chest",
+            "pivot": [
+              11,
+              7
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 30,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "waist",
+            "file": "sprites/bronze/platebody/east/waist.png",
+            "socket": "pelvis",
+            "pivot": [
+              9,
+              0
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 31,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "south-east": [
+          {
+            "name": "pauldron-right",
+            "file": "sprites/bronze/platebody/south-east/pauldron-right.png",
+            "socket": "shoulder_right",
+            "pivot": [
+              6,
+              3
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 35,
+            "bone": "elbow_right",
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "pauldron-left",
+            "file": "sprites/bronze/platebody/south-east/pauldron-left.png",
+            "socket": "shoulder_left",
+            "pivot": [
+              6,
+              4
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 35,
+            "bone": "elbow_left",
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "breastplate",
+            "file": "sprites/bronze/platebody/south-east/breastplate.png",
+            "socket": "chest",
+            "pivot": [
+              16,
+              7
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 30,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "waist",
+            "file": "sprites/bronze/platebody/south-east/waist.png",
+            "socket": "pelvis",
+            "pivot": [
+              12,
+              0
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 31,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ]
+      },
+      "sourceObject": "7262f6a9-2292-4385-97ab-90aa26352f73"
+    },
+    {
+      "id": "bronze-platelegs",
+      "name": "Bronze Platelegs",
+      "tier": 1,
+      "material": "Bronze",
+      "slot": "legs",
+      "visible": true,
+      "twoHanded": false,
+      "views": {
+        "south": [
+          {
+            "name": "hip-plate",
+            "file": "sprites/bronze/platelegs/south/hip-plate.png",
+            "socket": "pelvis",
+            "pivot": [
+              13,
+              2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 20,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "thigh-right",
+            "file": "sprites/bronze/platelegs/south/thigh-right.png",
+            "socket": "hip_right",
+            "pivot": [
+              7,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 21,
+            "bone": "knee_right",
+            "rotationLimit": 0.45
+          },
+          {
+            "name": "greave-right",
+            "file": "sprites/bronze/platelegs/south/greave-right.png",
+            "socket": "knee_right",
+            "pivot": [
+              6,
+              -3
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 22,
+            "bone": "foot_right",
+            "rotationLimit": 0.5
+          },
+          {
+            "name": "sabatons-right",
+            "file": "sprites/bronze/platelegs/south/sabatons-right.png",
+            "socket": "foot_right",
+            "pivot": [
+              5,
+              -3
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 23,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "thigh-left",
+            "file": "sprites/bronze/platelegs/south/thigh-left.png",
+            "socket": "hip_left",
+            "pivot": [
+              5,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 21,
+            "bone": "knee_left",
+            "rotationLimit": 0.45
+          },
+          {
+            "name": "greave-left",
+            "file": "sprites/bronze/platelegs/south/greave-left.png",
+            "socket": "knee_left",
+            "pivot": [
+              5,
+              -3
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 22,
+            "bone": "foot_left",
+            "rotationLimit": 0.5
+          },
+          {
+            "name": "sabatons-left",
+            "file": "sprites/bronze/platelegs/south/sabatons-left.png",
+            "socket": "foot_left",
+            "pivot": [
+              5,
+              -3
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 23,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "south-west": [
+          {
+            "name": "hip-plate",
+            "file": "sprites/bronze/platelegs/south-west/hip-plate.png",
+            "socket": "pelvis",
+            "pivot": [
+              11,
+              2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 20,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "thigh-right",
+            "file": "sprites/bronze/platelegs/south-west/thigh-right.png",
+            "socket": "hip_right",
+            "pivot": [
+              7,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 21,
+            "bone": "knee_right",
+            "rotationLimit": 0.45
+          },
+          {
+            "name": "greave-right",
+            "file": "sprites/bronze/platelegs/south-west/greave-right.png",
+            "socket": "knee_right",
+            "pivot": [
+              7,
+              -4
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 22,
+            "bone": "foot_right",
+            "rotationLimit": 0.5
+          },
+          {
+            "name": "sabatons-right",
+            "file": "sprites/bronze/platelegs/south-west/sabatons-right.png",
+            "socket": "foot_right",
+            "pivot": [
+              4,
+              -5
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 23,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "thigh-left",
+            "file": "sprites/bronze/platelegs/south-west/thigh-left.png",
+            "socket": "hip_left",
+            "pivot": [
+              4,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 21,
+            "bone": "knee_left",
+            "rotationLimit": 0.45
+          },
+          {
+            "name": "greave-left",
+            "file": "sprites/bronze/platelegs/south-west/greave-left.png",
+            "socket": "knee_left",
+            "pivot": [
+              6,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 22,
+            "bone": "foot_left",
+            "rotationLimit": 0.5
+          },
+          {
+            "name": "sabatons-left",
+            "file": "sprites/bronze/platelegs/south-west/sabatons-left.png",
+            "socket": "foot_left",
+            "pivot": [
+              4,
+              -1
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 23,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "west": [
+          {
+            "name": "hip-plate",
+            "file": "sprites/bronze/platelegs/west/hip-plate.png",
+            "socket": "pelvis",
+            "pivot": [
+              9,
+              2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 20,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "thigh-left",
+            "file": "sprites/bronze/platelegs/west/thigh-left.png",
+            "socket": "hip_left",
+            "pivot": [
+              11,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 21,
+            "bone": "knee_left",
+            "rotationLimit": 0.45
+          },
+          {
+            "name": "greave-left",
+            "file": "sprites/bronze/platelegs/west/greave-left.png",
+            "socket": "knee_left",
+            "pivot": [
+              11,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 22,
+            "bone": "foot_left",
+            "rotationLimit": 0.5
+          },
+          {
+            "name": "sabatons-left",
+            "file": "sprites/bronze/platelegs/west/sabatons-left.png",
+            "socket": "foot_left",
+            "pivot": [
+              10,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 23,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "north-west": [
+          {
+            "name": "hip-plate",
+            "file": "sprites/bronze/platelegs/north-west/hip-plate.png",
+            "socket": "pelvis",
+            "pivot": [
+              10,
+              2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 20,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "thigh-right",
+            "file": "sprites/bronze/platelegs/north-west/thigh-right.png",
+            "socket": "hip_right",
+            "pivot": [
+              3,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 21,
+            "bone": "knee_right",
+            "rotationLimit": 0.45
+          },
+          {
+            "name": "greave-right",
+            "file": "sprites/bronze/platelegs/north-west/greave-right.png",
+            "socket": "knee_right",
+            "pivot": [
+              2,
+              -4
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 22,
+            "bone": "foot_right",
+            "rotationLimit": 0.5
+          },
+          {
+            "name": "thigh-left",
+            "file": "sprites/bronze/platelegs/north-west/thigh-left.png",
+            "socket": "hip_left",
+            "pivot": [
+              9,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 21,
+            "bone": "knee_left",
+            "rotationLimit": 0.45
+          },
+          {
+            "name": "greave-left",
+            "file": "sprites/bronze/platelegs/north-west/greave-left.png",
+            "socket": "knee_left",
+            "pivot": [
+              7,
+              -3
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 22,
+            "bone": "foot_left",
+            "rotationLimit": 0.5
+          },
+          {
+            "name": "sabatons-left",
+            "file": "sprites/bronze/platelegs/north-west/sabatons-left.png",
+            "socket": "foot_left",
+            "pivot": [
+              8,
+              -3
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 23,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "north": [
+          {
+            "name": "hip-plate",
+            "file": "sprites/bronze/platelegs/north/hip-plate.png",
+            "socket": "pelvis",
+            "pivot": [
+              13,
+              2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 20,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "thigh-right",
+            "file": "sprites/bronze/platelegs/north/thigh-right.png",
+            "socket": "hip_right",
+            "pivot": [
+              5,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 21,
+            "bone": "knee_right",
+            "rotationLimit": 0.45
+          },
+          {
+            "name": "greave-right",
+            "file": "sprites/bronze/platelegs/north/greave-right.png",
+            "socket": "knee_right",
+            "pivot": [
+              4,
+              -4
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 22,
+            "bone": "foot_right",
+            "rotationLimit": 0.5
+          },
+          {
+            "name": "sabatons-right",
+            "file": "sprites/bronze/platelegs/north/sabatons-right.png",
+            "socket": "foot_right",
+            "pivot": [
+              3,
+              -4
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 23,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "thigh-left",
+            "file": "sprites/bronze/platelegs/north/thigh-left.png",
+            "socket": "hip_left",
+            "pivot": [
+              7,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 21,
+            "bone": "knee_left",
+            "rotationLimit": 0.45
+          },
+          {
+            "name": "greave-left",
+            "file": "sprites/bronze/platelegs/north/greave-left.png",
+            "socket": "knee_left",
+            "pivot": [
+              6,
+              -4
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 22,
+            "bone": "foot_left",
+            "rotationLimit": 0.5
+          },
+          {
+            "name": "sabatons-left",
+            "file": "sprites/bronze/platelegs/north/sabatons-left.png",
+            "socket": "foot_left",
+            "pivot": [
+              6,
+              -4
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 23,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "north-east": [
+          {
+            "name": "hip-plate",
+            "file": "sprites/bronze/platelegs/north-east/hip-plate.png",
+            "socket": "pelvis",
+            "pivot": [
+              14,
+              2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 20,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "thigh-right",
+            "file": "sprites/bronze/platelegs/north-east/thigh-right.png",
+            "socket": "hip_right",
+            "pivot": [
+              3,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 21,
+            "bone": "knee_right",
+            "rotationLimit": 0.45
+          },
+          {
+            "name": "greave-right",
+            "file": "sprites/bronze/platelegs/north-east/greave-right.png",
+            "socket": "knee_right",
+            "pivot": [
+              5,
+              -3
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 22,
+            "bone": "foot_right",
+            "rotationLimit": 0.5
+          },
+          {
+            "name": "sabatons-right",
+            "file": "sprites/bronze/platelegs/north-east/sabatons-right.png",
+            "socket": "foot_right",
+            "pivot": [
+              5,
+              -3
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 23,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "thigh-left",
+            "file": "sprites/bronze/platelegs/north-east/thigh-left.png",
+            "socket": "hip_left",
+            "pivot": [
+              10,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 21,
+            "bone": "knee_left",
+            "rotationLimit": 0.45
+          },
+          {
+            "name": "greave-left",
+            "file": "sprites/bronze/platelegs/north-east/greave-left.png",
+            "socket": "knee_left",
+            "pivot": [
+              10,
+              -4
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 22,
+            "bone": "foot_left",
+            "rotationLimit": 0.5
+          },
+          {
+            "name": "sabatons-left",
+            "file": "sprites/bronze/platelegs/north-east/sabatons-left.png",
+            "socket": "foot_left",
+            "pivot": [
+              -3,
+              -5
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 23,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "east": [
+          {
+            "name": "hip-plate",
+            "file": "sprites/bronze/platelegs/east/hip-plate.png",
+            "socket": "pelvis",
+            "pivot": [
+              10,
+              2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 20,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "thigh-right",
+            "file": "sprites/bronze/platelegs/east/thigh-right.png",
+            "socket": "hip_right",
+            "pivot": [
+              7,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 21,
+            "bone": "knee_right",
+            "rotationLimit": 0.45
+          },
+          {
+            "name": "greave-right",
+            "file": "sprites/bronze/platelegs/east/greave-right.png",
+            "socket": "knee_right",
+            "pivot": [
+              6,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 22,
+            "bone": "foot_right",
+            "rotationLimit": 0.5
+          },
+          {
+            "name": "sabatons-right",
+            "file": "sprites/bronze/platelegs/east/sabatons-right.png",
+            "socket": "foot_right",
+            "pivot": [
+              8,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 23,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "south-east": [
+          {
+            "name": "hip-plate",
+            "file": "sprites/bronze/platelegs/south-east/hip-plate.png",
+            "socket": "pelvis",
+            "pivot": [
+              12,
+              2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 20,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "thigh-right",
+            "file": "sprites/bronze/platelegs/south-east/thigh-right.png",
+            "socket": "hip_right",
+            "pivot": [
+              7,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 21,
+            "bone": "knee_right",
+            "rotationLimit": 0.45
+          },
+          {
+            "name": "greave-right",
+            "file": "sprites/bronze/platelegs/south-east/greave-right.png",
+            "socket": "knee_right",
+            "pivot": [
+              6,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 22,
+            "bone": "foot_right",
+            "rotationLimit": 0.5
+          },
+          {
+            "name": "sabatons-right",
+            "file": "sprites/bronze/platelegs/south-east/sabatons-right.png",
+            "socket": "foot_right",
+            "pivot": [
+              5,
+              -1
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 23,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "thigh-left",
+            "file": "sprites/bronze/platelegs/south-east/thigh-left.png",
+            "socket": "hip_left",
+            "pivot": [
+              4,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 21,
+            "bone": "knee_left",
+            "rotationLimit": 0.45
+          },
+          {
+            "name": "greave-left",
+            "file": "sprites/bronze/platelegs/south-east/greave-left.png",
+            "socket": "knee_left",
+            "pivot": [
+              5,
+              -4
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 22,
+            "bone": "foot_left",
+            "rotationLimit": 0.5
+          },
+          {
+            "name": "sabatons-left",
+            "file": "sprites/bronze/platelegs/south-east/sabatons-left.png",
+            "socket": "foot_left",
+            "pivot": [
+              5,
+              -5
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 23,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ]
+      },
+      "sourceObject": "7265f32f-1e0d-4cba-b614-c605b29880d9"
+    },
+    {
+      "id": "bronze-kiteshield",
+      "name": "Bronze Kiteshield",
+      "tier": 1,
+      "material": "Bronze",
+      "slot": "shield",
+      "visible": true,
+      "twoHanded": false,
+      "views": {
+        "south": [
+          {
+            "name": "shield",
+            "file": "sprites/bronze/kiteshield/south/shield.png",
+            "socket": "hand_left",
+            "pivot": [
+              10.0,
+              10.75
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 50,
+            "bone": "elbow_left",
+            "rotationLimit": 0.16
+          }
+        ],
+        "south-west": [
+          {
+            "name": "shield",
+            "file": "sprites/bronze/kiteshield/south-west/shield.png",
+            "socket": "hand_left",
+            "pivot": [
+              7.5,
+              10.75
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 50,
+            "bone": "elbow_left",
+            "rotationLimit": 0.16
+          }
+        ],
+        "west": [
+          {
+            "name": "shield",
+            "file": "sprites/bronze/kiteshield/west/shield.png",
+            "socket": "hand_left",
+            "pivot": [
+              4.5,
+              10.75
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 50,
+            "bone": "elbow_left",
+            "rotationLimit": 0.16
+          }
+        ],
+        "north-west": [
+          {
+            "name": "shield",
+            "file": "sprites/bronze/kiteshield/north-west/shield.png",
+            "socket": "hand_left",
+            "pivot": [
+              8.5,
+              10.75
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 50,
+            "bone": "elbow_left",
+            "rotationLimit": 0.16
+          }
+        ],
+        "north": [
+          {
+            "name": "shield",
+            "file": "sprites/bronze/kiteshield/north/shield.png",
+            "socket": "hand_left",
+            "pivot": [
+              9.5,
+              10.75
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 50,
+            "bone": "elbow_left",
+            "rotationLimit": 0.16
+          }
+        ],
+        "north-east": [
+          {
+            "name": "shield",
+            "file": "sprites/bronze/kiteshield/north-east/shield.png",
+            "socket": "hand_left",
+            "pivot": [
+              8.5,
+              10.75
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 50,
+            "bone": "elbow_left",
+            "rotationLimit": 0.16
+          }
+        ],
+        "east": [
+          {
+            "name": "shield",
+            "file": "sprites/bronze/kiteshield/east/shield.png",
+            "socket": "hand_left",
+            "pivot": [
+              4.5,
+              10.75
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 50,
+            "bone": "elbow_left",
+            "rotationLimit": 0.16
+          }
+        ],
+        "south-east": [
+          {
+            "name": "shield",
+            "file": "sprites/bronze/kiteshield/south-east/shield.png",
+            "socket": "hand_left",
+            "pivot": [
+              7.5,
+              10.75
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 50,
+            "bone": "elbow_left",
+            "rotationLimit": 0.16
+          }
+        ]
+      },
+      "sourceObject": "452cfc51-cea0-42f5-9105-8b5488fe6598"
+    },
+    {
+      "id": "bronze-square-shield",
+      "name": "Bronze Square Shield",
+      "tier": 1,
+      "material": "Bronze",
+      "slot": "shield",
+      "visible": true,
+      "twoHanded": false,
+      "views": {
+        "south": [
+          {
+            "name": "shield",
+            "file": "sprites/bronze/square-shield/south/shield.png",
+            "socket": "hand_left",
+            "pivot": [
+              9.5,
+              9.89
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 50,
+            "bone": "elbow_left",
+            "rotationLimit": 0.16
+          }
+        ],
+        "south-west": [
+          {
+            "name": "shield",
+            "file": "sprites/bronze/square-shield/south-west/shield.png",
+            "socket": "hand_left",
+            "pivot": [
+              6.5,
+              9.89
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 50,
+            "bone": "elbow_left",
+            "rotationLimit": 0.16
+          }
+        ],
+        "west": [
+          {
+            "name": "shield",
+            "file": "sprites/bronze/square-shield/west/shield.png",
+            "socket": "hand_left",
+            "pivot": [
+              4.5,
+              9.89
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 50,
+            "bone": "elbow_left",
+            "rotationLimit": 0.16
+          }
+        ],
+        "north-west": [
+          {
+            "name": "shield",
+            "file": "sprites/bronze/square-shield/north-west/shield.png",
+            "socket": "hand_left",
+            "pivot": [
+              7.5,
+              9.89
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 50,
+            "bone": "elbow_left",
+            "rotationLimit": 0.16
+          }
+        ],
+        "north": [
+          {
+            "name": "shield",
+            "file": "sprites/bronze/square-shield/north/shield.png",
+            "socket": "hand_left",
+            "pivot": [
+              9.0,
+              9.89
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 50,
+            "bone": "elbow_left",
+            "rotationLimit": 0.16
+          }
+        ],
+        "north-east": [
+          {
+            "name": "shield",
+            "file": "sprites/bronze/square-shield/north-east/shield.png",
+            "socket": "hand_left",
+            "pivot": [
+              7.0,
+              9.89
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 50,
+            "bone": "elbow_left",
+            "rotationLimit": 0.16
+          }
+        ],
+        "east": [
+          {
+            "name": "shield",
+            "file": "sprites/bronze/square-shield/east/shield.png",
+            "socket": "hand_left",
+            "pivot": [
+              4.5,
+              9.89
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 50,
+            "bone": "elbow_left",
+            "rotationLimit": 0.16
+          }
+        ],
+        "south-east": [
+          {
+            "name": "shield",
+            "file": "sprites/bronze/square-shield/south-east/shield.png",
+            "socket": "hand_left",
+            "pivot": [
+              6.5,
+              9.89
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 50,
+            "bone": "elbow_left",
+            "rotationLimit": 0.16
+          }
+        ]
+      },
+      "sourceObject": "84162dfd-0834-48fe-bf7a-08ed207317bb"
+    },
+    {
+      "id": "bronze-cape",
+      "name": "Bronze Cape",
+      "tier": 1,
+      "material": "Bronze",
+      "slot": "cape",
+      "visible": true,
+      "twoHanded": false,
+      "views": {
+        "south": [
+          {
+            "name": "cape",
+            "file": "sprites/bronze/cape/south/cape.png",
+            "socket": "neck",
+            "pivot": [
+              15,
+              3
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 5,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "south-west": [
+          {
+            "name": "cape",
+            "file": "sprites/bronze/cape/south-west/cape.png",
+            "socket": "neck",
+            "pivot": [
+              11,
+              3
+            ],
+            "offset": [
+              3,
+              0
+            ],
+            "z": 5,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "west": [
+          {
+            "name": "cape",
+            "file": "sprites/bronze/cape/west/cape.png",
+            "socket": "neck",
+            "pivot": [
+              5,
+              3
+            ],
+            "offset": [
+              6,
+              0
+            ],
+            "z": 5,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "north-west": [
+          {
+            "name": "cape",
+            "file": "sprites/bronze/cape/north-west/cape.png",
+            "socket": "neck",
+            "pivot": [
+              11,
+              3
+            ],
+            "offset": [
+              3,
+              0
+            ],
+            "z": 5,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "north": [
+          {
+            "name": "cape",
+            "file": "sprites/bronze/cape/north/cape.png",
+            "socket": "neck",
+            "pivot": [
+              15,
+              3
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 5,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "north-east": [
+          {
+            "name": "cape",
+            "file": "sprites/bronze/cape/north-east/cape.png",
+            "socket": "neck",
+            "pivot": [
+              17,
+              3
+            ],
+            "offset": [
+              -3,
+              0
+            ],
+            "z": 5,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "east": [
+          {
+            "name": "cape",
+            "file": "sprites/bronze/cape/east/cape.png",
+            "socket": "neck",
+            "pivot": [
+              13,
+              3
+            ],
+            "offset": [
+              -6,
+              0
+            ],
+            "z": 5,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "south-east": [
+          {
+            "name": "cape",
+            "file": "sprites/bronze/cape/south-east/cape.png",
+            "socket": "neck",
+            "pivot": [
+              17,
+              3
+            ],
+            "offset": [
+              -3,
+              0
+            ],
+            "z": 5,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ]
+      },
+      "sourceObject": "d812d326-644b-4595-b660-7b639f6a830b"
+    },
+    {
+      "id": "bronze-necklace",
+      "name": "Bronze Necklace",
+      "tier": 1,
+      "material": "Bronze",
+      "slot": "neck",
+      "visible": true,
+      "twoHanded": false,
+      "views": {
+        "south": [
+          {
+            "name": "necklace",
+            "file": "sprites/bronze/necklace/south/necklace.png",
+            "socket": "neck",
+            "pivot": [
+              5,
+              0
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 65,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "south-west": [
+          {
+            "name": "necklace",
+            "file": "sprites/bronze/necklace/south-west/necklace.png",
+            "socket": "neck",
+            "pivot": [
+              5,
+              0
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 65,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "west": [
+          {
+            "name": "necklace",
+            "file": "sprites/bronze/necklace/west/necklace.png",
+            "socket": "neck",
+            "pivot": [
+              3,
+              0
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 65,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "north-west": [
+          {
+            "name": "necklace",
+            "file": "sprites/bronze/necklace/north-west/necklace.png",
+            "socket": "neck",
+            "pivot": [
+              5,
+              0
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 65,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "north": [
+          {
+            "name": "necklace",
+            "file": "sprites/bronze/necklace/north/necklace.png",
+            "socket": "neck",
+            "pivot": [
+              5,
+              0
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 65,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "north-east": [
+          {
+            "name": "necklace",
+            "file": "sprites/bronze/necklace/north-east/necklace.png",
+            "socket": "neck",
+            "pivot": [
+              5,
+              0
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 65,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "east": [
+          {
+            "name": "necklace",
+            "file": "sprites/bronze/necklace/east/necklace.png",
+            "socket": "neck",
+            "pivot": [
+              3,
+              0
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 65,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "south-east": [
+          {
+            "name": "necklace",
+            "file": "sprites/bronze/necklace/south-east/necklace.png",
+            "socket": "neck",
+            "pivot": [
+              5,
+              0
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 65,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ]
+      },
+      "sourceObject": "512f40f9-798a-42f5-b99e-6f75f674663b"
+    },
+    {
+      "id": "bronze-dagger",
+      "name": "Bronze Dagger",
+      "tier": 1,
+      "material": "Bronze",
+      "slot": "weapon",
+      "visible": true,
+      "twoHanded": false,
+      "views": {
+        "south": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/dagger/south/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              4,
+              15
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/dagger/south-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              3,
+              16
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "west": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/dagger/west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              1,
+              16
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/dagger/north-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              3,
+              16
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/dagger/north/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              4,
+              15
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/dagger/north-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              3,
+              16
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "east": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/dagger/east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              1,
+              16
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/dagger/south-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              3,
+              16
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ]
+      },
+      "sourceObject": "577e9402-59ef-4ec8-8270-1fe7fb12cf4d"
+    },
+    {
+      "id": "bronze-shortsword",
+      "name": "Bronze Shortsword",
+      "tier": 1,
+      "material": "Bronze",
+      "slot": "weapon",
+      "visible": true,
+      "twoHanded": false,
+      "views": {
+        "south": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/shortsword/south/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              4,
+              22
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/shortsword/south-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              4,
+              22
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "west": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/shortsword/west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              2,
+              22
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/shortsword/north-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              4,
+              22
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/shortsword/north/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              4,
+              22
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/shortsword/north-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              4,
+              22
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "east": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/shortsword/east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              2,
+              22
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/shortsword/south-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              4,
+              22
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ]
+      },
+      "sourceObject": "0e2a80f1-5807-4344-97c1-aa0be130c1b6"
+    },
+    {
+      "id": "bronze-longsword",
+      "name": "Bronze Longsword",
+      "tier": 1,
+      "material": "Bronze",
+      "slot": "weapon",
+      "visible": true,
+      "twoHanded": false,
+      "views": {
+        "south": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/longsword/south/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              7,
+              28
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/longsword/south-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              6,
+              28
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "west": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/longsword/west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              2,
+              27
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/longsword/north-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              6,
+              28
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/longsword/north/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              7,
+              28
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/longsword/north-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              6,
+              28
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "east": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/longsword/east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              2,
+              27
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/longsword/south-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              6,
+              27
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ]
+      },
+      "sourceObject": "e1b4197b-e286-426f-ab09-4d86a1373b8f"
+    },
+    {
+      "id": "bronze-mace",
+      "name": "Bronze Mace",
+      "tier": 1,
+      "material": "Bronze",
+      "slot": "weapon",
+      "visible": true,
+      "twoHanded": false,
+      "views": {
+        "south": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/mace/south/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              6,
+              22
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/mace/south-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              6,
+              22
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "west": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/mace/west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              6,
+              22
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/mace/north-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              6,
+              22
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/mace/north/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              6,
+              22
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/mace/north-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              6,
+              22
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "east": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/mace/east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              6,
+              22
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/mace/south-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              6,
+              22
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ]
+      },
+      "sourceObject": "87dd01f0-5647-4127-8274-9f0459ccefd5"
+    },
+    {
+      "id": "bronze-warmaul",
+      "name": "Bronze Warmaul",
+      "tier": 1,
+      "material": "Bronze",
+      "slot": "weapon",
+      "visible": true,
+      "twoHanded": true,
+      "views": {
+        "south": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/warmaul/south/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              11,
+              28
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/warmaul/south-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              10,
+              28
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "west": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/warmaul/west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              4,
+              28
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/warmaul/north-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              10,
+              28
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/warmaul/north/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              11,
+              28
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/warmaul/north-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              10,
+              28
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "east": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/warmaul/east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              4,
+              28
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/warmaul/south-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              10,
+              28
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ]
+      },
+      "sourceObject": "af1d8c33-dd97-43f0-859a-60699ff3844c"
+    },
+    {
+      "id": "bronze-bow",
+      "name": "Bronze Bow",
+      "tier": 1,
+      "material": "Bronze",
+      "slot": "weapon",
+      "visible": true,
+      "twoHanded": true,
+      "views": {
+        "south": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/bow/south/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              6,
+              18
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/bow/south-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              6,
+              17
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "west": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/bow/west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              3,
+              18
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/bow/north-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              5,
+              17
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/bow/north/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              9,
+              18
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/bow/north-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              15,
+              17
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "east": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/bow/east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              9,
+              18
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/bow/south-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              19,
+              17
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ]
+      },
+      "sourceObject": "eb08f55c-efc9-4ab0-b52a-5da1a51b7218"
+    },
+    {
+      "id": "bronze-crossbow",
+      "name": "Bronze Crossbow",
+      "tier": 1,
+      "material": "Bronze",
+      "slot": "weapon",
+      "visible": true,
+      "twoHanded": false,
+      "views": {
+        "south": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/crossbow/south/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              15,
+              7
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/crossbow/south-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              25,
+              8
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "west": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/crossbow/west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              28,
+              15
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/crossbow/north-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              21,
+              21
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/crossbow/north/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              14,
+              21
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/crossbow/north-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              8,
+              21
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "east": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/crossbow/east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              8,
+              15
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/crossbow/south-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              9,
+              8
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ]
+      },
+      "sourceObject": "bfc35616-5d00-437b-a51a-0b935b49534b"
+    },
+    {
+      "id": "bronze-magic-staff",
+      "name": "Bronze Magic Staff",
+      "tier": 1,
+      "material": "Bronze",
+      "slot": "weapon",
+      "visible": true,
+      "twoHanded": true,
+      "views": {
+        "south": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/magic-staff/south/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              5,
+              36
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/magic-staff/south-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              4,
+              36
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "west": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/magic-staff/west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              2,
+              36
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/magic-staff/north-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              4,
+              36
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/magic-staff/north/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              4,
+              36
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/magic-staff/north-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              4,
+              36
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "east": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/magic-staff/east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              2,
+              36
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/magic-staff/south-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              4,
+              36
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ]
+      },
+      "sourceObject": "f7d29cef-3296-4689-98f2-76a299c421a3"
+    },
+    {
+      "id": "bronze-magic-wand",
+      "name": "Bronze Magic Wand",
+      "tier": 1,
+      "material": "Bronze",
+      "slot": "weapon",
+      "visible": true,
+      "twoHanded": false,
+      "views": {
+        "south": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/magic-wand/south/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              2,
+              25
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/magic-wand/south-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              6,
+              25
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "west": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/magic-wand/west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              2,
+              25
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/magic-wand/north-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              5,
+              25
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/magic-wand/north/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              5,
+              25
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/magic-wand/north-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              5,
+              25
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "east": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/magic-wand/east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              2,
+              25
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/bronze/magic-wand/south-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              2,
+              25
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ]
+      },
+      "sourceObject": "5397d79b-56a7-4f3f-970e-db041a561c6a"
+    },
+    {
+      "id": "bronze-ring",
+      "name": "Bronze Ring",
+      "tier": 1,
+      "material": "Bronze",
+      "slot": "ring",
+      "visible": false,
+      "views": {
+        "south": [],
+        "south-west": [],
+        "west": [],
+        "north-west": [],
+        "north": [],
+        "north-east": [],
+        "east": [],
+        "south-east": []
+      }
+    },
+    {
+      "id": "iron-helmet",
+      "name": "Iron Helmet",
+      "tier": 2,
+      "material": "Iron",
+      "slot": "head",
+      "visible": true,
+      "twoHanded": false,
+      "views": {
+        "south": [
+          {
+            "name": "helmet",
+            "file": "sprites/iron/helmet/south/helmet.png",
+            "socket": "head",
+            "pivot": [
+              14,
+              16
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 70,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "south-west": [
+          {
+            "name": "helmet",
+            "file": "sprites/iron/helmet/south-west/helmet.png",
+            "socket": "head",
+            "pivot": [
+              15,
+              16
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 70,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "west": [
+          {
+            "name": "helmet",
+            "file": "sprites/iron/helmet/west/helmet.png",
+            "socket": "head",
+            "pivot": [
+              14,
+              16
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 70,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "north-west": [
+          {
+            "name": "helmet",
+            "file": "sprites/iron/helmet/north-west/helmet.png",
+            "socket": "head",
+            "pivot": [
+              15,
+              16
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 70,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "north": [
+          {
+            "name": "helmet",
+            "file": "sprites/iron/helmet/north/helmet.png",
+            "socket": "head",
+            "pivot": [
+              14,
+              16
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 70,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "north-east": [
+          {
+            "name": "helmet",
+            "file": "sprites/iron/helmet/north-east/helmet.png",
+            "socket": "head",
+            "pivot": [
+              15,
+              16
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 70,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "east": [
+          {
+            "name": "helmet",
+            "file": "sprites/iron/helmet/east/helmet.png",
+            "socket": "head",
+            "pivot": [
+              14,
+              16
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 70,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "south-east": [
+          {
+            "name": "helmet",
+            "file": "sprites/iron/helmet/south-east/helmet.png",
+            "socket": "head",
+            "pivot": [
+              15,
+              16
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 70,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ]
+      },
+      "artProvenance": {
+        "designReferenceJob": "3cbb0372-e4a5-4cfa-8c17-94e3ba386453",
+        "exactFinishWorkbench": "e7b17b30-da50-44a8-ac27-b240b1bef593",
+        "geometry": "shared corrected bronze geometry; new cool iron finish and restrained functional decoration"
+      }
+    },
+    {
+      "id": "iron-platebody",
+      "name": "Iron Platebody",
+      "tier": 2,
+      "material": "Iron",
+      "slot": "chest",
+      "visible": true,
+      "twoHanded": false,
+      "views": {
+        "south": [
+          {
+            "name": "breastplate",
+            "file": "sprites/iron/platebody/south/breastplate.png",
+            "socket": "chest",
+            "pivot": [
+              10,
+              3
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 20,
+            "bone": null,
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "waist",
+            "file": "sprites/iron/platebody/south/waist.png",
+            "socket": "pelvis",
+            "pivot": [
+              6,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 25,
+            "bone": null,
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "tasset_right",
+            "file": "sprites/iron/platebody/south/tasset_right.png",
+            "socket": "hip_right",
+            "pivot": [
+              3,
+              2
+            ],
+            "offset": [
+              -3,
+              0
+            ],
+            "z": 26,
+            "bone": "knee_right",
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "tasset_left",
+            "file": "sprites/iron/platebody/south/tasset_left.png",
+            "socket": "hip_left",
+            "pivot": [
+              2,
+              2
+            ],
+            "offset": [
+              3,
+              0
+            ],
+            "z": 26,
+            "bone": "knee_left",
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "shoulder_right",
+            "file": "sprites/iron/platebody/south/shoulder_right.png",
+            "socket": "shoulder_right",
+            "pivot": [
+              6,
+              4
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 30,
+            "bone": "elbow_right",
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "shoulder_left",
+            "file": "sprites/iron/platebody/south/shoulder_left.png",
+            "socket": "shoulder_left",
+            "pivot": [
+              4,
+              4
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 30,
+            "bone": "elbow_left",
+            "rotationLimit": 0.22
+          }
+        ],
+        "south-west": [
+          {
+            "name": "pauldron-right",
+            "file": "sprites/iron/platebody/south-west/pauldron-right.png",
+            "socket": "shoulder_right",
+            "pivot": [
+              6,
+              4
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 35,
+            "bone": "elbow_right",
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "pauldron-left",
+            "file": "sprites/iron/platebody/south-west/pauldron-left.png",
+            "socket": "shoulder_left",
+            "pivot": [
+              6,
+              3
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 35,
+            "bone": "elbow_left",
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "breastplate",
+            "file": "sprites/iron/platebody/south-west/breastplate.png",
+            "socket": "chest",
+            "pivot": [
+              16,
+              7
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 30,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "waist",
+            "file": "sprites/iron/platebody/south-west/waist.png",
+            "socket": "pelvis",
+            "pivot": [
+              12,
+              0
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 31,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "west": [
+          {
+            "name": "pauldron-left",
+            "file": "sprites/iron/platebody/west/pauldron-left.png",
+            "socket": "shoulder_left",
+            "pivot": [
+              6,
+              5
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 35,
+            "bone": "elbow_left",
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "breastplate",
+            "file": "sprites/iron/platebody/west/breastplate.png",
+            "socket": "chest",
+            "pivot": [
+              11,
+              7
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 30,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "waist",
+            "file": "sprites/iron/platebody/west/waist.png",
+            "socket": "pelvis",
+            "pivot": [
+              9,
+              0
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 31,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "north-west": [
+          {
+            "name": "pauldron-right",
+            "file": "sprites/iron/platebody/north-west/pauldron-right.png",
+            "socket": "shoulder_right",
+            "pivot": [
+              6,
+              3
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 35,
+            "bone": "elbow_right",
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "pauldron-left",
+            "file": "sprites/iron/platebody/north-west/pauldron-left.png",
+            "socket": "shoulder_left",
+            "pivot": [
+              6,
+              4
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 35,
+            "bone": "elbow_left",
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "breastplate",
+            "file": "sprites/iron/platebody/north-west/breastplate.png",
+            "socket": "chest",
+            "pivot": [
+              16,
+              6
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 30,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "waist",
+            "file": "sprites/iron/platebody/north-west/waist.png",
+            "socket": "pelvis",
+            "pivot": [
+              15,
+              0
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 31,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "north": [
+          {
+            "name": "pauldron-right",
+            "file": "sprites/iron/platebody/north/pauldron-right.png",
+            "socket": "shoulder_right",
+            "pivot": [
+              6,
+              4
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 35,
+            "bone": "elbow_right",
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "pauldron-left",
+            "file": "sprites/iron/platebody/north/pauldron-left.png",
+            "socket": "shoulder_left",
+            "pivot": [
+              6,
+              4
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 35,
+            "bone": "elbow_left",
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "breastplate",
+            "file": "sprites/iron/platebody/north/breastplate.png",
+            "socket": "chest",
+            "pivot": [
+              18,
+              7
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 30,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "waist",
+            "file": "sprites/iron/platebody/north/waist.png",
+            "socket": "pelvis",
+            "pivot": [
+              10,
+              0
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 31,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "north-east": [
+          {
+            "name": "pauldron-right",
+            "file": "sprites/iron/platebody/north-east/pauldron-right.png",
+            "socket": "shoulder_right",
+            "pivot": [
+              6,
+              3
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 35,
+            "bone": "elbow_right",
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "pauldron-left",
+            "file": "sprites/iron/platebody/north-east/pauldron-left.png",
+            "socket": "shoulder_left",
+            "pivot": [
+              6,
+              3
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 35,
+            "bone": "elbow_left",
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "breastplate",
+            "file": "sprites/iron/platebody/north-east/breastplate.png",
+            "socket": "chest",
+            "pivot": [
+              16,
+              6
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 30,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "waist",
+            "file": "sprites/iron/platebody/north-east/waist.png",
+            "socket": "pelvis",
+            "pivot": [
+              10,
+              0
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 31,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "east": [
+          {
+            "name": "pauldron-right",
+            "file": "sprites/iron/platebody/east/pauldron-right.png",
+            "socket": "shoulder_right",
+            "pivot": [
+              6,
+              5
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 35,
+            "bone": "elbow_right",
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "breastplate",
+            "file": "sprites/iron/platebody/east/breastplate.png",
+            "socket": "chest",
+            "pivot": [
+              11,
+              7
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 30,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "waist",
+            "file": "sprites/iron/platebody/east/waist.png",
+            "socket": "pelvis",
+            "pivot": [
+              9,
+              0
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 31,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "south-east": [
+          {
+            "name": "pauldron-right",
+            "file": "sprites/iron/platebody/south-east/pauldron-right.png",
+            "socket": "shoulder_right",
+            "pivot": [
+              6,
+              3
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 35,
+            "bone": "elbow_right",
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "pauldron-left",
+            "file": "sprites/iron/platebody/south-east/pauldron-left.png",
+            "socket": "shoulder_left",
+            "pivot": [
+              6,
+              4
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 35,
+            "bone": "elbow_left",
+            "rotationLimit": 0.22
+          },
+          {
+            "name": "breastplate",
+            "file": "sprites/iron/platebody/south-east/breastplate.png",
+            "socket": "chest",
+            "pivot": [
+              16,
+              7
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 30,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "waist",
+            "file": "sprites/iron/platebody/south-east/waist.png",
+            "socket": "pelvis",
+            "pivot": [
+              12,
+              0
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 31,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ]
+      },
+      "artProvenance": {
+        "designReferenceJob": "3cbb0372-e4a5-4cfa-8c17-94e3ba386453",
+        "exactFinishWorkbench": "e7b17b30-da50-44a8-ac27-b240b1bef593",
+        "geometry": "shared corrected bronze geometry; new cool iron finish and restrained functional decoration"
+      }
+    },
+    {
+      "id": "iron-platelegs",
+      "name": "Iron Platelegs",
+      "tier": 2,
+      "material": "Iron",
+      "slot": "legs",
+      "visible": true,
+      "twoHanded": false,
+      "views": {
+        "south": [
+          {
+            "name": "hip-plate",
+            "file": "sprites/iron/platelegs/south/hip-plate.png",
+            "socket": "pelvis",
+            "pivot": [
+              13,
+              2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 20,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "thigh-right",
+            "file": "sprites/iron/platelegs/south/thigh-right.png",
+            "socket": "hip_right",
+            "pivot": [
+              7,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 21,
+            "bone": "knee_right",
+            "rotationLimit": 0.45
+          },
+          {
+            "name": "greave-right",
+            "file": "sprites/iron/platelegs/south/greave-right.png",
+            "socket": "knee_right",
+            "pivot": [
+              6,
+              -3
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 22,
+            "bone": "foot_right",
+            "rotationLimit": 0.5
+          },
+          {
+            "name": "sabatons-right",
+            "file": "sprites/iron/platelegs/south/sabatons-right.png",
+            "socket": "foot_right",
+            "pivot": [
+              5,
+              -3
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 23,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "thigh-left",
+            "file": "sprites/iron/platelegs/south/thigh-left.png",
+            "socket": "hip_left",
+            "pivot": [
+              5,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 21,
+            "bone": "knee_left",
+            "rotationLimit": 0.45
+          },
+          {
+            "name": "greave-left",
+            "file": "sprites/iron/platelegs/south/greave-left.png",
+            "socket": "knee_left",
+            "pivot": [
+              5,
+              -3
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 22,
+            "bone": "foot_left",
+            "rotationLimit": 0.5
+          },
+          {
+            "name": "sabatons-left",
+            "file": "sprites/iron/platelegs/south/sabatons-left.png",
+            "socket": "foot_left",
+            "pivot": [
+              5,
+              -3
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 23,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "south-west": [
+          {
+            "name": "hip-plate",
+            "file": "sprites/iron/platelegs/south-west/hip-plate.png",
+            "socket": "pelvis",
+            "pivot": [
+              11,
+              2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 20,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "thigh-right",
+            "file": "sprites/iron/platelegs/south-west/thigh-right.png",
+            "socket": "hip_right",
+            "pivot": [
+              7,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 21,
+            "bone": "knee_right",
+            "rotationLimit": 0.45
+          },
+          {
+            "name": "greave-right",
+            "file": "sprites/iron/platelegs/south-west/greave-right.png",
+            "socket": "knee_right",
+            "pivot": [
+              7,
+              -4
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 22,
+            "bone": "foot_right",
+            "rotationLimit": 0.5
+          },
+          {
+            "name": "sabatons-right",
+            "file": "sprites/iron/platelegs/south-west/sabatons-right.png",
+            "socket": "foot_right",
+            "pivot": [
+              4,
+              -5
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 23,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "thigh-left",
+            "file": "sprites/iron/platelegs/south-west/thigh-left.png",
+            "socket": "hip_left",
+            "pivot": [
+              4,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 21,
+            "bone": "knee_left",
+            "rotationLimit": 0.45
+          },
+          {
+            "name": "greave-left",
+            "file": "sprites/iron/platelegs/south-west/greave-left.png",
+            "socket": "knee_left",
+            "pivot": [
+              6,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 22,
+            "bone": "foot_left",
+            "rotationLimit": 0.5
+          },
+          {
+            "name": "sabatons-left",
+            "file": "sprites/iron/platelegs/south-west/sabatons-left.png",
+            "socket": "foot_left",
+            "pivot": [
+              4,
+              -1
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 23,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "west": [
+          {
+            "name": "hip-plate",
+            "file": "sprites/iron/platelegs/west/hip-plate.png",
+            "socket": "pelvis",
+            "pivot": [
+              9,
+              2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 20,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "thigh-left",
+            "file": "sprites/iron/platelegs/west/thigh-left.png",
+            "socket": "hip_left",
+            "pivot": [
+              11,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 21,
+            "bone": "knee_left",
+            "rotationLimit": 0.45
+          },
+          {
+            "name": "greave-left",
+            "file": "sprites/iron/platelegs/west/greave-left.png",
+            "socket": "knee_left",
+            "pivot": [
+              11,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 22,
+            "bone": "foot_left",
+            "rotationLimit": 0.5
+          },
+          {
+            "name": "sabatons-left",
+            "file": "sprites/iron/platelegs/west/sabatons-left.png",
+            "socket": "foot_left",
+            "pivot": [
+              10,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 23,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "north-west": [
+          {
+            "name": "hip-plate",
+            "file": "sprites/iron/platelegs/north-west/hip-plate.png",
+            "socket": "pelvis",
+            "pivot": [
+              10,
+              2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 20,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "thigh-right",
+            "file": "sprites/iron/platelegs/north-west/thigh-right.png",
+            "socket": "hip_right",
+            "pivot": [
+              3,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 21,
+            "bone": "knee_right",
+            "rotationLimit": 0.45
+          },
+          {
+            "name": "greave-right",
+            "file": "sprites/iron/platelegs/north-west/greave-right.png",
+            "socket": "knee_right",
+            "pivot": [
+              2,
+              -4
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 22,
+            "bone": "foot_right",
+            "rotationLimit": 0.5
+          },
+          {
+            "name": "thigh-left",
+            "file": "sprites/iron/platelegs/north-west/thigh-left.png",
+            "socket": "hip_left",
+            "pivot": [
+              9,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 21,
+            "bone": "knee_left",
+            "rotationLimit": 0.45
+          },
+          {
+            "name": "greave-left",
+            "file": "sprites/iron/platelegs/north-west/greave-left.png",
+            "socket": "knee_left",
+            "pivot": [
+              7,
+              -3
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 22,
+            "bone": "foot_left",
+            "rotationLimit": 0.5
+          },
+          {
+            "name": "sabatons-left",
+            "file": "sprites/iron/platelegs/north-west/sabatons-left.png",
+            "socket": "foot_left",
+            "pivot": [
+              8,
+              -3
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 23,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "north": [
+          {
+            "name": "hip-plate",
+            "file": "sprites/iron/platelegs/north/hip-plate.png",
+            "socket": "pelvis",
+            "pivot": [
+              13,
+              2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 20,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "thigh-right",
+            "file": "sprites/iron/platelegs/north/thigh-right.png",
+            "socket": "hip_right",
+            "pivot": [
+              5,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 21,
+            "bone": "knee_right",
+            "rotationLimit": 0.45
+          },
+          {
+            "name": "greave-right",
+            "file": "sprites/iron/platelegs/north/greave-right.png",
+            "socket": "knee_right",
+            "pivot": [
+              4,
+              -4
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 22,
+            "bone": "foot_right",
+            "rotationLimit": 0.5
+          },
+          {
+            "name": "sabatons-right",
+            "file": "sprites/iron/platelegs/north/sabatons-right.png",
+            "socket": "foot_right",
+            "pivot": [
+              3,
+              -4
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 23,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "thigh-left",
+            "file": "sprites/iron/platelegs/north/thigh-left.png",
+            "socket": "hip_left",
+            "pivot": [
+              7,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 21,
+            "bone": "knee_left",
+            "rotationLimit": 0.45
+          },
+          {
+            "name": "greave-left",
+            "file": "sprites/iron/platelegs/north/greave-left.png",
+            "socket": "knee_left",
+            "pivot": [
+              6,
+              -4
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 22,
+            "bone": "foot_left",
+            "rotationLimit": 0.5
+          },
+          {
+            "name": "sabatons-left",
+            "file": "sprites/iron/platelegs/north/sabatons-left.png",
+            "socket": "foot_left",
+            "pivot": [
+              6,
+              -4
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 23,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "north-east": [
+          {
+            "name": "hip-plate",
+            "file": "sprites/iron/platelegs/north-east/hip-plate.png",
+            "socket": "pelvis",
+            "pivot": [
+              14,
+              2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 20,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "thigh-right",
+            "file": "sprites/iron/platelegs/north-east/thigh-right.png",
+            "socket": "hip_right",
+            "pivot": [
+              3,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 21,
+            "bone": "knee_right",
+            "rotationLimit": 0.45
+          },
+          {
+            "name": "greave-right",
+            "file": "sprites/iron/platelegs/north-east/greave-right.png",
+            "socket": "knee_right",
+            "pivot": [
+              5,
+              -3
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 22,
+            "bone": "foot_right",
+            "rotationLimit": 0.5
+          },
+          {
+            "name": "sabatons-right",
+            "file": "sprites/iron/platelegs/north-east/sabatons-right.png",
+            "socket": "foot_right",
+            "pivot": [
+              5,
+              -3
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 23,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "thigh-left",
+            "file": "sprites/iron/platelegs/north-east/thigh-left.png",
+            "socket": "hip_left",
+            "pivot": [
+              10,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 21,
+            "bone": "knee_left",
+            "rotationLimit": 0.45
+          },
+          {
+            "name": "greave-left",
+            "file": "sprites/iron/platelegs/north-east/greave-left.png",
+            "socket": "knee_left",
+            "pivot": [
+              10,
+              -4
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 22,
+            "bone": "foot_left",
+            "rotationLimit": 0.5
+          },
+          {
+            "name": "sabatons-left",
+            "file": "sprites/iron/platelegs/north-east/sabatons-left.png",
+            "socket": "foot_left",
+            "pivot": [
+              -3,
+              -5
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 23,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "east": [
+          {
+            "name": "hip-plate",
+            "file": "sprites/iron/platelegs/east/hip-plate.png",
+            "socket": "pelvis",
+            "pivot": [
+              10,
+              2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 20,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "thigh-right",
+            "file": "sprites/iron/platelegs/east/thigh-right.png",
+            "socket": "hip_right",
+            "pivot": [
+              7,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 21,
+            "bone": "knee_right",
+            "rotationLimit": 0.45
+          },
+          {
+            "name": "greave-right",
+            "file": "sprites/iron/platelegs/east/greave-right.png",
+            "socket": "knee_right",
+            "pivot": [
+              6,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 22,
+            "bone": "foot_right",
+            "rotationLimit": 0.5
+          },
+          {
+            "name": "sabatons-right",
+            "file": "sprites/iron/platelegs/east/sabatons-right.png",
+            "socket": "foot_right",
+            "pivot": [
+              8,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 23,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "south-east": [
+          {
+            "name": "hip-plate",
+            "file": "sprites/iron/platelegs/south-east/hip-plate.png",
+            "socket": "pelvis",
+            "pivot": [
+              12,
+              2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 20,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "thigh-right",
+            "file": "sprites/iron/platelegs/south-east/thigh-right.png",
+            "socket": "hip_right",
+            "pivot": [
+              7,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 21,
+            "bone": "knee_right",
+            "rotationLimit": 0.45
+          },
+          {
+            "name": "greave-right",
+            "file": "sprites/iron/platelegs/south-east/greave-right.png",
+            "socket": "knee_right",
+            "pivot": [
+              6,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 22,
+            "bone": "foot_right",
+            "rotationLimit": 0.5
+          },
+          {
+            "name": "sabatons-right",
+            "file": "sprites/iron/platelegs/south-east/sabatons-right.png",
+            "socket": "foot_right",
+            "pivot": [
+              5,
+              -1
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 23,
+            "bone": null,
+            "rotationLimit": 0
+          },
+          {
+            "name": "thigh-left",
+            "file": "sprites/iron/platelegs/south-east/thigh-left.png",
+            "socket": "hip_left",
+            "pivot": [
+              4,
+              -2
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 21,
+            "bone": "knee_left",
+            "rotationLimit": 0.45
+          },
+          {
+            "name": "greave-left",
+            "file": "sprites/iron/platelegs/south-east/greave-left.png",
+            "socket": "knee_left",
+            "pivot": [
+              5,
+              -4
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 22,
+            "bone": "foot_left",
+            "rotationLimit": 0.5
+          },
+          {
+            "name": "sabatons-left",
+            "file": "sprites/iron/platelegs/south-east/sabatons-left.png",
+            "socket": "foot_left",
+            "pivot": [
+              5,
+              -5
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 23,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ]
+      },
+      "artProvenance": {
+        "designReferenceJob": "3cbb0372-e4a5-4cfa-8c17-94e3ba386453",
+        "exactFinishWorkbench": "e7b17b30-da50-44a8-ac27-b240b1bef593",
+        "geometry": "shared corrected bronze geometry; new cool iron finish and restrained functional decoration"
+      }
+    },
+    {
+      "id": "iron-kiteshield",
+      "name": "Iron Kiteshield",
+      "tier": 2,
+      "material": "Iron",
+      "slot": "shield",
+      "visible": true,
+      "twoHanded": false,
+      "views": {
+        "south": [
+          {
+            "name": "shield",
+            "file": "sprites/iron/kiteshield/south/shield.png",
+            "socket": "hand_left",
+            "pivot": [
+              10.0,
+              10.75
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 50,
+            "bone": "elbow_left",
+            "rotationLimit": 0.16
+          }
+        ],
+        "south-west": [
+          {
+            "name": "shield",
+            "file": "sprites/iron/kiteshield/south-west/shield.png",
+            "socket": "hand_left",
+            "pivot": [
+              7.5,
+              10.75
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 50,
+            "bone": "elbow_left",
+            "rotationLimit": 0.16
+          }
+        ],
+        "west": [
+          {
+            "name": "shield",
+            "file": "sprites/iron/kiteshield/west/shield.png",
+            "socket": "hand_left",
+            "pivot": [
+              4.5,
+              10.75
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 50,
+            "bone": "elbow_left",
+            "rotationLimit": 0.16
+          }
+        ],
+        "north-west": [
+          {
+            "name": "shield",
+            "file": "sprites/iron/kiteshield/north-west/shield.png",
+            "socket": "hand_left",
+            "pivot": [
+              8.5,
+              10.75
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 50,
+            "bone": "elbow_left",
+            "rotationLimit": 0.16
+          }
+        ],
+        "north": [
+          {
+            "name": "shield",
+            "file": "sprites/iron/kiteshield/north/shield.png",
+            "socket": "hand_left",
+            "pivot": [
+              9.5,
+              10.75
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 50,
+            "bone": "elbow_left",
+            "rotationLimit": 0.16
+          }
+        ],
+        "north-east": [
+          {
+            "name": "shield",
+            "file": "sprites/iron/kiteshield/north-east/shield.png",
+            "socket": "hand_left",
+            "pivot": [
+              8.5,
+              10.75
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 50,
+            "bone": "elbow_left",
+            "rotationLimit": 0.16
+          }
+        ],
+        "east": [
+          {
+            "name": "shield",
+            "file": "sprites/iron/kiteshield/east/shield.png",
+            "socket": "hand_left",
+            "pivot": [
+              4.5,
+              10.75
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 50,
+            "bone": "elbow_left",
+            "rotationLimit": 0.16
+          }
+        ],
+        "south-east": [
+          {
+            "name": "shield",
+            "file": "sprites/iron/kiteshield/south-east/shield.png",
+            "socket": "hand_left",
+            "pivot": [
+              7.5,
+              10.75
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 50,
+            "bone": "elbow_left",
+            "rotationLimit": 0.16
+          }
+        ]
+      },
+      "artProvenance": {
+        "designReferenceJob": "3cbb0372-e4a5-4cfa-8c17-94e3ba386453",
+        "exactFinishWorkbench": "e7b17b30-da50-44a8-ac27-b240b1bef593",
+        "geometry": "shared corrected bronze geometry; new cool iron finish and restrained functional decoration"
+      }
+    },
+    {
+      "id": "iron-square-shield",
+      "name": "Iron Square Shield",
+      "tier": 2,
+      "material": "Iron",
+      "slot": "shield",
+      "visible": true,
+      "twoHanded": false,
+      "views": {
+        "south": [
+          {
+            "name": "shield",
+            "file": "sprites/iron/square-shield/south/shield.png",
+            "socket": "hand_left",
+            "pivot": [
+              9.5,
+              9.89
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 50,
+            "bone": "elbow_left",
+            "rotationLimit": 0.16
+          }
+        ],
+        "south-west": [
+          {
+            "name": "shield",
+            "file": "sprites/iron/square-shield/south-west/shield.png",
+            "socket": "hand_left",
+            "pivot": [
+              6.5,
+              9.89
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 50,
+            "bone": "elbow_left",
+            "rotationLimit": 0.16
+          }
+        ],
+        "west": [
+          {
+            "name": "shield",
+            "file": "sprites/iron/square-shield/west/shield.png",
+            "socket": "hand_left",
+            "pivot": [
+              4.5,
+              9.89
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 50,
+            "bone": "elbow_left",
+            "rotationLimit": 0.16
+          }
+        ],
+        "north-west": [
+          {
+            "name": "shield",
+            "file": "sprites/iron/square-shield/north-west/shield.png",
+            "socket": "hand_left",
+            "pivot": [
+              7.5,
+              9.89
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 50,
+            "bone": "elbow_left",
+            "rotationLimit": 0.16
+          }
+        ],
+        "north": [
+          {
+            "name": "shield",
+            "file": "sprites/iron/square-shield/north/shield.png",
+            "socket": "hand_left",
+            "pivot": [
+              9.0,
+              9.89
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 50,
+            "bone": "elbow_left",
+            "rotationLimit": 0.16
+          }
+        ],
+        "north-east": [
+          {
+            "name": "shield",
+            "file": "sprites/iron/square-shield/north-east/shield.png",
+            "socket": "hand_left",
+            "pivot": [
+              7.0,
+              9.89
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 50,
+            "bone": "elbow_left",
+            "rotationLimit": 0.16
+          }
+        ],
+        "east": [
+          {
+            "name": "shield",
+            "file": "sprites/iron/square-shield/east/shield.png",
+            "socket": "hand_left",
+            "pivot": [
+              4.5,
+              9.89
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 50,
+            "bone": "elbow_left",
+            "rotationLimit": 0.16
+          }
+        ],
+        "south-east": [
+          {
+            "name": "shield",
+            "file": "sprites/iron/square-shield/south-east/shield.png",
+            "socket": "hand_left",
+            "pivot": [
+              6.5,
+              9.89
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 50,
+            "bone": "elbow_left",
+            "rotationLimit": 0.16
+          }
+        ]
+      },
+      "artProvenance": {
+        "designReferenceJob": "3cbb0372-e4a5-4cfa-8c17-94e3ba386453",
+        "exactFinishWorkbench": "e7b17b30-da50-44a8-ac27-b240b1bef593",
+        "geometry": "shared corrected bronze geometry; new cool iron finish and restrained functional decoration"
+      }
+    },
+    {
+      "id": "iron-cape",
+      "name": "Iron Cape",
+      "tier": 2,
+      "material": "Iron",
+      "slot": "cape",
+      "visible": true,
+      "twoHanded": false,
+      "views": {
+        "south": [
+          {
+            "name": "cape",
+            "file": "sprites/iron/cape/south/cape.png",
+            "socket": "neck",
+            "pivot": [
+              15,
+              3
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 5,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "south-west": [
+          {
+            "name": "cape",
+            "file": "sprites/iron/cape/south-west/cape.png",
+            "socket": "neck",
+            "pivot": [
+              11,
+              3
+            ],
+            "offset": [
+              3,
+              0
+            ],
+            "z": 5,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "west": [
+          {
+            "name": "cape",
+            "file": "sprites/iron/cape/west/cape.png",
+            "socket": "neck",
+            "pivot": [
+              5,
+              3
+            ],
+            "offset": [
+              6,
+              0
+            ],
+            "z": 5,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "north-west": [
+          {
+            "name": "cape",
+            "file": "sprites/iron/cape/north-west/cape.png",
+            "socket": "neck",
+            "pivot": [
+              11,
+              3
+            ],
+            "offset": [
+              3,
+              0
+            ],
+            "z": 5,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "north": [
+          {
+            "name": "cape",
+            "file": "sprites/iron/cape/north/cape.png",
+            "socket": "neck",
+            "pivot": [
+              15,
+              3
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 5,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "north-east": [
+          {
+            "name": "cape",
+            "file": "sprites/iron/cape/north-east/cape.png",
+            "socket": "neck",
+            "pivot": [
+              17,
+              3
+            ],
+            "offset": [
+              -3,
+              0
+            ],
+            "z": 5,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "east": [
+          {
+            "name": "cape",
+            "file": "sprites/iron/cape/east/cape.png",
+            "socket": "neck",
+            "pivot": [
+              13,
+              3
+            ],
+            "offset": [
+              -6,
+              0
+            ],
+            "z": 5,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "south-east": [
+          {
+            "name": "cape",
+            "file": "sprites/iron/cape/south-east/cape.png",
+            "socket": "neck",
+            "pivot": [
+              17,
+              3
+            ],
+            "offset": [
+              -3,
+              0
+            ],
+            "z": 5,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ]
+      },
+      "artProvenance": {
+        "designReferenceJob": "3cbb0372-e4a5-4cfa-8c17-94e3ba386453",
+        "exactFinishWorkbench": "e7b17b30-da50-44a8-ac27-b240b1bef593",
+        "geometry": "shared corrected bronze geometry; new cool iron finish and restrained functional decoration"
+      }
+    },
+    {
+      "id": "iron-necklace",
+      "name": "Iron Necklace",
+      "tier": 2,
+      "material": "Iron",
+      "slot": "neck",
+      "visible": true,
+      "twoHanded": false,
+      "views": {
+        "south": [
+          {
+            "name": "necklace",
+            "file": "sprites/iron/necklace/south/necklace.png",
+            "socket": "neck",
+            "pivot": [
+              5,
+              0
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 65,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "south-west": [
+          {
+            "name": "necklace",
+            "file": "sprites/iron/necklace/south-west/necklace.png",
+            "socket": "neck",
+            "pivot": [
+              5,
+              0
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 65,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "west": [
+          {
+            "name": "necklace",
+            "file": "sprites/iron/necklace/west/necklace.png",
+            "socket": "neck",
+            "pivot": [
+              3,
+              0
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 65,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "north-west": [
+          {
+            "name": "necklace",
+            "file": "sprites/iron/necklace/north-west/necklace.png",
+            "socket": "neck",
+            "pivot": [
+              5,
+              0
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 65,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "north": [
+          {
+            "name": "necklace",
+            "file": "sprites/iron/necklace/north/necklace.png",
+            "socket": "neck",
+            "pivot": [
+              5,
+              0
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 65,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "north-east": [
+          {
+            "name": "necklace",
+            "file": "sprites/iron/necklace/north-east/necklace.png",
+            "socket": "neck",
+            "pivot": [
+              5,
+              0
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 65,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "east": [
+          {
+            "name": "necklace",
+            "file": "sprites/iron/necklace/east/necklace.png",
+            "socket": "neck",
+            "pivot": [
+              3,
+              0
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 65,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ],
+        "south-east": [
+          {
+            "name": "necklace",
+            "file": "sprites/iron/necklace/south-east/necklace.png",
+            "socket": "neck",
+            "pivot": [
+              5,
+              0
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 65,
+            "bone": null,
+            "rotationLimit": 0
+          }
+        ]
+      },
+      "artProvenance": {
+        "designReferenceJob": "3cbb0372-e4a5-4cfa-8c17-94e3ba386453",
+        "exactFinishWorkbench": "e7b17b30-da50-44a8-ac27-b240b1bef593",
+        "geometry": "shared corrected bronze geometry; new cool iron finish and restrained functional decoration"
+      }
+    },
+    {
+      "id": "iron-dagger",
+      "name": "Iron Dagger",
+      "tier": 2,
+      "material": "Iron",
+      "slot": "weapon",
+      "visible": true,
+      "twoHanded": false,
+      "views": {
+        "south": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/dagger/south/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              4,
+              15
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/dagger/south-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              3,
+              16
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "west": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/dagger/west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              1,
+              16
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/dagger/north-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              3,
+              16
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/dagger/north/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              4,
+              15
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/dagger/north-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              3,
+              16
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "east": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/dagger/east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              1,
+              16
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/dagger/south-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              3,
+              16
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ]
+      },
+      "artProvenance": {
+        "designReferenceJob": "3cbb0372-e4a5-4cfa-8c17-94e3ba386453",
+        "exactFinishWorkbench": "e7b17b30-da50-44a8-ac27-b240b1bef593",
+        "geometry": "shared corrected bronze geometry; new cool iron finish and restrained functional decoration"
+      }
+    },
+    {
+      "id": "iron-shortsword",
+      "name": "Iron Shortsword",
+      "tier": 2,
+      "material": "Iron",
+      "slot": "weapon",
+      "visible": true,
+      "twoHanded": false,
+      "views": {
+        "south": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/shortsword/south/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              4,
+              22
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/shortsword/south-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              4,
+              22
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "west": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/shortsword/west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              2,
+              22
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/shortsword/north-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              4,
+              22
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/shortsword/north/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              4,
+              22
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/shortsword/north-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              4,
+              22
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "east": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/shortsword/east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              2,
+              22
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/shortsword/south-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              4,
+              22
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ]
+      },
+      "artProvenance": {
+        "designReferenceJob": "3cbb0372-e4a5-4cfa-8c17-94e3ba386453",
+        "exactFinishWorkbench": "e7b17b30-da50-44a8-ac27-b240b1bef593",
+        "geometry": "shared corrected bronze geometry; new cool iron finish and restrained functional decoration"
+      }
+    },
+    {
+      "id": "iron-longsword",
+      "name": "Iron Longsword",
+      "tier": 2,
+      "material": "Iron",
+      "slot": "weapon",
+      "visible": true,
+      "twoHanded": false,
+      "views": {
+        "south": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/longsword/south/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              7,
+              28
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/longsword/south-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              6,
+              28
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "west": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/longsword/west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              2,
+              27
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/longsword/north-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              6,
+              28
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/longsword/north/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              7,
+              28
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/longsword/north-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              6,
+              28
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "east": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/longsword/east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              2,
+              27
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/longsword/south-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              6,
+              27
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ]
+      },
+      "artProvenance": {
+        "designReferenceJob": "3cbb0372-e4a5-4cfa-8c17-94e3ba386453",
+        "exactFinishWorkbench": "e7b17b30-da50-44a8-ac27-b240b1bef593",
+        "geometry": "shared corrected bronze geometry; new cool iron finish and restrained functional decoration"
+      }
+    },
+    {
+      "id": "iron-mace",
+      "name": "Iron Mace",
+      "tier": 2,
+      "material": "Iron",
+      "slot": "weapon",
+      "visible": true,
+      "twoHanded": false,
+      "views": {
+        "south": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/mace/south/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              6,
+              22
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/mace/south-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              6,
+              22
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "west": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/mace/west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              6,
+              22
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/mace/north-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              6,
+              22
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/mace/north/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              6,
+              22
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/mace/north-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              6,
+              22
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "east": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/mace/east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              6,
+              22
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/mace/south-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              6,
+              22
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ]
+      },
+      "artProvenance": {
+        "designReferenceJob": "3cbb0372-e4a5-4cfa-8c17-94e3ba386453",
+        "exactFinishWorkbench": "e7b17b30-da50-44a8-ac27-b240b1bef593",
+        "geometry": "shared corrected bronze geometry; new cool iron finish and restrained functional decoration"
+      }
+    },
+    {
+      "id": "iron-warmaul",
+      "name": "Iron Warmaul",
+      "tier": 2,
+      "material": "Iron",
+      "slot": "weapon",
+      "visible": true,
+      "twoHanded": true,
+      "views": {
+        "south": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/warmaul/south/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              11,
+              28
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/warmaul/south-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              10,
+              28
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "west": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/warmaul/west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              4,
+              28
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/warmaul/north-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              10,
+              28
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/warmaul/north/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              11,
+              28
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/warmaul/north-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              10,
+              28
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "east": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/warmaul/east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              4,
+              28
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/warmaul/south-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              10,
+              28
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ]
+      },
+      "artProvenance": {
+        "designReferenceJob": "3cbb0372-e4a5-4cfa-8c17-94e3ba386453",
+        "exactFinishWorkbench": "e7b17b30-da50-44a8-ac27-b240b1bef593",
+        "geometry": "shared corrected bronze geometry; new cool iron finish and restrained functional decoration"
+      }
+    },
+    {
+      "id": "iron-bow",
+      "name": "Iron Bow",
+      "tier": 2,
+      "material": "Iron",
+      "slot": "weapon",
+      "visible": true,
+      "twoHanded": true,
+      "views": {
+        "south": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/bow/south/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              6,
+              18
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/bow/south-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              6,
+              17
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "west": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/bow/west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              3,
+              18
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/bow/north-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              5,
+              17
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/bow/north/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              9,
+              18
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/bow/north-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              15,
+              17
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "east": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/bow/east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              9,
+              18
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/bow/south-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              19,
+              17
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ]
+      },
+      "artProvenance": {
+        "designReferenceJob": "3cbb0372-e4a5-4cfa-8c17-94e3ba386453",
+        "exactFinishWorkbench": "e7b17b30-da50-44a8-ac27-b240b1bef593",
+        "geometry": "shared corrected bronze geometry; new cool iron finish and restrained functional decoration"
+      }
+    },
+    {
+      "id": "iron-crossbow",
+      "name": "Iron Crossbow",
+      "tier": 2,
+      "material": "Iron",
+      "slot": "weapon",
+      "visible": true,
+      "twoHanded": false,
+      "views": {
+        "south": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/crossbow/south/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              15,
+              7
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/crossbow/south-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              25,
+              8
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "west": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/crossbow/west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              28,
+              15
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/crossbow/north-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              21,
+              21
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/crossbow/north/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              14,
+              21
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/crossbow/north-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              8,
+              21
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "east": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/crossbow/east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              8,
+              15
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/crossbow/south-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              9,
+              8
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ]
+      },
+      "artProvenance": {
+        "designReferenceJob": "3cbb0372-e4a5-4cfa-8c17-94e3ba386453",
+        "exactFinishWorkbench": "e7b17b30-da50-44a8-ac27-b240b1bef593",
+        "geometry": "shared corrected bronze geometry; new cool iron finish and restrained functional decoration"
+      }
+    },
+    {
+      "id": "iron-magic-staff",
+      "name": "Iron Magic Staff",
+      "tier": 2,
+      "material": "Iron",
+      "slot": "weapon",
+      "visible": true,
+      "twoHanded": true,
+      "views": {
+        "south": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/magic-staff/south/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              5,
+              36
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/magic-staff/south-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              4,
+              36
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "west": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/magic-staff/west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              2,
+              36
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/magic-staff/north-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              4,
+              36
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/magic-staff/north/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              4,
+              36
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/magic-staff/north-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              4,
+              36
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "east": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/magic-staff/east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              2,
+              36
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/magic-staff/south-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              4,
+              36
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ]
+      },
+      "artProvenance": {
+        "designReferenceJob": "3cbb0372-e4a5-4cfa-8c17-94e3ba386453",
+        "exactFinishWorkbench": "e7b17b30-da50-44a8-ac27-b240b1bef593",
+        "geometry": "shared corrected bronze geometry; new cool iron finish and restrained functional decoration"
+      }
+    },
+    {
+      "id": "iron-magic-wand",
+      "name": "Iron Magic Wand",
+      "tier": 2,
+      "material": "Iron",
+      "slot": "weapon",
+      "visible": true,
+      "twoHanded": false,
+      "views": {
+        "south": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/magic-wand/south/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              2,
+              25
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/magic-wand/south-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              6,
+              25
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "west": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/magic-wand/west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              2,
+              25
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-west": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/magic-wand/north-west/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              5,
+              25
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/magic-wand/north/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              5,
+              25
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "north-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/magic-wand/north-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              5,
+              25
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "east": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/magic-wand/east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              2,
+              25
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ],
+        "south-east": [
+          {
+            "name": "weapon",
+            "file": "sprites/iron/magic-wand/south-east/weapon.png",
+            "socket": "hand_right",
+            "pivot": [
+              2,
+              25
+            ],
+            "offset": [
+              0,
+              0
+            ],
+            "z": 45,
+            "bone": "elbow_right",
+            "rotationLimit": 0.17
+          }
+        ]
+      },
+      "artProvenance": {
+        "designReferenceJob": "3cbb0372-e4a5-4cfa-8c17-94e3ba386453",
+        "exactFinishWorkbench": "e7b17b30-da50-44a8-ac27-b240b1bef593",
+        "geometry": "shared corrected bronze geometry; new cool iron finish and restrained functional decoration"
+      }
+    },
+    {
+      "id": "iron-ring",
+      "name": "Iron Ring",
+      "tier": 2,
+      "material": "Iron",
+      "slot": "ring",
+      "visible": false,
+      "views": {
+        "south": [],
+        "south-west": [],
+        "west": [],
+        "north-west": [],
+        "north": [],
+        "north-east": [],
+        "east": [],
+        "south-east": []
+      },
+      "artProvenance": {
+        "designReferenceJob": "3cbb0372-e4a5-4cfa-8c17-94e3ba386453",
+        "exactFinishWorkbench": "e7b17b30-da50-44a8-ac27-b240b1bef593",
+        "geometry": "shared corrected bronze geometry; new cool iron finish and restrained functional decoration"
+      }
+    }
+  ],
+  "rules": {
+    "weapon": "hand_right",
+    "shield": "hand_left",
+    "head": "head",
+    "chest": "chest",
+    "legs": [
+      "pelvis",
+      "hip_right",
+      "hip_left",
+      "knee_right",
+      "knee_left",
+      "foot_right",
+      "foot_left"
+    ],
+    "cape": "back",
+    "neck": "upper chest over platebody",
+    "ring": "invisible"
+  },
+  "pixellab": {
+    "project": "e3072690-af27-41e4-bef3-2d7d00d84838",
+    "bronzeCorrectedPartsGallery": "e46070e4-09bb-4f3e-baa7-a69a30401c77",
+    "ironCorrectedPartsGallery": "d678e2c4-6bc6-4639-8263-7114ad73a473",
+    "ironDesignReferenceGallery": "da900293-5386-51a4-8462-ff72463315d2",
+    "originalObjectsPreserved": true
+  }
+}

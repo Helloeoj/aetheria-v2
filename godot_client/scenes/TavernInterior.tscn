@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/TavernContent.tscn" id="1_content"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="2_game"]
+[ext_resource type="Script" path="res://scripts/ui_spawn_menu.gd" id="3_spawn"]
+[ext_resource type="Script" path="res://scripts/ui_item_menu.gd" id="4_item"]
+[ext_resource type="Script" path="res://scripts/ui_inventory_menu.gd" id="5_inventory"]
+[ext_resource type="Script" path="res://scripts/cave_portal.gd" id="6_portal"]
+[ext_resource type="Script" path="res://scripts/cooking_station.gd" id="7_stove"]
+[ext_resource type="Script" path="res://scripts/tavern_navigation.gd" id="8_navigation"]
+
+[node name="TavernInterior" type="Node2D"]
+y_sort_enabled = true
+texture_filter = 1
+script = ExtResource("8_navigation")
+
+[node name="Backdrop" type="Polygon2D" parent="."]
+z_index = -1000
+color = Color(0.025, 0.02, 0.018, 1)
+polygon = PackedVector2Array(-3000, -3000, 4000, -3000, 4000, 4000, -3000, 4000)
+
+[node name="TavernContent" parent="." instance=ExtResource("1_content")]
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="Entrance" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(470.25, 780)
+
+[node name="Combat" type="Node2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("2_game")
+map_width = 940.5
+map_height = 940.5
+area_name = "Roadside Tavern"
+initial_spawn_id = "Entrance"
+
+[node name="TavernExit" type="Node2D" parent="Combat"]
+position = Vector2(470.25, 828)
+script = ExtResource("6_portal")
+portal_name = "Valtheiris"
+destination_scene = "res://scenes/EastOutskirtsLayered.tscn"
+destination_spawn_id = "TavernReturn"
+approach_offset = Vector2(0, -43.5)
+interaction_radius = 36.0
+click_rect = Rect2(-33, -28, 66, 68)
+
+[node name="Stove" type="Node2D" parent="Combat"]
+position = Vector2(828.75, 135)
+script = ExtResource("7_stove")
+station_name = "Tavern stove"
+approach_offset = Vector2(30, 46.5)
+click_rect = Rect2(-67.5, -32, 125, 64)
+interaction_radius = 30.0
+
+[node name="UI" type="CanvasLayer" parent="Combat"]
+
+[node name="SpawnMenu" type="Control" parent="Combat/UI"]
+visible = false
+layout_mode = 3
+script = ExtResource("3_spawn")
+
+[node name="ItemMenu" type="Control" parent="Combat/UI"]
+visible = false
+layout_mode = 3
+script = ExtResource("4_item")
+
+[node name="InventoryMenu" type="Control" parent="Combat/UI"]
+visible = false
+layout_mode = 3
+script = ExtResource("5_inventory")
+
+[node name="MapCamera" type="Camera2D" parent="."]
+position = Vector2(470.25, 780)
+zoom = Vector2(1.5, 1.5)

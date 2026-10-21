@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/MapTiles/Objects/Harbor_Walls_056.png" id="1_fw3ui"]
+
+[node name="Harbor_Walls_056" type="Node2D"]
+y_sort_enabled = true
+texture_filter = 1
+metadata/kind = "Walls"
+
+[node name="Footprint" type="StaticBody2D" parent="." groups=["map_object", "world_solid"]]
+position = Vector2(-7, -6)
+collision_mask = 0
+metadata/kind = "Walls"
+
+[node name="Visual" type="Sprite2D" parent="Footprint"]
+position = Vector2(-169, -522)
+texture = ExtResource("1_fw3ui")
+centered = false
+
+[node name="SolidPolygon1" type="CollisionPolygon2D" parent="Footprint"]
+polygon = PackedVector2Array(-169, -524, 77, -524, 77, 0, -169, 0)

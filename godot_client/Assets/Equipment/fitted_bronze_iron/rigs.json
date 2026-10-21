@@ -1,0 +1,6704 @@
+{
+  "character_id": "723ffe6c-f28f-42b6-a37d-584b83db8c6c",
+  "canvas": [
+    80,
+    80
+  ],
+  "directions": [
+    "south",
+    "south-west",
+    "west",
+    "north-west",
+    "north",
+    "north-east",
+    "east",
+    "south-east"
+  ],
+  "hierarchy": {
+    "pelvis": null,
+    "chest": "pelvis",
+    "neck": "chest",
+    "head": "neck",
+    "shoulder_right": "chest",
+    "elbow_right": "shoulder_right",
+    "hand_right": "elbow_right",
+    "shoulder_left": "chest",
+    "elbow_left": "shoulder_left",
+    "hand_left": "elbow_left",
+    "hip_right": "pelvis",
+    "knee_right": "hip_right",
+    "foot_right": "knee_right",
+    "hip_left": "pelvis",
+    "knee_left": "hip_left",
+    "foot_left": "knee_left"
+  },
+  "rigs": {
+    "south": {
+      "frames": [
+        {
+          "direction": "south",
+          "clip": "idle",
+          "index": 0,
+          "joints": {
+            "pelvis": [
+              40,
+              52
+            ],
+            "chest": [
+              40,
+              43
+            ],
+            "neck": [
+              40,
+              37
+            ],
+            "head": [
+              40,
+              26
+            ],
+            "shoulder_right": [
+              29,
+              39
+            ],
+            "elbow_right": [
+              26,
+              46
+            ],
+            "hand_right": [
+              25,
+              51
+            ],
+            "shoulder_left": [
+              51,
+              39
+            ],
+            "elbow_left": [
+              54,
+              46
+            ],
+            "hand_left": [
+              54,
+              51
+            ],
+            "hip_right": [
+              34,
+              53
+            ],
+            "knee_right": [
+              33,
+              58
+            ],
+            "foot_right": [
+              31,
+              63
+            ],
+            "hip_left": [
+              46,
+              53
+            ],
+            "knee_left": [
+              48,
+              58
+            ],
+            "foot_left": [
+              49,
+              63
+            ]
+          },
+          "frontArms": [
+            "right",
+            "left"
+          ],
+          "original": "original/south/0.png",
+          "body": "body/south/0.png",
+          "head": "body/south/head-0.png",
+          "arms": {
+            "right": "body/south/forearm-right-0.png",
+            "left": "body/south/forearm-left-0.png"
+          },
+          "grips": {
+            "right": "body/south/grip-right-0.png",
+            "left": "body/south/grip-left-0.png"
+          }
+        },
+        {
+          "direction": "south",
+          "clip": "run",
+          "index": 0,
+          "joints": {
+            "pelvis": [
+              41,
+              52
+            ],
+            "chest": [
+              41,
+              43
+            ],
+            "neck": [
+              41,
+              37
+            ],
+            "head": [
+              41,
+              26
+            ],
+            "shoulder_right": [
+              31,
+              39
+            ],
+            "elbow_right": [
+              28,
+              44
+            ],
+            "hand_right": [
+              28,
+              48
+            ],
+            "shoulder_left": [
+              51,
+              38
+            ],
+            "elbow_left": [
+              55,
+              40
+            ],
+            "hand_left": [
+              55,
+              44
+            ],
+            "hip_right": [
+              35,
+              53
+            ],
+            "knee_right": [
+              41,
+              58
+            ],
+            "foot_right": [
+              42,
+              65
+            ],
+            "hip_left": [
+              47,
+              53
+            ],
+            "knee_left": [
+              37,
+              56
+            ],
+            "foot_left": [
+              33,
+              58
+            ]
+          },
+          "frontArms": [
+            "right"
+          ],
+          "original": "original/south/1.png",
+          "body": "body/south/1.png",
+          "head": "body/south/head-1.png",
+          "arms": {
+            "right": "body/south/forearm-right-1.png",
+            "left": "body/south/forearm-left-1.png"
+          },
+          "grips": {
+            "right": "body/south/grip-right-1.png",
+            "left": "body/south/grip-left-1.png"
+          }
+        },
+        {
+          "direction": "south",
+          "clip": "run",
+          "index": 1,
+          "joints": {
+            "pelvis": [
+              40,
+              51
+            ],
+            "chest": [
+              40,
+              42
+            ],
+            "neck": [
+              40,
+              36
+            ],
+            "head": [
+              40,
+              26
+            ],
+            "shoulder_right": [
+              30,
+              38
+            ],
+            "elbow_right": [
+              26,
+              42
+            ],
+            "hand_right": [
+              25,
+              46
+            ],
+            "shoulder_left": [
+              50,
+              38
+            ],
+            "elbow_left": [
+              54,
+              42
+            ],
+            "hand_left": [
+              54,
+              46
+            ],
+            "hip_right": [
+              34,
+              52
+            ],
+            "knee_right": [
+              39,
+              57
+            ],
+            "foot_right": [
+              41,
+              63
+            ],
+            "hip_left": [
+              46,
+              52
+            ],
+            "knee_left": [
+              41,
+              55
+            ],
+            "foot_left": [
+              35,
+              58
+            ]
+          },
+          "frontArms": [
+            "right",
+            "left"
+          ],
+          "original": "original/south/2.png",
+          "body": "body/south/2.png",
+          "head": "body/south/head-2.png",
+          "arms": {
+            "right": "body/south/forearm-right-2.png",
+            "left": "body/south/forearm-left-2.png"
+          },
+          "grips": {
+            "right": "body/south/grip-right-2.png",
+            "left": "body/south/grip-left-2.png"
+          }
+        },
+        {
+          "direction": "south",
+          "clip": "run",
+          "index": 2,
+          "joints": {
+            "pelvis": [
+              39,
+              51
+            ],
+            "chest": [
+              39,
+              42
+            ],
+            "neck": [
+              39,
+              36
+            ],
+            "head": [
+              39,
+              26
+            ],
+            "shoulder_right": [
+              29,
+              38
+            ],
+            "elbow_right": [
+              26,
+              41
+            ],
+            "hand_right": [
+              27,
+              45
+            ],
+            "shoulder_left": [
+              49,
+              38
+            ],
+            "elbow_left": [
+              53,
+              43
+            ],
+            "hand_left": [
+              52,
+              47
+            ],
+            "hip_right": [
+              33,
+              52
+            ],
+            "knee_right": [
+              35,
+              57
+            ],
+            "foot_right": [
+              36,
+              65
+            ],
+            "hip_left": [
+              45,
+              52
+            ],
+            "knee_left": [
+              45,
+              56
+            ],
+            "foot_left": [
+              46,
+              61
+            ]
+          },
+          "frontArms": [
+            "left"
+          ],
+          "original": "original/south/3.png",
+          "body": "body/south/3.png",
+          "head": "body/south/head-3.png",
+          "arms": {
+            "right": "body/south/forearm-right-3.png",
+            "left": "body/south/forearm-left-3.png"
+          },
+          "grips": {
+            "right": "body/south/grip-right-3.png",
+            "left": "body/south/grip-left-3.png"
+          }
+        },
+        {
+          "direction": "south",
+          "clip": "run",
+          "index": 3,
+          "joints": {
+            "pelvis": [
+              39,
+              52
+            ],
+            "chest": [
+              38,
+              43
+            ],
+            "neck": [
+              38,
+              37
+            ],
+            "head": [
+              38,
+              26
+            ],
+            "shoulder_right": [
+              28,
+              39
+            ],
+            "elbow_right": [
+              26,
+              41
+            ],
+            "hand_right": [
+              26,
+              44
+            ],
+            "shoulder_left": [
+              48,
+              39
+            ],
+            "elbow_left": [
+              50,
+              44
+            ],
+            "hand_left": [
+              47,
+              48
+            ],
+            "hip_right": [
+              33,
+              53
+            ],
+            "knee_right": [
+              36,
+              57
+            ],
+            "foot_right": [
+              31,
+              59
+            ],
+            "hip_left": [
+              45,
+              53
+            ],
+            "knee_left": [
+              40,
+              59
+            ],
+            "foot_left": [
+              38,
+              66
+            ]
+          },
+          "frontArms": [
+            "left"
+          ],
+          "original": "original/south/4.png",
+          "body": "body/south/4.png",
+          "head": "body/south/head-4.png",
+          "arms": {
+            "right": "body/south/forearm-right-4.png",
+            "left": "body/south/forearm-left-4.png"
+          },
+          "grips": {
+            "right": "body/south/grip-right-4.png",
+            "left": "body/south/grip-left-4.png"
+          }
+        },
+        {
+          "direction": "south",
+          "clip": "run",
+          "index": 4,
+          "joints": {
+            "pelvis": [
+              38,
+              53
+            ],
+            "chest": [
+              38,
+              44
+            ],
+            "neck": [
+              38,
+              38
+            ],
+            "head": [
+              38,
+              27
+            ],
+            "shoulder_right": [
+              28,
+              40
+            ],
+            "elbow_right": [
+              26,
+              42
+            ],
+            "hand_right": [
+              27,
+              45
+            ],
+            "shoulder_left": [
+              48,
+              40
+            ],
+            "elbow_left": [
+              51,
+              46
+            ],
+            "hand_left": [
+              49,
+              49
+            ],
+            "hip_right": [
+              32,
+              54
+            ],
+            "knee_right": [
+              35,
+              57
+            ],
+            "foot_right": [
+              30,
+              59
+            ],
+            "hip_left": [
+              44,
+              54
+            ],
+            "knee_left": [
+              39,
+              60
+            ],
+            "foot_left": [
+              38,
+              66
+            ]
+          },
+          "frontArms": [
+            "left"
+          ],
+          "original": "original/south/5.png",
+          "body": "body/south/5.png",
+          "head": "body/south/head-5.png",
+          "arms": {
+            "right": "body/south/forearm-right-5.png",
+            "left": "body/south/forearm-left-5.png"
+          },
+          "grips": {
+            "right": "body/south/grip-right-5.png",
+            "left": "body/south/grip-left-5.png"
+          }
+        },
+        {
+          "direction": "south",
+          "clip": "run",
+          "index": 5,
+          "joints": {
+            "pelvis": [
+              39,
+              51
+            ],
+            "chest": [
+              39,
+              43
+            ],
+            "neck": [
+              39,
+              37
+            ],
+            "head": [
+              39,
+              27
+            ],
+            "shoulder_right": [
+              29,
+              39
+            ],
+            "elbow_right": [
+              26,
+              41
+            ],
+            "hand_right": [
+              27,
+              44
+            ],
+            "shoulder_left": [
+              49,
+              39
+            ],
+            "elbow_left": [
+              52,
+              44
+            ],
+            "hand_left": [
+              49,
+              47
+            ],
+            "hip_right": [
+              33,
+              52
+            ],
+            "knee_right": [
+              36,
+              56
+            ],
+            "foot_right": [
+              33,
+              59
+            ],
+            "hip_left": [
+              45,
+              52
+            ],
+            "knee_left": [
+              41,
+              57
+            ],
+            "foot_left": [
+              40,
+              63
+            ]
+          },
+          "frontArms": [
+            "left"
+          ],
+          "original": "original/south/6.png",
+          "body": "body/south/6.png",
+          "head": "body/south/head-6.png",
+          "arms": {
+            "right": "body/south/forearm-right-6.png",
+            "left": "body/south/forearm-left-6.png"
+          },
+          "grips": {
+            "right": "body/south/grip-right-6.png",
+            "left": "body/south/grip-left-6.png"
+          }
+        },
+        {
+          "direction": "south",
+          "clip": "run",
+          "index": 6,
+          "joints": {
+            "pelvis": [
+              40,
+              51
+            ],
+            "chest": [
+              40,
+              42
+            ],
+            "neck": [
+              40,
+              36
+            ],
+            "head": [
+              40,
+              25
+            ],
+            "shoulder_right": [
+              30,
+              38
+            ],
+            "elbow_right": [
+              27,
+              43
+            ],
+            "hand_right": [
+              28,
+              46
+            ],
+            "shoulder_left": [
+              50,
+              38
+            ],
+            "elbow_left": [
+              53,
+              43
+            ],
+            "hand_left": [
+              50,
+              47
+            ],
+            "hip_right": [
+              34,
+              52
+            ],
+            "knee_right": [
+              36,
+              56
+            ],
+            "foot_right": [
+              36,
+              62
+            ],
+            "hip_left": [
+              46,
+              52
+            ],
+            "knee_left": [
+              45,
+              56
+            ],
+            "foot_left": [
+              45,
+              63
+            ]
+          },
+          "frontArms": [
+            "right",
+            "left"
+          ],
+          "original": "original/south/7.png",
+          "body": "body/south/7.png",
+          "head": "body/south/head-7.png",
+          "arms": {
+            "right": "body/south/forearm-right-7.png",
+            "left": "body/south/forearm-left-7.png"
+          },
+          "grips": {
+            "right": "body/south/grip-right-7.png",
+            "left": "body/south/grip-left-7.png"
+          }
+        },
+        {
+          "direction": "south",
+          "clip": "run",
+          "index": 7,
+          "joints": {
+            "pelvis": [
+              41,
+              52
+            ],
+            "chest": [
+              41,
+              43
+            ],
+            "neck": [
+              41,
+              37
+            ],
+            "head": [
+              41,
+              26
+            ],
+            "shoulder_right": [
+              31,
+              39
+            ],
+            "elbow_right": [
+              28,
+              44
+            ],
+            "hand_right": [
+              28,
+              48
+            ],
+            "shoulder_left": [
+              51,
+              39
+            ],
+            "elbow_left": [
+              55,
+              43
+            ],
+            "hand_left": [
+              55,
+              47
+            ],
+            "hip_right": [
+              35,
+              53
+            ],
+            "knee_right": [
+              40,
+              58
+            ],
+            "foot_right": [
+              41,
+              63
+            ],
+            "hip_left": [
+              47,
+              53
+            ],
+            "knee_left": [
+              40,
+              56
+            ],
+            "foot_left": [
+              35,
+              59
+            ]
+          },
+          "frontArms": [
+            "right",
+            "left"
+          ],
+          "original": "original/south/8.png",
+          "body": "body/south/8.png",
+          "head": "body/south/head-8.png",
+          "arms": {
+            "right": "body/south/forearm-right-8.png",
+            "left": "body/south/forearm-left-8.png"
+          },
+          "grips": {
+            "right": "body/south/grip-right-8.png",
+            "left": "body/south/grip-left-8.png"
+          }
+        }
+      ],
+      "rest": {
+        "head": [
+          40,
+          26
+        ],
+        "neck": [
+          40,
+          37
+        ],
+        "chest": [
+          40,
+          43
+        ],
+        "pelvis": [
+          40,
+          52
+        ],
+        "shoulder_right": [
+          29,
+          39
+        ],
+        "elbow_right": [
+          26,
+          46
+        ],
+        "hand_right": [
+          25,
+          51
+        ],
+        "shoulder_left": [
+          51,
+          39
+        ],
+        "elbow_left": [
+          54,
+          46
+        ],
+        "hand_left": [
+          54,
+          51
+        ],
+        "hip_right": [
+          34,
+          53
+        ],
+        "knee_right": [
+          33,
+          58
+        ],
+        "foot_right": [
+          31,
+          63
+        ],
+        "hip_left": [
+          46,
+          53
+        ],
+        "knee_left": [
+          48,
+          58
+        ],
+        "foot_left": [
+          49,
+          63
+        ]
+      }
+    },
+    "south-west": {
+      "frames": [
+        {
+          "direction": "south-west",
+          "clip": "idle",
+          "index": 0,
+          "joints": {
+            "head": [
+              39,
+              26
+            ],
+            "neck": [
+              37,
+              37
+            ],
+            "chest": [
+              40,
+              43
+            ],
+            "pelvis": [
+              41,
+              52
+            ],
+            "shoulder_right": [
+              31,
+              39
+            ],
+            "elbow_right": [
+              28,
+              44
+            ],
+            "hand_right": [
+              28,
+              47
+            ],
+            "shoulder_left": [
+              48,
+              40
+            ],
+            "elbow_left": [
+              51,
+              47
+            ],
+            "hand_left": [
+              51,
+              54
+            ],
+            "hip_right": [
+              36,
+              53
+            ],
+            "knee_right": [
+              35,
+              57
+            ],
+            "foot_right": [
+              33,
+              61
+            ],
+            "hip_left": [
+              46,
+              53
+            ],
+            "knee_left": [
+              48,
+              59
+            ],
+            "foot_left": [
+              48,
+              65
+            ]
+          },
+          "frontArms": [
+            "left"
+          ],
+          "original": "original/south-west/0.png",
+          "body": "body/south-west/0.png",
+          "head": "body/south-west/head-0.png",
+          "arms": {
+            "right": "body/south-west/forearm-right-0.png",
+            "left": "body/south-west/forearm-left-0.png"
+          },
+          "grips": {
+            "right": "body/south-west/grip-right-0.png",
+            "left": "body/south-west/grip-left-0.png"
+          }
+        },
+        {
+          "direction": "south-west",
+          "clip": "run",
+          "index": 0,
+          "joints": {
+            "head": [
+              37,
+              27
+            ],
+            "neck": [
+              35,
+              38
+            ],
+            "chest": [
+              38,
+              44
+            ],
+            "pelvis": [
+              39,
+              53
+            ],
+            "shoulder_right": [
+              29,
+              40
+            ],
+            "elbow_right": [
+              33,
+              39
+            ],
+            "hand_right": [
+              36,
+              38
+            ],
+            "shoulder_left": [
+              46,
+              41
+            ],
+            "elbow_left": [
+              52,
+              45
+            ],
+            "hand_left": [
+              56,
+              49
+            ],
+            "hip_right": [
+              34,
+              54
+            ],
+            "knee_right": [
+              38,
+              60
+            ],
+            "foot_right": [
+              42,
+              67
+            ],
+            "hip_left": [
+              44,
+              54
+            ],
+            "knee_left": [
+              44,
+              59
+            ],
+            "foot_left": [
+              44,
+              64
+            ]
+          },
+          "frontArms": [
+            "left"
+          ],
+          "original": "original/south-west/1.png",
+          "body": "body/south-west/1.png",
+          "head": "body/south-west/head-1.png",
+          "arms": {
+            "right": "body/south-west/forearm-right-1.png",
+            "left": "body/south-west/forearm-left-1.png"
+          },
+          "grips": {
+            "right": "body/south-west/grip-right-1.png",
+            "left": "body/south-west/grip-left-1.png"
+          }
+        },
+        {
+          "direction": "south-west",
+          "clip": "run",
+          "index": 1,
+          "joints": {
+            "head": [
+              37,
+              26
+            ],
+            "neck": [
+              35,
+              37
+            ],
+            "chest": [
+              38,
+              43
+            ],
+            "pelvis": [
+              39,
+              52
+            ],
+            "shoulder_right": [
+              29,
+              39
+            ],
+            "elbow_right": [
+              33,
+              38
+            ],
+            "hand_right": [
+              36,
+              37
+            ],
+            "shoulder_left": [
+              46,
+              40
+            ],
+            "elbow_left": [
+              51,
+              46
+            ],
+            "hand_left": [
+              55,
+              50
+            ],
+            "hip_right": [
+              34,
+              53
+            ],
+            "knee_right": [
+              39,
+              56
+            ],
+            "foot_right": [
+              46,
+              59
+            ],
+            "hip_left": [
+              44,
+              53
+            ],
+            "knee_left": [
+              45,
+              59
+            ],
+            "foot_left": [
+              46,
+              65
+            ]
+          },
+          "frontArms": [
+            "left"
+          ],
+          "original": "original/south-west/2.png",
+          "body": "body/south-west/2.png",
+          "head": "body/south-west/head-2.png",
+          "arms": {
+            "right": "body/south-west/forearm-right-2.png",
+            "left": "body/south-west/forearm-left-2.png"
+          },
+          "grips": {
+            "right": "body/south-west/grip-right-2.png",
+            "left": "body/south-west/grip-left-2.png"
+          }
+        },
+        {
+          "direction": "south-west",
+          "clip": "run",
+          "index": 2,
+          "joints": {
+            "head": [
+              37,
+              25
+            ],
+            "neck": [
+              35,
+              36
+            ],
+            "chest": [
+              38,
+              42
+            ],
+            "pelvis": [
+              39,
+              51
+            ],
+            "shoulder_right": [
+              29,
+              38
+            ],
+            "elbow_right": [
+              33,
+              37
+            ],
+            "hand_right": [
+              36,
+              36
+            ],
+            "shoulder_left": [
+              46,
+              39
+            ],
+            "elbow_left": [
+              49,
+              46
+            ],
+            "hand_left": [
+              52,
+              51
+            ],
+            "hip_right": [
+              34,
+              52
+            ],
+            "knee_right": [
+              35,
+              56
+            ],
+            "foot_right": [
+              36,
+              59
+            ],
+            "hip_left": [
+              44,
+              52
+            ],
+            "knee_left": [
+              46,
+              56
+            ],
+            "foot_left": [
+              48,
+              61
+            ]
+          },
+          "frontArms": [
+            "left"
+          ],
+          "original": "original/south-west/3.png",
+          "body": "body/south-west/3.png",
+          "head": "body/south-west/head-3.png",
+          "arms": {
+            "right": "body/south-west/forearm-right-3.png",
+            "left": "body/south-west/forearm-left-3.png"
+          },
+          "grips": {
+            "right": "body/south-west/grip-right-3.png",
+            "left": "body/south-west/grip-left-3.png"
+          }
+        },
+        {
+          "direction": "south-west",
+          "clip": "run",
+          "index": 3,
+          "joints": {
+            "head": [
+              37,
+              26
+            ],
+            "neck": [
+              35,
+              37
+            ],
+            "chest": [
+              38,
+              43
+            ],
+            "pelvis": [
+              39,
+              52
+            ],
+            "shoulder_right": [
+              29,
+              39
+            ],
+            "elbow_right": [
+              33,
+              38
+            ],
+            "hand_right": [
+              36,
+              37
+            ],
+            "shoulder_left": [
+              46,
+              40
+            ],
+            "elbow_left": [
+              47,
+              46
+            ],
+            "hand_left": [
+              48,
+              51
+            ],
+            "hip_right": [
+              34,
+              53
+            ],
+            "knee_right": [
+              34,
+              57
+            ],
+            "foot_right": [
+              35,
+              61
+            ],
+            "hip_left": [
+              44,
+              53
+            ],
+            "knee_left": [
+              47,
+              56
+            ],
+            "foot_left": [
+              51,
+              59
+            ]
+          },
+          "frontArms": [
+            "left"
+          ],
+          "original": "original/south-west/4.png",
+          "body": "body/south-west/4.png",
+          "head": "body/south-west/head-4.png",
+          "arms": {
+            "right": "body/south-west/forearm-right-4.png",
+            "left": "body/south-west/forearm-left-4.png"
+          },
+          "grips": {
+            "right": "body/south-west/grip-right-4.png",
+            "left": "body/south-west/grip-left-4.png"
+          }
+        },
+        {
+          "direction": "south-west",
+          "clip": "run",
+          "index": 4,
+          "joints": {
+            "head": [
+              37,
+              27
+            ],
+            "neck": [
+              35,
+              38
+            ],
+            "chest": [
+              38,
+              44
+            ],
+            "pelvis": [
+              39,
+              53
+            ],
+            "shoulder_right": [
+              29,
+              40
+            ],
+            "elbow_right": [
+              33,
+              39
+            ],
+            "hand_right": [
+              36,
+              38
+            ],
+            "shoulder_left": [
+              46,
+              41
+            ],
+            "elbow_left": [
+              45,
+              46
+            ],
+            "hand_left": [
+              44,
+              51
+            ],
+            "hip_right": [
+              34,
+              54
+            ],
+            "knee_right": [
+              33,
+              58
+            ],
+            "foot_right": [
+              32,
+              63
+            ],
+            "hip_left": [
+              44,
+              54
+            ],
+            "knee_left": [
+              40,
+              58
+            ],
+            "foot_left": [
+              34,
+              62
+            ]
+          },
+          "frontArms": [
+            "left"
+          ],
+          "original": "original/south-west/5.png",
+          "body": "body/south-west/5.png",
+          "head": "body/south-west/head-5.png",
+          "arms": {
+            "right": "body/south-west/forearm-right-5.png",
+            "left": "body/south-west/forearm-left-5.png"
+          },
+          "grips": {
+            "right": "body/south-west/grip-right-5.png",
+            "left": "body/south-west/grip-left-5.png"
+          }
+        },
+        {
+          "direction": "south-west",
+          "clip": "run",
+          "index": 5,
+          "joints": {
+            "head": [
+              37,
+              26
+            ],
+            "neck": [
+              35,
+              37
+            ],
+            "chest": [
+              38,
+              43
+            ],
+            "pelvis": [
+              39,
+              52
+            ],
+            "shoulder_right": [
+              29,
+              39
+            ],
+            "elbow_right": [
+              32,
+              38
+            ],
+            "hand_right": [
+              34,
+              37
+            ],
+            "shoulder_left": [
+              46,
+              40
+            ],
+            "elbow_left": [
+              47,
+              46
+            ],
+            "hand_left": [
+              47,
+              51
+            ],
+            "hip_right": [
+              34,
+              53
+            ],
+            "knee_right": [
+              34,
+              58
+            ],
+            "foot_right": [
+              35,
+              62
+            ],
+            "hip_left": [
+              44,
+              53
+            ],
+            "knee_left": [
+              48,
+              56
+            ],
+            "foot_left": [
+              52,
+              59
+            ]
+          },
+          "frontArms": [
+            "left"
+          ],
+          "original": "original/south-west/6.png",
+          "body": "body/south-west/6.png",
+          "head": "body/south-west/head-6.png",
+          "arms": {
+            "right": "body/south-west/forearm-right-6.png",
+            "left": "body/south-west/forearm-left-6.png"
+          },
+          "grips": {
+            "right": "body/south-west/grip-right-6.png",
+            "left": "body/south-west/grip-left-6.png"
+          }
+        },
+        {
+          "direction": "south-west",
+          "clip": "run",
+          "index": 6,
+          "joints": {
+            "head": [
+              37,
+              25
+            ],
+            "neck": [
+              35,
+              36
+            ],
+            "chest": [
+              38,
+              42
+            ],
+            "pelvis": [
+              39,
+              51
+            ],
+            "shoulder_right": [
+              29,
+              38
+            ],
+            "elbow_right": [
+              32,
+              37
+            ],
+            "hand_right": [
+              34,
+              36
+            ],
+            "shoulder_left": [
+              46,
+              39
+            ],
+            "elbow_left": [
+              49,
+              46
+            ],
+            "hand_left": [
+              51,
+              51
+            ],
+            "hip_right": [
+              34,
+              52
+            ],
+            "knee_right": [
+              35,
+              56
+            ],
+            "foot_right": [
+              36,
+              61
+            ],
+            "hip_left": [
+              44,
+              52
+            ],
+            "knee_left": [
+              45,
+              55
+            ],
+            "foot_left": [
+              46,
+              58
+            ]
+          },
+          "frontArms": [
+            "left"
+          ],
+          "original": "original/south-west/7.png",
+          "body": "body/south-west/7.png",
+          "head": "body/south-west/head-7.png",
+          "arms": {
+            "right": "body/south-west/forearm-right-7.png",
+            "left": "body/south-west/forearm-left-7.png"
+          },
+          "grips": {
+            "right": "body/south-west/grip-right-7.png",
+            "left": "body/south-west/grip-left-7.png"
+          }
+        },
+        {
+          "direction": "south-west",
+          "clip": "run",
+          "index": 7,
+          "joints": {
+            "head": [
+              37,
+              26
+            ],
+            "neck": [
+              35,
+              37
+            ],
+            "chest": [
+              38,
+              43
+            ],
+            "pelvis": [
+              39,
+              52
+            ],
+            "shoulder_right": [
+              29,
+              39
+            ],
+            "elbow_right": [
+              33,
+              38
+            ],
+            "hand_right": [
+              36,
+              37
+            ],
+            "shoulder_left": [
+              46,
+              40
+            ],
+            "elbow_left": [
+              50,
+              46
+            ],
+            "hand_left": [
+              53,
+              51
+            ],
+            "hip_right": [
+              34,
+              53
+            ],
+            "knee_right": [
+              35,
+              56
+            ],
+            "foot_right": [
+              36,
+              60
+            ],
+            "hip_left": [
+              44,
+              53
+            ],
+            "knee_left": [
+              44,
+              58
+            ],
+            "foot_left": [
+              45,
+              62
+            ]
+          },
+          "frontArms": [
+            "left"
+          ],
+          "original": "original/south-west/8.png",
+          "body": "body/south-west/8.png",
+          "head": "body/south-west/head-8.png",
+          "arms": {
+            "right": "body/south-west/forearm-right-8.png",
+            "left": "body/south-west/forearm-left-8.png"
+          },
+          "grips": {
+            "right": "body/south-west/grip-right-8.png",
+            "left": "body/south-west/grip-left-8.png"
+          }
+        }
+      ],
+      "rest": {
+        "head": [
+          39,
+          26
+        ],
+        "neck": [
+          37,
+          37
+        ],
+        "chest": [
+          40,
+          43
+        ],
+        "pelvis": [
+          41,
+          52
+        ],
+        "shoulder_right": [
+          31,
+          39
+        ],
+        "elbow_right": [
+          28,
+          44
+        ],
+        "hand_right": [
+          28,
+          47
+        ],
+        "shoulder_left": [
+          48,
+          40
+        ],
+        "elbow_left": [
+          51,
+          47
+        ],
+        "hand_left": [
+          51,
+          54
+        ],
+        "hip_right": [
+          36,
+          53
+        ],
+        "knee_right": [
+          35,
+          57
+        ],
+        "foot_right": [
+          33,
+          61
+        ],
+        "hip_left": [
+          46,
+          53
+        ],
+        "knee_left": [
+          48,
+          59
+        ],
+        "foot_left": [
+          48,
+          65
+        ]
+      }
+    },
+    "west": {
+      "frames": [
+        {
+          "direction": "west",
+          "clip": "idle",
+          "index": 0,
+          "joints": {
+            "head": [
+              38,
+              26
+            ],
+            "neck": [
+              36,
+              37
+            ],
+            "chest": [
+              40,
+              43
+            ],
+            "pelvis": [
+              40,
+              52
+            ],
+            "shoulder_right": [
+              38,
+              38
+            ],
+            "elbow_right": [
+              37,
+              43
+            ],
+            "hand_right": [
+              39,
+              47
+            ],
+            "shoulder_left": [
+              42,
+              40
+            ],
+            "elbow_left": [
+              42,
+              47
+            ],
+            "hand_left": [
+              40,
+              54
+            ],
+            "hip_right": [
+              38,
+              53
+            ],
+            "knee_right": [
+              37,
+              58
+            ],
+            "foot_right": [
+              37,
+              62
+            ],
+            "hip_left": [
+              42,
+              53
+            ],
+            "knee_left": [
+              42,
+              59
+            ],
+            "foot_left": [
+              40,
+              64
+            ]
+          },
+          "frontArms": [
+            "left"
+          ],
+          "original": "original/west/0.png",
+          "body": "body/west/0.png",
+          "head": "body/west/head-0.png",
+          "arms": {
+            "right": "body/west/forearm-right-0.png",
+            "left": "body/west/forearm-left-0.png"
+          },
+          "grips": {
+            "right": "body/west/grip-right-0.png",
+            "left": "body/west/grip-left-0.png"
+          }
+        },
+        {
+          "direction": "west",
+          "clip": "run",
+          "index": 0,
+          "joints": {
+            "head": [
+              36,
+              26
+            ],
+            "neck": [
+              34,
+              37
+            ],
+            "chest": [
+              38,
+              43
+            ],
+            "pelvis": [
+              38,
+              52
+            ],
+            "shoulder_right": [
+              36,
+              38
+            ],
+            "elbow_right": [
+              32,
+              40
+            ],
+            "hand_right": [
+              29,
+              42
+            ],
+            "shoulder_left": [
+              40,
+              40
+            ],
+            "elbow_left": [
+              44,
+              47
+            ],
+            "hand_left": [
+              47,
+              53
+            ],
+            "hip_right": [
+              36,
+              53
+            ],
+            "knee_right": [
+              36,
+              60
+            ],
+            "foot_right": [
+              35,
+              66
+            ],
+            "hip_left": [
+              40,
+              53
+            ],
+            "knee_left": [
+              39,
+              58
+            ],
+            "foot_left": [
+              37,
+              63
+            ]
+          },
+          "frontArms": [
+            "left"
+          ],
+          "original": "original/west/1.png",
+          "body": "body/west/1.png",
+          "head": "body/west/head-1.png",
+          "arms": {
+            "right": "body/west/forearm-right-1.png",
+            "left": "body/west/forearm-left-1.png"
+          },
+          "grips": {
+            "right": "body/west/grip-right-1.png",
+            "left": "body/west/grip-left-1.png"
+          }
+        },
+        {
+          "direction": "west",
+          "clip": "run",
+          "index": 1,
+          "joints": {
+            "head": [
+              36,
+              25
+            ],
+            "neck": [
+              34,
+              36
+            ],
+            "chest": [
+              38,
+              42
+            ],
+            "pelvis": [
+              38,
+              51
+            ],
+            "shoulder_right": [
+              36,
+              37
+            ],
+            "elbow_right": [
+              34,
+              44
+            ],
+            "hand_right": [
+              32,
+              50
+            ],
+            "shoulder_left": [
+              40,
+              39
+            ],
+            "elbow_left": [
+              41,
+              46
+            ],
+            "hand_left": [
+              41,
+              52
+            ],
+            "hip_right": [
+              36,
+              52
+            ],
+            "knee_right": [
+              39,
+              58
+            ],
+            "foot_right": [
+              42,
+              63
+            ],
+            "hip_left": [
+              40,
+              52
+            ],
+            "knee_left": [
+              40,
+              59
+            ],
+            "foot_left": [
+              41,
+              66
+            ]
+          },
+          "frontArms": [
+            "left"
+          ],
+          "original": "original/west/2.png",
+          "body": "body/west/2.png",
+          "head": "body/west/head-2.png",
+          "arms": {
+            "right": "body/west/forearm-right-2.png",
+            "left": "body/west/forearm-left-2.png"
+          },
+          "grips": {
+            "right": "body/west/grip-right-2.png",
+            "left": "body/west/grip-left-2.png"
+          }
+        },
+        {
+          "direction": "west",
+          "clip": "run",
+          "index": 2,
+          "joints": {
+            "head": [
+              36,
+              25
+            ],
+            "neck": [
+              34,
+              36
+            ],
+            "chest": [
+              38,
+              42
+            ],
+            "pelvis": [
+              38,
+              51
+            ],
+            "shoulder_right": [
+              36,
+              37
+            ],
+            "elbow_right": [
+              37,
+              42
+            ],
+            "hand_right": [
+              37,
+              46
+            ],
+            "shoulder_left": [
+              40,
+              39
+            ],
+            "elbow_left": [
+              38,
+              45
+            ],
+            "hand_left": [
+              36,
+              50
+            ],
+            "hip_right": [
+              36,
+              52
+            ],
+            "knee_right": [
+              40,
+              57
+            ],
+            "foot_right": [
+              46,
+              62
+            ],
+            "hip_left": [
+              40,
+              52
+            ],
+            "knee_left": [
+              43,
+              59
+            ],
+            "foot_left": [
+              47,
+              66
+            ]
+          },
+          "frontArms": [
+            "left"
+          ],
+          "original": "original/west/3.png",
+          "body": "body/west/3.png",
+          "head": "body/west/head-3.png",
+          "arms": {
+            "right": "body/west/forearm-right-3.png",
+            "left": "body/west/forearm-left-3.png"
+          },
+          "grips": {
+            "right": "body/west/grip-right-3.png",
+            "left": "body/west/grip-left-3.png"
+          }
+        },
+        {
+          "direction": "west",
+          "clip": "run",
+          "index": 3,
+          "joints": {
+            "head": [
+              36,
+              25
+            ],
+            "neck": [
+              34,
+              36
+            ],
+            "chest": [
+              38,
+              42
+            ],
+            "pelvis": [
+              38,
+              51
+            ],
+            "shoulder_right": [
+              36,
+              37
+            ],
+            "elbow_right": [
+              43,
+              42
+            ],
+            "hand_right": [
+              48,
+              46
+            ],
+            "shoulder_left": [
+              40,
+              39
+            ],
+            "elbow_left": [
+              35,
+              44
+            ],
+            "hand_left": [
+              31,
+              49
+            ],
+            "hip_right": [
+              36,
+              52
+            ],
+            "knee_right": [
+              35,
+              56
+            ],
+            "foot_right": [
+              34,
+              59
+            ],
+            "hip_left": [
+              40,
+              52
+            ],
+            "knee_left": [
+              44,
+              59
+            ],
+            "foot_left": [
+              50,
+              66
+            ]
+          },
+          "frontArms": [
+            "left"
+          ],
+          "original": "original/west/4.png",
+          "body": "body/west/4.png",
+          "head": "body/west/head-4.png",
+          "arms": {
+            "right": "body/west/forearm-right-4.png",
+            "left": "body/west/forearm-left-4.png"
+          },
+          "grips": {
+            "right": "body/west/grip-right-4.png",
+            "left": "body/west/grip-left-4.png"
+          }
+        },
+        {
+          "direction": "west",
+          "clip": "run",
+          "index": 4,
+          "joints": {
+            "head": [
+              36,
+              26
+            ],
+            "neck": [
+              34,
+              37
+            ],
+            "chest": [
+              38,
+              43
+            ],
+            "pelvis": [
+              38,
+              52
+            ],
+            "shoulder_right": [
+              36,
+              38
+            ],
+            "elbow_right": [
+              44,
+              41
+            ],
+            "hand_right": [
+              50,
+              43
+            ],
+            "shoulder_left": [
+              40,
+              40
+            ],
+            "elbow_left": [
+              33,
+              44
+            ],
+            "hand_left": [
+              28,
+              48
+            ],
+            "hip_right": [
+              36,
+              53
+            ],
+            "knee_right": [
+              36,
+              57
+            ],
+            "foot_right": [
+              35,
+              61
+            ],
+            "hip_left": [
+              40,
+              53
+            ],
+            "knee_left": [
+              46,
+              59
+            ],
+            "foot_left": [
+              53,
+              65
+            ]
+          },
+          "frontArms": [
+            "left"
+          ],
+          "original": "original/west/5.png",
+          "body": "body/west/5.png",
+          "head": "body/west/head-5.png",
+          "arms": {
+            "right": "body/west/forearm-right-5.png",
+            "left": "body/west/forearm-left-5.png"
+          },
+          "grips": {
+            "right": "body/west/grip-right-5.png",
+            "left": "body/west/grip-left-5.png"
+          }
+        },
+        {
+          "direction": "west",
+          "clip": "run",
+          "index": 5,
+          "joints": {
+            "head": [
+              36,
+              25
+            ],
+            "neck": [
+              34,
+              36
+            ],
+            "chest": [
+              38,
+              42
+            ],
+            "pelvis": [
+              38,
+              51
+            ],
+            "shoulder_right": [
+              36,
+              37
+            ],
+            "elbow_right": [
+              37,
+              42
+            ],
+            "hand_right": [
+              37,
+              46
+            ],
+            "shoulder_left": [
+              40,
+              39
+            ],
+            "elbow_left": [
+              36,
+              44
+            ],
+            "hand_left": [
+              32,
+              49
+            ],
+            "hip_right": [
+              36,
+              52
+            ],
+            "knee_right": [
+              36,
+              56
+            ],
+            "foot_right": [
+              37,
+              61
+            ],
+            "hip_left": [
+              40,
+              52
+            ],
+            "knee_left": [
+              44,
+              57
+            ],
+            "foot_left": [
+              49,
+              62
+            ]
+          },
+          "frontArms": [
+            "left"
+          ],
+          "original": "original/west/6.png",
+          "body": "body/west/6.png",
+          "head": "body/west/head-6.png",
+          "arms": {
+            "right": "body/west/forearm-right-6.png",
+            "left": "body/west/forearm-left-6.png"
+          },
+          "grips": {
+            "right": "body/west/grip-right-6.png",
+            "left": "body/west/grip-left-6.png"
+          }
+        },
+        {
+          "direction": "west",
+          "clip": "run",
+          "index": 6,
+          "joints": {
+            "head": [
+              36,
+              25
+            ],
+            "neck": [
+              34,
+              36
+            ],
+            "chest": [
+              38,
+              42
+            ],
+            "pelvis": [
+              38,
+              51
+            ],
+            "shoulder_right": [
+              36,
+              37
+            ],
+            "elbow_right": [
+              37,
+              42
+            ],
+            "hand_right": [
+              37,
+              46
+            ],
+            "shoulder_left": [
+              40,
+              39
+            ],
+            "elbow_left": [
+              38,
+              46
+            ],
+            "hand_left": [
+              36,
+              51
+            ],
+            "hip_right": [
+              36,
+              52
+            ],
+            "knee_right": [
+              36,
+              56
+            ],
+            "foot_right": [
+              35,
+              61
+            ],
+            "hip_left": [
+              40,
+              52
+            ],
+            "knee_left": [
+              39,
+              58
+            ],
+            "foot_left": [
+              38,
+              63
+            ]
+          },
+          "frontArms": [
+            "left"
+          ],
+          "original": "original/west/7.png",
+          "body": "body/west/7.png",
+          "head": "body/west/head-7.png",
+          "arms": {
+            "right": "body/west/forearm-right-7.png",
+            "left": "body/west/forearm-left-7.png"
+          },
+          "grips": {
+            "right": "body/west/grip-right-7.png",
+            "left": "body/west/grip-left-7.png"
+          }
+        },
+        {
+          "direction": "west",
+          "clip": "run",
+          "index": 7,
+          "joints": {
+            "head": [
+              36,
+              25
+            ],
+            "neck": [
+              34,
+              36
+            ],
+            "chest": [
+              38,
+              42
+            ],
+            "pelvis": [
+              38,
+              51
+            ],
+            "shoulder_right": [
+              36,
+              37
+            ],
+            "elbow_right": [
+              32,
+              41
+            ],
+            "hand_right": [
+              29,
+              44
+            ],
+            "shoulder_left": [
+              40,
+              39
+            ],
+            "elbow_left": [
+              41,
+              46
+            ],
+            "hand_left": [
+              42,
+              52
+            ],
+            "hip_right": [
+              36,
+              52
+            ],
+            "knee_right": [
+              36,
+              58
+            ],
+            "foot_right": [
+              37,
+              64
+            ],
+            "hip_left": [
+              40,
+              52
+            ],
+            "knee_left": [
+              44,
+              56
+            ],
+            "foot_left": [
+              50,
+              61
+            ]
+          },
+          "frontArms": [
+            "left"
+          ],
+          "original": "original/west/8.png",
+          "body": "body/west/8.png",
+          "head": "body/west/head-8.png",
+          "arms": {
+            "right": "body/west/forearm-right-8.png",
+            "left": "body/west/forearm-left-8.png"
+          },
+          "grips": {
+            "right": "body/west/grip-right-8.png",
+            "left": "body/west/grip-left-8.png"
+          }
+        }
+      ],
+      "rest": {
+        "head": [
+          38,
+          26
+        ],
+        "neck": [
+          36,
+          37
+        ],
+        "chest": [
+          40,
+          43
+        ],
+        "pelvis": [
+          40,
+          52
+        ],
+        "shoulder_right": [
+          38,
+          38
+        ],
+        "elbow_right": [
+          37,
+          43
+        ],
+        "hand_right": [
+          39,
+          47
+        ],
+        "shoulder_left": [
+          42,
+          40
+        ],
+        "elbow_left": [
+          42,
+          47
+        ],
+        "hand_left": [
+          40,
+          54
+        ],
+        "hip_right": [
+          38,
+          53
+        ],
+        "knee_right": [
+          37,
+          58
+        ],
+        "foot_right": [
+          37,
+          62
+        ],
+        "hip_left": [
+          42,
+          53
+        ],
+        "knee_left": [
+          42,
+          59
+        ],
+        "foot_left": [
+          40,
+          64
+        ]
+      }
+    },
+    "north-west": {
+      "frames": [
+        {
+          "direction": "north-west",
+          "clip": "idle",
+          "index": 0,
+          "joints": {
+            "head": [
+              39,
+              26
+            ],
+            "neck": [
+              37,
+              37
+            ],
+            "chest": [
+              40,
+              42
+            ],
+            "pelvis": [
+              40,
+              51
+            ],
+            "shoulder_right": [
+              47,
+              37
+            ],
+            "elbow_right": [
+              49,
+              43
+            ],
+            "hand_right": [
+              49,
+              47
+            ],
+            "shoulder_left": [
+              33,
+              40
+            ],
+            "elbow_left": [
+              30,
+              46
+            ],
+            "hand_left": [
+              30,
+              51
+            ],
+            "hip_right": [
+              44,
+              52
+            ],
+            "knee_right": [
+              44,
+              56
+            ],
+            "foot_right": [
+              43,
+              60
+            ],
+            "hip_left": [
+              36,
+              52
+            ],
+            "knee_left": [
+              34,
+              57
+            ],
+            "foot_left": [
+              34,
+              62
+            ]
+          },
+          "frontArms": [
+            "left"
+          ],
+          "original": "original/north-west/0.png",
+          "body": "body/north-west/0.png",
+          "head": "body/north-west/head-0.png",
+          "arms": {
+            "right": "body/north-west/forearm-right-0.png",
+            "left": "body/north-west/forearm-left-0.png"
+          },
+          "grips": {
+            "right": "body/north-west/grip-right-0.png",
+            "left": "body/north-west/grip-left-0.png"
+          }
+        },
+        {
+          "direction": "north-west",
+          "clip": "run",
+          "index": 0,
+          "joints": {
+            "head": [
+              39,
+              25
+            ],
+            "neck": [
+              37,
+              36
+            ],
+            "chest": [
+              40,
+              41
+            ],
+            "pelvis": [
+              40,
+              50
+            ],
+            "shoulder_right": [
+              47,
+              36
+            ],
+            "elbow_right": [
+              51,
+              41
+            ],
+            "hand_right": [
+              55,
+              45
+            ],
+            "shoulder_left": [
+              33,
+              39
+            ],
+            "elbow_left": [
+              28,
+              44
+            ],
+            "hand_left": [
+              24,
+              49
+            ],
+            "hip_right": [
+              44,
+              51
+            ],
+            "knee_right": [
+              42,
+              58
+            ],
+            "foot_right": [
+              40,
+              66
+            ],
+            "hip_left": [
+              36,
+              51
+            ],
+            "knee_left": [
+              37,
+              56
+            ],
+            "foot_left": [
+              38,
+              62
+            ]
+          },
+          "frontArms": [
+            "left"
+          ],
+          "original": "original/north-west/1.png",
+          "body": "body/north-west/1.png",
+          "head": "body/north-west/head-1.png",
+          "arms": {
+            "right": "body/north-west/forearm-right-1.png",
+            "left": "body/north-west/forearm-left-1.png"
+          },
+          "grips": {
+            "right": "body/north-west/grip-right-1.png",
+            "left": "body/north-west/grip-left-1.png"
+          }
+        },
+        {
+          "direction": "north-west",
+          "clip": "run",
+          "index": 1,
+          "joints": {
+            "head": [
+              39,
+              25
+            ],
+            "neck": [
+              37,
+              36
+            ],
+            "chest": [
+              40,
+              41
+            ],
+            "pelvis": [
+              40,
+              50
+            ],
+            "shoulder_right": [
+              47,
+              36
+            ],
+            "elbow_right": [
+              50,
+              41
+            ],
+            "hand_right": [
+              53,
+              45
+            ],
+            "shoulder_left": [
+              33,
+              39
+            ],
+            "elbow_left": [
+              29,
+              45
+            ],
+            "hand_left": [
+              25,
+              50
+            ],
+            "hip_right": [
+              44,
+              51
+            ],
+            "knee_right": [
+              44,
+              55
+            ],
+            "foot_right": [
+              43,
+              59
+            ],
+            "hip_left": [
+              36,
+              51
+            ],
+            "knee_left": [
+              35,
+              56
+            ],
+            "foot_left": [
+              34,
+              61
+            ]
+          },
+          "frontArms": [
+            "left"
+          ],
+          "original": "original/north-west/2.png",
+          "body": "body/north-west/2.png",
+          "head": "body/north-west/head-2.png",
+          "arms": {
+            "right": "body/north-west/forearm-right-2.png",
+            "left": "body/north-west/forearm-left-2.png"
+          },
+          "grips": {
+            "right": "body/north-west/grip-right-2.png",
+            "left": "body/north-west/grip-left-2.png"
+          }
+        },
+        {
+          "direction": "north-west",
+          "clip": "run",
+          "index": 2,
+          "joints": {
+            "head": [
+              39,
+              24
+            ],
+            "neck": [
+              37,
+              35
+            ],
+            "chest": [
+              40,
+              40
+            ],
+            "pelvis": [
+              40,
+              49
+            ],
+            "shoulder_right": [
+              47,
+              35
+            ],
+            "elbow_right": [
+              50,
+              40
+            ],
+            "hand_right": [
+              52,
+              45
+            ],
+            "shoulder_left": [
+              33,
+              38
+            ],
+            "elbow_left": [
+              30,
+              45
+            ],
+            "hand_left": [
+              28,
+              50
+            ],
+            "hip_right": [
+              44,
+              50
+            ],
+            "knee_right": [
+              43,
+              54
+            ],
+            "foot_right": [
+              42,
+              59
+            ],
+            "hip_left": [
+              36,
+              50
+            ],
+            "knee_left": [
+              35,
+              54
+            ],
+            "foot_left": [
+              34,
+              59
+            ]
+          },
+          "frontArms": [
+            "left"
+          ],
+          "original": "original/north-west/3.png",
+          "body": "body/north-west/3.png",
+          "head": "body/north-west/head-3.png",
+          "arms": {
+            "right": "body/north-west/forearm-right-3.png",
+            "left": "body/north-west/forearm-left-3.png"
+          },
+          "grips": {
+            "right": "body/north-west/grip-right-3.png",
+            "left": "body/north-west/grip-left-3.png"
+          }
+        },
+        {
+          "direction": "north-west",
+          "clip": "run",
+          "index": 3,
+          "joints": {
+            "head": [
+              39,
+              25
+            ],
+            "neck": [
+              37,
+              36
+            ],
+            "chest": [
+              40,
+              41
+            ],
+            "pelvis": [
+              40,
+              50
+            ],
+            "shoulder_right": [
+              47,
+              36
+            ],
+            "elbow_right": [
+              49,
+              40
+            ],
+            "hand_right": [
+              50,
+              43
+            ],
+            "shoulder_left": [
+              33,
+              39
+            ],
+            "elbow_left": [
+              31,
+              46
+            ],
+            "hand_left": [
+              30,
+              52
+            ],
+            "hip_right": [
+              44,
+              51
+            ],
+            "knee_right": [
+              43,
+              56
+            ],
+            "foot_right": [
+              42,
+              62
+            ],
+            "hip_left": [
+              36,
+              51
+            ],
+            "knee_left": [
+              34,
+              55
+            ],
+            "foot_left": [
+              32,
+              59
+            ]
+          },
+          "frontArms": [
+            "left"
+          ],
+          "original": "original/north-west/4.png",
+          "body": "body/north-west/4.png",
+          "head": "body/north-west/head-4.png",
+          "arms": {
+            "right": "body/north-west/forearm-right-4.png",
+            "left": "body/north-west/forearm-left-4.png"
+          },
+          "grips": {
+            "right": "body/north-west/grip-right-4.png",
+            "left": "body/north-west/grip-left-4.png"
+          }
+        },
+        {
+          "direction": "north-west",
+          "clip": "run",
+          "index": 4,
+          "joints": {
+            "head": [
+              38,
+              25
+            ],
+            "neck": [
+              36,
+              36
+            ],
+            "chest": [
+              39,
+              41
+            ],
+            "pelvis": [
+              39,
+              50
+            ],
+            "shoulder_right": [
+              46,
+              36
+            ],
+            "elbow_right": [
+              47,
+              42
+            ],
+            "hand_right": [
+              48,
+              46
+            ],
+            "shoulder_left": [
+              32,
+              39
+            ],
+            "elbow_left": [
+              32,
+              47
+            ],
+            "hand_left": [
+              32,
+              53
+            ],
+            "hip_right": [
+              43,
+              51
+            ],
+            "knee_right": [
+              44,
+              55
+            ],
+            "foot_right": [
+              46,
+              59
+            ],
+            "hip_left": [
+              35,
+              51
+            ],
+            "knee_left": [
+              34,
+              55
+            ],
+            "foot_left": [
+              32,
+              59
+            ]
+          },
+          "frontArms": [
+            "left"
+          ],
+          "original": "original/north-west/5.png",
+          "body": "body/north-west/5.png",
+          "head": "body/north-west/head-5.png",
+          "arms": {
+            "right": "body/north-west/forearm-right-5.png",
+            "left": "body/north-west/forearm-left-5.png"
+          },
+          "grips": {
+            "right": "body/north-west/grip-right-5.png",
+            "left": "body/north-west/grip-left-5.png"
+          }
+        },
+        {
+          "direction": "north-west",
+          "clip": "run",
+          "index": 5,
+          "joints": {
+            "head": [
+              38,
+              25
+            ],
+            "neck": [
+              36,
+              36
+            ],
+            "chest": [
+              39,
+              41
+            ],
+            "pelvis": [
+              39,
+              50
+            ],
+            "shoulder_right": [
+              46,
+              36
+            ],
+            "elbow_right": [
+              47,
+              42
+            ],
+            "hand_right": [
+              48,
+              46
+            ],
+            "shoulder_left": [
+              32,
+              39
+            ],
+            "elbow_left": [
+              31,
+              47
+            ],
+            "hand_left": [
+              30,
+              53
+            ],
+            "hip_right": [
+              43,
+              51
+            ],
+            "knee_right": [
+              38,
+              55
+            ],
+            "foot_right": [
+              32,
+              59
+            ],
+            "hip_left": [
+              35,
+              51
+            ],
+            "knee_left": [
+              33,
+              56
+            ],
+            "foot_left": [
+              30,
+              62
+            ]
+          },
+          "frontArms": [
+            "left"
+          ],
+          "original": "original/north-west/6.png",
+          "body": "body/north-west/6.png",
+          "head": "body/north-west/head-6.png",
+          "arms": {
+            "right": "body/north-west/forearm-right-6.png",
+            "left": "body/north-west/forearm-left-6.png"
+          },
+          "grips": {
+            "right": "body/north-west/grip-right-6.png",
+            "left": "body/north-west/grip-left-6.png"
+          }
+        },
+        {
+          "direction": "north-west",
+          "clip": "run",
+          "index": 6,
+          "joints": {
+            "head": [
+              39,
+              25
+            ],
+            "neck": [
+              37,
+              36
+            ],
+            "chest": [
+              40,
+              41
+            ],
+            "pelvis": [
+              40,
+              50
+            ],
+            "shoulder_right": [
+              47,
+              36
+            ],
+            "elbow_right": [
+              49,
+              40
+            ],
+            "hand_right": [
+              50,
+              43
+            ],
+            "shoulder_left": [
+              33,
+              39
+            ],
+            "elbow_left": [
+              30,
+              46
+            ],
+            "hand_left": [
+              28,
+              52
+            ],
+            "hip_right": [
+              44,
+              51
+            ],
+            "knee_right": [
+              45,
+              56
+            ],
+            "foot_right": [
+              47,
+              60
+            ],
+            "hip_left": [
+              36,
+              51
+            ],
+            "knee_left": [
+              35,
+              56
+            ],
+            "foot_left": [
+              33,
+              60
+            ]
+          },
+          "frontArms": [
+            "left"
+          ],
+          "original": "original/north-west/7.png",
+          "body": "body/north-west/7.png",
+          "head": "body/north-west/head-7.png",
+          "arms": {
+            "right": "body/north-west/forearm-right-7.png",
+            "left": "body/north-west/forearm-left-7.png"
+          },
+          "grips": {
+            "right": "body/north-west/grip-right-7.png",
+            "left": "body/north-west/grip-left-7.png"
+          }
+        },
+        {
+          "direction": "north-west",
+          "clip": "run",
+          "index": 7,
+          "joints": {
+            "head": [
+              38,
+              24
+            ],
+            "neck": [
+              36,
+              35
+            ],
+            "chest": [
+              39,
+              40
+            ],
+            "pelvis": [
+              39,
+              49
+            ],
+            "shoulder_right": [
+              46,
+              35
+            ],
+            "elbow_right": [
+              49,
+              40
+            ],
+            "hand_right": [
+              52,
+              45
+            ],
+            "shoulder_left": [
+              32,
+              38
+            ],
+            "elbow_left": [
+              29,
+              45
+            ],
+            "hand_left": [
+              27,
+              50
+            ],
+            "hip_right": [
+              43,
+              50
+            ],
+            "knee_right": [
+              40,
+              58
+            ],
+            "foot_right": [
+              36,
+              65
+            ],
+            "hip_left": [
+              35,
+              50
+            ],
+            "knee_left": [
+              35,
+              56
+            ],
+            "foot_left": [
+              35,
+              62
+            ]
+          },
+          "frontArms": [
+            "left"
+          ],
+          "original": "original/north-west/8.png",
+          "body": "body/north-west/8.png",
+          "head": "body/north-west/head-8.png",
+          "arms": {
+            "right": "body/north-west/forearm-right-8.png",
+            "left": "body/north-west/forearm-left-8.png"
+          },
+          "grips": {
+            "right": "body/north-west/grip-right-8.png",
+            "left": "body/north-west/grip-left-8.png"
+          }
+        }
+      ],
+      "rest": {
+        "head": [
+          39,
+          26
+        ],
+        "neck": [
+          37,
+          37
+        ],
+        "chest": [
+          40,
+          42
+        ],
+        "pelvis": [
+          40,
+          51
+        ],
+        "shoulder_right": [
+          47,
+          37
+        ],
+        "elbow_right": [
+          49,
+          43
+        ],
+        "hand_right": [
+          49,
+          47
+        ],
+        "shoulder_left": [
+          33,
+          40
+        ],
+        "elbow_left": [
+          30,
+          46
+        ],
+        "hand_left": [
+          30,
+          51
+        ],
+        "hip_right": [
+          44,
+          52
+        ],
+        "knee_right": [
+          44,
+          56
+        ],
+        "foot_right": [
+          43,
+          60
+        ],
+        "hip_left": [
+          36,
+          52
+        ],
+        "knee_left": [
+          34,
+          57
+        ],
+        "foot_left": [
+          34,
+          62
+        ]
+      }
+    },
+    "north": {
+      "frames": [
+        {
+          "direction": "north",
+          "clip": "idle",
+          "index": 0,
+          "joints": {
+            "head": [
+              40,
+              26
+            ],
+            "neck": [
+              40,
+              37
+            ],
+            "chest": [
+              40,
+              42
+            ],
+            "pelvis": [
+              40,
+              51
+            ],
+            "shoulder_right": [
+              52,
+              38
+            ],
+            "elbow_right": [
+              55,
+              44
+            ],
+            "hand_right": [
+              55,
+              50
+            ],
+            "shoulder_left": [
+              28,
+              38
+            ],
+            "elbow_left": [
+              25,
+              44
+            ],
+            "hand_left": [
+              25,
+              50
+            ],
+            "hip_right": [
+              46,
+              52
+            ],
+            "knee_right": [
+              47,
+              56
+            ],
+            "foot_right": [
+              48,
+              61
+            ],
+            "hip_left": [
+              34,
+              52
+            ],
+            "knee_left": [
+              33,
+              56
+            ],
+            "foot_left": [
+              32,
+              61
+            ]
+          },
+          "frontArms": [],
+          "original": "original/north/0.png",
+          "body": "body/north/0.png",
+          "head": "body/north/head-0.png",
+          "arms": {
+            "right": "body/north/forearm-right-0.png",
+            "left": "body/north/forearm-left-0.png"
+          },
+          "grips": {
+            "right": "body/north/grip-right-0.png",
+            "left": "body/north/grip-left-0.png"
+          }
+        },
+        {
+          "direction": "north",
+          "clip": "run",
+          "index": 0,
+          "joints": {
+            "head": [
+              40,
+              24
+            ],
+            "neck": [
+              40,
+              35
+            ],
+            "chest": [
+              40,
+              40
+            ],
+            "pelvis": [
+              40,
+              49
+            ],
+            "shoulder_right": [
+              52,
+              36
+            ],
+            "elbow_right": [
+              54,
+              43
+            ],
+            "hand_right": [
+              55,
+              48
+            ],
+            "shoulder_left": [
+              28,
+              36
+            ],
+            "elbow_left": [
+              26,
+              43
+            ],
+            "hand_left": [
+              25,
+              48
+            ],
+            "hip_right": [
+              46,
+              50
+            ],
+            "knee_right": [
+              46,
+              55
+            ],
+            "foot_right": [
+              46,
+              60
+            ],
+            "hip_left": [
+              34,
+              50
+            ],
+            "knee_left": [
+              34,
+              58
+            ],
+            "foot_left": [
+              34,
+              65
+            ]
+          },
+          "frontArms": [],
+          "original": "original/north/1.png",
+          "body": "body/north/1.png",
+          "head": "body/north/head-1.png",
+          "arms": {
+            "right": "body/north/forearm-right-1.png",
+            "left": "body/north/forearm-left-1.png"
+          },
+          "grips": {
+            "right": "body/north/grip-right-1.png",
+            "left": "body/north/grip-left-1.png"
+          }
+        },
+        {
+          "direction": "north",
+          "clip": "run",
+          "index": 1,
+          "joints": {
+            "head": [
+              40,
+              24
+            ],
+            "neck": [
+              40,
+              35
+            ],
+            "chest": [
+              40,
+              40
+            ],
+            "pelvis": [
+              40,
+              49
+            ],
+            "shoulder_right": [
+              52,
+              36
+            ],
+            "elbow_right": [
+              54,
+              43
+            ],
+            "hand_right": [
+              55,
+              48
+            ],
+            "shoulder_left": [
+              28,
+              36
+            ],
+            "elbow_left": [
+              26,
+              43
+            ],
+            "hand_left": [
+              25,
+              48
+            ],
+            "hip_right": [
+              46,
+              50
+            ],
+            "knee_right": [
+              41,
+              56
+            ],
+            "foot_right": [
+              34,
+              61
+            ],
+            "hip_left": [
+              34,
+              50
+            ],
+            "knee_left": [
+              34,
+              54
+            ],
+            "foot_left": [
+              33,
+              58
+            ]
+          },
+          "frontArms": [],
+          "original": "original/north/2.png",
+          "body": "body/north/2.png",
+          "head": "body/north/head-2.png",
+          "arms": {
+            "right": "body/north/forearm-right-2.png",
+            "left": "body/north/forearm-left-2.png"
+          },
+          "grips": {
+            "right": "body/north/grip-right-2.png",
+            "left": "body/north/grip-left-2.png"
+          }
+        },
+        {
+          "direction": "north",
+          "clip": "run",
+          "index": 2,
+          "joints": {
+            "head": [
+              40,
+              25
+            ],
+            "neck": [
+              40,
+              36
+            ],
+            "chest": [
+              40,
+              41
+            ],
+            "pelvis": [
+              40,
+              50
+            ],
+            "shoulder_right": [
+              52,
+              37
+            ],
+            "elbow_right": [
+              54,
+              44
+            ],
+            "hand_right": [
+              55,
+              49
+            ],
+            "shoulder_left": [
+              28,
+              37
+            ],
+            "elbow_left": [
+              26,
+              44
+            ],
+            "hand_left": [
+              25,
+              49
+            ],
+            "hip_right": [
+              46,
+              51
+            ],
+            "knee_right": [
+              47,
+              56
+            ],
+            "foot_right": [
+              48,
+              60
+            ],
+            "hip_left": [
+              34,
+              51
+            ],
+            "knee_left": [
+              33,
+              56
+            ],
+            "foot_left": [
+              32,
+              60
+            ]
+          },
+          "frontArms": [],
+          "original": "original/north/3.png",
+          "body": "body/north/3.png",
+          "head": "body/north/head-3.png",
+          "arms": {
+            "right": "body/north/forearm-right-3.png",
+            "left": "body/north/forearm-left-3.png"
+          },
+          "grips": {
+            "right": "body/north/grip-right-3.png",
+            "left": "body/north/grip-left-3.png"
+          }
+        },
+        {
+          "direction": "north",
+          "clip": "run",
+          "index": 3,
+          "joints": {
+            "head": [
+              40,
+              25
+            ],
+            "neck": [
+              40,
+              36
+            ],
+            "chest": [
+              40,
+              41
+            ],
+            "pelvis": [
+              40,
+              50
+            ],
+            "shoulder_right": [
+              52,
+              37
+            ],
+            "elbow_right": [
+              54,
+              44
+            ],
+            "hand_right": [
+              55,
+              49
+            ],
+            "shoulder_left": [
+              28,
+              37
+            ],
+            "elbow_left": [
+              26,
+              44
+            ],
+            "hand_left": [
+              25,
+              49
+            ],
+            "hip_right": [
+              46,
+              51
+            ],
+            "knee_right": [
+              46,
+              58
+            ],
+            "foot_right": [
+              46,
+              65
+            ],
+            "hip_left": [
+              34,
+              51
+            ],
+            "knee_left": [
+              34,
+              56
+            ],
+            "foot_left": [
+              34,
+              60
+            ]
+          },
+          "frontArms": [],
+          "original": "original/north/4.png",
+          "body": "body/north/4.png",
+          "head": "body/north/head-4.png",
+          "arms": {
+            "right": "body/north/forearm-right-4.png",
+            "left": "body/north/forearm-left-4.png"
+          },
+          "grips": {
+            "right": "body/north/grip-right-4.png",
+            "left": "body/north/grip-left-4.png"
+          }
+        },
+        {
+          "direction": "north",
+          "clip": "run",
+          "index": 4,
+          "joints": {
+            "head": [
+              40,
+              25
+            ],
+            "neck": [
+              40,
+              36
+            ],
+            "chest": [
+              40,
+              41
+            ],
+            "pelvis": [
+              40,
+              50
+            ],
+            "shoulder_right": [
+              52,
+              37
+            ],
+            "elbow_right": [
+              54,
+              44
+            ],
+            "hand_right": [
+              55,
+              49
+            ],
+            "shoulder_left": [
+              28,
+              37
+            ],
+            "elbow_left": [
+              26,
+              44
+            ],
+            "hand_left": [
+              25,
+              49
+            ],
+            "hip_right": [
+              46,
+              51
+            ],
+            "knee_right": [
+              46,
+              58
+            ],
+            "foot_right": [
+              46,
+              65
+            ],
+            "hip_left": [
+              34,
+              51
+            ],
+            "knee_left": [
+              34,
+              55
+            ],
+            "foot_left": [
+              34,
+              59
+            ]
+          },
+          "frontArms": [],
+          "original": "original/north/5.png",
+          "body": "body/north/5.png",
+          "head": "body/north/head-5.png",
+          "arms": {
+            "right": "body/north/forearm-right-5.png",
+            "left": "body/north/forearm-left-5.png"
+          },
+          "grips": {
+            "right": "body/north/grip-right-5.png",
+            "left": "body/north/grip-left-5.png"
+          }
+        },
+        {
+          "direction": "north",
+          "clip": "run",
+          "index": 5,
+          "joints": {
+            "head": [
+              40,
+              24
+            ],
+            "neck": [
+              40,
+              35
+            ],
+            "chest": [
+              40,
+              40
+            ],
+            "pelvis": [
+              40,
+              49
+            ],
+            "shoulder_right": [
+              52,
+              36
+            ],
+            "elbow_right": [
+              54,
+              43
+            ],
+            "hand_right": [
+              55,
+              48
+            ],
+            "shoulder_left": [
+              28,
+              36
+            ],
+            "elbow_left": [
+              26,
+              43
+            ],
+            "hand_left": [
+              25,
+              48
+            ],
+            "hip_right": [
+              46,
+              50
+            ],
+            "knee_right": [
+              46,
+              56
+            ],
+            "foot_right": [
+              46,
+              61
+            ],
+            "hip_left": [
+              34,
+              50
+            ],
+            "knee_left": [
+              34,
+              56
+            ],
+            "foot_left": [
+              34,
+              61
+            ]
+          },
+          "frontArms": [],
+          "original": "original/north/6.png",
+          "body": "body/north/6.png",
+          "head": "body/north/head-6.png",
+          "arms": {
+            "right": "body/north/forearm-right-6.png",
+            "left": "body/north/forearm-left-6.png"
+          },
+          "grips": {
+            "right": "body/north/grip-right-6.png",
+            "left": "body/north/grip-left-6.png"
+          }
+        },
+        {
+          "direction": "north",
+          "clip": "run",
+          "index": 6,
+          "joints": {
+            "head": [
+              40,
+              25
+            ],
+            "neck": [
+              40,
+              36
+            ],
+            "chest": [
+              40,
+              41
+            ],
+            "pelvis": [
+              40,
+              50
+            ],
+            "shoulder_right": [
+              52,
+              37
+            ],
+            "elbow_right": [
+              54,
+              44
+            ],
+            "hand_right": [
+              55,
+              49
+            ],
+            "shoulder_left": [
+              28,
+              37
+            ],
+            "elbow_left": [
+              26,
+              44
+            ],
+            "hand_left": [
+              25,
+              49
+            ],
+            "hip_right": [
+              46,
+              51
+            ],
+            "knee_right": [
+              47,
+              56
+            ],
+            "foot_right": [
+              48,
+              60
+            ],
+            "hip_left": [
+              34,
+              51
+            ],
+            "knee_left": [
+              33,
+              56
+            ],
+            "foot_left": [
+              32,
+              60
+            ]
+          },
+          "frontArms": [],
+          "original": "original/north/7.png",
+          "body": "body/north/7.png",
+          "head": "body/north/head-7.png",
+          "arms": {
+            "right": "body/north/forearm-right-7.png",
+            "left": "body/north/forearm-left-7.png"
+          },
+          "grips": {
+            "right": "body/north/grip-right-7.png",
+            "left": "body/north/grip-left-7.png"
+          }
+        },
+        {
+          "direction": "north",
+          "clip": "run",
+          "index": 7,
+          "joints": {
+            "head": [
+              40,
+              25
+            ],
+            "neck": [
+              40,
+              36
+            ],
+            "chest": [
+              40,
+              41
+            ],
+            "pelvis": [
+              40,
+              50
+            ],
+            "shoulder_right": [
+              52,
+              37
+            ],
+            "elbow_right": [
+              54,
+              44
+            ],
+            "hand_right": [
+              55,
+              49
+            ],
+            "shoulder_left": [
+              28,
+              37
+            ],
+            "elbow_left": [
+              26,
+              44
+            ],
+            "hand_left": [
+              25,
+              49
+            ],
+            "hip_right": [
+              46,
+              51
+            ],
+            "knee_right": [
+              46,
+              56
+            ],
+            "foot_right": [
+              46,
+              62
+            ],
+            "hip_left": [
+              34,
+              51
+            ],
+            "knee_left": [
+              33,
+              56
+            ],
+            "foot_left": [
+              32,
+              60
+            ]
+          },
+          "frontArms": [],
+          "original": "original/north/8.png",
+          "body": "body/north/8.png",
+          "head": "body/north/head-8.png",
+          "arms": {
+            "right": "body/north/forearm-right-8.png",
+            "left": "body/north/forearm-left-8.png"
+          },
+          "grips": {
+            "right": "body/north/grip-right-8.png",
+            "left": "body/north/grip-left-8.png"
+          }
+        }
+      ],
+      "rest": {
+        "head": [
+          40,
+          26
+        ],
+        "neck": [
+          40,
+          37
+        ],
+        "chest": [
+          40,
+          42
+        ],
+        "pelvis": [
+          40,
+          51
+        ],
+        "shoulder_right": [
+          52,
+          38
+        ],
+        "elbow_right": [
+          55,
+          44
+        ],
+        "hand_right": [
+          55,
+          50
+        ],
+        "shoulder_left": [
+          28,
+          38
+        ],
+        "elbow_left": [
+          25,
+          44
+        ],
+        "hand_left": [
+          25,
+          50
+        ],
+        "hip_right": [
+          46,
+          52
+        ],
+        "knee_right": [
+          47,
+          56
+        ],
+        "foot_right": [
+          48,
+          61
+        ],
+        "hip_left": [
+          34,
+          52
+        ],
+        "knee_left": [
+          33,
+          56
+        ],
+        "foot_left": [
+          32,
+          61
+        ]
+      }
+    },
+    "north-east": {
+      "frames": [
+        {
+          "direction": "north-east",
+          "clip": "idle",
+          "index": 0,
+          "joints": {
+            "head": [
+              41,
+              26
+            ],
+            "neck": [
+              43,
+              37
+            ],
+            "chest": [
+              40,
+              42
+            ],
+            "pelvis": [
+              40,
+              51
+            ],
+            "shoulder_right": [
+              47,
+              40
+            ],
+            "elbow_right": [
+              50,
+              46
+            ],
+            "hand_right": [
+              51,
+              51
+            ],
+            "shoulder_left": [
+              33,
+              37
+            ],
+            "elbow_left": [
+              30,
+              43
+            ],
+            "hand_left": [
+              30,
+              47
+            ],
+            "hip_right": [
+              44,
+              52
+            ],
+            "knee_right": [
+              46,
+              57
+            ],
+            "foot_right": [
+              46,
+              62
+            ],
+            "hip_left": [
+              36,
+              52
+            ],
+            "knee_left": [
+              36,
+              56
+            ],
+            "foot_left": [
+              37,
+              60
+            ]
+          },
+          "frontArms": [
+            "right"
+          ],
+          "original": "original/north-east/0.png",
+          "body": "body/north-east/0.png",
+          "head": "body/north-east/head-0.png",
+          "arms": {
+            "right": "body/north-east/forearm-right-0.png",
+            "left": "body/north-east/forearm-left-0.png"
+          },
+          "grips": {
+            "right": "body/north-east/grip-right-0.png",
+            "left": "body/north-east/grip-left-0.png"
+          }
+        },
+        {
+          "direction": "north-east",
+          "clip": "run",
+          "index": 0,
+          "joints": {
+            "head": [
+              42,
+              25
+            ],
+            "neck": [
+              44,
+              36
+            ],
+            "chest": [
+              41,
+              41
+            ],
+            "pelvis": [
+              41,
+              50
+            ],
+            "shoulder_right": [
+              48,
+              39
+            ],
+            "elbow_right": [
+              52,
+              44
+            ],
+            "hand_right": [
+              55,
+              49
+            ],
+            "shoulder_left": [
+              34,
+              36
+            ],
+            "elbow_left": [
+              28,
+              41
+            ],
+            "hand_left": [
+              24,
+              45
+            ],
+            "hip_right": [
+              45,
+              51
+            ],
+            "knee_right": [
+              43,
+              56
+            ],
+            "foot_right": [
+              41,
+              62
+            ],
+            "hip_left": [
+              37,
+              51
+            ],
+            "knee_left": [
+              38,
+              58
+            ],
+            "foot_left": [
+              39,
+              66
+            ]
+          },
+          "frontArms": [
+            "right"
+          ],
+          "original": "original/north-east/1.png",
+          "body": "body/north-east/1.png",
+          "head": "body/north-east/head-1.png",
+          "arms": {
+            "right": "body/north-east/forearm-right-1.png",
+            "left": "body/north-east/forearm-left-1.png"
+          },
+          "grips": {
+            "right": "body/north-east/grip-right-1.png",
+            "left": "body/north-east/grip-left-1.png"
+          }
+        },
+        {
+          "direction": "north-east",
+          "clip": "run",
+          "index": 1,
+          "joints": {
+            "head": [
+              42,
+              25
+            ],
+            "neck": [
+              44,
+              36
+            ],
+            "chest": [
+              41,
+              41
+            ],
+            "pelvis": [
+              41,
+              50
+            ],
+            "shoulder_right": [
+              48,
+              39
+            ],
+            "elbow_right": [
+              51,
+              45
+            ],
+            "hand_right": [
+              54,
+              50
+            ],
+            "shoulder_left": [
+              34,
+              36
+            ],
+            "elbow_left": [
+              30,
+              41
+            ],
+            "hand_left": [
+              26,
+              45
+            ],
+            "hip_right": [
+              45,
+              51
+            ],
+            "knee_right": [
+              46,
+              56
+            ],
+            "foot_right": [
+              47,
+              61
+            ],
+            "hip_left": [
+              37,
+              51
+            ],
+            "knee_left": [
+              37,
+              55
+            ],
+            "foot_left": [
+              38,
+              59
+            ]
+          },
+          "frontArms": [
+            "right"
+          ],
+          "original": "original/north-east/2.png",
+          "body": "body/north-east/2.png",
+          "head": "body/north-east/head-2.png",
+          "arms": {
+            "right": "body/north-east/forearm-right-2.png",
+            "left": "body/north-east/forearm-left-2.png"
+          },
+          "grips": {
+            "right": "body/north-east/grip-right-2.png",
+            "left": "body/north-east/grip-left-2.png"
+          }
+        },
+        {
+          "direction": "north-east",
+          "clip": "run",
+          "index": 2,
+          "joints": {
+            "head": [
+              41,
+              24
+            ],
+            "neck": [
+              43,
+              35
+            ],
+            "chest": [
+              40,
+              40
+            ],
+            "pelvis": [
+              40,
+              49
+            ],
+            "shoulder_right": [
+              47,
+              38
+            ],
+            "elbow_right": [
+              49,
+              45
+            ],
+            "hand_right": [
+              51,
+              50
+            ],
+            "shoulder_left": [
+              33,
+              35
+            ],
+            "elbow_left": [
+              30,
+              40
+            ],
+            "hand_left": [
+              27,
+              45
+            ],
+            "hip_right": [
+              44,
+              50
+            ],
+            "knee_right": [
+              44,
+              54
+            ],
+            "foot_right": [
+              45,
+              59
+            ],
+            "hip_left": [
+              36,
+              50
+            ],
+            "knee_left": [
+              36,
+              54
+            ],
+            "foot_left": [
+              37,
+              59
+            ]
+          },
+          "frontArms": [
+            "right"
+          ],
+          "original": "original/north-east/3.png",
+          "body": "body/north-east/3.png",
+          "head": "body/north-east/head-3.png",
+          "arms": {
+            "right": "body/north-east/forearm-right-3.png",
+            "left": "body/north-east/forearm-left-3.png"
+          },
+          "grips": {
+            "right": "body/north-east/grip-right-3.png",
+            "left": "body/north-east/grip-left-3.png"
+          }
+        },
+        {
+          "direction": "north-east",
+          "clip": "run",
+          "index": 3,
+          "joints": {
+            "head": [
+              42,
+              25
+            ],
+            "neck": [
+              44,
+              36
+            ],
+            "chest": [
+              41,
+              41
+            ],
+            "pelvis": [
+              41,
+              50
+            ],
+            "shoulder_right": [
+              48,
+              39
+            ],
+            "elbow_right": [
+              49,
+              46
+            ],
+            "hand_right": [
+              49,
+              52
+            ],
+            "shoulder_left": [
+              34,
+              36
+            ],
+            "elbow_left": [
+              31,
+              40
+            ],
+            "hand_left": [
+              29,
+              43
+            ],
+            "hip_right": [
+              45,
+              51
+            ],
+            "knee_right": [
+              46,
+              55
+            ],
+            "foot_right": [
+              47,
+              59
+            ],
+            "hip_left": [
+              37,
+              51
+            ],
+            "knee_left": [
+              37,
+              56
+            ],
+            "foot_left": [
+              37,
+              62
+            ]
+          },
+          "frontArms": [
+            "right"
+          ],
+          "original": "original/north-east/4.png",
+          "body": "body/north-east/4.png",
+          "head": "body/north-east/head-4.png",
+          "arms": {
+            "right": "body/north-east/forearm-right-4.png",
+            "left": "body/north-east/forearm-left-4.png"
+          },
+          "grips": {
+            "right": "body/north-east/grip-right-4.png",
+            "left": "body/north-east/grip-left-4.png"
+          }
+        },
+        {
+          "direction": "north-east",
+          "clip": "run",
+          "index": 4,
+          "joints": {
+            "head": [
+              43,
+              25
+            ],
+            "neck": [
+              45,
+              36
+            ],
+            "chest": [
+              42,
+              41
+            ],
+            "pelvis": [
+              42,
+              50
+            ],
+            "shoulder_right": [
+              49,
+              39
+            ],
+            "elbow_right": [
+              48,
+              47
+            ],
+            "hand_right": [
+              47,
+              53
+            ],
+            "shoulder_left": [
+              35,
+              36
+            ],
+            "elbow_left": [
+              33,
+              42
+            ],
+            "hand_left": [
+              32,
+              46
+            ],
+            "hip_right": [
+              46,
+              51
+            ],
+            "knee_right": [
+              46,
+              55
+            ],
+            "foot_right": [
+              47,
+              59
+            ],
+            "hip_left": [
+              38,
+              51
+            ],
+            "knee_left": [
+              36,
+              55
+            ],
+            "foot_left": [
+              33,
+              59
+            ]
+          },
+          "frontArms": [
+            "right"
+          ],
+          "original": "original/north-east/5.png",
+          "body": "body/north-east/5.png",
+          "head": "body/north-east/head-5.png",
+          "arms": {
+            "right": "body/north-east/forearm-right-5.png",
+            "left": "body/north-east/forearm-left-5.png"
+          },
+          "grips": {
+            "right": "body/north-east/grip-right-5.png",
+            "left": "body/north-east/grip-left-5.png"
+          }
+        },
+        {
+          "direction": "north-east",
+          "clip": "run",
+          "index": 5,
+          "joints": {
+            "head": [
+              43,
+              25
+            ],
+            "neck": [
+              45,
+              36
+            ],
+            "chest": [
+              42,
+              41
+            ],
+            "pelvis": [
+              42,
+              50
+            ],
+            "shoulder_right": [
+              49,
+              39
+            ],
+            "elbow_right": [
+              49,
+              47
+            ],
+            "hand_right": [
+              49,
+              53
+            ],
+            "shoulder_left": [
+              35,
+              36
+            ],
+            "elbow_left": [
+              33,
+              42
+            ],
+            "hand_left": [
+              32,
+              46
+            ],
+            "hip_right": [
+              46,
+              51
+            ],
+            "knee_right": [
+              47,
+              56
+            ],
+            "foot_right": [
+              49,
+              62
+            ],
+            "hip_left": [
+              38,
+              51
+            ],
+            "knee_left": [
+              42,
+              55
+            ],
+            "foot_left": [
+              48,
+              59
+            ]
+          },
+          "frontArms": [
+            "right"
+          ],
+          "original": "original/north-east/6.png",
+          "body": "body/north-east/6.png",
+          "head": "body/north-east/head-6.png",
+          "arms": {
+            "right": "body/north-east/forearm-right-6.png",
+            "left": "body/north-east/forearm-left-6.png"
+          },
+          "grips": {
+            "right": "body/north-east/grip-right-6.png",
+            "left": "body/north-east/grip-left-6.png"
+          }
+        },
+        {
+          "direction": "north-east",
+          "clip": "run",
+          "index": 6,
+          "joints": {
+            "head": [
+              42,
+              25
+            ],
+            "neck": [
+              44,
+              36
+            ],
+            "chest": [
+              41,
+              41
+            ],
+            "pelvis": [
+              41,
+              50
+            ],
+            "shoulder_right": [
+              48,
+              39
+            ],
+            "elbow_right": [
+              50,
+              46
+            ],
+            "hand_right": [
+              51,
+              52
+            ],
+            "shoulder_left": [
+              34,
+              36
+            ],
+            "elbow_left": [
+              31,
+              40
+            ],
+            "hand_left": [
+              29,
+              43
+            ],
+            "hip_right": [
+              45,
+              51
+            ],
+            "knee_right": [
+              45,
+              56
+            ],
+            "foot_right": [
+              46,
+              60
+            ],
+            "hip_left": [
+              37,
+              51
+            ],
+            "knee_left": [
+              35,
+              56
+            ],
+            "foot_left": [
+              32,
+              60
+            ]
+          },
+          "frontArms": [
+            "right"
+          ],
+          "original": "original/north-east/7.png",
+          "body": "body/north-east/7.png",
+          "head": "body/north-east/head-7.png",
+          "arms": {
+            "right": "body/north-east/forearm-right-7.png",
+            "left": "body/north-east/forearm-left-7.png"
+          },
+          "grips": {
+            "right": "body/north-east/grip-right-7.png",
+            "left": "body/north-east/grip-left-7.png"
+          }
+        },
+        {
+          "direction": "north-east",
+          "clip": "run",
+          "index": 7,
+          "joints": {
+            "head": [
+              43,
+              24
+            ],
+            "neck": [
+              45,
+              35
+            ],
+            "chest": [
+              42,
+              40
+            ],
+            "pelvis": [
+              42,
+              49
+            ],
+            "shoulder_right": [
+              49,
+              38
+            ],
+            "elbow_right": [
+              51,
+              45
+            ],
+            "hand_right": [
+              52,
+              50
+            ],
+            "shoulder_left": [
+              35,
+              35
+            ],
+            "elbow_left": [
+              31,
+              40
+            ],
+            "hand_left": [
+              27,
+              45
+            ],
+            "hip_right": [
+              46,
+              50
+            ],
+            "knee_right": [
+              45,
+              56
+            ],
+            "foot_right": [
+              44,
+              62
+            ],
+            "hip_left": [
+              38,
+              50
+            ],
+            "knee_left": [
+              40,
+              58
+            ],
+            "foot_left": [
+              43,
+              65
+            ]
+          },
+          "frontArms": [
+            "right"
+          ],
+          "original": "original/north-east/8.png",
+          "body": "body/north-east/8.png",
+          "head": "body/north-east/head-8.png",
+          "arms": {
+            "right": "body/north-east/forearm-right-8.png",
+            "left": "body/north-east/forearm-left-8.png"
+          },
+          "grips": {
+            "right": "body/north-east/grip-right-8.png",
+            "left": "body/north-east/grip-left-8.png"
+          }
+        }
+      ],
+      "rest": {
+        "head": [
+          41,
+          26
+        ],
+        "neck": [
+          43,
+          37
+        ],
+        "chest": [
+          40,
+          42
+        ],
+        "pelvis": [
+          40,
+          51
+        ],
+        "shoulder_right": [
+          47,
+          40
+        ],
+        "elbow_right": [
+          50,
+          46
+        ],
+        "hand_right": [
+          51,
+          51
+        ],
+        "shoulder_left": [
+          33,
+          37
+        ],
+        "elbow_left": [
+          30,
+          43
+        ],
+        "hand_left": [
+          30,
+          47
+        ],
+        "hip_right": [
+          44,
+          52
+        ],
+        "knee_right": [
+          46,
+          57
+        ],
+        "foot_right": [
+          46,
+          62
+        ],
+        "hip_left": [
+          36,
+          52
+        ],
+        "knee_left": [
+          36,
+          56
+        ],
+        "foot_left": [
+          37,
+          60
+        ]
+      }
+    },
+    "east": {
+      "frames": [
+        {
+          "direction": "east",
+          "clip": "idle",
+          "index": 0,
+          "joints": {
+            "head": [
+              42,
+              26
+            ],
+            "neck": [
+              44,
+              37
+            ],
+            "chest": [
+              40,
+              43
+            ],
+            "pelvis": [
+              40,
+              52
+            ],
+            "shoulder_right": [
+              38,
+              40
+            ],
+            "elbow_right": [
+              38,
+              47
+            ],
+            "hand_right": [
+              40,
+              54
+            ],
+            "shoulder_left": [
+              42,
+              38
+            ],
+            "elbow_left": [
+              43,
+              43
+            ],
+            "hand_left": [
+              41,
+              47
+            ],
+            "hip_right": [
+              38,
+              53
+            ],
+            "knee_right": [
+              38,
+              59
+            ],
+            "foot_right": [
+              40,
+              64
+            ],
+            "hip_left": [
+              42,
+              53
+            ],
+            "knee_left": [
+              43,
+              58
+            ],
+            "foot_left": [
+              43,
+              62
+            ]
+          },
+          "frontArms": [
+            "right"
+          ],
+          "original": "original/east/0.png",
+          "body": "body/east/0.png",
+          "head": "body/east/head-0.png",
+          "arms": {
+            "right": "body/east/forearm-right-0.png",
+            "left": "body/east/forearm-left-0.png"
+          },
+          "grips": {
+            "right": "body/east/grip-right-0.png",
+            "left": "body/east/grip-left-0.png"
+          }
+        },
+        {
+          "direction": "east",
+          "clip": "run",
+          "index": 0,
+          "joints": {
+            "head": [
+              44,
+              26
+            ],
+            "neck": [
+              46,
+              37
+            ],
+            "chest": [
+              42,
+              43
+            ],
+            "pelvis": [
+              42,
+              52
+            ],
+            "shoulder_right": [
+              40,
+              40
+            ],
+            "elbow_right": [
+              36,
+              47
+            ],
+            "hand_right": [
+              32,
+              53
+            ],
+            "shoulder_left": [
+              44,
+              38
+            ],
+            "elbow_left": [
+              47,
+              40
+            ],
+            "hand_left": [
+              50,
+              42
+            ],
+            "hip_right": [
+              40,
+              53
+            ],
+            "knee_right": [
+              41,
+              58
+            ],
+            "foot_right": [
+              42,
+              63
+            ],
+            "hip_left": [
+              44,
+              53
+            ],
+            "knee_left": [
+              44,
+              60
+            ],
+            "foot_left": [
+              44,
+              66
+            ]
+          },
+          "frontArms": [
+            "right"
+          ],
+          "original": "original/east/1.png",
+          "body": "body/east/1.png",
+          "head": "body/east/head-1.png",
+          "arms": {
+            "right": "body/east/forearm-right-1.png",
+            "left": "body/east/forearm-left-1.png"
+          },
+          "grips": {
+            "right": "body/east/grip-right-1.png",
+            "left": "body/east/grip-left-1.png"
+          }
+        },
+        {
+          "direction": "east",
+          "clip": "run",
+          "index": 1,
+          "joints": {
+            "head": [
+              45,
+              25
+            ],
+            "neck": [
+              47,
+              36
+            ],
+            "chest": [
+              43,
+              42
+            ],
+            "pelvis": [
+              43,
+              51
+            ],
+            "shoulder_right": [
+              41,
+              39
+            ],
+            "elbow_right": [
+              39,
+              46
+            ],
+            "hand_right": [
+              38,
+              52
+            ],
+            "shoulder_left": [
+              45,
+              37
+            ],
+            "elbow_left": [
+              46,
+              44
+            ],
+            "hand_left": [
+              47,
+              50
+            ],
+            "hip_right": [
+              41,
+              52
+            ],
+            "knee_right": [
+              40,
+              59
+            ],
+            "foot_right": [
+              38,
+              66
+            ],
+            "hip_left": [
+              45,
+              52
+            ],
+            "knee_left": [
+              41,
+              58
+            ],
+            "foot_left": [
+              37,
+              63
+            ]
+          },
+          "frontArms": [
+            "right"
+          ],
+          "original": "original/east/2.png",
+          "body": "body/east/2.png",
+          "head": "body/east/head-2.png",
+          "arms": {
+            "right": "body/east/forearm-right-2.png",
+            "left": "body/east/forearm-left-2.png"
+          },
+          "grips": {
+            "right": "body/east/grip-right-2.png",
+            "left": "body/east/grip-left-2.png"
+          }
+        },
+        {
+          "direction": "east",
+          "clip": "run",
+          "index": 2,
+          "joints": {
+            "head": [
+              45,
+              25
+            ],
+            "neck": [
+              47,
+              36
+            ],
+            "chest": [
+              43,
+              42
+            ],
+            "pelvis": [
+              43,
+              51
+            ],
+            "shoulder_right": [
+              41,
+              39
+            ],
+            "elbow_right": [
+              43,
+              45
+            ],
+            "hand_right": [
+              44,
+              50
+            ],
+            "shoulder_left": [
+              45,
+              37
+            ],
+            "elbow_left": [
+              44,
+              42
+            ],
+            "hand_left": [
+              44,
+              46
+            ],
+            "hip_right": [
+              41,
+              52
+            ],
+            "knee_right": [
+              37,
+              59
+            ],
+            "foot_right": [
+              32,
+              66
+            ],
+            "hip_left": [
+              45,
+              52
+            ],
+            "knee_left": [
+              40,
+              57
+            ],
+            "foot_left": [
+              33,
+              62
+            ]
+          },
+          "frontArms": [
+            "right"
+          ],
+          "original": "original/east/3.png",
+          "body": "body/east/3.png",
+          "head": "body/east/head-3.png",
+          "arms": {
+            "right": "body/east/forearm-right-3.png",
+            "left": "body/east/forearm-left-3.png"
+          },
+          "grips": {
+            "right": "body/east/grip-right-3.png",
+            "left": "body/east/grip-left-3.png"
+          }
+        },
+        {
+          "direction": "east",
+          "clip": "run",
+          "index": 3,
+          "joints": {
+            "head": [
+              44,
+              25
+            ],
+            "neck": [
+              46,
+              36
+            ],
+            "chest": [
+              42,
+              42
+            ],
+            "pelvis": [
+              42,
+              51
+            ],
+            "shoulder_right": [
+              40,
+              39
+            ],
+            "elbow_right": [
+              44,
+              44
+            ],
+            "hand_right": [
+              48,
+              49
+            ],
+            "shoulder_left": [
+              44,
+              37
+            ],
+            "elbow_left": [
+              37,
+              42
+            ],
+            "hand_left": [
+              32,
+              46
+            ],
+            "hip_right": [
+              40,
+              52
+            ],
+            "knee_right": [
+              35,
+              59
+            ],
+            "foot_right": [
+              29,
+              66
+            ],
+            "hip_left": [
+              44,
+              52
+            ],
+            "knee_left": [
+              44,
+              56
+            ],
+            "foot_left": [
+              45,
+              59
+            ]
+          },
+          "frontArms": [
+            "right"
+          ],
+          "original": "original/east/4.png",
+          "body": "body/east/4.png",
+          "head": "body/east/head-4.png",
+          "arms": {
+            "right": "body/east/forearm-right-4.png",
+            "left": "body/east/forearm-left-4.png"
+          },
+          "grips": {
+            "right": "body/east/grip-right-4.png",
+            "left": "body/east/grip-left-4.png"
+          }
+        },
+        {
+          "direction": "east",
+          "clip": "run",
+          "index": 4,
+          "joints": {
+            "head": [
+              44,
+              26
+            ],
+            "neck": [
+              46,
+              37
+            ],
+            "chest": [
+              42,
+              43
+            ],
+            "pelvis": [
+              42,
+              52
+            ],
+            "shoulder_right": [
+              40,
+              40
+            ],
+            "elbow_right": [
+              46,
+              44
+            ],
+            "hand_right": [
+              51,
+              48
+            ],
+            "shoulder_left": [
+              44,
+              38
+            ],
+            "elbow_left": [
+              36,
+              41
+            ],
+            "hand_left": [
+              29,
+              43
+            ],
+            "hip_right": [
+              40,
+              53
+            ],
+            "knee_right": [
+              34,
+              59
+            ],
+            "foot_right": [
+              26,
+              65
+            ],
+            "hip_left": [
+              44,
+              53
+            ],
+            "knee_left": [
+              44,
+              57
+            ],
+            "foot_left": [
+              44,
+              61
+            ]
+          },
+          "frontArms": [
+            "right"
+          ],
+          "original": "original/east/5.png",
+          "body": "body/east/5.png",
+          "head": "body/east/head-5.png",
+          "arms": {
+            "right": "body/east/forearm-right-5.png",
+            "left": "body/east/forearm-left-5.png"
+          },
+          "grips": {
+            "right": "body/east/grip-right-5.png",
+            "left": "body/east/grip-left-5.png"
+          }
+        },
+        {
+          "direction": "east",
+          "clip": "run",
+          "index": 5,
+          "joints": {
+            "head": [
+              45,
+              25
+            ],
+            "neck": [
+              47,
+              36
+            ],
+            "chest": [
+              43,
+              42
+            ],
+            "pelvis": [
+              43,
+              51
+            ],
+            "shoulder_right": [
+              41,
+              39
+            ],
+            "elbow_right": [
+              44,
+              44
+            ],
+            "hand_right": [
+              47,
+              49
+            ],
+            "shoulder_left": [
+              45,
+              37
+            ],
+            "elbow_left": [
+              44,
+              42
+            ],
+            "hand_left": [
+              44,
+              46
+            ],
+            "hip_right": [
+              41,
+              52
+            ],
+            "knee_right": [
+              36,
+              57
+            ],
+            "foot_right": [
+              30,
+              62
+            ],
+            "hip_left": [
+              45,
+              52
+            ],
+            "knee_left": [
+              44,
+              56
+            ],
+            "foot_left": [
+              42,
+              61
+            ]
+          },
+          "frontArms": [
+            "right"
+          ],
+          "original": "original/east/6.png",
+          "body": "body/east/6.png",
+          "head": "body/east/head-6.png",
+          "arms": {
+            "right": "body/east/forearm-right-6.png",
+            "left": "body/east/forearm-left-6.png"
+          },
+          "grips": {
+            "right": "body/east/grip-right-6.png",
+            "left": "body/east/grip-left-6.png"
+          }
+        },
+        {
+          "direction": "east",
+          "clip": "run",
+          "index": 6,
+          "joints": {
+            "head": [
+              44,
+              25
+            ],
+            "neck": [
+              46,
+              36
+            ],
+            "chest": [
+              42,
+              42
+            ],
+            "pelvis": [
+              42,
+              51
+            ],
+            "shoulder_right": [
+              40,
+              39
+            ],
+            "elbow_right": [
+              42,
+              46
+            ],
+            "hand_right": [
+              43,
+              51
+            ],
+            "shoulder_left": [
+              44,
+              37
+            ],
+            "elbow_left": [
+              43,
+              42
+            ],
+            "hand_left": [
+              43,
+              46
+            ],
+            "hip_right": [
+              40,
+              52
+            ],
+            "knee_right": [
+              41,
+              58
+            ],
+            "foot_right": [
+              42,
+              63
+            ],
+            "hip_left": [
+              44,
+              52
+            ],
+            "knee_left": [
+              44,
+              56
+            ],
+            "foot_left": [
+              45,
+              61
+            ]
+          },
+          "frontArms": [
+            "right"
+          ],
+          "original": "original/east/7.png",
+          "body": "body/east/7.png",
+          "head": "body/east/head-7.png",
+          "arms": {
+            "right": "body/east/forearm-right-7.png",
+            "left": "body/east/forearm-left-7.png"
+          },
+          "grips": {
+            "right": "body/east/grip-right-7.png",
+            "left": "body/east/grip-left-7.png"
+          }
+        },
+        {
+          "direction": "east",
+          "clip": "run",
+          "index": 7,
+          "joints": {
+            "head": [
+              44,
+              25
+            ],
+            "neck": [
+              46,
+              36
+            ],
+            "chest": [
+              42,
+              42
+            ],
+            "pelvis": [
+              42,
+              51
+            ],
+            "shoulder_right": [
+              40,
+              39
+            ],
+            "elbow_right": [
+              38,
+              46
+            ],
+            "hand_right": [
+              37,
+              52
+            ],
+            "shoulder_left": [
+              44,
+              37
+            ],
+            "elbow_left": [
+              47,
+              41
+            ],
+            "hand_left": [
+              50,
+              44
+            ],
+            "hip_right": [
+              40,
+              52
+            ],
+            "knee_right": [
+              36,
+              56
+            ],
+            "foot_right": [
+              30,
+              61
+            ],
+            "hip_left": [
+              44,
+              52
+            ],
+            "knee_left": [
+              43,
+              58
+            ],
+            "foot_left": [
+              42,
+              64
+            ]
+          },
+          "frontArms": [
+            "right"
+          ],
+          "original": "original/east/8.png",
+          "body": "body/east/8.png",
+          "head": "body/east/head-8.png",
+          "arms": {
+            "right": "body/east/forearm-right-8.png",
+            "left": "body/east/forearm-left-8.png"
+          },
+          "grips": {
+            "right": "body/east/grip-right-8.png",
+            "left": "body/east/grip-left-8.png"
+          }
+        }
+      ],
+      "rest": {
+        "head": [
+          42,
+          26
+        ],
+        "neck": [
+          44,
+          37
+        ],
+        "chest": [
+          40,
+          43
+        ],
+        "pelvis": [
+          40,
+          52
+        ],
+        "shoulder_right": [
+          38,
+          40
+        ],
+        "elbow_right": [
+          38,
+          47
+        ],
+        "hand_right": [
+          40,
+          54
+        ],
+        "shoulder_left": [
+          42,
+          38
+        ],
+        "elbow_left": [
+          43,
+          43
+        ],
+        "hand_left": [
+          41,
+          47
+        ],
+        "hip_right": [
+          38,
+          53
+        ],
+        "knee_right": [
+          38,
+          59
+        ],
+        "foot_right": [
+          40,
+          64
+        ],
+        "hip_left": [
+          42,
+          53
+        ],
+        "knee_left": [
+          43,
+          58
+        ],
+        "foot_left": [
+          43,
+          62
+        ]
+      }
+    },
+    "south-east": {
+      "frames": [
+        {
+          "direction": "south-east",
+          "clip": "idle",
+          "index": 0,
+          "joints": {
+            "head": [
+              41,
+              26
+            ],
+            "neck": [
+              43,
+              37
+            ],
+            "chest": [
+              40,
+              43
+            ],
+            "pelvis": [
+              39,
+              52
+            ],
+            "shoulder_right": [
+              32,
+              40
+            ],
+            "elbow_right": [
+              29,
+              47
+            ],
+            "hand_right": [
+              30,
+              54
+            ],
+            "shoulder_left": [
+              49,
+              39
+            ],
+            "elbow_left": [
+              52,
+              44
+            ],
+            "hand_left": [
+              52,
+              47
+            ],
+            "hip_right": [
+              34,
+              53
+            ],
+            "knee_right": [
+              32,
+              59
+            ],
+            "foot_right": [
+              32,
+              65
+            ],
+            "hip_left": [
+              44,
+              53
+            ],
+            "knee_left": [
+              45,
+              57
+            ],
+            "foot_left": [
+              47,
+              61
+            ]
+          },
+          "frontArms": [
+            "right"
+          ],
+          "original": "original/south-east/0.png",
+          "body": "body/south-east/0.png",
+          "head": "body/south-east/head-0.png",
+          "arms": {
+            "right": "body/south-east/forearm-right-0.png",
+            "left": "body/south-east/forearm-left-0.png"
+          },
+          "grips": {
+            "right": "body/south-east/grip-right-0.png",
+            "left": "body/south-east/grip-left-0.png"
+          }
+        },
+        {
+          "direction": "south-east",
+          "clip": "run",
+          "index": 0,
+          "joints": {
+            "head": [
+              43,
+              27
+            ],
+            "neck": [
+              45,
+              38
+            ],
+            "chest": [
+              42,
+              44
+            ],
+            "pelvis": [
+              41,
+              53
+            ],
+            "shoulder_right": [
+              34,
+              41
+            ],
+            "elbow_right": [
+              28,
+              45
+            ],
+            "hand_right": [
+              23,
+              49
+            ],
+            "shoulder_left": [
+              51,
+              40
+            ],
+            "elbow_left": [
+              47,
+              39
+            ],
+            "hand_left": [
+              44,
+              38
+            ],
+            "hip_right": [
+              36,
+              54
+            ],
+            "knee_right": [
+              36,
+              59
+            ],
+            "foot_right": [
+              35,
+              64
+            ],
+            "hip_left": [
+              46,
+              54
+            ],
+            "knee_left": [
+              42,
+              60
+            ],
+            "foot_left": [
+              37,
+              67
+            ]
+          },
+          "frontArms": [
+            "right"
+          ],
+          "original": "original/south-east/1.png",
+          "body": "body/south-east/1.png",
+          "head": "body/south-east/head-1.png",
+          "arms": {
+            "right": "body/south-east/forearm-right-1.png",
+            "left": "body/south-east/forearm-left-1.png"
+          },
+          "grips": {
+            "right": "body/south-east/grip-right-1.png",
+            "left": "body/south-east/grip-left-1.png"
+          }
+        },
+        {
+          "direction": "south-east",
+          "clip": "run",
+          "index": 1,
+          "joints": {
+            "head": [
+              43,
+              26
+            ],
+            "neck": [
+              45,
+              37
+            ],
+            "chest": [
+              42,
+              43
+            ],
+            "pelvis": [
+              41,
+              52
+            ],
+            "shoulder_right": [
+              34,
+              40
+            ],
+            "elbow_right": [
+              28,
+              46
+            ],
+            "hand_right": [
+              24,
+              50
+            ],
+            "shoulder_left": [
+              51,
+              39
+            ],
+            "elbow_left": [
+              47,
+              38
+            ],
+            "hand_left": [
+              44,
+              37
+            ],
+            "hip_right": [
+              36,
+              53
+            ],
+            "knee_right": [
+              35,
+              59
+            ],
+            "foot_right": [
+              33,
+              65
+            ],
+            "hip_left": [
+              46,
+              53
+            ],
+            "knee_left": [
+              40,
+              56
+            ],
+            "foot_left": [
+              33,
+              59
+            ]
+          },
+          "frontArms": [
+            "right"
+          ],
+          "original": "original/south-east/2.png",
+          "body": "body/south-east/2.png",
+          "head": "body/south-east/head-2.png",
+          "arms": {
+            "right": "body/south-east/forearm-right-2.png",
+            "left": "body/south-east/forearm-left-2.png"
+          },
+          "grips": {
+            "right": "body/south-east/grip-right-2.png",
+            "left": "body/south-east/grip-left-2.png"
+          }
+        },
+        {
+          "direction": "south-east",
+          "clip": "run",
+          "index": 2,
+          "joints": {
+            "head": [
+              43,
+              25
+            ],
+            "neck": [
+              45,
+              36
+            ],
+            "chest": [
+              42,
+              42
+            ],
+            "pelvis": [
+              41,
+              51
+            ],
+            "shoulder_right": [
+              34,
+              39
+            ],
+            "elbow_right": [
+              30,
+              46
+            ],
+            "hand_right": [
+              27,
+              51
+            ],
+            "shoulder_left": [
+              51,
+              38
+            ],
+            "elbow_left": [
+              47,
+              37
+            ],
+            "hand_left": [
+              44,
+              36
+            ],
+            "hip_right": [
+              36,
+              52
+            ],
+            "knee_right": [
+              34,
+              56
+            ],
+            "foot_right": [
+              31,
+              61
+            ],
+            "hip_left": [
+              46,
+              52
+            ],
+            "knee_left": [
+              45,
+              56
+            ],
+            "foot_left": [
+              43,
+              59
+            ]
+          },
+          "frontArms": [
+            "right"
+          ],
+          "original": "original/south-east/3.png",
+          "body": "body/south-east/3.png",
+          "head": "body/south-east/head-3.png",
+          "arms": {
+            "right": "body/south-east/forearm-right-3.png",
+            "left": "body/south-east/forearm-left-3.png"
+          },
+          "grips": {
+            "right": "body/south-east/grip-right-3.png",
+            "left": "body/south-east/grip-left-3.png"
+          }
+        },
+        {
+          "direction": "south-east",
+          "clip": "run",
+          "index": 3,
+          "joints": {
+            "head": [
+              43,
+              26
+            ],
+            "neck": [
+              45,
+              37
+            ],
+            "chest": [
+              42,
+              43
+            ],
+            "pelvis": [
+              41,
+              52
+            ],
+            "shoulder_right": [
+              34,
+              40
+            ],
+            "elbow_right": [
+              33,
+              46
+            ],
+            "hand_right": [
+              32,
+              51
+            ],
+            "shoulder_left": [
+              51,
+              39
+            ],
+            "elbow_left": [
+              47,
+              38
+            ],
+            "hand_left": [
+              44,
+              37
+            ],
+            "hip_right": [
+              36,
+              53
+            ],
+            "knee_right": [
+              32,
+              56
+            ],
+            "foot_right": [
+              28,
+              59
+            ],
+            "hip_left": [
+              46,
+              53
+            ],
+            "knee_left": [
+              45,
+              57
+            ],
+            "foot_left": [
+              44,
+              61
+            ]
+          },
+          "frontArms": [
+            "right"
+          ],
+          "original": "original/south-east/4.png",
+          "body": "body/south-east/4.png",
+          "head": "body/south-east/head-4.png",
+          "arms": {
+            "right": "body/south-east/forearm-right-4.png",
+            "left": "body/south-east/forearm-left-4.png"
+          },
+          "grips": {
+            "right": "body/south-east/grip-right-4.png",
+            "left": "body/south-east/grip-left-4.png"
+          }
+        },
+        {
+          "direction": "south-east",
+          "clip": "run",
+          "index": 4,
+          "joints": {
+            "head": [
+              43,
+              27
+            ],
+            "neck": [
+              45,
+              38
+            ],
+            "chest": [
+              42,
+              44
+            ],
+            "pelvis": [
+              41,
+              53
+            ],
+            "shoulder_right": [
+              34,
+              41
+            ],
+            "elbow_right": [
+              35,
+              46
+            ],
+            "hand_right": [
+              35,
+              51
+            ],
+            "shoulder_left": [
+              51,
+              40
+            ],
+            "elbow_left": [
+              47,
+              39
+            ],
+            "hand_left": [
+              44,
+              38
+            ],
+            "hip_right": [
+              36,
+              54
+            ],
+            "knee_right": [
+              40,
+              58
+            ],
+            "foot_right": [
+              45,
+              62
+            ],
+            "hip_left": [
+              46,
+              54
+            ],
+            "knee_left": [
+              46,
+              58
+            ],
+            "foot_left": [
+              47,
+              63
+            ]
+          },
+          "frontArms": [
+            "right"
+          ],
+          "original": "original/south-east/5.png",
+          "body": "body/south-east/5.png",
+          "head": "body/south-east/head-5.png",
+          "arms": {
+            "right": "body/south-east/forearm-right-5.png",
+            "left": "body/south-east/forearm-left-5.png"
+          },
+          "grips": {
+            "right": "body/south-east/grip-right-5.png",
+            "left": "body/south-east/grip-left-5.png"
+          }
+        },
+        {
+          "direction": "south-east",
+          "clip": "run",
+          "index": 5,
+          "joints": {
+            "head": [
+              43,
+              26
+            ],
+            "neck": [
+              45,
+              37
+            ],
+            "chest": [
+              42,
+              43
+            ],
+            "pelvis": [
+              41,
+              52
+            ],
+            "shoulder_right": [
+              34,
+              40
+            ],
+            "elbow_right": [
+              33,
+              46
+            ],
+            "hand_right": [
+              32,
+              51
+            ],
+            "shoulder_left": [
+              51,
+              39
+            ],
+            "elbow_left": [
+              47,
+              38
+            ],
+            "hand_left": [
+              44,
+              37
+            ],
+            "hip_right": [
+              36,
+              53
+            ],
+            "knee_right": [
+              32,
+              56
+            ],
+            "foot_right": [
+              27,
+              59
+            ],
+            "hip_left": [
+              46,
+              53
+            ],
+            "knee_left": [
+              45,
+              58
+            ],
+            "foot_left": [
+              44,
+              62
+            ]
+          },
+          "frontArms": [
+            "right"
+          ],
+          "original": "original/south-east/6.png",
+          "body": "body/south-east/6.png",
+          "head": "body/south-east/head-6.png",
+          "arms": {
+            "right": "body/south-east/forearm-right-6.png",
+            "left": "body/south-east/forearm-left-6.png"
+          },
+          "grips": {
+            "right": "body/south-east/grip-right-6.png",
+            "left": "body/south-east/grip-left-6.png"
+          }
+        },
+        {
+          "direction": "south-east",
+          "clip": "run",
+          "index": 6,
+          "joints": {
+            "head": [
+              43,
+              25
+            ],
+            "neck": [
+              45,
+              36
+            ],
+            "chest": [
+              42,
+              42
+            ],
+            "pelvis": [
+              41,
+              51
+            ],
+            "shoulder_right": [
+              34,
+              39
+            ],
+            "elbow_right": [
+              31,
+              46
+            ],
+            "hand_right": [
+              28,
+              51
+            ],
+            "shoulder_left": [
+              51,
+              38
+            ],
+            "elbow_left": [
+              47,
+              37
+            ],
+            "hand_left": [
+              44,
+              36
+            ],
+            "hip_right": [
+              36,
+              52
+            ],
+            "knee_right": [
+              35,
+              55
+            ],
+            "foot_right": [
+              33,
+              58
+            ],
+            "hip_left": [
+              46,
+              52
+            ],
+            "knee_left": [
+              45,
+              56
+            ],
+            "foot_left": [
+              43,
+              61
+            ]
+          },
+          "frontArms": [
+            "right"
+          ],
+          "original": "original/south-east/7.png",
+          "body": "body/south-east/7.png",
+          "head": "body/south-east/head-7.png",
+          "arms": {
+            "right": "body/south-east/forearm-right-7.png",
+            "left": "body/south-east/forearm-left-7.png"
+          },
+          "grips": {
+            "right": "body/south-east/grip-right-7.png",
+            "left": "body/south-east/grip-left-7.png"
+          }
+        },
+        {
+          "direction": "south-east",
+          "clip": "run",
+          "index": 7,
+          "joints": {
+            "head": [
+              43,
+              26
+            ],
+            "neck": [
+              45,
+              37
+            ],
+            "chest": [
+              42,
+              43
+            ],
+            "pelvis": [
+              41,
+              52
+            ],
+            "shoulder_right": [
+              34,
+              40
+            ],
+            "elbow_right": [
+              30,
+              46
+            ],
+            "hand_right": [
+              26,
+              51
+            ],
+            "shoulder_left": [
+              51,
+              39
+            ],
+            "elbow_left": [
+              47,
+              38
+            ],
+            "hand_left": [
+              44,
+              37
+            ],
+            "hip_right": [
+              36,
+              53
+            ],
+            "knee_right": [
+              35,
+              58
+            ],
+            "foot_right": [
+              34,
+              62
+            ],
+            "hip_left": [
+              46,
+              53
+            ],
+            "knee_left": [
+              45,
+              56
+            ],
+            "foot_left": [
+              43,
+              60
+            ]
+          },
+          "frontArms": [
+            "right"
+          ],
+          "original": "original/south-east/8.png",
+          "body": "body/south-east/8.png",
+          "head": "body/south-east/head-8.png",
+          "arms": {
+            "right": "body/south-east/forearm-right-8.png",
+            "left": "body/south-east/forearm-left-8.png"
+          },
+          "grips": {
+            "right": "body/south-east/grip-right-8.png",
+            "left": "body/south-east/grip-left-8.png"
+          }
+        }
+      ],
+      "rest": {
+        "head": [
+          41,
+          26
+        ],
+        "neck": [
+          43,
+          37
+        ],
+        "chest": [
+          40,
+          43
+        ],
+        "pelvis": [
+          39,
+          52
+        ],
+        "shoulder_right": [
+          32,
+          40
+        ],
+        "elbow_right": [
+          29,
+          47
+        ],
+        "hand_right": [
+          30,
+          54
+        ],
+        "shoulder_left": [
+          49,
+          39
+        ],
+        "elbow_left": [
+          52,
+          44
+        ],
+        "hand_left": [
+          52,
+          47
+        ],
+        "hip_right": [
+          34,
+          53
+        ],
+        "knee_right": [
+          32,
+          59
+        ],
+        "foot_right": [
+          32,
+          65
+        ],
+        "hip_left": [
+          44,
+          53
+        ],
+        "knee_left": [
+          45,
+          57
+        ],
+        "foot_left": [
+          47,
+          61
+        ]
+      }
+    }
+  },
+  "method": "approved front frame tracks plus direction-specific rest calibration and source skin/boot tracking"
+}

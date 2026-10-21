@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/MapTiles/Objects/Harbor_Trees_087.png" id="1_uiqmr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_58b7c"]
+radius = 8.835
+
+[node name="Harbor_Trees_087" type="Node2D"]
+y_sort_enabled = true
+texture_filter = 1
+metadata/kind = "Trees"
+
+[node name="Footprint" type="StaticBody2D" parent="." groups=["map_object", "world_solid"]]
+position = Vector2(-13, -5)
+collision_mask = 0
+metadata/kind = "Trees"
+
+[node name="Visual" type="Sprite2D" parent="Footprint"]
+position = Vector2(-48, -109)
+texture = ExtResource("1_uiqmr")
+centered = false
+
+[node name="SolidCircle0" type="CollisionShape2D" parent="Footprint"]
+position = Vector2(0, -3.09225)
+shape = SubResource("CircleShape2D_58b7c")

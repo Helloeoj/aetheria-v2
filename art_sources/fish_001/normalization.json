@@ -1,0 +1,408 @@
+{
+	"cell_size": 64,
+	"interpolation": "nearest",
+	"schema_version": 1,
+	"species": [
+		{
+			"contact_sheet_cell": [
+				0,
+				0
+			],
+			"output": "res://Assets/Items/fish_001/inventory/reedkip.png",
+			"output_bbox": [
+				12,
+				21,
+				40,
+				22
+			],
+			"output_stats": {
+				"palette_colors": 39,
+				"semitransparent_pixels": 0,
+				"visible_pixels": 496
+			},
+			"resize_passes": 2,
+			"source": "pair_01.png",
+			"source_cell_bbox": [
+				0,
+				0,
+				57,
+				30
+			],
+			"source_index": 0,
+			"source_pair_bbox": [
+				5,
+				18,
+				57,
+				30
+			],
+			"source_selection": "component",
+			"source_stats": {
+				"palette_colors": 40,
+				"semitransparent_pixels": 0,
+				"visible_pixels": 913
+			},
+			"species": "Reedkip"
+		},
+		{
+			"contact_sheet_cell": [
+				1,
+				0
+			],
+			"output": "res://Assets/Items/fish_001/inventory/marlo.png",
+			"output_bbox": [
+				12,
+				18,
+				40,
+				28
+			],
+			"output_stats": {
+				"palette_colors": 53,
+				"semitransparent_pixels": 0,
+				"visible_pixels": 614
+			},
+			"resize_passes": 1,
+			"source": "pair_01.png",
+			"source_cell_bbox": [
+				0,
+				0,
+				53,
+				37
+			],
+			"source_index": 1,
+			"source_pair_bbox": [
+				71,
+				14,
+				53,
+				37
+			],
+			"source_selection": "component",
+			"source_stats": {
+				"palette_colors": 53,
+				"semitransparent_pixels": 0,
+				"visible_pixels": 1087
+			},
+			"species": "Marlo"
+		},
+		{
+			"contact_sheet_cell": [
+				2,
+				0
+			],
+			"output": "res://Assets/Items/fish_001/inventory/bracken.png",
+			"output_bbox": [
+				12,
+				26,
+				40,
+				12
+			],
+			"output_stats": {
+				"palette_colors": 40,
+				"semitransparent_pixels": 0,
+				"visible_pixels": 260
+			},
+			"resize_passes": 1,
+			"source": "pair_02.png",
+			"source_cell_bbox": [
+				0,
+				0,
+				75,
+				23
+			],
+			"source_index": 0,
+			"source_pair_bbox": [
+				3,
+				21,
+				75,
+				23
+			],
+			"source_selection": "component",
+			"source_stats": {
+				"palette_colors": 45,
+				"semitransparent_pixels": 0,
+				"visible_pixels": 985
+			},
+			"species": "Bracken"
+		},
+		{
+			"contact_sheet_cell": [
+				3,
+				0
+			],
+			"output": "res://Assets/Items/fish_001/inventory/kessa.png",
+			"output_bbox": [
+				12,
+				22,
+				40,
+				20
+			],
+			"output_stats": {
+				"palette_colors": 33,
+				"semitransparent_pixels": 0,
+				"visible_pixels": 427
+			},
+			"resize_passes": 1,
+			"source": "pair_02.png",
+			"source_cell_bbox": [
+				0,
+				0,
+				43,
+				22
+			],
+			"source_index": 1,
+			"source_pair_bbox": [
+				82,
+				22,
+				43,
+				22
+			],
+			"source_selection": "component",
+			"source_stats": {
+				"palette_colors": 34,
+				"semitransparent_pixels": 0,
+				"visible_pixels": 516
+			},
+			"species": "Kessa"
+		},
+		{
+			"contact_sheet_cell": [
+				4,
+				0
+			],
+			"output": "res://Assets/Items/fish_001/inventory/veilfin.png",
+			"output_bbox": [
+				12,
+				20,
+				40,
+				23
+			],
+			"output_stats": {
+				"palette_colors": 62,
+				"semitransparent_pixels": 0,
+				"visible_pixels": 549
+			},
+			"resize_passes": 1,
+			"source": "pair_03.png",
+			"source_cell_bbox": [
+				0,
+				0,
+				78,
+				44
+			],
+			"source_index": 0,
+			"source_pair_bbox": [
+				1,
+				10,
+				78,
+				44
+			],
+			"source_selection": "component",
+			"source_stats": {
+				"palette_colors": 71,
+				"semitransparent_pixels": 0,
+				"visible_pixels": 2092
+			},
+			"species": "Veilfin"
+		},
+		{
+			"contact_sheet_cell": [
+				0,
+				1
+			],
+			"output": "res://Assets/Items/fish_001/inventory/lumara.png",
+			"output_bbox": [
+				12,
+				19,
+				40,
+				26
+			],
+			"output_stats": {
+				"palette_colors": 30,
+				"semitransparent_pixels": 0,
+				"visible_pixels": 667
+			},
+			"resize_passes": 1,
+			"source": "pair_03.png",
+			"source_cell_bbox": [
+				0,
+				0,
+				50,
+				32
+			],
+			"source_index": 1,
+			"source_pair_bbox": [
+				77,
+				19,
+				50,
+				32
+			],
+			"source_selection": "component",
+			"source_stats": {
+				"palette_colors": 31,
+				"semitransparent_pixels": 0,
+				"visible_pixels": 1032
+			},
+			"species": "Lumara"
+		},
+		{
+			"contact_sheet_cell": [
+				1,
+				1
+			],
+			"output": "res://Assets/Items/fish_001/inventory/vesper.png",
+			"output_bbox": [
+				12,
+				20,
+				40,
+				24
+			],
+			"output_stats": {
+				"palette_colors": 40,
+				"semitransparent_pixels": 0,
+				"visible_pixels": 586
+			},
+			"resize_passes": 2,
+			"source": "pair_04.png",
+			"source_cell_bbox": [
+				0,
+				0,
+				53,
+				31
+			],
+			"source_index": 0,
+			"source_pair_bbox": [
+				9,
+				13,
+				53,
+				31
+			],
+			"source_selection": "component",
+			"source_stats": {
+				"palette_colors": 43,
+				"semitransparent_pixels": 0,
+				"visible_pixels": 955
+			},
+			"species": "Vesper"
+		},
+		{
+			"contact_sheet_cell": [
+				2,
+				1
+			],
+			"output": "res://Assets/Items/fish_001/inventory/moonfin.png",
+			"output_bbox": [
+				12,
+				19,
+				40,
+				26
+			],
+			"output_stats": {
+				"palette_colors": 33,
+				"semitransparent_pixels": 0,
+				"visible_pixels": 540
+			},
+			"resize_passes": 1,
+			"source": "pair_04.png",
+			"source_cell_bbox": [
+				0,
+				0,
+				47,
+				31
+			],
+			"source_index": 1,
+			"source_pair_bbox": [
+				75,
+				13,
+				47,
+				31
+			],
+			"source_selection": "component",
+			"source_stats": {
+				"palette_colors": 33,
+				"semitransparent_pixels": 0,
+				"visible_pixels": 766
+			},
+			"species": "Moonfin"
+		},
+		{
+			"contact_sheet_cell": [
+				3,
+				1
+			],
+			"output": "res://Assets/Items/fish_001/inventory/velora.png",
+			"output_bbox": [
+				12,
+				16,
+				40,
+				32
+			],
+			"output_stats": {
+				"palette_colors": 67,
+				"semitransparent_pixels": 0,
+				"visible_pixels": 802
+			},
+			"resize_passes": 1,
+			"source": "pair_05.png",
+			"source_cell_bbox": [
+				0,
+				0,
+				37,
+				30
+			],
+			"source_index": 1,
+			"source_pair_bbox": [
+				42,
+				17,
+				37,
+				30
+			],
+			"source_selection": "component",
+			"source_stats": {
+				"palette_colors": 67,
+				"semitransparent_pixels": 0,
+				"visible_pixels": 690
+			},
+			"species": "Velora"
+		},
+		{
+			"contact_sheet_cell": [
+				4,
+				1
+			],
+			"output": "res://Assets/Items/fish_001/inventory/sunfish.png",
+			"output_bbox": [
+				12,
+				14,
+				40,
+				36
+			],
+			"output_stats": {
+				"palette_colors": 51,
+				"semitransparent_pixels": 0,
+				"visible_pixels": 927
+			},
+			"resize_passes": 1,
+			"source": "pair_05.png",
+			"source_cell_bbox": [
+				0,
+				0,
+				36,
+				32
+			],
+			"source_index": 2,
+			"source_pair_bbox": [
+				86,
+				16,
+				36,
+				32
+			],
+			"source_selection": "component",
+			"source_stats": {
+				"palette_colors": 51,
+				"semitransparent_pixels": 0,
+				"visible_pixels": 732
+			},
+			"species": "Sunfish"
+		}
+	],
+	"visible_longest_side": 40
+}

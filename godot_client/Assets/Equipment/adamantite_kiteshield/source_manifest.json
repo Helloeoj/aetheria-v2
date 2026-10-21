@@ -1,0 +1,137 @@
+{
+  "source_filename": "Adamantite_Kiteshield_that_thi_rotations_8dir.gif",
+  "source_sha256": "15be65cd781537bd12d7c6c656ae4b9f6e60c1982b3f524508054e75863fab44",
+  "direction_order": [
+    "south",
+    "south-east",
+    "east",
+    "north-east",
+    "north",
+    "north-west",
+    "west",
+    "south-west"
+  ],
+  "conversion": "Decoded original RGBA pixels; native GIF transparency preserved. No resizing, mirroring or recoloring.",
+  "frames": [
+    {
+      "direction": "south",
+      "gif_frame": 0,
+      "png": "south.png",
+      "size": [
+        68,
+        68
+      ],
+      "duration_ms": 200,
+      "rgba_sha256": "9ca879977a2408c129b10ecbdf62b4e1401a31266b1147883cfa177c4d4b6a6d",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "direction": "south-east",
+      "gif_frame": 1,
+      "png": "south-east.png",
+      "size": [
+        68,
+        68
+      ],
+      "duration_ms": 200,
+      "rgba_sha256": "fed197a05ae7dd6c3a47487407e2bc0bb345ef00db67084f794bc8e14e1a0b25",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "direction": "east",
+      "gif_frame": 2,
+      "png": "east.png",
+      "size": [
+        68,
+        68
+      ],
+      "duration_ms": 200,
+      "rgba_sha256": "21c47b94b1aed3cc3994459b951396deac3fd7d4f4ab666229b3ff4783412781",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "direction": "north-east",
+      "gif_frame": 3,
+      "png": "north-east.png",
+      "size": [
+        68,
+        68
+      ],
+      "duration_ms": 200,
+      "rgba_sha256": "dfa72c9723da024b55e4c874cf59e26bdf67b7bc50f0651c9ae30b9668afdb0f",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "direction": "north",
+      "gif_frame": 4,
+      "png": "north.png",
+      "size": [
+        68,
+        68
+      ],
+      "duration_ms": 200,
+      "rgba_sha256": "bf62cbd79dbe1fe2f6045f1627c41cf7f8905514d5be69c91e935f81516be381",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "direction": "north-west",
+      "gif_frame": 5,
+      "png": "north-west.png",
+      "size": [
+        68,
+        68
+      ],
+      "duration_ms": 200,
+      "rgba_sha256": "33f0b2e2ef8b3ccdbddd8df7c05ed8669c32c70dc69b0311519109ca7c2a7393",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "direction": "west",
+      "gif_frame": 6,
+      "png": "west.png",
+      "size": [
+        68,
+        68
+      ],
+      "duration_ms": 200,
+      "rgba_sha256": "1cafb043790f1e7a183911e204bedc5e076e72e871ab73c9507d2729017f96ea",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "direction": "south-west",
+      "gif_frame": 7,
+      "png": "south-west.png",
+      "size": [
+        68,
+        68
+      ],
+      "duration_ms": 200,
+      "rgba_sha256": "bd8222fab2a9357604cf80c274c4047bdbed6e9737079d4e638f15c2f1d363a1",
+      "alpha_range": [
+        0,
+        255
+      ]
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "batch": "fish_001",
+  "provider": "PixelLab",
+  "model": "pixen",
+  "design_status": "user_approved",
+  "art_status": "review_candidate",
+  "state": "raw",
+  "generation_calls": 5,
+  "source_cell_size": [
+    64,
+    64
+  ],
+  "output_canvas": [
+    64,
+    64
+  ],
+  "visible_longest_side": 40,
+  "approved_descriptions": [
+    {
+      "species": "Reedkip",
+      "description": "A small, stubby olive-green fish with a cream belly, amber fins, and one dark stripe along its side. A modest little river catch."
+    },
+    {
+      "species": "Marlo",
+      "description": "A plump copper-orange fish with broad scales, short whiskers, and a thick fan-shaped tail. Rounded features give it a slightly grumpy expression."
+    },
+    {
+      "species": "Bracken",
+      "description": "A long, narrow fish with a pointed snout, mottled brown-and-moss scales, and a ragged dorsal fin resembling a fern frond."
+    },
+    {
+      "species": "Kessa",
+      "description": "A sleek crimson fish with cream chevrons along its sides, a sharp triangular dorsal fin, and a deeply forked tail. It should look fast and athletic."
+    },
+    {
+      "species": "Veilfin",
+      "description": "A slender pearl-gray fish with lavender shading and oversized, translucent blue fins that trail like delicate silk. Its flowing silhouette is its defining feature."
+    },
+    {
+      "species": "Lumara",
+      "description": "A compact turquoise fish with a pale mint belly, rounded fins, and three softly luminous markings along its side. Bright, jewel-like eyes complete its appearance."
+    },
+    {
+      "species": "Vesper",
+      "description": "A deep violet fish with a dark back, broad angular fins, and small amber markings. Its swept fins create a silhouette reminiscent of bat wings."
+    },
+    {
+      "species": "Moonfin",
+      "description": "A silver-blue fish with an elegantly arched back, a crescent-shaped tail, and one oversized moon-white dorsal fin. Smooth, pale scales give it an otherworldly sheen."
+    },
+    {
+      "species": "Velora",
+      "description": "A regal emerald fish with large jade scales edged in gold, a crown-shaped dorsal crest, and a broad, layered tail. It should resemble a living treasure."
+    },
+    {
+      "species": "Sunfish",
+      "description": "A large, nearly circular fish with brilliant golden scales, an ivory belly, and orange-red fins spreading outward like a sunburst. Its bold shape should immediately distinguish it from Marlo."
+    }
+  ],
+  "pairs": [
+    {
+      "pair": 1,
+      "species": [
+        "Reedkip",
+        "Marlo"
+      ],
+      "job_id": "cb7caef0-a82d-444e-b5dd-cb65fee3aebc",
+      "gallery_id": "cf193fe0-b154-5855-8b82-ac43904d3857",
+      "prompt": "Two raw fish inventory icons in one horizontal row, each centered in its own64x64 cell of this128x64 transparent sprite sheet. Both face left in full side profile and fit inside40x40 visible pixels with empty margins. LEFT: Reedkip, stubby olive-green river fish, cream belly, amber fins, dark stripe. RIGHT: Marlo, plump copper-orange fish, broad scales, short whiskers, thick fan tail, slightly grumpy eye. Crisp old-school16-bit fantasy RPG pixels, dark selective outline, clustered3-tone shading lit upper-left. No water, plate, frame, text or scenery. Keep fish separate, no touching or overlapping.",
+      "source_file": "pair_01.png",
+      "seed": 20102001
+    },
+    {
+      "pair": 2,
+      "species": [
+        "Bracken",
+        "Kessa"
+      ],
+      "job_id": "ac4a0d2b-3d5f-4754-8ae9-ebbb6b7e1952",
+      "gallery_id": "5599de7f-ddf5-58a9-97da-6273d973f2c7",
+      "prompt": "A sprite sheet containing EXACTLY TWO separate RAW fish inventory icons in one horizontal row. Transparent128x64 canvas split into TWO64x64 cells. Each fish fully contained and centered in its OWN cell with transparent padding, no touching, head LEFT and tail RIGHT in full side profile, visible body/fins about40 pixels maximum. Crisp old-school16-bit fantasy MMORPG item sprites with1px selective dark outlines, clustered3-tone shading, light upper-left, restrained rich colors and readable fish anatomy. No swimming pose or scenery: no water, bubbles, text, labels, plate, frame, drop shadow, detached sparkles, aura or props. LEFT CELL: Bracken, a long narrow fish with pointed snout, mottled brown-and-moss scales, and ragged dorsal fin shaped like a fern frond. RIGHT CELL: Kessa, a sleek athletic crimson fish with cream chevrons on its sides, sharp triangular dorsal fin and deeply forked tail. Distinct silhouettes: long earthy predator versus compact red fast fish.",
+      "source_file": "pair_02.png",
+      "seed": 20102002
+    },
+    {
+      "pair": 3,
+      "species": [
+        "Veilfin",
+        "Lumara"
+      ],
+      "job_id": "1d096a39-69dc-4de7-bf54-9faa3af892cb",
+      "gallery_id": "4fb2ac69-d52b-5a6b-94e6-efd6b8f5ab1c",
+      "prompt": "A sprite sheet containing EXACTLY TWO separate RAW fish inventory icons in one horizontal row. Transparent128x64 canvas split into TWO64x64 cells. Each fish fully contained and centered in its OWN cell with transparent padding, no touching, head LEFT and tail RIGHT in full side profile, visible body/fins about40 pixels maximum. Crisp old-school16-bit fantasy MMORPG item sprites with1px selective dark outlines, clustered3-tone shading, light upper-left, restrained rich colors and readable fish anatomy. No swimming pose or scenery: no water, bubbles, text, labels, plate, frame, drop shadow, detached sparkles, aura or props. LEFT CELL: Veilfin, slender pearl-gray fish shaded lavender, oversized translucent blue fins trailing like delicate silk; flowing silhouette. RIGHT CELL: Lumara, compact turquoise fish with pale mint belly, rounded fins, exactly three softly luminous markings along its side and bright jewel-like eyes. Glow is colored markings ON the body only. Slender flowing pearl fish versus rounded mint-blue fish.",
+      "source_file": "pair_03.png",
+      "seed": 20102003
+    },
+    {
+      "pair": 4,
+      "species": [
+        "Vesper",
+        "Moonfin"
+      ],
+      "job_id": "ca848e26-43f7-436c-a936-a4ea3ee67225",
+      "gallery_id": "f5480f31-4762-5ed1-b2a4-30a71de44369",
+      "prompt": "A sprite sheet containing EXACTLY TWO separate RAW fish inventory icons in one horizontal row. Transparent128x64 canvas split into TWO64x64 cells. Each fish fully contained and centered in its OWN cell with transparent padding, no touching, head LEFT and tail RIGHT in full side profile, visible body/fins about40 pixels maximum. Crisp old-school16-bit fantasy MMORPG item sprites with1px selective dark outlines, clustered3-tone shading, light upper-left, restrained rich colors and readable fish anatomy. No swimming pose or scenery: no water, bubbles, text, labels, plate, frame, drop shadow, detached sparkles, aura or props. LEFT CELL: Vesper, deep violet fish with dark back, broad angular swept fins reminiscent of bat wings and small amber markings ON its body. RIGHT CELL: Moonfin, elegant silver-blue fish with arched back, crescent-shaped tail, one oversized moon-white dorsal fin and smooth pale shimmering scales. Dark angular violet silhouette versus pale gracefully arched silver silhouette.",
+      "source_file": "pair_04.png",
+      "seed": 20102004
+    },
+    {
+      "pair": 5,
+      "species": [
+        "Velora",
+        "Sunfish"
+      ],
+      "job_id": "8e0a7894-d09b-4100-8240-b24d92221cbf",
+      "gallery_id": "2f28c42e-0b13-5b4d-99cf-0b51c1577393",
+      "prompt": "A sprite sheet containing EXACTLY TWO separate RAW fish inventory icons in one horizontal row. Transparent128x64 canvas split into TWO64x64 cells. Each fish fully contained and centered in its OWN cell with transparent padding, no touching, head LEFT and tail RIGHT in full side profile, visible body/fins about40 pixels maximum. Crisp old-school16-bit fantasy MMORPG item sprites with1px selective dark outlines, clustered3-tone shading, light upper-left, restrained rich colors and readable fish anatomy. No swimming pose or scenery: no water, bubbles, text, labels, plate, frame, drop shadow, detached sparkles, aura or props. LEFT CELL: Velora, regal emerald fish with large jade scales edged in gold, natural crown-shaped dorsal fin crest, and broad layered tail, like a living treasure but NO actual jewelry or crown prop. RIGHT CELL: Sunfish, large nearly circular fish with brilliant golden scales, ivory belly and orange-red fins spreading like a sunburst. Clear natural fish mouth, one eye, tail and fish anatomy, not a sun symbol. Emerald elaborate fins versus rounded gold disk body.",
+      "source_file": "pair_05.png",
+      "seed": 20102005
+    }
+  ]
+}

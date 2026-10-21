@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/GolemKingdomContent.tscn" id="1_content"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="2_combat"]
+[ext_resource type="Script" path="res://scripts/ui_spawn_menu.gd" id="3_spawn"]
+[ext_resource type="Script" path="res://scripts/ui_item_menu.gd" id="4_item"]
+[ext_resource type="Script" path="res://scripts/ui_inventory_menu.gd" id="5_inventory"]
+[ext_resource type="Script" path="res://scripts/cave_portal.gd" id="6_portal"]
+
+[node name="GolemKingdom" type="Node2D"]
+y_sort_enabled = true
+texture_filter = 1
+
+[node name="GolemKingdomContent" parent="." instance=ExtResource("1_content")]
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="EastCave" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(3531, 1617)
+
+[node name="Combat" type="Node2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("2_combat")
+map_origin = Vector2(0, 0)
+map_width = 3762.0
+map_height = 3762.0
+area_name = "Golem Kingdom"
+initial_spawn_id = "EastCave"
+
+[node name="EastCaveExit" type="Node2D" parent="Combat"]
+position = Vector2(3678, 1422)
+script = ExtResource("6_portal")
+portal_name = "Valtheiris"
+destination_scene = "res://scenes/EastOutskirtsLayered.tscn"
+destination_spawn_id = "GolemCaveReturn"
+approach_offset = Vector2(-72, 96)
+interaction_radius = 96.0
+hit_polygon = PackedVector2Array(-42, -192, 84, -249, 84, 78, -87, 189, -192, 132, -90, 0)
+
+[node name="UI" type="CanvasLayer" parent="Combat"]
+
+[node name="SpawnMenu" type="Control" parent="Combat/UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("3_spawn")
+
+[node name="ItemMenu" type="Control" parent="Combat/UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("4_item")
+
+[node name="InventoryMenu" type="Control" parent="Combat/UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("5_inventory")
+
+[node name="MapCamera" type="Camera2D" parent="."]
+position = Vector2(3531, 1617)
+zoom = Vector2(0.68, 0.68)
+limit_left = 0
+limit_top = 0
+limit_right = 3762
+limit_bottom = 3762
+
+[editable path="GolemKingdomContent"]

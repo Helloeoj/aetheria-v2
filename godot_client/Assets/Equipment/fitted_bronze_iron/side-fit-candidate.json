@@ -1,0 +1,289 @@
+{
+  "version": 3,
+  "status": "approved and promoted into normal equipment definitions",
+  "direction": "west",
+  "clip": "run",
+  "frame": 2,
+  "characterScale": 1,
+  "stretching": false,
+  "sourceJob": "09db60a9-b77a-43de-8fe9-95656516f701",
+  "sourceArmorWorkbench": "735c518e-80b9-4c65-8e9c-58a6c6c17522",
+  "items": [
+    {
+      "id": "bronze-platebody",
+      "poseViews": {
+        "west": {
+          "run": {
+            "2": [
+              {
+                "name": "cuirass",
+                "file": "candidates/bronze-side-fit-v3/cuirass.png",
+                "socket": "chest",
+                "pivot": [
+                  8.0,
+                  6.0
+                ],
+                "offset": [
+                  0,
+                  0
+                ],
+                "z": 30,
+                "bone": null,
+                "rotationLimit": 0,
+                "sourceSize": [
+                  23,
+                  16
+                ],
+                "poseAuthored": true
+              },
+              {
+                "name": "pauldron-left",
+                "file": "candidates/bronze-side-fit-v3/pauldron-left.png",
+                "socket": "shoulder_left",
+                "pivot": [
+                  4.0,
+                  3.0
+                ],
+                "offset": [
+                  0,
+                  0
+                ],
+                "z": 34,
+                "bone": null,
+                "rotationLimit": 0,
+                "sourceSize": [
+                  13,
+                  6
+                ],
+                "poseAuthored": true
+              },
+              {
+                "name": "upper-arm-left",
+                "file": "candidates/bronze-side-fit-v3/upper-arm-left.png",
+                "socket": "shoulder_left",
+                "pivot": [
+                  6.0,
+                  -3.0
+                ],
+                "offset": [
+                  0,
+                  0
+                ],
+                "z": 35,
+                "bone": null,
+                "rotationLimit": 0,
+                "sourceSize": [
+                  9,
+                  3
+                ],
+                "poseAuthored": true
+              },
+              {
+                "name": "vambrace-left",
+                "file": "candidates/bronze-side-fit-v3/vambrace-left.png",
+                "socket": "elbow_left",
+                "pivot": [
+                  3.0,
+                  0.0
+                ],
+                "offset": [
+                  0,
+                  0
+                ],
+                "z": 36,
+                "bone": null,
+                "rotationLimit": 0,
+                "sourceSize": [
+                  7,
+                  4
+                ],
+                "poseAuthored": true
+              },
+              {
+                "name": "neck-gorget",
+                "file": "seams/bronze/platebody/west/neck-gorget-candidate.png",
+                "socket": "neck",
+                "pivot": [
+                  3.0,
+                  6.0
+                ],
+                "offset": [
+                  0,
+                  0
+                ],
+                "z": 27,
+                "bone": null,
+                "rotationLimit": 0,
+                "sourceSize": [
+                  15,
+                  10
+                ],
+                "seamRepair": true,
+                "poseAuthored": true
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "bronze-platelegs",
+      "poseViews": {
+        "west": {
+          "run": {
+            "2": [
+              {
+                "name": "hip-plate",
+                "file": "candidates/bronze-side-fit-v3/hip-plate.png",
+                "socket": "pelvis",
+                "pivot": [
+                  4.0,
+                  -1.0
+                ],
+                "offset": [
+                  0,
+                  0
+                ],
+                "z": 20,
+                "bone": null,
+                "rotationLimit": 0,
+                "sourceSize": [
+                  12,
+                  3
+                ],
+                "poseAuthored": true
+              },
+              {
+                "name": "thigh-left",
+                "file": "candidates/bronze-side-fit-v3/thigh-left.png",
+                "socket": "hip_left",
+                "pivot": [
+                  -1.0,
+                  0.0
+                ],
+                "offset": [
+                  0,
+                  0
+                ],
+                "z": 21,
+                "bone": null,
+                "rotationLimit": 0,
+                "sourceSize": [
+                  12,
+                  7
+                ],
+                "poseAuthored": true
+              },
+              {
+                "name": "thigh-right",
+                "file": "candidates/bronze-side-fit-v3/thigh-right.png",
+                "socket": "hip_right",
+                "pivot": [
+                  2.0,
+                  -3.0
+                ],
+                "offset": [
+                  0,
+                  0
+                ],
+                "z": 21,
+                "bone": null,
+                "rotationLimit": 0,
+                "sourceSize": [
+                  8,
+                  2
+                ],
+                "poseAuthored": true
+              },
+              {
+                "name": "greave-left",
+                "file": "candidates/bronze-side-fit-v3/greave-left.png",
+                "socket": "knee_left",
+                "pivot": [
+                  1.0,
+                  0.0
+                ],
+                "offset": [
+                  0,
+                  0
+                ],
+                "z": 22,
+                "bone": null,
+                "rotationLimit": 0,
+                "sourceSize": [
+                  9,
+                  5
+                ],
+                "poseAuthored": true
+              },
+              {
+                "name": "greave-right",
+                "file": "candidates/bronze-side-fit-v3/greave-right.png",
+                "socket": "knee_right",
+                "pivot": [
+                  5.0,
+                  0.0
+                ],
+                "offset": [
+                  0,
+                  0
+                ],
+                "z": 22,
+                "bone": null,
+                "rotationLimit": 0,
+                "sourceSize": [
+                  14,
+                  3
+                ],
+                "poseAuthored": true
+              },
+              {
+                "name": "sabatons-left",
+                "file": "candidates/bronze-side-fit-v3/sabatons-left.png",
+                "socket": "foot_left",
+                "pivot": [
+                  6.0,
+                  2.0
+                ],
+                "offset": [
+                  0,
+                  0
+                ],
+                "z": 23,
+                "bone": null,
+                "rotationLimit": 0,
+                "sourceSize": [
+                  10,
+                  4
+                ],
+                "poseAuthored": true
+              },
+              {
+                "name": "sabatons-right",
+                "file": "candidates/bronze-side-fit-v3/sabatons-right.png",
+                "socket": "foot_right",
+                "pivot": [
+                  8.0,
+                  2.0
+                ],
+                "offset": [
+                  0,
+                  0
+                ],
+                "z": 23,
+                "bone": null,
+                "rotationLimit": 0,
+                "sourceSize": [
+                  12,
+                  3
+                ],
+                "poseAuthored": true
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "seamRepairVersion": 1
+}

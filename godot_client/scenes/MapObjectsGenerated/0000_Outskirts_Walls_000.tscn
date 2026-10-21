@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/MapTiles/Objects/Outskirts_Walls_000.png" id="1_0xyee"]
+
+[node name="Outskirts_Walls_000" type="Node2D"]
+y_sort_enabled = true
+texture_filter = 1
+metadata/kind = "Walls"
+
+[node name="Footprint" type="StaticBody2D" parent="." groups=["map_object", "world_solid"]]
+position = Vector2(-9, 14)
+collision_mask = 0
+metadata/kind = "Walls"
+
+[node name="Visual" type="Sprite2D" parent="Footprint"]
+position = Vector2(-135, -1022)
+texture = ExtResource("1_0xyee")
+centered = false
+
+[node name="SolidPolygon1" type="CollisionPolygon2D" parent="Footprint"]
+polygon = PackedVector2Array(-7, -1022, 94, -1022, 94, -568, -7, -568)
+
+[node name="SolidPolygon2" type="CollisionPolygon2D" parent="Footprint"]
+polygon = PackedVector2Array(-7, -501, 99, -501, 99, 2, -7, 2)
+
+[node name="SolidPolygon3" type="CollisionPolygon2D" parent="Footprint"]
+polygon = PackedVector2Array(-135, -482, -11, -482, -11, -466, -135, -466)
+
+[node name="SolidPolygon4" type="CollisionPolygon2D" parent="Footprint"]
+polygon = PackedVector2Array(91, -611, 127, -611, 127, -551, 91, -551)
+
+[node name="SolidPolygon5" type="CollisionPolygon2D" parent="Footprint"]
+polygon = PackedVector2Array(-140, -636, 12, -636, 12, -611, -140, -611)

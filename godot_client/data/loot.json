@@ -1,0 +1,828 @@
+{
+  "gold_by_tier": {
+    "1": [
+      3,
+      10
+    ],
+    "2": [
+      5,
+      18
+    ],
+    "3": [
+      10,
+      28
+    ],
+    "4": [
+      18,
+      40
+    ],
+    "5": [
+      25,
+      60
+    ],
+    "6": [
+      40,
+      95
+    ],
+    "7": [
+      75,
+      150
+    ]
+  },
+  "families": {
+    "goblins": {
+      "Goblin Scout": {
+        "tier": 1,
+        "gold": {
+          "min": 3,
+          "max": 10
+        },
+        "guaranteed": [],
+        "common": {
+          "attempts": 1,
+          "outcomes": [
+            {
+              "item": null,
+              "item_rarity": null,
+              "type": "nothing",
+              "chance": 26.0,
+              "quantity": [
+                0,
+                0
+              ]
+            },
+            {
+              "item": "Feathers",
+              "item_rarity": "common",
+              "type": "Crafting",
+              "chance": 8.0,
+              "quantity": [
+                3,
+                8
+              ]
+            },
+            {
+              "item": "Arrow Shafts",
+              "item_rarity": "common",
+              "type": "Crafting",
+              "chance": 8.0,
+              "quantity": [
+                4,
+                10
+              ]
+            },
+            {
+              "item": "Bowstring",
+              "item_rarity": "common",
+              "type": "Crafting",
+              "chance": 5.0,
+              "quantity": [
+                1,
+                3
+              ]
+            },
+            {
+              "item": "Bronze Dagger",
+              "item_rarity": "common",
+              "type": "Weapon",
+              "chance": 8.0,
+              "quantity": [
+                1,
+                1
+              ]
+            },
+            {
+              "item": "Iron Dagger",
+              "item_rarity": "common",
+              "type": "Weapon",
+              "chance": 4.0,
+              "quantity": [
+                1,
+                1
+              ]
+            },
+            {
+              "item": "Iron Longsword",
+              "item_rarity": "common",
+              "type": "Weapon",
+              "chance": 3.0,
+              "quantity": [
+                1,
+                1
+              ]
+            },
+            {
+              "item": "Bronze Bow",
+              "item_rarity": "common",
+              "type": "Weapon",
+              "chance": 6.0,
+              "quantity": [
+                1,
+                1
+              ]
+            },
+            {
+              "item": "Iron Bow",
+              "item_rarity": "common",
+              "type": "Weapon",
+              "chance": 3.5,
+              "quantity": [
+                1,
+                1
+              ]
+            },
+            {
+              "item": "Bronze Helmet",
+              "item_rarity": "common",
+              "type": "Armor",
+              "chance": 5.7,
+              "quantity": [
+                1,
+                1
+              ]
+            },
+            {
+              "item": "Bronze Platebody",
+              "item_rarity": "common",
+              "type": "Armor",
+              "chance": 5.7,
+              "quantity": [
+                1,
+                1
+              ]
+            },
+            {
+              "item": "Bronze Platelegs",
+              "item_rarity": "common",
+              "type": "Armor",
+              "chance": 5.7,
+              "quantity": [
+                1,
+                1
+              ]
+            },
+            {
+              "item": "Bronze Square Shield",
+              "item_rarity": "common",
+              "type": "Armor",
+              "chance": 5.7,
+              "quantity": [
+                1,
+                1
+              ]
+            },
+            {
+              "item": "Bronze Cape",
+              "item_rarity": "common",
+              "type": "Armor",
+              "chance": 5.7,
+              "quantity": [
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "rare": {
+          "table_chance": 0,
+          "outcomes": []
+        }
+      },
+      "Goblin Worker": {
+        "tier": 2,
+        "gold": {
+          "min": 10,
+          "max": 25
+        },
+        "guaranteed": [],
+        "common": {
+          "attempts": 1,
+          "outcomes": [
+            {
+              "item": null,
+              "item_rarity": null,
+              "type": "nothing",
+              "chance": 33.0,
+              "quantity": [
+                0,
+                0
+              ]
+            },
+            {
+              "item": "Iron Helmet",
+              "item_rarity": "common",
+              "type": "Armor",
+              "chance": 7.6,
+              "quantity": [
+                1,
+                1
+              ]
+            },
+            {
+              "item": "Iron Platebody",
+              "item_rarity": "common",
+              "type": "Armor",
+              "chance": 7.6,
+              "quantity": [
+                1,
+                1
+              ]
+            },
+            {
+              "item": "Iron Platelegs",
+              "item_rarity": "common",
+              "type": "Armor",
+              "chance": 7.6,
+              "quantity": [
+                1,
+                1
+              ]
+            },
+            {
+              "item": "Iron Square Shield",
+              "item_rarity": "common",
+              "type": "Armor",
+              "chance": 7.6,
+              "quantity": [
+                1,
+                1
+              ]
+            },
+            {
+              "item": "Iron Cape",
+              "item_rarity": "common",
+              "type": "Armor",
+              "chance": 7.6,
+              "quantity": [
+                1,
+                1
+              ]
+            },
+            {
+              "item": "Iron Shortsword",
+              "item_rarity": "common",
+              "type": "Weapon",
+              "chance": 8.0,
+              "quantity": [
+                1,
+                1
+              ]
+            },
+            {
+              "item": "Iron Ingot",
+              "item_rarity": "common",
+              "type": "Crafting",
+              "chance": 11.0,
+              "quantity": [
+                1,
+                2
+              ]
+            },
+            {
+              "item": "Ripped Cloth",
+              "item_rarity": "common",
+              "type": "Crafting",
+              "chance": 10.0,
+              "quantity": [
+                1,
+                3
+              ]
+            }
+          ]
+        },
+        "rare": {
+          "table_chance": 0,
+          "outcomes": []
+        }
+      },
+      "Goblin Warrior": {
+        "tier": 3,
+        "gold": {
+          "min": 25,
+          "max": 60
+        },
+        "guaranteed": [],
+        "common": {
+          "attempts": 2,
+          "outcomes": [
+            {
+              "item": null,
+              "item_rarity": null,
+              "type": "nothing",
+              "chance": 60.0,
+              "quantity": [
+                0,
+                0
+              ]
+            },
+            {
+              "item": "Steel Dagger",
+              "item_rarity": "common",
+              "type": "Weapon",
+              "chance": 4.0,
+              "quantity": [
+                1,
+                1
+              ]
+            },
+            {
+              "item": "Steel Shortsword",
+              "item_rarity": "common",
+              "type": "Weapon",
+              "chance": 4.0,
+              "quantity": [
+                1,
+                1
+              ]
+            },
+            {
+              "item": "Steel Longsword",
+              "item_rarity": "common",
+              "type": "Weapon",
+              "chance": 3.0,
+              "quantity": [
+                1,
+                1
+              ]
+            },
+            {
+              "item": "Steel Mace",
+              "item_rarity": "common",
+              "type": "Weapon",
+              "chance": 2.0,
+              "quantity": [
+                1,
+                1
+              ]
+            },
+            {
+              "item": "Steel Warmaul",
+              "item_rarity": "common",
+              "type": "Weapon",
+              "chance": 2.0,
+              "quantity": [
+                1,
+                1
+              ]
+            },
+            {
+              "item": "Iron Ingot",
+              "item_rarity": "common",
+              "type": "Crafting",
+              "chance": 7.0,
+              "quantity": [
+                1,
+                2
+              ]
+            },
+            {
+              "item": "Ripped Cloth",
+              "item_rarity": "common",
+              "type": "Crafting",
+              "chance": 8.0,
+              "quantity": [
+                1,
+                3
+              ]
+            },
+            {
+              "item": "Steel Helmet",
+              "item_rarity": "common",
+              "type": "Armor",
+              "chance": 2,
+              "quantity": [
+                1,
+                1
+              ]
+            },
+            {
+              "item": "Steel Platebody",
+              "item_rarity": "common",
+              "type": "Armor",
+              "chance": 2,
+              "quantity": [
+                1,
+                1
+              ]
+            },
+            {
+              "item": "Steel Platelegs",
+              "item_rarity": "common",
+              "type": "Armor",
+              "chance": 2,
+              "quantity": [
+                1,
+                1
+              ]
+            },
+            {
+              "item": "Steel Square Shield",
+              "item_rarity": "common",
+              "type": "Armor",
+              "chance": 2,
+              "quantity": [
+                1,
+                1
+              ]
+            },
+            {
+              "item": "Steel Cape",
+              "item_rarity": "common",
+              "type": "Armor",
+              "chance": 2,
+              "quantity": [
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "rare": {
+          "table_chance": 0,
+          "outcomes": []
+        }
+      },
+      "Goblin Chieftain": {
+        "tier": 5,
+        "gold": {
+          "min": 180,
+          "max": 320
+        },
+        "guaranteed": [],
+        "common": {
+          "attempts": 3,
+          "outcomes": [
+            {
+              "item": null,
+              "item_rarity": null,
+              "type": "nothing",
+              "chance": 85.0,
+              "quantity": [
+                0,
+                0
+              ]
+            },
+            {
+              "item": "Blacksteel Ingot",
+              "item_rarity": "common",
+              "type": "Crafting",
+              "chance": 6.0,
+              "quantity": [
+                1,
+                2
+              ]
+            },
+            {
+              "item": "Enchanted Cloth",
+              "item_rarity": "common",
+              "type": "Crafting",
+              "chance": 6.0,
+              "quantity": [
+                1,
+                2
+              ]
+            },
+            {
+              "item": "Steel Warmaul",
+              "item_rarity": "common",
+              "type": "Weapon",
+              "chance": 1.5,
+              "quantity": [
+                1,
+                1
+              ]
+            },
+            {
+              "item": "Steel Longsword",
+              "item_rarity": "common",
+              "type": "Weapon",
+              "chance": 1.5,
+              "quantity": [
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "rare": {
+          "table_chance": 5,
+          "outcomes": [
+            {
+              "item": "Blacksteel Platebody",
+              "item_rarity": "common",
+              "type": "Armor",
+              "chance": 30.0,
+              "quantity": [
+                1,
+                1
+              ]
+            },
+            {
+              "item": "Blacksteel Warmaul",
+              "item_rarity": "common",
+              "type": "Weapon",
+              "chance": 30.0,
+              "quantity": [
+                1,
+                1
+              ]
+            },
+            {
+              "item": "Blacksteel Longsword",
+              "item_rarity": "common",
+              "type": "Weapon",
+              "chance": 25.0,
+              "quantity": [
+                1,
+                1
+              ]
+            },
+            {
+              "item": "Blacksteel Ring",
+              "item_rarity": "common",
+              "type": "Armor",
+              "chance": 15.0,
+              "quantity": [
+                1,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      "Goblin Shaman": {
+        "tier": 5,
+        "gold": {
+          "min": 120,
+          "max": 220
+        },
+        "guaranteed": [],
+        "common": {
+          "attempts": 2,
+          "outcomes": [
+            {
+              "item": null,
+              "item_rarity": null,
+              "type": "nothing",
+              "chance": 79.0,
+              "quantity": [
+                0,
+                0
+              ]
+            },
+            {
+              "item": "Steel Magic Staff",
+              "item_rarity": "common",
+              "type": "Weapon",
+              "chance": 6.0,
+              "quantity": [
+                1,
+                1
+              ]
+            },
+            {
+              "item": "Steel Magic Wand",
+              "item_rarity": "common",
+              "type": "Weapon",
+              "chance": 6.0,
+              "quantity": [
+                1,
+                1
+              ]
+            },
+            {
+              "item": "Blacksteel Ingot",
+              "item_rarity": "common",
+              "type": "Crafting",
+              "chance": 5.0,
+              "quantity": [
+                1,
+                2
+              ]
+            },
+            {
+              "item": "Enchanted Cloth",
+              "item_rarity": "common",
+              "type": "Crafting",
+              "chance": 4.0,
+              "quantity": [
+                1,
+                2
+              ]
+            }
+          ]
+        },
+        "rare": {
+          "table_chance": 3,
+          "outcomes": [
+            {
+              "item": "Blacksteel Magic Staff",
+              "item_rarity": "common",
+              "type": "Weapon",
+              "chance": 50.0,
+              "quantity": [
+                1,
+                1
+              ]
+            },
+            {
+              "item": "Blacksteel Magic Wand",
+              "item_rarity": "common",
+              "type": "Weapon",
+              "chance": 50.0,
+              "quantity": [
+                1,
+                1
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "bandits": {
+      "Bandit Cutpurse": {
+        "tier": 1,
+        "gold": {
+          "min": 5,
+          "max": 12
+        },
+        "loot": [
+          {
+            "item": "Bronze Dagger",
+            "type": "weapon",
+            "chance": 2
+          },
+          {
+            "item": "Bronze Shortsword",
+            "type": "weapon",
+            "chance": 2
+          },
+          {
+            "item": "Bronze Helmet",
+            "type": "armor",
+            "chance": 2
+          },
+          {
+            "item": "Ripped Cloth",
+            "type": "crafting",
+            "chance": 25
+          }
+        ]
+      },
+      "Bandit Footpad": {
+        "tier": 2,
+        "gold": {
+          "min": 20,
+          "max": 40
+        },
+        "loot": [
+          {
+            "item": "Iron Dagger",
+            "type": "weapon",
+            "chance": 1
+          },
+          {
+            "item": "Iron Shortsword",
+            "type": "weapon",
+            "chance": 1
+          }
+        ]
+      },
+      "Bandit Enforcer": {
+        "tier": 3,
+        "gold": {
+          "min": 60,
+          "max": 110
+        },
+        "loot": []
+      },
+      "Bandit Sharpshooter": {
+        "tier": 4,
+        "gold": {
+          "min": 140,
+          "max": 240
+        },
+        "loot": [
+          {
+            "item": "Blacksteel Bow",
+            "type": "weapon",
+            "chance": 1
+          },
+          {
+            "item": "Blacksteel Crossbow",
+            "type": "weapon",
+            "chance": 1
+          }
+        ]
+      },
+      "Bandit Sorcerer": {
+        "tier": 5,
+        "gold": {
+          "min": 300,
+          "max": 480
+        },
+        "loot": [
+          {
+            "item": "Enchanted Cloth",
+            "type": "crafting",
+            "chance": 35
+          }
+        ]
+      },
+      "Bandit Boss": {
+        "tier": 5,
+        "gold": {
+          "min": 300,
+          "max": 500
+        },
+        "loot": [
+          {
+            "item": "Mithril Helmet",
+            "type": "armor",
+            "chance": 1
+          }
+        ]
+      }
+    },
+    "skeletons": {
+      "Skeleton Boneshard": {
+        "tier": 1,
+        "gold": {
+          "min": 3,
+          "max": 8
+        },
+        "loot": [
+          {
+            "item": "Bronze Dagger",
+            "type": "weapon",
+            "chance": 2
+          }
+        ]
+      },
+      "Skeleton Footsoldier": {
+        "tier": 2,
+        "gold": {
+          "min": 15,
+          "max": 40
+        },
+        "loot": []
+      },
+      "Skeleton Knight": {
+        "tier": 3,
+        "gold": {
+          "min": 50,
+          "max": 120
+        },
+        "loot": [
+          {
+            "item": "Steel Mace",
+            "type": "weapon",
+            "chance": 2
+          }
+        ]
+      },
+      "Skeleton Sniper": {
+        "tier": 4,
+        "gold": {
+          "min": 140,
+          "max": 250
+        },
+        "loot": [
+          {
+            "item": "Blacksteel Crossbow",
+            "type": "weapon",
+            "chance": 2
+          }
+        ]
+      },
+      "Skeleton Acolyte": {
+        "tier": 5,
+        "gold": {
+          "min": 300,
+          "max": 500
+        },
+        "loot": [
+          {
+            "item": "Dark Essence",
+            "type": "enchantment",
+            "chance": 20
+          }
+        ]
+      },
+      "Skeleton Captain": {
+        "tier": 5,
+        "gold": {
+          "min": 300,
+          "max": 500
+        },
+        "loot": [
+          {
+            "item": "Mithril Platelegs",
+            "type": "armor",
+            "chance": 2
+          }
+        ]
+      }
+    }
+  }
+}

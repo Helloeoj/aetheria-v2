@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/MapTiles/Objects/Harbor_Rocks_068.png" id="1_jkjee"]
+
+[node name="Harbor_Rocks_068" type="Node2D"]
+y_sort_enabled = true
+texture_filter = 1
+metadata/kind = "Rocks"
+
+[node name="Footprint" type="StaticBody2D" parent="." groups=["map_object", "world_solid"]]
+position = Vector2(14, 9)
+collision_mask = 0
+metadata/kind = "Rocks"
+
+[node name="Visual" type="Sprite2D" parent="Footprint"]
+position = Vector2(-11, -20)
+texture = ExtResource("1_jkjee")
+centered = false
+
+[node name="SolidPolygon1" type="CollisionPolygon2D" parent="Footprint"]
+polygon = PackedVector2Array(-9.5, -11.968, 9.5, -11.968, 9.5, 0, -9.5, 0)

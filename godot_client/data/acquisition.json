@@ -1,0 +1,433 @@
+{
+  "schema_version": 1,
+  "highest_material_tier": 7,
+  "approved_boss_names": [
+    "Golem Titan",
+    "Aetherwyrm",
+    "Demon Overlord"
+  ],
+  "safe_sinew_families": [
+    "wolfs",
+    "bats",
+    "spider"
+  ],
+  "item_policies": {
+    "Beginner Rod": {
+      "drop_route": "none",
+      "purchase": true,
+      "shop": "bait_store"
+    },
+    "Apprentice Rod": {
+      "drop_route": "none",
+      "purchase": true,
+      "shop": "bait_store"
+    },
+    "Pro Rod": {
+      "drop_route": "none",
+      "purchase": true,
+      "shop": "bait_store"
+    },
+    "Low Grade Fish Food": {
+      "drop_route": "monster",
+      "purchase": true,
+      "shop": "bait_store"
+    },
+    "Medium Grade Fish Food": {
+      "drop_route": "monster",
+      "purchase": true,
+      "shop": "bait_store"
+    },
+    "High Grade Fish Food": {
+      "drop_route": "monster",
+      "purchase": true,
+      "shop": "bait_store"
+    },
+    "Master Rod": {
+      "drop_route": "none",
+      "purchase": true,
+      "shop": "bait_store"
+    },
+    "Demon Rod": {
+      "drop_route": "bosses",
+      "source_names": [
+        "Demon Overlord"
+      ],
+      "purchase": false,
+      "supply_pending": true,
+      "rarity_note": "rare; odds deferred"
+    },
+    "Magic Orb": {
+      "drop_route": "families",
+      "source_families": [
+        "cultists"
+      ],
+      "purchase": false,
+      "supply_pending": true
+    },
+    "Fire Sigil": {
+      "drop_route": "bosses",
+      "source_names": [
+        "Golem Titan",
+        "Aetherwyrm",
+        "Demon Overlord"
+      ],
+      "purchase": false,
+      "supply_pending": true,
+      "rarity_note": "rare; odds and individual boss assignments deferred"
+    },
+    "Fire Orb": {
+      "drop_route": "bosses",
+      "source_names": [
+        "Golem Titan",
+        "Aetherwyrm",
+        "Demon Overlord"
+      ],
+      "purchase": false,
+      "supply_pending": true
+    },
+    "Ice Sigil": {
+      "drop_route": "bosses",
+      "source_names": [
+        "Golem Titan",
+        "Aetherwyrm",
+        "Demon Overlord"
+      ],
+      "purchase": false,
+      "supply_pending": true,
+      "rarity_note": "rare; odds and individual boss assignments deferred"
+    },
+    "Ice Orb": {
+      "drop_route": "bosses",
+      "source_names": [
+        "Golem Titan",
+        "Aetherwyrm",
+        "Demon Overlord"
+      ],
+      "purchase": false,
+      "supply_pending": true
+    },
+    "Lightning Sigil": {
+      "drop_route": "bosses",
+      "source_names": [
+        "Golem Titan",
+        "Aetherwyrm",
+        "Demon Overlord"
+      ],
+      "purchase": false,
+      "supply_pending": true,
+      "rarity_note": "rare; odds and individual boss assignments deferred"
+    },
+    "Lightning Orb": {
+      "drop_route": "bosses",
+      "source_names": [
+        "Golem Titan",
+        "Aetherwyrm",
+        "Demon Overlord"
+      ],
+      "purchase": false,
+      "supply_pending": true
+    },
+    "Hurricane Sigil": {
+      "drop_route": "bosses",
+      "source_names": [
+        "Golem Titan",
+        "Aetherwyrm",
+        "Demon Overlord"
+      ],
+      "purchase": false,
+      "supply_pending": true,
+      "rarity_note": "rare; odds and individual boss assignments deferred"
+    },
+    "Hurricane Orb": {
+      "drop_route": "bosses",
+      "source_names": [
+        "Golem Titan",
+        "Aetherwyrm",
+        "Demon Overlord"
+      ],
+      "purchase": false,
+      "supply_pending": true
+    },
+    "Apprentice Magic Staff (Fire)": {
+      "drop_route": "none",
+      "purchase": false
+    },
+    "Apprentice Magic Staff (Ice)": {
+      "drop_route": "none",
+      "purchase": false
+    },
+    "Apprentice Magic Staff (Lightning)": {
+      "drop_route": "none",
+      "purchase": false
+    },
+    "Apprentice Magic Staff (Hurricane)": {
+      "drop_route": "none",
+      "purchase": false
+    },
+    "Adept Magic Staff (Fire)": {
+      "drop_route": "none",
+      "purchase": false
+    },
+    "Adept Magic Staff (Ice)": {
+      "drop_route": "none",
+      "purchase": false
+    },
+    "Adept Magic Staff (Lightning)": {
+      "drop_route": "none",
+      "purchase": false
+    },
+    "Adept Magic Staff (Hurricane)": {
+      "drop_route": "none",
+      "purchase": false
+    },
+    "Runic Magic Staff (Fire)": {
+      "drop_route": "none",
+      "purchase": false
+    },
+    "Runic Magic Staff (Ice)": {
+      "drop_route": "none",
+      "purchase": false
+    },
+    "Runic Magic Staff (Lightning)": {
+      "drop_route": "none",
+      "purchase": false
+    },
+    "Runic Magic Staff (Hurricane)": {
+      "drop_route": "none",
+      "purchase": false
+    },
+    "Enchanted Magic Staff (Fire)": {
+      "drop_route": "none",
+      "purchase": false
+    },
+    "Enchanted Magic Staff (Ice)": {
+      "drop_route": "none",
+      "purchase": false
+    },
+    "Enchanted Magic Staff (Lightning)": {
+      "drop_route": "none",
+      "purchase": false
+    },
+    "Enchanted Magic Staff (Hurricane)": {
+      "drop_route": "none",
+      "purchase": false
+    },
+    "Astral Magic Staff (Fire)": {
+      "drop_route": "none",
+      "purchase": false
+    },
+    "Astral Magic Staff (Ice)": {
+      "drop_route": "none",
+      "purchase": false
+    },
+    "Astral Magic Staff (Lightning)": {
+      "drop_route": "none",
+      "purchase": false
+    },
+    "Astral Magic Staff (Hurricane)": {
+      "drop_route": "none",
+      "purchase": false
+    },
+    "Empyrean Magic Staff (Fire)": {
+      "drop_route": "none",
+      "purchase": false
+    },
+    "Empyrean Magic Staff (Ice)": {
+      "drop_route": "none",
+      "purchase": false
+    },
+    "Empyrean Magic Staff (Lightning)": {
+      "drop_route": "none",
+      "purchase": false
+    },
+    "Empyrean Magic Staff (Hurricane)": {
+      "drop_route": "none",
+      "purchase": false
+    },
+    "Celestial Magic Staff (Fire)": {
+      "drop_route": "none",
+      "purchase": false
+    },
+    "Celestial Magic Staff (Ice)": {
+      "drop_route": "none",
+      "purchase": false
+    },
+    "Celestial Magic Staff (Lightning)": {
+      "drop_route": "none",
+      "purchase": false
+    },
+    "Celestial Magic Staff (Hurricane)": {
+      "drop_route": "none",
+      "purchase": false
+    },
+    "Starter Hide": {
+      "drop_route": "families",
+      "source_families": [
+        "wolfs",
+        "bats",
+        "spider"
+      ],
+      "purchase": false
+    },
+    "Tanned Leather": {
+      "drop_route": "families",
+      "source_families": [
+        "wolfs",
+        "bats",
+        "spider"
+      ],
+      "purchase": false
+    },
+    "Animal Sinew": {
+      "drop_route": "families",
+      "source_families": [
+        "wolfs",
+        "bats",
+        "spider"
+      ],
+      "purchase": false
+    },
+    "Wolf Hide": {
+      "drop_route": "families",
+      "source_families": [
+        "wolfs"
+      ],
+      "purchase": false
+    },
+    "Wolf Leather": {
+      "drop_route": "families",
+      "source_families": [
+        "wolfs"
+      ],
+      "purchase": false
+    },
+    "Direwolf Hide": {
+      "drop_route": "names",
+      "source_names": [
+        "Wolf Direwolf",
+        "Wolf Moonfang",
+        "Wolf Elder Fang"
+      ],
+      "purchase": false
+    },
+    "Direwolf Leather": {
+      "drop_route": "names",
+      "source_names": [
+        "Wolf Direwolf",
+        "Wolf Moonfang",
+        "Wolf Elder Fang"
+      ],
+      "purchase": false
+    },
+    "Troll Hide": {
+      "drop_route": "families",
+      "source_families": [
+        "troll"
+      ],
+      "purchase": false
+    },
+    "Troll Leather": {
+      "drop_route": "families",
+      "source_families": [
+        "troll"
+      ],
+      "purchase": false
+    },
+    "Dragon Scales": {
+      "drop_route": "families",
+      "source_families": [
+        "dragon",
+        "dragons"
+      ],
+      "purchase": false,
+      "supply_pending": true
+    },
+    "Dragon Scale Leather": {
+      "drop_route": "families",
+      "source_families": [
+        "dragon",
+        "dragons"
+      ],
+      "purchase": false,
+      "supply_pending": true
+    },
+    "Demon Skin": {
+      "drop_route": "families",
+      "source_families": [
+        "demon",
+        "demons"
+      ],
+      "purchase": false,
+      "supply_pending": true
+    },
+    "Demon Skin Leather": {
+      "drop_route": "families",
+      "source_families": [
+        "demon",
+        "demons"
+      ],
+      "purchase": false,
+      "supply_pending": true
+    },
+    "Starforged Ore": {
+      "drop_route": "bosses",
+      "source_names": [
+        "Golem Titan"
+      ],
+      "purchase": false,
+      "supply_pending": true
+    },
+    "Starforged Ingot": {
+      "drop_route": "bosses",
+      "source_names": [
+        "Golem Titan"
+      ],
+      "purchase": false,
+      "supply_pending": true
+    },
+    "Starforged Arrowheads": {
+      "drop_route": "bosses",
+      "source_names": [
+        "Golem Titan"
+      ],
+      "purchase": false,
+      "supply_pending": true
+    },
+    "Starforged Bolts": {
+      "drop_route": "bosses",
+      "source_names": [
+        "Golem Titan"
+      ],
+      "purchase": false,
+      "supply_pending": true
+    },
+    "Aetherwyrm Leather": {
+      "drop_route": "bosses",
+      "source_names": [
+        "Aetherwyrm"
+      ],
+      "purchase": false,
+      "supply_pending": true
+    },
+    "Celestial Cloth": {
+      "drop_route": "pending",
+      "source_names": [],
+      "purchase": false,
+      "supply_pending": true
+    },
+    "Starforged Arrows": {
+      "drop_route": "bosses",
+      "source_names": [
+        "Golem Titan"
+      ],
+      "purchase": false,
+      "supply_pending": true
+    }
+  },
+  "notes": [
+    "Policies grant eligibility, not a probability or a guaranteed drop. Boss/cultist supplies stay pending until exact loot odds are approved.",
+    "Unknown boss flags do not qualify; exact configured names only.",
+    "No human or humanoid sinew. Harpies are excluded conservatively.",
+    "Highest-tier crafting materials cannot be bought or supplied by ordinary monsters. Celestial source remains unassigned."
+  ]
+}

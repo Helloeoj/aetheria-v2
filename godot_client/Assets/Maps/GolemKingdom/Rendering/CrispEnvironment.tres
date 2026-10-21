@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3]
+
+[ext_resource type="Shader" path="res://Assets/Maps/GolemKingdom/Rendering/CrispEnvironment.gdshader" id="1"]
+[ext_resource type="Texture2D" path="res://Assets/Maps/GolemKingdom/Rendering/ColorLookup512.png" id="2"]
+
+[resource]
+resource_name = "Golem Kingdom crisp environment"
+shader = ExtResource("1")
+shader_parameter/color_lookup = ExtResource("2")
+shader_parameter/edge_strength = 0.65
+shader_parameter/ink_strength = 1.0
+shader_parameter/ink_threshold = 0.4
+shader_parameter/palette_strength = 1.0
+shader_parameter/denoise_strength = 1.0
+shader_parameter/ink_hardness = 1.0

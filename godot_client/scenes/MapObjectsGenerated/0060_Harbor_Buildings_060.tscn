@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/MapTiles/Objects/Harbor_Buildings_060.png" id="1_nk0d4"]
+
+[node name="Harbor_Buildings_060" type="Node2D"]
+y_sort_enabled = true
+texture_filter = 1
+metadata/kind = "Buildings"
+
+[node name="Footprint" type="StaticBody2D" parent="." groups=["map_object", "world_solid"]]
+position = Vector2(4, 11)
+collision_mask = 0
+metadata/kind = "Buildings"
+
+[node name="Visual" type="Sprite2D" parent="Footprint"]
+position = Vector2(-73, -185)
+texture = ExtResource("1_nk0d4")
+centered = false
+
+[node name="SolidPolygon1" type="CollisionPolygon2D" parent="Footprint"]
+polygon = PackedVector2Array(-58.28, -63.58, 95.28, -63.58, 95.28, 0, -58.28, 0)

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "pairs": [
+    {
+      "file": "pair_01.png",
+      "species": [
+        "Reedkip",
+        "Marlo"
+      ],
+      "components": [
+        0,
+        1
+      ]
+    },
+    {
+      "file": "pair_02.png",
+      "species": [
+        "Bracken",
+        "Kessa"
+      ],
+      "components": [
+        0,
+        1
+      ]
+    },
+    {
+      "file": "pair_03.png",
+      "species": [
+        "Veilfin",
+        "Lumara"
+      ],
+      "components": [
+        0,
+        1
+      ]
+    },
+    {
+      "file": "pair_04.png",
+      "species": [
+        "Vesper",
+        "Moonfin"
+      ],
+      "components": [
+        0,
+        1
+      ]
+    },
+    {
+      "file": "pair_05.png",
+      "species": [
+        "Velora",
+        "Sunfish"
+      ],
+      "components": [
+        1,
+        2
+      ]
+    }
+  ]
+}

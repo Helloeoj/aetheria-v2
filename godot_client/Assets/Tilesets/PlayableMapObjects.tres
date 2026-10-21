@@ -1,0 +1,350 @@
+[gd_resource type="TileSet" load_steps=172 format=3 uid="uid://drjrx5mn24r8w"]
+
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0000_Outskirts_Walls_000.tscn" id="1_tksgv"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0001_Outskirts_Buildings_001.tscn" id="2_4s6sl"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0010_Outskirts_Rocks_010.tscn" id="3_5ftb0"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0100_Harbor_Trees_100.tscn" id="4_s4s6r"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0101_Harbor_Trees_101.tscn" id="5_qnnj1"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0102_Harbor_Trees_102.tscn" id="6_1njao"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0103_Harbor_Trees_103.tscn" id="7_a0x5n"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0104_Harbor_Trees_104.tscn" id="8_kp6tb"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0105_Harbor_Trees_105.tscn" id="9_qljvc"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0106_Harbor_Trees_106.tscn" id="10_n73i0"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0107_Harbor_Trees_107.tscn" id="11_f865d"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0108_Harbor_Trees_108.tscn" id="12_23vqf"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0109_Harbor_Trees_109.tscn" id="13_x7f4u"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0011_Outskirts_Rocks_011.tscn" id="14_qhmd1"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0110_Harbor_Trees_110.tscn" id="15_b82va"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0111_Harbor_Boats_111.tscn" id="16_gwdb1"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0112_Harbor_Boats_112.tscn" id="17_650hl"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0113_Harbor_Boats_113.tscn" id="18_axlmg"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0114_Harbor_Boats_114.tscn" id="19_msfmj"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0115_Harbor_Boats_115.tscn" id="20_hbx2q"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0116_Harbor_Boats_116.tscn" id="21_ybmvn"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0117_Harbor_Boats_117.tscn" id="22_1k5d1"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0118_Harbor_Boats_118.tscn" id="23_1hh7d"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0119_Harbor_Boats_119.tscn" id="24_5qojs"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0012_Outskirts_Rocks_012.tscn" id="25_bqeqt"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0120_Harbor_Props_120.tscn" id="26_06dc6"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0121_Harbor_Props_121.tscn" id="27_swjcg"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0122_Harbor_Props_122.tscn" id="28_7snqh"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0123_Harbor_Props_123.tscn" id="29_hiywi"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0124_Harbor_Props_124.tscn" id="30_hdyou"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0125_Harbor_Props_125.tscn" id="31_ba1fh"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0126_Harbor_Props_126.tscn" id="32_ve3rx"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0127_Harbor_Props_127.tscn" id="33_txi13"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0128_Harbor_Props_128.tscn" id="34_mlyfb"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0129_Harbor_Props_129.tscn" id="35_2vukv"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0013_Outskirts_Rocks_013.tscn" id="36_64eo2"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0130_Harbor_Props_130.tscn" id="37_vfmij"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0131_Harbor_Props_131.tscn" id="38_cbdsv"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0132_Harbor_Props_132.tscn" id="39_2xqy7"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0133_Harbor_Props_133.tscn" id="40_gykq8"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0134_Harbor_Props_134.tscn" id="41_toqft"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0135_Harbor_Props_135.tscn" id="42_4d0bb"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0136_Harbor_Props_136.tscn" id="43_8eh1v"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0137_Harbor_Props_137.tscn" id="44_yrg4p"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0138_Harbor_Props_138.tscn" id="45_sag6e"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0139_Harbor_Props_139.tscn" id="46_jlnku"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0014_Outskirts_Rocks_014.tscn" id="47_xajxh"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0140_Harbor_Props_140.tscn" id="48_dmy4a"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0141_Harbor_Props_141.tscn" id="49_b7try"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0142_Harbor_Props_142.tscn" id="50_crsbv"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0143_Harbor_Props_143.tscn" id="51_w7pfv"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0144_Harbor_Props_144.tscn" id="52_2lc51"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0145_Harbor_Props_145.tscn" id="53_62yxe"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0146_Harbor_Props_146.tscn" id="54_hgkgr"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0147_Harbor_Props_147.tscn" id="55_nwn5a"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0148_Harbor_Props_148.tscn" id="56_fviuk"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0149_Harbor_Props_149.tscn" id="57_f1tvd"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0015_Outskirts_Rocks_015.tscn" id="58_4q2nq"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0150_Harbor_Props_150.tscn" id="59_lvsvr"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0151_Harbor_Props_151.tscn" id="60_l36cn"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0152_Harbor_Props_152.tscn" id="61_lrj45"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0153_Harbor_Props_153.tscn" id="62_ai5g4"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0154_Harbor_Props_154.tscn" id="63_uh2cp"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0155_Harbor_Props_155.tscn" id="64_aga2q"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0156_Harbor_Props_156.tscn" id="65_1kb6y"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0157_Harbor_Props_157.tscn" id="66_n1hsc"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0158_Harbor_Props_158.tscn" id="67_rifbj"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0159_Harbor_Props_159.tscn" id="68_srf4t"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0016_Outskirts_Rocks_016.tscn" id="69_u13bf"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0160_Harbor_Props_160.tscn" id="70_i8h42"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0161_Harbor_Props_161.tscn" id="71_qcbpb"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0162_Harbor_Props_162.tscn" id="72_3bp06"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0163_Harbor_Props_163.tscn" id="73_o45sq"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0164_Harbor_Props_164.tscn" id="74_e5vda"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0165_Harbor_Props_165.tscn" id="75_f3vxf"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0166_Harbor_Props_166.tscn" id="76_ethoq"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0167_Harbor_Props_167.tscn" id="77_w8r0a"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0168_Harbor_Props_168.tscn" id="78_6wi8x"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0169_Harbor_Props_169.tscn" id="79_bepdh"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0017_Outskirts_Trees_017.tscn" id="80_06p5d"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0018_Outskirts_Trees_018.tscn" id="81_xh115"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0019_Outskirts_Trees_019.tscn" id="82_ly6gl"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0002_Outskirts_Rocks_002.tscn" id="83_7of3o"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0020_Outskirts_Trees_020.tscn" id="84_km7oq"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0021_Outskirts_Trees_021.tscn" id="85_5n51b"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0022_Outskirts_Trees_022.tscn" id="86_4ja6m"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0023_Outskirts_Trees_023.tscn" id="87_i2wu2"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0024_Outskirts_Trees_024.tscn" id="88_ybv1t"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0025_Outskirts_Trees_025.tscn" id="89_a8oxb"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0026_Outskirts_Trees_026.tscn" id="90_wrtab"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0027_Outskirts_Trees_027.tscn" id="91_opudu"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0028_Outskirts_Trees_028.tscn" id="92_ksxvn"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0029_Outskirts_Trees_029.tscn" id="93_ork6b"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0003_Outskirts_Rocks_003.tscn" id="94_iv3kt"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0030_Outskirts_Trees_030.tscn" id="95_y0wn0"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0031_Outskirts_Trees_031.tscn" id="96_p2u1y"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0032_Outskirts_Trees_032.tscn" id="97_qw2s2"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0033_Outskirts_Trees_033.tscn" id="98_1auiw"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0034_Outskirts_Trees_034.tscn" id="99_vy8fa"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0035_Outskirts_Trees_035.tscn" id="100_vauy8"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0036_Outskirts_Trees_036.tscn" id="101_a4cm6"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0037_Outskirts_Trees_037.tscn" id="102_tmigq"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0038_Outskirts_Trees_038.tscn" id="103_181ry"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0039_Outskirts_Trees_039.tscn" id="104_c5p56"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0004_Outskirts_Rocks_004.tscn" id="105_xwble"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0040_Outskirts_Trees_040.tscn" id="106_f0qud"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0041_Outskirts_Trees_041.tscn" id="107_xioi4"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0042_Outskirts_Trees_042.tscn" id="108_gn0ul"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0043_Outskirts_Trees_043.tscn" id="109_0c8pc"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0044_Outskirts_Trees_044.tscn" id="110_gd0wd"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0045_Outskirts_Trees_045.tscn" id="111_paq7n"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0046_Outskirts_Trees_046.tscn" id="112_w1b8q"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0047_Outskirts_Trees_047.tscn" id="113_qmlus"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0048_Outskirts_Trees_048.tscn" id="114_unbb0"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0049_Outskirts_Trees_049.tscn" id="115_geeie"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0005_Outskirts_Rocks_005.tscn" id="116_k56le"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0050_Outskirts_Trees_050.tscn" id="117_05lt0"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0051_Outskirts_Trees_051.tscn" id="118_ib6cy"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0052_Outskirts_Trees_052.tscn" id="119_0vnu2"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0053_Outskirts_Trees_053.tscn" id="120_i3ch3"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0054_Outskirts_Trees_054.tscn" id="121_8d821"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0055_Outskirts_Trees_055.tscn" id="122_1wf83"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0056_Harbor_Walls_056.tscn" id="123_0mmyu"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0057_Harbor_Buildings_057.tscn" id="124_nxliy"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0058_Harbor_Buildings_058.tscn" id="125_o8lnf"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0059_Harbor_Buildings_059.tscn" id="126_wp2ad"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0006_Outskirts_Rocks_006.tscn" id="127_c2bv3"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0060_Harbor_Buildings_060.tscn" id="128_2o3lh"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0061_Harbor_Buildings_061.tscn" id="129_2p7ux"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0062_Harbor_Buildings_062.tscn" id="130_8bdq6"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0063_Harbor_Rocks_063.tscn" id="131_r4b6p"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0064_Harbor_Rocks_064.tscn" id="132_cd33s"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0065_Harbor_Rocks_065.tscn" id="133_5tpmk"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0066_Harbor_Rocks_066.tscn" id="134_r464y"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0067_Harbor_Rocks_067.tscn" id="135_k34ey"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0068_Harbor_Rocks_068.tscn" id="136_kre5h"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0069_Harbor_Rocks_069.tscn" id="137_7k1lo"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0007_Outskirts_Rocks_007.tscn" id="138_tmkif"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0070_Harbor_Rocks_070.tscn" id="139_kofor"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0071_Harbor_Rocks_071.tscn" id="140_1kj7b"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0072_Harbor_Rocks_072.tscn" id="141_omvhn"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0073_Harbor_Rocks_073.tscn" id="142_5v8tk"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0074_Harbor_Rocks_074.tscn" id="143_03q36"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0075_Harbor_Rocks_075.tscn" id="144_o0syb"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0076_Harbor_Rocks_076.tscn" id="145_ox5y2"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0077_Harbor_Trees_077.tscn" id="146_b8nif"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0078_Harbor_Trees_078.tscn" id="147_udqac"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0079_Harbor_Trees_079.tscn" id="148_7rr1v"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0008_Outskirts_Rocks_008.tscn" id="149_gnb3j"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0080_Harbor_Trees_080.tscn" id="150_xesv0"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0081_Harbor_Trees_081.tscn" id="151_nmyr6"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0082_Harbor_Trees_082.tscn" id="152_dj8mt"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0083_Harbor_Trees_083.tscn" id="153_unkpg"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0084_Harbor_Trees_084.tscn" id="154_5syo8"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0085_Harbor_Trees_085.tscn" id="155_abv7r"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0086_Harbor_Trees_086.tscn" id="156_ghu1e"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0087_Harbor_Trees_087.tscn" id="157_qtf65"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0088_Harbor_Trees_088.tscn" id="158_ybcrq"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0089_Harbor_Trees_089.tscn" id="159_7fo35"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0009_Outskirts_Rocks_009.tscn" id="160_vpy55"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0090_Harbor_Trees_090.tscn" id="161_3rhdw"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0091_Harbor_Trees_091.tscn" id="162_2q141"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0092_Harbor_Trees_092.tscn" id="163_7gw2m"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0093_Harbor_Trees_093.tscn" id="164_x2kss"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0094_Harbor_Trees_094.tscn" id="165_o8emg"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0095_Harbor_Trees_095.tscn" id="166_ai553"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0096_Harbor_Trees_096.tscn" id="167_b5r3q"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0097_Harbor_Trees_097.tscn" id="168_qomjg"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0098_Harbor_Trees_098.tscn" id="169_ct418"]
+[ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0099_Harbor_Trees_099.tscn" id="170_m70qa"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_hklcv"]
+resource_name = "Trees buildings rocks and harbor props"
+scenes/0/scene = ExtResource("1_tksgv")
+scenes/1/scene = ExtResource("2_4s6sl")
+scenes/2/scene = ExtResource("83_7of3o")
+scenes/3/scene = ExtResource("94_iv3kt")
+scenes/4/scene = ExtResource("105_xwble")
+scenes/5/scene = ExtResource("116_k56le")
+scenes/6/scene = ExtResource("127_c2bv3")
+scenes/7/scene = ExtResource("138_tmkif")
+scenes/8/scene = ExtResource("149_gnb3j")
+scenes/9/scene = ExtResource("160_vpy55")
+scenes/10/scene = ExtResource("3_5ftb0")
+scenes/11/scene = ExtResource("14_qhmd1")
+scenes/12/scene = ExtResource("25_bqeqt")
+scenes/13/scene = ExtResource("36_64eo2")
+scenes/14/scene = ExtResource("47_xajxh")
+scenes/15/scene = ExtResource("58_4q2nq")
+scenes/16/scene = ExtResource("69_u13bf")
+scenes/17/scene = ExtResource("80_06p5d")
+scenes/18/scene = ExtResource("81_xh115")
+scenes/19/scene = ExtResource("82_ly6gl")
+scenes/20/scene = ExtResource("84_km7oq")
+scenes/21/scene = ExtResource("85_5n51b")
+scenes/22/scene = ExtResource("86_4ja6m")
+scenes/23/scene = ExtResource("87_i2wu2")
+scenes/24/scene = ExtResource("88_ybv1t")
+scenes/25/scene = ExtResource("89_a8oxb")
+scenes/26/scene = ExtResource("90_wrtab")
+scenes/27/scene = ExtResource("91_opudu")
+scenes/28/scene = ExtResource("92_ksxvn")
+scenes/29/scene = ExtResource("93_ork6b")
+scenes/30/scene = ExtResource("95_y0wn0")
+scenes/31/scene = ExtResource("96_p2u1y")
+scenes/32/scene = ExtResource("97_qw2s2")
+scenes/33/scene = ExtResource("98_1auiw")
+scenes/34/scene = ExtResource("99_vy8fa")
+scenes/35/scene = ExtResource("100_vauy8")
+scenes/36/scene = ExtResource("101_a4cm6")
+scenes/37/scene = ExtResource("102_tmigq")
+scenes/38/scene = ExtResource("103_181ry")
+scenes/39/scene = ExtResource("104_c5p56")
+scenes/40/scene = ExtResource("106_f0qud")
+scenes/41/scene = ExtResource("107_xioi4")
+scenes/42/scene = ExtResource("108_gn0ul")
+scenes/43/scene = ExtResource("109_0c8pc")
+scenes/44/scene = ExtResource("110_gd0wd")
+scenes/45/scene = ExtResource("111_paq7n")
+scenes/46/scene = ExtResource("112_w1b8q")
+scenes/47/scene = ExtResource("113_qmlus")
+scenes/48/scene = ExtResource("114_unbb0")
+scenes/49/scene = ExtResource("115_geeie")
+scenes/50/scene = ExtResource("117_05lt0")
+scenes/51/scene = ExtResource("118_ib6cy")
+scenes/52/scene = ExtResource("119_0vnu2")
+scenes/53/scene = ExtResource("120_i3ch3")
+scenes/54/scene = ExtResource("121_8d821")
+scenes/55/scene = ExtResource("122_1wf83")
+scenes/56/scene = ExtResource("123_0mmyu")
+scenes/57/scene = ExtResource("124_nxliy")
+scenes/58/scene = ExtResource("125_o8lnf")
+scenes/59/scene = ExtResource("126_wp2ad")
+scenes/60/scene = ExtResource("128_2o3lh")
+scenes/61/scene = ExtResource("129_2p7ux")
+scenes/62/scene = ExtResource("130_8bdq6")
+scenes/63/scene = ExtResource("131_r4b6p")
+scenes/64/scene = ExtResource("132_cd33s")
+scenes/65/scene = ExtResource("133_5tpmk")
+scenes/66/scene = ExtResource("134_r464y")
+scenes/67/scene = ExtResource("135_k34ey")
+scenes/68/scene = ExtResource("136_kre5h")
+scenes/69/scene = ExtResource("137_7k1lo")
+scenes/70/scene = ExtResource("139_kofor")
+scenes/71/scene = ExtResource("140_1kj7b")
+scenes/72/scene = ExtResource("141_omvhn")
+scenes/73/scene = ExtResource("142_5v8tk")
+scenes/74/scene = ExtResource("143_03q36")
+scenes/75/scene = ExtResource("144_o0syb")
+scenes/76/scene = ExtResource("145_ox5y2")
+scenes/77/scene = ExtResource("146_b8nif")
+scenes/78/scene = ExtResource("147_udqac")
+scenes/79/scene = ExtResource("148_7rr1v")
+scenes/80/scene = ExtResource("150_xesv0")
+scenes/81/scene = ExtResource("151_nmyr6")
+scenes/82/scene = ExtResource("152_dj8mt")
+scenes/83/scene = ExtResource("153_unkpg")
+scenes/84/scene = ExtResource("154_5syo8")
+scenes/85/scene = ExtResource("155_abv7r")
+scenes/86/scene = ExtResource("156_ghu1e")
+scenes/87/scene = ExtResource("157_qtf65")
+scenes/88/scene = ExtResource("158_ybcrq")
+scenes/89/scene = ExtResource("159_7fo35")
+scenes/90/scene = ExtResource("161_3rhdw")
+scenes/91/scene = ExtResource("162_2q141")
+scenes/92/scene = ExtResource("163_7gw2m")
+scenes/93/scene = ExtResource("164_x2kss")
+scenes/94/scene = ExtResource("165_o8emg")
+scenes/95/scene = ExtResource("166_ai553")
+scenes/96/scene = ExtResource("167_b5r3q")
+scenes/97/scene = ExtResource("168_qomjg")
+scenes/98/scene = ExtResource("169_ct418")
+scenes/99/scene = ExtResource("170_m70qa")
+scenes/100/scene = ExtResource("4_s4s6r")
+scenes/101/scene = ExtResource("5_qnnj1")
+scenes/102/scene = ExtResource("6_1njao")
+scenes/103/scene = ExtResource("7_a0x5n")
+scenes/104/scene = ExtResource("8_kp6tb")
+scenes/105/scene = ExtResource("9_qljvc")
+scenes/106/scene = ExtResource("10_n73i0")
+scenes/107/scene = ExtResource("11_f865d")
+scenes/108/scene = ExtResource("12_23vqf")
+scenes/109/scene = ExtResource("13_x7f4u")
+scenes/110/scene = ExtResource("15_b82va")
+scenes/111/scene = ExtResource("16_gwdb1")
+scenes/112/scene = ExtResource("17_650hl")
+scenes/113/scene = ExtResource("18_axlmg")
+scenes/114/scene = ExtResource("19_msfmj")
+scenes/115/scene = ExtResource("20_hbx2q")
+scenes/116/scene = ExtResource("21_ybmvn")
+scenes/117/scene = ExtResource("22_1k5d1")
+scenes/118/scene = ExtResource("23_1hh7d")
+scenes/119/scene = ExtResource("24_5qojs")
+scenes/120/scene = ExtResource("26_06dc6")
+scenes/121/scene = ExtResource("27_swjcg")
+scenes/122/scene = ExtResource("28_7snqh")
+scenes/123/scene = ExtResource("29_hiywi")
+scenes/124/scene = ExtResource("30_hdyou")
+scenes/125/scene = ExtResource("31_ba1fh")
+scenes/126/scene = ExtResource("32_ve3rx")
+scenes/127/scene = ExtResource("33_txi13")
+scenes/128/scene = ExtResource("34_mlyfb")
+scenes/129/scene = ExtResource("35_2vukv")
+scenes/130/scene = ExtResource("37_vfmij")
+scenes/131/scene = ExtResource("38_cbdsv")
+scenes/132/scene = ExtResource("39_2xqy7")
+scenes/133/scene = ExtResource("40_gykq8")
+scenes/134/scene = ExtResource("41_toqft")
+scenes/135/scene = ExtResource("42_4d0bb")
+scenes/136/scene = ExtResource("43_8eh1v")
+scenes/137/scene = ExtResource("44_yrg4p")
+scenes/138/scene = ExtResource("45_sag6e")
+scenes/139/scene = ExtResource("46_jlnku")
+scenes/140/scene = ExtResource("48_dmy4a")
+scenes/141/scene = ExtResource("49_b7try")
+scenes/142/scene = ExtResource("50_crsbv")
+scenes/143/scene = ExtResource("51_w7pfv")
+scenes/144/scene = ExtResource("52_2lc51")
+scenes/145/scene = ExtResource("53_62yxe")
+scenes/146/scene = ExtResource("54_hgkgr")
+scenes/147/scene = ExtResource("55_nwn5a")
+scenes/148/scene = ExtResource("56_fviuk")
+scenes/149/scene = ExtResource("57_f1tvd")
+scenes/150/scene = ExtResource("59_lvsvr")
+scenes/151/scene = ExtResource("60_l36cn")
+scenes/152/scene = ExtResource("61_lrj45")
+scenes/153/scene = ExtResource("62_ai5g4")
+scenes/154/scene = ExtResource("63_uh2cp")
+scenes/155/scene = ExtResource("64_aga2q")
+scenes/156/scene = ExtResource("65_1kb6y")
+scenes/157/scene = ExtResource("66_n1hsc")
+scenes/158/scene = ExtResource("67_rifbj")
+scenes/159/scene = ExtResource("68_srf4t")
+scenes/160/scene = ExtResource("70_i8h42")
+scenes/161/scene = ExtResource("71_qcbpb")
+scenes/162/scene = ExtResource("72_3bp06")
+scenes/163/scene = ExtResource("73_o45sq")
+scenes/164/scene = ExtResource("74_e5vda")
+scenes/165/scene = ExtResource("75_f3vxf")
+scenes/166/scene = ExtResource("76_ethoq")
+scenes/167/scene = ExtResource("77_w8r0a")
+scenes/168/scene = ExtResource("78_6wi8x")
+scenes/169/scene = ExtResource("79_bepdh")
+
+[resource]
+resource_name = "Playable Map Objects"
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetScenesCollectionSource_hklcv")

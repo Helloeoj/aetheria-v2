@@ -1,0 +1,2306 @@
+[
+  {
+    "id": 2,
+    "name": "Goblin Scout",
+    "family": "goblins",
+    "tier": 1,
+    "level": 5,
+    "min_damage": 2,
+    "max_damage": 6,
+    "damage_type": "ranged",
+    "accuracy": 0.3,
+    "resistances": {
+      "slash": 0,
+      "stab": 0,
+      "blunt": 0,
+      "magic": 0,
+      "ranged": 0.05
+    },
+    "attack_speed": 3,
+    "attack_range": 18,
+    "projectile_speed": 2.5,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 5,
+      "strength": 14,
+      "defense": 3,
+      "health": 3
+    }
+  },
+  {
+    "id": 15,
+    "name": "Goblin Worker",
+    "family": "goblins",
+    "tier": 2,
+    "level": 12,
+    "damage_type": "stab",
+    "resistances": {
+      "slash": 0,
+      "stab": 0,
+      "blunt": 0,
+      "magic": 0,
+      "ranged": 0.1
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 12,
+      "strength": 24,
+      "defense": 6,
+      "health": 6
+    }
+  },
+  {
+    "id": 29,
+    "name": "Goblin Warrior",
+    "family": "goblins",
+    "tier": 3,
+    "level": 25,
+    "damage_type": "stab",
+    "resistances": {
+      "slash": 0,
+      "stab": 0,
+      "blunt": 0,
+      "magic": 0,
+      "ranged": 0.1
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 22,
+      "strength": 40,
+      "defense": 12,
+      "health": 10
+    }
+  },
+  {
+    "id": 56,
+    "name": "Goblin Shaman",
+    "family": "goblins",
+    "tier": 5,
+    "level": 45,
+    "min_damage": 20,
+    "max_damage": 36,
+    "damage_type": "magic",
+    "accuracy": 0.7,
+    "resistances": {
+      "slash": 0,
+      "stab": 0,
+      "blunt": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "damage_reductions": {
+      "slash": 0,
+      "stab": 0,
+      "blunt": 0,
+      "magic": 0.6
+    },
+    "attack_speed": 3,
+    "attack_range": 20,
+    "projectile_speed": 2,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 25,
+      "strength": 54,
+      "defense": 15,
+      "health": 35
+    }
+  },
+  {
+    "id": 60,
+    "name": "Goblin Chieftain",
+    "family": "goblins",
+    "tier": 5,
+    "level": 50,
+    "min_damage": 16,
+    "max_damage": 28,
+    "damage_type": "hybrid",
+    "hybrid_melee_style": "slash",
+    "hybrid_secondary_style": "magic",
+    "accuracy": 0.65,
+    "resistances": {
+      "slash": 0,
+      "stab": 0,
+      "blunt": 0,
+      "magic": 0,
+      "ranged": 0.15
+    },
+    "damage_reductions": {
+      "slash": 0.25,
+      "stab": 0.25,
+      "blunt": 0.25,
+      "magic": 0.25
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 85,
+      "strength": 160,
+      "defense": 50,
+      "health": 50
+    }
+  },
+  {
+    "id": 1006,
+    "name": "Bandit Cutpurse",
+    "family": "bandits",
+    "tier": 1,
+    "level": 7,
+    "damage_type": "stab",
+    "resistances": {
+      "slash": 0.05,
+      "blunt": 0.05,
+      "stab": 0.05,
+      "magic": 0,
+      "ranged": 0.05
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 7,
+      "strength": 18,
+      "defense": 7,
+      "health": 4
+    }
+  },
+  {
+    "id": 1007,
+    "name": "Bandit Footpad",
+    "family": "bandits",
+    "tier": 2,
+    "level": 14,
+    "damage_type": "stab",
+    "resistances": {
+      "slash": 0.05,
+      "blunt": 0.05,
+      "stab": 0.05,
+      "magic": 0,
+      "ranged": 0.05
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 14,
+      "strength": 34,
+      "defense": 14,
+      "health": 6
+    }
+  },
+  {
+    "id": 1008,
+    "name": "Bandit Enforcer",
+    "family": "bandits",
+    "tier": 3,
+    "level": 21,
+    "damage_type": "stab",
+    "resistances": {
+      "slash": 0.05,
+      "blunt": 0.05,
+      "stab": 0.05,
+      "magic": 0,
+      "ranged": 0.05
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 21,
+      "strength": 46,
+      "defense": 21,
+      "health": 8
+    }
+  },
+  {
+    "id": 1009,
+    "name": "Bandit Sharpshooter",
+    "family": "bandits",
+    "tier": 4,
+    "level": 28,
+    "min_damage": 14,
+    "max_damage": 18,
+    "damage_type": "ranged",
+    "accuracy": 0.39,
+    "resistances": {
+      "slash": 0.05,
+      "blunt": -0.05,
+      "stab": 0.1,
+      "magic": -0.1,
+      "ranged": 0.2
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 28,
+      "strength": 62,
+      "defense": 28,
+      "health": 10
+    }
+  },
+  {
+    "id": 1010,
+    "name": "Bandit Sorcerer",
+    "family": "bandits",
+    "tier": 5,
+    "level": 35,
+    "min_damage": 17,
+    "max_damage": 21,
+    "damage_type": "magic",
+    "accuracy": 0.45,
+    "resistances": {
+      "slash": -0.1,
+      "blunt": -0.1,
+      "stab": -0.1,
+      "magic": 0.25,
+      "ranged": 0.1
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 35,
+      "strength": 74,
+      "defense": 35,
+      "health": 12
+    }
+  },
+  {
+    "id": 1011,
+    "name": "Bandit Boss",
+    "family": "bandits",
+    "tier": 5,
+    "level": 42,
+    "min_damage": 21,
+    "max_damage": 25,
+    "damage_type": "hybrid",
+    "hybrid_melee_style": "slash",
+    "hybrid_secondary_style": "magic",
+    "accuracy": 0.51,
+    "resistances": {
+      "slash": 0.1,
+      "blunt": 0.1,
+      "stab": 0.1,
+      "magic": 0.1,
+      "ranged": 0.1
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 42,
+      "strength": 90,
+      "defense": 42,
+      "health": 14
+    }
+  },
+  {
+    "id": 1012,
+    "name": "Bat Flutter",
+    "family": "bats",
+    "tier": 1,
+    "level": 5,
+    "damage_type": "stab",
+    "resistances": {
+      "slash": 0,
+      "blunt": -0.1,
+      "stab": 0.1,
+      "magic": 0,
+      "ranged": 0.1
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 5,
+      "strength": 14,
+      "defense": 5,
+      "health": 3
+    }
+  },
+  {
+    "id": 1013,
+    "name": "Bat Nibbler",
+    "family": "bats",
+    "tier": 2,
+    "level": 10,
+    "damage_type": "stab",
+    "resistances": {
+      "slash": 0,
+      "blunt": -0.1,
+      "stab": 0.1,
+      "magic": 0,
+      "ranged": 0.1
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 10,
+      "strength": 26,
+      "defense": 10,
+      "health": 5
+    }
+  },
+  {
+    "id": 1014,
+    "name": "Bat Screecher",
+    "family": "bats",
+    "tier": 3,
+    "level": 15,
+    "min_damage": 7,
+    "max_damage": 11,
+    "damage_type": "magic",
+    "accuracy": 0.3,
+    "resistances": {
+      "slash": 0,
+      "blunt": -0.1,
+      "stab": 0.1,
+      "magic": 0.1,
+      "ranged": 0.1
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 15,
+      "strength": 34,
+      "defense": 15,
+      "health": 7
+    }
+  },
+  {
+    "id": 1015,
+    "name": "Bat Venomwing",
+    "family": "bats",
+    "tier": 4,
+    "level": 20,
+    "min_damage": 10,
+    "max_damage": 14,
+    "damage_type": "magic",
+    "accuracy": 0.36,
+    "resistances": {
+      "slash": 0,
+      "blunt": -0.1,
+      "stab": 0.1,
+      "magic": 0,
+      "ranged": 0.1
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 20,
+      "strength": 46,
+      "defense": 20,
+      "health": 9
+    }
+  },
+  {
+    "id": 1016,
+    "name": "Bat Bloodfang",
+    "family": "bats",
+    "tier": 5,
+    "level": 25,
+    "min_damage": 12,
+    "max_damage": 16,
+    "damage_type": "magic",
+    "accuracy": 0.42,
+    "resistances": {
+      "slash": 0,
+      "blunt": -0.1,
+      "stab": 0.1,
+      "magic": 0,
+      "ranged": 0.1
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 25,
+      "strength": 54,
+      "defense": 25,
+      "health": 11
+    }
+  },
+  {
+    "id": 1017,
+    "name": "Bat Hellbat",
+    "family": "bats",
+    "tier": 5,
+    "level": 30,
+    "min_damage": 15,
+    "max_damage": 19,
+    "damage_type": "magic",
+    "accuracy": 0.48,
+    "resistances": {
+      "slash": 0,
+      "blunt": -0.1,
+      "stab": 0.1,
+      "magic": 0,
+      "ranged": 0.1
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 30,
+      "strength": 66,
+      "defense": 30,
+      "health": 13
+    }
+  },
+  {
+    "id": 1018,
+    "name": "Cultist Initiate",
+    "family": "cultists",
+    "tier": 1,
+    "level": 10,
+    "min_damage": 5,
+    "max_damage": 9,
+    "damage_type": "magic",
+    "accuracy": 0.24,
+    "resistances": {
+      "slash": -0.1,
+      "blunt": -0.1,
+      "stab": 0,
+      "magic": 0.2,
+      "ranged": 0.1
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 10,
+      "strength": 26,
+      "defense": 10,
+      "health": 5
+    }
+  },
+  {
+    "id": 1019,
+    "name": "Cultist Devotee",
+    "family": "cultists",
+    "tier": 2,
+    "level": 20,
+    "min_damage": 10,
+    "max_damage": 14,
+    "damage_type": "magic",
+    "accuracy": 0.3,
+    "resistances": {
+      "slash": -0.1,
+      "blunt": -0.1,
+      "stab": 0,
+      "magic": 0.2,
+      "ranged": 0.1
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 20,
+      "strength": 46,
+      "defense": 20,
+      "health": 7
+    }
+  },
+  {
+    "id": 1020,
+    "name": "Cultist Zealot",
+    "family": "cultists",
+    "tier": 3,
+    "level": 30,
+    "damage_type": "slash",
+    "resistances": {
+      "slash": 0.15,
+      "blunt": 0.1,
+      "stab": 0.05,
+      "magic": 0,
+      "ranged": 0.05
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 30,
+      "strength": 66,
+      "defense": 30,
+      "health": 9
+    }
+  },
+  {
+    "id": 1021,
+    "name": "Cultist Hexblade",
+    "family": "cultists",
+    "tier": 4,
+    "level": 40,
+    "min_damage": 20,
+    "max_damage": 24,
+    "damage_type": "magic",
+    "accuracy": 0.42,
+    "resistances": {
+      "slash": -0.1,
+      "blunt": -0.1,
+      "stab": 0,
+      "magic": 0.2,
+      "ranged": 0.1
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 40,
+      "strength": 86,
+      "defense": 40,
+      "health": 11
+    }
+  },
+  {
+    "id": 1022,
+    "name": "Cultist Seer",
+    "family": "cultists",
+    "tier": 5,
+    "level": 50,
+    "min_damage": 25,
+    "max_damage": 29,
+    "damage_type": "magic",
+    "accuracy": 0.48,
+    "resistances": {
+      "slash": -0.1,
+      "blunt": -0.1,
+      "stab": 0,
+      "magic": 0.2,
+      "ranged": 0.1
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 50,
+      "strength": 106,
+      "defense": 50,
+      "health": 13
+    }
+  },
+  {
+    "id": 1023,
+    "name": "Cultist Archpriest",
+    "family": "cultists",
+    "tier": 5,
+    "level": 60,
+    "min_damage": 30,
+    "max_damage": 34,
+    "damage_type": "magic",
+    "accuracy": 0.54,
+    "resistances": {
+      "slash": -0.1,
+      "blunt": -0.1,
+      "stab": 0,
+      "magic": 0.2,
+      "ranged": 0.1
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 60,
+      "strength": 126,
+      "defense": 60,
+      "health": 15
+    }
+  },
+  {
+    "id": 1024,
+    "name": "Golem Shardling",
+    "family": "golem",
+    "tier": 1,
+    "level": 45,
+    "damage_type": "blunt",
+    "resistances": {
+      "slash": 0,
+      "blunt": 0,
+      "stab": 0,
+      "magic": 0,
+      "ranged": 0.3
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 60,
+      "strength": 100,
+      "defense": 45,
+      "health": 35
+    },
+    "damage_reductions": {
+      "slash": 0.6,
+      "stab": 0.6,
+      "blunt": 0.2
+    }
+  },
+  {
+    "id": 1025,
+    "name": "Golem Boulderkin",
+    "family": "golem",
+    "tier": 2,
+    "level": 75,
+    "damage_type": "blunt",
+    "resistances": {
+      "slash": 0,
+      "blunt": 0,
+      "stab": 0,
+      "magic": 0,
+      "ranged": 0.3
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 100,
+      "strength": 170,
+      "defense": 75,
+      "health": 60
+    },
+    "damage_reductions": {
+      "slash": 0.6,
+      "stab": 0.6,
+      "blunt": 0.2
+    }
+  },
+  {
+    "id": 1026,
+    "name": "Golem Stoneguard",
+    "family": "golem",
+    "tier": 3,
+    "level": 110,
+    "damage_type": "blunt",
+    "resistances": {
+      "slash": 0,
+      "blunt": 0,
+      "stab": 0,
+      "magic": 0,
+      "ranged": 0.3
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 180,
+      "strength": 240,
+      "defense": 110,
+      "health": 95
+    },
+    "damage_reductions": {
+      "slash": 0.6,
+      "stab": 0.6,
+      "blunt": 0.2
+    }
+  },
+  {
+    "id": 1027,
+    "name": "Golem Runeshell",
+    "family": "golem",
+    "tier": 4,
+    "level": 145,
+    "damage_type": "blunt",
+    "resistances": {
+      "slash": 0,
+      "blunt": 0,
+      "stab": 0,
+      "magic": 0,
+      "ranged": 0.3
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 300,
+      "strength": 340,
+      "defense": 145,
+      "health": 135
+    },
+    "damage_reductions": {
+      "slash": 0.6,
+      "stab": 0.6,
+      "blunt": 0.2
+    }
+  },
+  {
+    "id": 1029,
+    "name": "Golem Titan",
+    "family": "golem",
+    "tier": 5,
+    "level": 180,
+    "damage_type": "blunt",
+    "resistances": {
+      "slash": 0,
+      "blunt": 0,
+      "stab": 0,
+      "magic": 0,
+      "ranged": 0.3
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 500,
+      "strength": 468,
+      "defense": 180,
+      "health": 180
+    },
+    "damage_reductions": {
+      "slash": 0.6,
+      "stab": 0.6,
+      "blunt": 0.2
+    }
+  },
+  {
+    "id": 1030,
+    "name": "Harpy Chirp",
+    "family": "harpy",
+    "tier": 1,
+    "level": 8,
+    "min_damage": 4,
+    "max_damage": 8,
+    "damage_type": "ranged",
+    "accuracy": 0.21,
+    "resistances": {
+      "slash": -0.05,
+      "blunt": -0.1,
+      "stab": 0,
+      "magic": 0.1,
+      "ranged": 0.1
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 8,
+      "strength": 22,
+      "defense": 8,
+      "health": 4
+    }
+  },
+  {
+    "id": 1031,
+    "name": "Harpy Clawer",
+    "family": "harpy",
+    "tier": 2,
+    "level": 16,
+    "min_damage": 8,
+    "max_damage": 12,
+    "damage_type": "ranged",
+    "accuracy": 0.27,
+    "resistances": {
+      "slash": -0.05,
+      "blunt": -0.1,
+      "stab": 0,
+      "magic": 0.1,
+      "ranged": 0.1
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 16,
+      "strength": 38,
+      "defense": 16,
+      "health": 6
+    }
+  },
+  {
+    "id": 1032,
+    "name": "Harpy Screecher",
+    "family": "harpy",
+    "tier": 3,
+    "level": 24,
+    "min_damage": 12,
+    "max_damage": 16,
+    "damage_type": "ranged",
+    "accuracy": 0.33,
+    "resistances": {
+      "slash": -0.05,
+      "blunt": -0.1,
+      "stab": 0,
+      "magic": 0.1,
+      "ranged": 0.1
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 24,
+      "strength": 54,
+      "defense": 24,
+      "health": 8
+    }
+  },
+  {
+    "id": 1033,
+    "name": "Harpy Windrazor",
+    "family": "harpy",
+    "tier": 4,
+    "level": 32,
+    "min_damage": 16,
+    "max_damage": 20,
+    "damage_type": "ranged",
+    "accuracy": 0.39,
+    "resistances": {
+      "slash": -0.05,
+      "blunt": -0.1,
+      "stab": 0,
+      "magic": 0.1,
+      "ranged": 0.1
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 32,
+      "strength": 70,
+      "defense": 32,
+      "health": 10
+    }
+  },
+  {
+    "id": 1034,
+    "name": "Harpy Skyseer",
+    "family": "harpy",
+    "tier": 5,
+    "level": 40,
+    "min_damage": 20,
+    "max_damage": 24,
+    "damage_type": "ranged",
+    "accuracy": 0.45,
+    "resistances": {
+      "slash": -0.05,
+      "blunt": -0.1,
+      "stab": 0,
+      "magic": 0.1,
+      "ranged": 0.1
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 40,
+      "strength": 86,
+      "defense": 40,
+      "health": 12
+    }
+  },
+  {
+    "id": 1035,
+    "name": "Harpy Matriarch",
+    "family": "harpy",
+    "tier": 5,
+    "level": 48,
+    "min_damage": 24,
+    "max_damage": 28,
+    "damage_type": "ranged",
+    "accuracy": 0.51,
+    "resistances": {
+      "slash": -0.05,
+      "blunt": -0.1,
+      "stab": 0,
+      "magic": 0.1,
+      "ranged": 0.1
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 48,
+      "strength": 102,
+      "defense": 48,
+      "health": 14
+    }
+  },
+  {
+    "id": 1036,
+    "name": "Kobold Sneak",
+    "family": "kobold",
+    "tier": 1,
+    "level": 6,
+    "damage_type": "stab",
+    "resistances": {
+      "slash": 0.05,
+      "blunt": -0.05,
+      "stab": 0.1,
+      "magic": -0.1,
+      "ranged": 0.05
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 6,
+      "strength": 18,
+      "defense": 6,
+      "health": 4
+    }
+  },
+  {
+    "id": 1037,
+    "name": "Kobold Forager",
+    "family": "kobold",
+    "tier": 2,
+    "level": 12,
+    "damage_type": "stab",
+    "resistances": {
+      "slash": 0.05,
+      "blunt": -0.05,
+      "stab": 0.1,
+      "magic": -0.1,
+      "ranged": 0.05
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 12,
+      "strength": 30,
+      "defense": 12,
+      "health": 6
+    }
+  },
+  {
+    "id": 1038,
+    "name": "Kobold Scrapper",
+    "family": "kobold",
+    "tier": 3,
+    "level": 18,
+    "damage_type": "stab",
+    "resistances": {
+      "slash": 0.05,
+      "blunt": -0.05,
+      "stab": 0.1,
+      "magic": -0.1,
+      "ranged": 0.05
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 18,
+      "strength": 42,
+      "defense": 18,
+      "health": 8
+    }
+  },
+  {
+    "id": 1039,
+    "name": "Kobold Slinger",
+    "family": "kobold",
+    "tier": 4,
+    "level": 24,
+    "min_damage": 12,
+    "max_damage": 16,
+    "damage_type": "ranged",
+    "accuracy": 0.39,
+    "resistances": {
+      "slash": 0.05,
+      "blunt": -0.05,
+      "stab": 0.1,
+      "magic": -0.2,
+      "ranged": 0.15
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 24,
+      "strength": 54,
+      "defense": 24,
+      "health": 10
+    }
+  },
+  {
+    "id": 1040,
+    "name": "Kobold Witchdoctor",
+    "family": "kobold",
+    "tier": 5,
+    "level": 30,
+    "min_damage": 15,
+    "max_damage": 19,
+    "damage_type": "magic",
+    "accuracy": 0.45,
+    "resistances": {
+      "slash": 0.05,
+      "blunt": -0.05,
+      "stab": 0.1,
+      "magic": -0.1,
+      "ranged": 0.05
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 30,
+      "strength": 66,
+      "defense": 30,
+      "health": 12
+    }
+  },
+  {
+    "id": 1041,
+    "name": "Kobold King",
+    "family": "kobold",
+    "tier": 5,
+    "level": 36,
+    "min_damage": 18,
+    "max_damage": 22,
+    "damage_type": "magic",
+    "accuracy": 0.51,
+    "resistances": {
+      "slash": 0.05,
+      "blunt": -0.05,
+      "stab": 0.1,
+      "magic": -0.1,
+      "ranged": 0.05
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 36,
+      "strength": 78,
+      "defense": 36,
+      "health": 14
+    }
+  },
+  {
+    "id": 1042,
+    "name": "Orc Grunt",
+    "family": "orc",
+    "tier": 3,
+    "level": 10,
+    "damage_type": "slash",
+    "resistances": {
+      "slash": 0.1,
+      "blunt": 0.1,
+      "stab": 0.05,
+      "magic": 0,
+      "ranged": 0.05
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 10,
+      "strength": 26,
+      "defense": 10,
+      "health": 5
+    }
+  },
+  {
+    "id": 1043,
+    "name": "Orc Brawler",
+    "family": "orc",
+    "tier": 4,
+    "level": 20,
+    "damage_type": "slash",
+    "resistances": {
+      "slash": 0.1,
+      "blunt": 0.1,
+      "stab": 0.05,
+      "magic": 0,
+      "ranged": 0.05
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 20,
+      "strength": 46,
+      "defense": 20,
+      "health": 7
+    }
+  },
+  {
+    "id": 1044,
+    "name": "Orc Slayer",
+    "family": "orc",
+    "tier": 5,
+    "level": 30,
+    "damage_type": "slash",
+    "resistances": {
+      "slash": 0.1,
+      "blunt": 0.1,
+      "stab": 0.05,
+      "magic": 0,
+      "ranged": 0.05
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 30,
+      "strength": 66,
+      "defense": 30,
+      "health": 9
+    }
+  },
+  {
+    "id": 1045,
+    "name": "Orc Skirmisher",
+    "family": "orc",
+    "tier": 5,
+    "level": 40,
+    "damage_type": "slash",
+    "resistances": {
+      "slash": 0.1,
+      "blunt": 0.1,
+      "stab": 0.05,
+      "magic": 0,
+      "ranged": 0.05
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 40,
+      "strength": 86,
+      "defense": 40,
+      "health": 11
+    }
+  },
+  {
+    "id": 1046,
+    "name": "Orc Warlock",
+    "family": "orc",
+    "tier": 5,
+    "level": 50,
+    "min_damage": 25,
+    "max_damage": 29,
+    "damage_type": "magic",
+    "accuracy": 0.48,
+    "resistances": {
+      "slash": 0.1,
+      "blunt": 0.1,
+      "stab": 0.05,
+      "magic": 0,
+      "ranged": 0.05
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 50,
+      "strength": 106,
+      "defense": 50,
+      "health": 13
+    }
+  },
+  {
+    "id": 1047,
+    "name": "Orc Warchief",
+    "family": "orc",
+    "tier": 5,
+    "level": 60,
+    "min_damage": 30,
+    "max_damage": 34,
+    "damage_type": "hybrid",
+    "hybrid_melee_style": "slash",
+    "hybrid_secondary_style": "magic",
+    "accuracy": 0.54,
+    "resistances": {
+      "slash": 0.2,
+      "blunt": 0.2,
+      "stab": 0.1,
+      "magic": 0.1,
+      "ranged": 0.1
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 60,
+      "strength": 126,
+      "defense": 60,
+      "health": 15
+    }
+  },
+  {
+    "id": 1048,
+    "name": "Skeleton Boneshard",
+    "family": "skeletons",
+    "tier": 1,
+    "level": 6,
+    "damage_type": "stab",
+    "resistances": {
+      "slash": 0.1,
+      "blunt": -0.1,
+      "stab": 0,
+      "magic": 0,
+      "ranged": 0.05
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 6,
+      "strength": 18,
+      "defense": 6,
+      "health": 4
+    }
+  },
+  {
+    "id": 1049,
+    "name": "Skeleton Footsoldier",
+    "family": "skeletons",
+    "tier": 2,
+    "level": 12,
+    "damage_type": "stab",
+    "resistances": {
+      "slash": 0.1,
+      "blunt": -0.1,
+      "stab": 0,
+      "magic": 0,
+      "ranged": 0.05
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 12,
+      "strength": 30,
+      "defense": 12,
+      "health": 6
+    }
+  },
+  {
+    "id": 1050,
+    "name": "Skeleton Knight",
+    "family": "skeletons",
+    "tier": 3,
+    "level": 18,
+    "damage_type": "slash",
+    "resistances": {
+      "slash": 0.2,
+      "blunt": -0.1,
+      "stab": 0.1,
+      "magic": -0.05,
+      "ranged": 0
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 18,
+      "strength": 42,
+      "defense": 18,
+      "health": 8
+    }
+  },
+  {
+    "id": 1051,
+    "name": "Skeleton Sniper",
+    "family": "skeletons",
+    "tier": 4,
+    "level": 24,
+    "min_damage": 12,
+    "max_damage": 16,
+    "damage_type": "ranged",
+    "accuracy": 0.39,
+    "resistances": {
+      "slash": 0.1,
+      "blunt": -0.1,
+      "stab": 0,
+      "magic": 0,
+      "ranged": 0.05
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 24,
+      "strength": 54,
+      "defense": 24,
+      "health": 10
+    }
+  },
+  {
+    "id": 1052,
+    "name": "Skeleton Acolyte",
+    "family": "skeletons",
+    "tier": 5,
+    "level": 30,
+    "min_damage": 15,
+    "max_damage": 19,
+    "damage_type": "magic",
+    "accuracy": 0.45,
+    "resistances": {
+      "slash": 0.1,
+      "blunt": -0.1,
+      "stab": 0,
+      "magic": 0,
+      "ranged": 0.05
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 30,
+      "strength": 66,
+      "defense": 30,
+      "health": 12
+    }
+  },
+  {
+    "id": 1053,
+    "name": "Skeleton Captain",
+    "family": "skeletons",
+    "tier": 5,
+    "level": 36,
+    "damage_type": "stab",
+    "resistances": {
+      "slash": 0.1,
+      "blunt": -0.1,
+      "stab": 0,
+      "magic": 0,
+      "ranged": 0.05
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 36,
+      "strength": 78,
+      "defense": 36,
+      "health": 14
+    }
+  },
+  {
+    "id": 1054,
+    "name": "Slime Glob",
+    "family": "slimes",
+    "tier": 1,
+    "level": 5,
+    "min_damage": 2,
+    "max_damage": 6,
+    "damage_type": "magic",
+    "accuracy": 0.18,
+    "resistances": {
+      "slash": 0.2,
+      "blunt": 0.1,
+      "stab": 0.1,
+      "magic": -0.3,
+      "ranged": 0
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 5,
+      "strength": 14,
+      "defense": 5,
+      "health": 3
+    }
+  },
+  {
+    "id": 1055,
+    "name": "Slime Puddle",
+    "family": "slimes",
+    "tier": 2,
+    "level": 10,
+    "min_damage": 5,
+    "max_damage": 9,
+    "damage_type": "magic",
+    "accuracy": 0.24,
+    "resistances": {
+      "slash": 0.2,
+      "blunt": 0.1,
+      "stab": 0.1,
+      "magic": -0.3,
+      "ranged": 0
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 10,
+      "strength": 26,
+      "defense": 10,
+      "health": 5
+    }
+  },
+  {
+    "id": 1056,
+    "name": "Slime Caustic",
+    "family": "slimes",
+    "tier": 3,
+    "level": 15,
+    "min_damage": 7,
+    "max_damage": 11,
+    "damage_type": "magic",
+    "accuracy": 0.3,
+    "resistances": {
+      "slash": 0.2,
+      "blunt": 0.1,
+      "stab": 0.1,
+      "magic": -0.3,
+      "ranged": 0
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 15,
+      "strength": 34,
+      "defense": 15,
+      "health": 7
+    }
+  },
+  {
+    "id": 1057,
+    "name": "Slime Mimic",
+    "family": "slimes",
+    "tier": 4,
+    "level": 20,
+    "min_damage": 10,
+    "max_damage": 14,
+    "damage_type": "magic",
+    "accuracy": 0.36,
+    "resistances": {
+      "slash": 0.2,
+      "blunt": 0.1,
+      "stab": 0.1,
+      "magic": -0.3,
+      "ranged": 0
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 20,
+      "strength": 46,
+      "defense": 20,
+      "health": 9
+    }
+  },
+  {
+    "id": 1058,
+    "name": "Slime Gelwarden",
+    "family": "slimes",
+    "tier": 5,
+    "level": 25,
+    "min_damage": 12,
+    "max_damage": 16,
+    "damage_type": "magic",
+    "accuracy": 0.42,
+    "resistances": {
+      "slash": 0.2,
+      "blunt": 0.1,
+      "stab": 0.1,
+      "magic": -0.3,
+      "ranged": 0
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 25,
+      "strength": 54,
+      "defense": 25,
+      "health": 11
+    }
+  },
+  {
+    "id": 1059,
+    "name": "Slime Oozelord",
+    "family": "slimes",
+    "tier": 5,
+    "level": 30,
+    "min_damage": 15,
+    "max_damage": 19,
+    "damage_type": "magic",
+    "accuracy": 0.48,
+    "resistances": {
+      "slash": 0.2,
+      "blunt": 0.1,
+      "stab": 0.1,
+      "magic": -0.3,
+      "ranged": 0
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 30,
+      "strength": 66,
+      "defense": 30,
+      "health": 13
+    }
+  },
+  {
+    "id": 1060,
+    "name": "Spider Creeper",
+    "family": "spider",
+    "tier": 1,
+    "level": 8,
+    "damage_type": "stab",
+    "resistances": {
+      "slash": 0.05,
+      "blunt": -0.1,
+      "stab": 0.1,
+      "magic": 0,
+      "ranged": 0.05
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 8,
+      "strength": 22,
+      "defense": 8,
+      "health": 4
+    }
+  },
+  {
+    "id": 1061,
+    "name": "Spider Webspinner",
+    "family": "spider",
+    "tier": 2,
+    "level": 16,
+    "damage_type": "stab",
+    "resistances": {
+      "slash": 0.05,
+      "blunt": -0.1,
+      "stab": 0.1,
+      "magic": 0,
+      "ranged": 0.05
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 16,
+      "strength": 38,
+      "defense": 16,
+      "health": 6
+    }
+  },
+  {
+    "id": 1062,
+    "name": "Spider Fangmaw",
+    "family": "spider",
+    "tier": 3,
+    "level": 24,
+    "damage_type": "stab",
+    "resistances": {
+      "slash": 0.05,
+      "blunt": -0.1,
+      "stab": 0.1,
+      "magic": 0,
+      "ranged": 0.05
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 24,
+      "strength": 54,
+      "defense": 24,
+      "health": 8
+    }
+  },
+  {
+    "id": 1063,
+    "name": "Spider Poisonfang",
+    "family": "spider",
+    "tier": 4,
+    "level": 32,
+    "min_damage": 16,
+    "max_damage": 20,
+    "damage_type": "magic",
+    "accuracy": 0.39,
+    "resistances": {
+      "slash": 0.1,
+      "blunt": -0.1,
+      "stab": 0.15,
+      "magic": 0.15,
+      "ranged": 0.05
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 32,
+      "strength": 70,
+      "defense": 32,
+      "health": 10
+    }
+  },
+  {
+    "id": 1064,
+    "name": "Spider Silktomb",
+    "family": "spider",
+    "tier": 5,
+    "level": 40,
+    "min_damage": 20,
+    "max_damage": 24,
+    "damage_type": "ranged",
+    "accuracy": 0.45,
+    "resistances": {
+      "slash": 0.05,
+      "blunt": -0.15,
+      "stab": 0.1,
+      "magic": 0,
+      "ranged": 0.1
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 40,
+      "strength": 86,
+      "defense": 40,
+      "health": 12
+    }
+  },
+  {
+    "id": 1065,
+    "name": "Spider Broodmother",
+    "family": "spider",
+    "tier": 5,
+    "level": 48,
+    "damage_type": "stab",
+    "resistances": {
+      "slash": 0.1,
+      "blunt": -0.1,
+      "stab": 0.2,
+      "magic": 0.1,
+      "ranged": 0.05
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 48,
+      "strength": 102,
+      "defense": 48,
+      "health": 14
+    }
+  },
+  {
+    "id": 1066,
+    "name": "Troll Grub",
+    "family": "troll",
+    "tier": 1,
+    "level": 12,
+    "damage_type": "blunt",
+    "resistances": {
+      "slash": 0.1,
+      "blunt": 0.2,
+      "stab": 0.1,
+      "magic": -0.1,
+      "ranged": -0.05
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 12,
+      "strength": 30,
+      "defense": 12,
+      "health": 6
+    }
+  },
+  {
+    "id": 1067,
+    "name": "Troll Basher",
+    "family": "troll",
+    "tier": 2,
+    "level": 24,
+    "damage_type": "blunt",
+    "resistances": {
+      "slash": 0.2,
+      "blunt": 0.3,
+      "stab": 0.1,
+      "magic": 0,
+      "ranged": 0
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 24,
+      "strength": 54,
+      "defense": 24,
+      "health": 8
+    }
+  },
+  {
+    "id": 1068,
+    "name": "Troll Smasher",
+    "family": "troll",
+    "tier": 3,
+    "level": 36,
+    "damage_type": "blunt",
+    "resistances": {
+      "slash": 0.1,
+      "blunt": 0.35,
+      "stab": 0.1,
+      "magic": -0.1,
+      "ranged": 0
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 36,
+      "strength": 78,
+      "defense": 36,
+      "health": 10
+    }
+  },
+  {
+    "id": 1069,
+    "name": "Troll Thrower",
+    "family": "troll",
+    "tier": 4,
+    "level": 48,
+    "damage_type": "blunt",
+    "resistances": {
+      "slash": 0.1,
+      "blunt": 0.25,
+      "stab": 0.1,
+      "magic": 0,
+      "ranged": 0.1
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 48,
+      "strength": 102,
+      "defense": 48,
+      "health": 12
+    }
+  },
+  {
+    "id": 1070,
+    "name": "Troll Shaman",
+    "family": "troll",
+    "tier": 5,
+    "level": 60,
+    "min_damage": 30,
+    "max_damage": 34,
+    "damage_type": "magic",
+    "accuracy": 0.51,
+    "resistances": {
+      "slash": 0.1,
+      "blunt": 0.1,
+      "stab": 0.1,
+      "magic": 0.2,
+      "ranged": 0.1
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 60,
+      "strength": 126,
+      "defense": 60,
+      "health": 14
+    }
+  },
+  {
+    "id": 1071,
+    "name": "Troll Matron",
+    "family": "troll",
+    "tier": 5,
+    "level": 72,
+    "damage_type": "blunt",
+    "resistances": {
+      "slash": 0.2,
+      "blunt": 0.2,
+      "stab": 0.2,
+      "magic": 0.1,
+      "ranged": 0
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 72,
+      "strength": 150,
+      "defense": 72,
+      "health": 16
+    }
+  },
+  {
+    "id": 1072,
+    "name": "Wolf Cub",
+    "family": "wolfs",
+    "tier": 1,
+    "level": 5,
+    "damage_type": "slash",
+    "resistances": {
+      "slash": 0.05,
+      "blunt": 0,
+      "stab": 0.05,
+      "magic": -0.1,
+      "ranged": 0.05
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 5,
+      "strength": 14,
+      "defense": 5,
+      "health": 3
+    }
+  },
+  {
+    "id": 1073,
+    "name": "Wolf Hunter",
+    "family": "wolfs",
+    "tier": 2,
+    "level": 10,
+    "damage_type": "slash",
+    "resistances": {
+      "slash": 0.05,
+      "blunt": 0,
+      "stab": 0.05,
+      "magic": -0.1,
+      "ranged": 0.05
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 10,
+      "strength": 26,
+      "defense": 10,
+      "health": 5
+    }
+  },
+  {
+    "id": 1074,
+    "name": "Wolf Alpha",
+    "family": "wolfs",
+    "tier": 3,
+    "level": 15,
+    "damage_type": "slash",
+    "resistances": {
+      "slash": 0.1,
+      "blunt": 0.1,
+      "stab": 0.1,
+      "magic": 0,
+      "ranged": 0.1
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 15,
+      "strength": 34,
+      "defense": 15,
+      "health": 7
+    }
+  },
+  {
+    "id": 1075,
+    "name": "Wolf Direwolf",
+    "family": "wolfs",
+    "tier": 4,
+    "level": 20,
+    "damage_type": "slash",
+    "resistances": {
+      "slash": 0.1,
+      "blunt": 0.05,
+      "stab": 0.1,
+      "magic": -0.05,
+      "ranged": 0.1
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 20,
+      "strength": 46,
+      "defense": 20,
+      "health": 9
+    }
+  },
+  {
+    "id": 1076,
+    "name": "Wolf Moonfang",
+    "family": "wolfs",
+    "tier": 5,
+    "level": 25,
+    "damage_type": "slash",
+    "resistances": {
+      "slash": 0.05,
+      "blunt": 0,
+      "stab": 0.05,
+      "magic": -0.1,
+      "ranged": 0.05
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 25,
+      "strength": 54,
+      "defense": 25,
+      "health": 11
+    }
+  },
+  {
+    "id": 1077,
+    "name": "Wolf Elder Fang",
+    "family": "wolfs",
+    "tier": 5,
+    "level": 30,
+    "damage_type": "slash",
+    "resistances": {
+      "slash": 0.05,
+      "blunt": 0,
+      "stab": 0.05,
+      "magic": -0.1,
+      "ranged": 0.05
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 30,
+      "strength": 66,
+      "defense": 30,
+      "health": 13
+    }
+  },
+  {
+    "id": 1078,
+    "name": "Wraith Echo",
+    "family": "wraith",
+    "tier": 1,
+    "level": 10,
+    "min_damage": 5,
+    "max_damage": 9,
+    "damage_type": "magic",
+    "accuracy": 0.24,
+    "resistances": {
+      "slash": 0.15,
+      "blunt": 0.1,
+      "stab": 0.15,
+      "magic": -0.1,
+      "ranged": 0.1
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 10,
+      "strength": 26,
+      "defense": 10,
+      "health": 5
+    }
+  },
+  {
+    "id": 1079,
+    "name": "Wraith Shade",
+    "family": "wraith",
+    "tier": 2,
+    "level": 20,
+    "min_damage": 10,
+    "max_damage": 14,
+    "damage_type": "magic",
+    "accuracy": 0.3,
+    "resistances": {
+      "slash": 0.1,
+      "blunt": 0.05,
+      "stab": 0.1,
+      "magic": -0.1,
+      "ranged": 0.05
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 20,
+      "strength": 46,
+      "defense": 20,
+      "health": 7
+    }
+  },
+  {
+    "id": 1080,
+    "name": "Wraith Phantom",
+    "family": "wraith",
+    "tier": 3,
+    "level": 30,
+    "min_damage": 15,
+    "max_damage": 19,
+    "damage_type": "magic",
+    "accuracy": 0.36,
+    "resistances": {
+      "slash": 0.15,
+      "blunt": 0.1,
+      "stab": 0.15,
+      "magic": -0.1,
+      "ranged": 0.1
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 30,
+      "strength": 66,
+      "defense": 30,
+      "health": 9
+    }
+  },
+  {
+    "id": 1081,
+    "name": "Wraith Soulpiercer",
+    "family": "wraith",
+    "tier": 4,
+    "level": 40,
+    "min_damage": 20,
+    "max_damage": 24,
+    "damage_type": "magic",
+    "accuracy": 0.42,
+    "resistances": {
+      "slash": 0.15,
+      "blunt": 0.1,
+      "stab": 0.15,
+      "magic": -0.1,
+      "ranged": 0.1
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 40,
+      "strength": 86,
+      "defense": 40,
+      "health": 11
+    }
+  },
+  {
+    "id": 1082,
+    "name": "Wraith Sorrow",
+    "family": "wraith",
+    "tier": 5,
+    "level": 50,
+    "min_damage": 25,
+    "max_damage": 29,
+    "damage_type": "magic",
+    "accuracy": 0.48,
+    "resistances": {
+      "slash": 0.15,
+      "blunt": 0.1,
+      "stab": 0.15,
+      "magic": -0.1,
+      "ranged": 0.1
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 50,
+      "strength": 106,
+      "defense": 50,
+      "health": 13
+    }
+  },
+  {
+    "id": 1083,
+    "name": "Wraith Dreadshade",
+    "family": "wraith",
+    "tier": 5,
+    "level": 60,
+    "min_damage": 30,
+    "max_damage": 34,
+    "damage_type": "magic",
+    "accuracy": 0.54,
+    "resistances": {
+      "slash": 0.15,
+      "blunt": 0.1,
+      "stab": 0.15,
+      "magic": -0.1,
+      "ranged": 0.1
+    },
+    "attack_speed": 3,
+    "attack_range": 2,
+    "projectile_speed": 0,
+    "crit_chance": 0.05,
+    "crit_multiplier": 1.5,
+    "skills": {
+      "attack": 60,
+      "strength": 126,
+      "defense": 60,
+      "health": 15
+    }
+  }
+]

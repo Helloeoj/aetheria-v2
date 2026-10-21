@@ -1,0 +1,70 @@
+{
+  "trees": {
+    "Outskirts_Trees_023": {
+      "texture": "res://Assets/MapTiles/CleanTrees/Outskirts_Trees_023.png",
+      "size": [
+        90,
+        105
+      ],
+      "anchor": [
+        41,
+        95
+      ]
+    },
+    "Outskirts_Trees_041": {
+      "texture": "res://Assets/MapTiles/CleanTrees/Outskirts_Trees_041.png",
+      "size": [
+        128,
+        135
+      ],
+      "anchor": [
+        63,
+        127
+      ]
+    },
+    "Outskirts_Trees_042": {
+      "texture": "res://Assets/MapTiles/CleanTrees/Outskirts_Trees_042.png",
+      "size": [
+        264,
+        273
+      ],
+      "anchor": [
+        127,
+        255
+      ]
+    },
+    "Outskirts_Trees_046": {
+      "texture": "res://Assets/MapTiles/CleanTrees/Outskirts_Trees_046.png",
+      "size": [
+        177,
+        184
+      ],
+      "anchor": [
+        89,
+        166
+      ]
+    },
+    "Outskirts_Trees_049": {
+      "texture": "res://Assets/MapTiles/CleanTrees/Outskirts_Trees_049.png",
+      "size": [
+        77,
+        82
+      ],
+      "anchor": [
+        37,
+        70
+      ]
+    },
+    "Outskirts_Trees_052": {
+      "texture": "res://Assets/MapTiles/CleanTrees/Outskirts_Trees_052.png",
+      "size": [
+        58,
+        69
+      ],
+      "anchor": [
+        30,
+        61
+      ]
+    }
+  }
+}

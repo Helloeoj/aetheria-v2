@@ -1,0 +1,28 @@
+{
+  "name": "Golem Kingdom fine-detail restoration",
+  "logical_source_size": [
+    1254,
+    1254
+  ],
+  "detail_size": [
+    5016,
+    5016
+  ],
+  "detail_scale": 4,
+  "world_scale": 3,
+  "artwork_scale": 0.25,
+  "world_size": [
+    3762,
+    3762
+  ],
+  "characters_baked": false,
+  "original_masks_preserved": true,
+  "original_gameplay_geometry_preserved": true,
+  "terrain_texture_size": [
+    5120,
+    5120
+  ],
+  "terrain_tile_size": 128,
+  "individual_objects": 249,
+  "method": "Built-in image_gen fine-detail restoration of sixteen overlapping source crops; hard minimum-error seam selection; original alpha/feet/collisions preserved. Hidden terrain retains original reconstruction rather than baking foreground into it."
+}

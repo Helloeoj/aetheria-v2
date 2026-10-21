@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/MapTiles/Wilderness/PolishedObjects/Wilderness03_Buildings_0073_Clean.png" id="1_bx1ob"]
+
+[node name="Wilderness03_Buildings_0073" type="Node2D"]
+y_sort_enabled = true
+texture_filter = 1
+metadata/kind = "Buildings"
+
+[node name="Footprint" type="StaticBody2D" parent="." groups=["map_object", "world_solid"]]
+position = Vector2(-5, 6)
+collision_mask = 0
+metadata/kind = "Buildings"
+
+[node name="Visual" type="Sprite2D" parent="Footprint"]
+position = Vector2(-118, -203)
+texture = ExtResource("1_bx1ob")
+centered = false
+
+[node name="SolidPolygon1" type="CollisionPolygon2D" parent="Footprint"]
+polygon = PackedVector2Array(-105, -82, -38, -104, 88, -75, 87, -16, 33, 9, -59, -12, -105, -45)

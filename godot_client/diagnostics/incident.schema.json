@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aetheria.local/diagnostics/incident-v1.schema.json",
+  "title": "Aetheria Diagnostic Core incident v1",
+  "type": "object",
+  "required": ["schema_version", "id", "session_id", "severity", "kind", "system", "message", "fingerprint", "source", "backtrace", "context", "recent_events", "count", "first_seen", "last_seen", "engine_version", "project_version", "native_logs", "related_incidents", "capture", "samples"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "id": {"type": "string", "pattern": "^ADC-"},
+    "session_id": {"type": "string"},
+    "severity": {"enum": ["ERROR", "WARNING", "CRITICAL"]},
+    "kind": {"type": "string"},
+    "system": {"type": "string"},
+    "message": {"type": "string"},
+    "fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "source": {"$ref": "#/$defs/source"},
+    "engine_source": {"$ref": "#/$defs/source"},
+    "backtrace": {"type": "array", "maxItems": 64, "items": {"$ref": "#/$defs/source"}},
+    "context": {"type": "object"},
+    "recent_events": {"type": "array", "maxItems": 256, "items": {"$ref": "#/$defs/event"}},
+    "latest_events": {"type": "array", "maxItems": 256, "items": {"$ref": "#/$defs/event"}},
+    "latest_context": {"type": "object"},
+    "samples": {"type": "array", "maxItems": 4, "items": {"type": "object"}},
+    "details": {"type": "object"},
+    "count": {"type": "integer", "minimum": 1},
+    "first_seen": {"type": "string"},
+    "last_seen": {"type": "string"},
+    "engine_version": {"type": "string"},
+    "project_version": {"type": "string"},
+    "native_logs": {"type": "array", "items": {"type": "string"}},
+    "related_incidents": {"type": "array", "items": {"type": "string"}},
+    "capture": {"type": "string"}
+  },
+  "$defs": {
+    "source": {"type": "object", "properties": {"file": {"type": "string"}, "line": {"type": "integer"}, "function": {"type": "string"}, "language": {"type": "string"}}},
+    "event": {"type": "object", "required": ["time", "ticks_ms", "system", "action", "data", "thread"], "properties": {"time": {"type": "string"}, "ticks_ms": {"type": "integer"}, "system": {"type": "string"}, "action": {"type": "string"}, "data": {"type": "object"}, "thread": {"type": "integer"}}}
+  }
+}

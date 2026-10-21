@@ -1,0 +1,361 @@
+{
+  "schema_version": 1,
+  "items": {
+    "Adamantite Kiteshield": {
+      "socket": "left_hand",
+      "scene": "res://scenes/equipment/adamantite_kiteshield.tscn",
+      "grip_cover": false
+    },
+    "Iron Longsword": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/fitted/iron-longsword.tscn",
+      "slot": "weapon",
+      "fitted": true,
+      "grip_cover": true
+    },
+    "Bronze Helmet": {
+      "socket": "head",
+      "scene": "res://scenes/equipment/fitted/bronze-helmet.tscn",
+      "slot": "head",
+      "fitted": true,
+      "grip_cover": false
+    },
+    "Bronze Platebody": {
+      "socket": "chest",
+      "scene": "res://scenes/equipment/fitted/bronze-platebody.tscn",
+      "slot": "chest",
+      "fitted": true,
+      "grip_cover": false
+    },
+    "Bronze Platelegs": {
+      "socket": "waist",
+      "scene": "res://scenes/equipment/fitted/bronze-platelegs.tscn",
+      "slot": "legs",
+      "fitted": true,
+      "grip_cover": false
+    },
+    "Bronze Kiteshield": {
+      "socket": "left_hand",
+      "scene": "res://scenes/equipment/fitted/bronze-kiteshield.tscn",
+      "slot": "shield",
+      "fitted": true,
+      "grip_cover": false
+    },
+    "Bronze Square Shield": {
+      "socket": "left_hand",
+      "scene": "res://scenes/equipment/fitted/bronze-square-shield.tscn",
+      "slot": "shield",
+      "fitted": true,
+      "grip_cover": false
+    },
+    "Bronze Cape": {
+      "socket": "back",
+      "scene": "res://scenes/equipment/fitted/bronze-cape.tscn",
+      "slot": "cape",
+      "fitted": true,
+      "grip_cover": false
+    },
+    "Bronze Necklace": {
+      "socket": "chest",
+      "scene": "res://scenes/equipment/fitted/bronze-necklace.tscn",
+      "slot": "neck",
+      "fitted": true,
+      "grip_cover": false
+    },
+    "Bronze Dagger": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/fitted/bronze-dagger.tscn",
+      "slot": "weapon",
+      "fitted": true,
+      "grip_cover": true
+    },
+    "Bronze Shortsword": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/fitted/bronze-shortsword.tscn",
+      "slot": "weapon",
+      "fitted": true,
+      "grip_cover": true
+    },
+    "Bronze Longsword": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/fitted/bronze-longsword.tscn",
+      "slot": "weapon",
+      "fitted": true,
+      "grip_cover": true
+    },
+    "Bronze Mace": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/fitted/bronze-mace.tscn",
+      "slot": "weapon",
+      "fitted": true,
+      "grip_cover": true
+    },
+    "Bronze Warmaul": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/fitted/bronze-warmaul.tscn",
+      "slot": "weapon",
+      "fitted": true,
+      "grip_cover": true
+    },
+    "Bronze Bow": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/fitted/bronze-bow.tscn",
+      "slot": "weapon",
+      "fitted": true,
+      "grip_cover": true
+    },
+    "Bronze Crossbow": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/fitted/bronze-crossbow.tscn",
+      "slot": "weapon",
+      "fitted": true,
+      "grip_cover": true
+    },
+    "Bronze Magic Staff": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/fitted/bronze-magic-staff.tscn",
+      "slot": "weapon",
+      "fitted": true,
+      "grip_cover": true
+    },
+    "Bronze Magic Wand": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/fitted/bronze-magic-wand.tscn",
+      "slot": "weapon",
+      "fitted": true,
+      "grip_cover": true
+    },
+    "Bronze Ring": {
+      "slot": "ring",
+      "visible": false,
+      "fitted": true
+    },
+    "Iron Helmet": {
+      "socket": "head",
+      "scene": "res://scenes/equipment/fitted/iron-helmet.tscn",
+      "slot": "head",
+      "fitted": true,
+      "grip_cover": false
+    },
+    "Iron Platebody": {
+      "socket": "chest",
+      "scene": "res://scenes/equipment/fitted/iron-platebody.tscn",
+      "slot": "chest",
+      "fitted": true,
+      "grip_cover": false
+    },
+    "Iron Platelegs": {
+      "socket": "waist",
+      "scene": "res://scenes/equipment/fitted/iron-platelegs.tscn",
+      "slot": "legs",
+      "fitted": true,
+      "grip_cover": false
+    },
+    "Iron Kiteshield": {
+      "socket": "left_hand",
+      "scene": "res://scenes/equipment/fitted/iron-kiteshield.tscn",
+      "slot": "shield",
+      "fitted": true,
+      "grip_cover": false
+    },
+    "Iron Square Shield": {
+      "socket": "left_hand",
+      "scene": "res://scenes/equipment/fitted/iron-square-shield.tscn",
+      "slot": "shield",
+      "fitted": true,
+      "grip_cover": false
+    },
+    "Iron Cape": {
+      "socket": "back",
+      "scene": "res://scenes/equipment/fitted/iron-cape.tscn",
+      "slot": "cape",
+      "fitted": true,
+      "grip_cover": false
+    },
+    "Iron Necklace": {
+      "socket": "chest",
+      "scene": "res://scenes/equipment/fitted/iron-necklace.tscn",
+      "slot": "neck",
+      "fitted": true,
+      "grip_cover": false
+    },
+    "Iron Dagger": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/fitted/iron-dagger.tscn",
+      "slot": "weapon",
+      "fitted": true,
+      "grip_cover": true
+    },
+    "Iron Shortsword": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/fitted/iron-shortsword.tscn",
+      "slot": "weapon",
+      "fitted": true,
+      "grip_cover": true
+    },
+    "Iron Mace": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/fitted/iron-mace.tscn",
+      "slot": "weapon",
+      "fitted": true,
+      "grip_cover": true
+    },
+    "Iron Warmaul": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/fitted/iron-warmaul.tscn",
+      "slot": "weapon",
+      "fitted": true,
+      "grip_cover": true
+    },
+    "Iron Bow": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/fitted/iron-bow.tscn",
+      "slot": "weapon",
+      "fitted": true,
+      "grip_cover": true
+    },
+    "Iron Crossbow": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/fitted/iron-crossbow.tscn",
+      "slot": "weapon",
+      "fitted": true,
+      "grip_cover": true
+    },
+    "Iron Magic Staff": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/fitted/iron-magic-staff.tscn",
+      "slot": "weapon",
+      "fitted": true,
+      "grip_cover": true
+    },
+    "Iron Magic Wand": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/fitted/iron-magic-wand.tscn",
+      "slot": "weapon",
+      "fitted": true,
+      "grip_cover": true
+    },
+    "Iron Ring": {
+      "slot": "ring",
+      "visible": false,
+      "fitted": true
+    },
+    "Steel Helmet": {
+      "socket": "head",
+      "scene": "res://scenes/equipment/fitted/steel-helmet.tscn",
+      "slot": "head",
+      "fitted": true,
+      "grip_cover": false
+    },
+    "Steel Platebody": {
+      "socket": "chest",
+      "scene": "res://scenes/equipment/fitted/steel-platebody.tscn",
+      "slot": "chest",
+      "fitted": true,
+      "grip_cover": false
+    },
+    "Steel Platelegs": {
+      "socket": "waist",
+      "scene": "res://scenes/equipment/fitted/steel-platelegs.tscn",
+      "slot": "legs",
+      "fitted": true,
+      "grip_cover": false
+    },
+    "Steel Kiteshield": {
+      "socket": "left_hand",
+      "scene": "res://scenes/equipment/fitted/steel-kiteshield.tscn",
+      "slot": "shield",
+      "fitted": true,
+      "grip_cover": false
+    },
+    "Steel Square Shield": {
+      "socket": "left_hand",
+      "scene": "res://scenes/equipment/fitted/steel-square-shield.tscn",
+      "slot": "shield",
+      "fitted": true,
+      "grip_cover": false
+    },
+    "Steel Cape": {
+      "socket": "back",
+      "scene": "res://scenes/equipment/fitted/steel-cape.tscn",
+      "slot": "cape",
+      "fitted": true,
+      "grip_cover": false
+    },
+    "Steel Necklace": {
+      "socket": "chest",
+      "scene": "res://scenes/equipment/fitted/steel-necklace.tscn",
+      "slot": "neck",
+      "fitted": true,
+      "grip_cover": false
+    },
+    "Steel Dagger": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/fitted/steel-dagger.tscn",
+      "slot": "weapon",
+      "fitted": true,
+      "grip_cover": true
+    },
+    "Steel Shortsword": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/fitted/steel-shortsword.tscn",
+      "slot": "weapon",
+      "fitted": true,
+      "grip_cover": true
+    },
+    "Steel Longsword": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/fitted/steel-longsword.tscn",
+      "slot": "weapon",
+      "fitted": true,
+      "grip_cover": true
+    },
+    "Steel Mace": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/fitted/steel-mace.tscn",
+      "slot": "weapon",
+      "fitted": true,
+      "grip_cover": true
+    },
+    "Steel Warmaul": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/fitted/steel-warmaul.tscn",
+      "slot": "weapon",
+      "fitted": true,
+      "grip_cover": true
+    },
+    "Steel Bow": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/fitted/steel-bow.tscn",
+      "slot": "weapon",
+      "fitted": true,
+      "grip_cover": true
+    },
+    "Steel Crossbow": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/fitted/steel-crossbow.tscn",
+      "slot": "weapon",
+      "fitted": true,
+      "grip_cover": true
+    },
+    "Steel Magic Staff": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/fitted/steel-magic-staff.tscn",
+      "slot": "weapon",
+      "fitted": true,
+      "grip_cover": true
+    },
+    "Steel Magic Wand": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/fitted/steel-magic-wand.tscn",
+      "slot": "weapon",
+      "fitted": true,
+      "grip_cover": true
+    },
+    "Steel Ring": {
+      "slot": "ring",
+      "visible": false,
+      "fitted": true
+    }
+  }
+}

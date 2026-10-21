@@ -1,0 +1,279 @@
+{
+  "schema_version": 1,
+  "batch": 1,
+  "approval_status": "awaiting_user_approval",
+  "pixellab_drawing": "4fd2b423-90bd-450e-b5b8-1396728c8f98",
+  "pixellab_gallery": "af87316f-9b39-46b8-9410-a13ffa7f2d31",
+  "items": {
+    "Bronze Helmet": {
+      "id": "bronze-helmet",
+      "inventory": "res://Assets/Items/batch_001/inventory/bronze-helmet.png",
+      "ground": "res://Assets/Items/batch_001/ground/bronze-helmet.png",
+      "ground_scale": 0.75,
+      "equipped_scene": "res://scenes/equipment/fitted/bronze-helmet.tscn",
+      "directions": [
+        "south",
+        "south-east",
+        "east",
+        "north-east",
+        "north",
+        "north-west",
+        "west",
+        "south-west"
+      ],
+      "approval_status": "awaiting_user_approval"
+    },
+    "Bronze Platebody": {
+      "id": "bronze-platebody",
+      "inventory": "res://Assets/Items/batch_001/inventory/bronze-platebody.png",
+      "ground": "res://Assets/Items/batch_001/ground/bronze-platebody.png",
+      "ground_scale": 0.75,
+      "equipped_scene": "res://scenes/equipment/fitted/bronze-platebody.tscn",
+      "directions": [
+        "south",
+        "south-east",
+        "east",
+        "north-east",
+        "north",
+        "north-west",
+        "west",
+        "south-west"
+      ],
+      "approval_status": "awaiting_user_approval"
+    },
+    "Bronze Platelegs": {
+      "id": "bronze-platelegs",
+      "inventory": "res://Assets/Items/batch_001/inventory/bronze-platelegs.png",
+      "ground": "res://Assets/Items/batch_001/ground/bronze-platelegs.png",
+      "ground_scale": 0.75,
+      "equipped_scene": "res://scenes/equipment/fitted/bronze-platelegs.tscn",
+      "directions": [
+        "south",
+        "south-east",
+        "east",
+        "north-east",
+        "north",
+        "north-west",
+        "west",
+        "south-west"
+      ],
+      "approval_status": "awaiting_user_approval"
+    },
+    "Bronze Kiteshield": {
+      "id": "bronze-kiteshield",
+      "inventory": "res://Assets/Items/batch_001/inventory/bronze-kiteshield.png",
+      "ground": "res://Assets/Items/batch_001/ground/bronze-kiteshield.png",
+      "ground_scale": 0.75,
+      "equipped_scene": "res://scenes/equipment/fitted/bronze-kiteshield.tscn",
+      "directions": [
+        "south",
+        "south-east",
+        "east",
+        "north-east",
+        "north",
+        "north-west",
+        "west",
+        "south-west"
+      ],
+      "approval_status": "awaiting_user_approval"
+    },
+    "Bronze Square Shield": {
+      "id": "bronze-square-shield",
+      "inventory": "res://Assets/Items/batch_001/inventory/bronze-square-shield.png",
+      "ground": "res://Assets/Items/batch_001/ground/bronze-square-shield.png",
+      "ground_scale": 0.75,
+      "equipped_scene": "res://scenes/equipment/fitted/bronze-square-shield.tscn",
+      "directions": [
+        "south",
+        "south-east",
+        "east",
+        "north-east",
+        "north",
+        "north-west",
+        "west",
+        "south-west"
+      ],
+      "approval_status": "awaiting_user_approval"
+    },
+    "Bronze Dagger": {
+      "id": "bronze-dagger",
+      "inventory": "res://Assets/Items/batch_001/inventory/bronze-dagger.png",
+      "ground": "res://Assets/Items/batch_001/ground/bronze-dagger.png",
+      "ground_scale": 0.75,
+      "equipped_scene": "res://scenes/equipment/fitted/bronze-dagger.tscn",
+      "directions": [
+        "south",
+        "south-east",
+        "east",
+        "north-east",
+        "north",
+        "north-west",
+        "west",
+        "south-west"
+      ],
+      "approval_status": "awaiting_user_approval"
+    },
+    "Bronze Shortsword": {
+      "id": "bronze-shortsword",
+      "inventory": "res://Assets/Items/batch_001/inventory/bronze-shortsword.png",
+      "ground": "res://Assets/Items/batch_001/ground/bronze-shortsword.png",
+      "ground_scale": 0.75,
+      "equipped_scene": "res://scenes/equipment/fitted/bronze-shortsword.tscn",
+      "directions": [
+        "south",
+        "south-east",
+        "east",
+        "north-east",
+        "north",
+        "north-west",
+        "west",
+        "south-west"
+      ],
+      "approval_status": "awaiting_user_approval"
+    },
+    "Bronze Longsword": {
+      "id": "bronze-longsword",
+      "inventory": "res://Assets/Items/batch_001/inventory/bronze-longsword.png",
+      "ground": "res://Assets/Items/batch_001/ground/bronze-longsword.png",
+      "ground_scale": 0.75,
+      "equipped_scene": "res://scenes/equipment/fitted/bronze-longsword.tscn",
+      "directions": [
+        "south",
+        "south-east",
+        "east",
+        "north-east",
+        "north",
+        "north-west",
+        "west",
+        "south-west"
+      ],
+      "approval_status": "awaiting_user_approval"
+    },
+    "Bronze Mace": {
+      "id": "bronze-mace",
+      "inventory": "res://Assets/Items/batch_001/inventory/bronze-mace.png",
+      "ground": "res://Assets/Items/batch_001/ground/bronze-mace.png",
+      "ground_scale": 0.75,
+      "equipped_scene": "res://scenes/equipment/fitted/bronze-mace.tscn",
+      "directions": [
+        "south",
+        "south-east",
+        "east",
+        "north-east",
+        "north",
+        "north-west",
+        "west",
+        "south-west"
+      ],
+      "approval_status": "awaiting_user_approval"
+    },
+    "Bronze Warmaul": {
+      "id": "bronze-warmaul",
+      "inventory": "res://Assets/Items/batch_001/inventory/bronze-warmaul.png",
+      "ground": "res://Assets/Items/batch_001/ground/bronze-warmaul.png",
+      "ground_scale": 0.75,
+      "equipped_scene": "res://scenes/equipment/fitted/bronze-warmaul.tscn",
+      "directions": [
+        "south",
+        "south-east",
+        "east",
+        "north-east",
+        "north",
+        "north-west",
+        "west",
+        "south-west"
+      ],
+      "approval_status": "awaiting_user_approval"
+    },
+    "Raw Reedkip": {
+      "id": "raw-reedkip",
+      "inventory": "res://Assets/Items/fish_001/inventory/reedkip.png",
+      "ground": "res://Assets/Items/fish_001/inventory/reedkip.png",
+      "ground_scale": 0.45,
+      "batch": "fish_001",
+      "fish_state": "raw",
+      "approval_status": "awaiting_user_approval"
+    },
+    "Raw Marlo": {
+      "id": "raw-marlo",
+      "inventory": "res://Assets/Items/fish_001/inventory/marlo.png",
+      "ground": "res://Assets/Items/fish_001/inventory/marlo.png",
+      "ground_scale": 0.45,
+      "batch": "fish_001",
+      "fish_state": "raw",
+      "approval_status": "awaiting_user_approval"
+    },
+    "Raw Bracken": {
+      "id": "raw-bracken",
+      "inventory": "res://Assets/Items/fish_001/inventory/bracken.png",
+      "ground": "res://Assets/Items/fish_001/inventory/bracken.png",
+      "ground_scale": 0.45,
+      "batch": "fish_001",
+      "fish_state": "raw",
+      "approval_status": "awaiting_user_approval"
+    },
+    "Raw Kessa": {
+      "id": "raw-kessa",
+      "inventory": "res://Assets/Items/fish_001/inventory/kessa.png",
+      "ground": "res://Assets/Items/fish_001/inventory/kessa.png",
+      "ground_scale": 0.45,
+      "batch": "fish_001",
+      "fish_state": "raw",
+      "approval_status": "awaiting_user_approval"
+    },
+    "Raw Veilfin": {
+      "id": "raw-veilfin",
+      "inventory": "res://Assets/Items/fish_001/inventory/veilfin.png",
+      "ground": "res://Assets/Items/fish_001/inventory/veilfin.png",
+      "ground_scale": 0.45,
+      "batch": "fish_001",
+      "fish_state": "raw",
+      "approval_status": "awaiting_user_approval"
+    },
+    "Raw Lumara": {
+      "id": "raw-lumara",
+      "inventory": "res://Assets/Items/fish_001/inventory/lumara.png",
+      "ground": "res://Assets/Items/fish_001/inventory/lumara.png",
+      "ground_scale": 0.45,
+      "batch": "fish_001",
+      "fish_state": "raw",
+      "approval_status": "awaiting_user_approval"
+    },
+    "Raw Vesper": {
+      "id": "raw-vesper",
+      "inventory": "res://Assets/Items/fish_001/inventory/vesper.png",
+      "ground": "res://Assets/Items/fish_001/inventory/vesper.png",
+      "ground_scale": 0.45,
+      "batch": "fish_001",
+      "fish_state": "raw",
+      "approval_status": "awaiting_user_approval"
+    },
+    "Raw Moonfin": {
+      "id": "raw-moonfin",
+      "inventory": "res://Assets/Items/fish_001/inventory/moonfin.png",
+      "ground": "res://Assets/Items/fish_001/inventory/moonfin.png",
+      "ground_scale": 0.45,
+      "batch": "fish_001",
+      "fish_state": "raw",
+      "approval_status": "awaiting_user_approval"
+    },
+    "Raw Velora": {
+      "id": "raw-velora",
+      "inventory": "res://Assets/Items/fish_001/inventory/velora.png",
+      "ground": "res://Assets/Items/fish_001/inventory/velora.png",
+      "ground_scale": 0.45,
+      "batch": "fish_001",
+      "fish_state": "raw",
+      "approval_status": "awaiting_user_approval"
+    },
+    "Raw Sunfish": {
+      "id": "raw-sunfish",
+      "inventory": "res://Assets/Items/fish_001/inventory/sunfish.png",
+      "ground": "res://Assets/Items/fish_001/inventory/sunfish.png",
+      "ground_scale": 0.45,
+      "batch": "fish_001",
+      "fish_state": "raw",
+      "approval_status": "awaiting_user_approval"
+    }
+  }
+}

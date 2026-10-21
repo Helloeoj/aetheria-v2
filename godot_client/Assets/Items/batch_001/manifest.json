@@ -1,0 +1,561 @@
+{
+  "schema_version": 1,
+  "batch": 1,
+  "status": "awaiting_user_approval",
+  "icon_canvas": [
+    64,
+    64
+  ],
+  "icon_art_longest_side": 40,
+  "ground_canvas": [
+    64,
+    64
+  ],
+  "world_scale": 1,
+  "player_native_height": 64,
+  "items": [
+    {
+      "directions": [
+        "south",
+        "south-east",
+        "east",
+        "north-east",
+        "north",
+        "north-west",
+        "west",
+        "south-west"
+      ],
+      "id": "bronze-helmet",
+      "name": "Bronze Helmet",
+      "slot": "head",
+      "inventory": {
+        "cell": [
+          0,
+          0,
+          64,
+          64
+        ],
+        "sprite_bounds": [
+          12,
+          12,
+          40,
+          40
+        ],
+        "native_longest_side": 40
+      },
+      "ground": {
+        "cell": [
+          0,
+          128,
+          64,
+          64
+        ],
+        "sprite_bounds": [
+          21,
+          21,
+          22,
+          22
+        ],
+        "native_longest_side": 22
+      },
+      "source_south_bbox": [
+        50,
+        48,
+        79,
+        77
+      ],
+      "canonical_source": "current fitted Godot equipment, isolated south view",
+      "status": "awaiting_user_approval",
+      "equipped_reused": true
+    },
+    {
+      "directions": [
+        "south",
+        "south-east",
+        "east",
+        "north-east",
+        "north",
+        "north-west",
+        "west",
+        "south-west"
+      ],
+      "id": "bronze-platebody",
+      "name": "Bronze Platebody",
+      "slot": "chest",
+      "inventory": {
+        "cell": [
+          64,
+          0,
+          64,
+          64
+        ],
+        "sprite_bounds": [
+          12,
+          16,
+          40,
+          32
+        ],
+        "native_longest_side": 40
+      },
+      "ground": {
+        "cell": [
+          64,
+          128,
+          64,
+          64
+        ],
+        "sprite_bounds": [
+          18,
+          21,
+          28,
+          22
+        ],
+        "native_longest_side": 28
+      },
+      "source_south_bbox": [
+        47,
+        69,
+        82,
+        97
+      ],
+      "canonical_source": "current fitted Godot equipment, isolated south view",
+      "status": "awaiting_user_approval",
+      "equipped_reused": true
+    },
+    {
+      "directions": [
+        "south",
+        "south-east",
+        "east",
+        "north-east",
+        "north",
+        "north-west",
+        "west",
+        "south-west"
+      ],
+      "id": "bronze-platelegs",
+      "name": "Bronze Platelegs",
+      "slot": "legs",
+      "inventory": {
+        "cell": [
+          128,
+          0,
+          64,
+          64
+        ],
+        "sprite_bounds": [
+          12,
+          20,
+          40,
+          23
+        ],
+        "native_longest_side": 40
+      },
+      "ground": {
+        "cell": [
+          128,
+          128,
+          64,
+          64
+        ],
+        "sprite_bounds": [
+          16,
+          23,
+          32,
+          18
+        ],
+        "native_longest_side": 32
+      },
+      "source_south_bbox": [
+        50,
+        87,
+        80,
+        104
+      ],
+      "canonical_source": "current fitted Godot equipment, isolated south view",
+      "status": "awaiting_user_approval",
+      "equipped_reused": true
+    },
+    {
+      "directions": [
+        "south",
+        "south-east",
+        "east",
+        "north-east",
+        "north",
+        "north-west",
+        "west",
+        "south-west"
+      ],
+      "id": "bronze-kiteshield",
+      "name": "Bronze Kiteshield",
+      "slot": "shield",
+      "inventory": {
+        "cell": [
+          192,
+          0,
+          64,
+          64
+        ],
+        "sprite_bounds": [
+          16,
+          12,
+          32,
+          40
+        ],
+        "native_longest_side": 40
+      },
+      "ground": {
+        "cell": [
+          192,
+          128,
+          64,
+          64
+        ],
+        "sprite_bounds": [
+          17,
+          20,
+          30,
+          24
+        ],
+        "native_longest_side": 30
+      },
+      "source_south_bbox": [
+        68,
+        77,
+        88,
+        102
+      ],
+      "canonical_source": "current fitted Godot equipment, isolated south view",
+      "status": "awaiting_user_approval",
+      "equipped_reused": true
+    },
+    {
+      "directions": [
+        "south",
+        "south-east",
+        "east",
+        "north-east",
+        "north",
+        "north-west",
+        "west",
+        "south-west"
+      ],
+      "id": "bronze-square-shield",
+      "name": "Bronze Square Shield",
+      "slot": "shield",
+      "inventory": {
+        "cell": [
+          256,
+          0,
+          64,
+          64
+        ],
+        "sprite_bounds": [
+          15,
+          12,
+          33,
+          40
+        ],
+        "native_longest_side": 40
+      },
+      "ground": {
+        "cell": [
+          256,
+          128,
+          64,
+          64
+        ],
+        "sprite_bounds": [
+          19,
+          21,
+          25,
+          21
+        ],
+        "native_longest_side": 25
+      },
+      "source_south_bbox": [
+        69,
+        78,
+        88,
+        101
+      ],
+      "canonical_source": "current fitted Godot equipment, isolated south view",
+      "status": "awaiting_user_approval",
+      "equipped_reused": true
+    },
+    {
+      "directions": [
+        "south",
+        "south-east",
+        "east",
+        "north-east",
+        "north",
+        "north-west",
+        "west",
+        "south-west"
+      ],
+      "id": "bronze-dagger",
+      "name": "Bronze Dagger",
+      "slot": "weapon",
+      "inventory": {
+        "cell": [
+          0,
+          64,
+          64,
+          64
+        ],
+        "sprite_bounds": [
+          23,
+          12,
+          18,
+          40
+        ],
+        "native_longest_side": 40
+      },
+      "ground": {
+        "cell": [
+          0,
+          192,
+          64,
+          64
+        ],
+        "sprite_bounds": [
+          23,
+          28,
+          18,
+          8
+        ],
+        "native_longest_side": 18
+      },
+      "source_south_bbox": [
+        46,
+        74,
+        54,
+        92
+      ],
+      "canonical_source": "current fitted Godot equipment, isolated south view",
+      "status": "awaiting_user_approval",
+      "equipped_reused": true
+    },
+    {
+      "directions": [
+        "south",
+        "south-east",
+        "east",
+        "north-east",
+        "north",
+        "north-west",
+        "west",
+        "south-west"
+      ],
+      "id": "bronze-shortsword",
+      "name": "Bronze Shortsword",
+      "slot": "weapon",
+      "inventory": {
+        "cell": [
+          64,
+          64,
+          64,
+          64
+        ],
+        "sprite_bounds": [
+          25,
+          12,
+          14,
+          40
+        ],
+        "native_longest_side": 40
+      },
+      "ground": {
+        "cell": [
+          64,
+          192,
+          64,
+          64
+        ],
+        "sprite_bounds": [
+          18,
+          27,
+          27,
+          9
+        ],
+        "native_longest_side": 27
+      },
+      "source_south_bbox": [
+        46,
+        67,
+        55,
+        93
+      ],
+      "canonical_source": "current fitted Godot equipment, isolated south view",
+      "status": "awaiting_user_approval",
+      "equipped_reused": true
+    },
+    {
+      "directions": [
+        "south",
+        "south-east",
+        "east",
+        "north-east",
+        "north",
+        "north-west",
+        "west",
+        "south-west"
+      ],
+      "id": "bronze-longsword",
+      "name": "Bronze Longsword",
+      "slot": "weapon",
+      "inventory": {
+        "cell": [
+          128,
+          64,
+          64,
+          64
+        ],
+        "sprite_bounds": [
+          22,
+          12,
+          19,
+          40
+        ],
+        "native_longest_side": 40
+      },
+      "ground": {
+        "cell": [
+          128,
+          192,
+          64,
+          64
+        ],
+        "sprite_bounds": [
+          14,
+          23,
+          36,
+          17
+        ],
+        "native_longest_side": 36
+      },
+      "source_south_bbox": [
+        43,
+        62,
+        58,
+        94
+      ],
+      "canonical_source": "current fitted Godot equipment, isolated south view",
+      "status": "awaiting_user_approval",
+      "equipped_reused": true
+    },
+    {
+      "directions": [
+        "south",
+        "south-east",
+        "east",
+        "north-east",
+        "north",
+        "north-west",
+        "west",
+        "south-west"
+      ],
+      "id": "bronze-mace",
+      "name": "Bronze Mace",
+      "slot": "weapon",
+      "inventory": {
+        "cell": [
+          192,
+          64,
+          64,
+          64
+        ],
+        "sprite_bounds": [
+          23,
+          12,
+          18,
+          40
+        ],
+        "native_longest_side": 40
+      },
+      "ground": {
+        "cell": [
+          192,
+          192,
+          64,
+          64
+        ],
+        "sprite_bounds": [
+          18,
+          26,
+          27,
+          12
+        ],
+        "native_longest_side": 27
+      },
+      "source_south_bbox": [
+        46,
+        67,
+        58,
+        93
+      ],
+      "canonical_source": "current fitted Godot equipment, isolated south view",
+      "status": "awaiting_user_approval",
+      "equipped_reused": true
+    },
+    {
+      "directions": [
+        "south",
+        "south-east",
+        "east",
+        "north-east",
+        "north",
+        "north-west",
+        "west",
+        "south-west"
+      ],
+      "id": "bronze-warmaul",
+      "name": "Bronze Warmaul",
+      "slot": "weapon",
+      "inventory": {
+        "cell": [
+          256,
+          64,
+          64,
+          64
+        ],
+        "sprite_bounds": [
+          18,
+          12,
+          28,
+          40
+        ],
+        "native_longest_side": 40
+      },
+      "ground": {
+        "cell": [
+          256,
+          192,
+          64,
+          64
+        ],
+        "sprite_bounds": [
+          10,
+          17,
+          43,
+          30
+        ],
+        "native_longest_side": 43
+      },
+      "source_south_bbox": [
+        33,
+        60,
+        57,
+        94
+      ],
+      "canonical_source": "current fitted Godot equipment, isolated south view",
+      "status": "awaiting_user_approval",
+      "equipped_reused": true
+    }
+  ],
+  "pixellab_drawing": "4fd2b423-90bd-450e-b5b8-1396728c8f98",
+  "pixellab_gallery": "af87316f-9b39-46b8-9410-a13ffa7f2d31",
+  "ground_runtime_scale": 0.75
+}

@@ -1,0 +1,13 @@
+Mode: built-in image_gen
+
+Use case: precise-object-edit.
+Asset type: production terrain artwork for an existing Godot top-down pixel-art map.
+Input image 1 is the EDIT TARGET, a 768 by 768 world-pixel ground-only section. Images 2 and 3 are STYLE/DETAIL REFERENCES for the user's preferred dirt road and rocky riverbank.
+Improve ONLY the UPPER HALF of image 1, above its horizontal midpoint. Keep the lower half unchanged as the existing approved map. Keep the topmost 24 pixel border and the left/right borders unchanged to connect to neighboring ground. Preserve the road's centerline/routing, its approximate width, the grass palette, and the EXACT land/water boundary. The road and shoreline positions are gameplay geometry; do not relocate them.
+
+Repaint the upper dirt road so it has the convincing hand-crafted clarity of reference 2 and the lower half of the target: organic exposed-earth facets, irregular embedded stones with distinct readable shapes and varied sizes, occasional clustered larger pebbles at the margins, sparse small center stones, restrained natural wear. Break up the mechanically repeating diagonal pebble/rut texture. No repeated stamps, blurry streaks, stretched texture or uniform smooth ribbon. Let existing-style grass tips make a natural fine irregular edge, while keeping the route open.
+
+Repaint the narrow upper riverbank as a detailed believable bank matching reference 3: irregular earth lip with clear dark cracks at its base, modest 4–16 world-pixel pebbles and small embedded rocks, broken gravel clusters, fine grass transition. Keep all rocks landward of the exact existing shoreline and ground-level, with no large raised boulders. Add delicate pale-blue edge water detail only within 6 pixels of the existing water boundary; retain all other water and its scale. Blend into the intact bank below the midpoint. This should look like a continuation of the same original handmade game art, not a separate style or new geography.
+
+Keep the artwork's existing fixed pixel scale and crisp small clusters; no blur, smooth paint, gradients, perspective changes or zoom changes. No trees, tree fragments, canopies, bushes, new objects, creatures, characters, buildings, decorative props, shadows, text, editor gizmos, grid, borders or labels. This is clean terrain only; complete object sprites are rendered separately by the game. Output only the edited square map artwork.
+
