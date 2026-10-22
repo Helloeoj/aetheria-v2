@@ -284,6 +284,8 @@ func handle_game_key(event: InputEvent, game: Node) -> bool:
 			modal = modal or (widget is Control and widget.visible)
 		var cooking: Node = game.get("cooking_controller")
 		modal = modal or (cooking != null and cooking.panel.visible)
+		var online_view: Node = game.get("online_view")
+		modal = modal or (online_view != null and online_view.activity_panel.visible)
 		if not modal:
 			panel.composer.grab_focus()
 			game._reset_held_movement()

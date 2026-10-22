@@ -55,7 +55,6 @@ func configure(id: String, game: Node) -> void:
 	activities = Activities.new()
 	activities.configure(self)
 	_discover_stations()
-	_spawn_monsters()
 
 func add_player(character_id: String, player: PlayerState) -> void:
 	if character_id.is_empty() or player == null or players.has(character_id):
@@ -390,28 +389,6 @@ func _refresh_actor(id: String) -> void:
 	world.combat.add_actor(CombatActor.new().configure(data))
 	if not world.combat.player_attack_enabled.has(id):
 		world.combat.player_attack_enabled[id] = false
-
-func _spawn_monsters() -> void:
-	var templates := GameData.get_active_monster_templates()
-	if templates.is_empty():
-		return
-	for index in range(3):
-		var template: Dictionary = templates[mini(index, templates.size() - 1)]
-		# Keep launch encounters modest: Scouts/Workers rather than high tier chiefs.
-		if int(template.get("tier", 1)) > 2:
-			template = templates[0]
-		var point := _safe_position(Vector2(15 + index * 4, 15))
-		if not point.is_finite():
-			continue
-		var monster := MonsterState.new(template, point.x, point.y)
-		monster.entity_id = "mob:" + Crypto.new().generate_random_bytes(12).hex_encode()
-		var stats := monster.get_combat_stats()
-		var data := stats.duplicate(true)
-		data.merge({"entity_id": monster.entity_id, "name": monster.name, "x": point.x, "y": point.y,
-			"hp": monster.current_hp, "max_hp": monster.max_hp, "is_monster": true,
-			"attack_style": stats.style, "monster_attack_type": monster.damage_type}, true)
-		world.register_monster_actor(monster, CombatActor.new().configure(data))
-		_add_body(monster.entity_id)
 
 func _handle_events(events: Array) -> void:
 	for event: Dictionary in events:

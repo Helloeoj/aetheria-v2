@@ -95,6 +95,41 @@ func bind_game(value: Node) -> void:
 func online() -> bool:
 	return mode == Mode.CLIENT
 
+func open_developer_sandbox() -> bool:
+	# Online progress must finish its authoritative save/logout before testing.
+	if authenticated:
+		return false
+	if multiplayer.multiplayer_peer != null:
+		multiplayer.multiplayer_peer.close()
+		multiplayer.multiplayer_peer = null
+	_revoke_account_session(account_token)
+	account_token = ""
+	_ticket = ""
+	character_id = ""
+	username = ""
+	region_id = "outskirts"
+	saved_state = {}
+	latest_snapshot = {}
+	revision = -1
+	sequence = 0
+	_snapshot_sequence = -1
+	_snapshot_transport.reset()
+	_scene_loading = false
+	_last_direction = Vector2.ZERO
+	_moving_elapsed = 0.0
+	game = null
+	mode = Mode.OFFLINE
+	status = "Developer sandbox — progress is not saved online."
+	var travel := get_node_or_null("/root/SceneTravel")
+	if travel != null:
+		travel.call("clear_online_binding")
+	var social := get_node_or_null("/root/Social")
+	if social != null and social.panel != null:
+		social.panel.show()
+	status_changed.emit()
+	get_tree().call_deferred("change_scene_to_file", "res://scenes/EastOutskirtsLayered.tscn")
+	return true
+
 func send_action(command: Dictionary) -> bool:
 	if not online() or not authenticated:
 		return false

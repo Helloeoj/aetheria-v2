@@ -31,6 +31,18 @@ state every five seconds; economy/progression changes save promptly, and clean
 logout atomically saves the final state and releases ownership. A machine or
 process crash can lose recent movement/health within the checkpoint interval.
 
+## Developer testing
+
+Choose **Developer sandbox — unsaved testing** on Login to use the original
+local map and its F5 monster menu, F6 item menu, F7 sprite viewer, K skill panel
+and P fishing practice. F near an authored fishing spot opens fishing normally.
+The sandbox uses a separate local character and never saves to an online account.
+Its **Online login** button returns to Login. Save/log out before switching from
+an authenticated online character; active online state cannot enter the sandbox.
+Real online worlds retain server authority and never accept client debug grants.
+Region startup does not automatically add monsters; combat regression encounters
+exist only in explicit developer test fixtures.
+
 ## Authority and recovery
 
 Clients send intents through `Network`: movement, targeting, attacks, spells,

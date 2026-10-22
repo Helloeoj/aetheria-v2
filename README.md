@@ -14,6 +14,8 @@ create a username/password and log in to play a saved character in the shared,
 server-authoritative East Outskirts. See
 [Online accounts and worlds](godot_client/docs/Networking.md) for setup,
 persistence, capacity configuration, tests and the current loopback-only boundary.
+Choose **Developer sandbox — unsaved testing** on Login for the original F5/F6/F7,
+K and P test controls. Sandbox experiments do not change saved online characters.
 
 The layered East Outskirts map includes imported character sprites,
 health bars, tick-based combat and target controls. Directly opening map/developer

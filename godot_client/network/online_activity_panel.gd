@@ -27,6 +27,8 @@ var _fish_controls: VBoxContainer
 var _cook_controls: VBoxContainer
 var _pale_controls: HBoxContainer
 var _pale_buttons: Array[Button] = []
+var _modal_canvas: CanvasLayer
+var _previous_canvas_layer := 0
 class FishLane extends Control:
 	var lateral := 0.0
 	var boundary := 0.4
@@ -144,6 +146,7 @@ func open_station(station_id: String, kind: String, title: String = "") -> void:
 	_line_meter.visible = kind == "fish"
 	_fish_lane.visible = kind == "fish"
 	_pale_controls.visible = kind == "fish"
+	_raise_modal_canvas()
 	show()
 	_layout()
 	_refresh()
@@ -157,6 +160,24 @@ func close() -> void:
 	_bait.get_popup().hide()
 	_raw.get_popup().hide()
 	hide()
+	_restore_modal_canvas()
+
+func _raise_modal_canvas() -> void:
+	var canvas := game.get_node_or_null("UI") as CanvasLayer
+	var social_canvas := get_node_or_null("/root/Social/SocialOverlay") as CanvasLayer
+	if canvas == null or social_canvas == null:
+		return
+	_modal_canvas = canvas
+	_previous_canvas_layer = canvas.layer
+	canvas.layer = maxi(canvas.layer, social_canvas.layer + 1)
+
+func _restore_modal_canvas() -> void:
+	if is_instance_valid(_modal_canvas):
+		_modal_canvas.layer = _previous_canvas_layer
+	_modal_canvas = null
+
+func _exit_tree() -> void:
+	_restore_modal_canvas()
 
 func handle_key(event: InputEventKey) -> void:
 	if not visible or event.echo:
@@ -187,8 +208,15 @@ func _process(delta: float) -> void:
 		_send({"type":"fish_input", "steering":float(int(_right) - int(_left))})
 
 func _layout() -> void:
+	# The map's UI root already scales logical coordinates to the viewport.
+	# Using physical pixels here applies that scale twice on larger displays.
 	var viewport_size := get_viewport_rect().size
-	size.x = minf(620, maxf(380, viewport_size.x - 32))
+	if get_parent() is Control:
+		viewport_size = (get_parent() as Control).size
+	# Wrapped labels can briefly request a tall panel before their first layout.
+	# Containers grow automatically, so explicitly shrink back to the current
+	# content minimum as well as updating the width on later layout passes.
+	size = Vector2(minf(620, maxf(380, viewport_size.x - 32)), get_combined_minimum_size().y)
 	position = Vector2((viewport_size.x - size.x) * 0.5, maxf(16, (viewport_size.y - size.y) * 0.5 - 75))
 
 func _refresh() -> void:

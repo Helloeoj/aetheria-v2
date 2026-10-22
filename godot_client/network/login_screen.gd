@@ -66,6 +66,13 @@ func _ready() -> void:
 		toggle.text = "I already have an account" if register_mode else "Create a new account"
 		message.text = "Email is optional. Use 3–20 letters, numbers or underscores for your username." if register_mode else "Enter your username and password.")
 	column.add_child(toggle)
+	var sandbox := Button.new()
+	sandbox.name = "DeveloperSandboxButton"
+	sandbox.text = "Developer sandbox — unsaved testing"
+	sandbox.custom_minimum_size.y = 40
+	sandbox.tooltip_text = "Use F5/F6/F7, K and P to test without changing an online character."
+	sandbox.pressed.connect(func() -> void: Network.open_developer_sandbox())
+	column.add_child(sandbox)
 	message = Label.new()
 	message.text = Network.status if Network.status != "Not connected" else "Enter your username and password."
 	message.custom_minimum_size = Vector2(425, 75)

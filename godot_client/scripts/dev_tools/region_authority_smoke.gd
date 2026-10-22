@@ -47,13 +47,15 @@ func _run() -> void:
 	spot.position = Vector2(320,704) - spot.shore_offset
 	geometry.add_child(spot)
 	region.configure("test-region", geometry)
+	check(region.world.monsters.is_empty(), "Region startup does not invent encounters")
+	preload("res://scripts/dev_tools/region_combat_fixture.gd").add_monsters(region)
 	var a := PlayerState.new("Alice")
 	var b := PlayerState.new("Bob")
 	region.add_player("char-alice", a)
 	region.add_player("char-bob", b)
 	check(region.players.size() == 2, "Two characters inhabit one shared region")
 	check(region.world.combat.actors.has("char-bob"), "Second character has stable character actor ID")
-	check(region.world.monsters.size() > 0, "Shared region owns approved monsters")
+	check(region.world.monsters.size() > 0, "Explicit combat fixture owns test monsters")
 	check(not region.submit("char-alice", {"type":"grant_xp", "amount":100000}).ok, "Forged XP commands rejected")
 	check(not region.submit("char-alice", {"type":"move", "direction":[1,0], "speed":999}).ok, "Unexpected stat fields rejected")
 	check(not region.submit("char-alice", {"type":"attack", "target_id":"char-bob"}).ok, "PvP rejected")
@@ -209,6 +211,8 @@ func _check_actual_map_collision() -> void:
 		geometry.actor_sprites.erase("player")
 	var region = load("res://network/authoritative_region.gd").new()
 	region.configure("actual-map",geometry)
+	check(region.world.monsters.is_empty(), "Actual map startup has no automatic goblins")
+	preload("res://scripts/dev_tools/region_combat_fixture.gd").add_monsters(region)
 	await get_tree().physics_frame
 	await get_tree().process_frame
 	var player := PlayerState.new("MapCollisionRegression")

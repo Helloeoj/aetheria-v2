@@ -469,6 +469,16 @@ func _ready() -> void:
 		var social := get_node_or_null("/root/Social")
 		if social != null and social.panel != null:
 			social.panel.show()
+	elif not has_meta("online_server_geometry"):
+		var online_login := Button.new()
+		online_login.name = "OnlineLoginButton"
+		online_login.text = "Developer sandbox · Online login"
+		online_login.position = Vector2(970, 10)
+		online_login.custom_minimum_size = Vector2(285, 42)
+		online_login.focus_mode = Control.FOCUS_NONE
+		online_login.tooltip_text = "This sandbox keeps all developer controls. Log in separately to play your saved online character."
+		online_login.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/Login.tscn"))
+		ui_root.add_child(online_login)
 
 func apply_online_snapshot(snapshot: Dictionary) -> void:
 	if online_view != null:
@@ -504,7 +514,7 @@ func _input(event: InputEvent) -> void:
 	if Network.online() and online_view != null and online_view.activity_panel.visible:
 		if event is InputEventKey:
 			online_view.activity_panel.handle_key(event)
-		get_viewport().set_input_as_handled()
+			get_viewport().set_input_as_handled()
 		return
 	if cooking_controller != null and cooking_controller.panel.visible:
 		if event is InputEventKey:
