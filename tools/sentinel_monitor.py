@@ -154,17 +154,22 @@ class Monitor:
         for path in paths:
             current.add(path)
             stamp = path.stat().st_mtime_ns
-            if self.markers.get(path) == stamp:
-                continue
-            meta = adc.read_json(path, {})
+            # A marker can arrive before process discovery. Reuse its cached
+            # metadata so a later verified client links without waiting for a
+            # checkpoint to rewrite the file.
+            meta = (self.sessions.get(path.parent.name, {}) if self.markers.get(path) == stamp
+                    else adc.read_json(path, {}))
             if not meta or not isinstance(meta, dict) or not meta.get('session_id'):
                 continue
             self.markers[path] = stamp
             self.sessions[meta['session_id']] = meta
             pid = meta.get('pid', 0)
-            if pid and pid not in self.active and not meta.get('clean_shutdown') and not meta.get('recovered_by'):
+            if pid in self.active:
                 self._attach(pid, meta['session_id'], meta.get('native_log'))
-            elif pid in self.active:
+            elif os.name != 'nt' and pid and not meta.get('clean_shutdown') and not meta.get('recovered_by'):
+                # Windows attaches only through verified process discovery (or
+                # our own launch). A saved marker's live PID could be a server
+                # or an unrelated process that reused an old client's PID.
                 self._attach(pid, meta['session_id'], meta.get('native_log'))
         self.markers = {p: value for p, value in self.markers.items() if p in current}
         identities = {p.parent.name for p in current}
@@ -174,16 +179,23 @@ class Monitor:
         if not self.discover:
             return
         pids = godot_pids()
+        self.seen_pids.intersection_update(pids)
         new = pids - self.seen_pids
-        self.seen_pids = pids
         if not new:
             return
         for process in engine_processes():
+            pid = process.get('ProcessId')
+            if pid not in new:
+                continue
             executable = process.get('ExecutablePath')
+            command = process.get('CommandLine')
+            if not executable or not command:
+                continue  # A process can appear before CIM exposes its details.
+            self.seen_pids.add(pid)
             if executable and Path(executable).is_file() and not self.engine:
                 self.engine = executable
-            if process.get('ProcessId') in new and executable and not executable.lower().endswith('_console.exe') and is_game(process.get('CommandLine', ''), self.project):
-                self._attach(process['ProcessId'], native=self.root.parent / 'logs/godot.log')
+            if not executable.lower().endswith('_console.exe') and is_game(command, self.project):
+                self._attach(pid, native=self.root.parent / 'logs/godot.log')
         # Command lines are discarded; they are not persisted in reports/activity.
 
     def launch(self, engine=None, extra=None):
@@ -323,8 +335,8 @@ class Monitor:
                 self.event('ATTENTION', str(error))
                 if action == 'clear':
                     self.notice = 'Could not clear results: ' + str(error)
-        self._read_sessions()
         self._discover()
+        self._read_sessions()
         for pid, record in list(self.active.items()):
             running, code = record['watch'].poll()
             if not running:
