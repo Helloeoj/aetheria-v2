@@ -417,6 +417,10 @@ class PanelTests(unittest.TestCase):
                 self.assertFalse(panel.run_button.instate(['!disabled']))
                 self.assertFalse(app.game_card.winfo_ismapped())
                 self.assertGreater(panel.preview.winfo_height(), 40)
+                # A queued evidence update can arrive after preparation completed.
+                panel.attachments=[{'path':'changed-evidence.txt','kind':'text','hash':'new','text':'changed'}]
+                panel.run_task()
+                self.assertIn('Evidence changed',panel.status.get())
             finally:
                 app.close()
 

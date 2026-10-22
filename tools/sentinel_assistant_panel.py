@@ -252,6 +252,9 @@ class AssistantPanel(tk.Frame):
         if efforts and self.effort.get() not in efforts: self.effort.set(efforts[0])
 
     def run_task(self):
+        if self.task and self.task.get('attachments',[]) != self.attachments:
+            self.status.set('Evidence changed. Prepare the stage again before running it.')
+            return
         if not self.task or self.preview_inputs != self.inputs():
             self.status.set('Inputs changed. Prepare the stage again before running it.')
             return
