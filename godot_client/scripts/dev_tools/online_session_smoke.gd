@@ -35,7 +35,8 @@ func _run() -> void:
 	var config: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(input))
 	net.username = config.username
 	net.account_token = config.get("token", "")
-	var error: int = net.join_world(config.ticket)
+	net.world_id = config.get("world_id", "world-1")
+	var error: int = net.join_world(config.ticket, "127.0.0.1", int(config.get("port", 24567)))
 	check(error == OK, "World transport connects")
 	await net.joined
 	check(net.authenticated and net.character_id == config.character_id, "Backend identity owns the world actor")

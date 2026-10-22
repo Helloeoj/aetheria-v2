@@ -20,6 +20,7 @@ DiagnosticCore="*res://diagnostics/diagnostic_core.gd"
 GameData="*res://scripts/game_data.gd"
 SceneTravel="*res://scripts/scene_travel.gd"
 Network="*res://autoload/network_manager.gd"
+ServerBootstrap="*res://network/server_bootstrap.gd"
 Social="*res://scripts/social/social_client.gd"
 
 [display]

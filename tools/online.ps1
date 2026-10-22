@@ -11,6 +11,11 @@ function Get-WorldProcess {
         $record = Get-Content -LiteralPath $onlineReady -Raw | ConvertFrom-Json
         $candidate = Get-CimInstance Win32_Process -Filter "ProcessId=$($record.pid)" -ErrorAction SilentlyContinue
         if ($candidate -and $candidate.CommandLine -like '*--world-server*' -and $candidate.CommandLine.Contains($onlineRepo)) { return $candidate }
+        $manifest = Join-Path $onlineData 'server-build.json'
+        if ($candidate -and (Test-Path -LiteralPath $manifest)) {
+            $export = Get-Content -LiteralPath $manifest -Raw | ConvertFrom-Json
+            if ($export.repo -eq $onlineRepo -and $candidate.ExecutablePath -eq $export.exe) { return $candidate }
+        }
     } catch { }
     return $null
 }
@@ -41,6 +46,12 @@ if ($LASTEXITCODE) { throw 'Account service failed to start.' }
 New-Item -ItemType Directory -Path $onlineData -Force | Out-Null
 Remove-Item -LiteralPath $onlineReady -Force -ErrorAction SilentlyContinue
 Remove-Item -LiteralPath $onlineStop -Force -ErrorAction SilentlyContinue
+$onlineBuild = Join-Path $onlineData 'server-build.json'
+$onlineExe = $null
+if (Test-Path -LiteralPath $onlineBuild) {
+    $built = Get-Content -LiteralPath $onlineBuild -Raw | ConvertFrom-Json
+    if ($built.repo -eq $onlineRepo -and (Test-Path -LiteralPath $built.exe)) { $onlineExe = $built.exe }
+}
 $onlineGodot = $env:GODOT
 if (-not $onlineGodot) {
     $detected = Get-Command godot -ErrorAction SilentlyContinue
@@ -51,8 +62,12 @@ if (-not $onlineGodot) {
     $detected = Get-ChildItem -LiteralPath $downloadFolder -Filter '*4.5.1*console.exe' -ErrorAction SilentlyContinue | Select-Object -First 1
     if ($detected) { $onlineGodot = $detected.FullName }
 }
-if (-not $onlineGodot -or -not (Test-Path -LiteralPath $onlineGodot)) { throw 'Set GODOT to the installed Godot 4.5.1 console executable.' }
+if (-not $onlineExe -and (-not $onlineGodot -or -not (Test-Path -LiteralPath $onlineGodot))) { throw 'Build the dedicated server or set GODOT to Godot 4.5.1.' }
 $onlineArguments = @('--headless', '--path', ('"' + (Join-Path $onlineRepo 'godot_client') + '"'), 'res://scenes/network/WorldServer.tscn', '--log-file', ('"' + (Join-Path $onlineData 'world.log') + '"'), '--', '--world-server', '--social-no-auto')
+if ($onlineExe) {
+    $onlineGodot = $onlineExe
+    $onlineArguments = @('--headless', '--log-file', ('"' + (Join-Path $onlineData 'world.log') + '"'), '--', '--world-server', '--social-no-auto', ('--aetheria-repo="' + $onlineRepo + '"'))
+}
 Start-Process -FilePath $onlineGodot -ArgumentList $onlineArguments -WindowStyle Hidden | Out-Null
 $deadline = [DateTime]::UtcNow.AddSeconds(60)
 while ([DateTime]::UtcNow -lt $deadline) {

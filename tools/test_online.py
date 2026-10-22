@@ -30,14 +30,15 @@ def api(route, payload=None, token=None):
         return json.load(error)
 
 
-def run_client(engine, output, name, password, expected=None):
+def run_client(engine, output, name, password, expected=None, world_id='world-1', port=24567):
     login = api('/api/login', {'username': name, 'password': password})
     assert login.get('ok'), f'Login failed: {login.get("code")}'
-    ticket = api('/api/admit', {'world_id': 'world-1'}, login['token'])
+    ticket = api('/api/admit', {'world_id': world_id}, login['token'])
     assert ticket.get('ok'), f'Admission failed: {ticket.get("code")}'
     output.mkdir(parents=True)
     config = {'username': name, 'character_id': login['character_id'],
-        'ticket': ticket['ticket'], 'token': login['token'], 'output': str(output / 'result.json')}
+        'ticket': ticket['ticket'], 'token': login['token'], 'output': str(output / 'result.json'),
+        'world_id': world_id, 'port': port}
     if expected is not None:
         config['expected_state'] = expected
     input_path = output / 'input.json'
