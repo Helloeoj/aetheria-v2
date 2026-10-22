@@ -6,10 +6,29 @@ shortcut. The companion, incidents, live log, Explain & chat and roadmap remain
 available. The development assistant uses the existing Python runtime and
 installed Codex; it adds no package dependency or service.
 
-## Start with a local question or a small change
+## Ask a question
 
-1. Describe what you want in **Prepare & run**. Choose `question` for an answer
-   without edits, `audit` for investigation, or `implement` for one coding stage.
+1. Open **Ask Sentinel**, type your question, then press **Enter** or select
+   **Ask Sentinel**. Shift+Enter adds a line.
+2. Sentinel connects to the installed Codex, loads its model catalog, retrieves
+   relevant local source and sends a read-only question. No separate Connect,
+   Prepare or Run step is needed. Sending a question uses your Codex allowance.
+3. Read the streamed answer in the answer area. A progress indicator and status
+   remain visible while it connects, reads or writes an answer. Errors and stop
+   reasons appear in that same area; the Ask button becomes available to retry.
+
+Questions cannot edit files or accept elevated permissions. **Stop** cancels a
+pending connection before inference when possible, or interrupts a running job
+while preserving its partial answer. If sign-in is needed, the visible error
+points to **Advanced → Sign in** and the browser flow. No password/token copying
+is needed. Model and budget controls are under **Advanced**, and local indexing
+status stays on **Project memory** without replacing an answer or error.
+
+## Review a coding task
+
+1. Describe the task on **Ask Sentinel**, then open **Coding tasks & settings**
+   (the **Advanced** tab). Choose `audit` for investigation or `implement` for
+   one coding stage. Questions work directly on the first tab.
 2. Select **Prepare locally**. Sentinel retrieves current relevant excerpts,
    approved rules and relevant prior checkpoints. Preparation makes no AI request.
    **Project memory → Search locally** searches the source without using Codex.
@@ -27,11 +46,18 @@ installed Codex; it adds no package dependency or service.
 Codex jobs use the connected ChatGPT-backed Codex allowance. The assistant does
 not select API-key billing automatically. Catalog discovery and thread creation
 do not prove live model entitlement; a completed inference is needed for that.
-No model inference was used during the installation validation.
+The initial installation used synthetic inference; the question-flow fix below
+also has a completed live inference and UI validation.
 
 ## Budgets and oversight
 
-Defaults are 12,000 observed tokens and 600 seconds for a development stage.
+Defaults are 24,000 observed tokens and 600 seconds for a development stage.
+The previous shipped 12,000-token preference is migrated to 24,000; other saved
+custom thresholds remain unchanged. The installed Codex used 14,496 total tokens
+for a tiny live probe, almost all startup input context. That exceeded the old
+default before a one-line answer could finish. A character estimate of the task
+alone cannot detect that overhead. This correction allows a request to start;
+it does not claim to reduce the underlying harness input or guarantee a token cost.
 Thresholds, mode and effort persist locally after preparing a task. Estimated
 context tokens use a rough character heuristic and exclude Codex's own loaded
 instructions and future tool output; they are not a usage quote. Image processing
@@ -55,7 +81,9 @@ it leaves independently running Aetheria processes alone.
 
 **Peer review** starts a separate read-only review of bounded task/diff evidence,
 using the developer's selected model. It requires approval for a separate
-3,000-token/120-second threshold. There are at most two reviews per Sentinel
+24,000-token/120-second threshold, including harness input. The original 3,000
+total-token limit was likewise below observed startup input. The higher review
+threshold is displayed before its separate approval. There are at most two reviews per Sentinel
 session; a second review needs new evidence. Read the findings and use **Send
 correction** to steer the active developer turn. Corrections are explicit,
 bounded to 2,000 characters and limited to three per developer job. Reviews and
@@ -154,10 +182,21 @@ Final validation: **33 assistant regressions, 23 roadmap/clear tests, 22 monitor
 checks and 49 ChatGPT integration checks passed (127 total)**. Generated reports
 remain in the supporting workspace rather than source control.
 
+Question-flow correction: **71 automated model/Tk tests, 22 monitor checks and
+49 ChatGPT integration checks passed (142 total)**. This adds nine backend and
+six question-interface regressions, including a one-click read-only launch,
+visible connection failure/retry, streaming, cancellation before launch, and
+coverage for the measured startup-context budget defect.
+
 The installed Codex 0.163.0-alpha.10.2 completed the real initialization handshake,
 reported a ChatGPT-backed account, returned seven catalog models and accepted a
-read-only thread configuration. **No live inference, live paid peer review or
-measured token savings are claimed.** Native Windows screen capture timed out
+read-only thread configuration. The corrected one-button UI was then tested live
+on this project with catalog-selected GPT-6 Luna, medium effort and standard tier:
+the answer appeared in the answer area and the job completed at **17,729 observed
+tokens**, with **zero commands, file changes or interruptions**. A first tiny
+probe at the old 12k limit received an answer but was interrupted at 14,496 tokens,
+reproducing the budget defect. No live paid peer review or measured token savings
+are claimed. Native Windows screen capture timed out
 after an activation retry; automated Tk layout/control checks passed, and no
 screenshot-based visual pass is claimed.
 

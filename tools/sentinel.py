@@ -79,6 +79,8 @@ class SentinelApp:
         style.configure('Treeview.Heading', background=PANEL, foreground=MUTED, relief='flat', padding=(6, 8))
         style.map('Treeview', background=[('selected', '#254467')], foreground=[('selected', TEXT)])
         style.configure('TCombobox', fieldbackground=FIELD, foreground=TEXT, background=PANEL, arrowcolor=BLUE)
+        style.map('TCombobox',fieldbackground=[('readonly',FIELD)],foreground=[('readonly',TEXT)],selectbackground=[('readonly','#254467')],selectforeground=[('readonly',TEXT)])
+        style.configure('TEntry',fieldbackground=FIELD,foreground=TEXT,insertcolor=TEXT)
         style.configure('TScrollbar', background='#2b3c53', troughcolor=FIELD, borderwidth=0, arrowcolor=MUTED)
 
     def label(self, parent, text='', color=TEXT, size=10, bold=False, **options):

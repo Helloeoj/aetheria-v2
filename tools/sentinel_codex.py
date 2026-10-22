@@ -231,13 +231,16 @@ class AssistantController:
                 raise ValueError('Finish or stop the current developer job before starting another.')
             thread = self.server.request('thread/start', {
                 'cwd': str(self.memory.project), 'model': task['model'],
-                'approvalPolicy': 'on-request', 'approvalsReviewer': 'user',
+                'approvalPolicy': 'on-request' if task['mode'] == 'implement' else 'never', 'approvalsReviewer': 'user',
                 'sandbox': 'workspace-write' if task['mode'] == 'implement' else 'read-only',
                 'serviceName': 'aetheria_sentinel', 'serviceTier': 'default',
                 'config': {'features.multi_agent': False, 'web_search': 'disabled'},
-                'developerInstructions': 'One approved stage only. No extra agents or automatic follow-on jobs. Follow the task scope and project rules.'})['thread']['id']
+                'developerInstructions': ('One approved stage only. No extra agents or automatic follow-on jobs. Follow the task scope and project rules.'
+                    + (' Answer the question read-only. Do not edit files, commit, push, or request elevated permissions.'
+                       if task['mode'] == 'question' else ''))})['thread']['id']
             job = {'thread': thread, 'turn': None, 'task': copy.deepcopy(task), 'status': 'running',
-                   'answer': '', 'diff': '', 'governor': Governor(tokens=task['tokens'], seconds=task['seconds'], scope=task['scope']),
+                   'answer': '', 'messages': {}, 'message': 'Waiting for Codex to answer…',
+                   'diff': '', 'governor': Governor(tokens=task['tokens'], seconds=task['seconds'], scope=task['scope']),
                    'checkpoint': None, 'finished':False, 'corrections': 0, 'last_checkpoint':time.monotonic()}
             self.jobs[thread] = job
             try:
@@ -249,11 +252,12 @@ class AssistantController:
                     'effort':task['effort'],'mode':task['mode'],'thread':thread,'turn':job['turn'],
                     'source_revision':task['revision'],'report':job['governor'].report(),
                     'answer':'Stage started; no completion receipt yet.','validation':None})
-            except Exception:
-                self._finish(job, 'failed', 'Codex did not acknowledge task startup; connection stopped.')
+            except Exception as error:
+                self._finish(job, 'failed', 'Codex could not start this request. ' + self._error_message(error))
                 self.server.close()
                 raise
             self.callback({'type': 'job', 'thread': thread, 'status': 'running'})
+            self._progress(job)
             return job
 
     def event(self, event):
@@ -269,11 +273,21 @@ class AssistantController:
             if 'id' in event and 'method' in event:
                 job = self.jobs.get(params.get('threadId'))
                 matching_turn=job and params.get('turnId')==job.get('turn')
-                if matching_turn and job['status'] == 'running' and method in ('item/commandExecution/requestApproval', 'item/fileChange/requestApproval'):
+                approval = method in ('item/commandExecution/requestApproval', 'item/fileChange/requestApproval')
+                if matching_turn and job['status'] == 'running' and approval and job['task']['mode'] == 'implement':
                     self.approvals[event['id']] = event
                     self.callback({'type':'approval','id':event['id'],'method':method,'params':params})
                 else:
-                    self.server.reply(event['id'], error={'code': -32601, 'message': 'This client does not support this request.'})
+                    if approval:
+                        self.server.reply(event['id'], {'decision': 'decline'})
+                    else:
+                        self.server.reply(event['id'], error={'code': -32601, 'message': 'This client does not support this request.'})
+                    if matching_turn and job['status'] == 'running':
+                        reason = ('This read-only request asked for extra permissions, which Sentinel declined. Ask a narrower question.'
+                                  if approval or method == 'item/permissions/requestApproval' else
+                                  'Codex requested input that Sentinel cannot display yet. Add the missing detail to your question and ask again.')
+                        self.interrupt(job['thread'], reason)
+                        self._finish(job, 'failed', reason)
                 return
             job = self.jobs.get(params.get('threadId'))
             if not job:
@@ -287,16 +301,34 @@ class AssistantController:
             turn = params.get('turnId') or params.get('turn', {}).get('id')
             if turn and job['turn'] and turn != job['turn']:
                 return
+            if method == 'error':
+                message = self._error_message(params.get('error', {}))
+                if not params.get('willRetry', False):
+                    self._finish(job, 'failed', message)
+                else:
+                    job['message'] = message + ' Codex is retrying the connection…'
+                    self._progress(job)
+                return
             revision = self.memory.snapshot() if method == 'item/completed' else ''
             reason = job['governor'].observe(self._relative_event(event), revision=revision)
             if method == 'turn/diff/updated':
                 job['diff'] = safe_text(params.get('diff', ''))[-20000:]
+            if method == 'item/agentMessage/delta':
+                self._answer(job, params.get('itemId'), params.get('delta', ''), completed=False)
+                job['message'] = 'Writing answer…'
+            if method == 'item/started':
+                kind = params.get('item', {}).get('type')
+                if kind == 'commandExecution':
+                    job['message'] = 'Reading project files…' if job['task']['mode'] != 'implement' else 'Working on the approved change…'
+                elif kind == 'agentMessage':
+                    job['message'] = 'Writing answer…'
             if method == 'item/completed' and params.get('item', {}).get('type') == 'agentMessage':
-                job['answer'] = (job['answer'] + '\n' + safe_text(params['item'].get('text', '')))[-16000:]
+                self._answer(job, params['item'].get('id'), params['item'].get('text', ''), completed=True)
             if reason:
                 self.interrupt(job['thread'], reason)
             if method == 'turn/completed':
-                self._finish(job, params['turn'].get('status', 'failed'), safe_text(str(params['turn'].get('error') or ''))[:1000])
+                error = params['turn'].get('error')
+                self._finish(job, params['turn'].get('status', 'failed'), self._error_message(error) if error else '')
             else:
                 if job['checkpoint'] and time.monotonic()-job['last_checkpoint']>=1:
                     self.memory.update_checkpoint(job['checkpoint'],job['status'],{
@@ -304,7 +336,38 @@ class AssistantController:
                         'thread':job['thread'],'turn':job['turn'],'report':job['governor'].report(),
                         'answer':job['answer'],'validation':None})
                     job['last_checkpoint']=time.monotonic()
-                self.callback({'type':'progress','thread':job['thread'],'report':job['governor'].report(), 'answer': job['answer']})
+                self._progress(job)
+
+    def _progress(self, job):
+        self.callback({'type': 'progress', 'thread': job['thread'], 'report': job['governor'].report(),
+                       'answer': job['answer'], 'message': job['message']})
+
+    def _answer(self, job, identity, text, *, completed):
+        # Final items contain the whole message, not another delta. Retain only a
+        # bounded tail and replace that item's draft to avoid duplicated answers.
+        identity = identity or 'answer'
+        previous = job['messages'].get(identity, {'text': '', 'completed': False})
+        if previous['completed'] and not completed:
+            return
+        job['messages'][identity] = {'text': safe_text(text if completed else previous['text'] + text)[-16000:],
+                                     'completed': completed}
+        while len(job['messages']) > 32:
+            del job['messages'][next(iter(job['messages']))]
+        job['answer'] = safe_text('\n'.join(row['text'] for row in job['messages'].values() if row['text']))[-16000:]
+
+    @staticmethod
+    def _error_message(error):
+        message = safe_text(error.get('message', 'Codex could not complete this request.') if isinstance(error, dict) else str(error))[:800]
+        detail = (message + ' ' + str(error.get('codexErrorInfo', '') if isinstance(error, dict) else '')).lower()
+        if any(word in detail for word in ('unauthorized', 'sign in', 'authentication', 'token expired')):
+            action = 'Sign in to Codex again, then reconnect.'
+        elif any(word in detail for word in ('usagelimit', 'ratelimit', 'usage limit', 'rate limit', 'quota')):
+            action = 'Check your Codex usage limits before trying again.'
+        elif any(word in detail for word in ('model', 'effort', 'badrequest')):
+            action = 'Reconnect to refresh the model list, or choose another available model in Advanced controls.'
+        else:
+            action = 'Check the Codex connection and try again; no new request was started automatically.'
+        return message + ' ' + action
 
     def _relative_event(self, event):
         result = copy.deepcopy(event)
@@ -318,6 +381,10 @@ class AssistantController:
     def _finish(self, job, status, error=''):
         if job.get('finished'):
             return
+        if status == 'completed' and job['task']['mode'] == 'question' and not job['answer'].strip():
+            status, error = 'failed', 'Codex returned no answer. Try a more specific question or reconnect Codex.'
+        if status != 'completed' and not error:
+            error = job['governor'].reason or 'Codex stopped before completing the request. Try again or reconnect Codex.'
         job['finished']=True
         job['status'] = status
         body = {'model':job['task']['model'], 'effort':job['task']['effort'], 'mode':job['task']['mode'],
@@ -393,7 +460,7 @@ class AssistantController:
             if self.last_review == evidence or any(j['task']['mode']=='review' and j['status'] in ('running','stopping') for j in self.jobs.values()):
                 raise ValueError('Review already running or there is no new evidence since the last review.')
             task = build_task(self.memory, 'Review this task: ' + developer['task']['request'], mode='review',
-                              tokens=3000, seconds=120, model=developer['task']['model'], effort=developer['task']['effort'])
+                              tokens=24000, seconds=120, model=developer['task']['model'], effort=developer['task']['effort'])
             intent='\n'.join(f"{r['key']}: {r['text']}" for r in self.memory.rules())
             if len(intent)>2000:
                 raise ValueError('Current rules exceed the small review budget. Consolidate rules before reviewing.')
