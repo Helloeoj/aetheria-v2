@@ -31,6 +31,17 @@ class QuestionController:
     def close(self): pass
 
 
+class BrowserController:
+    def __init__(self):
+        self.started=0
+        self.retried=0
+        self.commands=[]
+    def start(self): self.started+=1
+    def retry(self): self.retried+=1
+    def command(self,command,**kwargs): self.commands.append((command,kwargs))
+    def close(self): pass
+
+
 class QuestionUITests(unittest.TestCase):
     def setUp(self):
         self.temp=tempfile.TemporaryDirectory()
@@ -167,6 +178,41 @@ class QuestionUITests(unittest.TestCase):
         self.assertIn('Completed immediately.',self.panel.answer_box.get('1.0','end'))
         self.assertIn('completed',self.panel.status.get().lower())
         self.assertNotIn('working',self.panel.status.get().lower())
+
+    def test_explicit_browser_retry_recovers_a_running_pane_without_touching_codex(self):
+        browser=BrowserController(); self.panel.chat_browser=browser
+        self.panel.open_chat()
+        self.assertEqual(browser.retried,1)
+        self.assertEqual(browser.started,0)
+        self.assertIn('Waiting',self.panel.chat_status.get())
+        self.assertEqual(self.fake.connected,0); self.assertFalse(self.fake.launched)
+
+    def test_automatic_browser_start_and_draft_do_not_reload_an_active_conversation(self):
+        browser=BrowserController(); self.panel.chat_browser=browser; self.panel.start_browser=True
+        self.panel.chat_status.set('A conversation is already open.')
+        self.panel.route.set('ChatGPT conversation'); self.panel.switch_route()
+        self.panel.draft_chat('Selected game context.')
+        self.assertEqual(browser.retried,0)
+        self.assertEqual(browser.started,2)
+        self.assertEqual(browser.commands,[('draft',{'text':'Selected game context.'})])
+        self.assertEqual(self.panel.chat_status.get(),'A conversation is already open.')
+        self.assertEqual(self.fake.connected,0); self.assertFalse(self.fake.launched)
+
+    def test_browser_attachment_is_not_reported_as_a_ready_message_box(self):
+        self.panel._chat_event({'type':'attached','value':'Browser attached.'})
+        self.assertIn('Waiting',self.panel.chat_status.get())
+        self.panel._chat_event({'type':'page_state','value':{'composer':True,'sign_in':False,'challenge':False}})
+        self.assertIn('message box is ready',self.panel.chat_status.get())
+
+    def test_help_page_and_signed_out_state_have_visible_recovery_guidance(self):
+        self.panel._chat_event({'type':'location','value':'https://help.openai.com'})
+        self.assertIn('Open / retry ChatGPT',self.panel.chat_status.get())
+        self.assertNotIn('Sign in on the page',self.panel.chat_status.get())
+        self.panel._chat_event({'type':'page_state','value':{'composer':False,'sign_in':True,'challenge':False}})
+        self.assertIn('Sign in',self.panel.chat_status.get())
+        self.panel._chat_event({'type':'page_state','value':{'composer':False,'sign_in':False,'challenge':True}})
+        self.assertIn('verification',self.panel.chat_status.get())
+        self.assertEqual(self.fake.connected,0); self.assertFalse(self.fake.launched)
 
 
 if __name__=='__main__': unittest.main(verbosity=2)

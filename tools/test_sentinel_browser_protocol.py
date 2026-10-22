@@ -6,7 +6,7 @@ import subprocess
 import sys
 import unittest
 
-from sentinel_chatgpt_pane import SNAPSHOT_JS, draft_script
+from sentinel_chatgpt_pane import SNAPSHOT_JS, PAGE_STATE_JS, draft_script
 
 
 class BrowserScriptTests(unittest.TestCase):
@@ -31,8 +31,21 @@ class BrowserScriptTests(unittest.TestCase):
           const scripts=JSON.parse(fs.readFileSync(0,'utf8'));
           for (const code of scripts) new Function(code);
           console.log(JSON.stringify({compiled:scripts.length}));'''
-        result = self.node_json(runner, [SNAPSHOT_JS, draft_script('Game context:\n雪\n"quoted" and \\paths')])
-        self.assertEqual(result, {'compiled': 2})
+        result = self.node_json(runner, [SNAPSHOT_JS, PAGE_STATE_JS, draft_script('Game context:\n雪\n"quoted" and \\paths')])
+        self.assertEqual(result, {'compiled': 3})
+
+    def test_page_readiness_requires_an_editor_inside_the_visible_viewport(self):
+        runner = '''const fs=require('fs'),vm=require('vm');
+          const code=JSON.parse(fs.readFileSync(0,'utf8'));
+          const sandbox={location:{origin:'https://chatgpt.com'},innerWidth:1000,innerHeight:250,
+            getComputedStyle:()=>({display:'block',visibility:'visible'}),
+            document:{querySelector:()=>null,querySelectorAll:selector=>selector==='button,a' ? [] :
+              [{getBoundingClientRect:()=>({width:500,height:40,top:200,bottom:240,left:10,right:510})}]}};
+          const ready=vm.runInNewContext(code,sandbox);
+          sandbox.innerHeight=150;const clipped=vm.runInNewContext(code,sandbox);
+          sandbox.location.origin='https://help.openai.com';const help=vm.runInNewContext(code,sandbox);
+          console.log(JSON.stringify({ready:ready.composer_visible,clipped:clipped.composer_visible,help:help.composer}));'''
+        self.assertEqual(self.node_json(runner,PAGE_STATE_JS),{'ready':True,'clipped':False,'help':False})
 
     def test_draft_preserves_composer_content_and_never_sends_or_handoffs(self):
         runner = '''const fs=require('fs'),vm=require('vm');

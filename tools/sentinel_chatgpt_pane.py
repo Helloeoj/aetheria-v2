@@ -95,12 +95,28 @@ def draft_script(text):
     })()""".replace('TEXT',json.dumps(text,ensure_ascii=True))
 
 
+PAGE_STATE_JS=r"""(() => {
+ const official=location.origin==='https://chatgpt.com';
+ const editors=official ? [...document.querySelectorAll('#prompt-textarea, #mobile-composer-prompt')] : [];
+ const visible=editors.some(editor => {
+   const r=editor.getBoundingClientRect(), s=getComputedStyle(editor);
+   return s.display!=='none' && s.visibility!=='hidden' && r.width>40 && r.height>15 &&
+     r.top>=0 && r.left>=0 && r.bottom<=innerHeight+2 && r.right<=innerWidth+2;
+ });
+ const login=official && [...document.querySelectorAll('button,a')].some(n => /^log in$|^sign in$/i.test((n.innerText||'').trim()));
+ return {origin:location.origin, composer:editors.length>0, composer_visible:visible,
+   sign_in:login, challenge:!!document.querySelector('#challenge-running'),
+   viewport_width:innerWidth, viewport_height:innerHeight};
+})()"""
+
+
 def _child(profile):
     """Renderer's main thread owns WinForms. IPC has no executable page input."""
     import time
     import webview
     output_lock=threading.Lock()
     closed=threading.Event()
+    previous_state=None
     def send(value):
         with output_lock:
             sys.stdout.write(json.dumps(value,ensure_ascii=True)+'\n')
@@ -119,6 +135,15 @@ def _child(profile):
             try: request=conversation_request(value.get('url',''),value.get('messages',[]))
             except ValueError as error: send({'type':'error','value':str(error)})
             else: send({'type':'handoff','request':request})
+    def page_state(force=False):
+        nonlocal previous_state
+        state=window.evaluate_js(PAGE_STATE_JS)
+        if not isinstance(state,dict): return
+        state['browser_visible']=bool(window.native.Visible and window.native.webview.Visible and window.native.Opacity>0)
+        signature=json.dumps(state,sort_keys=True)
+        if force or signature!=previous_state:
+            previous_state=signature
+            send({'type':'page_state','value':state})
     def commands():
         try:
             for line in sys.stdin:
@@ -135,10 +160,11 @@ def _child(profile):
                         send({'type':'drafted' if inserted else 'error','value':
                               'Game context added to your ChatGPT draft. Review it and select Send on the page.' if inserted else
                               'ChatGPT’s message box is not ready. Sign in, open a normal chat, then add the context again.'})
-                    elif command=='reload': window.load_url('https://chatgpt.com/')
+                    elif command=='reload':
+                        window.show()
+                        window.load_url('https://chatgpt.com/')
                     elif command=='status':
-                        state=window.evaluate_js("({title:document.title, composer:!!document.querySelector('#prompt-textarea, #mobile-composer-prompt'), sign_in:!!document.querySelector('[data-testid=login-button]'), challenge:!!document.querySelector('#challenge-running')})")
-                        send({'type':'page_state','value':state})
+                        page_state(True)
                 except Exception:
                     send({'type':'error','value':'The ChatGPT page is still loading. Wait for it to finish, then retry. No Codex request was made.'})
         except (OSError,ValueError): pass
@@ -157,6 +183,7 @@ def _child(profile):
                     send({'type':'location','value':parsed.scheme+'://'+parsed.netloc})
                     previous=url
                 if url and urlsplit(url).netloc=='chatgpt.com': snapshot()
+                page_state()
             except Exception:
                 # Navigation temporarily destroys the JS context. Keep the pane.
                 pass
@@ -211,6 +238,15 @@ class ChatGPTPane:
         self.reader=threading.Thread(target=read,daemon=True)
         self.reader.start()
         self.timer=self.frame.after(100,self._poll)
+
+    def retry(self):
+        """User recovery returns a live browser to ChatGPT; Map/start is idempotent."""
+        if self.process and self.process.poll() is None:
+            self._resize()
+            self.command('reload')
+            self.command('status')
+        else:
+            self.start()
 
     def command(self, command, text=None):
         if not self.process or self.process.poll() is not None:

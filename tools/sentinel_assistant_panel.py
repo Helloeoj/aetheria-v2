@@ -107,7 +107,7 @@ class AssistantPanel(tk.Frame):
         ttk.Label(self.chat_page,textvariable=self.chat_status,wraplength=850).pack(fill='x',pady=4)
         self.chat_surface=tk.Frame(self.chat_page,bg=FIELD)
         self.chat_surface.pack(fill='both',expand=True)
-        self.chat_surface.bind('<Map>',lambda _:self.open_chat() if self.start_browser and not self.chat_browser else None)
+        self.chat_surface.bind('<Map>',lambda _:self.open_chat(retry=False) if self.start_browser and not self.chat_browser else None)
         self.label(self.chat_page,'Use normal Chat mode on the ChatGPT page. Its own limits apply. Sentinel never sends this chat to Codex automatically.').pack(fill='x',pady=4)
         ask=self.coding_page
         self.label(ask, 'Describe a coding task, or bring over the conversation. Preparation is local and uses no AI.').pack(fill='x', pady=(8, 4))
@@ -254,7 +254,7 @@ class AssistantPanel(tk.Frame):
         if self.route.get()=='ChatGPT conversation':
             self.coding_page.pack_forget()
             self.chat_page.pack(fill='both',expand=True)
-            if self.start_browser: self.open_chat()
+            if self.start_browser: self.open_chat(retry=False)
             self.status.set('ChatGPT conversation. Codex starts only after you review a coding stage.')
         else:
             self.chat_page.pack_forget()
@@ -262,13 +262,19 @@ class AssistantPanel(tk.Frame):
             self.status.set('Codex implementation. Enter a task and credit budget, then prepare it locally.')
         self.views.select(self.ask_page)
 
-    def open_chat(self):
+    def open_chat(self, retry=True):
         if not self.memory: return
         if not self.chat_browser:
             profile=self.memory.path.parent/'chatgpt-browser'
             self.chat_browser=ChatGPTPane(self.chat_surface,self._chat_event,profile)
-        self.chat_status.set('Opening https://chatgpt.com inside Sentinel… No Codex request is made.')
-        self.chat_browser.start()
+            self.chat_status.set('Opening https://chatgpt.com inside Sentinel… Waiting for the page. No Codex request is made.')
+        if retry:
+            self.chat_status.set('Returning to https://chatgpt.com… Waiting for the page. No Codex request is made.')
+            self.chat_browser.retry()
+        else:
+            # Showing the conversation or adding a draft must preserve its URL,
+            # messages and composer. Only the explicit retry button navigates.
+            self.chat_browser.start()
 
     def handoff_chat(self):
         if self.busy:
@@ -309,8 +315,35 @@ class AssistantPanel(tk.Frame):
             self.run_button.state(['disabled'])
             self.set_text(self.answer_box,'Conversation brought over from ChatGPT.\n\nChoose credits per stage and select Prepare Codex task. No Codex inference has started.')
             self.status.set('Conversation ready for Codex. Choose a credit budget and prepare the task.')
-        elif kind=='location': self.chat_status.set('Embedded page: '+event['value']+' · Sign in on the page; use normal Chat mode.')
-        elif kind in ('error','attached','drafted'): self.chat_status.set(event['value'])
+        elif kind=='location':
+            origin=event.get('value','')
+            if origin=='https://chatgpt.com':
+                self.chat_status.set('ChatGPT is loading. Waiting for its message box or sign-in page…')
+            elif origin=='https://auth.openai.com':
+                self.chat_status.set('ChatGPT sign-in is open. Complete sign-in on the embedded page.')
+            else:
+                self.chat_status.set('Embedded page: '+origin+'. Select Open / retry ChatGPT to return to the conversation.')
+        elif kind=='attached':
+            self.chat_status.set('Browser attached. Waiting for ChatGPT’s message box or sign-in page…')
+        elif kind=='page_state':
+            state=event.get('value') or {}
+            if state.get('origin') and state['origin'] not in ('https://chatgpt.com','https://auth.openai.com'):
+                self.chat_status.set('The browser has left ChatGPT. Select Open / retry ChatGPT to return and open the question box.')
+            elif state.get('origin')=='https://auth.openai.com':
+                self.chat_status.set('ChatGPT sign-in is open. Complete sign-in on the embedded page.')
+            elif state.get('browser_visible') is False:
+                self.chat_status.set('The browser display is hidden. Select Open / retry ChatGPT to show it again.')
+            elif state.get('challenge'):
+                self.chat_status.set('ChatGPT is waiting for browser verification. Complete it on the page, then retry if needed.')
+            elif state.get('composer') and state.get('composer_visible') is False:
+                self.chat_status.set('ChatGPT’s message box is outside the visible pane. Enlarge Sentinel or select Open / retry ChatGPT.')
+            elif state.get('composer'):
+                self.chat_status.set('ChatGPT’s message box is ready. Type your question on the page; sign in if needed and use normal Chat mode.')
+            elif state.get('sign_in'):
+                self.chat_status.set('Sign in on the embedded ChatGPT page to open your conversation.')
+            else:
+                self.chat_status.set('ChatGPT’s message box is not ready. Wait for the page, or select Open / retry ChatGPT.')
+        elif kind in ('error','drafted'): self.chat_status.set(event['value'])
 
     def _enter_question(self, event):
         if event.state & 1:  # Shift+Enter keeps the Text widget's normal newline.

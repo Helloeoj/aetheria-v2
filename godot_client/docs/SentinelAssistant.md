@@ -11,6 +11,9 @@ separate implementation route with a reviewed credit budget.
 1. Open **Conversation → ChatGPT conversation**. Use **Open / retry ChatGPT** if
    needed. Sign in on the official page inside Sentinel and choose normal Chat
    mode on that page.
+   Retry returns an already running browser to ChatGPT, including after a help
+   link. Switching tabs preserves the current chat. Status waits for a question
+   box inside the visible viewport instead of calling an attached browser ready.
 2. Type and send messages on the ChatGPT page. This route does not connect to
    Codex or send a Codex inference request. The website controls its own models,
    account permissions and limits. This is not an unlimited or free API service.
@@ -228,6 +231,16 @@ Final validation: **100 automated assistant/Tk/browser tests, 49 diagnostic-chat
 checks and 22 monitor checks passed (171 total)**. No model inference was used
 for these checks. The normal website loaded and accepted a draft in a live
 embedded pane; no message was submitted by the test.
+
+Browser recovery correction: the live browser previously ignored retry while
+its process was alive. Explicit retry now resizes/shows the browser, navigates
+back to ChatGPT and checks page readiness. Automatic tab display and draft
+insertion do not navigate. A live isolated test started at the OpenAI Help Center,
+retried the same running renderer, and detected ChatGPT's composer within the
+visible 1,024 × 255 viewport. No message was sent. The current workspace's full
+automated Sentinel suite passed **114 tests**, including recovery/readiness
+regressions. Native screenshot capture timed out, so no screenshot-based visual
+verification is claimed. Authenticated chat remains a user sign-in check.
 
 An initial monitor smoke run transiently failed its synthetic clean-shutdown-
 marker assertion; a fresh run passed it. Another run exposed concurrent game

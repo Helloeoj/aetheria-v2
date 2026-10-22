@@ -5,6 +5,21 @@ from sentinel_chatgpt_pane import implementation_requested, conversation_request
 
 
 class BrowserHandoffTests(unittest.TestCase):
+    def test_retry_navigates_and_checks_an_alive_browser(self):
+        pane=ChatGPTPane(Mock(),Mock(),'.')
+        pane.process=Mock();pane.process.poll.return_value=None
+        pane.command=Mock();pane._resize=Mock()
+        pane.retry()
+        self.assertEqual([c.args[0] for c in pane.command.call_args_list],['reload','status'])
+        pane._resize.assert_called_once()
+
+    def test_retry_starts_an_exited_renderer(self):
+        pane=ChatGPTPane(Mock(),Mock(),'.')
+        pane.process=Mock();pane.process.poll.return_value=1
+        pane.start=Mock();pane.command=Mock()
+        pane.retry()
+        pane.start.assert_called_once();pane.command.assert_not_called()
+
     def test_only_explicit_user_phrase_requests_handoff(self):
         for text in ("let's implement the changes", 'Lets implement these changes!',
                      'Let’s implement the changes.', 'Implement the changes'):
