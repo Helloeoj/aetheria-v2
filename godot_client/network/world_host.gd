@@ -3,6 +3,7 @@ const AccountHTTP = preload("res://network/account_http.gd")
 const CharacterCodec = preload("res://network/character_codec.gd")
 const WorldProtocol = preload("res://network/world_protocol.gd")
 const SpatialIndex = preload("res://network/spatial_relevance.gd")
+const MOVEMENT_COMMANDS := ["walk", "target", "attack", "cast", "travel"]
 ## One authoritative world; regions have separate physics spaces and stable IDs.
 var regions: Dictionary = {}
 var sessions: Dictionary = {}
@@ -175,13 +176,23 @@ func _command(peer_id: int, raw: Dictionary) -> void:
 	if not (serial is int or serial is float) or not is_finite(float(serial)) or floor(float(serial)) != float(serial) or float(serial) < 0 or float(serial) > 9007199254740991.0:
 		return
 	if command.get("type") == "move":
-		regions[session.region_id].submit(session.character_id, command)
+		if int(serial) <= int(session.get("movement_sequence", -1)):
+			return
+		var region: AuthoritativeRegion = regions[session.region_id]
+		var result := region.submit(session.character_id, command)
+		if result.get("ok", false):
+			session.movement_sequence = int(serial)
+			session.movement_ack = int(serial)
+			session.movement_at = region._clock
 		return
 	if int(serial) <= int(session.last_sequence):
 		return
 	session.last_sequence = int(serial)
 	if session.queue.size() >= 8:
 		return
+	# Keep the serial until execution: HTTP saves can let newer keyboard intent
+	# overtake a queued click on its separate network channel.
+	command["sequence"] = int(serial)
 	session.queue.append(command)
 	if not session.busy:
 		_process_commands(session)
@@ -194,11 +205,21 @@ func _process_commands(session: Dictionary) -> void:
 		if session.get("retired", false) or session.closing or not session.pending.is_empty():
 			break
 		var command: Dictionary = session.queue.pop_front()
+		var serial := int(command.get("sequence", -1))
+		command.erase("sequence")
+		var changes_movement: bool = command.get("type") in MOVEMENT_COMMANDS
+		if changes_movement and serial <= int(session.get("movement_sequence", -1)):
+			continue
 		var result: Dictionary
 		if command.get("type") == "travel":
 			result = await _travel(session, String(command.get("portal_id", "")))
 		else:
 			result = regions[session.region_id].submit(session.character_id, command)
+		if result.get("ok", false) and changes_movement:
+			# Destination loading may have yielded while newer source input arrived.
+			session.movement_sequence = maxi(serial, int(session.get("movement_sequence", -1)))
+			session.movement_ack = -1
+			session.erase("movement_at")
 		if result.get("ok", false) and not await _persist(session):
 			break
 		Network.send_control(session.peer, {"type": "result", "code": result.get("code", ""), "message": result.get("message", "")})
@@ -252,7 +273,19 @@ func _service_sessions() -> void:
 		snapshot["population"] = sessions.size()
 		snapshot["capacity"] = max_players
 		snapshot["in_combat"] = session.player.in_combat
+		snapshot.merge(_movement_snapshot(session, region))
 		Network.send_snapshot(session.peer, snapshot)
+
+func _movement_snapshot(session: Dictionary, region: AuthoritativeRegion) -> Dictionary:
+	var actor: CombatActor = region.world.combat.actors.get(session.character_id)
+	var ack := int(session.get("movement_ack", -1))
+	var pending_blocked: bool = not session.pending.is_empty() and (not session.saving or session.get("pending_release", false))
+	return {"server_time": region._clock, "snapshot_interval": 1.0 / snapshot_hz,
+		"movement_ack": ack,
+		"movement_age": maxf(0.0, region._clock - float(session.get("movement_at", region._clock))) if ack >= 0 else 0.0,
+		"movement_enabled": actor != null and actor.is_alive and not region.frozen.has(session.character_id)
+			and not session.closing and not session.get("retired", false)
+			and not session.get("ownership_paused", false) and not pending_blocked}
 
 func _persist(session: Dictionary, release: bool = false) -> bool:
 	while session.saving:

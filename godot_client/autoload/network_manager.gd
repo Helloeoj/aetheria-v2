@@ -102,6 +102,8 @@ func send_action(command: Dictionary) -> bool:
 	var data := command.duplicate(true)
 	data["v"] = 1
 	data["sequence"] = sequence
+	if is_instance_valid(game) and game.get("online_view") != null:
+		game.online_view.record_command(sequence, command)
 	if data.get("type", "") == "move":
 		_movement.rpc_id(1, Protocol.pack(data))
 	else:
@@ -136,14 +138,20 @@ func _process(delta: float) -> void:
 				(multiplayer.multiplayer_peer as ENetMultiplayerPeer).disconnect_peer(id)
 	elif online() and authenticated and is_instance_valid(game):
 		_moving_elapsed += delta
-		if _moving_elapsed >= 1.0 / 30.0:
+		var direction := movement_direction()
+		# Send changes on this frame; 30 Hz refresh only keeps held input alive.
+		if not direction.is_equal_approx(_last_direction) or _moving_elapsed >= 1.0 / 30.0:
 			_moving_elapsed = 0.0
-			var direction := Vector2.ZERO
-			if not bool(game.call("_ui_is_editing")) and not game.inventory_menu.visible and not _scene_loading:
-				direction = game.movement_controller.get_move_vector()
 			if not direction.is_zero_approx() or not direction.is_equal_approx(_last_direction):
 				send_action({"type": "move", "direction": [direction.x, direction.y]})
 			_last_direction = direction
+
+func movement_direction() -> Vector2:
+	if not authenticated or not is_instance_valid(game) or _scene_loading:
+		return Vector2.ZERO
+	if bool(game.call("_ui_is_editing")) or game.inventory_menu.visible:
+		return Vector2.ZERO
+	return game.movement_controller.get_move_vector()
 
 func mark_admitted(peer_id: int) -> void:
 	_pending.erase(peer_id)

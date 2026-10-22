@@ -50,8 +50,20 @@ func _run() -> void:
 	var game: Node = scene.get_node("Combat")
 	check(game.player.entity_id == net.character_id, "Rendered map uses persistent online identity")
 	await get_tree().create_timer(1).timeout
+	check(net.latest_snapshot.has("movement_ack") and net.latest_snapshot.has("server_time"), "Live world publishes movement reconciliation metadata")
 	var start: Vector2 = game.player.get_position()
+	var sprite: ActorSprite = game.actor_sprites[game.player.entity_id]
+	var rendered_start := sprite.position
 	game.movement_controller.holding.right = true
+	var input_at := Time.get_ticks_usec()
+	var first_motion_ms := -1.0
+	for _frame in range(12):
+		await get_tree().process_frame
+		if sprite.position.distance_to(rendered_start) > 0.01:
+			first_motion_ms = float(Time.get_ticks_usec() - input_at) / 1000.0
+			break
+	check(first_motion_ms >= 0.0 and first_motion_ms < 100.0, "Local input renders before the 100ms snapshot cadence")
+	print("[Live movement] first rendered response=%.2fms; snapshots=10Hz; prediction never writes saves" % first_motion_ms)
 	for _index in range(5):
 		net.send_action({"type": "move", "direction": [1.0, 0.0]})
 		await get_tree().create_timer(0.1).timeout
