@@ -8,10 +8,17 @@ review, validation, commit and push workflow at the end of coding tasks.
 The active project is a GDScript port of the existing Python implementation.
 The original Python files remain under `legacy/python/` as a reference archive.
 
-Open `godot_client/project.godot` with Godot 4 and press F5. The current entry
-scene is the layered East Outskirts map with the imported character sprites,
-health bars, tick-based combat, target controls, and
-developer menus. Player and monster movement uses the map's physical edge,
+Open `godot_client/project.godot` with Godot 4.5.1 and press F5. The entry scene
+is account login. On Windows it starts the local account/database/world services;
+create a username/password and log in to play a saved character in the shared,
+server-authoritative East Outskirts. See
+[Online accounts and worlds](godot_client/docs/Networking.md) for setup,
+persistence, capacity configuration, tests and the current loopback-only boundary.
+
+The layered East Outskirts map includes imported character sprites,
+health bars, tick-based combat and target controls. Directly opening map/developer
+scenes runs the offline test sandbox, including developer menus; those menus are
+disabled in the online game. Player and monster movement uses the map's physical edge,
 river, rampart, tree-trunk, and rock collisions; attacks and projectiles check
 the same geometry. The earlier grid-only test remains in
 `godot_client/scenes/main.tscn`.

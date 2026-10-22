@@ -18,6 +18,9 @@ func can_use(station: Node2D) -> bool:
 	return game.player.current_hp > 0 and not game.player.in_combat and game.player.current_target.is_empty() and not game.combat.active_spell_casts.has(game.player.entity_id) and (travel == null or not travel.is_transitioning())
 
 func open(station: Node2D) -> void:
+	if Network.online() and game.online_view != null:
+		game.online_view.open_activity(station, "cook", "Cooking")
+		return
 	if not can_use(station):
 		game.show_fishing_notice("Move closer to the stove and finish combat before cooking.")
 		return
@@ -40,6 +43,8 @@ func open(station: Node2D) -> void:
 	panel.open(station)
 
 func _process(delta: float) -> void:
+	if Network.online():
+		return
 	# One tick per presented frame; physics catch-up must not spend an unseen prompt.
 	advance(delta)
 
