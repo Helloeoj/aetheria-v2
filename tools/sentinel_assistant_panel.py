@@ -12,6 +12,7 @@ import adc
 from sentinel_assistant import build_task, choose_model, prepare_attachments
 from sentinel_codex import AssistantController
 from sentinel_memory import ProjectMemory, safe_text
+from sentinel_chatgpt_pane import ChatGPTPane
 
 BG, FIELD, TEXT, MUTED = '#121d2d', '#0e1725', '#e7eef8', '#94a7c0'
 
@@ -33,14 +34,20 @@ class AssistantPanel(tk.Frame):
         self.active_question_thread = None
         self.question_cancel = threading.Event()
         self.attachments = []
+        self.start_browser = start
+        self.chat_browser = None
+        self.route = tk.StringVar(value='ChatGPT conversation')
+        self.credits = tk.StringVar(value='')
+        self.credit_status = tk.StringVar(value='Codex idle. Purchased credit balance has not been read.')
+        self.chat_status = tk.StringVar(value='ChatGPT conversation stays here. Sign in on the official page; choose normal Chat mode.')
         self.attachment_label = tk.StringVar(value='No extra evidence selected')
-        self.mode = tk.StringVar(value='question')
+        self.mode = tk.StringVar(value='implement')
         self.model = tk.StringVar(value='Auto (catalog recommendation)')
         self.effort = tk.StringVar(value='medium')
-        self.tokens = tk.StringVar(value='24000')
+        self.tokens = tk.StringVar(value='')  # Optional model-text diagnostic; never purchased credits.
         self.seconds = tk.StringVar(value='600')
         self.validation = tk.StringVar()
-        self.status = tk.StringVar(value='Ready. Type a question below and select Ask Sentinel.')
+        self.status = tk.StringVar(value='Chat with ChatGPT here. Switch to Codex when you are ready to change the game.')
         self.memory_status = tk.StringVar(value='Local project memory updates in the background without AI.')
         self.usage = tk.StringVar(value='No Codex job running.')
         self._build()
@@ -48,11 +55,8 @@ class AssistantPanel(tk.Frame):
             self.memory = ProjectMemory(project, state_path)
             self.controller = AssistantController(self.memory, callback=self.emit)
             preferences = self.memory.preferences()
-            for key in ('tokens','seconds','effort'):
+            for key in ('seconds','effort','credits'):
                 if key in preferences: getattr(self,key).set(str(preferences[key]))
-            # The previous shipped 12k default is below the installed Codex's
-            # measured ~14.5k startup context, even for a one-line answer.
-            if self.tokens.get()=='12000': self.tokens.set('24000')
         except Exception as error:
             self.status.set('Assistant memory unavailable; monitoring continues. ' + safe_text(error))
             return
@@ -83,10 +87,30 @@ class AssistantPanel(tk.Frame):
         self.views.pack(fill='both', expand=True, padx=10, pady=(0, 8))
         ask, memory, rules, history, develop = [tk.Frame(self.views, bg=BG) for _ in range(5)]
         self.ask_page, self.advanced_page = ask, develop
-        for page, title in zip((ask,memory,rules,history,develop), ('Ask Sentinel','Project memory','Rules & decisions','History','Advanced')):
+        for page, title in zip((ask,memory,rules,history,develop), ('Conversation','Project memory','Rules & decisions','History','Advanced')):
             self.views.add(page, text=title)
 
-        self.label(ask, 'Ask about your game or describe a problem. Sentinel answers without changing game files.').pack(fill='x', pady=(8, 4))
+        route_bar=tk.Frame(ask,bg=BG)
+        route_bar.pack(fill='x',pady=5)
+        for title in ('ChatGPT conversation','Codex implementation'):
+            ttk.Radiobutton(route_bar,text=title,variable=self.route,value=title,command=self.switch_route).pack(side='left',padx=5)
+        ttk.Button(route_bar,text='Refresh Codex balance',command=self.refresh_balance).pack(side='right')
+        ttk.Label(ask,textvariable=self.credit_status,wraplength=850).pack(fill='x',pady=(0,3))
+        self.chat_page=tk.Frame(ask,bg=BG)
+        self.coding_page=tk.Frame(ask,bg=BG)
+        self.chat_page.pack(fill='both',expand=True)
+        chat_bar=tk.Frame(self.chat_page,bg=BG)
+        chat_bar.pack(fill='x')
+        ttk.Button(chat_bar,text='Open / retry ChatGPT',command=self.open_chat).pack(side='left')
+        ttk.Button(chat_bar,text='Use this conversation in Codex',command=self.handoff_chat).pack(side='left',padx=5)
+        ttk.Button(chat_bar,text='Add game context',command=self.add_game_context).pack(side='left')
+        ttk.Label(self.chat_page,textvariable=self.chat_status,wraplength=850).pack(fill='x',pady=4)
+        self.chat_surface=tk.Frame(self.chat_page,bg=FIELD)
+        self.chat_surface.pack(fill='both',expand=True)
+        self.chat_surface.bind('<Map>',lambda _:self.open_chat() if self.start_browser and not self.chat_browser else None)
+        self.label(self.chat_page,'Use normal Chat mode on the ChatGPT page. Its own limits apply. Sentinel never sends this chat to Codex automatically.').pack(fill='x',pady=4)
+        ask=self.coding_page
+        self.label(ask, 'Describe a coding task, or bring over the conversation. Preparation is local and uses no AI.').pack(fill='x', pady=(8, 4))
         request_frame = tk.Frame(ask, bg=BG)
         request_frame.pack(fill='x')
         self.request_box = self.text(request_frame, height=3)
@@ -94,20 +118,22 @@ class AssistantPanel(tk.Frame):
         self.request_box.bind('<Shift-Return>', lambda _: None)
         actions=tk.Frame(ask,bg=BG)
         actions.pack(fill='x',pady=6)
-        self.ask_button=ttk.Button(actions,text='Ask Sentinel',style='Primary.TButton',command=self.ask_question)
+        self.ask_button=ttk.Button(actions,text='Prepare Codex task',style='Primary.TButton',command=self.ask_question)
         self.ask_button.pack(side='left')
+        self.label(actions,'Credits per stage:').pack(side='left',padx=(8,2))
+        ttk.Entry(actions,textvariable=self.credits,width=6).pack(side='left')
         ttk.Button(actions,text='Stop',command=self.stop).pack(side='left',padx=5)
         ttk.Button(actions,text='Add evidence…',command=self.add_evidence).pack(side='left',padx=5)
         ttk.Button(actions,text='Coding tasks & settings',command=lambda:self.views.select(develop)).pack(side='right')
         self.question_progress=ttk.Progressbar(ask,mode='indeterminate')
         self.question_progress.pack(fill='x',pady=(0,5))
         self.answer_box=self.text(ask,height=7)
-        self.set_text(self.answer_box,'Ask something like “Why might fishing freeze?” or “How does inventory work?”\n\nSentinel connects and finds relevant project context when you ask. Your answer appears here.')
+        self.set_text(self.answer_box,'Codex changes your game using your Work/Codex allowance.\n\nPrepare the task, choose a credit budget, and review it before starting. Ordinary conversation is on ChatGPT conversation.')
         self.answer_box.configure(state='disabled')
         ttk.Label(ask,textvariable=self.usage,wraplength=850).pack(fill='x',pady=(4,0))
-        self.label(ask,'Ask uses your Codex allowance. No separate connect, prepare or launch step is needed. Enter sends; Shift+Enter adds a line.').pack(fill='x',pady=(2,5))
+        self.label(ask,'Codex only starts after Review & run stage. Enter prepares; Shift+Enter adds a line.').pack(fill='x',pady=(2,5))
 
-        self.label(develop,'Optional: review a coding task using the text entered on Ask Sentinel. Questions work directly from the first tab.').pack(fill='x',pady=(6,2))
+        self.label(develop,'Review the prepared Codex task here. Credit estimates may arrive late; this is a stop threshold, not a guaranteed billing cap.').pack(fill='x',pady=(6,2))
 
         top = tk.Frame(develop, bg=BG)
         top.pack(fill='x', pady=5)
@@ -124,8 +150,8 @@ class AssistantPanel(tk.Frame):
         limits = tk.Frame(develop, bg=BG)
         limits.pack(fill='x', pady=5)
         ttk.Combobox(limits, textvariable=self.mode, state='readonly', width=12, values=['implement','question','audit']).pack(side='left')
-        self.label(limits, ' Token threshold').pack(side='left')
-        ttk.Entry(limits, textvariable=self.tokens, width=8).pack(side='left', padx=4)
+        self.label(limits, ' Codex credits per stage').pack(side='left')
+        ttk.Entry(limits, textvariable=self.credits, width=8).pack(side='left', padx=4)
         self.label(limits, 'Time (seconds)').pack(side='left')
         ttk.Entry(limits, textvariable=self.seconds, width=6).pack(side='left', padx=4)
         ttk.Button(limits, text='Prepare locally', command=self.prepare).pack(side='right')
@@ -221,8 +247,70 @@ class AssistantPanel(tk.Frame):
             self.refresh_timer = self.after(15000, self._periodic)
 
     def inputs(self):
-        return (self.request_box.get('1.0','end').strip(), self.mode.get(), self.tokens.get(),
+        return (self.request_box.get('1.0','end').strip(), self.mode.get(), self.credits.get(),
                 self.seconds.get(), self.model.get(), self.effort.get(), self.validation.get())
+
+    def switch_route(self):
+        if self.route.get()=='ChatGPT conversation':
+            self.coding_page.pack_forget()
+            self.chat_page.pack(fill='both',expand=True)
+            if self.start_browser: self.open_chat()
+            self.status.set('ChatGPT conversation. Codex starts only after you review a coding stage.')
+        else:
+            self.chat_page.pack_forget()
+            self.coding_page.pack(fill='both',expand=True)
+            self.status.set('Codex implementation. Enter a task and credit budget, then prepare it locally.')
+        self.views.select(self.ask_page)
+
+    def open_chat(self):
+        if not self.memory: return
+        if not self.chat_browser:
+            profile=self.memory.path.parent/'chatgpt-browser'
+            self.chat_browser=ChatGPTPane(self.chat_surface,self._chat_event,profile)
+        self.chat_status.set('Opening https://chatgpt.com inside Sentinel… No Codex request is made.')
+        self.chat_browser.start()
+
+    def handoff_chat(self):
+        if self.busy:
+            self.status.set('Finish or stop the current Codex task before preparing another.')
+        elif self.chat_browser: self.chat_browser.command('handoff')
+        else: self.chat_status.set('Open ChatGPT and discuss the change before transferring a conversation.')
+
+    def draft_chat(self,text):
+        self.route.set('ChatGPT conversation')
+        self.switch_route()
+        if not self.chat_browser:
+            self.chat_status.set('Open ChatGPT and sign in first, then add the context again.')
+            return
+        self.chat_browser.command('draft',text=text[:16000])
+
+    def add_game_context(self):
+        query=simpledialog.askstring('Relevant game context','What problem or game system should Sentinel look up?',parent=self)
+        if not query or not self.memory: return
+        def operation():
+            self.memory.refresh()
+            context=self.memory.context(query,max_chars=6000)
+            intent='\n'.join(f"{r['key']}: {r['text']}" for r in self.memory.rules())[:2000]
+            return (query[:2000]+'\n\nLocal game context (reference evidence; verify hypotheses before changing code):\n'
+                    +(context or 'No matching indexed source found.')+'\n\nApproved project decisions:\n'+intent)
+        self.submit('chat_draft',operation)
+
+    def _chat_event(self,event):
+        kind=event.get('type')
+        if kind=='handoff':
+            if self.busy:
+                self.status.set('Conversation ready; finish or stop the current Codex task before transferring it again.')
+                return
+            self.set_text(self.request_box,event['request'])
+            self.mode.set('implement')
+            self.route.set('Codex implementation')
+            self.switch_route()
+            self.task=None
+            self.run_button.state(['disabled'])
+            self.set_text(self.answer_box,'Conversation brought over from ChatGPT.\n\nChoose credits per stage and select Prepare Codex task. No Codex inference has started.')
+            self.status.set('Conversation ready for Codex. Choose a credit budget and prepare the task.')
+        elif kind=='location': self.chat_status.set('Embedded page: '+event['value']+' · Sign in on the page; use normal Chat mode.')
+        elif kind in ('error','attached','drafted'): self.chat_status.set(event['value'])
 
     def _enter_question(self, event):
         if event.state & 1:  # Shift+Enter keeps the Text widget's normal newline.
@@ -237,25 +325,32 @@ class AssistantPanel(tk.Frame):
         else: self.question_progress.stop()
 
     def ask_question(self):
+        if self.route.get()=='ChatGPT conversation':
+            self.status.set('Use the ChatGPT page to chat. Switch to Codex implementation to prepare a coding task.')
+            return
         if self.busy:
             return
         request=self.request_box.get('1.0','end').strip()
         if not request:
-            self.status.set('Type a question first, then select Ask Sentinel.')
+            self.status.set('Describe the coding task first, then select Prepare Codex task.')
             self.request_box.focus_set()
             return
         if not self.memory or not self.controller:
             self.status.set('Project memory is unavailable. Reopen Sentinel to retry.')
             self.set_text(self.answer_box,self.status.get())
             return
-        tokens,seconds,selected,effort=self.tokens.get(),self.seconds.get(),self.model.get(),self.effort.get()
+        credits,seconds,selected,effort=self.credits.get(),self.seconds.get(),self.model.get(),self.effort.get()
+        if not credits.strip():
+            self.status.set('Choose a Codex credit budget per stage first. These are credits, not model text tokens.')
+            return
+        values=self.inputs()
         attachments=list(self.attachments)
-        self.question_pending=True
+        self.question_pending=False
         self.question_cancel.clear()
         self.active_question_thread=None
         self._question_busy(True)
-        self.status.set('Connecting and finding relevant project context…')
-        self.set_text(self.answer_box,'You: '+request+'\n\nSentinel is connecting and reading relevant project context…')
+        self.status.set('Loading the Codex catalog and preparing locally. No model request is being made…')
+        self.set_text(self.answer_box,'Preparing a local preview. Codex starts only after Review & run stage.')
         def operation():
             models,account=self.models,self.account
             server=self.controller.server
@@ -275,13 +370,12 @@ class AssistantPanel(tk.Frame):
                 supported=[e['reasoningEffort'] for e in catalog.get('supportedReasoningEfforts',[])]
                 if effort not in supported: raise ValueError('Choose a supported reasoning setting in Advanced or use Auto.')
                 compatible=effort
-            self.emit({'type':'ask_phase','value':'Reading relevant project files and preparing your question…'})
-            task=build_task(self.memory,request,mode='question',tokens=int(tokens),seconds=int(seconds),
-                            model=model,effort=compatible,validation=None,attachments=attachments)
-            self.emit({'type':'ask_phase','value':'Sentinel is thinking… You can select Stop at any time.'})
+            task=build_task(self.memory,request,mode=values[1],credit_limit=credits,seconds=int(seconds),
+                            model=model,effort=compatible,validation=json.loads(values[6]) if values[6].strip() else None,attachments=attachments)
             if self.question_cancel.is_set(): raise ValueError('Question cancelled before it was sent. No model request was started.')
-            return self.controller.launch(task,approved=True)
-        self.submit('asked',operation)
+            self.memory.save_preferences({'credits':credits,'seconds':int(seconds),'mode':values[1],'effort':compatible})
+            return task,values
+        self.submit('prepared',operation)
 
     def add_evidence(self):
         paths = filedialog.askopenfilenames(title='Select compact text evidence or screenshots',filetypes=[('Evidence','*.txt *.md *.gd *.py *.json *.png *.jpg *.jpeg *.webp')])
@@ -296,13 +390,16 @@ class AssistantPanel(tk.Frame):
         self.run_button.state(['disabled'])
 
     def prepare(self):
+        if self.busy:
+            self.status.set('Finish or stop the current task before preparing another stage.')
+            return
         self.views.select(self.advanced_page)
         values = self.inputs()
         self.task = None
         self.run_button.state(['disabled'])
         self.status.set('Building a compact task from local source…')
         def operation():
-            request, mode, tokens, seconds, selected, effort, validation = values
+            request, mode, credits, seconds, selected, effort, validation = values
             argv = json.loads(validation) if validation.strip() else None
             model = None
             if self.models:
@@ -313,19 +410,27 @@ class AssistantPanel(tk.Frame):
                 efforts = [v['reasoningEffort'] for v in catalog.get('supportedReasoningEfforts', [])]
                 effort = compatible if selected.startswith('Auto') else effort
                 if effort not in efforts: raise ValueError('Choose an effort supported by this model.')
-            task = build_task(self.memory, request, mode=mode, tokens=int(tokens), seconds=int(seconds),
+            task = build_task(self.memory, request, mode=mode, credit_limit=credits or None, seconds=int(seconds),
                               model=model, effort=effort, validation=argv, attachments=list(self.attachments))
-            self.memory.save_preferences({'tokens':int(tokens),'seconds':int(seconds),'mode':mode,'effort':effort})
+            self.memory.save_preferences({'credits':credits,'seconds':int(seconds),'mode':mode,'effort':effort})
             return task, values
         self.submit('prepared', operation)
 
     def connect(self, choose=False):
+        if self.busy:
+            self.status.set('Stop or finish the current task before reconnecting Codex.')
+            return
         executable = None
         if choose:
             executable = filedialog.askopenfilename(title='Choose installed codex.exe', filetypes=[('Codex','codex.exe')])
             if not executable: return
         self.status.set('Connecting to installed Codex and loading its catalog…')
         self.submit('connected', lambda: self.controller.connect(executable))
+
+    def refresh_balance(self):
+        if self.controller and self.controller.server:
+            self.submit('usage_refreshed',self.controller.refresh_account_usage)
+        else: self.connect()
 
     def sign_in(self):
         if not self.controller or not self.controller.server:
@@ -350,9 +455,15 @@ class AssistantPanel(tk.Frame):
         if not self.account or self.account.get('type') != 'chatgpt':
             self.status.set('A ChatGPT-backed Codex connection is required. Sign in and reconnect; API-key billing is not selected automatically.')
             return
-        if not messagebox.askyesno('Run reviewed Codex stage', f"{task['request']}\n\n{task['mode']} · {task['model']} · {task['effort']}\nObserved token threshold: {task['tokens']:,}\nTime: {task['seconds']} seconds\n\nThis uses your Codex allowance. Token updates can arrive late; the threshold is not a hard billing cap.\n\nRun this stage?", parent=self):
+        if not task.get('credit_limit_micros'):
+            self.status.set('Choose a positive Codex credit budget, then prepare the stage again.')
+            return
+        if not messagebox.askyesno('Run reviewed Codex stage', f"{task['request'][:1500]}\n\n{task['mode']} · {task['model']} · {task['effort']}\nCredit stop threshold: {task['credit_limit']:g} Codex credits\nTime: {task['seconds']} seconds\n\nUses your Work/Codex allowance. Credits are separate from model text tokens. Usage estimates can arrive late; Sentinel cannot guarantee a hard billing cap.\n\nRun this stage?", parent=self):
             return
         self.run_button.state(['disabled'])
+        self._question_busy(True)
+        self.question_pending=True
+        self.active_question_thread=None
         self.submit('launched', lambda: self.controller.launch(task, approved=True))
 
     def stop(self):
@@ -365,8 +476,12 @@ class AssistantPanel(tk.Frame):
         self.submit('message', operation)
 
     def review(self):
-        if messagebox.askyesno('Peer review budget', 'Start one separate read-only AI review?\n\nThreshold: 24,000 observed tokens including Codex startup context; 120 seconds.\nUses the developer job’s model. At most two reviews per Sentinel session; new evidence is required each time. Findings are shown here; corrections require Send correction.', parent=self):
-            self.submit('launched', lambda: self.controller.review(approved=True))
+        credits=self.credits.get()
+        if not credits.strip():
+            self.status.set('Choose credits per stage before starting a separate paid review.')
+            return
+        if messagebox.askyesno('Peer review credit budget', f'Start one separate read-only Codex review?\n\nCredit stop threshold: {credits} credits; 120 seconds. Estimates can arrive late; this is not a hard billing cap.\nUses the developer job’s model. At most two reviews per session, with new evidence each time.', parent=self):
+            self.submit('launched', lambda: self.controller.review(approved=True,credit_limit=credits))
 
     def steer(self):
         text = self.correction.get()
@@ -443,7 +558,7 @@ class AssistantPanel(tk.Frame):
                     self.memory_status.set('Local index refresh failed: '+value)
                     continue
                 self.status.set('Could not complete the request. '+value)
-                self.set_text(self.answer_box,'Sentinel could not complete this request.\n\n'+value+'\n\nYou can retry with Ask Sentinel. Connection and sign-in options are under Advanced.')
+                self.set_text(self.answer_box,'Sentinel could not complete this request.\n\n'+value+'\n\nReview the task and retry. Codex connection and sign-in options are under Advanced.')
                 self.question_pending=False
                 self._question_busy(False)
             elif kind == 'indexed': self.memory_status.set(f"Local memory: {value['files']} source files; {value['read']} read, {value['updated']} changed, {value['removed']} removed. No AI used.")
@@ -453,7 +568,11 @@ class AssistantPanel(tk.Frame):
                 self.task = None
                 self.run_button.state(['disabled'])
                 if not self.question_pending:
-                    self.status.set('Connected. Type your question on Ask Sentinel.')
+                    self.status.set('Codex connected. Preparing and connecting use no model inference.')
+                if value.get('usage'): self._account_usage(value['usage'])
+            elif kind=='account_usage': self._account_usage(event['usage'])
+            elif kind=='usage_refreshed': self._account_usage(value)
+            elif kind=='chat_draft': self.draft_chat(value)
             elif kind=='ask_phase':
                 if self.question_pending: self.status.set(value)
             elif kind == 'login':
@@ -463,11 +582,13 @@ class AssistantPanel(tk.Frame):
                     self.status.set('Complete sign-in in your browser, then reconnect Codex. No tokens need copying.')
                 else: self.status.set('Codex did not return a supported ChatGPT sign-in URL.')
             elif kind == 'prepared':
+                self._question_busy(False)
                 self.task, self.preview_inputs = value
                 task = self.task
-                self.set_text(self.preview, f"Model: {task['model'] or 'connect Codex to select'} · Effort: {task['effort']} · Mode: {task['mode']}\nContext: {task['context_chars']:,} characters (~{task['estimated_context_tokens']:,} estimated tokens; actual usage differs)\nSuggested files: {', '.join(task['scope'])}\n\n{task['prompt']}")
+                self.set_text(self.preview, f"Model: {task['model'] or 'connect Codex to select'} · Effort: {task['effort']} · Mode: {task['mode']}\nCodex credit stop threshold: {task.get('credit_limit') if task.get('credit_limit') is not None else 'choose a budget'} · Time: {task['seconds']} seconds\nCredit estimates may arrive late; no hard billing cap is guaranteed.\nSuggested files: {', '.join(task['scope'])}\n\n{task['prompt']}")
                 self.run_button.state(['!disabled'] if task['model'] else ['disabled'])
                 self.status.set('Stage prepared locally. Review the scope, model and budget before running.')
+                self.views.select(self.advanced_page)
             elif kind == 'attachments':
                 self.attachments=value
                 self.task=None
@@ -495,18 +616,21 @@ class AssistantPanel(tk.Frame):
                 self.set_text(self.history,summary + ('\n'.join(rows) or 'No jobs recorded yet. Source indexing never marks a feature verified.'))
             elif kind in ('job','launched','asked'):
                 if kind in ('launched','asked') and value['task']['mode']!='review': self.developer_thread=value['thread']
-                if self.question_pending and kind in ('job','asked'):
+                if self.question_pending and self.active_question_thread is None and kind in ('job','asked'):
                     self.active_question_thread=event.get('thread') if kind=='job' else value['thread']
-                if kind!='asked' or not value.get('finished'):
+                if kind=='job' or not value.get('finished'):
                     self.status.set('Sentinel is working… You can select Stop at any time.')
             elif kind=='progress':
                 report=event['report']
-                self.usage.set(f"Observed tokens: {report['tokens'] if report['tokens'] is not None else 'not reported'} / {report['token_budget']:,} · Commands: {report['commands']} · Files: {len(report['files'])} · Repeats: {report['repeated_operations']}\n" + '\n'.join(report['warnings'][-2:]))
+                self.usage.set(self._credit_report(report))
                 if self.question_pending and event['thread']==self.active_question_thread:
-                    if event.get('answer'): self.set_text(self.answer_box,event['answer'])
+                    if event.get('answer'):
+                        self.set_text(self.answer_box,event['answer'])
+                        self.set_text(self.preview,'Codex is working…\n\n'+event['answer'])
                     if event.get('message'): self.status.set(event['message'])
             elif kind=='finished':
                 body=event['body']
+                self.usage.set(self._credit_report(body['report']))
                 self.set_text(self.preview,f"{event['status'].upper()}\n\n{body['answer']}\n\n{body['error']}\n\nEfficiency report:\n{json.dumps(body['report'],indent=2)}\n\nNo next stage was started. Validation must be run and checked separately.")
                 self.status.set('Stage ended; result and usage saved in local history.')
                 if event['thread']==self.active_question_thread:
@@ -515,11 +639,11 @@ class AssistantPanel(tk.Frame):
                     if not text:
                         text='No answer was returned.' if completed else 'The question stopped before an answer was completed.'
                     if body.get('error'): text+='\n\n'+body['error']
-                    if not completed: text+='\n\nYou can retry with Ask Sentinel.'
+                    if not completed: text+='\n\nReview the result before preparing another stage.'
                     self.set_text(self.answer_box,text)
                     self.question_pending=False
                     self._question_busy(False)
-                    self.status.set('Answer ready. Ask another question whenever you like.' if completed else 'Question stopped. See the message below; you can retry.')
+                    self.status.set('Codex stage completed. Result and credit estimate saved.' if completed else 'Codex stage stopped. See its result and credit estimate.')
             elif kind=='approval':
                 accepted=messagebox.askyesno('Codex requests approval',safe_text(json.dumps(event['params'],indent=2))[:5000],parent=self)
                 self.submit('message',lambda identity=event['id'], decision=accepted: (self.controller.approve(identity,decision),'Approval decision delivered.')[1])
@@ -527,10 +651,27 @@ class AssistantPanel(tk.Frame):
             elif kind=='message': self.status.set(value)
         self.timer = self.after(100,self.poll)
 
+    def _account_usage(self,usage):
+        balance=usage.get('balance')
+        shown=str(balance)+' credits' if balance is not None else 'unavailable'
+        ordinary=usage.get('ordinary_usage_allowed')
+        included='available' if ordinary is True else 'unavailable' if ordinary is False else 'not reported'
+        self.credit_status.set(f'Purchased balance: {shown} · Included Work/Codex usage: {included}. Account-wide; other chats can use it.')
+
+    @staticmethod
+    def _credit_report(report):
+        value=report.get('credits')
+        source={'server_estimate':'account report estimate','published_rate_estimate':'published-rate estimate','awaiting_usage':'awaiting usage report'}.get(report.get('credit_source'),'unavailable')
+        shown=f'{value:g}' if isinstance(value,(int,float)) else 'not reported'
+        limit=report.get('credit_budget')
+        return (f'Codex credits estimated: {shown} / {limit if limit is not None else "no budget"} ({source}) · Commands: {report.get("commands",0)} · Files: {len(report.get("files",[]))}\n'
+                'Updates can arrive late; the credit threshold is not a guaranteed billing cap.\n'+'\n'.join(report.get('warnings',[])[-2:]))
+
     def close(self):
         if self.closed.is_set(): return
         self.question_progress.stop()
         self.closed.set()
+        if self.chat_browser: self.chat_browser.close()
         if hasattr(self,'timer'): self.after_cancel(self.timer)
         if getattr(self,'refresh_timer',None): self.after_cancel(self.refresh_timer)
         if self.controller: self.controller.close()

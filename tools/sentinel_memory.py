@@ -248,7 +248,7 @@ class ProjectMemory:
             return json.loads(row[0]) if row else {}
 
     def save_preferences(self, value):
-        if not isinstance(value, dict) or any(k not in ('tokens','seconds','mode','model','effort') for k in value):
+        if not isinstance(value, dict) or any(k not in ('tokens','seconds','mode','model','effort','credits') for k in value):
             raise ValueError('Unsupported assistant preference.')
         with self.lock, self.db:
             self.db.execute("INSERT OR REPLACE INTO metadata VALUES('preferences',?)", (json.dumps(value),))

@@ -23,6 +23,8 @@ class QuestionServer:
             if self.start_error:
                 raise RuntimeError(self.start_error)
             return {'turn': {'id': 'turn-1', 'status': 'inProgress'}}
+        if method == 'account/usage/read':
+            return {'summary': {}, 'threadUsage': {'threadId': 'question', 'estimatedUsageCreditsMicros': 0, 'groups': []}}
         return {}
 
     def reply(self, identity, result=None, error=None):
@@ -48,7 +50,7 @@ class QuestionTests(unittest.TestCase):
 
     def launch(self):
         return self.controller.launch(build_task(self.memory, 'How does fishing work?', mode='question',
-                                                model='catalog-model'), approved=True)
+                                                model='catalog-model', credit_limit=2, tokens=12000), approved=True)
 
     def event(self, method, **params):
         self.controller.event({'method': method, 'params': {'threadId': 'question', 'turnId': 'turn-1', **params}})

@@ -11,7 +11,7 @@ import subprocess
 import threading
 import time
 from sentinel_memory import HIDDEN, safe_text
-from sentinel_assistant import Governor, build_task, rules_signature, prepare_attachments
+from sentinel_assistant import Governor, build_task, rules_signature, prepare_attachments, STANDARD_CREDIT_RATES, estimated_credit_micros
 from sentinel_process import ProcessGroup
 
 
@@ -196,6 +196,9 @@ class AssistantController:
         self.last_review = None
         self.corrections = set()
         self.approvals = {}
+        self.account_usage = {'balance': None, 'has_credits': None, 'unlimited': None,
+                              'ordinary_usage_allowed': None, 'available': False, 'error': ''}
+        self.usage_supported = None
         if server:
             server.callback = self.event
         self.watchdog = threading.Thread(target=self._watch, daemon=True)
@@ -213,7 +216,70 @@ class AssistantController:
             cursor = page.get('nextCursor')
             if not cursor:
                 break
-        return {'account': account.get('account'), 'models': models}
+        return {'account': account.get('account'), 'models': models, 'usage': self.refresh_account_usage()}
+
+    def refresh_account_usage(self):
+        usage = {'balance': None, 'has_credits': None, 'unlimited': None,
+                 'ordinary_usage_allowed': None, 'available': False, 'error': ''}
+        try:
+            if not self.server:
+                raise RuntimeError('Connect Codex to read the account credit balance.')
+            response = self.server.request('account/rateLimits/read', {}, timeout=5)
+            snapshot = (response.get('rateLimitsByLimitId') or {}).get('codex') or response.get('rateLimits') or {}
+            credits = snapshot.get('credits') or {}
+            usage.update(balance=credits.get('balance'), has_credits=credits.get('hasCredits'),
+                         unlimited=credits.get('unlimited'), ordinary_usage_allowed=response.get('ordinaryUsageAllowed'),
+                         available=bool(credits) or response.get('ordinaryUsageAllowed') is not None)
+        except (RuntimeError, TimeoutError, OSError) as error:
+            usage['error'] = safe_text(str(error))[:500]
+        self.account_usage = usage
+        self.callback({'type': 'account_usage', 'usage': dict(usage)})
+        return usage
+
+    def _read_job_usage(self, job, *, stop=True):
+        job['last_credit_poll'] = time.monotonic()
+        estimate, error = None, ''
+        if self.usage_supported is not False:
+            try:
+                response = self.server.request('account/usage/read', {'threadId': job['thread']}, timeout=3)
+                self.usage_supported = True
+                usage = response.get('threadUsage') or {}
+                candidate = usage.get('estimatedUsageCreditsMicros')
+                if usage.get('threadId') == job['thread'] and type(candidate) is int and candidate >= 0:
+                    estimate = candidate
+            except (RuntimeError, TimeoutError, OSError) as problem:
+                error = safe_text(str(problem))[:300]
+                if 'method' in error.lower() and any(word in error.lower() for word in ('unknown', 'not found', 'unsupported')):
+                    self.usage_supported = False
+        governor = job['governor']
+        reason = None
+        if estimate is not None:
+            reason = governor.observe_credits(estimate, source='server_estimate')
+        else:
+            governor.warn('Server credit estimate unavailable. Using published standard rates when complete token usage arrives.'
+                          + (' ' + error if error else ''))
+            governor.server_credits = False
+            fallback = estimated_credit_micros(job['task']['model'], governor.usage)
+            if fallback is not None:
+                reason = governor.observe_credits(fallback, source='published_rate_estimate')
+            else:
+                governor.estimated_credits_micros, governor.credit_source = None, 'awaiting_usage'
+                if job['task']['model'] not in STANDARD_CREDIT_RATES:
+                    reason = governor.stop('Credit monitoring unavailable for this model; stopped before further usage.')
+        if reason and stop and job.get('turn') and job['status'] == 'running':
+            self.interrupt(job['thread'], reason)
+        return estimate
+
+    def refresh_job_usage(self, thread):
+        with self.lock:
+            job = self.jobs[thread]
+            self._read_job_usage(job, stop=job['status'] == 'running')
+            if job.get('body'):
+                job['body']['report'] = job['governor'].report()
+                self.memory.update_checkpoint(job['checkpoint'], job['status'], job['body'])
+            else:
+                self._progress(job)
+            return job['governor'].report()
 
     def launch(self, task, *, approved=False):
         if not approved:
@@ -222,6 +288,8 @@ class AssistantController:
             raise ValueError('Connect Codex first.')
         if not task.get('model'):
             raise ValueError('Choose a model from the connected catalog.')
+        if type(task.get('credit_limit_micros')) is not int or task['credit_limit_micros'] <= 0:
+            raise ValueError('Choose an explicit positive credit limit before starting a paid Codex request.')
         if task['revision'] != self.memory.snapshot() or task['rules'] != rules_signature(self.memory):
             raise ValueError('Project source or approved rules changed. Prepare a fresh preview.')
         if task.get('attachments') and prepare_attachments([a['path'] for a in task['attachments']]) != task['attachments']:
@@ -240,10 +308,14 @@ class AssistantController:
                        if task['mode'] == 'question' else ''))})['thread']['id']
             job = {'thread': thread, 'turn': None, 'task': copy.deepcopy(task), 'status': 'running',
                    'answer': '', 'messages': {}, 'message': 'Waiting for Codex to answer…',
-                   'diff': '', 'governor': Governor(tokens=task['tokens'], seconds=task['seconds'], scope=task['scope']),
+                   'diff': '', 'governor': Governor(tokens=task['tokens'], seconds=task['seconds'], scope=task['scope'],
+                                                  credit_limit_micros=task['credit_limit_micros'], model=task['model']),
                    'checkpoint': None, 'finished':False, 'corrections': 0, 'last_checkpoint':time.monotonic()}
             self.jobs[thread] = job
             try:
+                estimate = self._read_job_usage(job, stop=False)
+                if job['governor'].reason or (estimate is None and task['model'] not in STANDARD_CREDIT_RATES):
+                    raise ValueError('Credit monitoring unavailable or the chosen credit threshold is already reached. No paid turn started. Choose a supported standard model or reconnect.')
                 job['turn'] = self.server.request('turn/start', {'threadId': thread,
                     'input': [{'type': 'text', 'text': task['prompt']}] + [
                         {'type':'localImage','path':a['path']} for a in task.get('attachments',[]) if a['kind']=='image'], 'model': task['model'],
@@ -254,7 +326,8 @@ class AssistantController:
                     'answer':'Stage started; no completion receipt yet.','validation':None})
             except Exception as error:
                 self._finish(job, 'failed', 'Codex could not start this request. ' + self._error_message(error))
-                self.server.close()
+                if not isinstance(error, ValueError):
+                    self.server.close()
                 raise
             self.callback({'type': 'job', 'thread': thread, 'status': 'running'})
             self._progress(job)
@@ -265,6 +338,17 @@ class AssistantController:
             return
         with self.lock:
             method, params = event.get('method', ''), event.get('params', {})
+            if method == 'account/rateLimits/updated':
+                # Rolling updates are sparse; omitted nullable metadata does not
+                # clear permission from the last complete account snapshot.
+                credits = (params.get('rateLimits') or {}).get('credits') or {}
+                for source, target in (('balance', 'balance'), ('hasCredits', 'has_credits'), ('unlimited', 'unlimited')):
+                    if credits.get(source) is not None:
+                        self.account_usage[target] = credits[source]
+                self.account_usage['available'] = any(self.account_usage.get(key) is not None
+                    for key in ('balance', 'has_credits', 'unlimited', 'ordinary_usage_allowed'))
+                self.callback({'type': 'account_usage', 'usage': dict(self.account_usage)})
+                return
             if method == 'sentinel/disconnected':
                 for job in self.jobs.values():
                     if job['status'] in ('running', 'stopping'):
@@ -327,6 +411,7 @@ class AssistantController:
             if reason:
                 self.interrupt(job['thread'], reason)
             if method == 'turn/completed':
+                self._read_job_usage(job, stop=False)
                 error = params['turn'].get('error')
                 self._finish(job, params['turn'].get('status', 'failed'), self._error_message(error) if error else '')
             else:
@@ -448,7 +533,7 @@ class AssistantController:
             job['corrections'] += 1
             self.corrections.add(text)
 
-    def review(self, *, approved=False):
+    def review(self, *, approved=False, credit_limit=None):
         if not approved:
             raise ValueError('Approve the separate review budget before starting AI peer review.')
         with self.lock:
@@ -460,7 +545,7 @@ class AssistantController:
             if self.last_review == evidence or any(j['task']['mode']=='review' and j['status'] in ('running','stopping') for j in self.jobs.values()):
                 raise ValueError('Review already running or there is no new evidence since the last review.')
             task = build_task(self.memory, 'Review this task: ' + developer['task']['request'], mode='review',
-                              tokens=24000, seconds=120, model=developer['task']['model'], effort=developer['task']['effort'])
+                              tokens=None, seconds=120, model=developer['task']['model'], effort=developer['task']['effort'], credit_limit=credit_limit)
             intent='\n'.join(f"{r['key']}: {r['text']}" for r in self.memory.rules())
             if len(intent)>2000:
                 raise ValueError('Current rules exceed the small review budget. Consolidate rules before reviewing.')
@@ -486,6 +571,9 @@ class AssistantController:
                         reason = job['governor'].tick()
                         if reason:
                             self.interrupt(job['thread'], reason)
+                        elif time.monotonic() - job.get('last_credit_poll', 0) >= 2:
+                            self._read_job_usage(job)
+                            self._progress(job)
                     elif job['status'] == 'stopping' and time.monotonic() - job['stopping_at'] > 10:
                         self._finish(job, 'interrupted', 'Interruption did not finish in time; owned connection closed.')
                         self.server.close()

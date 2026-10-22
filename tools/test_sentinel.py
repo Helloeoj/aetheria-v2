@@ -140,11 +140,18 @@ def run(engine, output):
         game.kill()
         game.wait(timeout=10)
         deadline = time.monotonic() + 20
-        # A reused output directory may contain an earlier game's receipt.
-        while time.monotonic() < deadline and adc.read_json(independent_root / 'companion/last-exit.json', {}).get('pid') != game.pid and companion.poll() is None:
+        def observed_test_exit():
+            receipt = adc.read_json(independent_root / 'companion/last-exit.json', {})
+            if receipt.get('pid') == game.pid and not receipt.get('clean'):
+                return True
+            # Other project chats can launch/close Godot concurrently. Their
+            # later receipt may replace last-exit; retained activity still proves
+            # this exact owned test process was observed stopping unexpectedly.
+            return any(f'Unexpected stop — PID {game.pid},' in row.get('message', '')
+                       for row in adc.read_json(independent_root / 'companion/activity.json', []))
+        while time.monotonic() < deadline and not observed_test_exit() and companion.poll() is None:
             time.sleep(.2)
-        receipt = adc.read_json(independent_root / 'companion/last-exit.json', {})
-        check(companion.poll() is None and receipt.get('pid') == game.pid and not receipt.get('clean'), 'standalone GUI remains running after observed test-game termination')
+        check(companion.poll() is None and observed_test_exit(), 'standalone GUI remains running after observed test-game termination')
     finally:
         if game.poll() is None:
             game.kill()

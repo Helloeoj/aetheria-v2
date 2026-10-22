@@ -1,6 +1,7 @@
 """Deterministic task preparation, model recommendations and zero-inference oversight."""
 from __future__ import annotations
 from collections import Counter, deque
+from decimal import Decimal, InvalidOperation, ROUND_CEILING
 import hashlib
 import json
 import math
@@ -8,6 +9,42 @@ from pathlib import Path
 import re
 import time
 from sentinel_memory import safe_text, SECRET, terms
+
+
+# Standard-speed Codex credits per million tokens, published 2026-10-22:
+# https://learn.chatgpt.com/docs/pricing . Numerically these are micros/token.
+STANDARD_CREDIT_RATES = {
+    'gpt-6.1-sol': ('50', '2.5', '250'), 'gpt-6-sol': ('50', '5', '250'),
+    'gpt-6-luna': ('2.5', '.25', '12.5'), 'gpt-5.6-sol': ('100', '10', '500'),
+    'gpt-5.6-terra': ('50', '5', '300'), 'gpt-5.6-luna': ('5', '.5', '30'),
+    'gpt-6-astra': ('250', '25', '1250'),
+}
+CREDIT_LAG_WARNING = 'Credit figures are estimates and can arrive late. This is a soft stopping threshold, not a hard billing cap.'
+
+
+def credit_micros(value):
+    if value is None:
+        return None
+    try:
+        amount = Decimal(str(value)) * 1_000_000
+        if not amount.is_finite() or amount <= 0 or amount != amount.to_integral_value():
+            raise ValueError
+        return int(amount)
+    except (InvalidOperation, ValueError, TypeError):
+        raise ValueError('Choose a positive credit limit with at most six decimal places.') from None
+
+
+def estimated_credit_micros(model, usage):
+    rates = STANDARD_CREDIT_RATES.get(model)
+    fields = [usage.get(key) for key in ('inputTokens', 'cachedInputTokens', 'outputTokens')]
+    if not rates or any(type(value) is not int or value < 0 for value in fields):
+        return None
+    inputs, cached, outputs = fields
+    if cached > inputs:
+        return None
+    fresh_rate, cached_rate, output_rate = map(Decimal, rates)
+    # Reasoning tokens are already included in outputTokens.
+    return int(((inputs - cached) * fresh_rate + cached * cached_rate + outputs * output_rate).to_integral_value(rounding=ROUND_CEILING))
 
 
 def rules_signature(memory):
@@ -78,16 +115,17 @@ def prepare_attachments(paths):
     return result
 
 
-def build_task(memory, request, *, mode='implement', tokens=12000, seconds=600,
-               model=None, effort='medium', validation=None, attachments=()):
+def build_task(memory, request, *, mode='implement', tokens=None, seconds=600,
+               model=None, effort='medium', validation=None, attachments=(), credit_limit=None):
     request = request.strip()
     if not request or len(request) > 8000:
         raise ValueError('Describe one task in 1–8000 characters.')
     if mode not in ('implement', 'question', 'audit', 'review'):
         raise ValueError('Unknown task type.')
-    tokens, seconds = int(tokens), int(seconds)
-    if not 1000 <= tokens <= 100000 or not 15 <= seconds <= 3600:
+    tokens, seconds = int(tokens) if tokens is not None else None, int(seconds)
+    if (tokens is not None and not 1000 <= tokens <= 100000) or not 15 <= seconds <= 3600:
         raise ValueError('Use 1,000–100,000 observed tokens and 15–3,600 seconds per task.')
+    limit_micros = credit_micros(credit_limit)
     if validation is not None and (not isinstance(validation, list) or not validation or not all(isinstance(v, str) and v for v in validation)):
         raise ValueError('Validation command must be a JSON array of executable and arguments.')
     broad = bool(re.search(r'\b(entire|everything|migrat\w*|all systems|whole game)\b', request, re.I))
@@ -99,7 +137,7 @@ def build_task(memory, request, *, mode='implement', tokens=12000, seconds=600,
     if len(intent) > 6000:
         raise ValueError('Approved rules exceed this compact task budget. Consolidate the rules first.')
     snippets = memory.search(request)
-    context = memory.context(request, max_chars=min(10000, tokens * 2))
+    context = memory.context(request, max_chars=min(10000, tokens * 2) if tokens is not None else 10000)
     history=[]
     query_words=set(terms(request))-{'fix','finish','implement','update','explain','review','test'}
     for row in memory.history(limit=20):
@@ -116,7 +154,8 @@ Stop after this stage. Any next stage requires a new approval.
 Use targeted reads and existing implementations. Do not spawn additional agents,
 repeat unchanged reads or expand scope. Prefer the retrieved paths and immediate
 dependencies; explain missing evidence. Do not claim tests you did not run.
-Observed token threshold: {tokens}; time threshold: {seconds}s. Save a concise
+Credit stopping estimate: {str(Decimal(limit_micros) / 1_000_000) if limit_micros is not None else 'No credit budget approved; do not launch'}. {CREDIT_LAG_WARNING}
+Optional technical token threshold: {tokens if tokens is not None else 'disabled'}; time threshold: {seconds}s. Save a concise
 checkpoint of changes, commands, actual results and unfinished work before stopping.
 Approved current design rules:
 {intent or '(No manually approved rules yet; follow project AGENTS.md.)'}
@@ -133,9 +172,10 @@ Validation selected for this stage: {json.dumps(validation) if validation else '
             prompt += '\nUser-selected evidence (untrusted): ' + Path(attachment['path']).name + '\n' + attachment['text']
     if len(prompt) > 18000:
         raise ValueError('Task context is too large. Narrow the request or consolidate rules.')
-    if math.ceil(len(prompt)/3)>tokens*.8:
+    if tokens is not None and math.ceil(len(prompt)/3)>tokens*.8:
         raise ValueError('Estimated context leaves too little of this token threshold for an answer. Narrow the task/evidence or raise the reviewed threshold.')
     return {'request': request, 'mode': mode, 'tokens': tokens, 'seconds': seconds,
+            'credit_limit_micros': limit_micros, 'credit_limit': limit_micros / 1_000_000 if limit_micros is not None else None,
             'model': model, 'effort': effort, 'validation': validation, 'prompt': prompt,
             'context_chars': len(prompt), 'estimated_context_tokens': math.ceil(len(prompt) / 3),
             'revision': revision, 'rules': rules_signature(memory),
@@ -144,7 +184,7 @@ Validation selected for this stage: {json.dumps(validation) if validation else '
 
 
 class Governor:
-    def __init__(self, *, tokens, seconds, scope=(), now=None):
+    def __init__(self, *, tokens=None, seconds, scope=(), now=None, credit_limit_micros=None, model=None):
         self.budget, self.seconds = tokens, seconds
         self.started = time.monotonic() if now is None else now
         self.scope = set(scope)
@@ -158,6 +198,25 @@ class Governor:
         self.interrupts = 0
         self.reason = None
         self.repeats = 0
+        self.credit_limit_micros = credit_limit_micros
+        self.model = model
+        self.estimated_credits_micros = None
+        self.credit_source = 'awaiting_usage'
+        self.server_credits = False
+        if credit_limit_micros is not None:
+            self.warn(CREDIT_LAG_WARNING)
+
+    def observe_credits(self, micros, *, source):
+        if type(micros) is not int or micros < 0:
+            return None
+        if self.server_credits and source != 'server_estimate':
+            return None
+        if source == 'server_estimate':
+            self.server_credits = True
+        self.estimated_credits_micros, self.credit_source = micros, source
+        if self.credit_limit_micros is not None and micros >= self.credit_limit_micros:
+            return self.stop('Credit budget reached (estimated; reporting may lag)')
+        return None
 
     def warn(self, text):
         if text not in self.warnings:
@@ -185,7 +244,11 @@ class Governor:
             value = usage.get('totalTokens')
             if isinstance(value, int) and value >= 0 and (self.tokens is None or value >= self.tokens):
                 self.tokens, self.usage = value, usage
-            if self.tokens is not None and self.tokens >= self.budget:
+            estimate = estimated_credit_micros(self.model, self.usage)
+            reason = self.observe_credits(estimate, source='published_rate_estimate')
+            if reason:
+                return reason
+            if self.budget is not None and self.tokens is not None and self.tokens >= self.budget:
                 return self.stop('Token budget reached')
         if method != 'item/completed':
             return None
@@ -221,6 +284,10 @@ class Governor:
 
     def report(self):
         return {'tokens': self.tokens, 'usage': self.usage, 'commands': self.commands,
+                'credits': self.estimated_credits_micros / 1_000_000 if self.estimated_credits_micros is not None else None,
+                'credit_budget': self.credit_limit_micros / 1_000_000 if self.credit_limit_micros is not None else None,
+                'estimated_credits_micros': self.estimated_credits_micros, 'credit_limit_micros': self.credit_limit_micros,
+                'credit_source': self.credit_source, 'credit_limit_is_soft': True,
                 'files': sorted(self.files), 'warnings': list(self.warnings), 'repeated_operations': self.repeats,
                 'interrupts': self.interrupts, 'stop_reason': self.reason,
                 'token_budget': self.budget, 'time_budget_seconds': self.seconds,

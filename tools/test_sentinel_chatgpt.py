@@ -218,11 +218,13 @@ ai.ChatGPTClient(s).access()
         app.apply(state)
         app.explain_report()
         window.update()
-        widgets = [app.ai_panel.connect_button, app.ai_panel.model_box, app.ai_panel.entry, app.ai_panel.send_button]
+        widgets = [app.ai_panel.analyze_button, app.ai_panel.entry, app.ai_panel.send_button]
         origin_x, origin_y = window.winfo_rootx(), window.winfo_rooty()
         fits = all(widget.winfo_ismapped() and widget.winfo_rootx() - origin_x + widget.winfo_width() <= window.winfo_width()
                    and widget.winfo_rooty() - origin_y + widget.winfo_height() <= window.winfo_height() for widget in widgets)
-        check(fits and 'Explained on your computer' in app.ai_panel.display, 'new chat tab and main-window sign-in/model/composer controls fit the real application window')
+        check(fits and not app.ai_panel.connect_button.winfo_ismapped()
+              and app.ai_panel.conversation_handoff is not None and 'Explained on your computer' in app.ai_panel.display,
+              'incident discussion uses embedded ChatGPT routing and its controls fit the real application window')
         state.update(incidents=[fixed_row, state['incidents'][0]], open_count=1)
         app.apply(state)
         app.explain_latest()

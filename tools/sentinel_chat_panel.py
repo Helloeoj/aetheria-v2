@@ -26,6 +26,7 @@ class ChatPanel(tk.Frame):
         self.display = ''
         self.ai_prefix = ''
         self.cache = {}
+        self.conversation_handoff = None
         self.account_var = tk.StringVar()
         self.model_var = tk.StringVar()
         self.message_var = tk.StringVar()
@@ -45,6 +46,7 @@ class ChatPanel(tk.Frame):
 
     def _build(self):
         account_bar = tk.Frame(self, bg='#121d2d')
+        self.account_bar=account_bar
         account_bar.pack(fill='x', padx=14, pady=(12, 5))
         self.connect_button = tk.Button(account_bar, text='Continue with ChatGPT', command=self.connect,
                                         fg='#111111', bg='#ffffff', activebackground='#e6e6e6', relief='flat', padx=14, pady=8,
@@ -58,7 +60,8 @@ class ChatPanel(tk.Frame):
         self.disconnect_button.pack(side='left')
         ttk.Button(account_bar, text='Manage usage', command=lambda: webbrowser.open('https://chatgpt.com/settings/usage')).pack(side='right')
 
-        self._label(self, 'Uses your ChatGPT plan, sharing Work/Codex limits. Sends selected report evidence only when you ask.', anchor='w').pack(fill='x', padx=14, pady=(2, 5))
+        self.connection_note=self._label(self, 'Uses your ChatGPT plan, sharing Work/Codex limits. Sends selected report evidence only when you ask.', anchor='w')
+        self.connection_note.pack(fill='x', padx=14, pady=(2, 5))
         controls = tk.Frame(self, bg='#121d2d')
         controls.pack(fill='x', padx=14, pady=(0, 7))
         self._label(controls, 'Model:').pack(side='left', padx=(0, 7))
@@ -225,6 +228,11 @@ class ChatPanel(tk.Frame):
         if self.busy:
             return
         self.set_report(self.provider())
+        if self.conversation_handoff:
+            if self.current_report:
+                self.conversation_handoff('Help me understand this game incident.\n\n'+self._evidence()['content'])
+            else: self.status.set('Select an incident first. No report was sent.')
+            return
         model = self._model()
         if not self.current_report or not model:
             if not self.current_report:
@@ -252,6 +260,11 @@ class ChatPanel(tk.Frame):
         if not question:
             return
         self.set_report(self.provider())
+        if self.conversation_handoff:
+            evidence='\n\n'+self._evidence()['content'] if self.current_report else ''
+            self.conversation_handoff(question+evidence)
+            self.message_var.set('')
+            return
         model = self._model()
         if not self.current_report or not model:
             return
@@ -269,6 +282,19 @@ class ChatPanel(tk.Frame):
         if self.store:
             self.status.set('Signing out of the selected connection…')
             self._run('disconnected', self.client.disconnect)
+
+    def use_embedded_chat(self,callback):
+        self.conversation_handoff=callback
+        self.account_bar.pack_forget()
+        for widget in (self.model_box,self.refresh_models_button,self.plan_label): widget.pack_forget()
+        for widget in self.model_box.master.winfo_children():
+            if isinstance(widget,tk.Label) and widget.cget('text')=='Model:': widget.pack_forget()
+        self.cancel_button.pack_forget()
+        self.connect_button.configure(state='disabled')
+        self.analyze_button.configure(text='Discuss in ChatGPT')
+        self.connection_note.configure(text='Local explanations use no AI. Discuss opens the normal ChatGPT page inside Sentinel and adds a draft for you to review and send.')
+        self.show('Choose an incident for a local explanation. Select Discuss in ChatGPT to add the report to a normal ChatGPT draft inside Sentinel. No Codex request starts here.')
+        self.status.set('Ordinary conversation uses the embedded ChatGPT page. Codex implementation has its own reviewed credit budget.')
 
     def cancel(self):
         self.cancelled.set()

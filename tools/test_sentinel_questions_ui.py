@@ -1,4 +1,4 @@
-"""Real Tk question-flow regressions; isolated state and a non-inference controller."""
+"""Real Tk routing/credit regressions with fake Codex and no inference."""
 from pathlib import Path
 import tempfile
 import time
@@ -7,25 +7,21 @@ import unittest
 from unittest.mock import patch
 import threading
 
-import adc
 from sentinel import SentinelApp
 from sentinel_monitor import Monitor
 
 
 class QuestionController:
-    def __init__(self, panel):
-        self.panel=panel
-        self.server=None
-        self.jobs={}
-        self.connected=0
-        self.launched=[]
-        self.failure=None
+    def __init__(self,panel):
+        self.panel=panel; self.server=None; self.jobs={}
+        self.connected=0; self.launched=[]; self.failure=None
     def connect(self):
         self.connected+=1
         if self.failure: raise RuntimeError(self.failure)
         self.server=object()
         return {'account':{'type':'chatgpt'},'models':[{
-            'id':'small','model':'gpt-6-luna','supportedReasoningEfforts':[{'reasoningEffort':'low'}]}]}
+            'id':'small','model':'gpt-6-luna','supportedReasoningEfforts':[{'reasoningEffort':'low'}]}],
+            'usage':{'balance':'250','ordinary_usage_allowed':True}}
     def launch(self,task,*,approved=False):
         self.launched.append((task,approved))
         job={'thread':'q1','turn':'t1','task':task,'status':'running','finished':False}
@@ -43,93 +39,134 @@ class QuestionUITests(unittest.TestCase):
         self.app=SentinelApp(self.window,Monitor(Path(self.temp.name),discover=False),start=False)
         self.panel=self.app.development
         self.panel.controller.close()
-        self.fake=QuestionController(self.panel)
-        self.panel.controller=self.fake
-        self.app.tabs.select(self.panel)
-        self.window.geometry('920x560')
-        self.window.update()
+        self.fake=QuestionController(self.panel); self.panel.controller=self.fake
+        self.app.tabs.select(self.panel); self.window.geometry('920x560'); self.window.update()
     def tearDown(self):
-        self.app.close()
-        self.temp.cleanup()
+        self.app.close(); self.temp.cleanup()
     def pump(self,until,timeout=12):
         deadline=time.monotonic()+timeout
         while not until() and time.monotonic()<deadline:
-            self.window.update()
-            time.sleep(.02)
-        self.window.update()
-        self.assertTrue(until())
-    def ask(self):
-        self.panel.request_box.insert('1.0','How does fishing work?')
-        self.panel.ask_button.invoke()
-        self.pump(lambda: bool(self.fake.launched))
+            self.window.update(); time.sleep(.02)
+        self.window.update(); self.assertTrue(until())
+    def prepare(self):
+        self.panel.route.set('Codex implementation'); self.panel.switch_route()
+        self.panel.credits.set('1')
+        self.panel.request_box.insert('1.0','Investigate why fishing freezes.')
+        self.panel.ask_button.invoke(); self.pump(lambda:self.panel.task is not None)
+    def run(self,result=None):
+        # unittest's run is intentionally inherited, use launch_stage below.
+        return super().run(result)
+    def launch_stage(self):
+        self.prepare()
+        with patch('sentinel_assistant_panel.messagebox.askyesno',return_value=True):
+            self.panel.run_task()
+        self.pump(lambda:bool(self.fake.launched))
+        self.pump(lambda:self.panel.active_question_thread=='q1')
 
-    def test_one_click_connects_prepares_and_starts_readonly_question(self):
-        self.ask()
-        task,approved=self.fake.launched[0]
-        self.assertEqual(self.fake.connected,1)
-        self.assertEqual(task['mode'],'question')
-        self.assertIsNone(task['validation'])
-        self.assertTrue(approved)
-        self.assertTrue(self.panel.ask_button.instate(['disabled']))
-        self.assertTrue(self.panel.answer_box.winfo_ismapped())
-        self.assertFalse(self.panel.model_box.winfo_ismapped())
-        self.assertGreater(self.panel.answer_box.winfo_height(),60)
-        bottom=self.panel.ask_button.winfo_rooty()+self.panel.ask_button.winfo_height()
-        self.assertLessEqual(bottom,self.window.winfo_rooty()+self.window.winfo_height())
+    def test_default_is_embedded_chatgpt_with_no_codex_connection_or_launch(self):
+        self.assertEqual(self.panel.route.get(),'ChatGPT conversation')
+        self.assertTrue(self.panel.chat_page.winfo_ismapped())
+        self.assertFalse(self.panel.coding_page.winfo_ismapped())
+        self.panel.ask_question()
+        self.assertEqual(self.fake.connected,0); self.assertFalse(self.fake.launched)
+        self.assertIsNone(self.panel.chat_browser)
 
-    def test_connection_error_is_visible_and_question_can_be_retried(self):
-        self.fake.failure='Codex could not connect. Check sign-in.'
-        self.panel.request_box.insert('1.0','How does fishing work?')
-        self.panel.ask_button.invoke()
-        self.pump(lambda: 'Check sign-in' in self.panel.answer_box.get('1.0','end'))
-        self.assertFalse(self.panel.ask_button.instate(['disabled']))
+    def test_prepare_is_local_and_paid_launch_needs_review_with_credit_units(self):
+        self.prepare()
+        self.assertEqual(self.fake.connected,1); self.assertFalse(self.fake.launched)
+        self.assertEqual(self.panel.task['credit_limit_micros'],1000000)
+        self.assertIsNone(self.panel.task['tokens'])
+        self.assertIn('credit',self.panel.preview.get('1.0','end').lower())
+        self.assertIn('250 credits',self.panel.credit_status.get())
+        with patch('sentinel_assistant_panel.messagebox.askyesno',return_value=False) as confirm:
+            self.panel.run_task()
+            self.assertIn('1 Codex credits',confirm.call_args.args[1])
         self.assertFalse(self.fake.launched)
+        self.assertGreater(self.panel.preview.winfo_height(),40)
 
-    def test_streaming_answer_and_completion_stay_visible_after_index_refresh(self):
-        self.ask()
-        report={'tokens':50,'token_budget':12000,'commands':0,'files':[],'repeated_operations':0,'warnings':[]}
+    def test_conversation_handoff_prepares_input_but_cannot_launch_paid_job(self):
+        self.panel._chat_event({'type':'handoff','request':'Implement the fishing fix we discussed.'})
+        self.window.update()
+        self.assertEqual(self.panel.route.get(),'Codex implementation')
+        self.assertIn('fishing fix',self.panel.request_box.get('1.0','end'))
+        self.assertTrue(self.panel.coding_page.winfo_ismapped())
+        self.assertFalse(self.fake.launched); self.assertEqual(self.fake.connected,0)
+        self.panel.ask_button.invoke()
+        self.assertIn('credit budget',self.panel.status.get())
+        self.assertFalse(self.fake.launched)
+        self.panel.route.set('ChatGPT conversation'); self.panel.switch_route(); self.window.update()
+        self.assertTrue(self.panel.chat_page.winfo_ismapped())
+
+    def test_connection_error_is_visible_and_no_inference_was_started(self):
+        self.fake.failure='Codex could not connect. Check sign-in.'
+        self.panel.route.set('Codex implementation'); self.panel.switch_route()
+        self.panel.credits.set('1'); self.panel.request_box.insert('1.0','Fix fishing.')
+        self.panel.ask_button.invoke()
+        self.pump(lambda:'Check sign-in' in self.panel.answer_box.get('1.0','end'))
+        self.assertFalse(self.panel.ask_button.instate(['disabled'])); self.assertFalse(self.fake.launched)
+
+    def test_streaming_and_credit_report_remain_visible_after_index_refresh(self):
+        self.launch_stage()
+        report={'tokens':50,'token_budget':None,'credits':.02,'credit_budget':1,
+                'credit_source':'server_estimate','commands':0,'files':[],'repeated_operations':0,'warnings':[]}
         self.panel.emit({'type':'progress','thread':'q1','report':report,'answer':'Fishing checks'})
         self.pump(lambda:'Fishing checks' in self.panel.answer_box.get('1.0','end'))
-        self.panel.emit({'type':'finished','thread':'q1','status':'completed','body':{'answer':'Fishing checks your equipment.','error':'','report':report}})
+        self.panel.emit({'type':'finished','thread':'q1','status':'completed',
+                         'body':{'answer':'Fishing checks your equipment.','error':'','report':report}})
         self.pump(lambda:not self.panel.ask_button.instate(['disabled']))
         self.panel.emit({'type':'indexed','value':{'files':10,'read':0,'updated':0,'removed':0}})
         self.window.update()
         self.assertIn('Fishing checks your equipment.',self.panel.answer_box.get('1.0','end'))
-        self.assertIn('Answer',self.panel.status.get())
+        self.assertIn('0.02 / 1',self.panel.usage.get())
 
-    def test_blank_question_and_repeated_click_cannot_launch_hidden_work(self):
-        self.panel.ask_button.invoke()
-        self.assertIn('Type',self.panel.status.get())
-        self.assertFalse(self.fake.launched)
-        self.ask()
-        self.panel.ask_button.invoke()
-        self.assertEqual(len(self.fake.launched),1)
-
-    def test_stop_during_connection_cancels_before_model_request(self):
-        connecting=threading.Event()
-        release=threading.Event()
-        connect=self.fake.connect
-        def delayed_connect():
-            connecting.set()
-            release.wait(5)
-            return connect()
-        self.fake.connect=delayed_connect
-        self.panel.request_box.insert('1.0','How does fishing work?')
-        self.panel.ask_button.invoke()
-        self.pump(connecting.is_set)
-        self.panel.stop()
-        release.set()
+    def test_stop_during_connection_cancels_before_preparing_or_model_request(self):
+        connecting=threading.Event(); release=threading.Event(); connect=self.fake.connect
+        def delayed():
+            connecting.set(); release.wait(5); return connect()
+        self.fake.connect=delayed
+        self.panel.route.set('Codex implementation'); self.panel.switch_route()
+        self.panel.credits.set('1'); self.panel.request_box.insert('1.0','Fix fishing.')
+        self.panel.ask_button.invoke(); self.pump(connecting.is_set)
+        self.panel.stop(); release.set()
         self.pump(lambda:not self.panel.ask_button.instate(['disabled']))
-        self.assertFalse(self.fake.launched)
-        self.assertIn('cancelled',self.panel.answer_box.get('1.0','end').lower())
+        self.assertFalse(self.fake.launched); self.assertIsNone(self.panel.task)
 
-    def test_shipped_budget_covers_measured_codex_startup_context(self):
-        from sentinel_assistant import Governor
-        self.ask()
-        task=self.fake.launched[0][0]
-        governor=Governor(tokens=task['tokens'],seconds=task['seconds'])
-        reason=governor.observe({'method':'thread/tokenUsage/updated','params':{'tokenUsage':{'total':{'totalTokens':14496}}}})
-        self.assertIsNone(reason,'The old shipped limit stopped even a one-line answer at startup.')
+    def test_unavailable_balance_is_not_misrepresented_as_zero(self):
+        self.panel._account_usage({'balance':None,'ordinary_usage_allowed':None})
+        self.assertIn('unavailable',self.panel.credit_status.get())
+        self.assertNotIn('0 credits',self.panel.credit_status.get())
+        self.assertIn('not reported',self.panel.credit_status.get())
+
+    def test_peer_review_job_cannot_steal_the_developer_answer_or_completion(self):
+        self.launch_stage()
+        report={'credits':.02,'credit_budget':1,'credit_source':'server_estimate','commands':0,'files':[],'warnings':[]}
+        self.panel.emit({'type':'job','thread':'review-1','status':'running'})
+        self.panel.emit({'type':'progress','thread':'review-1','report':report,'answer':'Peer review findings.'})
+        self.panel.emit({'type':'finished','thread':'review-1','status':'completed',
+                         'body':{'answer':'Peer review findings.','error':'','report':report}})
+        self.pump(lambda:'Peer review findings.' in self.panel.preview.get('1.0','end'))
+        self.assertEqual(self.panel.active_question_thread,'q1')
+        self.assertTrue(self.panel.busy)
+        self.assertNotIn('Peer review findings.',self.panel.answer_box.get('1.0','end'))
+        self.panel.emit({'type':'progress','thread':'q1','report':report,'answer':'Developer result.'})
+        self.pump(lambda:'Developer result.' in self.panel.answer_box.get('1.0','end'))
+        self.panel.emit({'type':'finished','thread':'q1','status':'completed',
+                         'body':{'answer':'Developer result.','error':'','report':report}})
+        self.pump(lambda:not self.panel.busy)
+        self.assertIn('Developer result.',self.panel.answer_box.get('1.0','end'))
+
+    def test_delayed_launch_receipt_does_not_replace_a_fast_completion_with_working(self):
+        self.launch_stage()
+        report={'credits':.01,'credit_budget':1,'credit_source':'server_estimate','commands':0,'files':[],'warnings':[]}
+        job=self.fake.jobs['q1']
+        job.update(status='completed',finished=True)
+        self.panel.emit({'type':'finished','thread':'q1','status':'completed',
+                         'body':{'answer':'Completed immediately.','error':'','report':report}})
+        self.panel.emit({'type':'launched','value':job})
+        self.pump(lambda:not self.panel.busy)
+        self.assertIn('Completed immediately.',self.panel.answer_box.get('1.0','end'))
+        self.assertIn('completed',self.panel.status.get().lower())
+        self.assertNotIn('working',self.panel.status.get().lower())
 
 
 if __name__=='__main__': unittest.main(verbosity=2)

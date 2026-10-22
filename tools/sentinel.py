@@ -121,6 +121,10 @@ class SentinelApp:
             state_path=None if self.start_workers else self.monitor.root / 'companion/test-project-memory.sqlite3',
             start=self.start_workers)
         self.tabs.add(self.development, text='Development assistant')
+        def discuss_incident(text):
+            self.tabs.select(self.development)
+            self.development.draft_chat(text)
+        self.ai_panel.use_embedded_chat(discuss_incident)
         # Give the roadmap reading space without changing the monitoring views.
         def tab_changed(_event=None):
             if self.tabs.select() in (str(self.roadmap), str(self.development)):

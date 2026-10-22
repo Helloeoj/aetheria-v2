@@ -206,6 +206,8 @@ class FakeServer:
             return {'thread': {'id': 'thread-' + str(self.count)}}
         if method == 'turn/start':
             return {'turn': {'id': 'turn-' + str(self.count), 'status': 'inProgress'}}
+        if method == 'account/usage/read':
+            return {'summary': {}, 'threadUsage': {'threadId': params['threadId'], 'estimatedUsageCreditsMicros': 0, 'groups': []}}
         return {}
     def close(self): pass
 
@@ -271,7 +273,7 @@ class ControllerTests(unittest.TestCase):
         server.closed=threading.Event()
         controller=AssistantController(self.memory,server=server)
         self.addCleanup(controller.close)
-        job=controller.launch(build_task(self.memory,'Explain fishing',mode='question',model='available'),approved=True)
+        job=controller.launch(build_task(self.memory,'Explain fishing',mode='question',model='available',credit_limit=2),approved=True)
         server.closed.set()
         deadline=time.monotonic()+2
         while not job['finished'] and time.monotonic()<deadline: time.sleep(.02)
@@ -287,6 +289,7 @@ for line in sys.stdin:
  if 'id' not in m: continue
  result={}
  if method=='thread/start': result={'thread':{'id':'owned'}}
+ if method=='account/usage/read': result={'summary':{},'threadUsage':{'threadId':p['threadId'],'estimatedUsageCreditsMicros':0,'groups':[]}}
  if method=='turn/start':
   if p.get('threadId')!='owned' or not p.get('input'): raise SystemExit(2)
   result={'turn':{'id':'turn-1','status':'inProgress'}}
@@ -299,7 +302,7 @@ for line in sys.stdin:
         server=AppServer(command=[sys.executable,str(script)])
         controller=AssistantController(self.memory,server=server)
         self.addCleanup(controller.close)
-        job=controller.launch(build_task(self.memory,'Explain fishing',mode='question',model='available'),approved=True)
+        job=controller.launch(build_task(self.memory,'Explain fishing',mode='question',model='available',credit_limit=2),approved=True)
         deadline=time.monotonic()+5
         while not job['finished'] and time.monotonic()<deadline: time.sleep(.02)
         self.assertEqual(job['status'],'completed')
@@ -310,7 +313,7 @@ for line in sys.stdin:
     def test_validation_updates_same_checkpoint_without_double_counting_usage(self):
         controller=AssistantController(self.memory,server=FakeServer())
         self.addCleanup(controller.close)
-        task=build_task(self.memory,'Test fishing',model='available',validation=[sys.executable,'-c','print("passed")'])
+        task=build_task(self.memory,'Test fishing',model='available',credit_limit=2,validation=[sys.executable,'-c','print("passed")'])
         job=controller.launch(task,approved=True)
         self.assertEqual(self.memory.history()[0]['status'],'running')
         controller.event({'method':'turn/completed','params':{'threadId':job['thread'],'turn':{'id':job['turn'],'status':'completed'}}})
@@ -322,7 +325,7 @@ for line in sys.stdin:
         server = FakeServer()
         controller = AssistantController(self.memory, server=server)
         self.addCleanup(controller.close)
-        job = controller.launch(build_task(self.memory, 'Explain fishing',mode='question',model='available',tokens=1000),approved=True)
+        job = controller.launch(build_task(self.memory, 'Explain fishing',mode='question',model='available',tokens=1000,credit_limit=2),approved=True)
         event = {'method':'thread/tokenUsage/updated','params':{'threadId':'unrelated','tokenUsage':{'total':{'totalTokens':1200}}}}
         controller.event(event)
         self.assertEqual(job['status'],'running')
@@ -344,7 +347,7 @@ for line in sys.stdin:
         server = FakeServer()
         controller = AssistantController(self.memory, server=server)
         self.addCleanup(controller.close)
-        task = build_task(self.memory, 'Explain fishing', mode='question', model='available')
+        task = build_task(self.memory, 'Explain fishing', mode='question', model='available',credit_limit=2)
         job = controller.launch(task, approved=True)
         controller.event({'method':'item/completed','params':{'threadId':job['thread'],'turnId':job['turn'],'item':{'id':'a','type':'agentMessage','text':'All tests passed'}}})
         controller.event({'method':'turn/completed','params':{'threadId':job['thread'],'turn':{'id':job['turn'],'status':'completed'}}})
@@ -358,12 +361,13 @@ for line in sys.stdin:
         server = FakeServer()
         controller = AssistantController(self.memory, server=server)
         self.addCleanup(controller.close)
-        task = build_task(self.memory, 'Fix fishing', model='available')
+        task = build_task(self.memory, 'Fix fishing', model='available',credit_limit=2)
         controller.launch(task, approved=True)
         with self.assertRaises(ValueError): controller.review(approved=False)
-        review = controller.review(approved=True)
+        review = controller.review(approved=True,credit_limit=.5)
         self.assertEqual(review['task']['mode'], 'review')
-        self.assertLessEqual(review['task']['tokens'], 24000)
+        self.assertEqual(review['task']['credit_limit'], .5)
+        self.assertIsNone(review['task']['tokens'])
         reason=review['governor'].observe({'method':'thread/tokenUsage/updated','params':{'tokenUsage':{'total':{'totalTokens':14496}}}})
         self.assertIsNone(reason,'A read-only review must fit the observed Codex startup context.')
         self.assertEqual([p['sandbox'] for m,p in server.calls if m=='thread/start'][-1], 'read-only')

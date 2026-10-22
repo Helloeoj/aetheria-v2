@@ -3,42 +3,65 @@
 Open **Aetheria Sentinel → Development assistant**. If Sentinel was already
 running when its source was updated, close and reopen it from the desktop
 shortcut. The companion, incidents, live log, Explain & chat and roadmap remain
-available. The development assistant uses the existing Python runtime and
-installed Codex; it adds no package dependency or service.
+available. The conversation view embeds the official ChatGPT website. Codex is a
+separate implementation route with a reviewed credit budget.
 
-## Ask a question
+## Discuss the game in ChatGPT
 
-1. Open **Ask Sentinel**, type your question, then press **Enter** or select
-   **Ask Sentinel**. Shift+Enter adds a line.
-2. Sentinel connects to the installed Codex, loads its model catalog, retrieves
-   relevant local source and sends a read-only question. No separate Connect,
-   Prepare or Run step is needed. Sending a question uses your Codex allowance.
-3. Read the streamed answer in the answer area. A progress indicator and status
-   remain visible while it connects, reads or writes an answer. Errors and stop
-   reasons appear in that same area; the Ask button becomes available to retry.
+1. Open **Conversation → ChatGPT conversation**. Use **Open / retry ChatGPT** if
+   needed. Sign in on the official page inside Sentinel and choose normal Chat
+   mode on that page.
+2. Type and send messages on the ChatGPT page. This route does not connect to
+   Codex or send a Codex inference request. The website controls its own models,
+   account permissions and limits. This is not an unlimited or free API service.
+3. To supply local source, select **Add game context**, describe the relevant
+   system, and wait for the excerpts to appear in the ChatGPT composer. The
+   excerpts and approved project decisions are added to a **draft only**. Review
+   the draft and select Send yourself; Sentinel never submits it automatically.
 
-Questions cannot edit files or accept elevated permissions. **Stop** cancels a
-pending connection before inference when possible, or interrupts a running job
-while preserving its partial answer. If sign-in is needed, the visible error
-points to **Advanced → Sign in** and the browser flow. No password/token copying
-is needed. Model and budget controls are under **Advanced**, and local indexing
-status stays on **Project memory** without replacing an answer or error.
+The browser has its own persistent WebView2 profile under the project's local
+Sentinel state directory. Its website sign-in is separate from the desktop
+browser and the Codex connection. Sentinel reads rendered conversation turns
+for handoff; it does not extract cookies, passwords or authentication tokens.
+The existing **Explain & chat** tab keeps local incident explanations and routes
+**Discuss in ChatGPT** and follow-up messages into this same draft flow.
+
+When ready to implement, select **Use this conversation in Codex**, or send the
+exact instruction **let's implement the changes** on the ChatGPT page. The
+phrase is recognized only following a trusted composer interaction; loading an
+old conversation does not trigger a handoff. A handoff copies the currently
+rendered user/assistant conversation as reference evidence, bounded to the last
+7,000 characters with an omission marker when needed. Earlier or unloaded
+messages may be absent. Review and restore missing requirements before running.
+It switches to **Codex implementation** and fills the task; it never launches a
+paid job. You can also switch manually and type a coding task.
+
+## Embedded browser setup
+
+The pane requires the existing Sentinel Python runtime, **pywebview 6.1** and the
+Microsoft Edge **WebView2** runtime on Windows. The browser dependency was
+installed in the local bundled Python runtime during this upgrade. For another
+machine, run `tools/setup_sentinel_browser.ps1` with the existing runtime and
+install the Microsoft WebView2 runtime if absent. The renderer is an owned child
+process, and closing Sentinel closes its browser process tree. A failed or closed
+renderer can be retried without starting Codex.
 
 ## Review a coding task
 
-1. Describe the task on **Ask Sentinel**, then open **Coding tasks & settings**
-   (the **Advanced** tab). Choose `audit` for investigation or `implement` for
-   one coding stage. Questions work directly on the first tab.
-2. Select **Prepare locally**. Sentinel retrieves current relevant excerpts,
-   approved rules and relevant prior checkpoints. Preparation makes no AI request.
+1. On **Conversation → Codex implementation**, enter or bring over one task and
+   choose a positive **Credits per stage** budget. Choose `audit` under
+   **Advanced** for investigation or `implement` for one coding stage.
+2. Select **Prepare Codex task**. Sentinel loads the installed Codex catalog and
+   retrieves current relevant excerpts, approved rules and relevant prior
+   checkpoints. Preparation makes no inference request. **Advanced → Prepare
+   locally** also builds a preview without launching a job.
    **Project memory → Search locally** searches the source without using Codex.
-3. Use **Connect Codex** to load the installed app-server's account and model
-   catalog. If needed, use **Sign in**, complete the official browser flow, then
-   reconnect. This connection is distinct from the incident ChatGPT connection.
-   It does not inspect passwords, browser cookies, identity files or other chats.
-4. Prepare again after connecting. `Auto` recommends a catalog model and supported
-   effort; you can select another. Review the request, snippets, suggested files,
-   mode, token threshold and time limit, then **Review & run stage**.
+3. If needed, use **Advanced → Connect Codex / Sign in**, complete the official
+   browser flow, then reconnect and prepare again. This sign-in is independent
+   of the embedded ChatGPT page. `Auto` recommends an available catalog model and
+   supported effort; you can select another in Advanced.
+4. Review the request, snippets, suggested files, model, mode, credit threshold
+   and time limit. Select **Review & run stage** and confirm that specific stage.
 5. Sentinel runs only this approved stage. Large migration/whole-game requests
    begin with a read-only audit. Read the result, choose validation if appropriate,
    and approve the next stage separately. There is no automatic expensive chain.
@@ -46,23 +69,35 @@ status stays on **Project memory** without replacing an answer or error.
 Codex jobs use the connected ChatGPT-backed Codex allowance. The assistant does
 not select API-key billing automatically. Catalog discovery and thread creation
 do not prove live model entitlement; a completed inference is needed for that.
-The initial installation used synthetic inference; the question-flow fix below
-also has a completed live inference and UI validation.
+Previous live model checks do not prove the current account can use every
+catalog model. No inference is required to connect, prepare or inspect a preview.
 
 ## Budgets and oversight
 
-Defaults are 24,000 observed tokens and 600 seconds for a development stage.
-The previous shipped 12,000-token preference is migrated to 24,000; other saved
-custom thresholds remain unchanged. The installed Codex used 14,496 total tokens
-for a tiny live probe, almost all startup input context. That exceeded the old
-default before a one-line answer could finish. A character estimate of the task
-alone cannot detect that overhead. This correction allows a request to start;
-it does not claim to reduce the underlying harness input or guarantee a token cost.
-Thresholds, mode and effort persist locally after preparing a task. Estimated
-context tokens use a rough character heuristic and exclude Codex's own loaded
-instructions and future tool output; they are not a usage quote. Image processing
-adds usage beyond the text estimate. Too-small text thresholds are rejected before
-launch. Standard service tier is requested, and delegation is disabled.
+The user chooses a positive **Codex credit** threshold for each paid stage.
+No default spending budget is assumed. The time limit defaults to 600 seconds.
+Credits and model text tokens are different units: the earlier 24,000-token
+default addressed a text-context limit and did not control purchased credits.
+That token-default claim has been corrected. Raw token counts remain technical
+diagnostics; the current UI uses credits for the budget and does not install a
+default text-token stopping limit. Credit/time preferences persist locally after
+preparation. Standard service tier is requested, and delegation is disabled.
+
+`account/rateLimits/read` supplies the account's purchased credit balance and
+`ordinaryUsageAllowed` permission when available. The balance is account-wide:
+other chats may spend it, so balance changes are never attributed to this job.
+Missing balance or permission values are shown as unavailable, not zero.
+
+For an owned job, Sentinel prefers `account/usage/read` with its `threadId` and
+converts `threadUsage.estimatedUsageCreditsMicros` using one million micros per
+credit. It polls while the job runs. New threads can legitimately lack a usage
+report. For known standard-speed models, the fallback uses the published
+[Codex credit rates](https://learn.chatgpt.com/docs/pricing), verified October 22,
+2026: uncached input, cached input and output are priced separately. Reasoning
+tokens are already included in output and are not counted twice. The UI labels
+server estimates, published-rate estimates and reports still awaiting usage.
+An unknown model without a matching server estimate is blocked before inference.
+Missing token components do not become an invented zero-credit estimate.
 
 The local overseer counts command completions, changed files, cumulative reported
 usage and elapsed time. It warns about repeated reads/searches on an unchanged
@@ -72,7 +107,7 @@ leads: legitimate dependency work or reasoning can still be necessary. Only
 Sentinel-owned jobs can be controlled; independently opened desktop chats are not
 monitored or interrupted.
 
-At the token/time threshold Sentinel requests an interrupt once. Usage events
+At the credit/time threshold Sentinel requests an interrupt once. Usage events
 arrive after computation, and cancellation takes time, so thresholds are **not
 hard billing caps**. The user can also **Stop jobs**. A missing acknowledgement
 or stopped server leaves an interrupted/disconnected receipt, not a success.
@@ -80,10 +115,9 @@ Closing Sentinel interrupts its jobs and closes their owned Windows process tree
 it leaves independently running Aetheria processes alone.
 
 **Peer review** starts a separate read-only review of bounded task/diff evidence,
-using the developer's selected model. It requires approval for a separate
-24,000-token/120-second threshold, including harness input. The original 3,000
-total-token limit was likewise below observed startup input. The higher review
-threshold is displayed before its separate approval. There are at most two reviews per Sentinel
+using the developer's selected model. It requires approval for a separately
+chosen positive credit threshold and a 120-second time limit. There are at most
+two reviews per Sentinel
 session; a second review needs new evidence. Read the findings and use **Send
 correction** to steer the active developer turn. Corrections are explicit,
 bounded to 2,000 characters and limited to three per developer job. Reviews and
@@ -165,40 +199,43 @@ Local state lives at
 `%LOCALAPPDATA%/AetheriaSentinel/projects/<project-path-hash>/memory.sqlite3`
 (plus SQLite WAL/SHM files), outside the repository and diagnostic retention.
 It contains source excerpts, decisions and development receipts; normal Windows
-user-directory access controls apply. Credentials remain managed by Codex itself.
+user-directory access controls apply. Codex manages its own credentials; the
+embedded browser separately manages its website session in its browser profile.
 The core modules are independent of Tk for future shared hosting, but this release
 has no online team synchronization, voice interface or multi-user authorization.
 
 ## Validation status — October 22, 2026
 
-New regressions cover incremental source retrieval, rules/rollback, privacy filters,
-attachments/stale previews, checkpoints/actual validation, timeout child cleanup,
-catalog routing/advisor, cumulative usage/repeats, scope/time limits, owned-job
-lifecycle, peer-review approval and native Tk integration. Tests use isolated
-temporary projects and synthetic app-server replies, including a real stdio child
-process. Existing Sentinel suites are also required.
+The signed-out official ChatGPT page was loaded in the embedded Windows pane.
+The live page accepted a local draft without sending it. Its responsive mobile
+composer is supported alongside the desktop composer; draft and trusted-submit
+scripts also have execution-based regressions.
+The user's authenticated website sign-in and conversation have not been verified.
+No model inference was run for this conversation/credit-routing correction, and
+no credit purchase or usage reset was performed. Earlier model probes belong to
+the superseded direct-Codex question flow and do not validate this new route.
 
-Final validation: **33 assistant regressions, 23 roadmap/clear tests, 22 monitor
-checks and 49 ChatGPT integration checks passed (127 total)**. Generated reports
-remain in the supporting workspace rather than source control.
+Automated checks use isolated temporary state, fake account/app-server replies
+and local child processes. Browser scripts are executed against a fake DOM to
+check valid JavaScript, draft preservation, origin restrictions and the absence
+of Send/handoff side effects. Tests cover old-message loading, browser retry
+cleanup, explicit handoff, credit arithmetic and missing estimates, review
+approval, streamed results, cancellation and native Tk state. Credit thresholds
+and account display are tested with synthetic reports; live billing enforcement
+and paid peer review are unverified. Generated evidence remains outside source control.
 
-Question-flow correction: **71 automated model/Tk tests, 22 monitor checks and
-49 ChatGPT integration checks passed (142 total)**. This adds nine backend and
-six question-interface regressions, including a one-click read-only launch,
-visible connection failure/retry, streaming, cancellation before launch, and
-coverage for the measured startup-context budget defect.
+Final validation: **100 automated assistant/Tk/browser tests, 49 diagnostic-chat
+checks and 22 monitor checks passed (171 total)**. No model inference was used
+for these checks. The normal website loaded and accepted a draft in a live
+embedded pane; no message was submitted by the test.
 
-The installed Codex 0.163.0-alpha.10.2 completed the real initialization handshake,
-reported a ChatGPT-backed account, returned seven catalog models and accepted a
-read-only thread configuration. The corrected one-button UI was then tested live
-on this project with catalog-selected GPT-6 Luna, medium effort and standard tier:
-the answer appeared in the answer area and the job completed at **17,729 observed
-tokens**, with **zero commands, file changes or interruptions**. A first tiny
-probe at the old 12k limit received an answer but was interrupted at 14,496 tokens,
-reproducing the budget defect. No live paid peer review or measured token savings
-are claimed. Native Windows screen capture timed out
-after an activation retry; automated Tk layout/control checks passed, and no
-screenshot-based visual pass is claimed.
+An initial monitor smoke run transiently failed its synthetic clean-shutdown-
+marker assertion; a fresh run passed it. Another run exposed concurrent game
+sessions overwriting the monitor test's last-exit receipt. The test now also
+accepts retained activity for the exact test PID, preserving the requirement
+that the companion stays running and observes that process's unexpected exit.
+The complete monitor suite then passed all 22 checks. ADC and monitor production
+code were not changed; no gameplay incident is marked resolved here.
 
 Run the assistant regressions with the installed Python:
 
@@ -208,6 +245,7 @@ python tools/test_sentinel_assistant.py -q
 
 Protocol: [official Codex app-server documentation](https://learn.chatgpt.com/docs/app-server).
 Implementation: `tools/sentinel_memory.py`, `sentinel_assistant.py`,
-`sentinel_codex.py`, `sentinel_process.py`, `sentinel_assistant_panel.py` and the
+`sentinel_codex.py`, `sentinel_process.py`, `sentinel_chatgpt_pane.py`,
+`sentinel_assistant_panel.py`, `sentinel_chat_panel.py` and the
 existing `sentinel.py`. The installed binary's generated public JSON schema was
 used to validate wire names; machine-specific evidence remains outside Git.
