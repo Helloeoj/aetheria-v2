@@ -100,6 +100,9 @@ func _button(title: String, action: Callable, parent: Node) -> Button:
 func open(target: Node2D) -> void:
 	station = target
 	session = CookingSession.new(game.player, station.heat, game.combat)
+	if Network.online():
+		session = preload("res://network/remote_minigame_sessions.gd").Cook.new(game.player, station.heat, game.combat, Network, str(game.get_parent().get_path_to(target)))
+		preload("res://network/remote_minigame_sessions.gd").raise_modal(self, game)
 	session.message = "Choose raw fish to cook at the stove."
 	raw_picker.clear()
 	var recipes: Array[Dictionary] = []
@@ -190,6 +193,7 @@ func refresh() -> void:
 		raw_picker.set_item_text(index, "%s  —  %d in backpack  —  Cooking %d" % [name_string, int(game.player.backpack.get(name_string, 0)), int(item.get("cooking_level", 1))])
 
 func close() -> void:
+	preload("res://network/remote_minigame_sessions.gd").restore_modal(self, game)
 	raw_picker.get_popup().hide()
 	if session != null:
 		session.close()
@@ -199,5 +203,6 @@ func close() -> void:
 	game._refresh_character_ui()
 
 func _exit_tree() -> void:
+	preload("res://network/remote_minigame_sessions.gd").restore_modal(self, game)
 	if session != null:
 		session.close()

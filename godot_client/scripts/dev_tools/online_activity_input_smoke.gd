@@ -81,7 +81,6 @@ func _run() -> void:
 	var panel: Control = game.online_view.activity_panel
 	var sink := CommandSink.new()
 	root.add_child(sink)
-	panel._network = sink
 	game.player.add_item("Beginner Rod", 1)
 	game.player.add_item("Low Grade Fish Food", 2)
 	game.player.fishing_pale[3] = "Raw Reedkip"
@@ -102,6 +101,7 @@ func _run() -> void:
 		game.character_menu_button.focus_mode = Control.FOCUS_ALL
 		game.character_menu_button.grab_focus()
 		await key(KEY_F)
+		panel.session.transport = sink
 		check(panel.visible, "Native F opens online fishing at %s" % dimensions)
 		check(game.get_node("UI").layer > social.get_node("SocialOverlay").layer, "Activity controls draw above persistent chat at %s" % dimensions)
 		await frames(10)
@@ -117,12 +117,17 @@ func _run() -> void:
 		# Recover focus only after assertions, keeping subsequent checks independent.
 		root.gui_release_focus()
 		before = sink.commands.size()
-		await click(panel._act_button)
+		await click(panel.action_button)
 		check(sink.commands.size() == before + 1 and sink.commands[-1].type == "fish_start", "Visible fishing button receives native clicks at %s" % dimensions)
 		before = sink.commands.size()
-		await click(panel._pale_buttons[3])
+		await click(panel.pale_slots[3])
+		check(game.context_menu.visible, "Original pale slot opens its context menu at %s" % dimensions)
+		for button: Node in game.context_menu.find_children("*", "Button", true, false):
+			if button.text == "Move to inventory":
+				await click(button)
+				break
 		if sink.commands.size() != before + 1 or sink.commands[-1] != {"type": "pale_move", "slot": 3}:
-			printerr("[Online activity click evidence] ", dimensions, " control=", panel._pale_buttons[3].get_global_rect(), " commands=", sink.commands.slice(before), " trace=", click_trace)
+			printerr("[Online activity click evidence] ", dimensions, " control=", panel.pale_slots[3].get_global_rect(), " commands=", sink.commands.slice(before), " trace=", click_trace)
 		check(sink.commands.size() == before + 1 and sink.commands[-1] == {"type": "pale_move", "slot": 3}, "Pale control over chat receives native clicks at %s" % dimensions)
 		await key(KEY_ESCAPE)
 		check(not panel.visible, "Escape closes online fishing at %s" % dimensions)

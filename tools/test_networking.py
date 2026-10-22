@@ -13,6 +13,7 @@ SCENES = [
     'world_host_persistence_smoke', 'region_freeze_smoke',
     'online_region_travel_smoke',
     'development_controls_smoke',
+    'original_online_minigames_smoke',
 ]
 SCRIPTS = ['online_activity_input_smoke', 'developer_sandbox_smoke']
 

@@ -1,5 +1,14 @@
 # Aetheria debugging workflow
 
+## Preserve the existing game
+
+Never redesign, replace, simplify or remove existing interfaces, minigames,
+artwork, controls or gameplay without explicit user permission. Moving gameplay
+server-side means preserving the existing game and changing its authority/data
+flow, not substituting new panels or an offline sandbox. Keep login and durable
+character progression. Routine implementation authorization is not redesign
+authorization. Reuse the original fishing and cooking interfaces and their art.
+
 ## Mandatory local installation and GitHub synchronization
 
 Implement authorized changes in the active game files on the user's PC and

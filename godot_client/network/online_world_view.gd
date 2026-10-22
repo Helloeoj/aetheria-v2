@@ -1,7 +1,6 @@
 extends Node
 ## Read-only projection of authoritative actors and committed character progress.
 const Codec = preload("res://network/character_codec.gd")
-const ActivityPanel = preload("res://network/online_activity_panel.gd")
 var game: Node
 var activity_panel: Control
 var status_label: Label
@@ -9,16 +8,16 @@ var _drops: Dictionary = {}
 
 func configure(owner_game: Node) -> void:
 	game = owner_game
-	activity_panel = ActivityPanel.new()
-	game.ui_root.add_child(activity_panel)
-	activity_panel.configure(game)
+	activity_panel = game.fishing_panel
 	var logout := Button.new()
+	logout.name = "OnlineLogoutButton"
 	logout.text = "Save and log out"
 	logout.position = Vector2(1040, 12)
 	logout.custom_minimum_size = Vector2(210, 38)
 	logout.pressed.connect(Network.request_logout)
 	game.ui_root.add_child(logout)
 	status_label = Label.new()
+	status_label.name = "OnlineStatusLabel"
 	status_label.position = Vector2(735, 53)
 	status_label.size = Vector2(510, 42)
 	status_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
@@ -118,6 +117,7 @@ func apply(snapshot: Dictionary) -> void:
 	game.queue_redraw()
 
 func open_activity(station: Node, kind: String, title: String) -> void:
-	var path := str(game.get_parent().get_path_to(station))
-	game._reset_held_movement()
-	activity_panel.open_station(path, kind, title)
+	if kind == "fish":
+		game.request_fishing(station)
+	elif kind == "cook":
+		game.cooking_controller.open(station)

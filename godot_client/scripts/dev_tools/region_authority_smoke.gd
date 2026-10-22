@@ -179,6 +179,9 @@ func _check_activities(region: RefCounted, a: PlayerState) -> void:
 	a.add_item("Low Grade Fish Food", 2)
 	check(region.submit(a.entity_id,{"type":"fish_start","station_id":fish_id,"rod":"Beginner Rod","bait":"Low Grade Fish Food"}).ok,"Owned fishing gear starts authoritative session")
 	check(region.snapshot(a.entity_id).activity.state == FishingSession.State.POWER, "Fishing begins with server power clock")
+	var fish_view: Dictionary = _wire({"type":"snapshot","activity":region.snapshot(a.entity_id).activity}).activity
+	check(fish_view.has("elapsed") and fish_view.has("fight_time") and fish_view.has("fish_pull") and fish_view.fish_id == 0, "Original fishing presentation receives server clocks without revealing an early catch")
+	check(not region.submit(a.entity_id,{"type":"fish_start","station_id":fish_id}).ok, "Recasting cannot reset an active server cast")
 	check(not region.submit(a.entity_id,{"type":"fish_input","action":"catch","xp":9999}).ok, "Fishing cannot submit rewards")
 	region.advance(0.2)
 	check(region.snapshot(a.entity_id).activity.power > 0, "Server advances fishing power")
@@ -187,6 +190,8 @@ func _check_activities(region: RefCounted, a: PlayerState) -> void:
 	region.submit(a.entity_id,{"type":"fish_stop"})
 	a.add_item("Raw Reedkip", 1)
 	check(region.submit(a.entity_id,_wire({"type":"cook_start","station_id":cook_id,"item_name":"Raw Reedkip","quantity":1})).ok, "Approved stove starts cooking")
+	var cook_view: Dictionary = _wire({"type":"snapshot","activity":region.snapshot(a.entity_id).activity}).activity
+	check(cook_view.has("feedback_elapsed") and cook_view.last_result is Dictionary, "Original pan feedback survives the server wire format")
 	check(not region.submit(a.entity_id,{"type":"cook_flip"}).ok, "Early flip cannot manufacture cooked rewards")
 	check(not region.submit(a.entity_id,{"type":"cook_flip","elapsed":999}).ok, "Cooking cannot forge timestamps")
 	region.submit(a.entity_id,{"type":"cook_cancel"})

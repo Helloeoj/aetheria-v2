@@ -32,7 +32,7 @@ func submit(id: String, command: Dictionary) -> Dictionary:
 	var kind := String(command.type)
 	match kind:
 		"fish_start":
-			if active(id) or _busy(player):
+			if (active(id) and (not fishing.has(id) or fishing[id].active_cast())) or _busy(player):
 				return _result(false, "Finish combat and other activities first.")
 			var station: Dictionary = region.station_for(player, String(command.get("station_id", "")), "fish")
 			if station.is_empty():
@@ -124,13 +124,16 @@ func snapshot(id: String) -> Dictionary:
 			"rod":session.rod,"bait":session.bait,"power":session.power,"cast_power":session.cast_power,
 			"distance":session.distance,"remaining":session.remaining,"lateral":session.lateral,
 			"velocity":session.velocity,"strain":session.strain,"boundary":session.boundary(),
-			"lateral_limit":session.lateral_limit(),"reward_xp":session.reward_xp}
+			"lateral_limit":session.lateral_limit(),"reward_xp":session.reward_xp,
+			"elapsed":session.elapsed,"fight_time":session.fight_time,"fish_pull":session.fish_pull,
+			"fish_id":int(session.fish.get("id",0)) if session.state in [FishingSession.State.FIGHT,FishingSession.State.CAUGHT,FishingSession.State.LOST] else 0}
 	if cooking.has(id):
 		var session: CookingSession = cooking[id]
 		return {"kind":"cook", "state":session.state,"message":session.message,"station_id":station_ids.get(id,""),
 			"raw_item":session.raw_item,"remaining":session.remaining,"elapsed":session.elapsed,
 			"flip_elapsed":session.flip_elapsed,"flip_window":session.flip_window if is_finite(session.flip_window) else -1.0,
-			"cooked_count":session.cooked_count,"burnt_count":session.burnt_count,"reward_xp":session.reward_xp}
+			"cooked_count":session.cooked_count,"burnt_count":session.burnt_count,"reward_xp":session.reward_xp,
+			"feedback_elapsed":session.feedback_elapsed,"last_result":session.last_result.duplicate(true)}
 	return {}
 
 func _stop_movement(id: String) -> void:

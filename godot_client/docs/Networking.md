@@ -58,6 +58,11 @@ map/test scenes still runs the existing offline sandbox, with no online saves.
 `region_activities.gd` owns fishing/cooking sessions. `character_codec.gd`
 translates approved domain state to/from primitive save data.
 `network_manager.gd` handles transport and `online_world_view.gd` projects it.
+Online fishing and cooking reuse the original lake and pan interfaces.
+`remote_minigame_sessions.gd` presents server sessions to those interfaces and
+sends controls as intents; it cannot consume supplies or award catches/XP.
+See `docs/ServerMigrationChanges.md` at the repository root for the migration
+audit and remaining gameplay/presentation differences.
 The account API uses revocable bearer sessions and single-use world tickets;
 password hashing uses Django Argon2id. It does not use browser cookie sessions.
 

@@ -240,9 +240,6 @@ func show_fishing_notice(message: String) -> void:
 	fishing_notice_time = 5.0
 
 func request_fishing(spot: FishingSpot) -> void:
-	if Network.online() and online_view != null:
-		online_view.open_activity(spot, "fish", spot.spot_name)
-		return
 	var sprite: ActorSprite = actor_sprites.get(player.entity_id)
 	if player.current_hp <= 0 or sprite == null:
 		return
@@ -255,7 +252,8 @@ func request_fishing(spot: FishingSpot) -> void:
 	_reset_held_movement()
 	interactions.cancel_walk()
 	interactions.clear_drop_selection()
-	_clear_target()
+	if not Network.online():
+		_clear_target()
 	context_menu.dismiss()
 	spawn_menu.hide()
 	item_menu.hide()
@@ -510,11 +508,6 @@ func _diagnostic_context() -> Dictionary:
 func _input(event: InputEvent) -> void:
 	var social: Node = get_node_or_null("/root/Social")
 	if social != null and social.handle_game_key(event, self):
-		return
-	if Network.online() and online_view != null and online_view.activity_panel.visible:
-		if event is InputEventKey:
-			online_view.activity_panel.handle_key(event)
-			get_viewport().set_input_as_handled()
 		return
 	if cooking_controller != null and cooking_controller.panel.visible:
 		if event is InputEventKey:
