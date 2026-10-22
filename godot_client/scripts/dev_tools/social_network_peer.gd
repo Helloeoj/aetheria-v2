@@ -14,8 +14,16 @@ func _run() -> void:
 	social = root.get_node("Social")
 	social.automatic = false
 	social.endpoint = str(config.url)
-	social.token = str(config.token)
-	social.profile_name = str(config.name)
+	# Begin with the old generated nickname and a real Network admission event;
+	# the production client must choose the player's name for the actual handshake.
+	social.preferences = ConfigFile.new()
+	social.preferences.set_value(social.endpoint.sha256_text(), "credential", str(config.token))
+	social.preferences.set_value(social.endpoint.sha256_text(), "name", "Player_55eb2b")
+	var network: Node = root.get_node("Network")
+	network.username = str(config.name)
+	network.character_id = "social-fixture-" + str(config.name).to_lower()
+	network.authenticated = true
+	network.joined.emit()
 	var scene: Node = load("res://scenes/EastOutskirtsLayered.tscn").instantiate()
 	root.add_child(scene)
 	current_scene = scene
@@ -27,7 +35,7 @@ func _run() -> void:
 	var actor: CombatActor = game.combat.actors[game.player.entity_id]
 	actor.x = float(config.x)
 	actor.y = float(config.y)
-	social.connect_chat()
+	social.connect_chat(social.endpoint, "StaleAlias")
 
 func _process(delta: float) -> bool:
 	if social == null:
@@ -48,7 +56,7 @@ func _process(delta: float) -> bool:
 					quit(0)
 				else:
 					social.request(str(command.op), command.get("data", {}))
-		var report := {"connected": social.connected, "status": social.status, "history": social.history, "friends": social.friends, "blocks": social.blocks, "sequence": sequence}
+		var report := {"connected": social.connected, "status": social.status, "name": social.profile_name, "transcript": social.panel.transcript.get_parsed_text(), "history": social.history, "friends": social.friends, "blocks": social.blocks, "sequence": sequence}
 		var file := FileAccess.open(str(config.report) + ".tmp", FileAccess.WRITE)
 		file.store_string(JSON.stringify(report))
 		file.close()

@@ -8,7 +8,7 @@ Existing activity controls underneath the transparent HUD retain their clicks wh
 
 ## Local use
 
-On Windows, launching the source game starts a hidden local server if the default endpoint is unavailable, then connects automatically. The first successful connection creates a random development chat name and saves its credential under Godot `user://social_profiles.cfg`, scoped to that endpoint. **Connect** opens server/name settings and an opacity slider. Changing the name preserves that profile's stable ID and lists; names are unique without case sensitivity. Opening the same saved profile in two games is rejected rather than creating a second active identity.
+On Windows, launching the source game starts a hidden local server if the default endpoint is unavailable. Chat waits for world login and automatically uses the admitted player's username in messages, social lists, connection settings and status. It does not generate a visible nickname or allow a separate online alias. **Connect** opens server settings and an opacity slider. The first admitted player migrates an older local chat profile, preserving its stable ID, friends and blocks. Credentials under Godot `user://social_profiles.cfg` are scoped to the endpoint and stable character ID so other players on the same PC receive separate chat identities. Logout closes chat and clears the previous player's private history. Offline developer scenes may still set a readable test name.
 
 The launcher uses the installed bundled Python, or `py` when the bundle is unavailable, and the pinned `websockets` dependency. Manual commands from the repository root:
 
@@ -23,7 +23,7 @@ The default database is `%LOCALAPPDATA%/Aetheria/social.sqlite3`; background ser
 
 The default server listens on `127.0.0.1` only. Other computers need a shared running endpoint configured through Connect. Run `tools/social_server.py` with `--host`, `--port`, `--database`, `--cert` and `--key` using Python with `tools/social-requirements.txt` installed. Remote binds require a certificate/key, and clients require certificate-validating `wss://`; plaintext is accepted only for loopback. Native clients use no browser Origin; browser clients are not enabled. Public hosting, DNS, certificates and router/firewall changes are not provisioned by this feature.
 
-These are **development chat profiles**, separate from the planned shared username/password gameplay accounts. This standalone SQLite service makes communication usable now; its transport-independent social domain and stable IDs provide the integration boundary for that backend. It does not save character progression or implement that separate account project. Current local proximity uses positions reported by each client; it is not authoritative multiplayer movement or an anti-cheat guarantee. Production account/location adapters and a production database migration remain part of the shared-server integration. The configurable 50-connection default is not a measured capacity claim.
+The displayed name now follows the shared gameplay login. The standalone chat service still uses local bearer credentials rather than validating gameplay-account sessions itself; full service-side account authentication is a separate integration boundary. It does not save character progression. Current local proximity uses positions reported by each client; production account/location adapters and a production database migration remain part of the shared-server integration. The configurable 50-connection default is not a measured capacity claim.
 
 ## Verification
 
@@ -33,6 +33,7 @@ Use the installed Python and Godot 4.5.1 executables:
 & $python tools/test_social.py
 & $python tools/test_social_network.py --godot $env:GODOT --output <outside-repo-directory>
 & $env:GODOT --headless --path godot_client --script res://scripts/dev_tools/social_ui_smoke.gd
+& $env:GODOT --headless --path godot_client --script res://scripts/dev_tools/social_name_smoke.gd -- --social-no-auto
 & $python tools/test_cooking.py --godot $env:GODOT --output <outside-repo-directory>
 & $python tools/test_inventory_items.py --godot $env:GODOT --output <outside-repo-directory>
 ```

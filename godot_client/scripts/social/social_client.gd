@@ -23,6 +23,8 @@ var location_seconds := 0.0
 var connection_seconds := 0.0
 var was_open := false
 var automatic := false
+var automatic_allowed := false
+var bound_character_id := ""
 var fatal_error := false
 var was_travelling := false
 
@@ -41,23 +43,79 @@ func _ready() -> void:
 	panel.configure(self)
 	get_viewport().size_changed.connect(update_layout)
 	update_layout()
-	automatic = DisplayServer.get_name() != "headless" and not OS.get_cmdline_user_args().has("--social-no-auto")
+	var network: Node = get_node_or_null("/root/Network")
+	if network != null:
+		network.joined.connect(_on_player_joined)
+		network.status_changed.connect(_on_network_status_changed)
+	automatic_allowed = DisplayServer.get_name() != "headless" and not OS.get_cmdline_user_args().has("--social-no-auto")
+	automatic = automatic_allowed
 	if automatic:
 		if endpoint == "ws://127.0.0.1:8765":
 			start_local_server()
 		retry_seconds = 0.8
 
 func _load_profile() -> void:
-	var section := endpoint.sha256_text()
+	var network: Node = get_node_or_null("/root/Network")
+	bound_character_id = str(network.character_id) if network != null and network.authenticated else ""
+	var legacy_section := endpoint.sha256_text()
+	var section := _profile_section()
 	token = str(preferences.get_value(section, "credential", ""))
+	# Migrate the existing profile once, retaining its ID and social lists. Other
+	# characters get separate credentials instead of inheriting another player's lists.
+	if token.is_empty() and not bound_character_id.is_empty() and str(preferences.get_value(legacy_section, "migrated_to", "")).is_empty():
+		token = str(preferences.get_value(legacy_section, "credential", ""))
+		preferences.set_value(legacy_section, "migrated_to", bound_character_id)
+		preferences.erase_section_key(legacy_section, "credential")
 	if token.length() != 64:
 		token = Crypto.new().generate_random_bytes(32).hex_encode()
-	profile_name = str(preferences.get_value(section, "name", "Player_" + token.substr(0, 6)))
+	preferences.set_value(section, "credential", token)
+	if network != null and network.authenticated:
+		profile_name = str(network.username)
+	else:
+		profile_name = str(preferences.get_value(section, "name", "Player"))
+		if RegEx.create_from_string("^Player_[0-9a-f]{6}$").search(profile_name) != null:
+			profile_name = "Player"
+	preferences.set_value(section, "name", profile_name)
+
+func _profile_section() -> String:
+	return endpoint.sha256_text() + (":" + bound_character_id if not bound_character_id.is_empty() else "")
+
+func _on_player_joined() -> void:
+	var network: Node = get_node_or_null("/root/Network")
+	if network == null or not network.authenticated:
+		return
+	var reconnect := automatic_allowed or socket != null
+	if socket != null:
+		socket.close()
+		socket = null
+	connected = false
+	if bound_character_id != str(network.character_id):
+		_clear_account()
+	_load_profile()
+	status = "Chat ready as " + profile_name
+	updated.emit()
+	if reconnect:
+		connect_chat()
+
+func _on_network_status_changed() -> void:
+	var network: Node = get_node_or_null("/root/Network")
+	if not bound_character_id.is_empty() and network != null and not network.authenticated:
+		disconnect_chat()
+		_load_profile()
+		status = "Log in to chat."
+		updated.emit()
+
+func _waiting_for_login() -> bool:
+	var network: Node = get_node_or_null("/root/Network")
+	if network == null or network.authenticated:
+		return false
+	var scene := get_tree().current_scene
+	return network.online() or (scene != null and scene.scene_file_path.ends_with("/Login.tscn")) or (scene == null and str(ProjectSettings.get_setting("application/run/main_scene", "")).ends_with("/Login.tscn"))
 
 func _save_profile() -> void:
 	preferences.set_value("settings", "endpoint", endpoint)
-	preferences.set_value(endpoint.sha256_text(), "credential", token)
-	preferences.set_value(endpoint.sha256_text(), "name", profile_name)
+	preferences.set_value(_profile_section(), "credential", token)
+	preferences.set_value(_profile_section(), "name", profile_name)
 	preferences.save("user://social_profiles.cfg")
 
 func update_layout() -> void:
@@ -78,6 +136,11 @@ func start_local_server() -> void:
 		updated.emit()
 
 func connect_chat(url: String = "", display_name: String = "") -> void:
+	if _waiting_for_login():
+		automatic = false
+		status = "Log in to chat."
+		updated.emit()
+		return
 	var next_url := endpoint if url.is_empty() else url.strip_edges()
 	var local_pattern := RegEx.create_from_string("^ws://(127\\.0\\.0\\.1|localhost|\\[::1\\])(:[0-9]+)?/?$")
 	if next_url.length() > 256 or next_url.contains("@") or next_url.contains("?") or (not next_url.begins_with("wss://") and local_pattern.search(next_url) == null):
@@ -90,7 +153,13 @@ func connect_chat(url: String = "", display_name: String = "") -> void:
 		_clear_account()
 		endpoint = next_url
 		_load_profile()
-	if not display_name.strip_edges().is_empty():
+	var network: Node = get_node_or_null("/root/Network")
+	if network != null and network.authenticated:
+		if bound_character_id != str(network.character_id):
+			_clear_account()
+			_load_profile()
+		profile_name = str(network.username)
+	elif not display_name.strip_edges().is_empty():
 		profile_name = display_name.strip_edges()
 	connected = false
 	fatal_error = false

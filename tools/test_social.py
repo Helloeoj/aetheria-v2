@@ -85,6 +85,19 @@ class SocialTests(unittest.TestCase):
         self.service.leave(self.a)
         self.assertEqual(self.service.join("Alice", "a" * 64), self.a)
 
+    def test_generated_profile_migrates_to_player_name_without_losing_lists(self):
+        old = self.service.join("Player_55eb2b", "e" * 64)
+        self.request(old, "friend_add", target="Bob")
+        self.request(old, "block_add", target="Carol")
+        self.service.leave(old)
+        renamed = self.service.join("Dawn", "e" * 64)
+        self.assertEqual(renamed, old)
+        self.assertEqual([entry["name"] for entry in self.service.snapshot(renamed)["friends"]], ["Bob"])
+        self.assertEqual([entry["name"] for entry in self.service.snapshot(renamed)["blocks"]], ["Carol"])
+        events = self.messages(self.request(renamed, "send", channel="global", text="My real name"))
+        self.assertTrue(events)
+        self.assertTrue(all(event["sender"] == "Dawn" for _, event in events))
+
     def test_rejected_duplicate_connection_does_not_rename_live_profile(self):
         with self.assertRaises(SocialError):
             self.service.join("ChangedName", "a" * 64)

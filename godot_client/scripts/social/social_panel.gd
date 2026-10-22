@@ -339,6 +339,12 @@ func _update_tab_titles() -> void:
 func refresh() -> void:
 	if social == null or transcript == null:
 		return
+	var network: Node = social.get_node_or_null("/root/Network")
+	var online_name: bool = network != null and network.authenticated
+	display_name.editable = not online_name
+	display_name.tooltip_text = "Uses your logged-in player's name." if online_name else "Player name for offline testing."
+	if online_name or not display_name.has_focus():
+		display_name.text = social.profile_name
 	status_label.text = social.status
 	status_label.tooltip_text = social.status
 	retry_button.visible = not failed_draft.is_empty()

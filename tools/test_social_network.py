@@ -66,9 +66,12 @@ async def verify(godot, output):
                 processes.append(await asyncio.create_subprocess_exec(godot, "--headless", "--log-file", str(output / f"{name}.native.log"), "--path", str(root / "godot_client"),
                     "--script", "res://scripts/dev_tools/social_network_peer.gd", "--", "--social-no-auto", env=env, stdout=log, stderr=log))
             await wait_for(lambda: all(report(n).get("connected") for n in ("Alice", "Bob", "Carol")), "Three Godot clients authenticate to a real server")
+            assert all(report(n).get("name") == n for n in ("Alice", "Bob", "Carol")), "Chat ignored the admitted player's name"
+            checks += 1
             await asyncio.sleep(0.7)
             command("Alice", "send", channel="global", text="Across the world")
             await wait_for(lambda: all(has_message(n, "Across the world") for n in ("Alice", "Bob", "Carol")), "Global reaches all three game clients")
+            await wait_for(lambda: all("[Global] Alice: Across the world" in report(n).get("transcript", "") for n in ("Alice", "Bob", "Carol")), "Other players see the login name in rendered chat, not a generated nickname")
             command("Alice", "send", channel="local", text="Exactly twenty tiles")
             await wait_for(lambda: has_message("Bob", "Exactly twenty tiles"), "Local reaches the player exactly twenty tiles away")
             assert not has_message("Carol", "Exactly twenty tiles"), "Distant player heard local chat"
