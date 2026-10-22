@@ -11,6 +11,12 @@ optional ChatGPT sign-in uses a per-user JWT verification dependency.
 personal ChatGPT connection. See [SentinelChatGPT.md](SentinelChatGPT.md) for
 sign-in, shared plan limits, data sent on request, and validation status.
 
+**Development assistant** adds local project memory/search, versioned design
+rules, compact task/evidence preparation, approved Codex jobs, usage oversight,
+bounded peer review, corrections and persistent validation/efficiency history.
+See [SentinelAssistant.md](SentinelAssistant.md) for operation and tested limits.
+Close and reopen an already running Sentinel after installing the update.
+
 ## What you can do
 
 * **Launch Aetheria** starts the installed game engine against this project,
