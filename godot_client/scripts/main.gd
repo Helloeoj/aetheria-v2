@@ -452,8 +452,8 @@ func _update_ui_scale() -> void:
 	ui_root.scale = Vector2.ONE * factor
 	ui_root.size = pixels / factor
 	if food_button != null:
-		food_button.position = Vector2(22, ui_root.size.y - 82)
-		food_notice.position = Vector2(22, ui_root.size.y - 116)
+		food_button.position = Vector2(22, ui_root.size.y - 294)
+		food_notice.position = Vector2(22, ui_root.size.y - 328)
 	if inventory_menu != null:
 		inventory_menu._update_layout()
 	if skill_debug_panel != null:
@@ -468,6 +468,9 @@ func _diagnostic_context() -> Dictionary:
 	return {"scene": scene.scene_file_path if scene != null else scene_file_path, "map": area_name if map_scene_mode else "combat demo", "player_id": player.entity_id, "player_position_tiles": [player.x, player.y], "target_id": player.current_target}
 
 func _input(event: InputEvent) -> void:
+	var social: Node = get_node_or_null("/root/Social")
+	if social != null and social.handle_game_key(event, self):
+		return
 	if cooking_controller != null and cooking_controller.panel.visible:
 		if event is InputEventKey:
 			cooking_controller.panel.handle_key(event)

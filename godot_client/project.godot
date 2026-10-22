@@ -19,6 +19,7 @@ config/features=PackedStringArray("4.5")
 DiagnosticCore="*res://diagnostics/diagnostic_core.gd"
 GameData="*res://scripts/game_data.gd"
 SceneTravel="*res://scripts/scene_travel.gd"
+Social="*res://scripts/social/social_client.gd"
 
 [display]
 
