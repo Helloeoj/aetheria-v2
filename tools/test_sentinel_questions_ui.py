@@ -194,8 +194,9 @@ class QuestionUITests(unittest.TestCase):
         self.panel.draft_chat('Selected game context.')
         self.assertEqual(browser.retried,0)
         self.assertEqual(browser.started,2)
-        self.assertEqual(browser.commands,[('draft',{'text':'Selected game context.'})])
-        self.assertEqual(self.panel.chat_status.get(),'A conversation is already open.')
+        self.assertEqual(browser.commands,[])
+        self.assertIn('Selected game context.',self.panel.chat_request.get('1.0','end'))
+        self.assertIn('Context added',self.panel.chat_status.get())
         self.assertEqual(self.fake.connected,0); self.assertFalse(self.fake.launched)
 
     def test_browser_attachment_is_not_reported_as_a_ready_message_box(self):
@@ -214,5 +215,39 @@ class QuestionUITests(unittest.TestCase):
         self.assertIn('verification',self.panel.chat_status.get())
         self.assertEqual(self.fake.connected,0); self.assertFalse(self.fake.launched)
 
+
+    def test_native_chat_layout_send_reply_stop_and_codex_handoff(self):
+        browser=BrowserController();self.panel.chat_browser=browser
+        self.window.update()
+        self.assertTrue(self.panel.chat_request.winfo_ismapped())
+        self.assertTrue(self.panel.chat_answer.winfo_ismapped())
+        self.assertGreater(self.panel.chat_request.winfo_height(),35)
+        self.assertGreater(self.panel.chat_answer.winfo_height(),40)
+        self.panel.chat_request.insert('1.0','Why does fishing freeze?')
+        self.panel.chat_send.invoke()
+        self.assertEqual(browser.commands,[('send',{'text':'Why does fishing freeze?'})])
+        self.assertFalse(self.fake.launched);self.assertEqual(self.fake.connected,0)
+        self.panel._chat_event({'type':'sent','value':'Sent.'})
+        self.assertEqual(self.panel.chat_request.get('1.0','end').strip(),'')
+        self.panel._chat_event({'type':'conversation','messages':[{'role':'user','text':'Why?'},{'role':'assistant','text':'Check the fishing signal.'}]})
+        self.assertIn('Check the fishing signal.',self.panel.chat_answer.get('1.0','end'))
+        self.panel.stop_chat()
+        self.assertEqual(browser.commands[-1][0],'stop')
+        self.panel._chat_event({'type':'stopped','value':'Stopped.'})
+        self.assertIn('Check the fishing signal.',self.panel.chat_answer.get('1.0','end'))
+        self.panel.chat_request.insert('1.0',"let's implement the changes")
+        self.panel.chat_send.invoke()
+        self.assertEqual(browser.commands[-1][0],'handoff')
+        self.assertFalse(self.fake.launched)
+
+    def test_chat_send_error_retains_question_and_enables_retry(self):
+        browser=BrowserController();self.panel.chat_browser=browser
+        self.panel.chat_request.insert('1.0','Help with fishing.')
+        self.panel.send_chat()
+        self.panel._chat_event({'type':'send_error','value':'Sign in on the website.'})
+        self.assertIn('Help with fishing.',self.panel.chat_request.get('1.0','end'))
+        self.assertIn('Sign in',self.panel.chat_answer.get('1.0','end'))
+        self.assertFalse(self.panel.chat_sending)
+        self.assertFalse(self.panel.chat_send.instate(['disabled']))
 
 if __name__=='__main__': unittest.main(verbosity=2)

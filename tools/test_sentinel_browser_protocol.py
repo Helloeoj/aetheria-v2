@@ -6,7 +6,7 @@ import subprocess
 import sys
 import unittest
 
-from sentinel_chatgpt_pane import SNAPSHOT_JS, PAGE_STATE_JS, draft_script
+from sentinel_chatgpt_pane import SNAPSHOT_JS, PAGE_STATE_JS, SUBMIT_JS, STOP_JS, draft_script
 
 
 class BrowserScriptTests(unittest.TestCase):
@@ -31,8 +31,8 @@ class BrowserScriptTests(unittest.TestCase):
           const scripts=JSON.parse(fs.readFileSync(0,'utf8'));
           for (const code of scripts) new Function(code);
           console.log(JSON.stringify({compiled:scripts.length}));'''
-        result = self.node_json(runner, [SNAPSHOT_JS, PAGE_STATE_JS, draft_script('Game context:\n雪\n"quoted" and \\paths')])
-        self.assertEqual(result, {'compiled': 3})
+        result = self.node_json(runner, [SNAPSHOT_JS, PAGE_STATE_JS, SUBMIT_JS, STOP_JS, draft_script('Game context:\n雪\n"quoted" and \\paths')])
+        self.assertEqual(result, {'compiled': 5})
 
     def test_page_readiness_requires_an_editor_inside_the_visible_viewport(self):
         runner = '''const fs=require('fs'),vm=require('vm');
@@ -115,6 +115,24 @@ class BrowserScriptTests(unittest.TestCase):
           console.log(JSON.stringify(vm.runInNewContext(JSON.parse(fs.readFileSync(0,'utf8')),sandbox)));'''
         self.assertIs(self.node_json(runner, draft_script('Context')), False)
 
+
+    def test_send_clicks_once_only_when_ready_and_stop_uses_normal_website(self):
+        runner = """const fs=require('fs'),vm=require('vm');
+          const scripts=JSON.parse(fs.readFileSync(0,'utf8'));let clicks=0;
+          const button={disabled:false,click(){clicks++}};
+          const sandbox={location:{origin:'https://chatgpt.com'},document:{querySelector:s=>s.includes('stop-button')?null:button}};
+          const sent=vm.runInNewContext(scripts[0],sandbox);
+          button.disabled=true;const disabled=vm.runInNewContext(scripts[0],sandbox);
+          sandbox.location.origin='https://example.com';const foreign=vm.runInNewContext(scripts[0],sandbox);
+          sandbox.location.origin='https://chatgpt.com';sandbox.document.querySelector=()=>button;
+          const busy=vm.runInNewContext(scripts[0],sandbox),stopped=vm.runInNewContext(scripts[1],sandbox);
+          console.log(JSON.stringify({sent,clicks,disabled:typeof disabled,busy:typeof busy,foreign:typeof foreign,stopped}));"""
+        self.assertEqual(self.node_json(runner,[SUBMIT_JS,STOP_JS]),{'sent':True,'clicks':2,'disabled':'string','busy':'string','foreign':'string','stopped':True})
+
+    def test_native_send_draft_replaces_old_website_draft(self):
+        script=draft_script('New question',append=False)
+        self.assertNotIn("(previous ? previous+",script)
+        self.assertNotIn('.click(',script)
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

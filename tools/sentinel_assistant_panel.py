@@ -12,7 +12,7 @@ import adc
 from sentinel_assistant import build_task, choose_model, prepare_attachments
 from sentinel_codex import AssistantController
 from sentinel_memory import ProjectMemory, safe_text
-from sentinel_chatgpt_pane import ChatGPTPane
+from sentinel_chatgpt_pane import ChatGPTPane, implementation_requested
 
 BG, FIELD, TEXT, MUTED = '#121d2d', '#0e1725', '#e7eef8', '#94a7c0'
 
@@ -36,6 +36,9 @@ class AssistantPanel(tk.Frame):
         self.attachments = []
         self.start_browser = start
         self.chat_browser = None
+        self.chat_sending=False
+        self.chat_send_timer=None
+        self.chat_messages=[]
         self.route = tk.StringVar(value='ChatGPT conversation')
         self.credits = tk.StringVar(value='')
         self.credit_status = tk.StringVar(value='Codex idle. Purchased credit balance has not been read.')
@@ -99,15 +102,34 @@ class AssistantPanel(tk.Frame):
         self.chat_page=tk.Frame(ask,bg=BG)
         self.coding_page=tk.Frame(ask,bg=BG)
         self.chat_page.pack(fill='both',expand=True)
+        self.label(self.chat_page,'Ask about your game. Your conversation uses normal ChatGPT; coding starts only in Codex.').pack(fill='x',pady=(8,4))
+        request_frame=tk.Frame(self.chat_page,bg=BG)
+        request_frame.pack(fill='x')
+        self.chat_request=self.text(request_frame,height=3)
+        self.chat_request.bind('<Return>',self._enter_chat)
         chat_bar=tk.Frame(self.chat_page,bg=BG)
         chat_bar.pack(fill='x')
+        self.chat_send=ttk.Button(chat_bar,text='Send to ChatGPT',style='Primary.TButton',command=self.send_chat)
+        self.chat_send.pack(side='left')
+        ttk.Button(chat_bar,text='Stop',command=self.stop_chat).pack(side='left',padx=5)
+        ttk.Button(chat_bar,text='ChatGPT sign-in / website',command=self.show_chat_website).pack(side='right')
+        self.chat_answer=self.text(self.chat_page,height=7)
+        self.set_text(self.chat_answer,'Type your question above and select Send to ChatGPT.\n\nIf sign-in is needed, open ChatGPT sign-in / website. Answers appear here. No Codex job starts from this conversation.')
+        self.chat_answer.configure(state='disabled')
+        chat_bar=tk.Frame(self.chat_page,bg=BG)
+        chat_bar.pack(fill='x',pady=4)
         ttk.Button(chat_bar,text='Open / retry ChatGPT',command=self.open_chat).pack(side='left')
         ttk.Button(chat_bar,text='Use this conversation in Codex',command=self.handoff_chat).pack(side='left',padx=5)
         ttk.Button(chat_bar,text='Add game context',command=self.add_game_context).pack(side='left')
         ttk.Label(self.chat_page,textvariable=self.chat_status,wraplength=850).pack(fill='x',pady=4)
-        self.chat_surface=tk.Frame(self.chat_page,bg=FIELD)
+        self.chat_window=tk.Toplevel(self)
+        self.chat_window.title('Sentinel — ChatGPT website and sign-in')
+        self.chat_window.geometry('1000x750')
+        self.chat_window.protocol('WM_DELETE_WINDOW',self.chat_window.withdraw)
+        self.chat_window.withdraw()
+        self.chat_surface=tk.Frame(self.chat_window,bg=FIELD)
         self.chat_surface.pack(fill='both',expand=True)
-        self.chat_surface.bind('<Map>',lambda _:self.open_chat(retry=False) if self.start_browser and not self.chat_browser else None)
+        self.chat_page.bind('<Map>',lambda _:self.open_chat(retry=False) if self.start_browser and not self.chat_browser else None)
         self.label(self.chat_page,'Use normal Chat mode on the ChatGPT page. Its own limits apply. Sentinel never sends this chat to Codex automatically.').pack(fill='x',pady=4)
         ask=self.coding_page
         self.label(ask, 'Describe a coding task, or bring over the conversation. Preparation is local and uses no AI.').pack(fill='x', pady=(8, 4))
@@ -282,13 +304,50 @@ class AssistantPanel(tk.Frame):
         elif self.chat_browser: self.chat_browser.command('handoff')
         else: self.chat_status.set('Open ChatGPT and discuss the change before transferring a conversation.')
 
+    def show_chat_website(self):
+        self.chat_window.deiconify()
+        self.chat_window.lift()
+        self.open_chat(retry=False)
+
+    def _enter_chat(self,event):
+        if event.state & 1:return None
+        self.send_chat()
+        return 'break'
+
+    def send_chat(self):
+        if self.chat_sending:return
+        text=self.chat_request.get('1.0','end').strip()
+        if not text:
+            self.chat_status.set('Type a question in the box above first.')
+            return
+        if implementation_requested(text):
+            self.handoff_chat()
+            return
+        if len(text)>16000:
+            self.chat_status.set('Keep one question under 16,000 characters.')
+            return
+        self.open_chat(retry=False)
+        if not self.chat_browser:return
+        self.chat_sending=True
+        self.chat_send.state(['disabled'])
+        self.chat_status.set('Sending your question to normal ChatGPT…')
+        self.chat_browser.command('send',text=text)
+        if self.chat_send_timer:self.after_cancel(self.chat_send_timer)
+        self.chat_send_timer=self.after(20000,self._chat_send_timeout)
+
+    def _chat_send_timeout(self):
+        if self.closed.is_set() or not self.chat_sending:return
+        self._chat_event({'type':'send_error','value':'No send confirmation arrived. Check the website before retrying to avoid sending twice.'})
+
+    def stop_chat(self):
+        if self.chat_browser:self.chat_browser.command('stop')
+
     def draft_chat(self,text):
         self.route.set('ChatGPT conversation')
         self.switch_route()
-        if not self.chat_browser:
-            self.chat_status.set('Open ChatGPT and sign in first, then add the context again.')
-            return
-        self.chat_browser.command('draft',text=text[:16000])
+        previous=self.chat_request.get('1.0','end').strip()
+        self.set_text(self.chat_request,(previous+'\n\n' if previous else '')+text[:16000])
+        self.chat_status.set('Context added to your question. Review it, then select Send to ChatGPT.')
 
     def add_game_context(self):
         query=simpledialog.askstring('Relevant game context','What problem or game system should Sentinel look up?',parent=self)
@@ -303,6 +362,18 @@ class AssistantPanel(tk.Frame):
 
     def _chat_event(self,event):
         kind=event.get('type')
+        if kind=='conversation':
+            self.chat_messages=event.get('messages',[])
+            if self.chat_messages:
+                self.set_text(self.chat_answer,'\n\n'.join(('You' if r.get('role')=='user' else 'ChatGPT')+':\n'+r.get('text','') for r in self.chat_messages))
+            return
+        if kind in ('sent','send_error','stopped'):
+            self.chat_sending=False
+            self.chat_send.state(['!disabled'])
+            self.chat_status.set(event['value'])
+            if kind=='sent':self.set_text(self.chat_request,'')
+            elif kind=='send_error':self.set_text(self.chat_answer,event['value'])
+            return
         if kind=='handoff':
             if self.busy:
                 self.status.set('Conversation ready; finish or stop the current Codex task before transferring it again.')
@@ -331,19 +402,24 @@ class AssistantPanel(tk.Frame):
                 self.chat_status.set('The browser has left ChatGPT. Select Open / retry ChatGPT to return and open the question box.')
             elif state.get('origin')=='https://auth.openai.com':
                 self.chat_status.set('ChatGPT sign-in is open. Complete sign-in on the embedded page.')
-            elif state.get('browser_visible') is False:
+            elif state.get('browser_visible') is False and self.chat_window.winfo_viewable():
                 self.chat_status.set('The browser display is hidden. Select Open / retry ChatGPT to show it again.')
             elif state.get('challenge'):
                 self.chat_status.set('ChatGPT is waiting for browser verification. Complete it on the page, then retry if needed.')
-            elif state.get('composer') and state.get('composer_visible') is False:
+            elif state.get('composer') and state.get('composer_visible') is False and self.chat_window.winfo_viewable():
                 self.chat_status.set('ChatGPT’s message box is outside the visible pane. Enlarge Sentinel or select Open / retry ChatGPT.')
             elif state.get('composer'):
-                self.chat_status.set('ChatGPT’s message box is ready. Type your question on the page; sign in if needed and use normal Chat mode.')
+                self.chat_status.set('ChatGPT’s message box is ready. Type your question above and select Send to ChatGPT.')
             elif state.get('sign_in'):
                 self.chat_status.set('Sign in on the embedded ChatGPT page to open your conversation.')
             else:
                 self.chat_status.set('ChatGPT’s message box is not ready. Wait for the page, or select Open / retry ChatGPT.')
-        elif kind in ('error','drafted'): self.chat_status.set(event['value'])
+        elif kind in ('error','drafted'):
+            self.chat_status.set(event['value'])
+            if kind=='error' and self.chat_sending:
+                self.chat_sending=False
+                self.chat_send.state(['!disabled'])
+                self.set_text(self.chat_answer,event['value'])
 
     def _enter_question(self, event):
         if event.state & 1:  # Shift+Enter keeps the Text widget's normal newline.
@@ -704,7 +780,9 @@ class AssistantPanel(tk.Frame):
         if self.closed.is_set(): return
         self.question_progress.stop()
         self.closed.set()
+        if self.chat_send_timer:self.after_cancel(self.chat_send_timer)
         if self.chat_browser: self.chat_browser.close()
+        self.chat_window.destroy()
         if hasattr(self,'timer'): self.after_cancel(self.timer)
         if getattr(self,'refresh_timer',None): self.after_cancel(self.refresh_timer)
         if self.controller: self.controller.close()

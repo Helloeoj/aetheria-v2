@@ -3,24 +3,28 @@
 Open **Aetheria Sentinel → Development assistant**. If Sentinel was already
 running when its source was updated, close and reopen it from the desktop
 shortcut. The companion, incidents, live log, Explain & chat and roadmap remain
-available. The conversation view embeds the official ChatGPT website. Codex is a
+available. The native conversation view uses an owned ChatGPT website session. Codex is a
 separate implementation route with a reviewed credit budget.
 
 ## Discuss the game in ChatGPT
 
-1. Open **Conversation → ChatGPT conversation**. Use **Open / retry ChatGPT** if
-   needed. Sign in on the official page inside Sentinel and choose normal Chat
-   mode on that page.
-   Retry returns an already running browser to ChatGPT, including after a help
-   link. Switching tabs preserves the current chat. Status waits for a question
-   box inside the visible viewport instead of calling an attached browser ready.
-2. Type and send messages on the ChatGPT page. This route does not connect to
-   Codex or send a Codex inference request. The website controls its own models,
-   account permissions and limits. This is not an unlimited or free API service.
-3. To supply local source, select **Add game context**, describe the relevant
-   system, and wait for the excerpts to appear in the ChatGPT composer. The
-   excerpts and approved project decisions are added to a **draft only**. Review
-   the draft and select Send yourself; Sentinel never submits it automatically.
+1. Open **Conversation → ChatGPT conversation**. Its native question box,
+   Send/Stop controls and answer area match the Codex implementation layout.
+2. Type a question in the top box and select **Send to ChatGPT**, or press Enter.
+   Shift+Enter adds a line. The owned browser submits that explicit question on
+   the normal ChatGPT website; rendered replies stream into the native answer
+   area. This route does not call Codex or a consumer private API. ChatGPT's own
+   account limits still apply. Failed sends retain your question for review;
+   Sentinel does not automatically resubmit it.
+3. Use **ChatGPT sign-in / website** when account sign-in or browser verification
+   is needed. This opens a separate Sentinel-owned website window; closing that
+   window hides it while preserving the session. The main question and answer
+   boxes remain visible regardless of browser display problems.
+4. **Add game context** adds local excerpts and decisions to the native question
+   draft. Review it before sending. **Stop** requests the website's Stop action
+   and retains partial answers. **Use this conversation in Codex**, or typing
+   **let's implement the changes**, transfers the website conversation into a
+   reviewed Codex task without starting a paid job.
 
 The browser has its own persistent WebView2 profile under the project's local
 Sentinel state directory. Its website sign-in is separate from the desktop
@@ -262,3 +266,11 @@ Implementation: `tools/sentinel_memory.py`, `sentinel_assistant.py`,
 `sentinel_assistant_panel.py`, `sentinel_chat_panel.py` and the
 existing `sentinel.py`. The installed binary's generated public JSON schema was
 used to validate wire names; machine-specific evidence remains outside Git.
+
+Native chat layout correction: question, send/stop and answer controls are now
+Tk widgets matching the coding view. The website is reserved for sign-in and
+session controls. Native layout/send/error/partial-answer/handoff tests and
+JavaScript send/stop tests use fakes without inference. A live signed-out website
+loaded behind the native interface with both text areas visible and zero Codex
+jobs. Authenticated message submission and response extraction remain unverified
+against the user's session; website changes may require updating the DOM bridge.

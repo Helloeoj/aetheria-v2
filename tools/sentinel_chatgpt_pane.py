@@ -15,7 +15,7 @@ import threading
 from urllib.parse import urlsplit
 
 MAX_COMMAND_LINE=210000  # 16k Unicode characters may expand to JSON surrogate escapes.
-MAX_EVENT_LINE=100000    # Bounded 7k-character conversation plus framing.
+MAX_EVENT_LINE=320000    # Up to 24k Unicode transcript characters, JSON escaped.
 
 def implementation_requested(text):
     return bool(re.fullmatch(r"\s*(?:(?:let['’]?s|please)\s+)?implement\s+(?:(?:the|these)\s+)?changes[.!]?\s*",
@@ -71,7 +71,7 @@ SNAPSHOT_JS=r"""(() => {
 })()"""
 
 
-def draft_script(text):
+def draft_script(text, *, append=True):
     if not isinstance(text,str) or not text.strip() or len(text)>16000:
         raise ValueError('Choose compact context under 16,000 characters.')
     return r"""(() => {
@@ -92,7 +92,21 @@ def draft_script(text):
       }
       editor.dispatchEvent(new Event('input',{bubbles:true}));
       return true;
-    })()""".replace('TEXT',json.dumps(text,ensure_ascii=True))
+    })()""".replace("(previous ? previous+'\\n\\n' : '')+TEXT", "TEXT" if not append else "(previous ? previous+'\\n\\n' : '')+TEXT").replace('TEXT',json.dumps(text,ensure_ascii=True))
+
+
+SUBMIT_JS=r"""(() => {
+ if(location.origin!=='https://chatgpt.com') return 'Sign in on the ChatGPT website first.';
+ if(document.querySelector('[data-testid="stop-button"], button[aria-label="Stop generating"]')) return 'ChatGPT is still answering. Stop it or wait before sending.';
+ const button=document.querySelector('[data-testid="send-button"], button[aria-label="Send prompt"], button[aria-label="Send message"]');
+ if(!button || button.disabled) return 'ChatGPT is not ready to send. Open the website to check sign-in or verification.';
+ button.click(); return true;
+})()"""
+STOP_JS=r"""(() => {
+ if(location.origin!=='https://chatgpt.com') return false;
+ const button=document.querySelector('[data-testid="stop-button"], button[aria-label="Stop generating"]');
+ if(button) button.click(); return !!button;
+})()"""
 
 
 PAGE_STATE_JS=r"""(() => {
@@ -117,6 +131,7 @@ def _child(profile):
     output_lock=threading.Lock()
     closed=threading.Event()
     previous_state=None
+    previous_messages=None
     def send(value):
         with output_lock:
             sys.stdout.write(json.dumps(value,ensure_ascii=True)+'\n')
@@ -129,8 +144,22 @@ def _child(profile):
     window.events.shown += ready
     window.events.closed += lambda: closed.set()
     def snapshot(manual=False):
+        nonlocal previous_messages
         value=window.evaluate_js(SNAPSHOT_JS)
         if not isinstance(value,dict): return
+        messages=value.get('messages',[])
+        bounded=[]
+        remaining=24000
+        for row in reversed(messages):
+            text=str(row.get('text',''))[-remaining:]
+            if not text: continue
+            bounded.append({'role':row.get('role'),'text':text});remaining-=len(text)
+            if remaining<=0:break
+        bounded.reverse()
+        signature=json.dumps(bounded)
+        if signature!=previous_messages:
+            previous_messages=signature
+            send({'type':'conversation','messages':bounded})
         if manual or value.get('requested'):
             try: request=conversation_request(value.get('url',''),value.get('messages',[]))
             except ValueError as error: send({'type':'error','value':str(error)})
@@ -155,6 +184,18 @@ def _child(profile):
                 if command=='close': break
                 try:
                     if command=='handoff': snapshot(True)
+                    elif command=='send':
+                        if not window.evaluate_js(draft_script(payload.get('text'),append=False)):
+                            send({'type':'send_error','value':'ChatGPT’s question box is unavailable. Open ChatGPT sign-in / website and complete sign-in or verification.'})
+                            continue
+                        # React updates its send button asynchronously. A failed
+                        # attempt never clicks again or retries a submitted message.
+                        time.sleep(.15)
+                        result=window.evaluate_js(SUBMIT_JS)
+                        send({'type':'sent' if result is True else 'send_error','value':'Question sent to normal ChatGPT.' if result is True else str(result)})
+                    elif command=='stop':
+                        window.evaluate_js(STOP_JS)
+                        send({'type':'stopped','value':'Stop requested on the ChatGPT website. Partial answers remain visible.'})
                     elif command=='draft':
                         inserted=window.evaluate_js(draft_script(payload.get('text')))
                         send({'type':'drafted' if inserted else 'error','value':
@@ -166,7 +207,7 @@ def _child(profile):
                     elif command=='status':
                         page_state(True)
                 except Exception:
-                    send({'type':'error','value':'The ChatGPT page is still loading. Wait for it to finish, then retry. No Codex request was made.'})
+                    send({'type':'send_error' if command=='send' else 'error','value':'The ChatGPT page is still loading. Wait for it to finish, then retry. No Codex request was made.'})
         except (OSError,ValueError): pass
         finally:
             closed.set()
