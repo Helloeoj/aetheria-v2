@@ -1,0 +1,4 @@
+Django>=5.2,<5.3
+argon2-cffi>=25.1,<26
+psycopg[binary]>=3.2,<4
+waitress>=3.0,<4

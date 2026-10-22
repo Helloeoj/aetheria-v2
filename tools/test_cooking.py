@@ -11,7 +11,7 @@ import adc
 
 
 SCENES = (
-    'cooking_smoke', 'fish_food_smoke', 'fishing_pale_smoke',
+    'cooking_smoke', 'cooking_ui_smoke', 'tavern_integration', 'fish_food_smoke', 'fishing_pale_smoke',
     'food_input_smoke', 'fish_inventory_slots_smoke', 'fishing_smoke',
     'fishing_cast_pacing_smoke', 'fishing_input_smoke', 'skill_tools_smoke',
     'fishing_difficulty_smoke',

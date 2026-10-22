@@ -141,6 +141,10 @@ func attack(id: String) -> void:
 	game._start_auto_chase()
 
 func walk_here(global_point: Vector2) -> void:
+	if Network.online():
+		var point := _simulation_position(global_point)
+		Network.send_action({"type": "walk", "x": point.x, "y": point.y})
+		return
 	cancel_walk()
 	game._clear_target()
 	clear_drop_selection()
@@ -151,6 +155,9 @@ func _route_to(global_point: Vector2) -> void:
 	destination = _simulation_position(global_point)
 	walk_waypoints.clear()
 	walking = true
+	if Network.online():
+		Network.send_action({"type": "walk", "x": destination.x, "y": destination.y})
+		return
 	var map_root := game.get_parent()
 	if map_root != null and map_root.has_method("interaction_path"):
 		var sprite: Node2D = game.actor_sprites.get(game.player.entity_id)
@@ -174,8 +181,7 @@ func request_pickup(drop: GroundItemDrop) -> void:
 	if game._collect_ground_drop(drop):
 		return
 	pending_pickup = drop
-	destination = _simulation_position(drop.global_position)
-	walking = true
+	_route_to(drop.global_position)
 
 func _pickup_instance(id: int) -> void:
 	var drop := instance_from_id(id) as GroundItemDrop
@@ -273,6 +279,12 @@ func update_walk(delta: float) -> void:
 			game.cooking_controller.open(station)
 			return
 	var start := Vector2(actor.x, actor.y)
+	if Network.online():
+		# The replicated position decides when to request an interaction; only
+		# the server moves the character and rechecks the actual range.
+		if start.distance_to(destination) <= 0.08:
+			cancel_walk()
+		return
 	while not walk_waypoints.is_empty() and start.distance_to(walk_waypoints[0]) <= 0.08:
 		walk_waypoints.pop_front()
 	var next_point := walk_waypoints[0] if not walk_waypoints.is_empty() else destination

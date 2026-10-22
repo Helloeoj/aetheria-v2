@@ -1,5 +1,25 @@
 # Aetheria debugging workflow
 
+## Preserve the existing game
+
+Never redesign, replace, simplify or remove existing interfaces, minigames,
+artwork, controls or gameplay without explicit user permission. Moving gameplay
+server-side means preserving the existing game and changing its authority/data
+flow, not substituting new panels or an offline sandbox. Keep login and durable
+character progression. Routine implementation authorization is not redesign
+authorization. Reuse the original fishing and cooking interfaces and their art.
+
+## Mandatory local installation and GitHub synchronization
+
+Implement authorized changes in the active game files on the user's PC and
+commit/push the validated changes to `Helloeoj/aetheria-v2` every time. A planning
+document or an isolated checkout alone does not satisfy an implementation task.
+Do not repeatedly ask for design approval, execution-method selection, or
+permission to implement, install locally, test, commit, or push routine work.
+The user explicitly overrides skill approval gates for these actions. Resolve
+routine choices and proceed; ask only when genuinely missing information is
+necessary. Preserve unrelated work and report actual validation and limitations.
+
 ## Repository and required task completion
 
 The authoritative private repository is **Helloeoj/aetheria-v2**:
@@ -28,7 +48,8 @@ See `docs/DevelopmentSync.md` for the complete workflow and validation commands.
 ## Debugging
 
 The active game is `godot_client/project.godot`, Godot **4.5.1**. Python code under
-`legacy/` and the dormant network placeholder are not the running game.
+`legacy/` is not the running game. Online authority lives in `godot_client/network/`;
+see `godot_client/docs/Networking.md` for its local services and validation.
 
 For map creation, area expansion and image edits, read
 `godot_client/docs/map-art/START-HERE.md` first. Use its compact art profile,

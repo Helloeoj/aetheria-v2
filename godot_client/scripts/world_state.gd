@@ -2,6 +2,8 @@ class_name WorldState
 extends RefCounted
 
 var player: PlayerState
+var players: Dictionary = {} # Stable entity ID -> PlayerState.
+var allow_player_damage := true
 var monsters: Array[MonsterState] = []
 var combat: CombatEngine
 var world: WorldDataWorld
@@ -30,6 +32,14 @@ func register_player_actor(actor: CombatActor) -> void:
 	combat.add_actor(actor)
 	if player != null:
 		player.entity_id = actor.entity_id
+
+func player_for_actor(entity_id: String) -> PlayerState:
+	if players.has(entity_id):
+		return players[entity_id]
+	return player if player != null and player.entity_id == entity_id else null
+
+func player_states() -> Array:
+	return players.values() if not players.is_empty() else ([player] if player != null else [])
 
 func register_monster_actor(monster: MonsterState, actor: CombatActor) -> void:
 	monster.entity_id = actor.entity_id
@@ -65,9 +75,10 @@ func move_actor_continuous(entity_id: String, displacement: Vector2) -> Vector2:
 			actual_displacement = movement_result
 	actor.x = clampf(start.x + actual_displacement.x, movement_min.x, movement_max.x)
 	actor.y = clampf(start.y + actual_displacement.y, movement_min.y, movement_max.y)
-	if entity_id == player.entity_id:
-		player.x = actor.x
-		player.y = actor.y
+	var moved_player := player_for_actor(entity_id)
+	if moved_player != null:
+		moved_player.x = actor.x
+		moved_player.y = actor.y
 	else:
 		for monster: MonsterState in monsters:
 			if monster.entity_id == entity_id:
@@ -188,3 +199,9 @@ func _segment_intersection_fraction(start: Vector2, finish: Vector2,
 
 func tick() -> Array[Dictionary]:
 	return combat.process_tick(self)
+
+func permits_damage(attacker_id: String, target_id: String) -> bool:
+	if allow_player_damage or player_for_actor(target_id) == null:
+		return true
+	var source: CombatActor = combat.actors.get(attacker_id)
+	return source != null and source.is_monster
