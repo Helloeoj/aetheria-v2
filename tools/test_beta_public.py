@@ -39,7 +39,7 @@ def main():
     base = policy['account_url']
 
     def request(path, payload=None, token=None):
-        headers = {'Content-Type': 'application/json'}
+        headers = {'Content-Type': 'application/json', 'User-Agent': 'AetheriaBetaProbe/1'}
         if token:
             headers['Authorization'] = 'Bearer ' + token
         message = urllib.request.Request(base + path,

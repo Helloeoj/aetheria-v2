@@ -24,7 +24,7 @@ test('edge replaces spoofed forwarding credentials and strips cookies', async ()
     assert.equal(init.headers.get('Cookie'), null);
     assert.equal(init.headers.get('X-Server-Key'), null);
     assert.equal(init.headers.get('Authorization'), 'Bearer player-token');
-    assert.equal(init.redirect, 'error');
+    assert.equal(init.redirect, 'manual');
     return Response.json({ok: true}, {headers: {'Set-Cookie': 'private=1'}});
   };
   const result = await worker.fetch(req('/api/login', {method: 'POST', body: '{}', headers: {
@@ -34,6 +34,48 @@ test('edge replaces spoofed forwarding credentials and strips cookies', async ()
   assert.equal(result.status, 200);
   assert.equal(result.headers.get('Set-Cookie'), null);
   assert.equal(result.headers.get('Cache-Control'), 'no-store');
+});
+
+test('upstream fetch works with the redirect modes supported by Workers', async () => {
+  globalThis.fetch = async (url, init) => {
+    if (!['follow', 'manual'].includes(init.redirect)) {
+      throw new TypeError('Invalid redirect value, must be follow or manual; error not implemented');
+    }
+    return Response.json({ok: true, release_id: 'test-release'});
+  };
+  const result = await worker.fetch(req('/api/release'), env);
+  assert.equal(result.status, 200);
+  assert.deepEqual(await result.json(), {ok: true, release_id: 'test-release'});
+});
+
+test('every upstream redirect is rejected before its body or Location can escape', async () => {
+  for (let status = 300; status < 400; status++) {
+    let calls = 0;
+    let bodyRead = false;
+    globalThis.fetch = async (url, init) => {
+      calls++;
+      assert.equal(String(url), 'https://example.trycloudflare.com/api/login');
+      assert.equal(init.redirect, 'manual', 'credentials must never follow Location');
+      const redirect = new Response(null, {status, headers: {
+        Location: 'https://attacker.example/collect', 'Set-Cookie': 'private=1',
+      }});
+      Object.defineProperty(redirect, 'body', {get() {
+        bodyRead = true;
+        throw Error('redirect body must not be read');
+      }});
+      return redirect;
+    };
+    const result = await worker.fetch(req('/api/login', {method: 'POST', body: '{}',
+      headers: {Authorization: 'Bearer player-token'}}), env);
+    assert.equal(result.status, 502, `upstream status ${status}`);
+    assert.equal(calls, 1);
+    assert.equal(bodyRead, false);
+    assert.equal(result.headers.get('Location'), null);
+    assert.equal(result.headers.get('Set-Cookie'), null);
+    assert.deepEqual(await result.json(), {
+      ok: false, message: 'The beta server is unavailable. Retry shortly.',
+    });
+  }
 });
 
 test('malformed or missing deployment bindings fail closed', async () => {

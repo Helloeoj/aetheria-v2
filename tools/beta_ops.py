@@ -178,7 +178,9 @@ def _start(settings):
     deadline = time.monotonic() + 30
     while time.monotonic() < deadline:
         try:
-            with urllib.request.urlopen(settings['account_url'] + '/api/release', timeout=5) as response:
+            request = urllib.request.Request(settings['account_url'] + '/api/release',
+                                             headers={'User-Agent': 'AetheriaBetaOps/1'})
+            with urllib.request.urlopen(request, timeout=5) as response:
                 public = json.load(response)
             if public.get('release_id') == policy['release_id'] and public.get('enabled') is True:
                 print('Beta login/version service ready at ' + settings['account_url'])

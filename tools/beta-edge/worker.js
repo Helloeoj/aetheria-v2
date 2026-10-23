@@ -56,9 +56,11 @@ export default {
       const body = request.method === 'POST' ? await boundedBody(request.body, 262144) : undefined;
       if (body === null) return unavailable(413);
       const result = await fetch(new URL(url.pathname, origin), {
-        method: request.method, body, headers, redirect: 'error',
+        method: request.method, body, headers, redirect: 'manual',
         signal: AbortSignal.timeout(10000),
       });
+      // Workers supports manual/follow only. Never forward credentials to a Location.
+      if (result.status >= 300 && result.status < 400) return unavailable(502);
       const payload = await boundedBody(result.body, 65536);
       if (payload === null) return unavailable(502);
       return new Response(payload, {status: result.status, headers: {
