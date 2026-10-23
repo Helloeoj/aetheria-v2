@@ -1,7 +1,8 @@
 # Aetheria Windows launcher
 
 Portable x64 WinForms bootstrap built with the installed .NET Framework compiler.
-Ship `AetheriaLauncher.exe`, `launcher.json`, pinned `butler.exe` v15.32.0, and
+Ship `AetheriaLauncher.exe`, `launcher.json`, pinned `butler.exe` v15.32.0,
+its official sibling `7z.dll` and `c7zip.dll`, and
 the release's vendor notices together. Players extract the folder and open the
 launcher; they never select a source directory or use creator credentials.
 
@@ -23,6 +24,10 @@ the corresponding production resources are ready. A build without `-ConfigPath`
 is explicitly a development bootstrap and cannot enable Play. There is no runtime
 dependency download. The build checks the bundled butler version; production
 packaging must retain the pinned vendor binary and notices.
+The build requires both native DLLs from the same official runtime directory,
+copies them beside butler, and includes their upstream notices and license texts.
+The pinned throttler uses 128 bytes/sec per Kbps unit: the configured 3906 Kbps
+rounds down to 499,968 bytes/sec, within the 500,000-byte/sec limit.
 
 Player sign-in uses consumer OAuth PKCE at `https://itch.io/user/oauth`, scope
 `profile:me profile:owned game:view:uploads`, with redirect
@@ -62,6 +67,15 @@ and requires `Fetch.GameOwnership(profileId,gameId)` to report a non-stale
 markers and creator edit rights do not supply a consumer beta invitation.
 `Fetch.GameUploads` and `Install.Queue` can resolve credentials across saved
 profiles, so their success is used only after this independent strict check.
+Installation reuses game metadata from that selected profile's freshly refreshed
+owned key, matching its owner ID, game ID, nested game ID and the independently
+verified download-key ID. It reads bounded additional owned-key pages when needed
+and rejects stale or missing metadata. It does not call `Fetch.Game(fresh:true)`,
+which requires the broader `game:view` scope beyond the approved consumer grant.
+During a pending install the same selected-profile ownership/upload gate runs
+every 20 seconds. Failure cancels the operation and retains the repair marker.
+These requests also keep the pinned runtime's API connection active, avoiding
+its idle-close/shared-throttle starvation during long storage transfers.
 Build the game with an embedded PCK so that this EXE hash covers its content.
 Launch actions from manifests and butler's general `Launch` method are never
 executed. Install paths must remain inside the chosen per-user location and

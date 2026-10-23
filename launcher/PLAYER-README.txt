@@ -1,7 +1,8 @@
 Aetheria Closed Beta
 
 Extract the complete launcher download into a folder, then open
-AetheriaLauncher.exe. Keep butler.exe and launcher.json beside it.
+AetheriaLauncher.exe. Keep all extracted files together, including butler.exe,
+7z.dll, c7zip.dll and launcher.json.
 
 Claim your personal invitation on itch.io first. Sign into that same itch.io
 account in the launcher, choose Check / update, then Play. Updates and an exact

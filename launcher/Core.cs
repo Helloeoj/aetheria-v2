@@ -192,8 +192,9 @@ internal sealed class ButlerDaemon : IDisposable {
             var details=await ready.Task; string secret=Json.Text(details,"secret"); if(secret.Length<8 || secret.Length>4096) throw new IOException();
             Rpc=new RpcClient(); await Rpc.Connect(Json.Text(Json.Object(details,"tcp"),"address"),secret);
             var version=await Rpc.Call("Version.Get",new {},5000); if(Json.Text(version,"version")!="v15.32.0") throw new LauncherException("The bundled download service has the wrong version. Please download a fresh launcher.");
-            // butler's rate is kilobits per second: 500,000 bytes/s * 8 / 1,000.
-            await Rpc.Call("Network.SetBandwidthThrottle",new {enabled=true,rate=4000},5000);
+            // Pinned iothrottler defines Kbps as 1024/8 bytes/s. Round down:
+            // 3906 * 128 = 499,968 bytes/s, within the 500,000-byte cap.
+            await Rpc.Call("Network.SetBandwidthThrottle",new {enabled=true,rate=3906},5000);
         } catch { Dispose(); throw; }
     }
     public void Dispose() { if(Rpc!=null) Rpc.Dispose(); if(process!=null) { try { if(!process.HasExited) { process.Kill(); process.WaitForExit(2000); } } catch {} process.Dispose(); process=null; } }

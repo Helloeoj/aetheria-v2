@@ -45,6 +45,8 @@ internal static class LauncherTests {
             RpcTest().GetAwaiter().GetResult();
             PipeTest();
             ServiceTest(Path.Combine(root,"service")).GetAwaiter().GetResult();
+            ConsumerInstallTest(Path.Combine(root,"consumer-install")).GetAwaiter().GetResult();
+            InstallAuthorizationTest(Path.Combine(root,"install-authorization")).GetAwaiter().GetResult();
             TwoProfileTest(Path.Combine(root,"two-profiles")).GetAwaiter().GetResult();
             using(var form=new LauncherForm()) {
                 form.ShowInTaskbar=false;form.Opacity=0;form.Show();Application.DoEvents();
@@ -88,8 +90,15 @@ internal static class LauncherTests {
         public Task<Dictionary<string,object>> Get() {Calls++;if(Offline)throw new LauncherException("offline fixture");return Task.FromResult(Release());}
     }
     sealed class ButlerFixture : IButlerRpc {
-        public readonly string Folder; public bool FailLogin,Interrupt,DenyAccess,TwoProfiles,BInvited,StaleOwnership,StaleKeys; public bool UpdateContract;public long OAuthProfile=42,OwnershipKey=9001;public string OwnershipSource="download_key";public int GlobalUploads,OwnershipChecks,OwnershipRefreshes;
+        public readonly string Folder; public bool FailLogin,Interrupt,DenyAccess,TwoProfiles,BInvited,StaleOwnership,StaleKeys,GameViewDenied,FirstInstall,SecondKeyPage,MissingOwnedGame,StaleKeyPage; public bool UpdateContract;public long OAuthProfile=42,OwnershipKey=9001,MetadataOwner,MetadataKey=9001,MetadataGame=123,MetadataNestedGame=123;public string OwnershipSource="download_key";public int GlobalUploads,OwnershipChecks,OwnershipRefreshes,GameFetches,KeyPages;
         public ButlerFixture(string folder) {Folder=folder;}
+        public bool SlowInstall,RevokeDuringInstall,Installing,InstallCancelled;public int InstallRefreshes;
+        async Task<Dictionary<string,object>> DelayedInstall() {
+            Installing=true;await Task.Delay(22000);Installing=false;
+            if(InstallCancelled)return new Dictionary<string,object>();
+            File.WriteAllText(Path.Combine(Folder,"release.json"),"{\"schema\":1,\"release_id\":\"beta-1\",\"executable\":\"Aetheria.exe\"}");
+            return new Dictionary<string,object>();
+        }
         Dictionary<string,object> Cave() {return new Dictionary<string,object> {{"id","our-cave"},{"game",new Dictionary<string,object>{{"id",123}}},{"upload",new Dictionary<string,object>{{"id",456}}},{"installInfo",new Dictionary<string,object>{{"installFolder",Folder}}}};}
         public Task<Dictionary<string,object>> Call(string method,object args,int timeout) {
             var input=Json.Parse(Json.Stringify(args));
@@ -99,23 +108,27 @@ internal static class LauncherTests {
                 case "Profile.UseSavedLogin":if(FailLogin)throw new LauncherException("failed login fixture");if(Json.Number(input,"profileId")!=42 && !(TwoProfiles && Json.Number(input,"profileId")==84))throw new Exception("wrong profile");result["profile"]=new Dictionary<string,object>{{"id",Json.Number(input,"profileId")}};break;
                 case "Profile.LoginWithOAuthCode":result["profile"]=new Dictionary<string,object>{{"id",OAuthProfile}};result["cookie"]=new Dictionary<string,object>();break;
                 case "Fetch.ProfileOwnedKeys":
-                    if(!Json.Flag(input,"fresh") || (Json.Number(input,"profileId")!=42 && !(TwoProfiles && Json.Number(input,"profileId")==84)))throw new Exception("ownership refresh must be selected-profile scoped and fresh");
-                    OwnershipRefreshes++;result["items"]=new object[0];result["stale"]=StaleKeys;result["nextCursor"]=null;break;
+                    if(Installing)InstallRefreshes++;
+                    bool keyPage=input.ContainsKey("cursor");
+                    if(Json.Flag(input,"fresh")==keyPage || (Json.Number(input,"profileId")!=42 && !(TwoProfiles && Json.Number(input,"profileId")==84)))throw new Exception("ownership refresh and pages must be selected-profile scoped");
+                    if(keyPage)KeyPages++;else OwnershipRefreshes++;
+                    result["items"]=MissingOwnedGame || (SecondKeyPage && !keyPage) ? new object[0] : new object[]{new Dictionary<string,object>{{"id",MetadataKey},{"ownerId",MetadataOwner==0 ? Json.Number(input,"profileId") : MetadataOwner},{"gameId",MetadataGame},{"game",new Dictionary<string,object>{{"id",MetadataNestedGame},{"title","Aetheria"},{"url","https://example.itch.io/aetheria"}}}}};result["stale"]=StaleKeys || (keyPage && StaleKeyPage);result["nextCursor"]=SecondKeyPage && !keyPage ? new Dictionary<string,object>{{"offset",100}} : null;break;
                 case "Fetch.GameOwnership":
                     if(Json.Number(input,"gameId")!=123 || (Json.Number(input,"profileId")!=42 && !(TwoProfiles && Json.Number(input,"profileId")==84)))throw new Exception("ownership query is not selected-profile scoped");
-                    OwnershipChecks++;bool owns=!DenyAccess && (Json.Number(input,"profileId")==42 || BInvited);result["owned"]=owns;result["source"]=owns ? OwnershipSource : "";if(owns)result["downloadKeyId"]=OwnershipKey;result["stale"]=StaleOwnership;break;
+                    OwnershipChecks++;bool owns=!DenyAccess && !(Installing && RevokeDuringInstall) && (Json.Number(input,"profileId")==42 || BInvited);result["owned"]=owns;result["source"]=owns ? OwnershipSource : "";if(owns)result["downloadKeyId"]=OwnershipKey;result["stale"]=StaleOwnership;break;
                 case "Fetch.GameUploads":GlobalUploads++;if(Json.Number(input,"gameId")!=123 || !Json.Flag(input,"fresh") || !Json.Flag(input,"compatible"))throw new Exception("unscoped upload fetch");result["uploads"]=DenyAccess ? new object[0] : new object[]{new Dictionary<string,object>{{"id",456},{"storage","build"},{"build",new Dictionary<string,object>{{"id",789}}}}};result["stale"]=false;break;
-                case "Fetch.Caves":if(Json.Number(Json.Object(input,"filters"),"gameId")!=123)throw new Exception("unscoped cave fetch");result["items"]=new object[]{Cave()};result["nextCursor"]=null;break;
+                case "Fetch.Caves":if(Json.Number(Json.Object(input,"filters"),"gameId")!=123)throw new Exception("unscoped cave fetch");result["items"]=FirstInstall ? new object[0] : new object[]{Cave()};result["nextCursor"]=null;break;
                 case "CheckUpdate":var ids=Json.Array(input,"caveIds");if(ids.Length!=1 || Convert.ToString(ids[0])!="our-cave")throw new Exception("unscoped update");result["updates"]=new object[0];result["warnings"]=new object[0];break;
                 case "Install.Locations.List":result["installLocations"]=new object[]{new Dictionary<string,object>{{"id","location"},{"path",Path.GetDirectoryName(Folder)},{"sizeInfo",new Dictionary<string,object>{{"totalSize",100}}}}};break;
-                case "Fetch.Game":result["game"]=new Dictionary<string,object>{{"id",123},{"title","Aetheria"},{"url","https://example.itch.io/aetheria"}};result["stale"]=false;break;
+                case "Fetch.Game":GameFetches++;if(GameViewDenied)throw new LauncherException("itch.io API error (403): api key does not permit game:view");result["game"]=new Dictionary<string,object>{{"id",123},{"title","Aetheria"},{"url","https://example.itch.io/aetheria"}};result["stale"]=false;break;
                 case "Install.Queue":
-                    UpdateContract=Json.Flag(input,"ignoreInstallers") && Json.Number(input,"profileId")==42 && Json.Text(input,"caveId")=="our-cave" && Json.Number(Json.Object(input,"upload"),"id")==456 && Json.Number(Json.Object(input,"game"),"id")==123 && Json.Number(Json.Object(input,"build"),"id")==789;
+                    UpdateContract=Json.Flag(input,"ignoreInstallers") && Json.Number(input,"profileId")==42 && (FirstInstall ? Json.Text(input,"caveId")=="" && Json.Text(input,"reason")=="install" : Json.Text(input,"caveId")=="our-cave") && Json.Number(Json.Object(input,"upload"),"id")==456 && Json.Number(Json.Object(input,"game"),"id")==123 && Json.Number(Json.Object(input,"build"),"id")==789;
                     if(!UpdateContract)throw new Exception("unsafe install contract");result["id"]="task";result["game"]=Json.Object(input,"game");result["upload"]=Json.Object(input,"upload");result["installFolder"]=Folder;result["stagingFolder"]=Path.Combine(Path.GetDirectoryName(Folder),"downloads","staging");break;
                 case "Install.Perform":
+                    if(SlowInstall)return DelayedInstall();
                     if(Interrupt)throw new LauncherException("interrupted fixture");
-                    File.WriteAllText(Path.Combine(Folder,"release.json"),"{\"schema\":1,\"release_id\":\"beta-1\",\"executable\":\"Aetheria.exe\"}");result["caveId"]="our-cave";result["events"]=new object[0];break;
-                case "Install.Cancel":break;
+                    File.WriteAllText(Path.Combine(Folder,"release.json"),"{\"schema\":1,\"release_id\":\"beta-1\",\"executable\":\"Aetheria.exe\"}");FirstInstall=false;result["caveId"]="our-cave";result["events"]=new object[0];break;
+                case "Install.Cancel":InstallCancelled=true;break;
                 default:throw new Exception("Unexpected fixture call: "+method);
             }
             return Task.FromResult(result);
@@ -144,6 +157,48 @@ internal static class LauncherTests {
         Assert(!service.Ready,"restarted launcher cannot play interrupted installation");
         int before=source.Calls;await service.Update();Assert(service.Ready && !File.Exists(Path.Combine(state,"update-in-progress")),"successful repair clears marker only after hash/version verification");
         Assert(source.Calls>=before+2,"update fetches trusted release both before and after installation");
+    }
+    static async Task InstallAuthorizationTest(string state) {
+        string folder=Path.Combine(state,"games","aetheria");Directory.CreateDirectory(folder);
+        File.WriteAllText(Path.Combine(folder,"Aetheria.exe"),"abc",new UTF8Encoding(false));
+        var config=new LauncherConfig {GameId=123,UploadId=456,OAuthClientId="client",AccountUrl="https://example.invalid"};
+        var rpc=new ButlerFixture(folder){SlowInstall=true,RevokeDuringInstall=true};
+        var service=new LauncherService(config,state,rpc,new ReleaseFixture());
+        try {await service.Initialize();}catch(LauncherException){}
+        bool rejected=false;try {await service.Update();}catch(LauncherException){rejected=true;}
+        Assert(rejected && !service.Ready && rpc.InstallCancelled && rpc.InstallRefreshes>0 && File.Exists(Path.Combine(state,"update-in-progress")),"consumer entitlement revoked during long install cancels work and preserves repair marker");
+        rpc=new ButlerFixture(folder){SlowInstall=true};service=new LauncherService(config,state,rpc,new ReleaseFixture());
+        try {await service.Initialize();}catch(LauncherException){}
+        await service.Update();
+        Assert(service.Ready && rpc.InstallRefreshes>0 && !File.Exists(Path.Combine(state,"update-in-progress")),"long install refreshes selected-profile authorization and verifies release before clearing marker");
+    }
+    static async Task ConsumerInstallTest(string state) {
+        string folder=Path.Combine(state,"games","aetheria");Directory.CreateDirectory(folder);
+        File.WriteAllText(Path.Combine(folder,"Aetheria.exe"),"abc",new UTF8Encoding(false));
+        var config=new LauncherConfig {GameId=123,UploadId=456,OAuthClientId="client",AccountUrl="https://example.invalid"};
+        var rpc=new ButlerFixture(folder){GameViewDenied=true,FirstInstall=true};
+        var service=new LauncherService(config,state,rpc,new ReleaseFixture());
+        try {await service.Initialize();}catch(LauncherException){}
+        bool installed=false;try {await service.Update();installed=service.Ready;}catch(LauncherException){}
+        Assert(installed && rpc.UpdateContract && rpc.GameFetches==0,"consumer first install uses owned-key game metadata without requiring game:view scope");
+        foreach(string invalid in new[]{"owner","key","game","nested game","missing","stale page"}) {
+            rpc=new ButlerFixture(folder){GameViewDenied=true,FirstInstall=true};
+            if(invalid=="owner")rpc.MetadataOwner=84;
+            if(invalid=="key")rpc.MetadataKey=9002;
+            if(invalid=="game")rpc.MetadataGame=999;
+            if(invalid=="nested game")rpc.MetadataNestedGame=999;
+            if(invalid=="missing")rpc.MissingOwnedGame=true;
+            if(invalid=="stale page"){rpc.SecondKeyPage=true;rpc.StaleKeyPage=true;}
+            service=new LauncherService(config,state,rpc,new ReleaseFixture());
+            try {await service.Initialize();}catch(LauncherException){}
+            bool denied=false;try {await service.Update();}catch(LauncherException){denied=true;}
+            Assert(denied && !service.Ready && !rpc.UpdateContract && !File.Exists(Path.Combine(state,"update-in-progress")),"unverified owned-key "+invalid+" metadata cannot queue an install");
+        }
+        rpc=new ButlerFixture(folder){GameViewDenied=true,FirstInstall=true,SecondKeyPage=true};
+        service=new LauncherService(config,state,rpc,new ReleaseFixture());
+        try {await service.Initialize();}catch(LauncherException){}
+        await service.Update();
+        Assert(service.Ready && rpc.KeyPages>0 && rpc.GameFetches==0,"consumer invitation outside the first owned-key page installs using scoped pagination");
     }
     static async Task TwoProfileTest(string state) {
         string folder=Path.Combine(state,"games","aetheria");Directory.CreateDirectory(folder);

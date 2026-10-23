@@ -10,7 +10,7 @@ namespace AetheriaLauncher {
 internal sealed class LauncherService {
     readonly LauncherConfig config; readonly IButlerRpc rpc; readonly IReleaseSource releases;
     readonly string state, games, marker; readonly SemaphoreSlim operation=new SemaphoreSlim(1,1);
-    Dictionary<string,object> cave,release; long profileId; Process game; bool uncertainUpdate;
+    Dictionary<string,object> cave,release,ownedGame; long profileId; Process game; bool uncertainUpdate;
     public bool Ready {get;private set;}
     public string Version {get { return release==null ? "No verified release" : "Release "+Json.Text(release,"release_id"); }}
     public bool SignedIn {get {return profileId>0;}}
@@ -59,17 +59,31 @@ internal sealed class LauncherService {
         profileId=0; throw new LauncherException("This itch.io account cannot access the beta download. Sign in with your invited account.");
     }
     async Task RequireSelectedProfileOwnership() {
+        ownedGame=null;
         if(profileId<=0) throw new LauncherException("Sign in to itch.io with your invited beta account to continue.");
         // v15.32.0: fresh ProfileOwnedKeys refreshes/replaces all keys for this profile
         // before applying the result-page limit. GameOwnership itself is local-only
         // and strictly matches owner_id + game_id, unlike GameUploads/Install.Queue,
         // whose credential resolver can fall back to another remembered profile.
-        var keys=await rpc.Call("Fetch.ProfileOwnedKeys",new {profileId=profileId,fresh=true,limit=1},15000);
+        var keys=await rpc.Call("Fetch.ProfileOwnedKeys",new {profileId=profileId,fresh=true,limit=100},15000);
         var ownership=await rpc.Call("Fetch.GameOwnership",new {profileId=profileId,gameId=config.GameId},5000);
         if(Json.Flag(keys,"stale") || !Json.Flag(ownership,"owned") || Json.Flag(ownership,"stale") || Json.Text(ownership,"source")!="download_key" || Json.Number(ownership,"downloadKeyId")<=0) {
             profileId=0; Ready=false;
             throw new LauncherException("This account does not own a beta invitation. Claim your invitation on itch.io, then sign in with that account.");
         }
+        // The approved profile:owned response already includes game metadata.
+        // Fetch.Game(fresh:true) instead needs the broader game:view scope.
+        // Bind this metadata to the exact key independently verified above.
+        for(int page=0;page<100;page++) {
+            if(Json.Flag(keys,"stale")) break;
+            foreach(var item in Json.Array(keys,"items")) {
+                var key=item as Dictionary<string,object>;var metadata=Json.Object(key,"game");
+                if(Json.Number(key,"id")==Json.Number(ownership,"downloadKeyId") && Json.Number(key,"ownerId")==profileId && Json.Number(key,"gameId")==config.GameId && Json.Number(metadata,"id")==config.GameId) {ownedGame=metadata;return;}
+            }
+            object cursor;if(!keys.TryGetValue("nextCursor",out cursor) || cursor==null)break;
+            keys=await rpc.Call("Fetch.ProfileOwnedKeys",new {profileId=profileId,fresh=false,limit=100,cursor=cursor},15000);
+        }
+        throw new LauncherException("The beta invitation metadata could not be verified. Please retry later.");
     }
     async Task FindCave() {
         cave=null;
@@ -113,7 +127,7 @@ internal sealed class LauncherService {
                 foreach(var item in Json.Array(locations,"installLocations")) {var location=item as Dictionary<string,object>; if(String.Equals(Json.Text(location,"path").TrimEnd('\\'),games.TrimEnd('\\'),StringComparison.OrdinalIgnoreCase)) locationId=Json.Text(location,"id");}
                 if(locationId=="") throw new LauncherException("The game install location could not be prepared. Please retry.");
             }
-            var gameResult=await rpc.Call("Fetch.Game",new {gameId=config.GameId,fresh=true},15000); var metadata=Json.Object(gameResult,"game");
+            var metadata=ownedGame;
             if(Json.Number(metadata,"id")!=config.GameId) throw new LauncherException("The beta download could not be identified. Please retry later.");
             bool repairing=File.Exists(marker);
             SafePath.DemandNoReparse(marker); using(var file=new FileStream(marker,FileMode.Create,FileAccess.Write,FileShare.None)) {file.WriteByte(1);file.Flush(true);}
@@ -126,7 +140,15 @@ internal sealed class LauncherService {
             SafePath.Within(games,Json.Text(queued,"installFolder")); SafePath.Within(games,Json.Text(queued,"stagingFolder"));
             string id=Json.Text(queued,"id"); if(id=="") throw new LauncherException("The update could not be prepared. Please retry.");
             bool interrupted=false;
-            try {await rpc.Call("Install.Perform",new {id=id,stagingFolder=Json.Text(queued,"stagingFolder")},60*60*1000);}
+            try {
+                var installing=rpc.Call("Install.Perform",new {id=id,stagingFolder=Json.Text(queued,"stagingFolder")},60*60*1000);
+                // Continue checking the selected invitation during long installs.
+                // This also keeps the pinned daemon's API connection active: an
+                // idled connection can double-close its shared throttle client
+                // and starve an unrelated storage transfer of bandwidth tokens.
+                while(await Task.WhenAny(installing,Task.Delay(20000))!=installing) await GetUpload();
+                await installing;
+            }
             catch {uncertainUpdate=true;interrupted=true;}
             if(interrupted) {
                 try {await rpc.Call("Install.Cancel",new {id=id},5000);} catch {}

@@ -32,8 +32,17 @@ if (Test-Path -LiteralPath $ButlerPath) {
     $butlerVersion = & $ButlerPath version
     if ($LASTEXITCODE -ne 0 -or $butlerVersion -notmatch '^v15\.32\.0,') { throw 'Only pinned butler v15.32.0 is supported.' }
     if ([IO.Path]::GetFullPath($ButlerPath) -ne (Join-Path $OutputDirectory 'butler.exe')) { Copy-Item -LiteralPath $ButlerPath -Destination (Join-Path $OutputDirectory 'butler.exe') -Force }
+    foreach ($dependencyName in @('7z.dll', 'c7zip.dll')) {
+        $dependencyPath = Join-Path (Split-Path -Parent $ButlerPath) $dependencyName
+        if (!(Test-Path -LiteralPath $dependencyPath -PathType Leaf)) { throw "Official butler runtime dependency is missing: $dependencyName" }
+        $dependencyDestination = Join-Path $OutputDirectory $dependencyName
+        if ([IO.Path]::GetFullPath($dependencyPath) -ne $dependencyDestination) { Copy-Item -LiteralPath $dependencyPath -Destination $dependencyDestination -Force }
+    }
 } else { throw 'Pinned bundled butler is missing; this script does not download dependencies.' }
 Copy-Item -LiteralPath (Join-Path $repoRoot 'licenses/BUTLER-LICENSE.txt') -Destination (Join-Path $OutputDirectory 'BUTLER-LICENSE.txt') -Force
+foreach ($noticeName in @('BUTLER-NATIVE-NOTICES.txt', 'C7ZIP-LICENSE.txt', 'LIB7ZIP-MPL.txt', '7ZIP-LICENSE.txt', '7ZIP-LGPL.txt')) {
+    Copy-Item -LiteralPath (Join-Path $repoRoot ('licenses/' + $noticeName)) -Destination (Join-Path $OutputDirectory $noticeName) -Force
+}
 Copy-Item -LiteralPath (Join-Path $sourceRoot 'PLAYER-README.txt') -Destination (Join-Path $OutputDirectory 'README.txt') -Force
 if ($Test -or $RealDaemonTest) {
     $testDirectory = Join-Path $repoRoot 'build/launcher-tests'

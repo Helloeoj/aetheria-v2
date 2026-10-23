@@ -2,12 +2,21 @@
 using System;
 using System.IO;
 using System.Diagnostics;
+using System.Collections.Generic;
 using System.Security.Principal;
 using System.Threading.Tasks;
 using Microsoft.Win32;
 
 namespace AetheriaLauncher {
 internal static class LiveCheck {
+    sealed class ProbeRpc : IButlerRpc {
+        readonly IButlerRpc inner;
+        public ProbeRpc(IButlerRpc value) {inner=value;}
+        public async Task<Dictionary<string,object>> Call(string method,object args,int timeout) {
+            try {return await inner.Call(method,args,timeout);}
+            catch {Console.WriteLine("Failed daemon operation: "+method);throw;}
+        }
+    }
     static string PipeName {get {return "AetheriaLauncherLive-"+WindowsIdentity.GetCurrent().User.Value;}}
     static string Root {get {return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),"Aetheria","online","beta-runtime");}}
     [STAThread] public static int Main(string[] args) {
@@ -52,9 +61,13 @@ internal static class LiveCheck {
                     }
                 }
             } else {
-                var service=new LauncherService(config,state,daemon.Rpc,new HttpsReleaseSource(config.AccountUrl));
-                await service.Initialize();
-                if(args.Length==1 && args[0]=="--update")await service.Update();
+                var service=new LauncherService(config,state,new ProbeRpc(daemon.Rpc),new HttpsReleaseSource(config.AccountUrl));
+                bool updating=args.Length==1 && args[0]=="--update";
+                try {await service.Initialize();}
+                catch(LauncherException) {if(!updating)throw;}
+                // The UI permits Check / update after an uninstalled or outdated
+                // startup. Update repeats ownership, release and integrity gates.
+                if(updating)await service.Update();
                 if(!service.Ready)throw new Exception("The current release is not ready.");
                 Console.WriteLine("PASS: real selected-account access, HTTPS release preflight, installed EXE hash and version.");
                 if(args.Length==1 && args[0]=="--play") {
