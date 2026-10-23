@@ -1,0 +1,26 @@
+Official butler v15.32.0 Windows runtime
+
+The unchanged butler.exe, 7z.dll and c7zip.dll come from the official
+Windows amd64 archive at https://broth.itch.zone/butler/windows-amd64/15.32.0/archive/default.
+Both native DLLs must remain beside butler.exe. The archive itself contains
+no license files; this package includes the upstream component license texts.
+
+butler: Copyright (c) 2018 Leaf Corcoran and Amos Wenger; MIT.
+Source: https://github.com/itchio/butler/tree/v15.32.0
+License: BUTLER-LICENSE.txt
+
+c7zip.dll: libc7zip (MIT), bundled lib7zip (MPL 2.0), and UTF conversion
+code from 7-Zip (LGPL 2.1).
+Sources: https://github.com/itchio/libc7zip
+         https://github.com/itchio/libc7zip/tree/master/vendor/lib7zip
+Licenses: C7ZIP-LICENSE.txt, LIB7ZIP-MPL.txt, 7ZIP-LGPL.txt
+
+7z.dll: 7-Zip 26.03, Copyright (c) 1999-2026 Igor Pavlov.
+LGPL 2.1 or later, with the additional BSD/public-domain notices and
+unRAR restriction detailed in 7ZIP-LICENSE.txt.
+Source: https://7-zip.org/a/7z2603-src.7z
+Project: https://github.com/ip7z/7zip
+Licenses: 7ZIP-LICENSE.txt, 7ZIP-LGPL.txt
+
+These DLLs remain separate, unmodified and replaceable beside butler.exe.
+No license in this package restricts rights granted by the component's license.

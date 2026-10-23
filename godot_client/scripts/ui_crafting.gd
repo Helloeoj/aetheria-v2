@@ -106,6 +106,10 @@ func _rebuild() -> void:
 		content.add_child(button)
 
 func _craft(recipe_id: String) -> void:
+	if Network.online():
+		Network.send_action({"type": "craft", "station_id": str(game.get_parent().get_path_to(station)), "recipe_id": recipe_id, "quantity": int(amount.value)})
+		status.text = "Crafting request sent to the server."
+		return
 	if not _can_use():
 		close()
 		return
@@ -114,6 +118,10 @@ func _craft(recipe_id: String) -> void:
 	_rebuild()
 
 func _purchase(item_name: String) -> void:
+	if Network.online():
+		Network.send_action({"type": "purchase", "station_id": str(game.get_parent().get_path_to(station)), "item_name": item_name, "quantity": int(amount.value)})
+		status.text = "Purchase request sent to the server."
+		return
 	if not _can_use():
 		close()
 		return

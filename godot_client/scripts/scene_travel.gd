@@ -49,6 +49,8 @@ func _input(_event: InputEvent) -> void:
 
 
 func bind_game(game: Node) -> bool:
+	if Network.online():
+		return false
 	if _player != null:
 		game.set("player", _player)
 		game.set("skill_training_session", _training_session)
@@ -82,6 +84,11 @@ func is_transitioning() -> bool:
 
 
 func request_travel(game: Node, destination_scene: String, spawn_id: String) -> bool:
+	if Network.online():
+		for portal: Node in get_tree().get_nodes_in_group("cave_portal"):
+			if game.get_parent().is_ancestor_of(portal) and portal.destination_scene == destination_scene and portal.destination_spawn_id == spawn_id:
+				return Network.send_action({"type": "travel", "portal_id": str(game.get_parent().get_path_to(portal))})
+		return false
 	if _transitioning or not is_instance_valid(game) or not game.is_inside_tree():
 		return false
 	var player := game.get("player") as PlayerState
@@ -202,6 +209,11 @@ func _sync_player_actor(game: Node, player: PlayerState) -> void:
 func _notice(game: Node, message: String) -> void:
 	if is_instance_valid(game) and game.has_method("show_fishing_notice"):
 		game.call("show_fishing_notice", message)
+
+func clear_online_binding() -> void:
+	_player = null
+	_training_session = null
+	pending_spawn_id = ""
 
 
 func _fail_request(game: Node, message: String) -> void:

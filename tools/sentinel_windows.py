@@ -143,6 +143,10 @@ def is_game(command, project):
     args = split_command(command)
     if '--editor' in args or '-e' in args or '--project-manager' in args:
         return False
+    # The persistent world server uses this project too, but must not occupy
+    # the playable client's launch slot. Headless diagnostic clients still count.
+    if '--world-server' in args or 'res://scenes/network/WorldServer.tscn' in args:
+        return False
     try:
         index = args.index('--path')
         return Path(args[index + 1]).resolve() == Path(project).resolve()

@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "game_id": 5211819,
+  "upload_id": 0,
+  "oauth_client_id": "2c02f51588db52c884390db0969d2fe2",
+  "account_url": "https://accounts.example.invalid",
+  "executable": "Aetheria.exe",
+  "download_bytes_per_second": 500000
+}

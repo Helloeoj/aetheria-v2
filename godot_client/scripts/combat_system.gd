@@ -23,6 +23,7 @@ var _orb_ice_seconds: Dictionary = {}
 # UI selection is independent of starting an attack. Non-interactive adapters
 # retain their existing behavior until they opt into explicit attack controls.
 var player_auto_attack_enabled := true
+var player_attack_enabled: Dictionary = {} # Empty preserves offline auto-attack semantics.
 
 func _init() -> void:
 	random.randomize()
@@ -54,10 +55,9 @@ func process_tick(world: Variant) -> Array[Dictionary]:
 
 ## Movement and projectile travel are real-time. Player attacks use the equipped
 ## weapon's interval; monsters attack on the shared 0.6-second combat tick.
-func process_realtime(world: Variant, delta: float) -> Array[Dictionary]:
-	var events := _process_orb_effects(world, maxf(0.0, delta))
-	var player: Variant = _get_stat(world, "player", null)
-	if player != null:
+func process_realtime(world: Variant, delta: float, paused_actor_ids: Dictionary = {}) -> Array[Dictionary]:
+	var events := _process_orb_effects(world, maxf(0.0, delta), paused_actor_ids)
+	for player: Variant in _players(world):
 		_set_stat(player, "food_cooldown_seconds", maxf(0.0,
 			float(_get_stat(player, "food_cooldown_seconds", 0.0)) - maxf(0.0, delta)))
 		var food_attack_delay := float(_get_stat(player, "food_attack_cooldown_seconds", 0.0))
@@ -73,10 +73,10 @@ func process_realtime(world: Variant, delta: float) -> Array[Dictionary]:
 			if actor != null:
 				actor.attack_cooldown_seconds = maxf(actor.attack_cooldown_seconds, food_attack_delay)
 			_set_stat(player, "food_attack_cooldown_seconds", maxf(0.0, food_attack_delay - maxf(0.0, delta)))
-	events.append_array(_process_spell_casts(world, delta))
+	events.append_array(_process_spell_casts(world, delta, paused_actor_ids))
 	events.append_array(_process_monster_movement(world, delta))
 	events.append_array(_process_player_attacks(world, delta))
-	events.append_array(_process_projectiles(world, delta))
+	events.append_array(_process_projectiles(world, delta, paused_actor_ids))
 	if world is Object and world.has_method("advance_projectile_walls"):
 		world.advance_projectile_walls(delta)
 	return events
@@ -88,8 +88,8 @@ func cast_spell(world: Variant, caster_id: String, spell_id: String,
 		return {"ok": false, "error": "Caster is not available."}
 	if not caster.can_attack():
 		return {"ok": false, "error": "Paralysis prevents casting."}
-	var player: Variant = _get_stat(world, "player", null)
-	if player == null or String(_get_stat(player, "entity_id", "")) != caster_id:
+	var player: Variant = _player_for_actor(world, caster_id)
+	if player == null:
 		return {"ok": false, "error": "Only the player can cast known spells."}
 	if maxf(float(_get_stat(player, "food_cooldown_seconds", 0.0)),
 			float(_get_stat(player, "food_attack_cooldown_seconds", 0.0))) > 0.0:
@@ -162,12 +162,14 @@ func cast_spell(world: Variant, caster_id: String, spell_id: String,
 		return {"ok": true, "events": immediate_events}
 	return {"ok": true, "events": [started_event]}
 
-func _process_spell_casts(world: Variant, delta: float) -> Array[Dictionary]:
+func _process_spell_casts(world: Variant, delta: float, paused_actor_ids: Dictionary = {}) -> Array[Dictionary]:
 	var events: Array[Dictionary] = []
 	var completed: Array[String] = []
 	for caster_id_value: Variant in active_spell_casts.keys():
 		var caster_id := String(caster_id_value)
 		var cast_data: Dictionary = active_spell_casts[caster_id]
+		if paused_actor_ids.has(caster_id) or paused_actor_ids.has(String(cast_data.get("target_id", ""))):
+			continue
 		var caster: CombatActor = actors.get(caster_id)
 		if caster == null or not caster.is_alive:
 			completed.append(caster_id)
@@ -206,7 +208,7 @@ func _resolve_spell_cast(world: Variant, cast_data: Dictionary) -> Array[Diction
 				"spell_id": spell_id, "reason": "ally_lost"}]
 
 	# Roll once after casting time has elapsed, before any effect or cast XP.
-	var casting_player: Variant = _get_stat(world, "player", null)
+	var casting_player: Variant = _player_for_actor(world, caster.entity_id)
 	var magic_level := caster.magic_level
 	if casting_player != null and String(_get_stat(casting_player, "entity_id", "")) == caster.entity_id:
 		magic_level = int(_get_stat(casting_player, "magic_level", magic_level))
@@ -255,6 +257,7 @@ func _resolve_spell_cast(world: Variant, cast_data: Dictionary) -> Array[Diction
 				caster.entity_id, candidate, outcome, state))
 			var death_event := _death_event_if_needed(candidate, int(state.hp_after))
 			if not death_event.is_empty():
+				death_event["attacker_id"] = caster.entity_id
 				events.append(death_event)
 		events.push_front({"type": "spell_area_resolved", "caster_id": caster.entity_id,
 			"spell_id": spell_id, "point": target_point, "radius": radius,
@@ -262,7 +265,7 @@ func _resolve_spell_cast(world: Variant, cast_data: Dictionary) -> Array[Diction
 	elif kind == "heal":
 		var hp_before := target.hp
 		target.hp = mini(target.max_hp, target.hp + maxi(0, int(spell.get("healing", 0))))
-		var player: Variant = _get_stat(world, "player", null)
+		var player: Variant = _player_for_actor(world, target.entity_id)
 		if player != null and target.entity_id == String(_get_stat(player, "entity_id", "")):
 			_set_stat(player, "current_hp", target.hp)
 		events.append({"type": "spell_healed", "caster_id": caster.entity_id,
@@ -332,13 +335,15 @@ static func distance(first: Variant, second: Variant) -> float:
 static func normalize(dx: float, dy: float) -> Vector2:
 	return Vector2(dx, dy).normalized()
 
-func _process_projectiles(world: Variant, delta: float) -> Array[Dictionary]:
+func _process_projectiles(world: Variant, delta: float, paused_actor_ids: Dictionary = {}) -> Array[Dictionary]:
 	var events: Array[Dictionary] = []
 	var to_delete: Array[String] = []
 	if delta <= 0.0:
 		return events
 	for projectile_id: String in projectiles.keys():
 		var projectile: CombatProjectile = projectiles[projectile_id]
+		if paused_actor_ids.has(projectile.attacker_id) or paused_actor_ids.has(projectile.target_id):
+			continue
 		var remaining_range := maxf(0.0, float(projectile.max_range) - projectile.travelled)
 		if remaining_range <= 0.0:
 			to_delete.append(projectile_id)
@@ -367,6 +372,9 @@ func _process_projectiles(world: Variant, delta: float) -> Array[Dictionary]:
 				to_delete.append(projectile_id)
 				continue
 
+			if world is Object and world.has_method("permits_damage") and not world.permits_damage(projectile.attacker_id, target.entity_id):
+				to_delete.append(projectile_id)
+				continue
 			var projectile_attacker: CombatActor = actors.get(projectile.attacker_id)
 			_register_monster_aggression(projectile_attacker, target)
 			# Collision chooses the first actor. Zone, party, and PvP rules can
@@ -394,6 +402,7 @@ func _process_projectiles(world: Variant, delta: float) -> Array[Dictionary]:
 					projectile.attacker_id, target, outcome, state))
 			var death_event := _death_event_if_needed(target, int(state.hp_after))
 			if not death_event.is_empty():
+				death_event["attacker_id"] = projectile.attacker_id
 				events.append(death_event)
 			to_delete.append(projectile_id)
 			continue
@@ -639,14 +648,19 @@ func _refresh_monster_target(world: Variant, monster: CombatActor) -> CombatActo
 
 func _is_actor_attacking_monster(world: Variant, attacker: CombatActor,
 		monster: CombatActor) -> bool:
-	var player: Variant = _get_stat(world, "player", null)
-	if player != null and String(_get_stat(player, "entity_id", "")) == attacker.entity_id:
+	var player: Variant = _player_for_actor(world, attacker.entity_id)
+	if player != null:
 		return String(_get_stat(player, "current_target", "")) == monster.entity_id
 	return attacker.current_target_id == monster.entity_id
 
 func _process_player_attacks(world: Variant, delta: float) -> Array[Dictionary]:
 	var events: Array[Dictionary] = []
-	var player: Variant = _get_stat(world, "player", null)
+	for player: Variant in _players(world):
+		events.append_array(_process_one_player_attack(world, delta, player))
+	return events
+
+func _process_one_player_attack(world: Variant, delta: float, player: Variant) -> Array[Dictionary]:
+	var events: Array[Dictionary] = []
 	if player == null:
 		return events
 	var player_actor: CombatActor = actors.get(String(_get_stat(player, "entity_id", "")))
@@ -657,7 +671,7 @@ func _process_player_attacks(world: Variant, delta: float) -> Array[Dictionary]:
 		player_actor, player_actor.attack_cooldown_seconds, delta)
 	if not player_actor.can_attack():
 		return events
-	if not player_auto_attack_enabled:
+	if not player_auto_attack_enabled or not bool(player_attack_enabled.get(player_actor.entity_id, true)):
 		return events
 	if player_actor.attack_cooldown_seconds > 0.0 or float(_get_stat(player, "food_attack_cooldown_seconds", 0.0)) > 0.0:
 		return events
@@ -710,6 +724,7 @@ func _resolve_attack(world: Variant, attacker: CombatActor, target: CombatActor)
 	))
 	var death_event := _death_event_if_needed(target, int(state.hp_after))
 	if not death_event.is_empty():
+		death_event["attacker_id"] = attacker.entity_id
 		events.append(death_event)
 	return events
 
@@ -929,7 +944,7 @@ func _advance_attack_wait(actor: CombatActor, remaining: float, delta: float,
 		return maxf(0.0, maxf(0.0, remaining - slowed_time) * OrbRules.ATTACK_RATE_MULTIPLIER - recovered_time)
 	return maxf(0.0, remaining - _unblocked_delta(actor, delta))
 
-func _process_orb_effects(world: Variant, delta: float) -> Array[Dictionary]:
+func _process_orb_effects(world: Variant, delta: float, paused_actor_ids: Dictionary = {}) -> Array[Dictionary]:
 	var events: Array[Dictionary] = []
 	_orb_blocked_seconds.clear()
 	_orb_ice_seconds.clear()
@@ -941,6 +956,8 @@ func _process_orb_effects(world: Variant, delta: float) -> Array[Dictionary]:
 			if not actor.is_alive:
 				break
 			var effect: Dictionary = actor.active_orb_effects[element]
+			if paused_actor_ids.has(String(effect.get("source_id", ""))):
+				continue
 			var elapsed := minf(delta, maxf(0.0, float(effect.remaining)))
 			if element == "ice":
 				_orb_ice_seconds[actor.entity_id] = maxf(0.0, float(effect.remaining))
@@ -983,7 +1000,9 @@ func _skill_experience_events_for_hit(world: Variant, attacker_id: String,
 		target_id: String, attack_style: String, hit_state: Dictionary,
 		is_spell: bool) -> Array[Dictionary]:
 	var events: Array[Dictionary] = []
-	var player: Variant = _get_stat(world, "player", null)
+	var player: Variant = _player_for_actor(world, attacker_id)
+	if player == null:
+		player = _player_for_actor(world, target_id)
 	if player == null:
 		return events
 	var player_id := String(_get_stat(player, "entity_id", ""))
@@ -1023,7 +1042,7 @@ func _skill_experience_events_for_hit(world: Variant, attacker_id: String,
 func _award_spell_cast_experience(world: Variant, caster_id: String,
 		unlock_level: int) -> Array[Dictionary]:
 	var events: Array[Dictionary] = []
-	var player: Variant = _get_stat(world, "player", null)
+	var player: Variant = _player_for_actor(world, caster_id)
 	if player == null or caster_id != String(_get_stat(player, "entity_id", "")):
 		return events
 	_append_skill_experience_event(events, player, "magic",
@@ -1045,6 +1064,7 @@ func _append_skill_experience_event(events: Array[Dictionary], player: Variant,
 		return
 	events.append({
 		"type": "skill_experience_gained",
+		"entity_id": String(_get_stat(player, "entity_id", "")),
 		"skill": skill_id,
 		"skill_name": String(SkillProgression.SKILL_NAMES[skill_id]),
 		"experience_gained": experience_gained,
@@ -1127,3 +1147,15 @@ func _set_stat(target: Variant, key: String, value: Variant) -> void:
 		target[key] = value
 	elif target is Object and _has_stat(target, key):
 		target.set(key, value)
+
+func _players(world: Variant) -> Array:
+	if world is Object and world.has_method("player_states"):
+		return world.player_states()
+	var legacy: Variant = _get_stat(world, "player", null)
+	return [legacy] if legacy != null else []
+
+func _player_for_actor(world: Variant, entity_id: String) -> Variant:
+	if world is Object and world.has_method("player_for_actor"):
+		return world.player_for_actor(entity_id)
+	var legacy: Variant = _get_stat(world, "player", null)
+	return legacy if legacy != null and String(_get_stat(legacy, "entity_id", "")) == entity_id else null

@@ -14,6 +14,7 @@ from sentinel_monitor import Monitor
 from sentinel_windows import SingleInstance, make_icon
 from sentinel_chat_panel import ChatPanel
 from sentinel_roadmap_panel import RoadmapPanel
+from sentinel_assistant_panel import AssistantPanel
 from sentinel_explanations import incident_title, incident_area, report_explanation, verified_resolution
 
 BG = '#0b111c'
@@ -36,6 +37,7 @@ class SentinelApp:
         self.activity_signature = None
         self.tree_signature = None
         self.closed = False
+        self.start_workers = start
         self.status = tk.StringVar(value='Watching for Aetheria')
         self.filter = tk.StringVar(value='Unresolved')
         self.technical = tk.BooleanVar(value=False)
@@ -113,9 +115,13 @@ class SentinelApp:
         self.ai_panel.pack(fill='both', expand=True)
         self.roadmap = RoadmapPanel(self.tabs, self.monitor.root / 'companion/roadmap-progress.json')
         self.tabs.add(self.roadmap, text='Roadmap')
+        self.development = AssistantPanel(self.tabs, adc.PROJECT,
+            state_path=None if self.start_workers else self.monitor.root / 'companion/test-project-memory.sqlite3',
+            start=self.start_workers)
+        self.tabs.add(self.development, text='Development assistant')
         # Give the roadmap reading space without changing the monitoring views.
         def tab_changed(_event=None):
-            if self.tabs.select() == str(self.roadmap):
+            if self.tabs.select() in (str(self.roadmap), str(self.development)):
                 cards.pack_forget()
             elif not cards.winfo_manager():
                 cards.pack(fill='x', padx=24, pady=(0, 14), before=self.tabs)
@@ -391,6 +397,7 @@ class SentinelApp:
     def close(self):
         self.closed = True
         self.ai_panel.close()
+        self.development.close()
         self.monitor.close()
         self.window.destroy()
 
@@ -400,6 +407,7 @@ def main():
     parser.add_argument('--root', type=Path)
     parser.add_argument('--background', action='store_true', help='Start minimized; keep monitoring in the taskbar')
     parser.add_argument('--roadmap', action='store_true', help='Open the Roadmap tab')
+    parser.add_argument('--assistant', action='store_true', help='Open the Development assistant tab')
     args = parser.parse_args()
     root = (args.root or adc.default_root()).resolve()
     guard = SingleInstance(hashlib.sha256(str(root).lower().encode()).hexdigest()[:24])
@@ -421,6 +429,8 @@ def main():
         app = SentinelApp(window, Monitor(root))
         if args.roadmap:
             app.tabs.select(app.roadmap)
+        if args.assistant:
+            app.tabs.select(app.development)
         if args.background:
             window.after(100, app.background)
         window.mainloop()

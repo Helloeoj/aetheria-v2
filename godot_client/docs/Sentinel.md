@@ -11,6 +11,12 @@ optional ChatGPT sign-in uses a per-user JWT verification dependency.
 personal ChatGPT connection. See [SentinelChatGPT.md](SentinelChatGPT.md) for
 sign-in, shared plan limits, data sent on request, and validation status.
 
+**Development assistant** adds local project memory/search, versioned design
+rules, compact task/evidence preparation, approved Codex jobs, usage oversight,
+bounded peer review, corrections and persistent validation/efficiency history.
+See [SentinelAssistant.md](SentinelAssistant.md) for operation and tested limits.
+Close and reopen an already running Sentinel after installing the update.
+
 ## What you can do
 
 * **Launch Aetheria** starts the installed game engine against this project,
@@ -70,9 +76,13 @@ Native callbacks still live in ADC, inside the game; Sentinel itself does not
 depend on the Godot scripting runtime. It does not inject a debugger, read game
 memory, intercept all operating-system faults or guarantee a native crash cause.
 
-Game launches from the editor are detected through ADC markers. For startup
-failures before ADC starts, Windows Godot process discovery checks `--path`
-against this specific project and excludes editor/project-manager processes.
+On Windows, Godot process discovery checks `--path` against this specific
+project and excludes editor/project-manager processes and the dedicated world
+server (`--world-server` or `WorldServer.tscn`). The background server can stay
+running while **Launch Aetheria** starts the playable client. ADC markers are
+linked to verified clients; an unfinished server marker or an old marker whose
+PID now belongs to another application cannot block launching. Headless
+diagnostic clients remain observable, including startup failures before ADC.
 Process command lines are inspected only when a Godot PID appears, discarded
 after matching, and not persisted. Other applications are not monitored.
 Exported games using a different executable name need a future explicit
@@ -162,6 +172,7 @@ Run the suite:
 
 ```powershell
 python tools/test_sentinel.py --godot 'C:/path/to/installed/Godot.exe'
+python -m unittest discover -s tools -p test_sentinel_launch_detection.py -v
 ```
 
 Local implementation evidence is in the task workspace's ignored

@@ -140,6 +140,9 @@ func refresh_view() -> void:
 	_restore_scroll.call_deferred()
 
 func select_spell(spell_id: String) -> bool:
+	if Network.online():
+		_set_status("Requesting spell selection…")
+		return Network.send_action({"type": "select_spell", "spell_id": spell_id})
 	var player := _player()
 	if player == null:
 		return false
@@ -152,6 +155,9 @@ func select_spell(spell_id: String) -> bool:
 	return true
 
 func select_combat_style(style: String) -> bool:
+	if Network.online():
+		_set_status("Requesting combat style…")
+		return Network.send_action({"type": "attack_style", "style": "blunt" if style.to_lower() == "crush" else style.to_lower()})
 	var player := _player()
 	if player == null:
 		return false
@@ -305,7 +311,9 @@ func _build_inventory(player: PlayerState) -> void:
 	if selected.has("sell_value"):
 		details.add_child(_label("Sell value: %d gold each" % int(selected.sell_value), 13, FantasyUI.GOLD, true))
 	if selected.has("cooking_level"):
-		details.add_child(_label("Campfire cooking: level %d\nBurn chance now: %.1f%% (0%% at level %d)\nSuccessful cook: %d XP, %.1f seconds" % [int(selected.cooking_level), CookingSession.burn_chance(player.get_skill_level("cooking"), selected) * 100.0, int(selected.no_burn_level), int(selected.cooking_xp), float(selected.cooking_seconds)], 13, FantasyUI.TEAL, true))
+		var window := CookingSession.reaction_window(player.get_skill_level("cooking"), selected)
+		var timing := "Untimed flip (mastered)" if is_inf(window) else "Flip window: %.2f seconds" % window
+		details.add_child(_label("Cooking: level %d\n%s (mastery at level %d)\nSuccessful flip: %d XP, %.1f seconds heating" % [int(selected.cooking_level), timing, int(selected.no_burn_level), int(selected.cooking_xp), float(selected.cooking_seconds)], 13, FantasyUI.TEAL, true))
 	if selected.has("fishing_level"):
 		var requirement := "Fishing skill requirement: %d." if String(selected.get("type", "")) == "Food" else "Requires Fishing %d."
 		details.add_child(_label((requirement % int(selected.fishing_level)) + " " + String(selected.get("description", "")), 13, FantasyUI.TEAL, true))
@@ -521,6 +529,10 @@ func _build_battle_stats(column: VBoxContainer, player: PlayerState) -> void:
 	column.add_child(_label("Weapon\n" + String(weapon.get("name", "Unarmed")), 13, FantasyUI.MUTED, true))
 
 func _handle_equip(item_name: String) -> void:
+	if Network.online():
+		Network.send_action({"type": "equip", "item_name": item_name})
+		_set_status("Requesting equipment change…")
+		return
 	var player := _player()
 	if player == null:
 		return
@@ -529,6 +541,10 @@ func _handle_equip(item_name: String) -> void:
 	refresh_view()
 
 func _handle_unequip(slot_name: String) -> void:
+	if Network.online():
+		Network.send_action({"type": "unequip", "slot": slot_name})
+		_set_status("Requesting equipment change…")
+		return
 	var player := _player()
 	if player == null:
 		return
@@ -622,6 +638,8 @@ func _cast_selected_spell() -> void:
 	_set_status("Casting %s. Hostile spells require your current target." % String(spell.get("name", "spell")))
 
 func _repair_spell_selection() -> void:
+	if Network.online():
+		return
 	var player := _player()
 	if player != null and not GameData.is_spell_unlocked(player.selected_spell_id, player.get_magic_level()):
 		player.selected_spell_id = ""
@@ -895,6 +913,9 @@ func _number(value: int) -> String:
 	return result
 
 func _empower_orb(element: String) -> void:
+	if Network.online():
+		_set_status("Use an enchanting station to empower an orb online.")
+		return
 	if game.combat.active_spell_casts.has(game.player.entity_id):
 		status_text = "Finish casting before empowering an orb."
 		refresh_view()

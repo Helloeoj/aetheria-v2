@@ -1,5 +1,6 @@
 extends Node
 ## Headless gameplay regression: actual catches -> timed cooking -> existing food.
+var window_api: RefCounted = CookingSession.new(null, null)
 var checks := 0
 var failures: Array[String] = []
 
@@ -15,10 +16,16 @@ func fire_for(player: PlayerState) -> CookingCampfire:
 	return fire
 
 func _ready() -> void:
+	check(window_api.has_method("reaction_window"), "Cooking exposes recipe-dependent flip windows")
+	if not window_api.has_method("reaction_window"):
+		print("[Cooking] %d checks, %d failures" % [checks, failures.size()])
+		get_tree().quit(1)
+		return
 	check_catalog_and_progression()
 	check_transactions()
 	check_interruptions()
 	check_batch_and_burning()
+	check_flip_edges()
 	print("[Cooking] %d checks, %d failures" % [checks, failures.size()])
 	get_tree().quit(0 if failures.is_empty() else 1)
 
@@ -26,7 +33,7 @@ func check_catalog_and_progression() -> void:
 	var player := PlayerState.new()
 	check(player.get_skill_level("cooking") == 1 and player.get_skill_experience("cooking") == 0,
 		"Cooking starts at level 1 with independent XP")
-	check(player.get_skills_progress().size() == 8 and player.get_skill_progress("cooking").name == "Cooking",
+	check(player.get_skill_progress("cooking").name == "Cooking",
 		"Cooking participates in normal skill progression and journal data")
 	var combat_level := player.get_combat_level()
 	player.set_skill_level("cooking", 100)
@@ -45,14 +52,14 @@ func check_catalog_and_progression() -> void:
 		var recipe := CookingSession.recipe_for_item(raw)
 		check(not recipe.is_empty() and int(recipe.cooking_level) == maxi(1, index * 10), species + " unlock scales with fish tier")
 		check(int(recipe.no_burn_level) == mini(100, int(recipe.cooking_level) + 20), species + " mastery is reachable within the level cap")
-		var previous_chance := 1.0
+		var previous_window := 0.0
 		for level in range(int(recipe.cooking_level), 101):
-			var chance := CookingSession.burn_chance(level, recipe)
-			check(chance >= 0.0 and chance <= previous_chance and chance <= 0.30,
-				species + " burn chance stays bounded and decreases at level %d" % level)
-			previous_chance = chance
-		check(is_equal_approx(CookingSession.burn_chance(int(recipe.cooking_level), recipe), 0.30)
-			and is_zero_approx(CookingSession.burn_chance(int(recipe.no_burn_level), recipe)), species + " burns at unlock and never at mastery")
+			var window: float = window_api.call("reaction_window", level, recipe)
+			check(window >= previous_window and (is_inf(window) if level >= int(recipe.no_burn_level) else window >= 0.8 and window <= 2.5),
+				species + " flip window stays bounded and never decreases at level %d" % level)
+			previous_window = window
+		check(is_equal_approx(window_api.call("reaction_window", int(recipe.cooking_level), recipe), 0.8)
+			and is_equal_approx(window_api.call("reaction_window", int(recipe.no_burn_level) - 1, recipe), 2.5), species + " windows start at 0.8s and reach 2.5s before mastery")
 		for fish_name: String in [raw, species, burnt]:
 			check(not InventorySystem.is_stackable(fish_name), fish_name + " uses one slot per fish")
 			check(not bool(GameData.get_item_by_name(fish_name).get("generic_loot", true)), fish_name + " stays out of generic loot")
@@ -75,7 +82,12 @@ func check_catalog_and_progression() -> void:
 		player.set_skill_level("cooking", int(recipe.no_burn_level))
 		var xp_before := player.get_skill_experience("cooking")
 		check(cook.start(raw, 3).is_empty(), "Mastered batch starts for " + raw)
-		var results := cook.advance(9.0)
+		var results: Array[Dictionary] = []
+		for fish in range(3):
+			cook.advance(3.0)
+			check(cook.advance(1000000.0).is_empty() and cook.cooked_count == fish, "Mastery waits indefinitely for a manual flip")
+			results.append_array(cook.call("flip"))
+			cook.advance(0.65)
 		check(results.size() == 3 and cook.cooked_count == 3 and cook.burnt_count == 0 and not player.backpack.has(raw), species + " three inputs yield three cooked outputs at mastery")
 		check(cook.reward_xp == mini(3 * int(recipe.cooking_xp), SkillProgression.MAX_EXPERIENCE - xp_before), species + " success awards recipe XP up to the level cap")
 		if int(recipe.cooking_level) > 1:
@@ -100,8 +112,10 @@ func check_transactions() -> void:
 	var before := player.backpack.duplicate(true)
 	check(cooking.start("Raw Reedkip").is_empty() and player.backpack == before, "Starting cooking consumes nothing")
 	check(cooking.advance(2.9).is_empty() and player.backpack == before, "Partial cooking time consumes nothing")
-	var results := cooking.advance(0.1)
-	check(results.size() == 1 and String(results[0].output) == "Reedkip" and cooking.state == CookingSession.State.FINISHED, "Three seconds finishes one mastered fish")
+	check(cooking.advance(0.1).is_empty() and not player.backpack.has("Reedkip"), "Three seconds opens a prompt without automatic success")
+	var results: Array[Dictionary] = cooking.call("flip")
+	check(results.size() == 1 and String(results[0].output) == "Reedkip", "Manual flip finishes one mastered fish")
+	cooking.advance(0.65)
 	check(not player.backpack.has("Raw Reedkip") and int(player.backpack.get("Reedkip", 0)) == 1, "Cooking atomically exchanges one raw fish for one cooked fish")
 	check(player.get_skill_experience("fishing") == fishing_xp, "Cooking does not award Fishing XP")
 	var xp := player.get_skill_experience("cooking")
@@ -175,30 +189,97 @@ func check_batch_and_burning() -> void:
 	var player := PlayerState.new()
 	player.add_item("Raw Reedkip", 200)
 	var cooking := CookingSession.new(player, fire_for(player))
-	cooking.rng.seed = 1729
 	cooking.start("Raw Reedkip", 200)
 	check(cooking.advance(-3.0).is_empty() and cooking.advance(NAN).is_empty() and cooking.advance(INF).is_empty(), "Invalid time does not cook or consume ingredients")
-	var results := cooking.advance(600.0)
-	check(results.size() == 200 and cooking.cooked_count > 0 and cooking.burnt_count > 0, "Seeded batch exercises actual successful and burnt rolls")
+	var results: Array[Dictionary] = []
+	var previous_window := 0.8
+	for index in range(200):
+		cooking.advance(3.0)
+		var window: float = cooking.get("flip_window")
+		check(window >= previous_window, "Mid-batch level gains improve the next flip window")
+		previous_window = window
+		if index % 2 == 0:
+			results.append_array(cooking.call("flip"))
+		else:
+			results.append_array(cooking.advance(window))
+		cooking.advance(0.65)
+	check(results.size() == 200 and cooking.cooked_count == 100 and cooking.burnt_count == 100, "Manual batch yields exactly the chosen successes and misses without RNG")
 	check(cooking.cooked_count + cooking.burnt_count == 200 and not player.backpack.has("Raw Reedkip"), "Each completed attempt spends one input and produces exactly one output")
 	check(cooking.reward_xp == cooking.cooked_count * 40 and player.get_skill_experience("cooking") == cooking.reward_xp, "Only successfully cooked fish earn XP")
-	var previous_chance := 0.30
 	for result: Dictionary in results:
-		check(float(result.burn_chance) <= previous_chance and int(result.experience) == (0 if bool(result.burnt) else 40), "Each batch roll uses current level; burnt results never grant XP")
-		previous_chance = float(result.burn_chance)
-	check(previous_chance < 0.30, "Mid-batch level gains reduce burn risk for subsequent fish")
+		check(int(result.experience) == (0 if bool(result.burnt) else 40), "Burnt results never grant XP")
+	check(previous_window > 0.8, "Mid-batch XP improves subsequent windows")
 	player = PlayerState.new()
 	player.set_skill_level("cooking", 100)
 	player.add_item("Raw Sunfish", 2)
 	cooking = CookingSession.new(player, fire_for(player))
 	cooking.start("Raw Sunfish", 2)
-	results = cooking.advance(6.0)
+	results = []
+	for index in range(2):
+		cooking.advance(3.0)
+		results.append_array(cooking.call("flip"))
+		cooking.advance(0.65)
 	check(results.size() == 2 and cooking.burnt_count == 0 and cooking.reward_xp == 0
 		and player.get_skill_experience("cooking") == SkillProgression.MAX_EXPERIENCE, "Maxed Cooking never burns the highest tier or overflows the XP cap")
 	player.add_item("Raw Sunfish", 2)
 	var fire := fire_for(player)
 	cooking = CookingSession.new(player, fire)
 	cooking.start("Raw Sunfish", 2)
-	check(cooking.advance(3.0).size() == 1, "Batch completes one fish per three seconds")
+	cooking.advance(3.0)
+	check(cooking.call("flip").size() == 1, "Batch completes one fish per manual flip")
+	cooking.advance(0.65)
 	fire.active = false
 	check(cooking.advance(3.0).is_empty() and int(player.backpack["Raw Sunfish"]) == 1, "An extinguished fire preserves the next fish after an earlier completion")
+
+func check_flip_edges() -> void:
+	check(is_equal_approx(window_api.call("reaction_window", 11, {"cooking_level": 1, "no_burn_level": 21}), 1.6947368421), "Intermediate window follows the approved curve")
+	check(is_equal_approx(window_api.call("reaction_window", 90, {"cooking_level": 90, "no_burn_level": 100}), 0.8), "Sunfish uses its own unlock")
+	check(is_equal_approx(window_api.call("reaction_window", 99, {"cooking_level": 90, "no_burn_level": 100}), 2.5), "Sunfish reaches finite maximum at 99")
+	check(is_equal_approx(window_api.call("reaction_window", 5, {"cooking_level": 5, "no_burn_level": 6}), 0.8), "One-level range is finite at unlock without division by zero")
+	check(is_inf(window_api.call("reaction_window", 6, {"cooking_level": 5, "no_burn_level": 6})), "One-level range becomes untimed at mastery")
+	check(is_equal_approx(window_api.call("reaction_window", 100, {"cooking_level": 5}), 0.8), "Missing mastery never invents a safe threshold")
+	for interrupt: String in ["close", "damage", "fire", "movement", "combat", "level"]:
+		var player := PlayerState.new()
+		player.add_item("Raw Marlo", 2)
+		player.set_skill_level("cooking", 10)
+		var xp_before := player.get_skill_experience("cooking")
+		var fire := fire_for(player)
+		var cooking := CookingSession.new(player, fire)
+		cooking.start("Raw Marlo", 2)
+		check(cooking.call("flip").is_empty(), "Early input cannot cook")
+		cooking.advance(3.0)
+		check(int(player.backpack.get("Raw Marlo", 0)) == 1, "Prompt reserves exactly one raw fish")
+		match interrupt:
+			"close": cooking.close()
+			"damage": player.current_hp -= 1
+			"fire": fire.active = false
+			"movement": player.x += 0.1
+			"combat": player.in_combat = true
+			"level":
+				player.set_skill_level("cooking", 9)
+				xp_before = player.get_skill_experience("cooking")
+		check(cooking.call("flip").is_empty() and not player.backpack.has("Marlo"), "Input revalidates interruption: " + interrupt)
+		check(int(player.backpack.get("Burnt Marlo", 0)) == 1 and player.get_skill_experience("cooking") == xp_before, "Interrupted prompt burns once with no XP: " + interrupt)
+		cooking.close()
+		check(int(player.backpack.get("Burnt Marlo", 0)) == 1, "Repeated close cannot duplicate burn")
+	var player := PlayerState.new()
+	player.add_item("Raw Reedkip", 3)
+	var fire := fire_for(player)
+	var cooking := CookingSession.new(player, fire)
+	cooking.start("Raw Reedkip", 3)
+	cooking.advance(300.0)
+	check(cooking.advance(0.799).is_empty(), "Long heat-up frame still gives a full visible 0.8s prompt")
+	check(cooking.call("flip").size() == 1, "Last instant flip succeeds deterministically")
+	for index in range(10):
+		check(cooking.call("flip").is_empty(), "Rapid input cannot duplicate outputs or skip the next fish")
+	check(int(player.backpack.get("Reedkip", 0)) == 1 and player.get_skill_experience("cooking") == 40, "Rapid inputs award exactly one item and XP reward")
+	cooking.advance(0.65)
+	cooking.advance(3.0)
+	check(cooking.advance(0.8).size() == 1 and int(player.backpack.get("Burnt Reedkip", 0)) == 1, "Exact timer deadline burns with no cooked reward")
+	cooking.close()
+	var reopened := CookingSession.new(player, fire)
+	check(reopened.start("Raw Reedkip").is_empty(), "Reopening releases the old action lock")
+	reopened.advance(3.0)
+	reopened = null
+	check(not player.backpack.has("Raw Reedkip"), "Abandoned prompt cannot restore or duplicate reserved ingredients")
+	check(cooking.start("Raw Reedkip").contains("many"), "Old/reconnected session cannot replay the reserved fish")

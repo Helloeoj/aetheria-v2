@@ -39,6 +39,7 @@ func trial(fish_index: int, seed_value: int, previous_balance: bool, digital: bo
 	session.remaining = session.distance
 	session.state = FishingSession.State.FIGHT
 	session.rng.seed = seed_value
+	session.prepare_fight()
 	var held_input := 0.0
 	var previous_observed_position := 0.0
 	var highest_strain := 0.0

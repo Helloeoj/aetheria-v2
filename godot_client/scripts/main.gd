@@ -61,6 +61,7 @@ var food_notice: Label
 var food_notice_time := 0.0
 var crafting_panel: Control
 var cooking_controller: Node
+var online_view: Node
 
 func request_crafting(station: Node2D) -> void:
 	if cooking_controller != null and cooking_controller.panel.visible:
@@ -102,6 +103,8 @@ func _setup_crafting() -> void:
 		add_child(station)
 
 func set_quick_food(item_name: String) -> bool:
+	if Network.online():
+		return Network.send_action({"type": "set_quick_food", "item_name": item_name})
 	if int(player.backpack.get(item_name, 0)) <= 0 or int(GameData.get_item_by_name(item_name).get("food_healing", 0)) <= 0:
 		return false
 	player.quick_food_name = item_name
@@ -109,6 +112,9 @@ func set_quick_food(item_name: String) -> bool:
 	return true
 
 func eat_food(item_name: String) -> Dictionary:
+	if Network.online():
+		Network.send_action({"type": "eat", "item_name": item_name})
+		return {"ok": true, "healing": 0, "message": "Food request sent to the server."}
 	var reason := ""
 	var actor: CombatActor = combat.actors.get(player.entity_id)
 	if actor == null:
@@ -171,6 +177,8 @@ func _update_food_ui() -> void:
 	food_button.icon = ItemVisualLibrary.texture(item_name) if not item_name.is_empty() else FantasyUI.icon("health")
 
 func toggle_skill_debug_panel() -> void:
+	if Network.online():
+		return
 	if skill_debug_panel == null:
 		return
 	var show_panel := not skill_debug_panel.visible
@@ -194,6 +202,8 @@ func toggle_skill_debug_panel() -> void:
 	spell_cast_requested = false
 
 func start_fishing_test() -> void:
+	if Network.online():
+		return
 	if fishing_panel.visible:
 		return
 	if player.current_hp <= 0 or player.in_combat or combat.active_spell_casts.has(player.entity_id):
@@ -242,7 +252,8 @@ func request_fishing(spot: FishingSpot) -> void:
 	_reset_held_movement()
 	interactions.cancel_walk()
 	interactions.clear_drop_selection()
-	_clear_target()
+	if not Network.online():
+		_clear_target()
 	context_menu.dismiss()
 	spawn_menu.hide()
 	item_menu.hide()
@@ -270,10 +281,18 @@ func try_nearby_fishing() -> bool:
 	return true
 
 func _ready() -> void:
+	if OS.has_feature("tester_client") and not Network.authenticated:
+		get_tree().call_deferred("change_scene_to_file", "res://scenes/Login.tscn")
+		return
 	# Character progress belongs to the running session, rather than a map scene.
 	var travel := get_node_or_null("/root/SceneTravel")
 	var resuming_character := false
-	if travel != null:
+	if Network.online() and Network.authenticated:
+		var decoded: Dictionary = preload("res://network/character_codec.gd").decode(Network.saved_state, Network.username, Network.character_id)
+		if decoded.ok:
+			player = decoded.player
+			resuming_character = true
+	elif travel != null and not has_meta("online_server_geometry"):
 		resuming_character = travel.bind_game(self)
 	DiagnosticCore.register_context_provider(_diagnostic_context)
 	AetheriaDiagnostics.event("Character", "initialize player", {"entity": player.entity_id})
@@ -292,7 +311,7 @@ func _ready() -> void:
 			map_camera.zoom = Vector2.ONE * clampf(map_camera.zoom.x, CAMERA_MIN_ZOOM, CAMERA_MAX_ZOOM)
 			map_camera.process_callback = Camera2D.CAMERA2D_PROCESS_PHYSICS
 			map_camera.make_current()
-	if travel != null:
+	if travel != null and not has_meta("online_server_geometry") and not Network.online():
 		travel.resolve_spawn(self)
 	if not resuming_character and not initial_spawn_id.is_empty():
 		var initial_spawn := get_parent().get_node_or_null("SpawnPoints/" + initial_spawn_id) as Node2D
@@ -443,6 +462,28 @@ func _ready() -> void:
 	_update_map_camera()
 	print("[UI] I opens the character journal; K toggles skill testing. F5 spawns monsters; F7 opens the sprite viewer; P tests fishing anywhere.")
 	queue_redraw()
+	if Network.online():
+		online_view = preload("res://network/online_world_view.gd").new()
+		add_child(online_view)
+		online_view.configure(self)
+		Network.bind_game(self)
+		var social := get_node_or_null("/root/Social")
+		if social != null and social.panel != null:
+			social.panel.show()
+	elif not has_meta("online_server_geometry"):
+		var online_login := Button.new()
+		online_login.name = "OnlineLoginButton"
+		online_login.text = "Developer sandbox · Online login"
+		online_login.position = Vector2(970, 10)
+		online_login.custom_minimum_size = Vector2(285, 42)
+		online_login.focus_mode = Control.FOCUS_NONE
+		online_login.tooltip_text = "This sandbox keeps all developer controls. Log in separately to play your saved online character."
+		online_login.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/Login.tscn"))
+		ui_root.add_child(online_login)
+
+func apply_online_snapshot(snapshot: Dictionary) -> void:
+	if online_view != null:
+		online_view.apply(snapshot)
 
 func _update_ui_scale() -> void:
 	if ui_root == null:
@@ -452,8 +493,8 @@ func _update_ui_scale() -> void:
 	ui_root.scale = Vector2.ONE * factor
 	ui_root.size = pixels / factor
 	if food_button != null:
-		food_button.position = Vector2(22, ui_root.size.y - 82)
-		food_notice.position = Vector2(22, ui_root.size.y - 116)
+		food_button.position = Vector2(22, ui_root.size.y - 294)
+		food_notice.position = Vector2(22, ui_root.size.y - 328)
 	if inventory_menu != null:
 		inventory_menu._update_layout()
 	if skill_debug_panel != null:
@@ -468,10 +509,12 @@ func _diagnostic_context() -> Dictionary:
 	return {"scene": scene.scene_file_path if scene != null else scene_file_path, "map": area_name if map_scene_mode else "combat demo", "player_id": player.entity_id, "player_position_tiles": [player.x, player.y], "target_id": player.current_target}
 
 func _input(event: InputEvent) -> void:
+	var social: Node = get_node_or_null("/root/Social")
+	if social != null and social.handle_game_key(event, self):
+		return
 	if cooking_controller != null and cooking_controller.panel.visible:
 		if event is InputEventKey:
-			if event.pressed and event.keycode == KEY_ESCAPE:
-				cooking_controller.panel.close()
+			cooking_controller.panel.handle_key(event)
 			get_viewport().set_input_as_handled()
 		return
 	if crafting_panel != null and crafting_panel.visible:
@@ -553,6 +596,16 @@ func _on_practice_skill_levels_changed() -> void:
 	reset_skill_training_session()
 
 func _physics_process(delta: float) -> void:
+	if Network.online():
+		if interactions.walking:
+			interactions.update_walk(delta)
+		if spell_cast_requested:
+			spell_cast_requested = false
+			_cast_selected_spell()
+		_update_map_camera()
+		_update_food_ui()
+		queue_redraw()
+		return
 	skill_training_session.advance(delta)
 	food_notice_time = maxf(0.0, food_notice_time - delta)
 	if fishing_notice_time > 0.0:
@@ -583,6 +636,11 @@ func _physics_process(delta: float) -> void:
 	queue_redraw()
 
 func _unhandled_input(event: InputEvent) -> void:
+	if Network.online() and (not Network.authenticated or (online_view != null and online_view.activity_panel.visible)):
+		return
+	if Network.online() and event is InputEventKey and event.keycode in [KEY_F5, KEY_F6, KEY_F7]:
+		get_viewport().set_input_as_handled()
+		return
 	if cooking_controller != null and cooking_controller.panel.visible:
 		return
 	if crafting_panel != null and crafting_panel.visible:
@@ -738,6 +796,11 @@ func _update_target_highlight() -> void:
 		sprite.set_targeted(monster.entity_id == player.current_target)
 
 func _set_target(entity_id: String) -> void:
+	if Network.online():
+		Network.send_action({"type": "target", "target_id": entity_id})
+		player.current_target = entity_id
+		_update_target_highlight()
+		return
 	auto_chase_target = false
 	combat.player_auto_attack_enabled = false
 	player.current_target = entity_id
@@ -747,6 +810,11 @@ func _set_target(entity_id: String) -> void:
 	_update_target_highlight()
 
 func _clear_target() -> void:
+	if Network.online():
+		Network.send_action({"type": "target", "target_id": ""})
+		player.current_target = ""
+		_update_target_highlight()
+		return
 	auto_chase_target = false
 	combat.player_auto_attack_enabled = false
 	player.current_target = ""
@@ -762,6 +830,8 @@ func _cycle_target() -> void:
 	_set_target(target_list[target_index])
 
 func spawn_monster_by_id(monster_id: int) -> void:
+	if Network.online():
+		return
 	AetheriaDiagnostics.event("Character", "spawn monster", {"template_id": monster_id})
 	var template: Dictionary = _active_monster_database().get(monster_id, {})
 	if template.is_empty():
@@ -911,6 +981,9 @@ func _spawn_ground_drop(item_name: String, quantity: int, at: Vector2) -> bool:
 	return true
 
 func _collect_ground_drop(drop: GroundItemDrop) -> bool:
+	if Network.online():
+		var sprite: Node2D = actor_sprites.get(player.entity_id)
+		return is_instance_valid(drop) and sprite != null and sprite.global_position.distance_to(drop.global_position) <= TILE_SIZE * 2.0 and Network.send_action({"type": "pickup", "drop_id": str(drop.get_meta("online_drop_id", ""))})
 	if not is_instance_valid(drop) or drop.collected or drop not in ground_drops:
 		return false
 	AetheriaDiagnostics.event("Inventory", "collect ground item", {"item": drop.item_name, "quantity": drop.quantity})
@@ -925,6 +998,8 @@ func _collect_ground_drop(drop: GroundItemDrop) -> bool:
 	return true
 
 func drop_inventory_item(item_name: String, quantity: int = 1) -> bool:
+	if Network.online():
+		return Network.send_action({"type": "drop", "item_name": item_name, "quantity": quantity})
 	AetheriaDiagnostics.event("Inventory", "drop backpack item", {"item": item_name, "quantity": quantity})
 	# Backpack ownership is the sole source; worn slots cannot be dropped.
 	var sprite: ActorSprite = actor_sprites.get(player.entity_id)
@@ -941,6 +1016,8 @@ func drop_inventory_item(item_name: String, quantity: int = 1) -> bool:
 	return true
 
 func drop_fishing_pale_item(slot: int, expected_name: String = "") -> bool:
+	if Network.online():
+		return Network.send_action({"type": "pale_drop", "slot": slot})
 	if slot < 0 or slot >= player.fishing_pale.size():
 		return false
 	var fish_name := player.fishing_pale[slot]
@@ -973,6 +1050,15 @@ func _pick_up_nearest_drop() -> void:
 		_collect_ground_drop(nearest)
 
 func _cycle_spell_selection(direction: int) -> void:
+	if Network.online():
+		var spells := player.get_known_spells()
+		if not spells.is_empty():
+			var index := -1
+			for i in spells.size():
+				if spells[i].id == player.selected_spell_id:
+					index = i
+			Network.send_action({"type": "select_spell", "spell_id": spells[posmod(index + direction, spells.size())].id})
+		return
 	var spell := player.cycle_known_spell(direction)
 	if spell.is_empty():
 		print("[Spellbook] No spells are unlocked.")
@@ -985,6 +1071,9 @@ func _cycle_spell_selection(direction: int) -> void:
 	])
 
 func _cast_selected_spell() -> void:
+	if Network.online():
+		Network.send_action({"type": "cast", "spell_id": player.selected_spell_id, "target_id": player.current_target})
+		return
 	if player.selected_spell_id.is_empty():
 		_cycle_spell_selection(1)
 		return
@@ -1090,6 +1179,9 @@ func _query_map_terrain_collision(start: Vector2, finish: Vector2) -> Dictionary
 	}
 
 func _start_auto_chase() -> void:
+	if Network.online():
+		Network.send_action({"type": "attack", "target_id": player.current_target})
+		return
 	var actor: CombatActor = combat.actors.get("player")
 	if actor == null or not actor.is_alive:
 		return
