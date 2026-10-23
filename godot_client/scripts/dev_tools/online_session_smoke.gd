@@ -10,6 +10,14 @@ func check(condition: bool, label: String) -> void:
 		failures += 1
 		printerr("[Online session FAIL] ", label)
 
+static func _next_ready_snapshot_count(count: int, serial: int, previous_serial: int, interval_ms: float, can_move: bool) -> int:
+	if serial <= previous_serial:
+		return count
+	if not can_move:
+		return 0
+	# The snapshot channel is unreliable; lost packets may skip serials.
+	return count + 1 if interval_ms >= 20.0 and interval_ms <= 250.0 else 1
+
 func _ready() -> void:
 	_run.call_deferred()
 	get_tree().create_timer(90).timeout.connect(func() -> void:
@@ -60,7 +68,7 @@ func _run() -> void:
 	await get_tree().create_timer(1).timeout
 	check(net.latest_snapshot.has("movement_ack") and net.latest_snapshot.has("server_time"), "Live world publishes movement reconciliation metadata")
 	# Loading the full map blocks polling and drains queued startup snapshots.
-	# Require two new consecutive movement-enabled snapshots at live cadence;
+	# Require two fresh movement-enabled snapshots at live cadence;
 	# prediction deliberately freezes after 250 ms without authoritative state.
 	var readiness_at := Time.get_ticks_usec()
 	var previous_snapshot := int(net.latest_snapshot.get("snapshot_id", -1))
@@ -74,13 +82,10 @@ func _run() -> void:
 			continue
 		var now := Time.get_ticks_usec()
 		last_interval_ms = float(now - previous_received_at) / 1000.0 if previous_received_at > 0 else -1.0
-		if bool(net.latest_snapshot.get("movement_enabled", false)) and game.online_view._has_self:
-			ready_snapshots = ready_snapshots + 1 if serial == previous_snapshot + 1 and last_interval_ms >= 20.0 and last_interval_ms <= 250.0 else 1
-		else:
-			ready_snapshots = 0
+		ready_snapshots = _next_ready_snapshot_count(ready_snapshots, serial, previous_snapshot, last_interval_ms, bool(net.latest_snapshot.get("movement_enabled", false)) and game.online_view._has_self)
 		previous_snapshot = serial
 		previous_received_at = now
-	check(ready_snapshots >= 2, "Post-load transport supplies consecutive movement-enabled snapshots within 250ms")
+	check(ready_snapshots >= 2, "Post-load transport supplies fresh movement-enabled snapshots within 250ms")
 	print("[Live readiness] snapshots=%d; interval=%.2fms; wait=%.2fms" % [ready_snapshots, last_interval_ms, float(Time.get_ticks_usec() - readiness_at) / 1000.0])
 	if ready_snapshots < 2:
 		get_tree().quit(1)

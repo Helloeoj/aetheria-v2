@@ -21,6 +21,12 @@ func _run() -> void:
 	if failures > 0:
 		quit(1)
 		return
+	var session_fixture = load("res://scripts/dev_tools/online_session_smoke.gd")
+	check(session_fixture._next_ready_snapshot_count(1, 3272, 3270, 248.20, true) == 2, "Readiness accepts timely fresh authority across an unreliable snapshot ID gap")
+	check(session_fixture._next_ready_snapshot_count(1, 3272, 3270, 250.01, true) == 1, "Skipped snapshots cannot extend the 250ms readiness allowance")
+	check(session_fixture._next_ready_snapshot_count(1, 3272, 3270, 0.7, true) == 1, "A burst of queued snapshots cannot establish live readiness")
+	check(session_fixture._next_ready_snapshot_count(1, 3270, 3270, 100.0, true) == 1, "Duplicate snapshot cannot advance readiness")
+	check(session_fixture._next_ready_snapshot_count(1, 3272, 3270, 100.0, false) == 0, "Movement-disabled snapshot cancels readiness")
 	var model = load(path).new()
 	model.reset(Vector2.ZERO)
 	model.record_input(1, Vector2.RIGHT)
