@@ -1,6 +1,8 @@
 extends Node
 const Protocol = preload("res://network/world_protocol.gd")
 const SnapshotTransport = preload("res://network/snapshot_transport.gd")
+const EncryptedClient = preload("res://network/encrypted_enet_client.gd")
+const BetaProfile = preload("res://network/beta_profile.gd")
 ## Shared RPC contract; world simulation and durable saves live in the host.
 signal status_changed
 signal joined
@@ -23,6 +25,9 @@ var revision := -1
 var sequence := 0
 var account_token := ""
 var account_url := "http://127.0.0.1:8780"
+var beta_profile: Dictionary = {}
+var release_id := ""
+var _encrypted_client: RefCounted
 var auto_scene := true
 var game: Node
 var _ticket := ""
@@ -37,6 +42,16 @@ var _last_direction := Vector2.ZERO
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	if OS.has_feature("tester_client"):
+		beta_profile = BetaProfile.read_profile()
+		if beta_profile.is_empty():
+			status = "This tester installation is incomplete. Reinstall using the launcher."
+		else:
+			account_url = String(beta_profile.account_url)
+			world_id = String(beta_profile.world_id)
+			release_id = String(beta_profile.release_id)
+	elif not OS.has_feature("dedicated_server") and not OS.get_cmdline_user_args().has("--world-server"):
+		_configure_local_transport()
 	multiplayer.connected_to_server.connect(_connected)
 	multiplayer.connection_failed.connect(_lost.bind("The world server could not be reached."))
 	multiplayer.server_disconnected.connect(_lost.bind("Connection lost. Your character remains on the server while it saves."))
@@ -47,21 +62,44 @@ func _ready() -> void:
 	if OS.get_cmdline_user_args().has("--world-server"):
 		mode = Mode.SERVER
 
-func host(port: int, max_players: int, bind_address: String = "127.0.0.1") -> Error:
-	if max_players < 1 or max_players > 4079 or bind_address != "127.0.0.1":
+func _configure_local_transport() -> void:
+	# The owner can keep playing from the editor while this PC hosts encrypted beta.
+	var path := OS.get_environment("LOCALAPPDATA").path_join("Aetheria/online/world.json")
+	if not FileAccess.file_exists(path):
+		return
+	var config: Variant = JSON.parse_string(FileAccess.get_file_as_string(path))
+	if not config is Dictionary or not config.has("tls_certificate") or not config.has("release_id"):
+		return
+	release_id = String(config.release_id)
+	world_id = String(config.get("world_id", "world-1"))
+	beta_profile = {"world_host": "127.0.0.1", "world_port": int(config.get("port", 24567)),
+		"tls_certificate": String(config.tls_certificate), "tls_name": String(config.get("tls_name", "aetheria-beta"))}
+
+func host(port: int, max_players: int, bind_address: String = "127.0.0.1", tls_options: TLSOptions = null) -> Error:
+	if OS.has_feature("tester_client"):
+		return ERR_UNAUTHORIZED
+	if max_players < 1 or max_players > 4079 or (bind_address != "127.0.0.1" and (tls_options == null or (bind_address != "*" and not bind_address.is_valid_ip_address()))):
 		return ERR_INVALID_PARAMETER
 	mode = Mode.SERVER
 	var peer := ENetMultiplayerPeer.new()
 	peer.set_bind_ip(bind_address)
 	var error := peer.create_server(port, max_players + 16, 3)
+	if error == OK and tls_options != null:
+		error = peer.host.dtls_server_setup(tls_options)
 	if error == OK:
 		multiplayer.multiplayer_peer = peer
+	else:
+		peer.close()
 	return error
 
 func join_world(ticket: String, address: String = "127.0.0.1", port: int = 24567) -> Error:
-	# Plaintext admission is restricted to this PC; Internet transport fails closed.
-	if address not in ["127.0.0.1", "localhost", "::1"]:
-		status = "Remote worlds require encrypted transport and are not enabled yet."
+	if OS.has_feature("tester_client") and beta_profile.is_empty():
+		return ERR_UNCONFIGURED
+	if not beta_profile.is_empty():
+		address = String(beta_profile.world_host)
+		port = int(beta_profile.world_port)
+	elif address not in ["127.0.0.1", "localhost", "::1"]:
+		status = "A verified encrypted world profile is required."
 		status_changed.emit()
 		return ERR_UNAUTHORIZED
 	mode = Mode.CLIENT
@@ -71,10 +109,19 @@ func join_world(ticket: String, address: String = "127.0.0.1", port: int = 24567
 	_snapshot_transport.reset()
 	_last_direction = Vector2.ZERO
 	_scene_loading = false
-	var peer := ENetMultiplayerPeer.new()
-	var error := peer.create_client(address, port, 3)
+	var error := OK
+	if not beta_profile.is_empty():
+		var certificate := X509Certificate.new()
+		error = certificate.load(String(beta_profile.tls_certificate))
+		if error == OK:
+			_encrypted_client = EncryptedClient.new()
+			error = _encrypted_client.start(address, port, String(beta_profile.tls_name), certificate)
+	else:
+		var peer := ENetMultiplayerPeer.new()
+		error = peer.create_client(address, port, 3)
+		if error == OK:
+			multiplayer.multiplayer_peer = peer
 	if error == OK:
-		multiplayer.multiplayer_peer = peer
 		status = "Connecting to world…"
 	else:
 		status = "The world could not be reached."
@@ -82,7 +129,7 @@ func join_world(ticket: String, address: String = "127.0.0.1", port: int = 24567
 	return error
 
 func _connected() -> void:
-	if mode == Mode.CLIENT:
+	if mode == Mode.CLIENT and not _ticket.is_empty():
 		_request.rpc_id(1, Protocol.pack({"v": 1, "type": "join", "ticket": _ticket, "world_id": world_id}))
 		_ticket = ""
 
@@ -94,6 +141,43 @@ func bind_game(value: Node) -> void:
 
 func online() -> bool:
 	return mode == Mode.CLIENT
+
+func open_developer_sandbox() -> bool:
+	if OS.has_feature("tester_client"):
+		return false
+	# Online progress must finish its authoritative save/logout before testing.
+	if authenticated:
+		return false
+	if multiplayer.multiplayer_peer != null:
+		multiplayer.multiplayer_peer.close()
+		multiplayer.multiplayer_peer = null
+	_revoke_account_session(account_token)
+	account_token = ""
+	_ticket = ""
+	character_id = ""
+	username = ""
+	region_id = "outskirts"
+	saved_state = {}
+	latest_snapshot = {}
+	revision = -1
+	sequence = 0
+	_snapshot_sequence = -1
+	_snapshot_transport.reset()
+	_scene_loading = false
+	_last_direction = Vector2.ZERO
+	_moving_elapsed = 0.0
+	game = null
+	mode = Mode.OFFLINE
+	status = "Developer sandbox — progress is not saved online."
+	var travel := get_node_or_null("/root/SceneTravel")
+	if travel != null:
+		travel.call("clear_online_binding")
+	var social := get_node_or_null("/root/Social")
+	if social != null and social.panel != null:
+		social.panel.show()
+	status_changed.emit()
+	get_tree().call_deferred("change_scene_to_file", "res://scenes/EastOutskirtsLayered.tscn")
+	return true
 
 func send_action(command: Dictionary) -> bool:
 	if not online() or not authenticated:
@@ -131,6 +215,22 @@ func send_snapshot(peer_id: int, data: Dictionary) -> void:
 			_state.rpc_id(peer_id, packet)
 
 func _process(delta: float) -> void:
+	if _encrypted_client != null:
+		var error: Error = _encrypted_client.poll()
+		if error == OK:
+			multiplayer.multiplayer_peer = _encrypted_client.multiplayer_peer
+			error = _encrypted_client.attach_server()
+			if error != OK:
+				_encrypted_client.close()
+				_encrypted_client = null
+				_lost("The encrypted world connection could not be attached.")
+				return
+			_encrypted_client = null
+			_connected()
+		elif error != ERR_BUSY:
+			_encrypted_client = null
+			_ticket = ""
+			_lost("The encrypted world connection could not be verified. Retry from the launcher.")
 	if mode == Mode.SERVER:
 		for id: int in _pending.keys():
 			if Time.get_ticks_msec() - int(_pending[id]) > 15000:
@@ -157,6 +257,8 @@ func mark_admitted(peer_id: int) -> void:
 	_pending.erase(peer_id)
 
 func _departed(id: int) -> void:
+	if mode == Mode.CLIENT and id == 1:
+		_lost("Connection lost. Your character remains on the server while it saves.")
 	_pending.erase(id)
 	_incoming_sequences.erase(id)
 	_budget.erase(id)

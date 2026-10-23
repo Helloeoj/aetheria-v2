@@ -126,6 +126,9 @@ func _layout() -> void:
 func open(at_spot: FishingSpot) -> void:
 	spot = at_spot
 	session = FishingSession.new(game.player)
+	if Network.online():
+		session = preload("res://network/remote_minigame_sessions.gd").Fish.new(game.player, Network, str(game.get_parent().get_path_to(at_spot)))
+		preload("res://network/remote_minigame_sessions.gd").raise_modal(self, game)
 	last_reward = false
 	steering = 0.0
 	keyboard_steering = 0.0
@@ -140,6 +143,7 @@ func open(at_spot: FishingSpot) -> void:
 	_refresh_pale()
 
 func close() -> void:
+	preload("res://network/remote_minigame_sessions.gd").restore_modal(self, game)
 	# Switching to skill tools must release any native selector popup as well.
 	rod_picker.get_popup().hide()
 	bait_picker.get_popup().hide()
@@ -190,6 +194,9 @@ func _show_pale_actions(slot: int) -> void:
 func move_pale_catch(slot: int, expected_name: String) -> void:
 	if slot < 0 or slot >= game.player.fishing_pale.size() or game.player.fishing_pale[slot] != expected_name:
 		return
+	if Network.online():
+		session.transport.send_action({"type":"pale_move","slot":slot})
+		return
 	if game.player.move_fishing_catch_to_inventory(slot):
 		session.message = "Moved %s to inventory." % expected_name
 		_refresh_pale()
@@ -204,6 +211,11 @@ func drop_pale_catch(slot: int, expected_name: String) -> void:
 
 func empty_pale() -> void:
 	game.context_menu.dismiss()
+	if Network.online():
+		for slot in game.player.fishing_pale.size():
+			if not game.player.fishing_pale[slot].is_empty():
+				session.transport.send_action({"type":"pale_move","slot":slot})
+		return
 	var moved: int = game.player.empty_fishing_pale_to_inventory()
 	if moved > 0:
 		session.message = "Moved %d fish from Fishing Pale to inventory." % moved

@@ -4,6 +4,7 @@ var api: Node
 var username: LineEdit
 var password: LineEdit
 var confirmation: LineEdit
+var invite: LineEdit
 var message: Label
 var submit_button: Button
 var register_mode := false
@@ -47,6 +48,10 @@ func _ready() -> void:
 	password = _entry(column, "Password — at least 15 characters", true)
 	confirmation = _entry(column, "Confirm password", true)
 	confirmation.hide()
+	if OS.has_feature("tester_client") or not Network.release_id.is_empty():
+		invite = _entry(column, "Beta invitation code", true)
+		invite.max_length = 128
+		invite.hide()
 	var preferences := ConfigFile.new()
 	preferences.load("user://online_ui.cfg")
 	username.text = String(preferences.get_value("login", "username", ""))
@@ -62,10 +67,20 @@ func _ready() -> void:
 			return
 		register_mode = not register_mode
 		confirmation.visible = register_mode
+		if invite != null:
+			invite.visible = register_mode
 		submit_button.text = "Create account and play" if register_mode else "Log in and play"
 		toggle.text = "I already have an account" if register_mode else "Create a new account"
 		message.text = "Email is optional. Use 3–20 letters, numbers or underscores for your username." if register_mode else "Enter your username and password.")
 	column.add_child(toggle)
+	var sandbox := Button.new()
+	sandbox.name = "DeveloperSandboxButton"
+	sandbox.text = "Developer sandbox — unsaved testing"
+	sandbox.custom_minimum_size.y = 40
+	sandbox.tooltip_text = "Use F5/F6/F7, K and P to test without changing an online character."
+	sandbox.pressed.connect(func() -> void: Network.open_developer_sandbox())
+	column.add_child(sandbox)
+	sandbox.visible = not OS.has_feature("tester_client")
 	message = Label.new()
 	message.text = Network.status if Network.status != "Not connected" else "Enter your username and password."
 	message.custom_minimum_size = Vector2(425, 75)
@@ -82,7 +97,7 @@ func _ready() -> void:
 	var social := get_node_or_null("/root/Social")
 	if social != null and social.panel != null:
 		social.panel.hide()
-	if DisplayServer.get_name() != "headless":
+	if DisplayServer.get_name() != "headless" and not OS.has_feature("tester_client"):
 		_start_local()
 	username.grab_focus()
 
@@ -104,6 +119,9 @@ func _start_local() -> void:
 func _submit() -> void:
 	if busy:
 		return
+	if OS.has_feature("tester_client") and Network.beta_profile.is_empty():
+		_finish_error("This tester installation is incomplete. Reinstall using the launcher.")
+		return
 	busy = true
 	submit_button.disabled = true
 	var name_value := username.text.strip_edges()
@@ -113,7 +131,11 @@ func _submit() -> void:
 	confirmation.clear()
 	message.text = "Creating account…" if register_mode else "Signing in…"
 	if register_mode:
-		var registration: Dictionary = await api.request_json("/api/register", {"username": name_value, "password": password_value, "password_confirmation": confirmation_value})
+		var registration_body := {"username": name_value, "password": password_value, "password_confirmation": confirmation_value}
+		if invite != null:
+			registration_body["invite_code"] = invite.text.strip_edges()
+			invite.clear()
+		var registration: Dictionary = await api.request_json("/api/register", registration_body)
 		if not registration.get("ok", false):
 			_finish_error(String(registration.get("message", "Account creation failed.")))
 			return
@@ -125,7 +147,7 @@ func _submit() -> void:
 		return
 	Network.account_token = String(login.token)
 	Network.username = String(login.username)
-	var admission: Dictionary = await api.request_json("/api/admit", {"world_id": Network.world_id}, Network.account_token)
+	var admission: Dictionary = await api.request_json("/api/admit", {"world_id": Network.world_id, "release_id": Network.release_id}, Network.account_token)
 	if not admission.get("ok", false):
 		_finish_error(String(admission.get("message", "World admission failed.")))
 		return

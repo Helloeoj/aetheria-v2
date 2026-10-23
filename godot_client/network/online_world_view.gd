@@ -3,7 +3,6 @@ extends Node
 const Codec = preload("res://network/character_codec.gd")
 const Prediction = preload("res://network/movement_prediction.gd")
 const Interpolation = preload("res://network/snapshot_interpolation.gd")
-const ActivityPanel = preload("res://network/online_activity_panel.gd")
 var game: Node
 var activity_panel: Control
 var status_label: Label
@@ -20,16 +19,16 @@ var _movement_enabled := false
 func configure(owner_game: Node) -> void:
 	game = owner_game
 	_prediction.move_resolver = _resolve_movement
-	activity_panel = ActivityPanel.new()
-	game.ui_root.add_child(activity_panel)
-	activity_panel.configure(game)
+	activity_panel = game.fishing_panel
 	var logout := Button.new()
+	logout.name = "OnlineLogoutButton"
 	logout.text = "Save and log out"
 	logout.position = Vector2(1040, 12)
 	logout.custom_minimum_size = Vector2(210, 38)
 	logout.pressed.connect(Network.request_logout)
 	game.ui_root.add_child(logout)
 	status_label = Label.new()
+	status_label.name = "OnlineStatusLabel"
 	status_label.position = Vector2(735, 53)
 	status_label.size = Vector2(510, 42)
 	status_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
@@ -206,6 +205,7 @@ func _resolve_movement(start: Vector2, motion: Vector2) -> Vector2:
 	return (start + actual.limit_length(displacement.length())).clamp(game.world.movement_min, game.world.movement_max)
 
 func open_activity(station: Node, kind: String, title: String) -> void:
-	var path := str(game.get_parent().get_path_to(station))
-	game._reset_held_movement()
-	activity_panel.open_station(path, kind, title)
+	if kind == "fish":
+		game.request_fishing(station)
+	elif kind == "cook":
+		game.cooking_controller.open(station)

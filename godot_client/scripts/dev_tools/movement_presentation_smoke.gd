@@ -65,6 +65,16 @@ func _run() -> void:
 	model.reconcile(Vector2(10, 10), -1, 0.0, false)
 	model.advance(0.1, Vector2.RIGHT)
 	check(model.position.is_equal_approx(Vector2(10, 10)), "Freeze cancels speculation and history")
+	# Idle time still makes authority stale. Integration latency measurements
+	# must wait for live readiness rather than extending this outage allowance.
+	model.reset(Vector2.ZERO)
+	model.advance(1.0, Vector2.ZERO)
+	model.record_input(31, Vector2.RIGHT)
+	model.advance(1.0 / 60.0, Vector2.RIGHT)
+	check(model.position.is_zero_approx(), "Input after idle snapshot loss preserves the stale-authority freeze")
+	model.reconcile(Vector2.ZERO, -1, 0.0)
+	model.advance(1.0 / 60.0, Vector2.RIGHT)
+	check(model.render_position().x > 0.06, "Fresh authority restores first-frame input after idle snapshot loss")
 	model.reset(Vector2(50, 50))
 	check(model.render_position().is_equal_approx(Vector2(50, 50)), "Region reset cannot interpolate across maps")
 	# At 60 FPS a 10 Hz snapshot-only renderer changes nine times between

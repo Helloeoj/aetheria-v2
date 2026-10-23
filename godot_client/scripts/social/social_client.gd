@@ -47,7 +47,7 @@ func _ready() -> void:
 	if network != null:
 		network.joined.connect(_on_player_joined)
 		network.status_changed.connect(_on_network_status_changed)
-	automatic_allowed = DisplayServer.get_name() != "headless" and not OS.get_cmdline_user_args().has("--social-no-auto")
+	automatic_allowed = not OS.has_feature("tester_client") and DisplayServer.get_name() != "headless" and not OS.get_cmdline_user_args().has("--social-no-auto")
 	automatic = automatic_allowed
 	if automatic:
 		if endpoint == "ws://127.0.0.1:8765":
@@ -129,6 +129,8 @@ func update_layout() -> void:
 	panel.layout_drawer()
 
 func start_local_server() -> void:
+	if OS.has_feature("tester_client"):
+		return
 	var script := ProjectSettings.globalize_path("res://../tools/social.ps1")
 	if OS.get_name() == "Windows" and FileAccess.file_exists(script):
 		OS.create_process("powershell.exe", PackedStringArray(["-NoProfile", "-NonInteractive", "-WindowStyle", "Hidden", "-ExecutionPolicy", "Bypass", "-File", script, "start"]), false)
@@ -353,6 +355,8 @@ func handle_game_key(event: InputEvent, game: Node) -> bool:
 			modal = modal or (widget is Control and widget.visible)
 		var cooking: Node = game.get("cooking_controller")
 		modal = modal or (cooking != null and cooking.panel.visible)
+		var online_view: Node = game.get("online_view")
+		modal = modal or (online_view != null and online_view.activity_panel.visible)
 		if not modal:
 			panel.composer.grab_focus()
 			game._reset_held_movement()

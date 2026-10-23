@@ -19,7 +19,8 @@ from django.db import IntegrityError, OperationalError, transaction
 from django.http import JsonResponse
 from django.utils import timezone
 
-from .models import Account, Admission, Character, Journal, RateLimit, Session
+from .models import Account, Admission, BetaAccess, BetaInvite, Character, Journal, RateLimit, Session
+from backend.beta import BetaConfigError, invite_digest, load_policy
 
 HASH_SLOTS = threading.BoundedSemaphore(2)
 DUMMY_HASH = make_password(secrets.token_urlsafe(32))
@@ -55,7 +56,30 @@ def session_for(request):
     session = Session.objects.select_related('account').filter(token_hash=token_header(request), expires_at__gt=timezone.now()).first()
     if session is None:
         fail('unauthorized', 'Sign in again.', 401)
+    require_beta_access(request, session.account_id)
     return session
+
+
+def require_beta_access(request, account_id):
+    if request.beta_policy['enabled'] and not BetaAccess.objects.filter(account_id=account_id, granted=True).exists():
+        fail('beta_access_required', 'This account does not have closed beta access.', 403)
+
+
+def require_release(request, release):
+    if request.beta_policy['enabled'] and release != request.beta_policy['release_id']:
+        fail('release_mismatch', 'Install the current closed beta release.', 409)
+
+
+def locked_invite(request, body):
+    if not request.beta_policy['enabled']:
+        return None
+    code = body.get('invite_code')
+    if not isinstance(code, str) or not 1 <= len(code) <= 128:
+        fail('invalid_invite', 'A valid unused beta invitation is required.', 403)
+    invite = BetaInvite.objects.select_for_update().filter(code_hash=invite_digest(code)).first()
+    if invite is None or invite.consumed_at is not None or invite.expires_at <= timezone.now():
+        fail('invalid_invite', 'A valid unused beta invitation is required.', 403)
+    return invite
 
 
 def throttle(request, username):
@@ -103,8 +127,14 @@ def register(request, body):
         HASH_SLOTS.release()
     try:
         with transaction.atomic():
+            invite = locked_invite(request, body)
             account = Account.objects.create(username=username, username_key=username.lower(), password_hash=encoded)
             character = Character.objects.create(account=account)
+            if invite is not None:
+                BetaAccess.objects.create(account=account, granted=True)
+                invite.consumed_by = account
+                invite.consumed_at = timezone.now()
+                invite.save(update_fields=['consumed_by', 'consumed_at'])
     except IntegrityError:
         fail('username_unavailable', 'That username is unavailable.', 409)
     return {'ok': True, 'account_id': str(account.id), 'character_id': str(character.id)}
@@ -128,6 +158,7 @@ def login(request, body):
     with transaction.atomic():
         # Keep active session storage bounded per account and invalidate older sessions.
         Account.objects.select_for_update().get(pk=account.pk)
+        require_beta_access(request, account.pk)
         Session.objects.filter(account=account).delete()
         Session.objects.create(token_hash=digest(token), account=account, expires_at=timezone.now()+timedelta(hours=12))
     return {'ok': True, 'token': token, 'account_id': str(account.id),
@@ -156,12 +187,19 @@ def world_value(value):
 
 def admit(request, body):
     session = session_for(request)
+    require_release(request, body.get('release_id'))
     world = world_value(body.get('world_id'))
     ticket = opaque()
     with transaction.atomic():
-        Session.objects.select_for_update().get(pk=session.pk)
+        # The account is always locked before sessions/tickets, matching login and
+        # local grant/revoke so an authentication race cannot invert lock order.
+        Account.objects.select_for_update().get(pk=session.account_id)
+        if not Session.objects.select_for_update().filter(pk=session.pk, expires_at__gt=timezone.now()).exists():
+            fail('unauthorized', 'Sign in again.', 401)
+        require_beta_access(request, session.account_id)
         Admission.objects.filter(session=session).delete()
         Admission.objects.create(token_hash=digest(ticket), session=session, world_id=world,
+            release_id=request.beta_policy.get('release_id', '') if request.beta_policy['enabled'] else '',
             expires_at=timezone.now()+timedelta(seconds=TICKET_SECONDS))
     return {'ok': True, 'ticket': ticket}
 
@@ -174,18 +212,25 @@ def internal_auth(request):
 
 
 def claim(request, body):
+    require_release(request, body.get('release_id'))
     ticket = body.get('ticket')
     world = world_value(body.get('world_id'))
     if not isinstance(ticket, str) or len(ticket) > 128:
         fail('invalid_ticket', 'Admission ticket is invalid or expired.', 401)
     with transaction.atomic():
+        candidate = Admission.objects.filter(token_hash=digest(ticket)).values('session__account_id').first()
+        if candidate is None:
+            fail('invalid_ticket', 'Admission ticket is invalid or expired.', 401)
+        Account.objects.select_for_update().get(pk=candidate['session__account_id'])
         admission = Admission.objects.select_for_update().filter(token_hash=digest(ticket)).first()
         now = timezone.now()
         if admission is None or admission.consumed or admission.expires_at <= now or admission.world_id != world:
             fail('invalid_ticket', 'Admission ticket is invalid or expired.', 401)
+        require_release(request, admission.release_id)
         session = Session.objects.filter(pk=admission.session_id, expires_at__gt=now).first()
         if session is None:
             fail('invalid_ticket', 'Admission ticket is invalid or expired.', 401)
+        require_beta_access(request, session.account_id)
         character = Character.objects.select_for_update().select_related('account').get(account_id=session.account_id)
         if character.lease_hash and character.lease_expires_at and character.lease_expires_at > now:
             fail('character_busy', 'This character is already in a world.', 409)
@@ -311,6 +356,12 @@ def health(request, body):
     return {'ok': True, 'service': 'aetheria-accounts', 'schema': 1}
 
 
+def release_metadata(request, body):
+    if not request.beta_policy['enabled']:
+        return {'ok': True, 'enabled': False}
+    return {'ok': True, **request.beta_policy}
+
+
 def endpoint(request, route=''):
     try:
         try:
@@ -319,7 +370,7 @@ def endpoint(request, route=''):
             local = False
         if not local and not request.is_secure():
             fail('https_required', 'HTTPS is required for remote account access.', 403)
-        expected_method = 'GET' if route in ('api/character', 'health') else 'POST'
+        expected_method = 'GET' if route in ('api/character', 'api/release', 'health') else 'POST'
         if request.method != expected_method:
             fail('method_not_allowed', 'Unsupported request method.', 405)
         if len(request.body) > 262144:
@@ -336,14 +387,17 @@ def endpoint(request, route=''):
                 fail('invalid_json', 'A JSON object is required.')
         if route.startswith('internal/'):
             internal_auth(request)
+        request.beta_policy = load_policy()
         routes = {'api/register': register, 'api/login': login, 'api/logout': logout,
-            'api/character': character_summary, 'api/admit': admit,
+            'api/character': character_summary, 'api/admit': admit, 'api/release': release_metadata,
             'internal/claim': claim, 'internal/save': save, 'internal/heartbeat': heartbeat,
             'internal/release': lambda r, b: save(r, b, release=True),
             'health': health}
         if route not in routes:
             fail('not_available', 'This account feature is not available.', 404)
         response = JsonResponse(routes[route](request, body))
+    except BetaConfigError:
+        response = JsonResponse({'ok': False, 'code': 'beta_unavailable', 'message': 'Beta admission is temporarily unavailable.'}, status=503)
     except RequestDataTooBig:
         response = JsonResponse({'ok': False, 'code': 'request_too_large', 'message': 'Request is too large.'}, status=413)
     except ApiError as error:

@@ -40,6 +40,19 @@ if ($Action -eq 'stop') {
     Write-Output 'World stopped after saving. Account storage remains available.'
     exit 0
 }
+# Validate beta identity before starting accounts, returning a running world,
+# or falling back to the development engine after an interrupted activation.
+$onlinePython = Join-Path $onlineData 'venv/Scripts/python.exe'
+$onlineMustVerify = (Test-Path -LiteralPath (Join-Path $onlineData 'beta.json')) -or (Test-Path -LiteralPath (Join-Path $onlineData 'beta-runtime/activation.pending'))
+$onlineSelection = Join-Path $onlineData 'server-build.json'
+if (Test-Path -LiteralPath $onlineSelection) {
+    $onlineSelected = Get-Content -LiteralPath $onlineSelection -Raw | ConvertFrom-Json
+    $onlineMustVerify = $onlineMustVerify -or [bool]$onlineSelected.release_id
+}
+if (Test-Path -LiteralPath $onlinePython) {
+    & $onlinePython (Join-Path $PSScriptRoot 'server_ops.py') verify-start
+    if ($LASTEXITCODE) { throw 'Beta release startup verification failed. Repair the active release before starting.' }
+} elseif ($onlineMustVerify) { throw 'Beta release startup requires the installed private Python runtime.' }
 if (Get-WorldProcess) { & $PSCommandPath status; exit $LASTEXITCODE }
 & (Join-Path $PSScriptRoot 'accounts.ps1') start
 if ($LASTEXITCODE) { throw 'Account service failed to start.' }

@@ -8,8 +8,19 @@ if ($Action -eq 'logs') {
     Write-Output 'Opened the local server log folder.'
     exit
 }
-if ($Action -in @('start','stop')) { & (Join-Path $PSScriptRoot 'online.ps1') $Action; exit $LASTEXITCODE }
+$serverBeta = $false
+$serverBetaPolicy = Join-Path $serverData 'beta.json'
+if (Test-Path -LiteralPath $serverBetaPolicy) {
+    try { $serverBeta = (Get-Content -LiteralPath $serverBetaPolicy -Raw | ConvertFrom-Json).enabled -eq $true }
+    catch { throw 'The beta policy is invalid. Repair it before hosting.' }
+}
+if ($Action -in @('start','stop')) {
+    $serverController = if ($serverBeta -or (Test-Path -LiteralPath (Join-Path $serverData 'beta-processes.json'))) { 'beta.ps1' } else { 'online.ps1' }
+    & (Join-Path $PSScriptRoot $serverController) $Action
+    exit $LASTEXITCODE
+}
 if ($Action -eq 'status') {
+    if ($serverBeta) { & (Join-Path $PSScriptRoot 'beta.ps1') status }
     & (Join-Path $PSScriptRoot 'online.ps1') status
     $worldResult = $LASTEXITCODE
     & (Join-Path $PSScriptRoot 'accounts.ps1') status
@@ -41,6 +52,11 @@ if (-not $serverGodot) {
     if ($serverDetected) { $serverGodot = $serverDetected.FullName }
 }
 if (-not $serverGodot) { throw 'Set GODOT to the installed Godot 4.5.1 console executable.' }
+if ($serverBeta) {
+    & $serverPython (Join-Path $PSScriptRoot 'beta_release.py') --godot $serverGodot --publish --activate
+    if ($LASTEXITCODE -eq 0) { Write-Output 'Matching beta client/server release published and started.' }
+    exit $LASTEXITCODE
+}
 & $serverPython (Join-Path $PSScriptRoot 'server_ops.py') build --godot $serverGodot
 if ($LASTEXITCODE -eq 0) { Write-Output 'Build ready. Save / Stop, then Start to activate it.' }
 exit $LASTEXITCODE

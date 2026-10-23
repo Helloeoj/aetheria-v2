@@ -100,6 +100,9 @@ func _button(title: String, action: Callable, parent: Node) -> Button:
 func open(target: Node2D) -> void:
 	station = target
 	session = CookingSession.new(game.player, station.heat, game.combat)
+	if Network.online():
+		session = preload("res://network/remote_minigame_sessions.gd").Cook.new(game.player, station.heat, game.combat, Network, str(game.get_parent().get_path_to(target)))
+		preload("res://network/remote_minigame_sessions.gd").raise_modal(self, game)
 	session.message = "Choose raw fish to cook at the stove."
 	raw_picker.clear()
 	var recipes: Array[Dictionary] = []
@@ -152,6 +155,7 @@ func refresh() -> void:
 	var quantity := int(game.player.backpack.get(raw, 0))
 	var cooking := session != null and session.is_active()
 	var pending := session != null and session.state == CookingSession.State.FLIP_PENDING
+	var network_pending := String(session.call("pending_action")) if session != null and session.has_method("pending_action") else ""
 	level_label.text = "%s  ·  Cooking level %d" % [station.station_name, level] if is_instance_valid(station) else "Cooking"
 	if not recipe.is_empty():
 		var window := CookingSession.reaction_window(level, recipe)
@@ -163,7 +167,8 @@ func refresh() -> void:
 		cook_one.disabled = true
 	cook_all.disabled = cook_one.disabled
 	raw_picker.disabled = cooking
-	flip_action.disabled = not pending
+	flip_action.disabled = not pending or not network_pending.is_empty()
+	flip_action.text = "Flip sent..." if network_pending == "flip" else "FLIP!  [Space / Enter]"
 	timer_label.text = "Choose your food" if not cooking else "Heating... wait for FLIP!"
 	progress.value = 100.0 * session.elapsed / float(recipe.get("cooking_seconds", 3.0)) if cooking else 0.0
 	if pending:
@@ -177,6 +182,8 @@ func refresh() -> void:
 	elif session != null and session.state == CookingSession.State.FEEDBACK:
 		timer_label.text = "Burnt — try the next fish" if bool(session.last_result.get("burnt", false)) else "Perfect flip!"
 		progress.value = 0.0
+	if network_pending == "start": timer_label.text = "Starting cooking..."
+	elif network_pending == "flip": timer_label.text = "Flip sent... waiting for the stove"
 	pan.set_cooking(session, raw)
 	status.text = session.message if session != null else "Choose raw fish."
 	if cooking:
@@ -190,6 +197,7 @@ func refresh() -> void:
 		raw_picker.set_item_text(index, "%s  —  %d in backpack  —  Cooking %d" % [name_string, int(game.player.backpack.get(name_string, 0)), int(item.get("cooking_level", 1))])
 
 func close() -> void:
+	preload("res://network/remote_minigame_sessions.gd").restore_modal(self, game)
 	raw_picker.get_popup().hide()
 	if session != null:
 		session.close()
@@ -199,5 +207,6 @@ func close() -> void:
 	game._refresh_character_ui()
 
 func _exit_tree() -> void:
+	preload("res://network/remote_minigame_sessions.gd").restore_modal(self, game)
 	if session != null:
 		session.close()

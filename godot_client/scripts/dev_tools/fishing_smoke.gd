@@ -134,6 +134,7 @@ func check_rod_fish_balance() -> void:
 			challenge.remaining = maxima[index]
 			challenge.fish = challenge.catch_pool().back().item
 			check(String(challenge.fish.name) == strongest_reachable[index], "Rod challenge targets its strongest reachable fish with matching food: " + name)
+			challenge.prepare_fight()
 			challenge.state = FishingSession.State.FIGHT
 			for frame in range(3600):
 				if challenge.state != FishingSession.State.FIGHT:
@@ -338,6 +339,8 @@ func _run() -> void:
 	session.lateral = session.boundary() + 0.3
 	session.velocity = 1.0
 	session.fish_pull = 0.9
+	session.fight_plan = [[60.0,0.9]]
+	session.plan_index = 0
 	session.dart_after = 10.0
 	session.advance(1.5)
 	check(session.state == FishingSession.State.LOST and session.reward_xp == 0, "Ignoring the boundaries loses fish without rewards")

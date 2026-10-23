@@ -12,6 +12,7 @@ func check(value: bool, label: String) -> void:
 func _ready() -> void:
 	var region := AuthoritativeRegion.new()
 	region.configure("test", null)
+	preload("res://scripts/dev_tools/region_combat_fixture.gd").add_monsters(region)
 	var player := PlayerState.new("Frozen caster")
 	player.set_skill_level("magic", 100)
 	player.x = 14.0

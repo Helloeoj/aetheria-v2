@@ -12,9 +12,9 @@ const SCHEMA := {
 	"set_quick_food": ["item_name"], "craft": ["station_id", "recipe_id", "quantity"],
 	"purchase": ["station_id", "item_name", "quantity"],
 	"pickup": ["drop_id"], "drop": ["item_name", "quantity"],
-	"fish_start": ["station_id", "rod", "bait"], "fish_stop": [],
-	"fish_input": ["action", "steering"], "pale_move": ["slot"], "pale_drop": ["slot"],
-	"cook_start": ["station_id", "item_name", "quantity"], "cook_flip": [], "cook_cancel": [],
+	"fish_start": ["station_id", "rod", "bait", "action_id", "start_token"], "fish_stop": [],
+	"fish_input": ["action", "steering", "encounter_id", "input_id", "action_id", "expected_state", "phase_elapsed", "plan_ack"], "pale_move": ["slot"], "pale_drop": ["slot"],
+	"cook_start": ["station_id", "item_name", "quantity", "start_token", "action_id"], "cook_flip": ["encounter_id", "prompt_id", "action_id"], "cook_cancel": [],
 	"attack_style": ["style"], "select_spell": ["spell_id"]
 }
 var region_id := ""
@@ -55,7 +55,6 @@ func configure(id: String, game: Node) -> void:
 	activities = Activities.new()
 	activities.configure(self)
 	_discover_stations()
-	_spawn_monsters()
 
 func add_player(character_id: String, player: PlayerState) -> void:
 	if character_id.is_empty() or player == null or players.has(character_id):
@@ -391,28 +390,6 @@ func _refresh_actor(id: String) -> void:
 	if not world.combat.player_attack_enabled.has(id):
 		world.combat.player_attack_enabled[id] = false
 
-func _spawn_monsters() -> void:
-	var templates := GameData.get_active_monster_templates()
-	if templates.is_empty():
-		return
-	for index in range(3):
-		var template: Dictionary = templates[mini(index, templates.size() - 1)]
-		# Keep launch encounters modest: Scouts/Workers rather than high tier chiefs.
-		if int(template.get("tier", 1)) > 2:
-			template = templates[0]
-		var point := _safe_position(Vector2(15 + index * 4, 15))
-		if not point.is_finite():
-			continue
-		var monster := MonsterState.new(template, point.x, point.y)
-		monster.entity_id = "mob:" + Crypto.new().generate_random_bytes(12).hex_encode()
-		var stats := monster.get_combat_stats()
-		var data := stats.duplicate(true)
-		data.merge({"entity_id": monster.entity_id, "name": monster.name, "x": point.x, "y": point.y,
-			"hp": monster.current_hp, "max_hp": monster.max_hp, "is_monster": true,
-			"attack_style": stats.style, "monster_attack_type": monster.damage_type}, true)
-		world.register_monster_actor(monster, CombatActor.new().configure(data))
-		_add_body(monster.entity_id)
-
 func _handle_events(events: Array) -> void:
 	for event: Dictionary in events:
 		if event.get("type", "") == "skill_experience_gained":
@@ -609,10 +586,10 @@ func _validate(command: Dictionary) -> Dictionary:
 		if not key is String or (key != "type" and key not in SCHEMA[kind]):
 			return _result(false, "invalid", "Unexpected command field.")
 		var value: Variant = command[key]
-		if key in ["x", "y", "steering"]:
+		if key in ["x", "y", "steering", "phase_elapsed"]:
 			if not (value is int or value is float) or not is_finite(float(value)):
 				return _result(false, "invalid", "Expected a finite number.")
-		elif key in ["slot", "quantity"] and not (kind == "unequip" and key == "slot"):
+		elif key in ["slot", "quantity", "encounter_id", "input_id", "action_id", "expected_state", "plan_ack", "prompt_id"] and not (kind == "unequip" and key == "slot"):
 			if not (value is int or value is float) or not is_finite(float(value)) or floor(float(value)) != float(value) or float(value) < 0.0 or float(value) > 2147483647.0:
 				return _result(false, "invalid", "Expected a supported integer.")
 		elif key != "direction":

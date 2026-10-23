@@ -19,6 +19,10 @@ var _snapshot_elapsed := 0.0
 var _snapshot_id := 0
 var _stopping := false
 var _data_dir := ""
+var _release_id := ""
+var _tls_options: TLSOptions
+var _bind_address := "127.0.0.1"
+var _account_endpoint := "http://127.0.0.1:8780"
 
 func _ready() -> void:
 	Network.mode = Network.Mode.SERVER
@@ -33,6 +37,7 @@ func _ready() -> void:
 			return
 	_http = AccountHTTP.new()
 	add_child(_http)
+	_http.endpoint = _account_endpoint
 	if _key.length() < 32:
 		printerr("[World] Start the local account service first.")
 		get_tree().quit(1)
@@ -41,7 +46,7 @@ func _ready() -> void:
 	Network.command_received.connect(_command)
 	Network.peer_departed.connect(_departed)
 	Network.logout_requested.connect(_logout)
-	var error := Network.host(port, max_players)
+	var error := Network.host(port, max_players, _bind_address, _tls_options)
 	if error != OK:
 		printerr("[World] Could not bind the configured local world port.")
 		get_tree().quit(1)
@@ -73,6 +78,23 @@ func _configure(config: Dictionary) -> bool:
 	if not id is String or RegEx.create_from_string("^[A-Za-z0-9_-]{1,64}$").search(id) == null:
 		return false
 	Network.world_id = id
+	_release_id = String(config.get("release_id", ""))
+	if not _release_id.is_empty() and RegEx.create_from_string("^[A-Za-z0-9_.-]{1,80}$").search(_release_id) == null:
+		return false
+	if config.has("tls_key") or config.has("tls_certificate"):
+		if _release_id.is_empty():
+			return false
+		var key := CryptoKey.new()
+		var certificate := X509Certificate.new()
+		if key.load(String(config.get("tls_key", ""))) != OK or certificate.load(String(config.get("tls_certificate", ""))) != OK:
+			return false
+		_tls_options = TLSOptions.server(key, certificate)
+	_bind_address = String(config.get("bind_address", "127.0.0.1"))
+	if _bind_address != "127.0.0.1" and (_tls_options == null or (_bind_address != "*" and not _bind_address.is_valid_ip_address())):
+		return false
+	_account_endpoint = String(config.get("account_url", "http://127.0.0.1:8780"))
+	if not AccountHTTP._allowed_endpoint(_account_endpoint):
+		return false
 	return true
 
 func _get_region(id: String) -> AuthoritativeRegion:
@@ -117,7 +139,7 @@ func _join(peer_id: int, ticket: String) -> void:
 		Network.send_control(peer_id, {"type": "error", "code": "world_full", "message": "This world is full. Please try again later."})
 		return
 	joining[peer_id] = true
-	var claim := await _http.request_json("/internal/claim", {"ticket": ticket, "world_id": Network.world_id}, "", _key)
+	var claim := await _http.request_json("/internal/claim", {"ticket": ticket, "world_id": Network.world_id, "release_id": _release_id}, "", _key)
 	if not claim.get("ok", false):
 		joining.erase(peer_id)
 		Network.send_control(peer_id, {"type": "error", "message": claim.get("message", "World admission was rejected.")})
@@ -188,6 +210,11 @@ func _command(peer_id: int, raw: Dictionary) -> void:
 	if int(serial) <= int(session.last_sequence):
 		return
 	session.last_sequence = int(serial)
+	# Disposable steering/plan receipts cannot wait behind inventory HTTP saves.
+	# Same reliable RPC and serial check preserve ordering with discrete actions.
+	if command.get("type") == "fish_input" and not command.has("action"):
+		regions[session.region_id].submit(session.character_id, command)
+		return
 	if session.queue.size() >= 8:
 		return
 	# Keep the serial until execution: HTTP saves can let newer keyboard intent
@@ -447,6 +474,9 @@ func _shutdown() -> void:
 	if sessions.is_empty():
 		DirAccess.remove_absolute(_data_dir.path_join("world-ready.json"))
 		DirAccess.remove_absolute(_data_dir.path_join("world-stop.request"))
+		if multiplayer.multiplayer_peer != null:
+			multiplayer.multiplayer_peer.close()
+			multiplayer.multiplayer_peer = null
 		get_tree().quit()
 	else:
 		_stopping = false

@@ -35,6 +35,7 @@ class Admission(models.Model):
     token_hash = models.CharField(max_length=64, primary_key=True)
     session = models.ForeignKey(Session, on_delete=models.CASCADE)
     world_id = models.CharField(max_length=80)
+    release_id = models.CharField(max_length=80, blank=True, default='')
     expires_at = models.DateTimeField(db_index=True)
     consumed = models.BooleanField(default=False)
 
@@ -58,3 +59,17 @@ class RateLimit(models.Model):
     key = models.CharField(max_length=64, primary_key=True)
     window = models.BigIntegerField()
     count = models.PositiveIntegerField(default=0)
+
+
+class BetaAccess(models.Model):
+    account = models.OneToOneField(Account, primary_key=True, on_delete=models.CASCADE)
+    granted = models.BooleanField(default=False)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
+class BetaInvite(models.Model):
+    code_hash = models.CharField(max_length=64, primary_key=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    expires_at = models.DateTimeField(db_index=True)
+    consumed_at = models.DateTimeField(null=True)
+    consumed_by = models.ForeignKey(Account, null=True, on_delete=models.SET_NULL)

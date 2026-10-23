@@ -35,6 +35,7 @@ The public endpoints accept JSON and return `{ok:true,...}` or
 | `GET /api/character` | Bearer token → owner IDs, username, revision, initialized and email_verified; never full save data |
 | `POST /api/admit` | Bearer token, `{world_id}` → `{ok,ticket}` |
 | `GET /health` | `{ok,service:"aetheria-accounts",schema:1}` |
+| `GET /api/release` | `{ok,enabled,release_id?,account_url?,world_host?,world_port?,world_id?}` |
 
 Usernames contain 3–20 ASCII letters, digits or underscores, with a database
 unique lowercase key. Passwords contain 15–128 Unicode codepoints after NFC
@@ -97,3 +98,55 @@ it does not create test users in the installed live account database. Tests
 cover registration races, simultaneous cross-world claims, duplicate save races,
 hash and token secrecy, NFC passwords, throttling, ticket expiry, fencing,
 revision conflicts, atomic release, logout and unavailable email/reset flows.
+
+Closed beta policy is read from private `beta.json` in the same account data
+directory on each request. A missing file or a valid disabled policy retains the
+local development API contracts. Any malformed existing policy fails closed with
+`beta_unavailable`; disabling requires valid `{"schema":1,"enabled":false}`.
+An enabled policy has this shape (addresses below are examples):
+
+```json
+{
+  "schema": 1,
+  "enabled": true,
+  "release_id": "beta-2026.10",
+  "account_url": "https://accounts.example.test",
+  "world_host": "play.example.test",
+  "world_port": 9070,
+  "world_id": "beta-world"
+}
+```
+
+`release_id` is required when enabled, with 1–80 ASCII letters, digits, `.`, `_`
+or `-`. The four connection fields are optional, strictly validated public
+metadata; `/api/release` emits only these fields, `release_id`, `enabled` and
+`ok`. Credentials, private paths and other config entries are never emitted.
+Use an HTTPS account URL without embedded credentials, query or fragment; world
+hosts accept DNS names or IP addresses, and ports are integers from 1–65535.
+
+When enabled, registration also requires `invite_code`. Invites are random,
+hashed in storage, expiring and single use; consumption, account creation,
+character creation and the access grant commit in one transaction. Existing
+accounts require an explicit grant. Login, authenticated API calls, admission
+and ticket claim recheck the grant; granting or revoking does not edit saves.
+`/api/admit` and `/internal/claim` additionally require the active `release_id`;
+tickets retain their issuing release and cannot cross release changes. Existing
+leases can still save/release after a grant is revoked, preserving progression;
+revocation prevents subsequent admission and ticket claims.
+
+After deploying the migration, run local administration with the private Python
+environment from this checkout. These commands do not start/reload the service
+or apply migrations. `--data` overrides `AETHERIA_ACCOUNT_DATA` when needed:
+
+```powershell
+python -m backend.beta_admin --data <private-account-directory> invite --hours 72
+python -m backend.beta_admin --data <private-account-directory> grant PlayerName
+python -m backend.beta_admin --data <private-account-directory> revoke PlayerName
+python -m backend.beta_admin --data <private-account-directory> status
+```
+
+Only `invite` prints its new plaintext invitation, once. Copy that output for
+distribution; status lists access decisions and aggregate invite counts without
+passwords, tokens or invitation values. Errors are `invalid_invite` (403),
+`beta_access_required` (403), `release_mismatch` (409), or `beta_unavailable`
+(503), as applicable. This repository never contains a live beta policy.

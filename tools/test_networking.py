@@ -12,7 +12,12 @@ SCENES = [
     'online_activity_smoke', 'snapshot_transport_smoke',
     'world_host_persistence_smoke', 'region_freeze_smoke',
     'online_region_travel_smoke',
+    'development_controls_smoke',
+    'original_online_minigames_smoke',
+    'fishing_responsiveness_smoke',
+    'cooking_responsiveness_smoke',
 ]
+SCRIPTS = ['online_activity_input_smoke', 'developer_sandbox_smoke']
 
 
 def main():
@@ -22,13 +27,15 @@ def main():
     args = parser.parse_args()
     output = args.output or Path(tempfile.mkdtemp(prefix='aetheria-network-tests-'))
     output.mkdir(parents=True, exist_ok=True)
-    for name in SCENES:
+    for name in SCENES + SCRIPTS:
         evidence = output / name
         evidence.mkdir(exist_ok=True)
         environment = dict(os.environ, AETHERIA_DIAGNOSTICS_DIR=str(evidence / 'adc'),
                            AETHERIA_NATIVE_LOG=str(evidence / 'godot.log'))
+        target = (['--script', f'res://scripts/dev_tools/{name}.gd'] if name in SCRIPTS
+                  else [f'res://scenes/dev_tools/{name}.tscn'])
         command = [args.godot, '--headless', '--path', str(REPO / 'godot_client'),
-                   f'res://scenes/dev_tools/{name}.tscn', '--log-file',
+                   *target, '--log-file',
                    str(evidence / 'godot.log'), '--', '--social-no-auto']
         result = subprocess.run(command, capture_output=True, text=True,
                                 timeout=100, env=environment)
@@ -39,7 +46,7 @@ def main():
         assert 'SCRIPT ERROR:' not in transcript and 'ERROR:' not in transcript, (
             f'{name}: runtime error; see {evidence}')
         assert re.search(r'0 failures|PASS:', transcript), f'{name}: missing pass marker'
-    print(f'[Networking suite] {len(SCENES)} scenes passed. Evidence: {output}')
+    print(f'[Networking suite] {len(SCENES) + len(SCRIPTS)} tests passed. Evidence: {output}')
 
 
 if __name__ == '__main__':

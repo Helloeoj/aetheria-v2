@@ -1,5 +1,9 @@
 # Online accounts and authoritative worlds
 
+The optional invite-only public beta and standalone launcher are documented in
+[Closed beta](../../docs/ClosedBeta.md). Its encrypted relay does not expose the
+private account host API or database. Local development remains available.
+
 The normal game starts at `scenes/Login.tscn`. Create a username and password,
 then log in to resume the same character. On this Windows development checkout,
 the login screen starts the local account service and world in hidden processes.
@@ -31,6 +35,18 @@ state every five seconds; economy/progression changes save promptly, and clean
 logout atomically saves the final state and releases ownership. A machine or
 process crash can lose recent movement/health within the checkpoint interval.
 
+## Developer testing
+
+Choose **Developer sandbox — unsaved testing** on Login to use the original
+local map and its F5 monster menu, F6 item menu, F7 sprite viewer, K skill panel
+and P fishing practice. F near an authored fishing spot opens fishing normally.
+The sandbox uses a separate local character and never saves to an online account.
+Its **Online login** button returns to Login. Save/log out before switching from
+an authenticated online character; active online state cannot enter the sandbox.
+Real online worlds retain server authority and never accept client debug grants.
+Region startup does not automatically add monsters; combat regression encounters
+exist only in explicit developer test fixtures.
+
 ## Authority and recovery
 
 Clients send intents through `Network`: movement, targeting, attacks, spells,
@@ -46,6 +62,11 @@ map/test scenes still runs the existing offline sandbox, with no online saves.
 `region_activities.gd` owns fishing/cooking sessions. `character_codec.gd`
 translates approved domain state to/from primitive save data.
 `network_manager.gd` handles transport and `online_world_view.gd` projects it.
+Online fishing and cooking reuse the original lake and pan interfaces.
+`remote_minigame_sessions.gd` presents server sessions to those interfaces and
+sends controls as intents; it cannot consume supplies or award catches/XP.
+See `docs/ServerMigrationChanges.md` at the repository root for the migration
+audit and remaining gameplay/presentation differences.
 The account API uses revocable bearer sessions and single-use world tickets;
 password hashing uses Django Argon2id. It does not use browser cookie sessions.
 

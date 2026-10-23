@@ -18,6 +18,9 @@ const FIGHT_BOUNDARY_SCALE := 0.6
 const OUTSIDE_BOUNDARY_MARGIN := 0.24
 const REEL_REFERENCE_DISTANCE := 200.0
 const SHORT_CAST_REEL_PADDING := 50.0
+const Motion := preload("res://scripts/fishing_motion.gd")
+var fight_plan: Array = []
+var plan_index := 0
 var state := State.READY
 var player: PlayerState
 var rng := RandomNumberGenerator.new()
@@ -112,6 +115,7 @@ func act() -> void:
 			reward_xp = 0
 			fish = _roll_fish()
 			bite_after = rng.randf_range(2.5, 6.0)
+			prepare_fight()
 			state = State.CASTING
 			elapsed = 0.0
 			message = "Casting..."
@@ -153,30 +157,20 @@ func _step(delta: float, steering: float) -> void:
 			if remaining <= 0.0:
 				_land()
 				return
-			fight_time += delta
-			dart_after -= delta
-			var strength := float(fish.get("fish_strength", 0.65))
-			if dart_after <= 0.0:
-				fish_pull = rng.randf_range(0.6, 1.0) * strength * (-1.0 if rng.randf() < 0.5 else 1.0)
-				dart_after = rng.randf_range(float(fish.get("fish_dart_min", 1.0)), float(fish.get("fish_dart_max", 1.8)))
-			velocity = move_toward(velocity, fight_velocity_target(steering), delta * 2.8)
-			var limit := lateral_limit()
-			lateral = clampf(lateral + velocity * delta, -limit, limit)
-			# Do not accumulate outward momentum against the stop: a player can
-			# steer back immediately rather than fight an invisible velocity debt.
-			if absf(lateral) >= limit and lateral * velocity > 0.0:
-				velocity = 0.0
-			if absf(lateral) > boundary():
-				strain = minf(1.0, strain + delta * 0.8)
-			else:
-				strain = maxf(0.0, strain - delta * 0.55)
-				remaining = maxf(0.0, remaining - delta * reel_speed())
+			Motion.step(self, delta, steering, motion_rules())
 			if strain >= 1.0:
 				lose("The fish escaped beyond the red lines.")
 			elif remaining <= 0.0:
 				_land()
 			elif fight_time >= 60.0:
 				lose("The fish slipped free after a long fight.")
+
+func prepare_fight() -> void:
+	fight_plan = Motion.prepare(fish, rng)
+	plan_index = 0
+
+func motion_rules() -> Dictionary:
+	return {"boundary":boundary(), "limit":lateral_limit(), "reel":reel_speed(), "control":input_strength(), "tolerance":skill_pull_tolerance()}
 
 func boundary() -> float:
 	var base := float(GameData.get_item_by_name(rod).get("fishing_width", 0.40))
