@@ -19,11 +19,12 @@ func configure(owner_region: RefCounted) -> void:
 	_region = weakref(owner_region)
 
 func active(id: String) -> bool:
-	return fishing.has(id) or (cooking.has(id) and cooking[id].is_active())
+	return region.mining.active(id) or fishing.has(id) or (cooking.has(id) and cooking[id].is_active())
 
 func close(id: String) -> void:
 	if active(id):
 		region.dirty[id] = true
+	region.mining.stop(id, "cancelled")
 	if fishing.has(id):
 		fishing[id].close()
 		fishing.erase(id)
@@ -38,7 +39,18 @@ func close(id: String) -> void:
 func submit(id: String, command: Dictionary) -> Dictionary:
 	var player: PlayerState = region.players[id]
 	var kind := String(command.type)
+	if kind in ["fish_start", "cook_start"]:
+		region.mining.stop(id, "new_activity")
 	match kind:
+		"mine_start":
+			if cooking.has(id) and not active(id):
+				close(id) # Clear a finished batch's presentation, not an active action.
+			var outcome: Dictionary = region.mining.start(id, String(command.get("deposit_id", "")), int(command.get("deposit_generation", -1)))
+			if outcome.ok:
+				_stop_movement(id)
+			return outcome
+		"mine_stop":
+			region.mining.stop(id, "cancelled")
 		"fish_start":
 			if (active(id) and (not fishing.has(id) or fishing[id].active_cast())) or _busy(player):
 				return _result(false, "Finish combat and other activities first.")
@@ -198,7 +210,7 @@ func snapshot(id: String) -> Dictionary:
 			"flip_elapsed":session.flip_elapsed,"flip_window":session.flip_window if is_finite(session.flip_window) else -1.0,
 			"cooked_count":session.cooked_count,"burnt_count":session.burnt_count,"reward_xp":session.reward_xp,
 			"feedback_elapsed":session.feedback_elapsed,"last_result":session.last_result.duplicate(true)}
-	return {}
+	return region.mining.snapshot(id)
 
 func _stop_movement(id: String) -> void:
 	region._inputs.erase(id)

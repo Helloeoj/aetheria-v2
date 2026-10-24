@@ -3,7 +3,7 @@ const AccountHTTP = preload("res://network/account_http.gd")
 const CharacterCodec = preload("res://network/character_codec.gd")
 const WorldProtocol = preload("res://network/world_protocol.gd")
 const SpatialIndex = preload("res://network/spatial_relevance.gd")
-const MOVEMENT_COMMANDS := ["walk", "target", "attack", "cast", "travel"]
+const MOVEMENT_COMMANDS := ["walk", "target", "attack", "cast", "travel", "mine_start"]
 ## One authoritative world; regions have separate physics spaces and stable IDs.
 var regions: Dictionary = {}
 var sessions: Dictionary = {}
@@ -226,10 +226,10 @@ func _command(peer_id: int, raw: Dictionary) -> void:
 
 func _process_commands(session: Dictionary) -> void:
 	session.busy = true
-	while not session.queue.is_empty() and not session.closing and not session.get("retired", false):
+	while not session.queue.is_empty() and not session.closing and not session.get("retired", false) and not session.disconnected:
 		while session.saving:
 			await get_tree().process_frame
-		if session.get("retired", false) or session.closing or not session.pending.is_empty():
+		if session.get("retired", false) or session.closing or session.disconnected or not session.pending.is_empty():
 			break
 		var command: Dictionary = session.queue.pop_front()
 		var serial := int(command.get("sequence", -1))
@@ -409,6 +409,10 @@ func _departed(peer_id: int) -> void:
 	if sessions.has(peer_id):
 		var session: Dictionary = sessions[peer_id]
 		session.disconnected = Time.get_ticks_msec()
+		session.queue.clear()
+		# Direct cancellation also works during a persistence freeze, when submit
+		# intentionally rejects input. The 30-second actor grace is not activity time.
+		regions[session.region_id].activities.close(session.character_id)
 		regions[session.region_id].submit(session.character_id, {"type": "move", "direction": [0.0, 0.0]})
 
 func _logout(peer_id: int) -> void:

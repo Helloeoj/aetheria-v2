@@ -43,6 +43,14 @@ static func can_purchase(item: Dictionary) -> bool:
 	var rule: Dictionary = policy().get("item_policies", {}).get(String(item.get("name", "")), {})
 	return bool(rule.get("purchase", false))
 
+static func can_mine(item: Dictionary) -> bool:
+	if item.is_empty() or bool(item.get("legacy_placeholder", false)) or not bool(item.get("generic_loot", true)):
+		return false
+	if bool(item.get("boss_material", false)) or _is_top_material(item):
+		return false
+	var rule: Dictionary = policy().get("item_policies", {}).get(String(item.get("name", "")), {})
+	return String(rule.get("drop_route", "")) not in ["bosses", "pending", "none"]
+
 static func _is_top_material(item: Dictionary) -> bool:
 	return int(item.get("tier", 1)) == int(policy().get("highest_material_tier", 7)) and (
 		bool(item.get("boss_material", false)) or String(item.get("type", "")) in ["Crafting", "Ammunition"])

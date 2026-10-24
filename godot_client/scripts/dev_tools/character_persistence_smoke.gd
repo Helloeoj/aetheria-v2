@@ -56,5 +56,33 @@ func _run() -> void:
 	check(not codec.decode(corrupt, "AccountOne", "stable-character").ok, "Unknown item rejected rather than granting unapproved stats")
 	var initial: Dictionary = codec.initial("AccountTwo", "another-character", "outskirts")
 	check(initial.ok and initial.player.get_skill_level("attack") == 1, "New online characters use approved defaults")
+	var old := saved.duplicate(true)
+	old.version = 1
+	old.skill_experience.erase("mining")
+	var migrated: Dictionary = codec.decode(old, "AccountOne", "stable-character")
+	check(migrated.ok, "Version 1 without Mining migrates")
+	if migrated.ok:
+		var migrated_player: PlayerState = migrated.player
+		check(migrated_player.get_skill_progress("mining").get("level") == 1, "Migration registers Mining at level 1")
+		check(migrated_player.backpack == p.backpack and migrated_player.get_equipped_names() == p.get_equipped_names(), "Migration preserves items and equipment")
+		for skill: String in old.skill_experience:
+			check(migrated_player.get_skill_experience(skill) == int(old.skill_experience[skill]), "Migration preserves " + skill)
+	old.skill_experience.mining = "invalid"
+	check(not codec.decode(old, "a", "b").ok, "Present malformed v1 Mining is rejected")
+	old.skill_experience.erase("mining")
+	old.skill_experience.erase("fishing")
+	check(not codec.decode(old, "a", "b").ok, "Migration never defaults missing old skills")
+	p.add_skill_experience("mining", 121)
+	var current: Dictionary = codec.encode(p, "outskirts")
+	check(current.version == 2, "New saves use version 2")
+	var mined: Dictionary = codec.decode(current, "a", "b")
+	check(mined.ok and mined.player.get_skill_experience("mining") == 121, "Mining award survives round trip")
+	current.version = 2
+	current.skill_experience.erase("mining")
+	check(not codec.decode(current, "a", "b").ok, "Version 2 requires Mining")
+	var combat_level := p.get_combat_level()
+	p.add_skill_experience("mining", SkillProgression.MAX_EXPERIENCE)
+	check(p.get_skill_level("mining") == 100 and p.get_skill_experience("mining") == 19450000, "Mining uses existing level and XP cap")
+	check(p.get_combat_level() == combat_level, "Mining never changes combat level")
 	print("[Character persistence] %d checks, %d failures" % [checks, failures])
 	get_tree().quit(0 if failures == 0 else 1)

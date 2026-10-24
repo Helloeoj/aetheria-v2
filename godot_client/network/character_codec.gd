@@ -1,8 +1,9 @@
 class_name CharacterCodec
 extends RefCounted
 ## Versioned server saves contain approved item IDs, never client item statistics.
-const VERSION := 1
+const VERSION := 2
 const MAX_COUNT := 2147483647
+const MAX_INVENTORY_ENTRIES := 4096
 const TIMERS := ["food_cooldown_seconds", "food_attack_cooldown_seconds", "food_attack_interval_seconds"]
 
 static func initial(username: String, character_id: String, region_id: String) -> Dictionary:
@@ -40,7 +41,8 @@ static func encode(p: PlayerState, region_id: String) -> Dictionary:
 	return state
 
 static func decode(state: Dictionary, username: String, character_id: String) -> Dictionary:
-	if _integer(state.get("version", -1), VERSION) != VERSION:
+	var version := _integer(state.get("version", -1), VERSION)
+	if version not in [1, VERSION]:
 		return _bad("save_version")
 	if not state.get("region_id") is String or String(state.region_id).length() > 64:
 		return _bad("save_location")
@@ -54,7 +56,9 @@ static func decode(state: Dictionary, username: String, character_id: String) ->
 	if not experience is Dictionary:
 		return _bad("save_skills")
 	for skill: String in SkillProgression.SKILL_IDS:
-		var amount := _integer(experience.get(skill, -1), SkillProgression.MAX_EXPERIENCE)
+		# Only the new, absent field migrates. Never repair corrupt old fields.
+		var fallback := 0 if version == 1 and skill == "mining" else -1
+		var amount := _integer(experience.get(skill, fallback), SkillProgression.MAX_EXPERIENCE)
 		if amount < 0:
 			return _bad("save_skills")
 		p.skill_experience[skill] = amount
@@ -67,7 +71,7 @@ static func decode(state: Dictionary, username: String, character_id: String) ->
 	if p.gold < 0 or p.current_hp < 0 or p.current_mana < 0:
 		return _bad("save_vitals")
 	var inventory: Variant = state.get("inventory")
-	if not inventory is Array or inventory.size() > 4096:
+	if not inventory is Array or inventory.size() > MAX_INVENTORY_ENTRIES:
 		return _bad("save_inventory")
 	p.backpack.clear()
 	for entry: Variant in inventory:

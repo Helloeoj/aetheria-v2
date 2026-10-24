@@ -8,11 +8,11 @@ const FISHING_PALE_SIZE := 9
 var name := "Player"
 var levels: Dictionary = {
 	"health": 10, "attack": 1, "strength": 1,
-	"defense": 1, "range": 1, "magic": 1, "fishing": 1, "cooking": 1
+	"defense": 1, "range": 1, "magic": 1, "fishing": 1, "cooking": 1, "mining": 1
 }
 var skill_experience: Dictionary = {
 	"health": 0, "attack": 0, "strength": 0,
-	"defense": 0, "range": 0, "magic": 0, "fishing": 0, "cooking": 0
+	"defense": 0, "range": 0, "magic": 0, "fishing": 0, "cooking": 0, "mining": 0
 }
 var current_hp := 200
 var food_cooldown_seconds := 0.0

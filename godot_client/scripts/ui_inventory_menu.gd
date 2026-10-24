@@ -18,7 +18,8 @@ const SKILL_EFFECTS := {
 	"range": "Improves ranged accuracy, damage and damage rolls.",
 	"magic": "Unlocks spells, raises mana and improves magic combat.",
 	"fishing": "Unlocks poles, bait and fish; improves control without raising combat level.",
-	"cooking": "Cooks raw fish at campfires; higher levels unlock fish and reduce burning."
+	"cooking": "Cooks raw fish at campfires; higher levels unlock fish and reduce burning.",
+	"mining": "Unlocks ore deposits and pickaxes; higher levels improve extraction success."
 }
 const STYLE_NAMES := {"stab": "Stab", "slash": "Slash", "blunt": "Crush", "ranged": "Ranged", "magic": "Magic"}
 const PANEL_SIZE := Vector2(930, 610)

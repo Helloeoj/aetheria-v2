@@ -127,11 +127,22 @@ class AccountApiTests(TestCase):
         Admission.objects.update(expires_at=timezone.now()-timedelta(seconds=1))
         self.assertEqual(self.post('/internal/claim', {'ticket': admit['ticket'], 'world_id': 'a'}, internal=True)['code'], 'invalid_ticket')
         claim = self.claim(login['token'])
-        body = self.save_body(claim, {'version': 2})
+        body = self.save_body(claim, {'version': 999})
         self.assertEqual(self.post('/internal/save', body, internal=True)['code'], 'invalid_state')
         result = self.client.get('/api/character', HTTP_AUTHORIZATION='Bearer '+login['token']).json()
         self.assertTrue(result['ok'])
         self.assertNotIn('state', result)
+
+    def test_mining_save_version_is_durable_and_idempotent(self):
+        self.register()
+        claim = self.claim(self.login()['token'])
+        body = self.save_body(claim, {'version': 2, 'skill_experience': {'mining': 121},
+            'inventory': [{'item_id': 235, 'count': 1}]})
+        first = self.post('/internal/save', body, internal=True)
+        self.assertEqual(first, {'ok': True, 'revision': 1})
+        self.assertEqual(self.post('/internal/save', body, internal=True), first)
+        from backend.accounts.models import Character
+        self.assertEqual(Character.objects.get(pk=claim['character_id']).state, body['state'])
 
     def test_password_nfc_preserves_spaces_and_boundary_lengths(self):
         password = '  A password Cafe\u0301  '

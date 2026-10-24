@@ -423,6 +423,7 @@ func _run() -> void:
 	game.inventory_menu.select_page(InventoryMenu.Page.SKILLS)
 	game.inventory_menu.show()
 	check(game.inventory_menu._skill_session_labels.has("fishing"), "Journal renders Fishing progression")
+	check(game.inventory_menu._skill_session_labels.has("mining"), "Journal renders Mining alongside Fishing")
 	await capture("fishing-skills.png")
 	for dimensions: Vector2i in [Vector2i(960, 540), Vector2i(1920, 1080)]:
 		root.size = dimensions

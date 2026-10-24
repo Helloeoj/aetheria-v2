@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "ores": [
+    {
+      "item_id": 235,
+      "required_level": 1,
+      "xp_reward": 121,
+      "success": {
+        "p_at_unlock": 0.28,
+        "p_at_mastery": 0.78,
+        "mastery_levels": 26,
+        "curve_exponent": 1.15
+      },
+      "respawn_seconds": 4.0,
+      "node_scene": "res://scenes/gathering/mining_deposit.tscn",
+      "visual": {"available": "", "depleted": ""}
+    }
+  ],
+  "pickaxes": []
+}

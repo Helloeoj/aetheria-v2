@@ -2,6 +2,7 @@ class_name AuthoritativeRegion
 extends RefCounted
 ## One server simulation per region. Commands carry intent; rules and clock stay here.
 const Activities := preload("res://network/region_activities.gd")
+const MiningEngine := preload("res://scripts/mining_service.gd")
 const SPEED := 4.0
 const INPUT_LIFETIME := 0.25
 const STEP := 1.0 / 60.0
@@ -13,6 +14,7 @@ const SCHEMA := {
 	"purchase": ["station_id", "item_name", "quantity"],
 	"pickup": ["drop_id"], "drop": ["item_name", "quantity"],
 	"fish_start": ["station_id", "rod", "bait", "action_id", "start_token"], "fish_stop": [],
+	"mine_start": ["deposit_id", "deposit_generation"], "mine_stop": [],
 	"fish_input": ["action", "steering", "encounter_id", "input_id", "action_id", "expected_state", "phase_elapsed", "plan_ack"], "pale_move": ["slot"], "pale_drop": ["slot"],
 	"cook_start": ["station_id", "item_name", "quantity", "start_token", "action_id"], "cook_flip": ["encounter_id", "prompt_id", "action_id"], "cook_cancel": [],
 	"attack_style": ["style"], "select_spell": ["spell_id"]
@@ -28,6 +30,8 @@ var drops: Dictionary = {} # Published ground items only; hidden mutations never
 var _ground_mutations: Dictionary = {} # character_id -> ordered unpublished/reserved mutations
 var _mutation_serials: Dictionary = {} # Monotonic across disconnect/rejoin and discard.
 var activities: RefCounted
+var mining: RefCounted
+var _mining_nodes: Dictionary = {}
 var _inputs: Dictionary = {}
 var _walks: Dictionary = {}
 var _attacking: Dictionary = {}
@@ -54,7 +58,25 @@ func configure(id: String, game: Node) -> void:
 			world.terrain_collision_handler = Callable(game, "_query_map_terrain_collision")
 	activities = Activities.new()
 	activities.configure(self)
+	var definitions := MiningDefinitions.new()
+	var loaded := definitions.load_data()
+	if not loaded.ok:
+		push_warning("Mining disabled: " + str(loaded.errors))
+	mining = MiningEngine.new()
+	var owner: WeakRef = weakref(self)
+	var rng := RandomNumberGenerator.new()
+	rng.randomize()
+	mining.configure(definitions,
+		func(character: String, deposit: String) -> Dictionary:
+			var region: RefCounted = owner.get_ref()
+			return region._mining_context(character, deposit) if region != null else {},
+		func(character: String, _event: Dictionary) -> void:
+			var region: RefCounted = owner.get_ref()
+			if region != null:
+				region.dirty[character] = true,
+		rng)
 	_discover_stations()
+	_discover_mining()
 
 func add_player(character_id: String, player: PlayerState) -> void:
 	if character_id.is_empty() or player == null or players.has(character_id):
@@ -76,6 +98,7 @@ func add_player(character_id: String, player: PlayerState) -> void:
 
 func remove_player(character_id: String) -> void:
 	activities.close(character_id)
+	mining.forget_player(character_id)
 	discard_mutations(character_id)
 	# Region exits end this gameplay generation. Its attacks must not resume or
 	# credit a different PlayerState when the same stable character ID rejoins.
@@ -170,10 +193,13 @@ func submit(character_id: String, command: Dictionary) -> Dictionary:
 			_handle_events(outcome.get("events", []))
 			dirty[character_id] = true
 		"equip", "unequip":
+			var hands := [player.equipment.weapon.duplicate(), player.equipment.shield.duplicate()]
 			var before := var_to_str([player.equipment, player.backpack, player.quiver_item, player.quiver_amount])
 			var message: String = InventorySystem.equip_item(player, String(command.get("item_name", ""))) if kind == "equip" else InventorySystem.unequip_slot(player, String(command.get("slot", "")))
 			if before == var_to_str([player.equipment, player.backpack, player.quiver_item, player.quiver_amount]):
 				return _result(false, "equipment", message)
+			if hands != [player.equipment.weapon, player.equipment.shield]:
+				mining.stop(character_id, "equipment")
 			_refresh_actor(character_id)
 			dirty[character_id] = true
 			return _result(true, "ok", message)
@@ -297,6 +323,7 @@ func advance(delta: float) -> void:
 				player.y = actor.y
 				player.in_combat = _in_combat(id)
 			activities.advance(id, step)
+		mining.advance(step)
 		for id: String in _pending_refresh:
 			if players.has(id) and not frozen.has(id):
 				_refresh_actor(id)
@@ -314,7 +341,8 @@ func snapshot(character_id: String) -> Dictionary:
 		actors.append({"entity_id": actor.entity_id, "name": actor.name, "x": actor.x, "y": actor.y,
 			"hp": actor.hp, "max_hp": actor.max_hp, "is_alive": actor.is_alive,
 			"is_monster": actor.is_monster, "attack_style": actor.attack_style,
-			"target_id": actor.current_target_id, "equipment": players[actor.entity_id].get_equipped_names() if players.has(actor.entity_id) else {}})
+			"target_id": actor.current_target_id, "gathering": mining.actor_activity(actor.entity_id),
+			"equipment": players[actor.entity_id].get_equipped_names() if players.has(actor.entity_id) else {}})
 	var public_drops: Array[Dictionary] = []
 	for drop: Dictionary in drops.values():
 		public_drops.append(drop.duplicate())
@@ -324,7 +352,7 @@ func snapshot(character_id: String) -> Dictionary:
 		entry.erase("node")
 		public_stations.append(entry)
 	return {"region_id": region_id, "actors": actors, "drops": public_drops,
-		"activity": activities.snapshot(character_id), "stations": public_stations}
+		"activity": activities.snapshot(character_id), "stations": public_stations, "deposits": mining.deposit_snapshots()}
 
 func station_for(player: PlayerState, id: String, kind: String) -> Dictionary:
 	var station: Dictionary = stations.get(id, {})
@@ -392,6 +420,10 @@ func _refresh_actor(id: String) -> void:
 
 func _handle_events(events: Array) -> void:
 	for event: Dictionary in events:
+		if int(event.get("damage", 0)) > 0:
+			mining.stop(String(event.get("target_id", "")), "damage")
+		if event.get("type", "") == "entity_died":
+			mining.stop(String(event.get("entity_id", "")), "death")
 		if event.get("type", "") == "skill_experience_gained":
 			_pending_refresh[String(event.get("entity_id", ""))] = true
 		for key: String in ["entity_id", "attacker_id", "target_id", "caster_id"]:
@@ -578,6 +610,45 @@ func _simulation_point(global_point: Vector2) -> Vector2:
 	var origin: Vector2 = geometry_game.get("map_origin")
 	return Vector2((local.x - origin.x) / 32.0, (origin.y + float(geometry_game.get("map_height")) - local.y) / 32.0)
 
+func _discover_mining() -> void:
+	if geometry_game == null or not geometry_game.is_inside_tree():
+		return
+	var root: Node = geometry_game.get_parent() if geometry_game.get_parent() != null else geometry_game
+	var pending: Array[Node] = [root]
+	var candidates := {}
+	var duplicates := {}
+	while not pending.is_empty():
+		var node: Node = pending.pop_back()
+		pending.append_array(node.get_children())
+		if not node is MiningDeposit:
+			continue
+		if candidates.has(node.deposit_id):
+			duplicates[node.deposit_id] = true
+		candidates[node.deposit_id] = node
+	for id: String in candidates:
+		var node: MiningDeposit = candidates[id]
+		if duplicates.has(id) or not node.enabled or not is_finite(node.interaction_radius) or node.interaction_radius <= 0.0 or not node.approach_position().is_finite():
+			continue
+		if mining.register_deposit(id, node.ore_item_id).ok:
+			_mining_nodes[id] = node
+
+func _mining_context(id: String, deposit_id: String) -> Dictionary:
+	if frozen.has(id):
+		return {"paused": true}
+	var player: PlayerState = players.get(id)
+	var actor: CombatActor = world.combat.actors.get(id)
+	# Keep the lookup Variant until validity is checked: a removed scene node
+	# cannot be assigned to a typed Object reference in GDScript.
+	var node: Variant = _mining_nodes.get(deposit_id)
+	if player == null or actor == null or not is_instance_valid(node) or not node.is_inside_tree() or not node.enabled:
+		return {}
+	var point := _simulation_point(node.approach_position())
+	return {"player": player, "paused": false,
+		"eligible": actor.is_alive and actor.hp > 0 and not _in_combat(id) and
+			not world.combat.active_spell_casts.has(id) and not activities.fishing.has(id) and
+			not (activities.cooking.has(id) and activities.cooking[id].is_active()),
+		"in_range": player.get_position().distance_to(point) <= node.interaction_radius / 32.0 and world.has_line_of_sight(player.get_position(), point)}
+
 func _validate(command: Dictionary) -> Dictionary:
 	var kind: Variant = command.get("type")
 	if not kind is String or not SCHEMA.has(kind):
@@ -589,7 +660,7 @@ func _validate(command: Dictionary) -> Dictionary:
 		if key in ["x", "y", "steering", "phase_elapsed"]:
 			if not (value is int or value is float) or not is_finite(float(value)):
 				return _result(false, "invalid", "Expected a finite number.")
-		elif key in ["slot", "quantity", "encounter_id", "input_id", "action_id", "expected_state", "plan_ack", "prompt_id"] and not (kind == "unequip" and key == "slot"):
+		elif key in ["slot", "quantity", "encounter_id", "input_id", "action_id", "expected_state", "plan_ack", "prompt_id", "deposit_generation"] and not (kind == "unequip" and key == "slot"):
 			if not (value is int or value is float) or not is_finite(float(value)) or floor(float(value)) != float(value) or float(value) < 0.0 or float(value) > 2147483647.0:
 				return _result(false, "invalid", "Expected a supported integer.")
 		elif key != "direction":

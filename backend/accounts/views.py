@@ -248,8 +248,8 @@ def claim(request, body):
 
 
 def validate_state(state):
-    if not isinstance(state, dict) or type(state.get('version')) is not int or state['version'] != 1:
-        fail('invalid_state', 'Character state requires schema version 1.')
+    if not isinstance(state, dict) or type(state.get('version')) is not int or state['version'] not in (1, 2):
+        fail('invalid_state', 'Character state requires schema version 1 or 2.')
     nodes = 0
 
     def visit(value, depth=0):

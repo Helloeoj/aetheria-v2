@@ -42,6 +42,24 @@ static func add_to_backpack(player: Variant, item_name: String, amount: int = 1)
 		return
 	player.backpack[item_name] = int(player.backpack.get(item_name, 0)) + amount
 
+static func can_add_to_backpack(player: Variant, item_name: String, amount: int = 1) -> bool:
+	# The backpack has no gameplay slot cap. Respect its existing save bounds;
+	# do not invent a second capacity/stack system for gathering.
+	if player == null or amount <= 0 or amount > CharacterCodec.MAX_COUNT:
+		return false
+	item_name = GameData.canonical_item_name(item_name)
+	if GameData.get_item_by_name(item_name).is_empty():
+		return false
+	var count := 0
+	var names := {}
+	for name: String in player.backpack:
+		var canonical := GameData.canonical_item_name(name)
+		names[canonical] = true
+		if canonical == item_name:
+			count += int(player.backpack[name])
+	return count >= 0 and count <= CharacterCodec.MAX_COUNT - amount and (
+		names.has(item_name) or names.size() < CharacterCodec.MAX_INVENTORY_ENTRIES)
+
 static func remove_from_backpack(player: Variant, item_name: String, amount: int = 1) -> bool:
 	normalize_backpack(player)
 	item_name = GameData.canonical_item_name(item_name)

@@ -10,6 +10,13 @@
 
 **Spec:** `docs/mining/design.md`; context: `docs/mining/discovery.md`.
 
+**Core implementation checkpoint (2026-10-24):** see `godot_client/docs/Mining.md`.
+Progression/save migration, nonvisual definitions/deposit contract, shared extraction
+and the authoritative region/host adapter are implemented and tested for Bronze.
+Tasks 5–7 (client/offline interaction, presentation and content activation) remain.
+The checklists below retain the full original acceptance scope; do not interpret
+this checkpoint as playable Mining or completed content validation.
+
 ## Global constraints
 
 - Work in the active game repository; read its `AGENTS.md`. Preserve unrelated dirty files. Follow `docs/DevelopmentSync.md` for scoped commits/pushes on `codex/<task-name>`.
