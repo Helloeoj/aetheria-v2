@@ -309,183 +309,225 @@
     "id": "smelt_bronze",
     "name": "Bronze Ingots",
     "station": "furnace",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Bronze Ore"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Bronze Ore",
+        "quantity": 1
+      }
     ],
-    "planned_outputs": [
-      "Bronze Ingot"
-    ],
-    "reason": "Ore/alloy ingredients and output yields await approval; no fuel cost is assumed."
+    "outputs": [
+      {
+        "item": "Bronze Ingot",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "bronze_shortsword",
     "name": "Bronze Shortsword",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Bronze Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Bronze Ingot",
+        "quantity": 2
+      }
     ],
-    "planned_outputs": [
-      "Bronze Shortsword"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Bronze Shortsword",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "bronze_mace",
     "name": "Bronze Mace",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Bronze Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Bronze Ingot",
+        "quantity": 3
+      }
     ],
-    "planned_outputs": [
-      "Bronze Mace"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Bronze Mace",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "bronze_warmaul",
     "name": "Bronze Warmaul",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Bronze Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Bronze Ingot",
+        "quantity": 4
+      }
     ],
-    "planned_outputs": [
-      "Bronze Warmaul"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Bronze Warmaul",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "bronze_helmet",
     "name": "Bronze Helmet",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Bronze Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Bronze Ingot",
+        "quantity": 2
+      }
     ],
-    "planned_outputs": [
-      "Bronze Helmet"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Bronze Helmet",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "bronze_platebody",
     "name": "Bronze Platebody",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Bronze Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Bronze Ingot",
+        "quantity": 5
+      }
     ],
-    "planned_outputs": [
-      "Bronze Platebody"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Bronze Platebody",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "bronze_platelegs",
     "name": "Bronze Platelegs",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Bronze Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Bronze Ingot",
+        "quantity": 3
+      }
     ],
-    "planned_outputs": [
-      "Bronze Platelegs"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Bronze Platelegs",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "bronze_kiteshield",
     "name": "Bronze Kiteshield",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Bronze Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Bronze Ingot",
+        "quantity": 3
+      }
     ],
-    "planned_outputs": [
-      "Bronze Kiteshield"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Bronze Kiteshield",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "bronze_square_shield",
     "name": "Bronze Square Shield",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Bronze Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Bronze Ingot",
+        "quantity": 2
+      }
     ],
-    "planned_outputs": [
-      "Bronze Square Shield"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Bronze Square Shield",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "bronze_arrowheads",
     "name": "Bronze Arrowheads",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Bronze Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Bronze Ingot",
+        "quantity": 1
+      }
     ],
-    "planned_outputs": [
-      "Bronze Arrowheads"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Bronze Arrowheads",
+        "quantity": 15
+      }
+    ]
   },
   {
     "id": "bronze_bolts",
     "name": "Bronze Bolts",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Bronze Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Bronze Ingot",
+        "quantity": 1
+      }
     ],
-    "planned_outputs": [
-      "Bronze Bolts"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Bronze Bolts",
+        "quantity": 15
+      }
+    ]
   },
   {
     "id": "bronze_arrows",
     "name": "Bronze Arrows",
     "station": "fletching",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Arrow Shafts",
-      "Feathers",
-      "Bronze Arrowheads"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Arrow Shafts",
+        "quantity": 15
+      },
+      {
+        "item": "Feathers",
+        "quantity": 15
+      },
+      {
+        "item": "Bronze Arrowheads",
+        "quantity": 15
+      }
     ],
-    "planned_outputs": [
-      "Bronze Arrows"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Bronze Arrows",
+        "quantity": 15
+      }
+    ]
   },
   {
     "id": "bronze_bow",
@@ -3506,4 +3548,3 @@
     "reason": "Higher-tier staff body materials, log species, tier mapping and quantities await approval."
   }
 ]
-

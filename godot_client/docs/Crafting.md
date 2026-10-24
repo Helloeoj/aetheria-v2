@@ -3,7 +3,7 @@
 The crafting service exchanges approved backpack ingredients atomically. It does
 not award XP or calculate craft duration; those decisions remain deferred.
 Pending recipe rows describe coverage without supplying invented quantities.
-There are 15 available exchanges and 209 pending routes.
+There are 27 available exchanges and 197 pending routes.
 
 ## Available exchanges
 
@@ -14,7 +14,19 @@ There are 15 available exchanges and 209 pending routes.
 | Leatherworking | 5 Tanned Leather | 1 Tanned Leather Tunic |
 | Leatherworking | 3 Tanned Leather | 1 Tanned Leather Chaps |
 | Blacksmith's anvil | 1 Bronze Ingot | 1 Bronze Dagger |
+| Blacksmith's furnace | 1 Bronze Ore | 1 Bronze Ingot |
+| Blacksmith's anvil | 2 Bronze Ingots | 1 Bronze Shortsword |
 | Blacksmith's anvil | 3 Bronze Ingots | 1 Bronze Longsword |
+| Blacksmith's anvil | 3 Bronze Ingots | 1 Bronze Mace |
+| Blacksmith's anvil | 4 Bronze Ingots | 1 Bronze Warmaul |
+| Blacksmith's anvil | 2 Bronze Ingots | 1 Bronze Helmet |
+| Blacksmith's anvil | 5 Bronze Ingots | 1 Bronze Platebody |
+| Blacksmith's anvil | 3 Bronze Ingots | 1 Bronze Platelegs |
+| Blacksmith's anvil | 3 Bronze Ingots | 1 Bronze Kiteshield |
+| Blacksmith's anvil | 2 Bronze Ingots | 1 Bronze Square Shield |
+| Blacksmith's anvil | 1 Bronze Ingot | 15 Bronze Arrowheads |
+| Blacksmith's anvil | 1 Bronze Ingot | 15 Bronze Bolts |
+| Fletching | 15 Arrow Shafts + 15 Feathers + 15 Bronze Arrowheads | 15 Bronze Arrows |
 | Orb empowerment | 1 Magic Orb + 1 Fire Sigil | 1 Fire Orb |
 | Orb empowerment | 1 Magic Orb + 1 Ice Sigil | 1 Ice Orb |
 | Orb empowerment | 1 Magic Orb + 1 Lightning Sigil | 1 Lightning Orb |
@@ -28,6 +40,19 @@ There are 15 available exchanges and 209 pending routes.
 The three starter leather armor pieces cost ten leather total. Capes use cloth
 and Tailoring, regardless of the combat style wearing them.
 
+The Bronze recipe set covers every existing Bronze smithable melee weapon,
+armor piece, shield, arrowhead and bolt, plus arrow assembly at Fletching. Bows,
+crossbows (including undefined limb components), capes, staffs and wands are
+excluded from this addition. Rings and necklaces remain drop-only. The existing
+dagger/longsword costs are unchanged; new costs scale with the finished piece.
+Furnaces consume one Bronze Ore per Bronze Ingot without added fuel.
+
+Ore and ingots use separate generic placeholder icons in inventory and ground
+drops until authored art is available. Authored item visuals take precedence.
+For unsaved testing, use the existing Developer sandbox and F6 item menu:
+Bronze Ore is item ID 235 and Bronze Ingot is item ID 236. Login, saves and the
+online crafting authority remain unchanged; debug item grants remain offline.
+
 Plain Magic Orbs and sigils have no manufacturing recipe. Empowerment permanently
 converts one dropped orb, consumes one matching sigil, and produces exactly one
 empowered orb. Empowered orbs cannot be used as plain orbs, combine enchantments,
@@ -39,14 +64,14 @@ Staff assembly consumes its body and orb. A plain staff has no orb status effect
 The following routes appear as unavailable until ingredient quantities and yields
 are approved. Possessing materials does not enable them.
 
-- Furnace: each metal's ore/alloy ingredients into ingots. No fuel is assumed.
-- Anvil: ingots into metal weapons, armor, shields, arrowheads, crossbow metal
+- Furnace: higher metal tiers' ore/alloy ingredients into ingots. No fuel is assumed.
+- Anvil: higher metal tiers' ingots into weapons, armor, shields, arrowheads, crossbow metal
   components, and bolts. Bolts require the respective metal ingots; no wooden bolt
   shaft or feather requirement is added.
 - Fletching: logs into arrow shafts, staff bodies, and wooden crossbow stocks;
   animal sinew into bowstrings; logs plus bowstrings into bows; stocks, metal
   components, and bowstrings into crossbows; shafts, feathers and arrowheads into
-  arrows.
+  arrows (Bronze arrow assembly is now enabled).
 - Leatherworking: higher hides/scales/skins into corresponding leather and leather
   into coifs, tunics and chaps. Aetherwyrm Leather is already the boss-dropped
   material, so no additional invented raw hide intermediary is required.
@@ -166,3 +191,9 @@ Inspect a plain Magic Orb in inventory to empower it using one corresponding sig
 The bait store lists the four purchasable rods and all three bait grades, excluding Demon Rod. The user requested waiting for prices, so purchases remain disabled while those catalog prices are unset. No provisional prices were assigned. Supply eligibility is enforced independently of prices.
 
 Recipe costs, real boss/cultist drop odds, higher armor balance and most production quantities remain explicit pending work. The service does not award crafting XP or use crafting timers.
+
+Bronze regression: `res://scenes/dev_tools/bronze_recipes_smoke.tscn` checks
+exact costs/batch yields, missing materials, excluded routes and drop-only
+jewelry, existing station button wiring, authoritative-region crafting/range
+checks, save-codec compatibility and ore/ingot icons. It does not claim a live
+account-server end-to-end test or add an alternative minigame UI.
