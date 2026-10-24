@@ -3,7 +3,7 @@
 The crafting service exchanges approved backpack ingredients atomically. It does
 not award XP or calculate craft duration; those decisions remain deferred.
 Pending recipe rows describe coverage without supplying invented quantities.
-There are 27 available exchanges and 197 pending routes.
+There are 93 available exchanges and 131 pending routes.
 
 ## Available exchanges
 
@@ -45,13 +45,26 @@ armor piece, shield, arrowhead and bolt, plus arrow assembly at Fletching. Bows,
 crossbows (including undefined limb components), capes, staffs and wands are
 excluded from this addition. Rings and necklaces remain drop-only. The existing
 dagger/longsword costs are unchanged; new costs scale with the finished piece.
-Furnaces consume one Bronze Ore per Bronze Ingot without added fuel.
+All seven existing metal tiers now have the ten metal equipment routes above,
+using the same per-category ingot costs as Bronze. Furnace recipes consume one
+matching ore per ingot, except Steel: **1 Iron Ore + 1 Coal -> 1 Steel Ingot**.
+Both alloy ingredients scale with the requested quantity and are consumed
+atomically. Coal is item ID 329. The historical Steel Ore record and ID remain
+for compatibility; it is not a Steel recipe ingredient or a Smithing-menu item,
+and no longer enters generic loot rolls.
 
-Ore and ingots use separate generic placeholder icons in inventory and ground
-drops until authored art is available. Authored item visuals take precedence.
+Ore, Coal, ingots and metal gear use generic placeholder icons in inventory and
+ground drops wherever authored item visuals are unavailable. Authored item
+visuals take precedence. Furnace/anvil menus show completed recipes with icons;
+unfinished crossbow components remain pending and hidden at these stations.
 For unsaved testing, use the existing Developer sandbox and F6 item menu:
-Bronze Ore is item ID 235 and Bronze Ingot is item ID 236. Login, saves and the
-online crafting authority remain unchanged; debug item grants remain offline.
+F6 opens a Smithing view of 84 items: 70 equipment pieces, six usable ores, Coal
+and seven ingots. Click a row to grant the chosen quantity (1-100); equippable
+gear follows existing requirements. Typed IDs, Enter and PageUp/PageDown remain
+available. All Items retains access to the original full developer catalog.
+Bronze Ore is item ID 235 and Bronze Ingot is item ID 236. Login, saves and online
+crafting authority remain unchanged; debug item grants remain offline. The
+existing menus appear above the chat/food HUD and retain their original UI scale.
 
 Plain Magic Orbs and sigils have no manufacturing recipe. Empowerment permanently
 converts one dropped orb, consumes one matching sigil, and produces exactly one
@@ -64,9 +77,8 @@ Staff assembly consumes its body and orb. A plain staff has no orb status effect
 The following routes appear as unavailable until ingredient quantities and yields
 are approved. Possessing materials does not enable them.
 
-- Furnace: higher metal tiers' ore/alloy ingredients into ingots. No fuel is assumed.
-- Anvil: higher metal tiers' ingots into weapons, armor, shields, arrowheads, crossbow metal
-  components, and bolts. Bolts require the respective metal ingots; no wooden bolt
+- Anvil: higher metal tiers' arrowheads, crossbow metal components and bolts.
+  Bolts require the respective metal ingots; no wooden bolt
   shaft or feather requirement is added.
 - Fletching: logs into arrow shafts, staff bodies, and wooden crossbow stocks;
   animal sinew into bowstrings; logs plus bowstrings into bows; stocks, metal
@@ -83,7 +95,8 @@ are approved. Possessing materials does not enable them.
   used to produce higher equipment from the starter body.
 
 These route records do not implement resource gathering, define log species,
-invent alloy costs, set higher armor stats, or create crafting XP skills. Existing
+set higher armor stats or create crafting XP skills. Steel's approved alloy
+ingredients are recorded above. Existing
 wand records represent the staff family through catalog migration; a separate
 wand recipe family is not introduced. Existing bow/crossbow display names remain
 catalog identifiers until their future log/material mapping is specified.
@@ -186,6 +199,9 @@ It dynamically loads gameplay scripts after autoload initialization so a
 
 The outskirts scene now adds labeled furnace, anvil, Leatherworking, Tailoring, Fletching and bait-store interaction markers near the starting position. Walk within 2.5 simulation units and click/right-click Use to open the corresponding panel. Escape closes it; leaving range, combat or casting closes/rejects use. Existing scenery and artwork are unchanged. Pending ingredient quantities are visibly disabled, not executable recipes.
 
+Furnace and anvil hide unfinished routes, including excluded crossbow components;
+other stations retain their existing pending-recipe displays.
+
 Inspect a plain Magic Orb in inventory to empower it using one corresponding sigil. One orb and one sigil are consumed permanently; casting, combat and death block the exchange. A wooden staff body and orb can be assembled at the Fletching bench into the plain or corresponding empowered Apprentice staff.
 
 The bait store lists the four purchasable rods and all three bait grades, excluding Demon Rod. The user requested waiting for prices, so purchases remain disabled while those catalog prices are unset. No provisional prices were assigned. Supply eligibility is enforced independently of prices.
@@ -197,3 +213,12 @@ exact costs/batch yields, missing materials, excluded routes and drop-only
 jewelry, existing station button wiring, authoritative-region crafting/range
 checks, save-codec compatibility and ore/ingot icons. It does not claim a live
 account-server end-to-end test or add an alternative minigame UI.
+
+Catalog/menu regression: `res://scenes/dev_tools/smithing_catalog_smoke.tscn`
+checks all seven tiers, exact equipment costs, Steel alloy inputs, replay and
+missing-material rejection, server transactions, save serialization, real F6
+keyboard/mouse input, quantities, overflow, online grant rejection, station
+buttons, exclusions and icons. The optional `--capture=<folder>` argument saves
+rendered menu images. This menu/catalog change uses the active immediate crafting
+service; it does not port the separate Smithing minigame implementation or award
+Smithing XP.

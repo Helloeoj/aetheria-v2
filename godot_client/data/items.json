@@ -5044,9 +5044,9 @@
     "tier": 3,
     "slot": null,
     "rarity": "common",
-    "generic_loot": true,
+    "generic_loot": false,
     "craftable": false,
-    "description": "Smelt at a blacksmith furnace. Gathering deposits are future content."
+    "description": "Historical material retained for saved inventories. Steel Ingots are smelted from Iron Ore and Coal."
   },
   {
     "id": 243,
@@ -6565,5 +6565,17 @@
     "crafting_skill": "fletching",
     "ammo_type": "arrow",
     "boss_material": true
+  },
+  {
+    "id": 329,
+    "name": "Coal",
+    "type": "Crafting",
+    "material": "Coal",
+    "tier": 3,
+    "slot": null,
+    "rarity": "common",
+    "generic_loot": true,
+    "craftable": false,
+    "description": "Combine with Iron Ore at a blacksmith furnace to make Steel Ingots. Gathering deposits are future content."
   }
 ]
