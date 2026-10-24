@@ -11,6 +11,23 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT = ROOT / 'tools/mining_balance.json'
 
 
+def normalize_config(config, retarget_seconds=None):
+    """Accept runtime metadata without synthesizing tools or rescaling its XP."""
+    if 'pickaxes' not in config:
+        return config
+    if config.get('schema_version') != 1:
+        raise ValueError('Unsupported runtime Mining schema')
+    return dict(runtime=True, xp_scale=1, retarget_seconds=retarget_seconds,
+        ores=[dict(item_id=ore['item_id'], required_level=ore['required_level'],
+            xp=ore['xp_reward'], p0=ore['success']['p_at_unlock'],
+            p1=ore['success']['p_at_mastery'], mastery_levels=ore['success']['mastery_levels'],
+            exponent=ore['success']['curve_exponent'], respawn=ore['respawn_seconds'])
+            for ore in config['ores']],
+        tools=[dict(profile=str(tool['item_id']), item_id=tool['item_id'],
+            required_level=tool['required_level'], interval=tool['attempt_interval_seconds'])
+            for tool in config['pickaxes']])
+
+
 def thresholds():
     """Read the live curve constants; Godot roundi on positive XP rounds halves up."""
     source = (ROOT / 'godot_client/scripts/skill_progression.gd').read_text()
@@ -29,6 +46,11 @@ def validate(config):
             raise ValueError('Invalid numeric balance parameter')
         if integer and int(value) != value:
             raise ValueError('Expected integer')
+    if config.get('runtime'):
+        if not config['tools']:
+            raise ValueError('Mining unavailable: runtime configuration has no pickaxes; no finite level 1–100 estimate.')
+        if config['retarget_seconds'] is None:
+            raise ValueError('Runtime estimates require explicit --retarget-seconds (one uncontested deposit per option).')
     number(config['xp_scale'], 0.001, 1000)
     number(config['retarget_seconds'], 0, 60)
     items = {item['id']: item for item in json.loads((ROOT / 'godot_client/data/items.json').read_text())}
@@ -43,7 +65,12 @@ def validate(config):
             seen.add(key)
             number(row['required_level'], 1, 100, True)
             if group == 'tools':
-                if not isinstance(key, str) or not key or 'item_id' in row:
+                if config.get('runtime'):
+                    number(row['item_id'], 1, 2147483647, True)
+                    item = items.get(row['item_id'], {})
+                    if 'pickaxe' not in item.get('name', '').lower():
+                        raise ValueError('Runtime tool must reference an existing catalog pickaxe')
+                elif not isinstance(key, str) or not key or 'item_id' in row:
                     raise ValueError('Tools are hypothetical profiles, not item records')
                 number(row['interval'], 0.25, 10)
                 continue
@@ -85,7 +112,8 @@ def combinations(level, config):
                              probability=p, ores_per_hour=ores, xp_per_hour=ores*reward,
                              reward=reward, extraction_seconds=extraction,
                              availability_fraction=extraction/cycle))
-    return sorted(rows, key=lambda r: (-r['xp_per_hour'], r['item_id'], r['tool']))
+    return sorted(rows, key=lambda r: (-r['xp_per_hour'], r['item_id'],
+                                      int(r['tool']) if config.get('runtime') else r['tool']))
 
 
 def progression(config):
@@ -106,9 +134,10 @@ def progression(config):
 def report(config):
     rows = progression(config)
     names = {i['id']: i['name'] for i in json.loads((ROOT / 'godot_client/data/items.json').read_text())}
+    tool_label = 'catalog pickaxe ID' if config.get('runtime') else 'hypothetical tool'
     lines = ['# Mining balance report', '',
              f'Expected efficient progression: **{rows[-1]["hours_to_reach"]:.2f} hours** (target 60–70).', '',
-             '| Level | Best ore / hypothetical tool | Ores/h | XP/h | Hours to next | Hours to reach |',
+             f'| Level | Best ore / {tool_label} | Ores/h | XP/h | Hours to next | Hours to reach |',
              '| --- | --- | ---: | ---: | ---: | ---: |']
     selected = {1, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 99, 100}
     last = None
@@ -123,11 +152,16 @@ def report(config):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--config', type=Path, default=DEFAULT)
+    parser.add_argument('--retarget-seconds', type=float,
+                        help='Required for runtime metadata; assumes one uncontested deposit per option')
     parser.add_argument('--csv', action='store_true', help='All 100 level rows on stdout')
     parser.add_argument('--compare-level', type=int, choices=range(1, 101), metavar='1..100', help='All unlocked ore/tool rates as CSV')
     args = parser.parse_args()
-    config = json.loads(args.config.read_text())
-    validate(config)
+    try:
+        config = normalize_config(json.loads(args.config.read_text()), args.retarget_seconds)
+        validate(config)
+    except (ValueError, KeyError, TypeError, OSError) as error:
+        parser.error(str(error))
     if args.csv or args.compare_level:
         rows = combinations(args.compare_level, config) if args.compare_level else progression(config)
         writer = csv.DictWriter(sys.stdout, fieldnames=list(rows[0]))

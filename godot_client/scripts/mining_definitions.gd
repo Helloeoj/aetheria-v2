@@ -55,7 +55,7 @@ func best_pickaxe(player: PlayerState) -> Dictionary:
 		if player.get_skill_level("mining") < int(tool.required_level) or not owns_pickaxe(player, tool):
 			continue
 		if best.is_empty() or float(tool.attempt_interval_seconds) < float(best.attempt_interval_seconds) or (
-			is_equal_approx(float(tool.attempt_interval_seconds), float(best.attempt_interval_seconds)) and int(tool.item_id) < int(best.item_id)):
+			float(tool.attempt_interval_seconds) == float(best.attempt_interval_seconds) and int(tool.item_id) < int(best.item_id)):
 			best = tool
 	return best.duplicate(true)
 

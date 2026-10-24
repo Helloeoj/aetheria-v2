@@ -1,5 +1,13 @@
 extends Node
 
+# Exercise the real selector without adding nonexistent catalog pickaxes.
+# Negative keys are isolated tool handles, never item/inventory definitions.
+class SelectionFixture extends MiningDefinitions:
+	var owned_handles: Array[int] = [-1, -2]
+
+	func owns_pickaxe(_player: PlayerState, tool: Dictionary) -> bool:
+		return int(tool.item_id) in owned_handles
+
 var checks := 0
 var failures := 0
 
@@ -55,3 +63,29 @@ func _run() -> void:
 	var missing_art := source.duplicate(true)
 	missing_art.ores[0].visual.available = "res://missing.png"
 	check(not defs.load_records(missing_art).ok, "Nonempty missing art reference rejected")
+	_test_tool_selection()
+
+func _test_tool_selection() -> void:
+	var defs := SelectionFixture.new()
+	var player := PlayerState.new()
+	var faster := {"item_id": -1, "required_level": 1, "attempt_interval_seconds": 3.0}
+	var slower := {"item_id": -2, "required_level": 1, "attempt_interval_seconds": 3.000001}
+	for reverse_order in [false, true]:
+		defs._pickaxes = {-2: slower, -1: faster} if reverse_order else {-1: faster, -2: slower}
+		check(defs.best_pickaxe(player).item_id == -1, "Strictly faster tool wins regardless of ID/order")
+		slower.attempt_interval_seconds = 3.0
+		check(defs.best_pickaxe(player).item_id == -2, "Exactly equal intervals use lower ID in either order")
+		slower.attempt_interval_seconds = 3.000001
+	defs.owned_handles = [-2]
+	check(defs.best_pickaxe(player).item_id == -2, "Unowned faster tool is excluded")
+	defs.owned_handles = [-1, -2]
+	faster.required_level = 18
+	player.set_skill_level("mining", 17)
+	check(defs.best_pickaxe(player).item_id == -2, "Faster tool below its level requirement is excluded")
+	player.set_skill_level("mining", 18)
+	check(defs.best_pickaxe(player).item_id == -1, "Faster tool unlocks at its exact level requirement")
+	var selected := defs.best_pickaxe(player)
+	selected.attempt_interval_seconds = 0.25
+	check(defs.best_pickaxe(player).attempt_interval_seconds == 3.0, "Returned settings cannot mutate cached tool speed")
+	defs.owned_handles.clear()
+	check(defs.best_pickaxe(player).is_empty(), "No owned tool yields no selection")

@@ -1,5 +1,7 @@
 import copy
 import json
+import subprocess
+import sys
 import unittest
 import mining_balance as sim
 
@@ -55,6 +57,41 @@ class MiningBalanceTests(unittest.TestCase):
             config['ores'][0][field] = value
             with self.assertRaises(ValueError):
                 sim.validate(config)
+
+    def test_runtime_mapping_preserves_rewards_and_does_not_invent_tools(self):
+        runtime = json.loads((sim.ROOT / 'godot_client/data/mining.json').read_text())
+        config = sim.normalize_config(runtime, retarget_seconds=1.2)
+        self.assertEqual(config['xp_scale'], 1)
+        self.assertEqual(config['tools'], [])
+        self.assertEqual(config['ores'], [dict(item_id=235, required_level=1, xp=121,
+            p0=0.28, p1=0.78, mastery_levels=26, exponent=1.15, respawn=4)])
+        with self.assertRaisesRegex(ValueError, 'no pickaxes'):
+            sim.progression(config)
+
+    def test_runtime_cli_reports_unavailable_without_traceback_or_estimate(self):
+        result = subprocess.run([sys.executable, str(sim.ROOT / 'tools/mining_balance.py'),
+            '--config', str(sim.ROOT / 'godot_client/data/mining.json')],
+            capture_output=True, text=True)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('no pickaxes', result.stderr)
+        self.assertNotIn('Traceback', result.stderr)
+        self.assertEqual(result.stdout, '')
+
+    def test_runtime_requires_explicit_retarget_and_rejects_non_pickaxe(self):
+        runtime = json.loads((sim.ROOT / 'godot_client/data/mining.json').read_text())
+        # An invalid existing ore ID must never become a substitute pickaxe.
+        runtime['pickaxes'] = [dict(item_id=235, required_level=1, attempt_interval_seconds=3)]
+        with self.assertRaisesRegex(ValueError, 'retarget'):
+            sim.validate(sim.normalize_config(runtime))
+        with self.assertRaisesRegex(ValueError, 'catalog pickaxe'):
+            sim.validate(sim.normalize_config(runtime, retarget_seconds=1.2))
+
+    def test_runtime_rate_ties_use_numeric_tool_order(self):
+        self.config['runtime'] = True
+        # Rate-comparison labels only, not catalog items or valid runtime definitions.
+        self.config['tools'] = [dict(self.config['tools'][0], profile=label)
+                                for label in ('10', '2')]
+        self.assertEqual(sim.combinations(1, self.config)[0]['tool'], '2')
 
 
 if __name__ == '__main__':
