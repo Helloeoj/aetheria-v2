@@ -3,6 +3,7 @@ extends RefCounted
 ## Each catalog entry links an inventory image, a separate ground image and
 ## the existing equipped scene. New approved batches extend this registry.
 const CATALOG := "res://data/item_visuals.json"
+const Smithing = preload("res://scripts/smithing_catalog.gd")
 static var definitions: Dictionary = {}
 static var textures: Dictionary = {}
 static var loaded := false
@@ -44,6 +45,11 @@ static func definition(item_name: String) -> Dictionary:
 				icon = "ore"
 			elif canonical_name.ends_with(" Ingot"):
 				icon = "ingot"
+			elif canonical_name == "Coal":
+				icon = "coal"
+		"Weapon", "Armor":
+			icon = Smithing.category(item)
+			family = "smithing"
 	if icon.is_empty():
 		return {}
 	var path := "res://Assets/Items/placeholders/%s_%s.svg" % [family, icon]

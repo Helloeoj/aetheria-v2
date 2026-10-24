@@ -12,6 +12,8 @@ var amount: SpinBox
 
 func configure(owner_game: Node) -> void:
 	game = owner_game
+	preload("res://scripts/crafting_menu_layer.gd").mount(self, game.ui_root)
+	theme = FantasyUI.make_theme()
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	var shade := ColorRect.new()
@@ -88,14 +90,22 @@ func _rebuild() -> void:
 		content.add_child(gold_label)
 		return
 	for recipe: Dictionary in Crafting.list_recipes(station.station_id):
-		var button := Button.new()
 		var enabled := bool(recipe.get("enabled", false))
+		if station.station_id in ["furnace", "anvil"] and not enabled:
+			continue
+		var button := Button.new()
 		button.text = String(recipe.get("name", recipe.id))
 		button.set_meta("recipe_id", recipe.id)
 		button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		button.custom_minimum_size = Vector2(680, 42)
 		button.disabled = not enabled
 		if enabled:
+			var outputs: Array = recipe.get("outputs", [])
+			if not outputs.is_empty():
+				button.icon = ItemVisualLibrary.texture(String(outputs[0].item))
+				if button.icon == null: button.icon = FantasyUI.icon("bag")
+				button.expand_icon = true
+				button.add_theme_constant_override("icon_max_width", 32)
 			var ingredients: Array[String] = []
 			for entry: Dictionary in recipe.get("inputs", []):
 				ingredients.append("%d %s" % [int(entry.quantity), entry.item])

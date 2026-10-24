@@ -581,166 +581,199 @@
     "id": "smelt_iron",
     "name": "Iron Ingots",
     "station": "furnace",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Iron Ore"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Iron Ore",
+        "quantity": 1
+      }
     ],
-    "planned_outputs": [
-      "Iron Ingot"
-    ],
-    "reason": "Ore/alloy ingredients and output yields await approval; no fuel cost is assumed."
+    "outputs": [
+      {
+        "item": "Iron Ingot",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "iron_dagger",
     "name": "Iron Dagger",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Iron Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Iron Ingot",
+        "quantity": 1
+      }
     ],
-    "planned_outputs": [
-      "Iron Dagger"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Iron Dagger",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "iron_shortsword",
     "name": "Iron Shortsword",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Iron Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Iron Ingot",
+        "quantity": 2
+      }
     ],
-    "planned_outputs": [
-      "Iron Shortsword"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Iron Shortsword",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "iron_longsword",
     "name": "Iron Longsword",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Iron Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Iron Ingot",
+        "quantity": 3
+      }
     ],
-    "planned_outputs": [
-      "Iron Longsword"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Iron Longsword",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "iron_mace",
     "name": "Iron Mace",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Iron Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Iron Ingot",
+        "quantity": 3
+      }
     ],
-    "planned_outputs": [
-      "Iron Mace"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Iron Mace",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "iron_warmaul",
     "name": "Iron Warmaul",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Iron Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Iron Ingot",
+        "quantity": 4
+      }
     ],
-    "planned_outputs": [
-      "Iron Warmaul"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Iron Warmaul",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "iron_helmet",
     "name": "Iron Helmet",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Iron Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Iron Ingot",
+        "quantity": 2
+      }
     ],
-    "planned_outputs": [
-      "Iron Helmet"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Iron Helmet",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "iron_platebody",
     "name": "Iron Platebody",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Iron Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Iron Ingot",
+        "quantity": 5
+      }
     ],
-    "planned_outputs": [
-      "Iron Platebody"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Iron Platebody",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "iron_platelegs",
     "name": "Iron Platelegs",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Iron Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Iron Ingot",
+        "quantity": 3
+      }
     ],
-    "planned_outputs": [
-      "Iron Platelegs"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Iron Platelegs",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "iron_kiteshield",
     "name": "Iron Kiteshield",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Iron Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Iron Ingot",
+        "quantity": 3
+      }
     ],
-    "planned_outputs": [
-      "Iron Kiteshield"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Iron Kiteshield",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "iron_square_shield",
     "name": "Iron Square Shield",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Iron Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Iron Ingot",
+        "quantity": 2
+      }
     ],
-    "planned_outputs": [
-      "Iron Square Shield"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Iron Square Shield",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "iron_arrowheads",
@@ -841,166 +874,203 @@
     "id": "smelt_steel",
     "name": "Steel Ingots",
     "station": "furnace",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Steel Ore"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Iron Ore",
+        "quantity": 1
+      },
+      {
+        "item": "Coal",
+        "quantity": 1
+      }
     ],
-    "planned_outputs": [
-      "Steel Ingot"
-    ],
-    "reason": "Ore/alloy ingredients and output yields await approval; no fuel cost is assumed."
+    "outputs": [
+      {
+        "item": "Steel Ingot",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "steel_dagger",
     "name": "Steel Dagger",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Steel Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Steel Ingot",
+        "quantity": 1
+      }
     ],
-    "planned_outputs": [
-      "Steel Dagger"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Steel Dagger",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "steel_shortsword",
     "name": "Steel Shortsword",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Steel Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Steel Ingot",
+        "quantity": 2
+      }
     ],
-    "planned_outputs": [
-      "Steel Shortsword"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Steel Shortsword",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "steel_longsword",
     "name": "Steel Longsword",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Steel Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Steel Ingot",
+        "quantity": 3
+      }
     ],
-    "planned_outputs": [
-      "Steel Longsword"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Steel Longsword",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "steel_mace",
     "name": "Steel Mace",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Steel Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Steel Ingot",
+        "quantity": 3
+      }
     ],
-    "planned_outputs": [
-      "Steel Mace"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Steel Mace",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "steel_warmaul",
     "name": "Steel Warmaul",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Steel Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Steel Ingot",
+        "quantity": 4
+      }
     ],
-    "planned_outputs": [
-      "Steel Warmaul"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Steel Warmaul",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "steel_helmet",
     "name": "Steel Helmet",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Steel Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Steel Ingot",
+        "quantity": 2
+      }
     ],
-    "planned_outputs": [
-      "Steel Helmet"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Steel Helmet",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "steel_platebody",
     "name": "Steel Platebody",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Steel Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Steel Ingot",
+        "quantity": 5
+      }
     ],
-    "planned_outputs": [
-      "Steel Platebody"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Steel Platebody",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "steel_platelegs",
     "name": "Steel Platelegs",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Steel Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Steel Ingot",
+        "quantity": 3
+      }
     ],
-    "planned_outputs": [
-      "Steel Platelegs"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Steel Platelegs",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "steel_kiteshield",
     "name": "Steel Kiteshield",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Steel Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Steel Ingot",
+        "quantity": 3
+      }
     ],
-    "planned_outputs": [
-      "Steel Kiteshield"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Steel Kiteshield",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "steel_square_shield",
     "name": "Steel Square Shield",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Steel Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Steel Ingot",
+        "quantity": 2
+      }
     ],
-    "planned_outputs": [
-      "Steel Square Shield"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Steel Square Shield",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "steel_arrowheads",
@@ -1101,166 +1171,199 @@
     "id": "smelt_blacksteel",
     "name": "Blacksteel Ingots",
     "station": "furnace",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Blacksteel Ore"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Blacksteel Ore",
+        "quantity": 1
+      }
     ],
-    "planned_outputs": [
-      "Blacksteel Ingot"
-    ],
-    "reason": "Ore/alloy ingredients and output yields await approval; no fuel cost is assumed."
+    "outputs": [
+      {
+        "item": "Blacksteel Ingot",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "blacksteel_dagger",
     "name": "Blacksteel Dagger",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Blacksteel Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Blacksteel Ingot",
+        "quantity": 1
+      }
     ],
-    "planned_outputs": [
-      "Blacksteel Dagger"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Blacksteel Dagger",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "blacksteel_shortsword",
     "name": "Blacksteel Shortsword",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Blacksteel Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Blacksteel Ingot",
+        "quantity": 2
+      }
     ],
-    "planned_outputs": [
-      "Blacksteel Shortsword"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Blacksteel Shortsword",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "blacksteel_longsword",
     "name": "Blacksteel Longsword",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Blacksteel Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Blacksteel Ingot",
+        "quantity": 3
+      }
     ],
-    "planned_outputs": [
-      "Blacksteel Longsword"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Blacksteel Longsword",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "blacksteel_mace",
     "name": "Blacksteel Mace",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Blacksteel Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Blacksteel Ingot",
+        "quantity": 3
+      }
     ],
-    "planned_outputs": [
-      "Blacksteel Mace"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Blacksteel Mace",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "blacksteel_warmaul",
     "name": "Blacksteel Warmaul",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Blacksteel Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Blacksteel Ingot",
+        "quantity": 4
+      }
     ],
-    "planned_outputs": [
-      "Blacksteel Warmaul"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Blacksteel Warmaul",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "blacksteel_helmet",
     "name": "Blacksteel Helmet",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Blacksteel Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Blacksteel Ingot",
+        "quantity": 2
+      }
     ],
-    "planned_outputs": [
-      "Blacksteel Helmet"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Blacksteel Helmet",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "blacksteel_platebody",
     "name": "Blacksteel Platebody",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Blacksteel Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Blacksteel Ingot",
+        "quantity": 5
+      }
     ],
-    "planned_outputs": [
-      "Blacksteel Platebody"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Blacksteel Platebody",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "blacksteel_platelegs",
     "name": "Blacksteel Platelegs",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Blacksteel Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Blacksteel Ingot",
+        "quantity": 3
+      }
     ],
-    "planned_outputs": [
-      "Blacksteel Platelegs"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Blacksteel Platelegs",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "blacksteel_kiteshield",
     "name": "Blacksteel Kiteshield",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Blacksteel Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Blacksteel Ingot",
+        "quantity": 3
+      }
     ],
-    "planned_outputs": [
-      "Blacksteel Kiteshield"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Blacksteel Kiteshield",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "blacksteel_square_shield",
     "name": "Blacksteel Square Shield",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Blacksteel Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Blacksteel Ingot",
+        "quantity": 2
+      }
     ],
-    "planned_outputs": [
-      "Blacksteel Square Shield"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Blacksteel Square Shield",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "blacksteel_arrowheads",
@@ -1361,166 +1464,199 @@
     "id": "smelt_mithril",
     "name": "Mithril Ingots",
     "station": "furnace",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Mithril Ore"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Mithril Ore",
+        "quantity": 1
+      }
     ],
-    "planned_outputs": [
-      "Mithril Ingot"
-    ],
-    "reason": "Ore/alloy ingredients and output yields await approval; no fuel cost is assumed."
+    "outputs": [
+      {
+        "item": "Mithril Ingot",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "mithril_dagger",
     "name": "Mithril Dagger",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Mithril Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Mithril Ingot",
+        "quantity": 1
+      }
     ],
-    "planned_outputs": [
-      "Mithril Dagger"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Mithril Dagger",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "mithril_shortsword",
     "name": "Mithril Shortsword",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Mithril Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Mithril Ingot",
+        "quantity": 2
+      }
     ],
-    "planned_outputs": [
-      "Mithril Shortsword"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Mithril Shortsword",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "mithril_longsword",
     "name": "Mithril Longsword",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Mithril Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Mithril Ingot",
+        "quantity": 3
+      }
     ],
-    "planned_outputs": [
-      "Mithril Longsword"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Mithril Longsword",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "mithril_mace",
     "name": "Mithril Mace",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Mithril Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Mithril Ingot",
+        "quantity": 3
+      }
     ],
-    "planned_outputs": [
-      "Mithril Mace"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Mithril Mace",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "mithril_warmaul",
     "name": "Mithril Warmaul",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Mithril Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Mithril Ingot",
+        "quantity": 4
+      }
     ],
-    "planned_outputs": [
-      "Mithril Warmaul"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Mithril Warmaul",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "mithril_helmet",
     "name": "Mithril Helmet",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Mithril Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Mithril Ingot",
+        "quantity": 2
+      }
     ],
-    "planned_outputs": [
-      "Mithril Helmet"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Mithril Helmet",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "mithril_platebody",
     "name": "Mithril Platebody",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Mithril Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Mithril Ingot",
+        "quantity": 5
+      }
     ],
-    "planned_outputs": [
-      "Mithril Platebody"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Mithril Platebody",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "mithril_platelegs",
     "name": "Mithril Platelegs",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Mithril Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Mithril Ingot",
+        "quantity": 3
+      }
     ],
-    "planned_outputs": [
-      "Mithril Platelegs"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Mithril Platelegs",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "mithril_kiteshield",
     "name": "Mithril Kiteshield",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Mithril Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Mithril Ingot",
+        "quantity": 3
+      }
     ],
-    "planned_outputs": [
-      "Mithril Kiteshield"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Mithril Kiteshield",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "mithril_square_shield",
     "name": "Mithril Square Shield",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Mithril Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Mithril Ingot",
+        "quantity": 2
+      }
     ],
-    "planned_outputs": [
-      "Mithril Square Shield"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Mithril Square Shield",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "mithril_arrowheads",
@@ -1621,166 +1757,199 @@
     "id": "smelt_adamantite",
     "name": "Adamantite Ingots",
     "station": "furnace",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Adamantite Ore"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Adamantite Ore",
+        "quantity": 1
+      }
     ],
-    "planned_outputs": [
-      "Adamantite Ingot"
-    ],
-    "reason": "Ore/alloy ingredients and output yields await approval; no fuel cost is assumed."
+    "outputs": [
+      {
+        "item": "Adamantite Ingot",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "adamantite_dagger",
     "name": "Adamantite Dagger",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Adamantite Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Adamantite Ingot",
+        "quantity": 1
+      }
     ],
-    "planned_outputs": [
-      "Adamantite Dagger"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Adamantite Dagger",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "adamantite_shortsword",
     "name": "Adamantite Shortsword",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Adamantite Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Adamantite Ingot",
+        "quantity": 2
+      }
     ],
-    "planned_outputs": [
-      "Adamantite Shortsword"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Adamantite Shortsword",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "adamantite_longsword",
     "name": "Adamantite Longsword",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Adamantite Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Adamantite Ingot",
+        "quantity": 3
+      }
     ],
-    "planned_outputs": [
-      "Adamantite Longsword"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Adamantite Longsword",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "adamantite_mace",
     "name": "Adamantite Mace",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Adamantite Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Adamantite Ingot",
+        "quantity": 3
+      }
     ],
-    "planned_outputs": [
-      "Adamantite Mace"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Adamantite Mace",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "adamantite_warmaul",
     "name": "Adamantite Warmaul",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Adamantite Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Adamantite Ingot",
+        "quantity": 4
+      }
     ],
-    "planned_outputs": [
-      "Adamantite Warmaul"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Adamantite Warmaul",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "adamantite_helmet",
     "name": "Adamantite Helmet",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Adamantite Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Adamantite Ingot",
+        "quantity": 2
+      }
     ],
-    "planned_outputs": [
-      "Adamantite Helmet"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Adamantite Helmet",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "adamantite_platebody",
     "name": "Adamantite Platebody",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Adamantite Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Adamantite Ingot",
+        "quantity": 5
+      }
     ],
-    "planned_outputs": [
-      "Adamantite Platebody"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Adamantite Platebody",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "adamantite_platelegs",
     "name": "Adamantite Platelegs",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Adamantite Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Adamantite Ingot",
+        "quantity": 3
+      }
     ],
-    "planned_outputs": [
-      "Adamantite Platelegs"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Adamantite Platelegs",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "adamantite_kiteshield",
     "name": "Adamantite Kiteshield",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Adamantite Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Adamantite Ingot",
+        "quantity": 3
+      }
     ],
-    "planned_outputs": [
-      "Adamantite Kiteshield"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Adamantite Kiteshield",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "adamantite_square_shield",
     "name": "Adamantite Square Shield",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Adamantite Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Adamantite Ingot",
+        "quantity": 2
+      }
     ],
-    "planned_outputs": [
-      "Adamantite Square Shield"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Adamantite Square Shield",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "adamantite_arrowheads",
@@ -1881,166 +2050,199 @@
     "id": "smelt_starforged",
     "name": "Starforged Ingots",
     "station": "furnace",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Starforged Ore"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Starforged Ore",
+        "quantity": 1
+      }
     ],
-    "planned_outputs": [
-      "Starforged Ingot"
-    ],
-    "reason": "Ore/alloy ingredients and output yields await approval; no fuel cost is assumed."
+    "outputs": [
+      {
+        "item": "Starforged Ingot",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "starforged_dagger",
     "name": "Starforged Dagger",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Starforged Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Starforged Ingot",
+        "quantity": 1
+      }
     ],
-    "planned_outputs": [
-      "Starforged Dagger"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Starforged Dagger",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "starforged_shortsword",
     "name": "Starforged Shortsword",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Starforged Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Starforged Ingot",
+        "quantity": 2
+      }
     ],
-    "planned_outputs": [
-      "Starforged Shortsword"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Starforged Shortsword",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "starforged_longsword",
     "name": "Starforged Longsword",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Starforged Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Starforged Ingot",
+        "quantity": 3
+      }
     ],
-    "planned_outputs": [
-      "Starforged Longsword"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Starforged Longsword",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "starforged_mace",
     "name": "Starforged Mace",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Starforged Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Starforged Ingot",
+        "quantity": 3
+      }
     ],
-    "planned_outputs": [
-      "Starforged Mace"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Starforged Mace",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "starforged_warmaul",
     "name": "Starforged Warmaul",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Starforged Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Starforged Ingot",
+        "quantity": 4
+      }
     ],
-    "planned_outputs": [
-      "Starforged Warmaul"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Starforged Warmaul",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "starforged_helmet",
     "name": "Starforged Helmet",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Starforged Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Starforged Ingot",
+        "quantity": 2
+      }
     ],
-    "planned_outputs": [
-      "Starforged Helmet"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Starforged Helmet",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "starforged_platebody",
     "name": "Starforged Platebody",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Starforged Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Starforged Ingot",
+        "quantity": 5
+      }
     ],
-    "planned_outputs": [
-      "Starforged Platebody"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Starforged Platebody",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "starforged_platelegs",
     "name": "Starforged Platelegs",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Starforged Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Starforged Ingot",
+        "quantity": 3
+      }
     ],
-    "planned_outputs": [
-      "Starforged Platelegs"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Starforged Platelegs",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "starforged_kiteshield",
     "name": "Starforged Kiteshield",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Starforged Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Starforged Ingot",
+        "quantity": 3
+      }
     ],
-    "planned_outputs": [
-      "Starforged Kiteshield"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Starforged Kiteshield",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "starforged_square_shield",
     "name": "Starforged Square Shield",
     "station": "anvil",
-    "enabled": false,
-    "inputs": [],
-    "outputs": [],
-    "planned_inputs": [
-      "Starforged Ingot"
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Starforged Ingot",
+        "quantity": 2
+      }
     ],
-    "planned_outputs": [
-      "Starforged Square Shield"
-    ],
-    "reason": "Ingredient quantities and yields await approval."
+    "outputs": [
+      {
+        "item": "Starforged Square Shield",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "starforged_arrowheads",
