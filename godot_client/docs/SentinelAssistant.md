@@ -274,3 +274,31 @@ JavaScript send/stop tests use fakes without inference. A live signed-out websit
 loaded behind the native interface with both text areas visible and zero Codex
 jobs. Authenticated message submission and response extraction remain unverified
 against the user's session; website changes may require updating the DOM bridge.
+
+
+## Browser and handoff repair — October 23, 2026
+
+The website now opens in its own standard, resizable, maximized Sentinel window.
+It is no longer reparented into a hidden Tk window, which caused clipped content
+and unreliable focus. Website zoom is reset on first load, Ctrl+mouse-wheel/
+keyboard zoom is enabled, and **Reset website zoom** restores 100%. Website
+pop-ups stay in this browser session so sign-in does not jump to an unrelated
+browser profile. Native question and answer boxes remain in the main window.
+
+The transfer/context toolbar is above the expanding answer area. **Use this
+conversation in Codex** always opens an editable review, prefilled with captured
+messages. If automatic extraction is unavailable, paste the conversation there.
+**Use reviewed conversation** transfers the reviewed text to the Codex task box.
+An empty preview is rejected. No Codex connection or inference starts at transfer;
+preparation, a credit budget and stage review are still required.
+
+Browser dependencies now live under `%LOCALAPPDATA%/AetheriaSentinel/browser-dependencies`
+and are loaded by the owned renderer. `tools/setup_sentinel_browser.ps1` installs
+there so desktop runtime updates do not remove them.
+
+Live verification found a top-level native window (no Tk parent) with a visible
+ChatGPT composer in its 1280 × 658 viewport. The zoom-reset command completed.
+UI regressions verify the transfer button fits the minimum window, paste/review
+works without a browser session and no Codex job starts. Real account sign-in
+requires the owner; no credentials were entered or test messages sent. This is
+not a claim that an authenticated end-to-end conversation was completed.

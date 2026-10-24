@@ -119,8 +119,11 @@ class AssistantPanel(tk.Frame):
         chat_bar=tk.Frame(self.chat_page,bg=BG)
         chat_bar.pack(fill='x',pady=4)
         ttk.Button(chat_bar,text='Open / retry ChatGPT',command=self.open_chat).pack(side='left')
-        ttk.Button(chat_bar,text='Use this conversation in Codex',command=self.handoff_chat).pack(side='left',padx=5)
+        self.chat_transfer=ttk.Button(chat_bar,text='Use this conversation in Codex',command=self.handoff_chat)
+        self.chat_transfer.pack(side='left',padx=5)
         ttk.Button(chat_bar,text='Add game context',command=self.add_game_context).pack(side='left')
+        ttk.Button(chat_bar,text='Reset website zoom',command=self.reset_chat_zoom).pack(side='left',padx=5)
+        chat_bar.pack_configure(before=self.chat_answer.master)
         ttk.Label(self.chat_page,textvariable=self.chat_status,wraplength=850).pack(fill='x',pady=4)
         self.chat_window=tk.Toplevel(self)
         self.chat_window.title('Sentinel — ChatGPT website and sign-in')
@@ -301,13 +304,36 @@ class AssistantPanel(tk.Frame):
     def handoff_chat(self):
         if self.busy:
             self.status.set('Finish or stop the current Codex task before preparing another.')
-        elif self.chat_browser: self.chat_browser.command('handoff')
-        else: self.chat_status.set('Open ChatGPT and discuss the change before transferring a conversation.')
+            return
+        existing=getattr(self,'transfer_window',None)
+        if existing and existing.winfo_exists():existing.lift();return
+        self.transfer_window=tk.Toplevel(self)
+        self.transfer_window.title('Review conversation for Codex')
+        self.transfer_window.geometry('850x600')
+        self.label(self.transfer_window,'Review the captured conversation, or paste your ChatGPT conversation here. This step uses no Codex credits.').pack(fill='x',padx=10,pady=8)
+        buttons=tk.Frame(self.transfer_window,bg=BG);buttons.pack(side='bottom',fill='x',padx=10,pady=8)
+        ttk.Button(buttons,text='Use reviewed conversation',command=self.confirm_chat_transfer).pack(side='left')
+        self.transfer_box=self.text(self.transfer_window,height=12)
+        self.set_text(self.transfer_box,'\n\n'.join(r.get('role','')+': '+r.get('text','') for r in self.chat_messages))
+        if self.chat_browser:self.chat_browser.command('handoff')
+
+    def confirm_chat_transfer(self):
+        from sentinel_chatgpt_pane import conversation_request
+        text=self.transfer_box.get('1.0','end').strip()
+        if not text:
+            self.status.set('Paste or capture a conversation before transferring. No Codex request started.')
+            return
+        request=conversation_request('https://chatgpt.com/',[{'role':'user','text':text}])
+        self.transfer_window.destroy()
+        self._chat_event({'type':'handoff','request':request,'reviewed':True})
 
     def show_chat_website(self):
-        self.chat_window.deiconify()
-        self.chat_window.lift()
         self.open_chat(retry=False)
+        if self.chat_browser:self.chat_browser.command('website')
+
+    def reset_chat_zoom(self):
+        self.open_chat(retry=False)
+        if self.chat_browser:self.chat_browser.command('zoom_reset')
 
     def _enter_chat(self,event):
         if event.state & 1:return None
@@ -375,6 +401,10 @@ class AssistantPanel(tk.Frame):
             elif kind=='send_error':self.set_text(self.chat_answer,event['value'])
             return
         if kind=='handoff':
+            preview=getattr(self,'transfer_window',None)
+            if not event.get('reviewed') and preview and preview.winfo_exists():
+                self.set_text(self.transfer_box,event['request'])
+                return
             if self.busy:
                 self.status.set('Conversation ready; finish or stop the current Codex task before transferring it again.')
                 return

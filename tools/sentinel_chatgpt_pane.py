@@ -127,7 +127,10 @@ PAGE_STATE_JS=r"""(() => {
 def _child(profile):
     """Renderer's main thread owns WinForms. IPC has no executable page input."""
     import time
+    persistent=Path(os.environ.get('LOCALAPPDATA',Path.home()))/'AetheriaSentinel'/'browser-dependencies'
+    if persistent.is_dir():sys.path.insert(0,str(persistent))
     import webview
+    webview.settings['OPEN_EXTERNAL_LINKS_IN_BROWSER']=False
     output_lock=threading.Lock()
     closed=threading.Event()
     previous_state=None
@@ -137,12 +140,21 @@ def _child(profile):
             sys.stdout.write(json.dumps(value,ensure_ascii=True)+'\n')
             sys.stdout.flush()
     window=webview.create_window('Aetheria Sentinel ChatGPT','https://chatgpt.com/',
-                                  width=900,height=500,hidden=True,frameless=True,
-                                  easy_drag=False,background_color='#121d2d')
+                                  width=1000,height=650,maximized=True,hidden=True,frameless=False,
+                                  resizable=True,zoomable=True,text_select=True,
+                                  background_color='#121d2d')
     def ready():
         send({'type':'ready','handle':int(window.native.Handle.ToInt64())})
     window.events.shown += ready
     window.events.closed += lambda: closed.set()
+    first_load=True
+    def initial_zoom():
+        nonlocal first_load
+        if not first_load:return
+        from System import Action
+        window.native.Invoke(Action(lambda:setattr(window.native.webview,'ZoomFactor',1.0)))
+        first_load=False
+    window.events.loaded += initial_zoom
     def snapshot(manual=False):
         nonlocal previous_messages
         value=window.evaluate_js(SNAPSHOT_JS)
@@ -184,6 +196,10 @@ def _child(profile):
                 if command=='close': break
                 try:
                     if command=='handoff': snapshot(True)
+                    elif command=='website':window.show()
+                    elif command=='zoom_reset':
+                        from System import Action
+                        window.native.Invoke(Action(lambda:setattr(window.native.webview,'ZoomFactor',1.0)))
                     elif command=='send':
                         if not window.evaluate_js(draft_script(payload.get('text'),append=False)):
                             send({'type':'send_error','value':'ChatGPT’s question box is unavailable. Open ChatGPT sign-in / website and complete sign-in or verification.'})
@@ -307,43 +323,15 @@ class ChatGPTPane:
             try: event=self.events.get_nowait()
             except queue.Empty: break
             if event.get('type')=='ready':
-                try: self._attach(event['handle'])
-                except Exception:
-                    self.callback({'type':'error','value':'The browser could not attach to Sentinel. Close and reopen Sentinel to retry.'})
-                    self.close()
-                    return
+                self.handle=event['handle']
+                self.callback({'type':'attached','value':'ChatGPT session ready. Open the website window to sign in.'})
             else: self.callback(event)
         self.timer=self.frame.after(100,self._poll)
 
-    def _attach(self, handle):
-        import ctypes
-        from ctypes import wintypes as w
-        user=ctypes.WinDLL('user32',use_last_error=True)
-        user.GetWindowThreadProcessId.argtypes=[w.HWND,ctypes.POINTER(w.DWORD)]
-        pid=w.DWORD()
-        user.GetWindowThreadProcessId(handle,ctypes.byref(pid))
-        if pid.value!=self.process.pid: raise ValueError('Unexpected renderer window')
-        user.SetParent.argtypes=[w.HWND,w.HWND]
-        user.SetParent.restype=w.HWND
-        user.GetWindowLongPtrW.argtypes=[w.HWND,ctypes.c_int]
-        user.GetWindowLongPtrW.restype=ctypes.c_ssize_t
-        user.SetWindowLongPtrW.argtypes=[w.HWND,ctypes.c_int,ctypes.c_ssize_t]
-        user.SetWindowLongPtrW.restype=ctypes.c_ssize_t
-        style=user.GetWindowLongPtrW(handle,-16)
-        user.SetWindowLongPtrW(handle,-16,(style & ~0x80000000) | 0x40000000)
-        ctypes.set_last_error(0)
-        user.SetParent(handle,self.frame.winfo_id())
-        if ctypes.get_last_error(): raise ctypes.WinError(ctypes.get_last_error())
-        self.handle,self.user=handle,user
-        user.MoveWindow.argtypes=[w.HWND,ctypes.c_int,ctypes.c_int,ctypes.c_int,ctypes.c_int,w.BOOL]
-        user.ShowWindow.argtypes=[w.HWND,ctypes.c_int]
-        self._resize()
-        user.ShowWindow(handle,5)
-        self.callback({'type':'attached','value':'ChatGPT is open inside Sentinel. Sign in on the page if needed.'})
-
     def _resize(self, event=None):
-        if self.handle and not self.closed:
-            self.user.MoveWindow(self.handle,0,0,max(1,self.frame.winfo_width()),max(1,self.frame.winfo_height()),True)
+        # The native browser owns its size and DPI. Never reparent a WebView2
+        # form into Tk: cross-process sizing clipped login and broke focus.
+        pass
 
     def close(self):
         if self.closed: return

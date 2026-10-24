@@ -250,4 +250,23 @@ class QuestionUITests(unittest.TestCase):
         self.assertFalse(self.panel.chat_sending)
         self.assertFalse(self.panel.chat_send.instate(['disabled']))
 
+    def test_transfer_controls_fit_and_pasted_conversation_reaches_codex_without_browser(self):
+        self.window.update()
+        self.assertTrue(self.panel.chat_transfer.winfo_ismapped())
+        self.assertLessEqual(self.panel.chat_transfer.winfo_rooty()+self.panel.chat_transfer.winfo_height(),self.window.winfo_rooty()+self.window.winfo_height())
+        self.panel.handoff_chat()
+        self.panel.transfer_box.insert('1.0','User: Fix fishing freeze.\nChatGPT: Check the minigame completion signal.')
+        self.panel.confirm_chat_transfer()
+        self.window.update()
+        self.assertEqual(self.panel.route.get(),'Codex implementation')
+        self.assertIn('completion signal',self.panel.request_box.get('1.0','end'))
+        self.assertFalse(self.fake.launched)
+        self.assertEqual(self.fake.connected,0)
+
+    def test_website_and_zoom_controls_use_owned_browser_not_tk_embedding(self):
+        browser=BrowserController();self.panel.chat_browser=browser
+        self.panel.show_chat_website();self.panel.reset_chat_zoom()
+        self.assertEqual([x[0] for x in browser.commands],['website','zoom_reset'])
+        self.assertFalse(self.panel.chat_window.winfo_viewable())
+
 if __name__=='__main__': unittest.main(verbosity=2)
