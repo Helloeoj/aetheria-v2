@@ -20,7 +20,7 @@ static func definition(item_name: String) -> Dictionary:
 	initialize()
 	if definitions.has(item_name):
 		return definitions[item_name]
-	# Generic fishing placeholders are superseded by any authored catalog art.
+	# Generic placeholders are superseded by any authored catalog art.
 	var tree := Engine.get_main_loop() as SceneTree
 	var catalog := tree.root.get_node_or_null("GameData") if tree != null else null
 	if catalog == null:
@@ -30,15 +30,23 @@ static func definition(item_name: String) -> Dictionary:
 	if definitions.has(original_name):
 		return definitions[original_name]
 	var icon := ""
+	var family := "fishing"
 	match String(item.get("type", "")):
 		"Fishing Pole": icon = "rod"
 		"Fishing Bait": icon = "bait"
 		"Food":
 			if not String(item.get("fish_species", "")).is_empty():
 				icon = "fish"
+		"Crafting":
+			family = "smithing"
+			var canonical_name := String(item.get("name", ""))
+			if canonical_name.ends_with(" Ore"):
+				icon = "ore"
+			elif canonical_name.ends_with(" Ingot"):
+				icon = "ingot"
 	if icon.is_empty():
 		return {}
-	var path := "res://Assets/Items/placeholders/fishing_%s.svg" % icon
+	var path := "res://Assets/Items/placeholders/%s_%s.svg" % [family, icon]
 	return {"inventory": path, "ground": path, "ground_scale": 0.45, "placeholder": true}
 
 static func texture(item_name: String, state: String = "inventory") -> Texture2D:
