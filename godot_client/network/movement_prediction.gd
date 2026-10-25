@@ -13,9 +13,11 @@ var _frames: Array[Dictionary] = []
 var _visual_error := Vector2.ZERO
 var grid: HiddenGrid
 var _travel := GridTraveller.new()
+var _authority_epoch := -1
 
 func use_grid(value: HiddenGrid) -> void:
 	if grid != value:
+		_authority_epoch = -1
 		grid = value
 		if grid != null:
 			_travel.reset(position, grid)
@@ -56,7 +58,10 @@ func advance(delta: float, direction: Vector2) -> void:
 
 func reconcile(authority: Vector2, sequence: int, age: float, can_move: bool = true, travel_state: Dictionary = {}) -> void:
 	var old_visual := render_position()
-	var hard_reset := not can_move or position.distance_to(authority) > TELEPORT_DISTANCE
+	var epoch := int(travel_state.get("epoch", -1))
+	var displaced := epoch >= 0 and _authority_epoch >= 0 and epoch != _authority_epoch
+	_authority_epoch = epoch
+	var hard_reset := displaced or not can_move or position.distance_to(authority) > TELEPORT_DISTANCE
 	if hard_reset:
 		reset(authority)
 		_restore_travel(authority, travel_state)
@@ -84,7 +89,10 @@ func reconcile(authority: Vector2, sequence: int, age: float, can_move: bool = t
 		_commands.pop_front()
 
 func render_position() -> Vector2:
-	return position + _visual_error
+	var rendered := position + _visual_error
+	if grid != null and not grid.clear_segment(position, rendered):
+		return position
+	return rendered
 
 func _move(start: Vector2, motion: Vector2) -> Vector2:
 	return move_resolver.call(start, motion) if move_resolver.is_valid() else start + motion
@@ -107,3 +115,5 @@ func _restore_travel(point: Vector2, state: Dictionary) -> void:
 		_travel.cell = Vector2i(int(cell[0]), int(cell[1]))
 		_travel.target = Vector2(float(target[0]), float(target[1]))
 		_travel.active = bool(state.get("active", false))
+		_travel.epoch = int(state.get("epoch", _travel.epoch))
+		_travel.arrival = int(state.get("arrival", 0))

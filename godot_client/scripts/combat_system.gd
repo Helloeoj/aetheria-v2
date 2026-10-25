@@ -287,7 +287,9 @@ func _resolve_spell_cast(world: Variant, cast_data: Dictionary) -> Array[Diction
 			direction = Vector2.RIGHT
 		var displacement := direction * maxf(0.0, float(spell.get("knockback_distance", 0.0)))
 		var start := Vector2(target.x, target.y)
-		if world is Object and world.has_method("move_actor_continuous"):
+		if world is WorldState:
+			world.displace_actor(target.entity_id, displacement)
+		elif world is Object and world.has_method("move_actor_continuous"):
 			world.move_actor_continuous(target.entity_id, displacement)
 		else:
 			target.x += displacement.x
@@ -515,12 +517,14 @@ func _process_monster_movement(world: Variant, delta: float) -> Array[Dictionary
 			stop_distance = DEFAULT_MELEE_RANGE
 		var remaining_distance := maxf(0.0, distance_to_destination - stop_distance)
 		if world is WorldState and world.grid != null:
-			world.move_grid_toward(actor.entity_id, destination, movement_delta,
-				MONSTER_MOVE_SPEED_TILES_PER_SECOND, stop_distance,
-				func(point: Vector2) -> bool: return not has_target or point.distance_to(spawn_position) <= GameTickConfig.MONSTER_CHASE_LEASH_TILES,
-				func(point: Vector2) -> bool: return not has_target or not actor.requires_line_of_sight or world.has_line_of_sight(point, target_position))
+			var forced_outside := actor_position.distance_to(spawn_position) > GameTickConfig.MONSTER_CHASE_LEASH_TILES + 0.00001
+			var limit := maxf(GameTickConfig.MONSTER_CHASE_LEASH_TILES, actor_position.distance_to(spawn_position))
+			world.move_grid_toward(actor.entity_id, spawn_position if forced_outside else destination, movement_delta,
+				MONSTER_MOVE_SPEED_TILES_PER_SECOND, 0.0 if forced_outside else stop_distance,
+				func(point: Vector2) -> bool: return not has_target or point.distance_to(spawn_position) <= limit,
+				func(point: Vector2) -> bool: return forced_outside or not has_target or not actor.requires_line_of_sight or world.has_line_of_sight(point, target_position))
 			events.append({"type": "monster_moved", "entity_id": actor.entity_id,
-				"x": actor.x, "y": actor.y, "returning_to_spawn": not has_target})
+				"x": actor.x, "y": actor.y, "returning_to_spawn": forced_outside or not has_target})
 			continue
 		if remaining_distance <= 0.0:
 			continue

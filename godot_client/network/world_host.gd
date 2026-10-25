@@ -3,9 +3,10 @@ const AccountHTTP = preload("res://network/account_http.gd")
 const CharacterCodec = preload("res://network/character_codec.gd")
 const WorldProtocol = preload("res://network/world_protocol.gd")
 const SpatialIndex = preload("res://network/spatial_relevance.gd")
-const MOVEMENT_COMMANDS := ["walk", "target", "attack", "cast", "travel", "mine_start"]
+const MOVEMENT_COMMANDS := ["walk", "target", "attack", "cast", "travel", "mine_start", "fish_start", "cook_start"]
 ## One authoritative world; regions have separate physics spaces and stable IDs.
 var regions: Dictionary = {}
+var _loading_regions: Dictionary = {}
 var sessions: Dictionary = {}
 var joining: Dictionary = {}
 var max_players := 50
@@ -100,8 +101,15 @@ func _configure(config: Dictionary) -> bool:
 func _get_region(id: String) -> AuthoritativeRegion:
 	if regions.has(id):
 		return regions[id]
+	if _loading_regions.has(id):
+		while _loading_regions.has(id):
+			await get_tree().physics_frame
+		return regions.get(id)
 	if not WorldProtocol.REGIONS.has(id) or not ResourceLoader.exists(WorldProtocol.REGIONS[id]):
 		return null
+	# Reserve before any await: all concurrent entrants must share one physics
+	# world, including while its deferred geometry audit is still running.
+	_loading_regions[id] = true
 	# Each region has independent map collision even when hosted in one process.
 	var viewport := SubViewport.new()
 	viewport.name = "Region_" + id
@@ -114,6 +122,7 @@ func _get_region(id: String) -> AuthoritativeRegion:
 	var geometry: Node = map.get_node_or_null("Combat")
 	if geometry == null:
 		viewport.queue_free()
+		_loading_regions.erase(id)
 		return null
 	geometry.set_meta("online_server_geometry", true)
 	viewport.add_child(map)
@@ -126,9 +135,18 @@ func _get_region(id: String) -> AuthoritativeRegion:
 	if geometry.actor_sprites.has("player"):
 		geometry.actor_sprites["player"].queue_free()
 		geometry.actor_sprites.erase("player")
+	for frame in range(120):
+		if geometry.grid_adapter != null and geometry.grid_adapter.completed:
+			break
+		await get_tree().physics_frame
+	if geometry.grid_adapter == null or not geometry.grid_adapter.completed:
+		viewport.queue_free()
+		_loading_regions.erase(id)
+		return null
 	var region := AuthoritativeRegion.new()
 	region.configure(id, geometry)
 	regions[id] = region
+	_loading_regions.erase(id)
 	await get_tree().physics_frame
 	return region
 
@@ -440,6 +458,8 @@ func _finalize(session: Dictionary) -> void:
 
 func _travel(session: Dictionary, portal_id: String) -> Dictionary:
 	var region: AuthoritativeRegion = regions[session.region_id]
+	if not region.world.at_grid_rest(session.character_id):
+		return {"ok": false, "message": "Finish your step before entering."}
 	var geometry: Node = region.geometry_game
 	var portal: Node
 	for candidate: Node in get_tree().get_nodes_in_group("cave_portal"):

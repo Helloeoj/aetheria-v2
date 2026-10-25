@@ -49,6 +49,8 @@ func _status() -> void:
 func apply(snapshot: Dictionary) -> void:
 	if not is_instance_valid(game) or not Network.authenticated:
 		return
+	if float(snapshot.get("server_time", _server_time)) < _server_time:
+		return
 	var live_position: Vector2 = game.player.get_position()
 	if snapshot.get("state") is Dictionary and not snapshot.state.is_empty():
 		Codec.apply_to(game.player, snapshot.state)
@@ -60,6 +62,11 @@ func apply(snapshot: Dictionary) -> void:
 	_received_elapsed = 0.0
 	_movement_enabled = bool(snapshot.get("movement_enabled", false))
 	if snapshot.has("grid") and game.grid_adapter != null:
+		var anchor: Array = snapshot.grid.get("origin", [])
+		if anchor.size() == 2:
+			var origin := Vector2(float(anchor[0]), float(anchor[1]))
+			if origin.is_finite() and origin != game.grid_adapter.grid.origin:
+				game.grid_adapter.grid.configure(origin, game.world.movement_min, game.world.movement_max)
 		if game.world.grid != game.grid_adapter.grid:
 			game.world.set_grid(game.grid_adapter.grid)
 		_prediction.use_grid(game.grid_adapter.grid)
@@ -85,6 +92,7 @@ func apply(snapshot: Dictionary) -> void:
 		actor.current_target_id = String(data.get("target_id", ""))
 		var travel_state: Dictionary = data.get("grid_travel", {})
 		var occupied: Array = travel_state.get("cell", [])
+		actor.grid_active = bool(travel_state.get("active", false))
 		if occupied.size() == 2:
 			actor.logical_cell = Vector2i(int(occupied[0]), int(occupied[1]))
 		var sprite: ActorSprite = game.actor_sprites.get(id)
@@ -121,7 +129,7 @@ func apply(snapshot: Dictionary) -> void:
 			_prediction.reconcile(point, int(snapshot.get("movement_ack", -1)), float(snapshot.get("movement_age", 0.0)), _movement_enabled and actor.is_alive, travel_state)
 		if not _motion.has(id):
 			_motion[id] = Interpolation.new()
-		_motion[id].push(_server_time, Vector2(actor.x, actor.y))
+		_motion[id].push(_server_time, Vector2(actor.x, actor.y), travel_state)
 		if id == game.player.entity_id and (not actor.is_alive or not _movement_enabled):
 			_render_actor(id, Vector2(actor.x, actor.y))
 		elif _motion[id]._samples.size() == 1:
@@ -158,6 +166,10 @@ func apply(snapshot: Dictionary) -> void:
 				_drops[id].queue_free()
 			_drops.erase(id)
 	game.inventory_menu.queue_redraw()
+	for state: Dictionary in snapshot.get("deposits", []):
+		for node: Node in game.get_tree().get_nodes_in_group("mining_deposit"):
+			if game.get_parent().is_ancestor_of(node) and node.deposit_id == String(state.deposit_id):
+				node.apply_state(state)
 	game._update_target_highlight()
 	game._update_food_ui()
 	game._update_map_camera()
@@ -168,7 +180,7 @@ func record_command(sequence: int, command: Dictionary) -> void:
 		var direction: Array = command.direction
 		_prediction.record_input(sequence, Vector2(float(direction[0]), float(direction[1])))
 		_keyboard = true
-	elif command.get("type") in ["walk", "attack", "target", "cast", "travel"]:
+	elif command.get("type") in ["walk", "attack", "target", "cast", "travel", "mine_start", "fish_start", "cook_start"]:
 		_keyboard = false
 		if _prediction.grid != null:
 			_prediction.cancel_inputs()

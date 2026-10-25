@@ -145,6 +145,10 @@ func _run() -> void:
 	var pickup: Button = _find_button("Pick up Bronze Dagger", menu)
 	if pickup != null:
 		_click(pickup.get_global_rect().get_center(), MOUSE_BUTTON_LEFT)
+	for frame in range(120):
+		if not controller.walking:
+			break
+		controller.update_walk(1.0 / 60.0)
 	check(drop.collected and int(game.player.backpack.get("Bronze Dagger", 0)) == 1, "Pick up transfers item back into backpack")
 	check(not game._collect_ground_drop(drop), "Collected drop cannot be picked up twice")
 	await process_frame

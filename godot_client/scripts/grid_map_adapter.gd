@@ -67,7 +67,7 @@ func audit() -> Dictionary:
 		if grid.recovery_cell(point) == null or grid.path(probes[0], point).is_empty():
 			report = {"enabled": false, "reason": "spawn/room route incompatible or exceeds bounded search", "point": [point.x, point.y], "checks": count}
 			return report
-	for group: String in ["cave_portal", "cooking_station", "crafting_station", "fishing_spot"]:
+	for group: String in ["cave_portal", "cooking_station", "mining_deposit"]:
 		for node: Node in game.get_tree().get_nodes_in_group(group):
 			if not root.is_ancestor_of(node) or not node.has_method("approach_position"):
 				continue
@@ -76,7 +76,9 @@ func audit() -> Dictionary:
 				reach = node.get("interact_radius")
 			var radius := float(reach) / 32.0 if reach != null else 0.0
 			count += 1
-			if grid.path(probes[0], simulation_point(node.approach_position()), radius).is_empty():
+			var target := simulation_point(node.approach_position())
+			if grid.path(probes[0], target, radius, Callable(),
+				func(p: Vector2) -> bool: return not node is MiningDeposit or game.world.has_line_of_sight(p, target)).is_empty():
 				report = {"enabled": false, "reason": "unreachable authored interaction: " + str(node.name), "checks": count}
 				return report
 	for spot: FishingSpot in game.fishing_spots():

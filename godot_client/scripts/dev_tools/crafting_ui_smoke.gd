@@ -50,8 +50,20 @@ func _run() -> void:
 			anvil = station
 	check(anvil != null, "Anvil exists")
 	if anvil != null:
-		game.player.x = anvil.simulation_position.x
-		game.player.y = anvil.simulation_position.y
+		while game.grid_adapter != null and not game.grid_adapter.completed:
+			await get_tree().physics_frame
+		var point: Vector2 = anvil.simulation_position
+		if game.world.grid != null:
+			var route: PackedVector2Array = game.world.grid.path(game.player.get_position(), point, 2.5)
+			check(not route.is_empty(), "Anvil has a reachable grid approach")
+			if not route.is_empty():
+				point = route[-1]
+		var actor: CombatActor = game.combat.actors[game.player.entity_id]
+		actor.x = point.x
+		actor.y = point.y
+		game.player.x = point.x
+		game.player.y = point.y
+		game._update_sprite_position(actor.entity_id)
 		game.player.add_item("Bronze Ingot", 3)
 		game.request_crafting(anvil)
 		check(game.crafting_panel.visible, "Nearby anvil opens panel")
@@ -66,6 +78,8 @@ func _run() -> void:
 			check(int(game.player.backpack.get("Bronze Ingot", 0)) == 0, "UI spends exactly three ingots")
 		game.crafting_panel.close()
 		game.player.x += 50
+		actor.x = game.player.x
+		game._update_sprite_position(actor.entity_id)
 		game.request_crafting(anvil)
 		check(not game.crafting_panel.visible, "Distant station rejects interaction")
 	game.player.backpack.clear()

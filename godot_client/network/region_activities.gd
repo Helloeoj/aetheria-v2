@@ -214,7 +214,8 @@ func snapshot(id: String) -> Dictionary:
 
 func _stop_movement(id: String) -> void:
 	region._inputs.erase(id)
-	region._walks.erase(id)
+	region.cancel_walk(id)
+	region.world.cancel_grid_route(id)
 	region._attacking.erase(id)
 	region.world.combat.player_attack_enabled[id] = false
 

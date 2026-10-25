@@ -1,11 +1,14 @@
 class_name WorldInteraction
 extends Node
+const Approach := preload("res://scripts/interaction_approach.gd")
 ## Converts pointer intent into selection, context actions and collision-aware walking.
 var game: Node
 var selected_drop: GroundItemDrop
 var pending_pickup: GroundItemDrop
 var pending_portal: CavePortal
 var pending_cooking: Node2D
+var pending_activity: Node2D
+var pending_kind := ""
 var walk_waypoints: Array[Vector2] = []
 var walking := false
 var destination := Vector2.ZERO
@@ -31,6 +34,10 @@ func handle_click(event: InputEventMouseButton, global_point: Vector2) -> void:
 	for spot: FishingSpot in game.fishing_spots():
 		if spot.contains_global_point(global_point):
 			fishing_hits.append(spot)
+	var deposits: Array[Node2D] = []
+	for node: Node in get_tree().get_nodes_in_group("mining_deposit"):
+		if game.get_parent().is_ancestor_of(node) and node.contains_global_point(global_point):
+			deposits.append(node)
 	if event.button_index == MOUSE_BUTTON_LEFT:
 		cancel_walk()
 		if not portals.is_empty():
@@ -45,6 +52,8 @@ func handle_click(event: InputEventMouseButton, global_point: Vector2) -> void:
 			select_drop(drops[0])
 		elif not fishing_hits.is_empty():
 			game.request_fishing(fishing_hits[0])
+		elif not deposits.is_empty():
+			game.request_mining(deposits[0])
 		else:
 			clear_drop_selection()
 			game._clear_target()
@@ -60,6 +69,8 @@ func handle_click(event: InputEventMouseButton, global_point: Vector2) -> void:
 			entries.append({"label": "Enter " + portal.portal_name, "action": _portal_instance.bind(portal.get_instance_id())})
 		for spot: FishingSpot in fishing_hits:
 			entries.append({"label": "Fish " + spot.spot_name, "action": game.request_fishing.bind(spot)})
+		for deposit: Node2D in deposits:
+			entries.append({"label": "Mine", "action": game.request_mining.bind(deposit)})
 		for id: String in monsters:
 			var actor: CombatActor = game.combat.actors.get(id)
 			entries.append({"label": "Attack " + actor.name, "action": attack.bind(id)})
@@ -141,14 +152,14 @@ func attack(id: String) -> void:
 	game._start_auto_chase()
 
 func walk_here(global_point: Vector2) -> void:
+	cancel_walk()
+	clear_drop_selection()
+	game._reset_held_movement()
 	if Network.online():
 		var point := _simulation_position(global_point)
 		Network.send_action({"type": "walk", "x": point.x, "y": point.y})
 		return
-	cancel_walk()
 	game._clear_target()
-	clear_drop_selection()
-	game._reset_held_movement()
 	_route_to(global_point)
 
 func _route_to(global_point: Vector2) -> void:
@@ -156,11 +167,16 @@ func _route_to(global_point: Vector2) -> void:
 	walk_waypoints.clear()
 	walking = true
 	if Network.online():
-		Network.send_action({"type": "walk", "x": destination.x, "y": destination.y})
+		var command := {"type": "walk", "x": destination.x, "y": destination.y}
+		var node := _pending_node()
+		if node != null:
+			command["interaction_kind"] = _pending_type()
+			command["interaction_id"] = Approach.identifier(game, node, _pending_type())
+		Network.send_action(command)
 		return
 	if game.world.grid != null:
 		var start: Vector2 = game.player.get_position()
-		if game.world.grid.path(start, destination, _grid_reach()).is_empty():
+		if game.world.grid.path(start, destination, _grid_reach(), Callable(), _goal_valid).is_empty():
 			cancel_walk()
 			game.show_fishing_notice("That spot cannot be reached from here.")
 		return
@@ -184,7 +200,7 @@ func request_pickup(drop: GroundItemDrop) -> void:
 	cancel_walk()
 	select_drop(drop)
 	game._reset_held_movement()
-	if game._collect_ground_drop(drop):
+	if at_rest() and game._collect_ground_drop(drop):
 		return
 	pending_pickup = drop
 	_route_to(drop.global_position)
@@ -204,7 +220,7 @@ func request_portal(portal: CavePortal) -> void:
 	var actor: CombatActor = game.combat.actors.get(game.player.entity_id)
 	if actor == null or not actor.is_alive or game.player.current_hp <= 0 or _travel_is_active():
 		return
-	if portal.is_in_interaction_range(game):
+	if at_rest() and portal.is_in_interaction_range(game):
 		portal.try_enter(game)
 		return
 	pending_portal = portal
@@ -219,11 +235,63 @@ func request_cooking(station: Node2D) -> void:
 	game._reset_held_movement()
 	if game.player.current_hp <= 0 or _travel_is_active():
 		return
-	if station.in_range(game):
+	if at_rest() and station.in_range(game):
 		game.cooking_controller.open(station)
 		return
 	pending_cooking = station
 	_route_to(station.approach_position())
+
+func request_fishing(spot: Node2D) -> void:
+	_request_activity(spot, "fish")
+
+func request_crafting(station: Node2D) -> void:
+	_request_activity(station, "craft")
+
+func request_mining(deposit: Node2D) -> void:
+	_request_activity(deposit, "mine")
+
+func _request_activity(node: Node2D, kind: String) -> void:
+	var approach := Approach.describe(game, node, kind)
+	if approach.is_empty() or game.player.current_hp <= 0 or _travel_is_active():
+		return
+	cancel_walk()
+	game._reset_held_movement()
+	if game.offline_mining != null:
+		game.offline_mining.stop("new_action")
+	pending_activity = node
+	pending_kind = kind
+	_route_to(game.to_global(game._screen_position(approach.point.x, approach.point.y)))
+
+func at_rest() -> bool:
+	if not Network.online() and game.world.grid != null:
+		game.world.grid_traveller(game.player.entity_id)
+	return game.world.at_grid_rest(game.player.entity_id)
+
+func ready_for(node: Node2D, kind: String) -> bool:
+	var actor: CombatActor = game.combat.actors.get(game.player.entity_id)
+	return at_rest() and Approach.in_range(game.world, actor, Approach.describe(game, node, kind))
+
+func _pending_node() -> Node2D:
+	for node: Variant in [pending_pickup, pending_portal, pending_cooking, pending_activity]:
+		if is_instance_valid(node):
+			return node
+	return null
+
+func _pending_type() -> String:
+	if is_instance_valid(pending_pickup):
+		return "pickup"
+	if is_instance_valid(pending_portal):
+		return "portal"
+	if is_instance_valid(pending_cooking):
+		return "cook"
+	return pending_kind
+
+func _goal_valid(point: Vector2) -> bool:
+	var node := _pending_node()
+	if node == null:
+		return true
+	var approach := Approach.describe(game, node, _pending_type())
+	return not approach.is_empty() and (not bool(approach.sight) or game.world.has_line_of_sight(point, approach.point))
 
 func _cooking_instance(id: int) -> void:
 	var station := instance_from_id(id) as Node2D
@@ -246,6 +314,8 @@ func cancel_walk() -> void:
 	pending_pickup = null
 	pending_portal = null
 	pending_cooking = null
+	pending_activity = null
+	pending_kind = ""
 	walk_waypoints.clear()
 	blocked_seconds = 0.0
 
@@ -264,7 +334,20 @@ func update_walk(delta: float) -> void:
 	if actor == null or not actor.is_alive:
 		cancel_walk()
 		return
-	var can_interact: bool = Network.online() or game.world.grid == null or not game.world.grid_traveller(actor.entity_id).active
+	var can_interact := at_rest()
+	if pending_kind != "":
+		if not is_instance_valid(pending_activity) or Approach.describe(game, pending_activity, pending_kind).is_empty():
+			cancel_walk()
+			return
+		if ready_for(pending_activity, pending_kind):
+			var node := pending_activity
+			var kind := pending_kind
+			cancel_walk()
+			match kind:
+				"fish": game.request_fishing(node)
+				"craft": game.request_crafting(node)
+				"mine": game.request_mining(node)
+			return
 	if pending_pickup != null and can_interact:
 		if not is_instance_valid(pending_pickup) or pending_pickup.collected or pending_pickup not in game.ground_drops:
 			cancel_walk()
@@ -293,17 +376,17 @@ func update_walk(delta: float) -> void:
 	if Network.online():
 		# The replicated position decides when to request an interaction; only
 		# the server moves the character and rechecks the actual range.
-		if start.distance_to(destination) <= 0.08:
+		if can_interact and _pending_node() == null and start.distance_to(destination) <= 0.72:
 			cancel_walk()
 		return
 	if game.world.grid != null:
-		game.world.move_grid_toward(actor.entity_id, destination, delta, game.PLAYER_MOVE_SPEED_TILES_PER_SECOND, _grid_reach())
+		game.world.move_grid_toward(actor.entity_id, destination, delta, game.PLAYER_MOVE_SPEED_TILES_PER_SECOND, _grid_reach(), Callable(), _goal_valid)
 		game._update_sprite_position(actor.entity_id)
 		var traveller: GridTraveller = game.world.grid_traveller(actor.entity_id)
 		if not traveller.active and traveller.route.is_empty():
 			# Pending interactions are attempted on the following update, using
 			# the original range rules and an arrived authoritative position.
-			if pending_pickup == null and pending_portal == null and pending_cooking == null:
+			if _pending_node() == null:
 				cancel_walk()
 			elif Vector2(actor.x, actor.y).distance_to(destination) > _grid_reach():
 				cancel_walk()
@@ -328,10 +411,7 @@ func _simulation_position(global_point: Vector2) -> Vector2:
 	return local / game.TILE_SIZE
 
 func _grid_reach() -> float:
-	if is_instance_valid(pending_pickup):
-		return 2.0
-	if is_instance_valid(pending_portal):
-		return pending_portal.interaction_radius / game.TILE_SIZE
-	if is_instance_valid(pending_cooking):
-		return pending_cooking.interaction_radius / game.TILE_SIZE
-	return 0.0
+	var node := _pending_node()
+	if node == null:
+		return 0.0
+	return float(Approach.describe(game, node, _pending_type()).get("reach", 0.0))

@@ -37,7 +37,27 @@ func grid_traveller(entity_id: String) -> GridTraveller:
 		# Knockback, respawn or external placement invalidates a previous segment.
 		traveller.reset(point, grid)
 	actor.logical_cell = traveller.cell
+	actor.grid_active = traveller.active
 	return traveller
+
+func at_grid_rest(entity_id: String) -> bool:
+	var actor: CombatActor = combat.actors.get(entity_id)
+	return actor != null and (grid == null or (not actor.grid_active and grid.is_center(Vector2(actor.x, actor.y))))
+
+func displace_actor(entity_id: String, motion: Vector2) -> Vector2:
+	var point := move_actor_continuous(entity_id, motion)
+	if grid != null:
+		var traveller := grid_traveller(entity_id)
+		if traveller != null:
+			traveller.reset(point, grid)
+			actor_grid_state(entity_id, traveller)
+	return point
+
+func actor_grid_state(entity_id: String, traveller: GridTraveller) -> void:
+	var actor: CombatActor = combat.actors.get(entity_id)
+	if actor != null:
+		actor.logical_cell = traveller.cell
+		actor.grid_active = traveller.active
 
 func cancel_grid_route(entity_id: String) -> void:
 	var traveller: GridTraveller = grid_travellers.get(entity_id)
@@ -58,7 +78,7 @@ func move_grid_toward(entity_id: String, point: Vector2, delta: float, speed: fl
 	traveller.retry_delay = maxf(0.0, traveller.retry_delay - delta)
 	var arrived := traveller.position.distance_to(point) <= reach \
 		and (not goal_valid.is_valid() or bool(goal_valid.call(traveller.position)))
-	if arrived and not traveller.active:
+	if arrived and not traveller.active and grid.is_center(traveller.position):
 		traveller.cancel_route()
 		return traveller.position
 	if not traveller.goal.is_finite() or traveller.goal.distance_to(point) > 0.25 \
@@ -73,7 +93,7 @@ func _advance_grid(entity_id: String, traveller: GridTraveller, direction: Vecto
 		return traveller.position
 	traveller.advance(delta, speed, direction, grid,
 		func(motion: Vector2) -> Vector2: return move_actor_continuous(entity_id, motion))
-	actor.logical_cell = traveller.cell
+	actor_grid_state(entity_id, traveller)
 	return traveller.position
 
 func _init(player_ref: PlayerState = null, monster_list: Array[MonsterState] = []) -> void:

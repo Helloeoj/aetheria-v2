@@ -18,11 +18,16 @@ func can_use(station: Node2D) -> bool:
 	return game.player.current_hp > 0 and not game.player.in_combat and game.player.current_target.is_empty() and not game.combat.active_spell_casts.has(game.player.entity_id) and (travel == null or not travel.is_transitioning())
 
 func open(station: Node2D) -> void:
+	if not game.interactions.at_rest():
+		game.interactions.request_cooking(station)
+		return
 	if not can_use(station):
 		game.show_fishing_notice("Move closer to the stove and finish combat before cooking.")
 		return
 	if panel.visible:
 		panel.close()
+	if game.offline_mining != null:
+		game.offline_mining.stop("cooking")
 	game.spawn_menu.hide()
 	game.item_menu.hide()
 	game.inventory_menu.hide()

@@ -10,6 +10,7 @@ var y := 0.0
 var spawn_x := 0.0
 ## Committed occupancy; continuous x/y remain authoritative travel coordinates.
 var logical_cell := Vector2i.ZERO
+var grid_active := false
 var spawn_y := 0.0
 var hp := 1
 var max_hp := 1

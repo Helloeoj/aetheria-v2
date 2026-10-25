@@ -182,6 +182,8 @@ func open_developer_sandbox() -> bool:
 func send_action(command: Dictionary) -> bool:
 	if not online() or not authenticated:
 		return false
+	if command.get("type") in ["walk", "attack", "travel", "mine_start", "fish_start", "cook_start"]:
+		replace_keyboard_intent()
 	sequence += 1
 	var data := command.duplicate(true)
 	data["v"] = 1
@@ -193,6 +195,14 @@ func send_action(command: Dictionary) -> bool:
 	else:
 		_request.rpc_id(1, Protocol.pack(data))
 	return true
+
+func replace_keyboard_intent() -> void:
+	# The reliable intent already stops keyboard movement on the host. A later
+	# synthetic release must not overtake that intent on the movement channel.
+	if is_instance_valid(game):
+		game._reset_held_movement()
+	_last_direction = Vector2.ZERO
+	_moving_elapsed = 0.0
 
 func request_logout() -> void:
 	if authenticated:

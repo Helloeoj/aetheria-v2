@@ -29,6 +29,9 @@ func cell_at(point: Vector2) -> Vector2i:
 func center(cell: Vector2i) -> Vector2:
 	return origin + Vector2(cell) + Vector2.ONE * 0.5
 
+func is_center(point: Vector2) -> bool:
+	return point.is_equal_approx(center(cell_at(point)))
+
 func contains(point: Vector2) -> bool:
 	return point.is_finite() and point.x >= minimum.x and point.y >= minimum.y \
 		and point.x <= maximum.x and point.y <= maximum.y
@@ -88,11 +91,9 @@ func path(start: Vector2, goal: Vector2, goal_radius: float = 0.0, allowed: Call
 		return PackedVector2Array()
 	var first: Vector2i = recovered
 	var goals := {}
-	var radius := maxf(goal_radius, 0.72)
+	var radius := goal_radius if goal_radius > 0.0 else 0.72
 	var extent := mini(int(ceil(radius)), 32)
 	var base := cell_at(goal)
-	if goal_radius <= 0.0 and walkable(base):
-		goals[base] = true
 	for y in range(-extent, extent + 1):
 		for x in range(-extent, extent + 1):
 			var cell := base + Vector2i(x, y)

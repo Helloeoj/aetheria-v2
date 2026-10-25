@@ -7,6 +7,11 @@ class TestMenu extends Control:
 		show()
 
 class TestWorld extends RefCounted:
+	var grid: HiddenGrid
+	func cancel_grid_route(_id: String) -> void:
+		pass # Legacy intent fixture has no grid route; geometry is covered separately.
+	func at_grid_rest(_id: String) -> bool:
+		return true
 	var monsters: Array[MonsterState] = []
 	var actors: Dictionary = {}
 	var blocked := false
@@ -28,6 +33,8 @@ class TestGame extends Node2D:
 	var inventory_menu := Control.new()
 	var context_menu := TestMenu.new()
 	var map_scene_mode := false
+	var grid_adapter: Node
+	var offline_mining: Node
 	var reset_count := 0
 	var target := ""
 	func _ready() -> void:

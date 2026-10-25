@@ -7,7 +7,7 @@ const SPEED := 4.0
 const INPUT_LIFETIME := 0.25
 const STEP := 1.0 / 60.0
 const SCHEMA := {
-	"move": ["direction"], "walk": ["x", "y"], "target": ["target_id"],
+	"move": ["direction"], "walk": ["x", "y", "interaction_kind", "interaction_id"], "target": ["target_id"],
 	"attack": ["target_id"], "cast": ["spell_id", "target_id", "x", "y"],
 	"equip": ["item_name"], "unequip": ["slot"], "eat": ["item_name"],
 	"set_quick_food": ["item_name"], "craft": ["station_id", "recipe_id", "quantity"],
@@ -34,6 +34,8 @@ var mining: RefCounted
 var _mining_nodes: Dictionary = {}
 var _inputs: Dictionary = {}
 var _walks: Dictionary = {}
+var _walk_approaches: Dictionary = {}
+var _legacy_paths: Dictionary = {}
 var _attacking: Dictionary = {}
 var _bodies: Dictionary = {}
 var _pending_refresh: Dictionary = {}
@@ -77,6 +79,7 @@ func configure(id: String, game: Node) -> void:
 		rng)
 	_discover_stations()
 	_discover_mining()
+	_adopt_grid()
 
 func add_player(character_id: String, player: PlayerState) -> void:
 	if character_id.is_empty() or player == null or players.has(character_id):
@@ -120,7 +123,7 @@ func remove_player(character_id: String) -> void:
 	world.combat.remove_actor(character_id)
 	world.combat.player_attack_enabled.erase(character_id)
 	_inputs.erase(character_id)
-	_walks.erase(character_id)
+	cancel_walk(character_id)
 	_attacking.erase(character_id)
 	frozen.erase(character_id)
 	if _bodies.has(character_id):
@@ -143,8 +146,8 @@ func submit(character_id: String, command: Dictionary) -> Dictionary:
 	var actor: CombatActor = world.combat.actors.get(character_id)
 	if actor == null or not actor.is_alive:
 		return _result(false, "dead", "You must be alive.")
-	if world.grid != null and kind in ["fish_start", "cook_start", "mine_start", "craft", "purchase"]:
-		if world.grid_traveller(character_id).active:
+	if world.grid != null and kind in ["fish_start", "cook_start", "mine_start", "craft", "purchase", "pickup"]:
+		if not world.at_grid_rest(character_id):
 			return _result(false, "moving", "Finish your step before starting an activity.")
 	if kind in ["move", "walk", "target", "attack", "cast"]:
 		activities.close(character_id)
@@ -154,7 +157,7 @@ func submit(character_id: String, command: Dictionary) -> Dictionary:
 			if not direction.is_finite():
 				return _result(false, "invalid", "Choose a finite movement direction.")
 			_inputs[character_id] = {"direction": direction.limit_length(1.0), "until": _clock + INPUT_LIFETIME}
-			_walks.erase(character_id)
+			cancel_walk(character_id)
 			_attacking.erase(character_id)
 			world.combat.player_attack_enabled[character_id] = false
 			world.cancel_grid_route(character_id)
@@ -162,14 +165,39 @@ func submit(character_id: String, command: Dictionary) -> Dictionary:
 			if not command.has("x") or not command.has("y"):
 				return _result(false, "invalid", "Choose a destination.")
 			var point := Vector2(float(command.x), float(command.y))
+			var approach := {}
+			if command.has("interaction_kind") or command.has("interaction_id"):
+				approach = approach_for(character_id, String(command.get("interaction_kind", "")), String(command.get("interaction_id", "")))
+				if approach.is_empty():
+					return _result(false, "interaction", "That interaction is unavailable.")
+				point = approach.point
 			if not _inside(point):
 				return _result(false, "blocked", "The destination has no clear path.")
 			if world.grid != null:
-				if world.grid.path(player.get_position(), point).is_empty():
+				if world.grid.path(player.get_position(), point, float(approach.get("reach", 0.0)), Callable(),
+					func(p: Vector2) -> bool: return not bool(approach.get("sight", false)) or world.has_line_of_sight(p, point)).is_empty():
 					return _result(false, "blocked", "The destination has no clear path.")
-			elif not world.has_line_of_sight(player.get_position(), point):
-				return _result(false, "blocked", "The destination has no clear path.")
+			else:
+				var root: Node = geometry_game.get_parent() if geometry_game != null else null
+				if root != null and root.has_method("interaction_path"):
+					var from: Vector2 = geometry_game.to_global(geometry_game._screen_position(player.x, player.y))
+					var to: Vector2 = geometry_game.to_global(geometry_game._screen_position(point.x, point.y))
+					var path: PackedVector2Array = root.interaction_path(from, to)
+					if path.is_empty():
+						return _result(false, "blocked", "The destination has no clear path.")
+					var converted := PackedVector2Array()
+					for waypoint: Vector2 in path:
+						converted.append(_simulation_point(waypoint))
+					_legacy_paths[character_id] = converted
+				elif not world.has_line_of_sight(player.get_position(), point):
+					return _result(false, "blocked", "The destination has no clear path.")
+			_walk_approaches.erase(character_id)
+			if not approach.is_empty():
+				_walk_approaches[character_id] = {"kind": command.interaction_kind, "id": command.interaction_id}
 			_walks[character_id] = point
+			player.current_target = ""
+			actor.current_target_id = ""
+			world.cancel_grid_route(character_id)
 			_inputs.erase(character_id)
 			_attacking.erase(character_id)
 			world.combat.player_attack_enabled[character_id] = false
@@ -186,7 +214,7 @@ func submit(character_id: String, command: Dictionary) -> Dictionary:
 			else:
 				_attacking.erase(character_id)
 			_inputs.erase(character_id)
-			_walks.erase(character_id)
+			cancel_walk(character_id)
 			world.cancel_grid_route(character_id)
 		"cast":
 			var target_id := String(command.get("target_id", ""))
@@ -379,6 +407,49 @@ func _adopt_grid() -> void:
 		if source != null and source.grid != null:
 			world.set_grid(source.grid)
 
+func cancel_walk(id: String) -> void:
+	_walks.erase(id)
+	_walk_approaches.erase(id)
+	_legacy_paths.erase(id)
+
+func approach_for(id: String, kind: String, target_id: String) -> Dictionary:
+	if not players.has(id):
+		return {}
+	if kind == "pickup":
+		var drop: Dictionary = drops.get(target_id, {})
+		if drop.is_empty() or (not String(drop.owner_id).is_empty() and String(drop.owner_id) != id):
+			return {}
+		return {"point": Vector2(drop.x, drop.y), "reach": 2.0, "sight": false}
+	if geometry_game == null:
+		return {}
+	var node: Node2D
+	if kind in ["fish", "cook", "craft"]:
+		var station: Dictionary = stations.get(target_id, {})
+		if station.get("kind") != kind:
+			return {}
+		if is_instance_valid(station.get("node")):
+			node = station.node
+	elif kind == "mine":
+		if is_instance_valid(_mining_nodes.get(target_id)):
+			node = _mining_nodes[target_id]
+	elif kind == "portal":
+		for candidate: Node in geometry_game.get_tree().get_nodes_in_group("cave_portal"):
+			if geometry_game.get_parent().is_ancestor_of(candidate) and str(geometry_game.get_parent().get_path_to(candidate)) == target_id:
+				node = candidate
+				break
+	if not is_instance_valid(node):
+		return {}
+	return preload("res://scripts/interaction_approach.gd").describe(geometry_game, node, kind)
+
+func _walk_approach(id: String) -> Dictionary:
+	if not _walk_approaches.has(id):
+		return {}
+	var intent: Dictionary = _walk_approaches[id]
+	var approach := approach_for(id, intent.kind, intent.id)
+	if approach.is_empty():
+		cancel_walk(id)
+	return approach
+
 func station_for(player: PlayerState, id: String, kind: String) -> Dictionary:
 	var station: Dictionary = stations.get(id, {})
 	if station.is_empty() or String(station.kind) != kind:
@@ -411,11 +482,21 @@ func _advance_movement(id: String, delta: float) -> void:
 			direction = input.direction
 			distance = SPEED * minf(delta, time_left)
 	elif _walks.has(id):
-		var offset: Vector2 = _walks[id] - Vector2(actor.x, actor.y)
+		var approach := _walk_approach(id)
+		if not _walks.has(id):
+			return
+		if not approach.is_empty() and preload("res://scripts/interaction_approach.gd").in_range(world, actor, approach):
+			cancel_walk(id)
+			return
+		var route: PackedVector2Array = _legacy_paths.get(id, PackedVector2Array())
+		while not route.is_empty() and route[0].distance_to(Vector2(actor.x, actor.y)) <= 0.02:
+			route.remove_at(0)
+		_legacy_paths[id] = route
+		var offset: Vector2 = (route[0] if not route.is_empty() else _walks[id]) - Vector2(actor.x, actor.y)
 		distance = minf(distance, offset.length())
 		direction = offset.normalized()
 		if offset.length() <= 0.02:
-			_walks.erase(id)
+			cancel_walk(id)
 	elif _attacking.has(id):
 		var target: CombatActor = world.combat.actors.get(String(_attacking[id]))
 		if target == null or not target.is_alive:
@@ -445,14 +526,20 @@ func _advance_grid_movement(id: String, actor: CombatActor, delta: float) -> voi
 		if float(input.until) <= _clock:
 			_inputs.erase(id)
 	elif _walks.has(id):
-		world.move_grid_toward(id, _walks[id], delta, SPEED)
+		var approach := _walk_approach(id)
+		if not _walks.has(id):
+			world.move_grid_direction(id, Vector2.ZERO, delta, SPEED)
+			return
+		var point: Vector2 = approach.get("point", _walks[id])
+		world.move_grid_toward(id, point, delta, SPEED, float(approach.get("reach", 0.0)), Callable(),
+			func(p: Vector2) -> bool: return not bool(approach.get("sight", false)) or world.has_line_of_sight(p, point))
 		var traveller := world.grid_traveller(id)
 		if not traveller.active and traveller.route.is_empty():
-			_walks.erase(id)
+			cancel_walk(id)
 	elif _attacking.has(id):
 		var target: CombatActor = world.combat.actors.get(String(_attacking[id]))
 		if target != null and target.is_alive:
-			world.move_grid_toward(id, Vector2(target.x, target.y), delta, SPEED, actor.attack_range * 0.9, Callable(),
+			world.move_grid_toward(id, Vector2(target.x, target.y), delta, SPEED, maxf(0.0, actor.attack_range - 0.05), Callable(),
 				func(point: Vector2) -> bool: return world.has_line_of_sight(point, Vector2(target.x, target.y)))
 		else:
 			_attacking.erase(id)
@@ -705,6 +792,7 @@ func _mining_context(id: String, deposit_id: String) -> Dictionary:
 	var point := _simulation_point(node.approach_position())
 	return {"player": player, "paused": false,
 		"eligible": actor.is_alive and actor.hp > 0 and not _in_combat(id) and
+			world.at_grid_rest(id) and
 			not world.combat.active_spell_casts.has(id) and not activities.fishing.has(id) and
 			not (activities.cooking.has(id) and activities.cooking[id].is_active()),
 		"in_range": player.get_position().distance_to(point) <= node.interaction_radius / 32.0 and world.has_line_of_sight(player.get_position(), point)}

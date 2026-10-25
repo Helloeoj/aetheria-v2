@@ -25,8 +25,8 @@ func approach_position() -> Vector2:
 	return to_global(approach_offset)
 
 func is_in_interaction_range(game: Node) -> bool:
-	var sprite: Node2D = game.actor_sprites.get(game.player.entity_id)
-	return is_instance_valid(sprite) and sprite.global_position.distance_to(approach_position()) <= interaction_radius
+	var rules: Script = load("res://scripts/interaction_approach.gd")
+	return rules.in_range(game.world, game.combat.actors.get(game.player.entity_id), rules.describe(game, self, "portal"))
 
 func try_enter(game: Node) -> bool:
 	if not enabled or not is_visible_in_tree() or destination_scene.is_empty() or not is_instance_valid(game):

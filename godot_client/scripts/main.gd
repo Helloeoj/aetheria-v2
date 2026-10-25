@@ -63,6 +63,7 @@ var crafting_panel: Control
 var cooking_controller: Node
 var online_view: Node
 var grid_adapter: Node
+var offline_mining: Node
 
 func grid_adoption_report() -> Dictionary:
 	return grid_adapter.report if grid_adapter != null else {"enabled": false, "reason": "not a map scene"}
@@ -89,10 +90,15 @@ func _prepare_grid_movement() -> void:
 func request_crafting(station: Node2D) -> void:
 	if cooking_controller != null and cooking_controller.panel.visible:
 		return
-	if not is_instance_valid(station) or not station.is_available(player):
+	if not is_instance_valid(station) or player.current_hp <= 0 or player.in_combat or not player.current_target.is_empty():
+		return
+	if not interactions.ready_for(station, "craft"):
+		interactions.request_crafting(station)
 		return
 	if combat.active_spell_casts.has(player.entity_id):
 		return
+	if offline_mining != null:
+		offline_mining.stop("crafting")
 	inventory_menu.hide()
 	spawn_menu.hide()
 	item_menu.hide()
@@ -266,12 +272,15 @@ func request_fishing(spot: FishingSpot) -> void:
 	var sprite: ActorSprite = actor_sprites.get(player.entity_id)
 	if player.current_hp <= 0 or sprite == null:
 		return
-	if sprite.global_position.distance_to(spot.shore_position()) > spot.interact_radius:
-		show_fishing_notice("Walk closer to the fishing spot, then click it or press F.")
-		return
 	if player.in_combat or not player.current_target.is_empty():
 		show_fishing_notice("Finish combat and clear your target before fishing.")
 		return
+	# The P-key practice tool is deliberately usable at the current position.
+	if spot != fishing_practice_spot and not interactions.ready_for(spot, "fish"):
+		interactions.request_fishing(spot)
+		return
+	if offline_mining != null:
+		offline_mining.stop("fishing")
 	_reset_held_movement()
 	interactions.cancel_walk()
 	interactions.clear_drop_selection()
@@ -286,6 +295,20 @@ func request_fishing(spot: FishingSpot) -> void:
 	spell_cast_requested = false
 	fishing_notice.text = ""
 	fishing_panel.open(spot)
+
+func request_mining(deposit: Node2D) -> void:
+	if player.current_hp <= 0 or player.in_combat or not player.current_target.is_empty():
+		show_fishing_notice("Finish combat and clear your target before mining.")
+		return
+	if not interactions.ready_for(deposit, "mine"):
+		interactions.request_mining(deposit)
+		return
+	interactions.cancel_walk()
+	_reset_held_movement()
+	if Network.online():
+		Network.send_action({"type": "mine_start", "deposit_id": deposit.deposit_id, "deposit_generation": int(deposit.state.get("generation", 0))})
+	elif offline_mining != null:
+		offline_mining.start(deposit)
 
 func try_nearby_fishing() -> bool:
 	var sprite: ActorSprite = actor_sprites.get(player.entity_id)
@@ -485,6 +508,10 @@ func _ready() -> void:
 	_update_map_camera()
 	print("[UI] I opens the character journal; K toggles skill testing. F5 spawns monsters; F7 opens the sprite viewer; P tests fishing anywhere.")
 	_prepare_grid_movement.call_deferred()
+	if not Network.online() and not has_meta("online_server_geometry"):
+		offline_mining = preload("res://scripts/offline_mining_controller.gd").new()
+		add_child(offline_mining)
+		offline_mining.configure(self)
 	queue_redraw()
 	if Network.online():
 		online_view = preload("res://network/online_world_view.gd").new()
@@ -653,6 +680,8 @@ func _physics_process(delta: float) -> void:
 	var realtime_events := combat.process_realtime(world, delta)
 	_handle_combat_events(realtime_events)
 	_sync_actor_states()
+	if offline_mining != null:
+		offline_mining.advance(delta)
 	tick_elapsed += delta
 	while tick_elapsed >= TICK_DURATION:
 		tick_elapsed -= TICK_DURATION
@@ -1007,9 +1036,12 @@ func _spawn_ground_drop(item_name: String, quantity: int, at: Vector2) -> bool:
 	return true
 
 func _collect_ground_drop(drop: GroundItemDrop) -> bool:
+	var actor: CombatActor = combat.actors.get(player.entity_id)
+	var approach := preload("res://scripts/interaction_approach.gd").describe(self, drop, "pickup") if is_instance_valid(drop) else {}
+	if not preload("res://scripts/interaction_approach.gd").in_range(world, actor, approach):
+		return false
 	if Network.online():
-		var sprite: Node2D = actor_sprites.get(player.entity_id)
-		return is_instance_valid(drop) and sprite != null and sprite.global_position.distance_to(drop.global_position) <= TILE_SIZE * 2.0 and Network.send_action({"type": "pickup", "drop_id": str(drop.get_meta("online_drop_id", ""))})
+		return Network.send_action({"type": "pickup", "drop_id": str(drop.get_meta("online_drop_id", ""))})
 	if not is_instance_valid(drop) or drop.collected or drop not in ground_drops:
 		return false
 	AetheriaDiagnostics.event("Inventory", "collect ground item", {"item": drop.item_name, "quantity": drop.quantity})
@@ -1165,6 +1197,8 @@ func _move_player(delta: float) -> bool:
 	auto_chase_target = false
 	combat.player_auto_attack_enabled = false
 	interactions.cancel_walk()
+	if offline_mining != null:
+		offline_mining.stop("movement")
 	if world.grid != null:
 		world.move_grid_direction(player.entity_id, direction, delta, PLAYER_MOVE_SPEED_TILES_PER_SECOND)
 	else:
@@ -1221,7 +1255,7 @@ func _start_auto_chase() -> void:
 	if Network.online():
 		Network.send_action({"type": "attack", "target_id": player.current_target})
 		return
-	var actor: CombatActor = combat.actors.get("player")
+	var actor: CombatActor = combat.actors.get(player.entity_id)
 	if actor == null or not actor.is_alive:
 		return
 	var target_actor: CombatActor = combat.actors.get(player.current_target) if not player.current_target.is_empty() else null
@@ -1237,7 +1271,7 @@ func _start_auto_chase() -> void:
 func _update_auto_chase(delta: float) -> void:
 	if not auto_chase_target or spawn_menu.visible or item_menu.visible or inventory_menu.visible or _ui_is_editing() or context_menu.visible:
 		return
-	var actor: CombatActor = combat.actors.get("player")
+	var actor: CombatActor = combat.actors.get(player.entity_id)
 	var target_actor: CombatActor = combat.actors.get(player.current_target) if not player.current_target.is_empty() else null
 	if actor == null or not actor.is_alive or target_actor == null or not target_actor.is_alive:
 		return

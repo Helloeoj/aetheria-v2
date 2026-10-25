@@ -383,6 +383,11 @@ func _run() -> void:
 		var hits: Array = scene.get_world_2d().direct_space_state.intersect_shape(query)
 		check(hits.is_empty(), "Fishing shore is walkable: " + spot.spot_name)
 	var at: Vector2 = game.interactions._simulation_position(spots[0].shore_position())
+	if game.world.grid != null:
+		var route: PackedVector2Array = game.world.grid.path(game.player.get_position(), at, spots[0].interact_radius / game.TILE_SIZE)
+		check(not route.is_empty(), "Fishing shore has a reachable grid approach")
+		if not route.is_empty():
+			at = route[-1]
 	var actor: CombatActor = game.combat.actors[game.player.entity_id]
 	actor.x = at.x
 	actor.y = at.y

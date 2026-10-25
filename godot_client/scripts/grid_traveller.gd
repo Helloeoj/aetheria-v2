@@ -8,8 +8,14 @@ var active := false
 var route := PackedVector2Array()
 var goal := Vector2(INF, INF)
 var retry_delay := 0.0
+var epoch := 0
+var arrival := 0
+var trail: Array[Dictionary] = []
 
 func reset(point: Vector2, grid: HiddenGrid) -> void:
+	epoch += 1
+	arrival = 0
+	trail.clear()
 	position = point
 	cell = grid.cell_at(point)
 	target = point
@@ -79,6 +85,11 @@ func advance(delta: float, speed: float, direction: Vector2, grid: HiddenGrid, m
 			position = target
 			cell = grid.cell_at(target)
 			active = false
+			arrival += 1
+			trail.append({"serial": arrival, "point": [position.x, position.y]})
+			if trail.size() > 8:
+				trail.pop_front()
 
 func snapshot() -> Dictionary:
-	return {"cell": [cell.x, cell.y], "target": [target.x, target.y], "active": active}
+	return {"cell": [cell.x, cell.y], "target": [target.x, target.y], "active": active,
+		"epoch": epoch, "arrival": arrival, "trail": trail.duplicate(true)}

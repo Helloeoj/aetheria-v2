@@ -24,8 +24,8 @@ func is_current(game: Node) -> bool:
 	return enabled and is_inside_tree() and is_visible_in_tree() and is_instance_valid(game) and game.get_parent() != null and game.get_parent().is_ancestor_of(self)
 
 func in_range(game: Node) -> bool:
-	var sprite: Node2D = game.actor_sprites.get(game.player.entity_id)
-	return is_instance_valid(sprite) and sprite.global_position.distance_to(approach_position()) <= interaction_radius
+	var rules: Script = load("res://scripts/interaction_approach.gd")
+	return rules.in_range(game.world, game.combat.actors.get(game.player.entity_id), rules.describe(game, self, "cook"))
 
 func update_heat(game: Node) -> void:
 	heat.active = is_current(game)

@@ -46,8 +46,22 @@ func _run() -> void:
 	host.add_child(http)
 	host._http = http
 	host._key = "isolated-travel-fixture"
-	var outskirts: AuthoritativeRegion = await host._get_region("outskirts")
+	var arrivals: Array = []
+	_capture_region.call(arrivals)
+	_capture_region.call(arrivals)
+	for frame in range(180):
+		if arrivals.size() == 2:
+			break
+		await get_tree().physics_frame
+	check(arrivals.size() == 2, "Concurrent region loads both finish")
+	if arrivals.size() != 2:
+		_finish()
+		return
+	var outskirts: AuthoritativeRegion = arrivals[0]
+	check(outskirts == arrivals[1] and host.regions.get("outskirts") == outskirts, "Concurrent entrants receive the same registered authoritative region")
+	check(host.get_children().filter(func(node: Node) -> bool: return node is SubViewport).size() == 1, "Concurrent load creates only one map physics world")
 	check(outskirts != null,"Actual outskirts map creates an authoritative region")
+	check(outskirts != null and outskirts.world.grid != null, "Region admission already has the audited gameplay grid")
 	if outskirts == null:
 		_finish()
 		return
@@ -82,6 +96,9 @@ func _run() -> void:
 	await get_tree().process_frame
 	_finish()
 
+func _capture_region(results: Array) -> void:
+	results.append(await host._get_region("outskirts"))
+
 func _session(peer: int, player: PlayerState, region_id: String) -> Dictionary:
 	return {"peer":peer,"character_id":player.entity_id,"username":player.name,
 		"lease_token":"isolated-lease-"+str(peer),"revision":0,"region_id":region_id,
@@ -103,6 +120,10 @@ func _simulation_position(geometry: Node, global_point: Vector2) -> Vector2:
 func _seed_at_portal(region: AuthoritativeRegion, player: PlayerState, portal: CavePortal) -> void:
 	# Test fixture setup occurs on the authoritative actor, never through a client command.
 	var point := _simulation_position(region.geometry_game,portal.approach_position())
+	if region.world.grid != null:
+		var path := region.world.grid.path(region.geometry_game.player.get_position(), point, portal.interaction_radius / 32.0)
+		if not path.is_empty():
+			point = path[-1]
 	player.x = point.x
 	player.y = point.y
 	player.current_target = ""
@@ -111,6 +132,7 @@ func _seed_at_portal(region: AuthoritativeRegion, player: PlayerState, portal: C
 	actor.x = point.x
 	actor.y = point.y
 	actor.current_target_id = ""
+	region.world.grid_traveller(player.entity_id)
 	region._sync_body(player.entity_id)
 
 func _travel_and_check(session: Dictionary, destination: String) -> void:
@@ -123,6 +145,13 @@ func _travel_and_check(session: Dictionary, destination: String) -> void:
 	var player: PlayerState = session.player
 	_seed_at_portal(source,player,portal)
 	var portal_id := str(source.geometry_game.get_parent().get_path_to(portal))
+	if source.world.grid != null:
+		var actor: CombatActor = source.world.combat.actors[player.entity_id]
+		actor.x += 0.1
+		player.x = actor.x
+		source.world.grid_traveller(player.entity_id)
+		check(not (await host._travel(session,portal_id)).get("ok", false), "Direct portal command cannot travel from between tile centers")
+		_seed_at_portal(source,player,portal)
 	var result: Dictionary = await host._travel(session,portal_id)
 	check(result.get("ok",false),"Server accepts real in-range portal %s to %s" % [source_id,destination])
 	if not result.get("ok",false):
