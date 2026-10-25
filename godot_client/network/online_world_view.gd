@@ -59,6 +59,14 @@ func apply(snapshot: Dictionary) -> void:
 	_interval = clampf(float(snapshot.get("snapshot_interval", 0.1)), 1.0 / 60.0, 0.5)
 	_received_elapsed = 0.0
 	_movement_enabled = bool(snapshot.get("movement_enabled", false))
+	if snapshot.has("grid") and game.grid_adapter != null:
+		if game.world.grid != game.grid_adapter.grid:
+			game.world.set_grid(game.grid_adapter.grid)
+		_prediction.use_grid(game.grid_adapter.grid)
+	else:
+		if game.world.grid != null:
+			game.world.set_grid(null)
+		_prediction.use_grid(null)
 	var seen := {}
 	for data: Dictionary in snapshot.get("actors", []):
 		var id := String(data.entity_id)
@@ -75,6 +83,10 @@ func apply(snapshot: Dictionary) -> void:
 		actor.is_alive = bool(data.is_alive)
 		actor.is_monster = monster
 		actor.current_target_id = String(data.get("target_id", ""))
+		var travel_state: Dictionary = data.get("grid_travel", {})
+		var occupied: Array = travel_state.get("cell", [])
+		if occupied.size() == 2:
+			actor.logical_cell = Vector2i(int(occupied[0]), int(occupied[1]))
 		var sprite: ActorSprite = game.actor_sprites.get(id)
 		if sprite == null:
 			sprite = ActorSprite.new().configure(Vector2(32, 32), game.MONSTER_COLOR if monster else game.PLAYER_COLOR, id)
@@ -106,7 +118,7 @@ func apply(snapshot: Dictionary) -> void:
 			if not _has_self:
 				_prediction.reset(point)
 				_has_self = true
-			_prediction.reconcile(point, int(snapshot.get("movement_ack", -1)), float(snapshot.get("movement_age", 0.0)), _movement_enabled and actor.is_alive)
+			_prediction.reconcile(point, int(snapshot.get("movement_ack", -1)), float(snapshot.get("movement_age", 0.0)), _movement_enabled and actor.is_alive, travel_state)
 		if not _motion.has(id):
 			_motion[id] = Interpolation.new()
 		_motion[id].push(_server_time, Vector2(actor.x, actor.y))
@@ -158,7 +170,10 @@ func record_command(sequence: int, command: Dictionary) -> void:
 		_keyboard = true
 	elif command.get("type") in ["walk", "attack", "target", "cast", "travel"]:
 		_keyboard = false
-		_prediction.reset(_prediction.render_position())
+		if _prediction.grid != null:
+			_prediction.cancel_inputs()
+		else:
+			_prediction.reset(_prediction.render_position())
 
 func _process(delta: float) -> void:
 	if Network.authenticated and Network.game == game:

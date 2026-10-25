@@ -514,6 +514,14 @@ func _process_monster_movement(world: Variant, delta: float) -> Array[Dictionary
 			# Hybrids keep closing for melee even while a ranged fallback is selected.
 			stop_distance = DEFAULT_MELEE_RANGE
 		var remaining_distance := maxf(0.0, distance_to_destination - stop_distance)
+		if world is WorldState and world.grid != null:
+			world.move_grid_toward(actor.entity_id, destination, movement_delta,
+				MONSTER_MOVE_SPEED_TILES_PER_SECOND, stop_distance,
+				func(point: Vector2) -> bool: return not has_target or point.distance_to(spawn_position) <= GameTickConfig.MONSTER_CHASE_LEASH_TILES,
+				func(point: Vector2) -> bool: return not has_target or not actor.requires_line_of_sight or world.has_line_of_sight(point, target_position))
+			events.append({"type": "monster_moved", "entity_id": actor.entity_id,
+				"x": actor.x, "y": actor.y, "returning_to_spawn": not has_target})
+			continue
 		if remaining_distance <= 0.0:
 			continue
 

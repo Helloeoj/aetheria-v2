@@ -115,6 +115,7 @@ func remove_player(character_id: String) -> void:
 						actor.next_attack_tick - float(world.combat.current_tick)) * preload("res://scripts/orb_effects.gd").ATTACK_RATE_MULTIPLIER
 				actor.active_orb_effects.erase(element)
 	players.erase(character_id)
+	world.grid_travellers.erase(character_id)
 	world.players.erase(character_id)
 	world.combat.remove_actor(character_id)
 	world.combat.player_attack_enabled.erase(character_id)
@@ -131,6 +132,7 @@ func remove_player(character_id: String) -> void:
 			geometry_game.get("actor_sprites").erase(character_id)
 
 func submit(character_id: String, command: Dictionary) -> Dictionary:
+	_adopt_grid()
 	if not players.has(character_id) or frozen.has(character_id):
 		return _result(false, "unavailable", "Character is unavailable.")
 	var validation := _validate(command)
@@ -141,6 +143,9 @@ func submit(character_id: String, command: Dictionary) -> Dictionary:
 	var actor: CombatActor = world.combat.actors.get(character_id)
 	if actor == null or not actor.is_alive:
 		return _result(false, "dead", "You must be alive.")
+	if world.grid != null and kind in ["fish_start", "cook_start", "mine_start", "craft", "purchase"]:
+		if world.grid_traveller(character_id).active:
+			return _result(false, "moving", "Finish your step before starting an activity.")
 	if kind in ["move", "walk", "target", "attack", "cast"]:
 		activities.close(character_id)
 	match kind:
@@ -152,11 +157,17 @@ func submit(character_id: String, command: Dictionary) -> Dictionary:
 			_walks.erase(character_id)
 			_attacking.erase(character_id)
 			world.combat.player_attack_enabled[character_id] = false
+			world.cancel_grid_route(character_id)
 		"walk":
 			if not command.has("x") or not command.has("y"):
 				return _result(false, "invalid", "Choose a destination.")
 			var point := Vector2(float(command.x), float(command.y))
-			if not _inside(point) or not world.has_line_of_sight(player.get_position(), point):
+			if not _inside(point):
+				return _result(false, "blocked", "The destination has no clear path.")
+			if world.grid != null:
+				if world.grid.path(player.get_position(), point).is_empty():
+					return _result(false, "blocked", "The destination has no clear path.")
+			elif not world.has_line_of_sight(player.get_position(), point):
 				return _result(false, "blocked", "The destination has no clear path.")
 			_walks[character_id] = point
 			_inputs.erase(character_id)
@@ -176,6 +187,7 @@ func submit(character_id: String, command: Dictionary) -> Dictionary:
 				_attacking.erase(character_id)
 			_inputs.erase(character_id)
 			_walks.erase(character_id)
+			world.cancel_grid_route(character_id)
 		"cast":
 			var target_id := String(command.get("target_id", ""))
 			if not target_id.is_empty():
@@ -334,15 +346,19 @@ func advance(delta: float) -> void:
 		world.players[id] = players[id]
 
 func snapshot(character_id: String) -> Dictionary:
+	_adopt_grid()
 	var actors: Array[Dictionary] = []
 	for actor: CombatActor in world.combat.actors.values():
 		if frozen.has(actor.entity_id):
 			continue
-		actors.append({"entity_id": actor.entity_id, "name": actor.name, "x": actor.x, "y": actor.y,
+		var entry := {"entity_id": actor.entity_id, "name": actor.name, "x": actor.x, "y": actor.y,
 			"hp": actor.hp, "max_hp": actor.max_hp, "is_alive": actor.is_alive,
 			"is_monster": actor.is_monster, "attack_style": actor.attack_style,
 			"target_id": actor.current_target_id, "gathering": mining.actor_activity(actor.entity_id),
-			"equipment": players[actor.entity_id].get_equipped_names() if players.has(actor.entity_id) else {}})
+			"equipment": players[actor.entity_id].get_equipped_names() if players.has(actor.entity_id) else {}}
+		if world.grid != null:
+			entry["grid_travel"] = world.grid_traveller(actor.entity_id).snapshot()
+		actors.append(entry)
 	var public_drops: Array[Dictionary] = []
 	for drop: Dictionary in drops.values():
 		public_drops.append(drop.duplicate())
@@ -351,8 +367,17 @@ func snapshot(character_id: String) -> Dictionary:
 		var entry := station.duplicate()
 		entry.erase("node")
 		public_stations.append(entry)
-	return {"region_id": region_id, "actors": actors, "drops": public_drops,
+	var result := {"region_id": region_id, "actors": actors, "drops": public_drops,
 		"activity": activities.snapshot(character_id), "stations": public_stations, "deposits": mining.deposit_snapshots()}
+	if world.grid != null:
+		result["grid"] = {"origin": [world.grid.origin.x, world.grid.origin.y], "cell_pixels": 32}
+	return result
+
+func _adopt_grid() -> void:
+	if world.grid == null and geometry_game != null:
+		var source: WorldState = geometry_game.get("world")
+		if source != null and source.grid != null:
+			world.set_grid(source.grid)
 
 func station_for(player: PlayerState, id: String, kind: String) -> Dictionary:
 	var station: Dictionary = stations.get(id, {})
@@ -368,8 +393,12 @@ func station_for(player: PlayerState, id: String, kind: String) -> Dictionary:
 	return station
 
 func _advance_movement(id: String, delta: float) -> void:
+	_adopt_grid()
 	var actor: CombatActor = world.combat.actors.get(id)
 	if actor == null or not actor.is_alive:
+		return
+	if world.grid != null:
+		_advance_grid_movement(id, actor, delta)
 		return
 	var direction := Vector2.ZERO
 	var distance := SPEED * delta
@@ -402,6 +431,37 @@ func _advance_movement(id: String, delta: float) -> void:
 		world.move_actor_continuous(id, direction * distance)
 		if not Vector2(actor.x, actor.y).is_equal_approx(before):
 			dirty[id] = true
+	_sync_body(id)
+
+func _advance_grid_movement(id: String, actor: CombatActor, delta: float) -> void:
+	if activities.active(id):
+		world.cancel_grid_route(id)
+		return
+	var before := Vector2(actor.x, actor.y)
+	if _inputs.has(id):
+		var input: Dictionary = _inputs[id]
+		var direction: Vector2 = input.direction if float(input.until) > _clock + 0.000001 else Vector2.ZERO
+		world.move_grid_direction(id, direction, delta, SPEED)
+		if float(input.until) <= _clock:
+			_inputs.erase(id)
+	elif _walks.has(id):
+		world.move_grid_toward(id, _walks[id], delta, SPEED)
+		var traveller := world.grid_traveller(id)
+		if not traveller.active and traveller.route.is_empty():
+			_walks.erase(id)
+	elif _attacking.has(id):
+		var target: CombatActor = world.combat.actors.get(String(_attacking[id]))
+		if target != null and target.is_alive:
+			world.move_grid_toward(id, Vector2(target.x, target.y), delta, SPEED, actor.attack_range * 0.9, Callable(),
+				func(point: Vector2) -> bool: return world.has_line_of_sight(point, Vector2(target.x, target.y)))
+		else:
+			_attacking.erase(id)
+			world.cancel_grid_route(id)
+			world.move_grid_direction(id, Vector2.ZERO, delta, SPEED)
+	else:
+		world.move_grid_direction(id, Vector2.ZERO, delta, SPEED)
+	if not Vector2(actor.x, actor.y).is_equal_approx(before):
+		dirty[id] = true
 	_sync_body(id)
 
 func _refresh_actor(id: String) -> void:

@@ -11,6 +11,18 @@ var _since_snapshot := 0.0
 var _commands: Array[Dictionary] = []
 var _frames: Array[Dictionary] = []
 var _visual_error := Vector2.ZERO
+var grid: HiddenGrid
+var _travel := GridTraveller.new()
+
+func use_grid(value: HiddenGrid) -> void:
+	if grid != value:
+		grid = value
+		if grid != null:
+			_travel.reset(position, grid)
+
+func cancel_inputs() -> void:
+	_commands.clear()
+	_frames.clear()
 
 func reset(origin: Vector2) -> void:
 	position = origin
@@ -20,6 +32,8 @@ func reset(origin: Vector2) -> void:
 	_frames.clear()
 	_visual_error = Vector2.ZERO
 	enabled = true
+	if grid != null:
+		_travel.reset(origin, grid)
 
 func record_input(sequence: int, direction: Vector2) -> void:
 	_commands.append({"sequence": sequence, "at": _clock, "direction": direction.limit_length(1.0)})
@@ -33,23 +47,25 @@ func advance(delta: float, direction: Vector2) -> void:
 	if duration > 0.0:
 		var normalized := direction.limit_length(1.0)
 		_frames.append({"start": _clock, "end": _clock + duration, "direction": normalized})
-		position = _move(position, normalized * SPEED * duration)
+		_predict(duration, normalized)
 	_clock += delta
 	_since_snapshot += delta
 	_visual_error *= exp(-20.0 * delta)
 	while not _frames.is_empty() and float(_frames[0].end) < _clock - 1.0:
 		_frames.pop_front()
 
-func reconcile(authority: Vector2, sequence: int, age: float, can_move: bool = true) -> void:
+func reconcile(authority: Vector2, sequence: int, age: float, can_move: bool = true, travel_state: Dictionary = {}) -> void:
 	var old_visual := render_position()
 	var hard_reset := not can_move or position.distance_to(authority) > TELEPORT_DISTANCE
 	if hard_reset:
 		reset(authority)
+		_restore_travel(authority, travel_state)
 		enabled = can_move
 		return
 	enabled = can_move
 	_since_snapshot = 0.0
 	position = authority
+	_restore_travel(authority, travel_state)
 	var replay_from := _clock
 	# A packet can have been captured before our first input reached the host.
 	# Those frames are all pending, rather than all already acknowledged.
@@ -62,7 +78,7 @@ func reconcile(authority: Vector2, sequence: int, age: float, can_move: bool = t
 	for frame: Dictionary in _frames:
 		var duration := maxf(0.0, float(frame.end) - maxf(replay_from, float(frame.start)))
 		if duration > 0.0:
-			position = _move(position, frame.direction * SPEED * duration)
+			_predict(duration, frame.direction)
 	_visual_error = old_visual - position
 	while _commands.size() > 1 and int(_commands[1].sequence) <= sequence:
 		_commands.pop_front()
@@ -72,3 +88,22 @@ func render_position() -> Vector2:
 
 func _move(start: Vector2, motion: Vector2) -> Vector2:
 	return move_resolver.call(start, motion) if move_resolver.is_valid() else start + motion
+
+func _predict(duration: float, direction: Vector2) -> void:
+	if grid == null:
+		position = _move(position, direction * SPEED * duration)
+		return
+	_travel.advance(duration, SPEED, direction, grid,
+		func(motion: Vector2) -> Vector2: return _move(_travel.position, motion))
+	position = _travel.position
+
+func _restore_travel(point: Vector2, state: Dictionary) -> void:
+	if grid == null:
+		return
+	_travel.reset(point, grid)
+	var cell: Array = state.get("cell", [])
+	var target: Array = state.get("target", [])
+	if cell.size() == 2 and target.size() == 2:
+		_travel.cell = Vector2i(int(cell[0]), int(cell[1]))
+		_travel.target = Vector2(float(target[0]), float(target[1]))
+		_travel.active = bool(state.get("active", false))

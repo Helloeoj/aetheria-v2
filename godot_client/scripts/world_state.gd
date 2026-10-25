@@ -13,6 +13,68 @@ var movement_min := Vector2.ZERO
 var movement_max := Vector2(299.0, 299.0)
 var collision_move_handler: Callable
 var terrain_collision_handler: Callable
+var grid: HiddenGrid
+var grid_travellers: Dictionary = {}
+
+func set_grid(value: HiddenGrid) -> void:
+	grid = value
+	grid_travellers.clear()
+	if grid != null:
+		for actor: CombatActor in combat.actors.values():
+			grid_traveller(actor.entity_id)
+
+func grid_traveller(entity_id: String) -> GridTraveller:
+	var actor: CombatActor = combat.actors.get(entity_id)
+	if actor == null or grid == null:
+		return null
+	var point := Vector2(actor.x, actor.y)
+	var traveller: GridTraveller = grid_travellers.get(entity_id)
+	if traveller == null:
+		traveller = GridTraveller.new()
+		grid_travellers[entity_id] = traveller
+		traveller.reset(point, grid)
+	elif not traveller.position.is_equal_approx(point):
+		# Knockback, respawn or external placement invalidates a previous segment.
+		traveller.reset(point, grid)
+	actor.logical_cell = traveller.cell
+	return traveller
+
+func cancel_grid_route(entity_id: String) -> void:
+	var traveller: GridTraveller = grid_travellers.get(entity_id)
+	if traveller != null:
+		traveller.cancel_route()
+
+func move_grid_direction(entity_id: String, direction: Vector2, delta: float, speed: float) -> Vector2:
+	var traveller := grid_traveller(entity_id)
+	if traveller == null:
+		return Vector2.ZERO
+	traveller.cancel_route()
+	return _advance_grid(entity_id, traveller, direction, delta, speed)
+
+func move_grid_toward(entity_id: String, point: Vector2, delta: float, speed: float, reach: float = 0.0, allowed: Callable = Callable(), goal_valid: Callable = Callable()) -> Vector2:
+	var traveller := grid_traveller(entity_id)
+	if traveller == null:
+		return Vector2.ZERO
+	traveller.retry_delay = maxf(0.0, traveller.retry_delay - delta)
+	var arrived := traveller.position.distance_to(point) <= reach \
+		and (not goal_valid.is_valid() or bool(goal_valid.call(traveller.position)))
+	if arrived and not traveller.active:
+		traveller.cancel_route()
+		return traveller.position
+	if not traveller.goal.is_finite() or traveller.goal.distance_to(point) > 0.25 \
+		or (not traveller.active and traveller.route.is_empty() and traveller.retry_delay <= 0.0):
+		var start := traveller.target if traveller.active else traveller.position
+		traveller.set_route(grid.path(start, point, reach, allowed, goal_valid), point)
+	return _advance_grid(entity_id, traveller, Vector2.ZERO, delta, speed)
+
+func _advance_grid(entity_id: String, traveller: GridTraveller, direction: Vector2, delta: float, speed: float) -> Vector2:
+	var actor: CombatActor = combat.actors.get(entity_id)
+	if actor == null or not actor.can_move():
+		return traveller.position
+	traveller.advance(delta, speed, direction, grid,
+		func(motion: Vector2) -> Vector2: return move_actor_continuous(entity_id, motion))
+	actor.logical_cell = traveller.cell
+	return traveller.position
 
 func _init(player_ref: PlayerState = null, monster_list: Array[MonsterState] = []) -> void:
 	player = player_ref
@@ -47,6 +109,7 @@ func register_monster_actor(monster: MonsterState, actor: CombatActor) -> void:
 	combat.add_actor(actor)
 
 func remove_monster(entity_id: String) -> void:
+	grid_travellers.erase(entity_id)
 	combat.remove_actor(entity_id)
 	for index in range(monsters.size() - 1, -1, -1):
 		if monsters[index].entity_id == entity_id:

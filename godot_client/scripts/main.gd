@@ -62,6 +62,29 @@ var food_notice_time := 0.0
 var crafting_panel: Control
 var cooking_controller: Node
 var online_view: Node
+var grid_adapter: Node
+
+func grid_adoption_report() -> Dictionary:
+	return grid_adapter.report if grid_adapter != null else {"enabled": false, "reason": "not a map scene"}
+
+func _prepare_grid_movement() -> void:
+	if not map_scene_mode:
+		return
+	grid_adapter = preload("res://scripts/grid_map_adapter.gd").new()
+	add_child(grid_adapter)
+	grid_adapter.configure(self)
+	var travel := get_node_or_null("/root/SceneTravel")
+	if not has_meta("online_server_geometry") and travel != null and travel.is_transitioning():
+		await travel.transition_finished
+	# Scene replacement and inherited process disabling change physics membership.
+	# Audit only after those changes have reached the physics broadphase.
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	grid_adapter.grid.clear_cache()
+	if grid_adapter.audit().enabled and (not Network.online() or has_meta("online_server_geometry")):
+		world.set_grid(grid_adapter.grid)
+	print("[Grid movement] ", area_name, " ", JSON.stringify(grid_adapter.report))
 
 func request_crafting(station: Node2D) -> void:
 	if cooking_controller != null and cooking_controller.panel.visible:
@@ -461,6 +484,7 @@ func _ready() -> void:
 	add_child(health_bar_layer)
 	_update_map_camera()
 	print("[UI] I opens the character journal; K toggles skill testing. F5 spawns monsters; F7 opens the sprite viewer; P tests fishing anywhere.")
+	_prepare_grid_movement.call_deferred()
 	queue_redraw()
 	if Network.online():
 		online_view = preload("res://network/online_world_view.gd").new()
@@ -596,6 +620,8 @@ func _on_practice_skill_levels_changed() -> void:
 	reset_skill_training_session()
 
 func _physics_process(delta: float) -> void:
+	if grid_adapter != null and not grid_adapter.completed:
+		return
 	if Network.online():
 		if interactions.walking:
 			interactions.update_walk(delta)
@@ -1110,17 +1136,25 @@ func _sync_actor_states() -> void:
 		_update_sprite_position(actor.entity_id)
 
 func _move_player(delta: float) -> bool:
-	if cooking_controller != null and cooking_controller.panel.visible:
-		return false
-	if fishing_panel != null and fishing_panel.visible:
-		return false
-	if spawn_menu.visible or item_menu.visible or inventory_menu.visible or _ui_is_editing() or context_menu.visible:
+	var modal: bool = (cooking_controller != null and cooking_controller.panel.visible) \
+		or (fishing_panel != null and fishing_panel.visible) \
+		or spawn_menu.visible or item_menu.visible or inventory_menu.visible or _ui_is_editing() or context_menu.visible
+	if modal:
+		if world.grid != null:
+			world.move_grid_direction(player.entity_id, Vector2.ZERO, delta, PLAYER_MOVE_SPEED_TILES_PER_SECOND)
+			_update_sprite_position(player.entity_id)
 		return false
 	var player_actor: CombatActor = combat.actors.get(player.entity_id)
 	if player_actor == null or not player_actor.is_alive:
 		return false
 	var direction := movement_controller.get_move_vector()
 	if direction.is_zero_approx():
+		if world.grid != null:
+			var traveller := world.grid_traveller(player.entity_id)
+			if traveller.active and not traveller.goal.is_finite():
+				world.move_grid_direction(player.entity_id, Vector2.ZERO, delta, PLAYER_MOVE_SPEED_TILES_PER_SECOND)
+				_update_sprite_position(player.entity_id)
+				return true
 		return false
 	# Simulation Y points upward on the map; the original grid uses screen Y.
 	if not map_scene_mode:
@@ -1131,9 +1165,12 @@ func _move_player(delta: float) -> bool:
 	auto_chase_target = false
 	combat.player_auto_attack_enabled = false
 	interactions.cancel_walk()
-	world.move_actor_continuous(
-		player.entity_id, direction * PLAYER_MOVE_SPEED_TILES_PER_SECOND * delta
-	)
+	if world.grid != null:
+		world.move_grid_direction(player.entity_id, direction, delta, PLAYER_MOVE_SPEED_TILES_PER_SECOND)
+	else:
+		world.move_actor_continuous(
+			player.entity_id, direction * PLAYER_MOVE_SPEED_TILES_PER_SECOND * delta
+		)
 	_update_sprite_position(player.entity_id)
 	return true
 
@@ -1148,6 +1185,8 @@ func _move_actor_with_map_collision(entity_id: String, displacement: Vector2) ->
 			break
 		var collision := actor_body.move_and_collide(remaining_motion)
 		if collision == null:
+			break
+		if world.grid != null:
 			break
 		remaining_motion = collision.get_remainder().slide(collision.get_normal())
 	var actual_motion := actor_body.position - start_position
@@ -1205,6 +1244,12 @@ func _update_auto_chase(delta: float) -> void:
 	var offset := Vector2(target_actor.x - actor.x, target_actor.y - actor.y)
 	var distance := offset.length()
 	var stop_distance := maxf(0.0, actor.attack_range - 0.05)
+	if world.grid != null:
+		world.move_grid_toward(actor.entity_id, Vector2(target_actor.x, target_actor.y), delta,
+			PLAYER_MOVE_SPEED_TILES_PER_SECOND, stop_distance, Callable(),
+			func(point: Vector2) -> bool: return world.has_line_of_sight(point, Vector2(target_actor.x, target_actor.y)))
+		_update_sprite_position(actor.entity_id)
+		return
 	if distance <= stop_distance:
 		return
 	var travel_distance := minf(

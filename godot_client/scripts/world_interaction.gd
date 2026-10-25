@@ -158,6 +158,12 @@ func _route_to(global_point: Vector2) -> void:
 	if Network.online():
 		Network.send_action({"type": "walk", "x": destination.x, "y": destination.y})
 		return
+	if game.world.grid != null:
+		var start: Vector2 = game.player.get_position()
+		if game.world.grid.path(start, destination, _grid_reach()).is_empty():
+			cancel_walk()
+			game.show_fishing_notice("That spot cannot be reached from here.")
+		return
 	var map_root := game.get_parent()
 	if map_root != null and map_root.has_method("interaction_path"):
 		var sprite: Node2D = game.actor_sprites.get(game.player.entity_id)
@@ -234,6 +240,8 @@ func _travel_is_active() -> bool:
 	return travel != null and travel.is_transitioning()
 
 func cancel_walk() -> void:
+	if game != null and game.world != null and not Network.online():
+		game.world.cancel_grid_route(game.player.entity_id)
 	walking = false
 	pending_pickup = null
 	pending_portal = null
@@ -242,6 +250,8 @@ func cancel_walk() -> void:
 	blocked_seconds = 0.0
 
 func update_walk(delta: float) -> void:
+	if game.grid_adapter != null and not game.grid_adapter.completed:
+		return
 	if _travel_is_active():
 		cancel_walk()
 		return
@@ -254,14 +264,15 @@ func update_walk(delta: float) -> void:
 	if actor == null or not actor.is_alive:
 		cancel_walk()
 		return
-	if pending_pickup != null:
+	var can_interact: bool = Network.online() or game.world.grid == null or not game.world.grid_traveller(actor.entity_id).active
+	if pending_pickup != null and can_interact:
 		if not is_instance_valid(pending_pickup) or pending_pickup.collected or pending_pickup not in game.ground_drops:
 			cancel_walk()
 			return
 		if game._collect_ground_drop(pending_pickup):
 			cancel_walk()
 			return
-	if pending_portal != null:
+	if pending_portal != null and can_interact:
 		if not _portal_is_current(pending_portal):
 			cancel_walk()
 			return
@@ -269,7 +280,7 @@ func update_walk(delta: float) -> void:
 			pending_portal.try_enter(game)
 			cancel_walk()
 			return
-	if pending_cooking != null:
+	if pending_cooking != null and can_interact:
 		if not is_instance_valid(pending_cooking) or not pending_cooking.is_current(game):
 			cancel_walk()
 			return
@@ -284,6 +295,18 @@ func update_walk(delta: float) -> void:
 		# the server moves the character and rechecks the actual range.
 		if start.distance_to(destination) <= 0.08:
 			cancel_walk()
+		return
+	if game.world.grid != null:
+		game.world.move_grid_toward(actor.entity_id, destination, delta, game.PLAYER_MOVE_SPEED_TILES_PER_SECOND, _grid_reach())
+		game._update_sprite_position(actor.entity_id)
+		var traveller: GridTraveller = game.world.grid_traveller(actor.entity_id)
+		if not traveller.active and traveller.route.is_empty():
+			# Pending interactions are attempted on the following update, using
+			# the original range rules and an arrived authoritative position.
+			if pending_pickup == null and pending_portal == null and pending_cooking == null:
+				cancel_walk()
+			elif Vector2(actor.x, actor.y).distance_to(destination) > _grid_reach():
+				cancel_walk()
 		return
 	while not walk_waypoints.is_empty() and start.distance_to(walk_waypoints[0]) <= 0.08:
 		walk_waypoints.pop_front()
@@ -303,3 +326,12 @@ func _simulation_position(global_point: Vector2) -> Vector2:
 	if game.map_scene_mode:
 		return Vector2((local.x - game.map_origin.x) / game.TILE_SIZE, (game.map_origin.y + game.map_height - local.y) / game.TILE_SIZE)
 	return local / game.TILE_SIZE
+
+func _grid_reach() -> float:
+	if is_instance_valid(pending_pickup):
+		return 2.0
+	if is_instance_valid(pending_portal):
+		return pending_portal.interaction_radius / game.TILE_SIZE
+	if is_instance_valid(pending_cooking):
+		return pending_cooking.interaction_radius / game.TILE_SIZE
+	return 0.0

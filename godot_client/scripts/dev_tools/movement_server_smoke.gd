@@ -42,7 +42,7 @@ func fixture(delayed_travel: bool = false) -> Dictionary:
 	# Deliberately retain older fixture shape: new session fields need defaults.
 	var session := {"peer": 12001, "character_id": player.entity_id,
 		"region_id": "outskirts", "player": player, "busy": false, "queue": [],
-		"pending": {}, "closing": false, "last_sequence": -1, "saving": false}
+		"pending": {}, "closing": false, "disconnected": 0, "last_sequence": -1, "saving": false}
 	host.sessions[12001] = session
 	return {"host": host, "region": region, "session": session, "player": player}
 
