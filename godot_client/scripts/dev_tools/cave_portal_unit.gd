@@ -140,8 +140,10 @@ func _run() -> void:
 	controller.cancel_walk()
 	check(controller.pending_portal == null and not controller.walking, "Manual movement cancellation clears queued Enter")
 	controller.request_portal(portal)
-	_click(controller, Vector2(900, 900), MOUSE_BUTTON_LEFT)
-	check(controller.pending_portal == null and not controller.walking, "Clicking another intent cancels queued Enter")
+	_click(controller, Vector2(160, 160), MOUSE_BUTTON_LEFT)
+	check(controller.pending_portal == null and controller.walking and controller.destination == Vector2(5, 5), "Ground click replaces queued Enter with the chosen walk destination")
+	_walk_to_end(controller)
+	check(portal.entries == 2 and not controller.walking, "Replacement ground walk never triggers the cancelled portal")
 	controller.request_portal(portal)
 	game.world.blocked = true
 	_walk_to_end(controller)

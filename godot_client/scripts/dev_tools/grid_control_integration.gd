@@ -33,6 +33,17 @@ func key(code: Key,pressed: bool) -> void:
 	event.pressed = pressed
 	root.push_input(event)
 
+func click_ground(point: Vector2) -> void:
+	var pixel: Vector2 = game._screen_position(point.x, point.y)
+	var screen: Vector2 = game.get_global_transform_with_canvas() * pixel
+	for pressed: bool in [true, false]:
+		var event := InputEventMouseButton.new()
+		event.button_index = MOUSE_BUTTON_LEFT
+		event.position = screen
+		event.global_position = screen
+		event.pressed = pressed
+		root.push_input(event)
+
 func controls() -> void:
 	var grid: HiddenGrid = game.world.grid
 	var base := grid.cell_at(game.player.get_position())
@@ -80,6 +91,20 @@ func controls() -> void:
 	check(not game.world.at_grid_rest(game.player.entity_id) and game.world.occupied_cell(game.player.entity_id) == grid.cell_at(open),"diagonal duration is longer and occupancy remains at source")
 	game._move_player(0.11)
 	check(game.player.get_position().is_equal_approx(open+Vector2.ONE),"diagonal release arrives at intended center")
+	place(open)
+	click_ground(open+Vector2.RIGHT)
+	check(game.interactions.walking,"native left-click on empty ground starts walking")
+	game.interactions.update_walk(0.1)
+	check(game.player.get_position().is_equal_approx(open+Vector2(0.4,0)),"ground click uses smooth movement at the existing speed")
+	game.interactions.update_walk(0.2)
+	check(game.player.get_position().is_equal_approx(open+Vector2.RIGHT) and game.world.at_grid_rest(game.player.entity_id),"ground click arrives at the chosen tile center")
+	place(open)
+	click_ground(open+Vector2.RIGHT)
+	key(KEY_W,true)
+	game._move_player(0.1)
+	check(not game.interactions.walking and game.player.get_position().is_equal_approx(open+Vector2(0,0.4)),"WASD overrides a click route for manual combat positioning")
+	key(KEY_W,false)
+	game._move_player(0.5)
 	place(open)
 	var peer := ActorSprite.new().configure(Vector2(32,32),Color.TRANSPARENT,"tile-peer")
 	game.add_child(peer)

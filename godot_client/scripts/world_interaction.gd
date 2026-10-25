@@ -55,8 +55,7 @@ func handle_click(event: InputEventMouseButton, global_point: Vector2) -> void:
 		elif not deposits.is_empty():
 			game.request_mining(deposits[0])
 		else:
-			clear_drop_selection()
-			game._clear_target()
+			walk_here(global_point)
 	elif event.button_index == MOUSE_BUTTON_RIGHT:
 		cancel_walk()
 		game._reset_held_movement()

@@ -20,6 +20,17 @@ ready; knockback recovers at normal movement speed on the next movement request.
 Authored markers remain unchanged. Logical cells are runtime state, while durable
 coordinates retain the existing continuous format.
 
+## Movement controls
+
+Left-click empty ground to walk using the existing collision-aware route, just
+like the right-click **Walk here** action. WASD and arrow movement remain
+available; pressing a movement key cancels click walking for manual positioning.
+A ground click replaces the previous route/attack intent. Clicking enemies,
+loot and interaction objects keeps its existing selection/action behavior.
+UI clicks do not walk through panels. Spell selection/casting and ranged combat
+controls are unchanged. Online ground clicks use the existing authoritative
+`walk` command; offline clicks use the same shared movement grid.
+
 ## Area adoption
 
 The map adapter waits for transition completion and physics synchronization,
