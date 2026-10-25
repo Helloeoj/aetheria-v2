@@ -20,6 +20,8 @@ func _run() -> void:
 	add_child(map)
 	await get_tree().process_frame
 	var game: Node = map.get_node("Combat")
+	while game.grid_adapter == null or not game.grid_adapter.completed:
+		await get_tree().physics_frame
 	Network.mode = Network.Mode.CLIENT
 	Network.authenticated = true
 	Network.set_process(false)
@@ -32,8 +34,20 @@ func _run() -> void:
 		_finish()
 		return
 	var fish_panel: FishingPanel = game.fishing_panel
-	var sprite: Node2D = game.actor_sprites[game.player.entity_id]
-	sprite.global_position = spots[0].shore_position()
+	var shore: Vector2 = game.interactions._simulation_position(spots[0].shore_position())
+	var route: PackedVector2Array = game.world.grid.path(game.player.get_position(),shore,spots[0].interact_radius/game.TILE_SIZE)
+	check(not route.is_empty(),"Online interface fixture arrives at an authoritative reachable shore center")
+	if route.is_empty():
+		_finish()
+		return
+	var point: Vector2 = route[-1]
+	var actor: CombatActor = game.combat.actors[game.player.entity_id]
+	actor.x = point.x
+	actor.y = point.y
+	game.player.x = point.x
+	game.player.y = point.y
+	game.world.grid_traveller(actor.entity_id)
+	game._update_sprite_position(actor.entity_id)
 	game.request_fishing(spots[0])
 	check(fish_panel.visible and fish_panel._lake_texture != null, "Original lake artwork and fishing interface are present online")
 	check(fish_panel.session.has_method("sync_remote"), "Original UI uses a server-state presentation adapter")

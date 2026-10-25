@@ -73,6 +73,8 @@ func _run() -> void:
 	current_scene = scene
 	await frames(8)
 	var game: Node = scene.get_node("Combat")
+	while game.grid_adapter == null or not game.grid_adapter.completed:
+		await physics_frame
 	network.mode = network.Mode.CLIENT
 	network.authenticated = true
 	game.online_view = load("res://network/online_world_view.gd").new()
@@ -89,8 +91,19 @@ func _run() -> void:
 	if spots.is_empty():
 		quit(1)
 		return
-	var sprite: Node2D = game.actor_sprites[game.player.entity_id]
-	sprite.global_position = spots[0].shore_position()
+	var shore: Vector2 = game.interactions._simulation_position(spots[0].shore_position())
+	var route: PackedVector2Array = game.world.grid.path(game.player.get_position(),shore,spots[0].interact_radius/game.TILE_SIZE)
+	check(not route.is_empty(),"Scaled online activity input fixture has an arrived shore center")
+	if route.is_empty():
+		quit(1)
+		return
+	var actor: CombatActor = game.combat.actors[game.player.entity_id]
+	actor.x = route[-1].x
+	actor.y = route[-1].y
+	game.player.x = actor.x
+	game.player.y = actor.y
+	game.world.grid_traveller(actor.entity_id)
+	game._update_sprite_position(actor.entity_id)
 	var social: Node = root.get_node("Social")
 	var original_ui_layer: int = game.get_node("UI").layer
 	for dimensions: Vector2i in [Vector2i(1280, 720), Vector2i(2560, 1440), Vector2i(3840, 2160)]:

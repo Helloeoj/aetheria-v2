@@ -55,7 +55,7 @@ func _run() -> void:
 	check(error == OK, "World transport connects")
 	await net.joined
 	check(net.authenticated and net.character_id == config.character_id, "Backend identity owns the world actor")
-	check(net.saved_state.get("version") == 1, "Initial or returning character loaded durably")
+	check(CharacterCodec.decode(net.saved_state,net.username,net.character_id).ok, "Initial or returning character loaded durably through the current backward-compatible codec")
 	if config.has("expected_state"):
 		var expected: Dictionary = config.expected_state
 		check(net.saved_state.inventory == expected.inventory and net.saved_state.skill_experience == expected.skill_experience and net.saved_state.gold == expected.gold, "Inventory and progress resume across login sessions")

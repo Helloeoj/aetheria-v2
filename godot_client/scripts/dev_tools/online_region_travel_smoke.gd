@@ -86,11 +86,15 @@ func _run() -> void:
 		check(not distant.get("ok",false),"Portal travel checks actual range before moving a character")
 	check(not (await host._travel(session,"forged/client-scene.tscn")).get("ok",false),"Unregistered client portal paths are rejected")
 	await _travel_and_check(session,"golem")
+	var local_catacombs := ResourceLoader.exists("res://scenes/CatacombsFloor01.tscn") and _portal(host.regions.golem,"catacombs") != null
+	if local_catacombs:
+		await _travel_and_check(session,"catacombs")
+		await _travel_and_check(session,"golem")
 	await _travel_and_check(session,"outskirts")
 	await _travel_and_check(session,"tavern")
 	await _travel_and_check(session,"outskirts")
-	check(host.regions.size() == 3,"Travel reuses one shared region per approved map")
-	check(http.requests.size() == 4,"Each successful travel persists exactly one destination state")
+	check(host.regions.size() == (4 if local_catacombs else 3),"Travel reuses one shared region per approved map")
+	check(http.requests.size() == (6 if local_catacombs else 4),"Each successful travel persists exactly one destination state")
 	await _retirement_during_destination_load(outskirts)
 	await _invalid_arrival(session)
 	host.queue_free()

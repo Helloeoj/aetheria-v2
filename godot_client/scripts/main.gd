@@ -905,6 +905,7 @@ func _set_target(entity_id: String) -> void:
 	auto_chase_target = false
 	combat.player_auto_attack_enabled = false
 	player.current_target = entity_id
+	world.cancel_grid_route(player.entity_id)
 	var player_actor: CombatActor = combat.actors.get(player.entity_id)
 	if player_actor != null:
 		player_actor.current_target_id = entity_id
@@ -919,6 +920,7 @@ func _clear_target() -> void:
 	auto_chase_target = false
 	combat.player_auto_attack_enabled = false
 	player.current_target = ""
+	world.cancel_grid_route(player.entity_id)
 	var player_actor: CombatActor = combat.actors.get(player.entity_id)
 	if player_actor != null:
 		player_actor.current_target_id = ""
@@ -1229,7 +1231,7 @@ func _move_player(delta: float) -> bool:
 	if direction.is_zero_approx():
 		if world.grid != null:
 			var traveller := world.grid_traveller(player.entity_id)
-			if traveller.active and not traveller.goal.is_finite():
+			if traveller.active and (not traveller.goal.is_finite() or (not interactions.walking and not auto_chase_target)):
 				world.move_grid_direction(player.entity_id, Vector2.ZERO, delta, PLAYER_MOVE_SPEED_TILES_PER_SECOND)
 				_update_sprite_position(player.entity_id)
 				return true
@@ -1320,6 +1322,8 @@ func _update_auto_chase(delta: float) -> void:
 	var actor: CombatActor = combat.actors.get(player.entity_id)
 	var target_actor: CombatActor = combat.actors.get(player.current_target) if not player.current_target.is_empty() else null
 	if actor == null or not actor.is_alive or target_actor == null or not target_actor.is_alive:
+		auto_chase_target = false
+		world.cancel_grid_route(player.entity_id)
 		return
 	var offset := Vector2(target_actor.x - actor.x, target_actor.y - actor.y)
 	var distance := offset.length()

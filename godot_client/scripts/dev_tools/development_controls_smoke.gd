@@ -70,6 +70,12 @@ func _run() -> void:
 		var actor: CombatActor = game.combat.actors[game.player.entity_id]
 		actor.x = (local.x - game.map_origin.x) / game.TILE_SIZE
 		actor.y = (game.map_origin.y + game.map_height - local.y) / game.TILE_SIZE
+		if game.world.grid != null:
+			var route: PackedVector2Array = game.world.grid.path(game.player.get_position(),Vector2(actor.x,actor.y),spot.interact_radius/game.TILE_SIZE)
+			check(not route.is_empty(),"Native F fixture uses a reachable tile center within shore range")
+			if not route.is_empty():
+				actor.x = route[-1].x
+				actor.y = route[-1].y
 		game.player.x = actor.x
 		game.player.y = actor.y
 		game._update_sprite_position(actor.entity_id)

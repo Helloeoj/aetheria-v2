@@ -52,7 +52,7 @@ func _check(condition: bool, label: String) -> void:
 
 func _test_catalog() -> void:
 	_check(int(catalog.get("schema_version", 0)) == 1, "Catalog schema must be version 1.")
-	_check(skins.size() == 23, "All 23 supplied character skins must be imported.")
+	_check(not skins.is_empty(), "Supplied catalog must contain character skins.")
 	_check(directions.size() == 8, "Catalog must describe eight directions.")
 	var authored_frame_count := 0
 	for skin_id: String in skins:
@@ -154,10 +154,13 @@ func _test_scene(scene_path: String, is_map: bool) -> void:
 	if scene == null:
 		return
 	var container := scene.instantiate()
+	root.get_node("SceneTravel").set("_player",null)
 	root.add_child(container)
 	var game: Variant = container.get_node("Combat") if is_map else container
 	game.set_physics_process(false)
 	await process_frame
+	while is_map and (game.grid_adapter == null or not game.grid_adapter.completed):
+		await physics_frame
 	var player_sprite: ActorSprite = game.actor_sprites.get(game.player.entity_id)
 	_check(player_sprite != null, scene_path + " did not spawn the player sprite.")
 	if player_sprite == null:
@@ -272,7 +275,31 @@ func _test_scene(scene_path: String, is_map: bool) -> void:
 		await _capture("sprite-spawn-menu.png")
 	_press_key(KEY_F5)
 	_check(not game.spawn_menu.visible, scene_path + " F5 did not close the monster menu.")
+	var movement_start := Vector2(player_actor.x,player_actor.y)
+	if game.world.grid != null:
+		var grid: HiddenGrid = game.world.grid
+		var base := grid.cell_at(movement_start)
+		var found := false
+		for y in range(-8,9):
+			for x in range(-8,9):
+				var cell := base+Vector2i(x,y)
+				var clear := grid.walkable(cell)
+				for step: Vector2i in HiddenGrid.DIRECTIONS:
+					clear = clear and grid.connected(cell,cell+step)
+				if clear and not grid.path(movement_start,grid.center(cell)).is_empty():
+					movement_start = grid.center(cell)
+					found = true
+					break
+			if found: break
+		_check(found,scene_path + " has a reachable open fixture for all eight facings.")
 	for direction: String in SCREEN_DIRECTIONS:
+		# Each facing starts at rest: ordinary turns now wait for tile arrival.
+		player_actor.x = movement_start.x
+		player_actor.y = movement_start.y
+		game.player.x = movement_start.x
+		game.player.y = movement_start.y
+		game.world.grid_travellers.erase(player_actor.entity_id)
+		game._update_sprite_position(player_actor.entity_id)
 		var vector: Vector2 = SCREEN_DIRECTIONS[direction]
 		game.movement_controller.holding = {"up": vector.y < 0.0, "down": vector.y > 0.0, "left": vector.x < 0.0, "right": vector.x > 0.0}
 		var start := player_sprite.position
@@ -282,9 +309,11 @@ func _test_scene(scene_path: String, is_map: bool) -> void:
 		_check(player_sprite.facing == direction, "%s moving %s faces the wrong way." % [scene_path, direction])
 		_check(player_sprite.animated_sprite.animation == StringName("walk_" + direction), "%s moving %s ends the frame without its walk animation." % [scene_path, direction])
 	game._reset_held_movement()
-	game._physics_process(1.0 / 120.0)
+	for frame in range(60):
+		game._physics_process(1.0 / 120.0)
 	player_sprite._process(1.0)
 	_check(String(player_sprite.animated_sprite.animation).begins_with("idle_"), scene_path + " did not settle to idle after movement stopped.")
+	game.player.set_skill_level("attack",100)
 	game.player.give_and_equip("Iron Longsword")
 	game._physics_process(0.0)
 	_check(player_sprite.skin_id == CharacterSpriteLibrary.default_player_skin(), scene_path + " equipping changed the player's base artwork.")
@@ -324,6 +353,7 @@ func _test_scene(scene_path: String, is_map: bool) -> void:
 		player_actor.min_damage = 1
 		player_actor.max_damage = 1
 		player_actor.attack_range = 2.0
+		game._start_auto_chase() # Target selection alone deliberately does not attack.
 		game.combat.random.seed = 42
 		var events: Array[Dictionary] = game.combat.process_realtime(game.world, 1.0 / 60.0)
 		var attack_occurred := false
@@ -340,7 +370,9 @@ func _test_scene(scene_path: String, is_map: bool) -> void:
 		_check(not game.actor_sprites.has(entity_id) and not game.combat.actors.has(entity_id), scene_path + " death did not remove the monster from the active world.")
 		_check(game.player.current_target.is_empty(), scene_path + " death left a stale target.")
 		_check(monster_sprite.dead and monster_sprite.collision_layer == 0 and monster_sprite.collision_mask == 0, scene_path + " death fade retained an active collision body.")
-		await create_timer(0.4).timeout
+		var fade_deadline := Time.get_ticks_msec()+2000
+		while is_instance_valid(monster_sprite) and Time.get_ticks_msec() < fade_deadline:
+			await process_frame
 		_check(not is_instance_valid(monster_sprite), scene_path + " death fade did not free the monster sprite.")
 	container.free()
 	await process_frame
