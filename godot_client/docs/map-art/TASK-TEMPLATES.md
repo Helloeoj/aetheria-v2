@@ -47,9 +47,32 @@ Sample first: one representative asset; expand only if it meets the brief.
 
 Object prompt: “One complete [object], matching the supplied reference's camera, pixel density, palette and lighting. Transparent background, complete silhouette, internal shading. No ground mat, cast shadow, clipped parts, neighboring objects, characters or creatures. Canvas [W × H].”
 
-## New area assembled from a kit
+## New area: approved image to playable scene
 
-Record the target scene, origin/size, road/river exits at each edge, selected terrain/object IDs, walkable routes and landmarks. Assemble a preview from existing pieces first. Keep terrain, objects, collision and actors separate. List missing assets explicitly before generating them. Match neighboring ground and exits; do not flatten an assembled area and then re-extract its objects.
+Follow [PLAYABLE-MAP-PIPELINE.md](PLAYABLE-MAP-PIPELINE.md) in order. Do not skip
+the user's whole-map image approval by going straight to kit assembly.
+
+```text
+Area / profile / target scene: [id, selected art profile, scene]
+Discussion / user references: [requirements and image paths]
+Camera / scale: [established angle, native density, world dimensions]
+Gameplay grid: 32 world pixels; stable origin [x,y]; art-cell scale [separate]
+Layout: [landmarks, room flow, entrances/exits, planned interaction approaches]
+Candidate / approved master: [exact versions/paths; approval evidence or pending]
+Decomposition: [ground layers; individual reusable props; missing hidden parts]
+Reuse / missing pieces: [selected asset IDs; genuinely needed generation]
+Prop records: [canvas, foot anchor, world placement, sorting, collision base]
+Path validation: [full-body clearance, swept edges, corners, narrow routes]
+Interaction / transition validation: [reachable centers, ranges, safe arrivals]
+Runtime validation: [WASD/click input, enemy/chase, offline/online, visual review]
+Status: [image review, scene installation, gameplay validation tracked separately]
+Changed files / holds / next action: [scoped handoff]
+```
+
+Reuse existing pieces in the approved composition; keep ground, props, collision
+and actors separate. Match neighboring ground/exits. Do not flatten an assembled
+area and re-extract objects that already exist separately. Existing-map local
+repairs retain their bounded workflow rather than restarting area generation.
 
 ## Cheap handoff
 

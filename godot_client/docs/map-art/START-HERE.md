@@ -3,6 +3,21 @@
 Use this entry point for map creation, expansion, image edits and reusable environment assets.
 Goal: retain the current visual quality while reducing repeated generation, extraction and project discovery.
 
+## New map sections: approved image to playable scene
+
+For a new area or a substantial area redesign, follow the user's
+[five-step playable-map pipeline](PLAYABLE-MAP-PIPELINE.md): discuss references
+and gameplay, generate a usable whole-map image, obtain the user's image
+approval (revise until approved), separate reusable props and ground, then
+author collision and validate shared-grid paths in the assembled Godot scene.
+The approved image is the layout/art authority, not disposable concept art.
+Prefer individual reusable props over large flattened object layers.
+
+The entire game is intended to share the hidden movement/AoE grid. Native art
+cells and image resolution do not set gameplay cell size. Existing incomplete
+areas are not automatically converted or visually approved by this policy.
+Preserve adoption holds until their actual geometry and interactions pass.
+
 ## Read only what the task needs
 
 1. Read [ART-SPEC.md](ART-SPEC.md), then the relevant row of [ASSET-INDEX.md](ASSET-INDEX.md).
@@ -19,7 +34,7 @@ Do not inventory the entire repository, reopen historical reports, dump map-cell
 - Assemble maps from terrain and complete object assets. Generate only missing pieces.
 - For a visual repair, edit a bounded crop with neighboring context, then install only the allowed region/layers. A prompt alone does not guarantee preservation: compare the result to the baseline.
 - Keep source art, export metadata, review status and installation status separate. A generated or installed candidate is not automatically visually approved.
-- Follow the user's existing authorization. A preview-only request remains preview-only; this workflow adds no new approval gate.
+- Follow the user's existing authorization. A preview-only request remains preview-only. New-area images require the explicit visual approval in the five-step pipeline before decomposition/scene implementation; routine scoped repairs do not restart that whole process.
 
 The existing PixelLab world library remains **planned, not generated**. Its saved generation hold is not resumed by setting up this workflow. Reuse the installed brushes, objects and clean trees meanwhile.
 
