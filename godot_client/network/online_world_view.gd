@@ -16,6 +16,15 @@ var _has_self := false
 var _keyboard := false
 var _movement_enabled := false
 
+func clear_motion() -> void:
+	_keyboard = false
+	_movement_enabled = false
+	_has_self = false
+	_motion.clear()
+	_prediction.cancel_inputs()
+	_prediction.reset(game.player.get_position())
+	_prediction.use_grid(null)
+
 func configure(owner_game: Node) -> void:
 	game = owner_game
 	_prediction.move_resolver = _resolve_movement
@@ -61,6 +70,10 @@ func apply(snapshot: Dictionary) -> void:
 	_interval = clampf(float(snapshot.get("snapshot_interval", 0.1)), 1.0 / 60.0, 0.5)
 	_received_elapsed = 0.0
 	_movement_enabled = bool(snapshot.get("movement_enabled", false))
+	if game.aoe_preview != null:
+		game.aoe_preview.authoritative_cast = snapshot.get("area_cast",{}).duplicate(true)
+	if game.grid_adapter != null:
+		game.world.cell_grid = game.grid_adapter.grid
 	if snapshot.has("grid") and game.grid_adapter != null:
 		var anchor: Array = snapshot.grid.get("origin", [])
 		if anchor.size() == 2:

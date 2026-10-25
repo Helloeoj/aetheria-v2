@@ -14,10 +14,13 @@ var movement_max := Vector2(299.0, 299.0)
 var collision_move_handler: Callable
 var terrain_collision_handler: Callable
 var grid: HiddenGrid
+var cell_grid := HiddenGrid.new() # Stable lattice also exists in movement-held areas.
 var grid_travellers: Dictionary = {}
 
 func set_grid(value: HiddenGrid) -> void:
 	grid = value
+	if value != null:
+		cell_grid = value
 	grid_travellers.clear()
 	if grid != null:
 		for actor: CombatActor in combat.actors.values():
@@ -43,6 +46,12 @@ func grid_traveller(entity_id: String) -> GridTraveller:
 func at_grid_rest(entity_id: String) -> bool:
 	var actor: CombatActor = combat.actors.get(entity_id)
 	return actor != null and (grid == null or (not actor.grid_active and grid.is_center(Vector2(actor.x, actor.y))))
+
+func occupied_cell(entity_id: String) -> Vector2i:
+	var actor: CombatActor = combat.actors.get(entity_id)
+	if actor == null:
+		return Vector2i.ZERO
+	return grid_traveller(entity_id).cell if grid != null else cell_grid.cell_at(Vector2(actor.x,actor.y))
 
 func displace_actor(entity_id: String, motion: Vector2) -> Vector2:
 	var point := move_actor_continuous(entity_id, motion)
@@ -105,6 +114,8 @@ func _init(player_ref: PlayerState = null, monster_list: Array[MonsterState] = [
 func set_movement_bounds(minimum: Vector2, maximum: Vector2) -> void:
 	movement_min = minimum
 	movement_max = maximum
+	if grid == null:
+		cell_grid.configure(cell_grid.origin, minimum, maximum)
 
 func set_collision_handlers(move_handler: Callable, terrain_handler: Callable) -> void:
 	collision_move_handler = move_handler

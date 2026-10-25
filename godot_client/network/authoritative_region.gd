@@ -396,16 +396,24 @@ func snapshot(character_id: String) -> Dictionary:
 		entry.erase("node")
 		public_stations.append(entry)
 	var result := {"region_id": region_id, "actors": actors, "drops": public_drops,
-		"activity": activities.snapshot(character_id), "stations": public_stations, "deposits": mining.deposit_snapshots()}
+		"activity": activities.snapshot(character_id), "stations": public_stations, "deposits": mining.deposit_snapshots(), "area_cast": area_cast(character_id)}
 	if world.grid != null:
 		result["grid"] = {"origin": [world.grid.origin.x, world.grid.origin.y], "cell_pixels": 32}
 	return result
+
+func area_cast(id: String) -> Dictionary:
+	var cast: Dictionary = world.combat.active_spell_casts.get(id,{})
+	if cast.is_empty() or cast.spell.get("kind") != "area":
+		return {}
+	return {"spell":cast.spell.duplicate(true),"target_cell":[cast.target_cell.x,cast.target_cell.y]}
 
 func _adopt_grid() -> void:
 	if world.grid == null and geometry_game != null:
 		var source: WorldState = geometry_game.get("world")
 		if source != null and source.grid != null:
 			world.set_grid(source.grid)
+		if source != null:
+			world.cell_grid = source.cell_grid
 
 func cancel_walk(id: String) -> void:
 	_walks.erase(id)
@@ -662,25 +670,11 @@ func _inside(point: Vector2) -> bool:
 	return point.is_finite() and point.x >= world.movement_min.x and point.y >= world.movement_min.y and point.x <= world.movement_max.x and point.y <= world.movement_max.y
 
 func _safe_position(wanted: Vector2) -> Vector2:
-	var point := wanted.clamp(world.movement_min + Vector2.ONE, world.movement_max - Vector2.ONE)
-	if point.is_finite() and _passable(point):
-		return point
-	# A saved/new default coordinate can predate the map's north/west expansion.
-	# Prefer its authored startup spawn instead of searching inside unbuilt land.
-	var authored: Variant = geometry_game.get("player") if geometry_game != null else null
-	if authored is PlayerState:
-		var spawn: Vector2 = authored.get_position()
-		if _inside(spawn):
-			point = spawn
-			if _passable(point):
-				return point
-	for radius in range(1, 33):
-		for offset in [Vector2(radius, 0), Vector2(-radius, 0), Vector2(0, radius), Vector2(0, -radius),
-			Vector2(radius,radius),Vector2(radius,-radius),Vector2(-radius,radius),Vector2(-radius,-radius)]:
-			var candidate: Vector2 = point + offset
-			if _inside(candidate) and _passable(candidate):
-				return candidate
-	return Vector2(INF,INF)
+	_adopt_grid()
+	if world.grid != null:
+		return preload("res://scripts/grid_placement.gd").resolve(world.grid,wanted)
+	# Non-grid areas retain their continuous coordinates, never jump floors.
+	return wanted if _inside(wanted) and _passable(wanted) else Vector2(INF,INF)
 
 func _passable(point: Vector2) -> bool:
 	if geometry_game == null or not geometry_game.has_method("_screen_position") or not geometry_game.is_inside_tree():

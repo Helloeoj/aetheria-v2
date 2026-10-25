@@ -400,6 +400,9 @@ func _load_region(id: String) -> void:
 		_lost("The server selected an unavailable game area.")
 		return
 	_scene_loading = true
+	replace_keyboard_intent()
+	if is_instance_valid(game) and game.has_method("prepare_area_exit"):
+		game.prepare_area_exit()
 	game = null
 	var travel := get_node_or_null("/root/SceneTravel")
 	if travel != null:

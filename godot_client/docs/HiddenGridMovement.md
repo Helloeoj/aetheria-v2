@@ -14,9 +14,9 @@ centers. Actors are not navigation obstacles and can share cells.
 
 Players retain 128px/sec and enemies 80px/sec. Diagonals cost sqrt(2) times a
 cardinal step. Direction changes and releases finish the committed edge before
-turning or stopping. Movement locks pause immediately. Off-grid saved/spawned or
-knocked-back positions recover through a checked connection at normal movement
-speed on the next movement request; no save format or progression is replaced.
+turning or stopping. Movement locks pause immediately. Legacy saved positions and
+authored arrivals resolve to collision-safe centers when physics/grid adoption is
+ready; knockback recovers at normal movement speed on the next movement request.
 Authored markers remain unchanged. Logical cells are runtime state, while durable
 coordinates retain the existing continuous format.
 
@@ -39,8 +39,77 @@ The tavern deliberately retains continuous movement: the two table aisles are
 28.5px and 30.75px wide, and have no common center alignment on a 32px lattice.
 Neither collision nor artwork is changed to conceal that incompatibility.
 
-This movement phase does not convert AoE spell footprints, change wall rules or
-add ground targeting. `CombatActor.logical_cell` is available for the next phase.
+## AoE design amendment and phase 5
+
+AoE sizes are **undecided**. The existing `area_radius` numbers are temporary
+placeholders, not approved sizes or balance. Each area definition in
+`data/spells.json` explicitly has `area_size_status: "provisional"`.
+
+`SpellFootprint.cells(grid, captured_cell, spell)` is the single calculation used
+by damage resolution and the development overlay. The default per-spell
+`area_shape: "circle"` includes integer offsets whose center-to-center Euclidean
+distance is at most `area_radius`, measured in 32px cells. Boundaries are
+inclusive; negative coordinates work normally; cells outside map bounds are
+excluded. Movement walkability is deliberately NOT an AoE filter: existing area
+spells ignore walls, retained as `area_wall_behavior: "ignore"`. No new wall or
+line-of-sight rule has been introduced.
+
+| Spell ID | Provisional radius | Full footprint cells | Bounding width |
+| --- | ---: | ---: | ---: |
+| air_stormring | 2.0 | 13 | 5 cells |
+| water_tideburst | 2.0 | 13 | 5 cells |
+| earth_shatterground | 2.5 | 21 | 5 cells |
+| fire_cinderfall | 3.0 | 29 | 7 cells |
+| arcane_starfall | 3.5 | 37 | 7 cells |
+
+Counts assume an unclipped footprint. Change each spell's `area_radius` in
+`data/spells.json`; values are not duplicated in rendering code. For authored
+non-circular footprints set `area_shape: "offsets"` and `area_offsets` to a list
+of integer `[x,y]` offsets relative to the captured cell. Offsets are sorted and
+deduplicated. The bounded implementation accepts radii/offset extents up to 64
+cells; larger values require an explicit implementation/performance review.
+
+The existing Q/R selection and E casting controls are unchanged. Area casts lock
+the selected target's committed cell at cast start (or the explicit point's cell
+for existing backend calls). Resolution uses actors' committed occupancy at the
+normal damage time, so leaving a tile takes effect on arrival, not on crossing
+its visual midpoint. Numeric damage, mana, timing and unlocks are unchanged.
+The map lattice also exists in Tavern, but its held movement remains continuous;
+occupancy there is the cell containing authoritative position.
+
+### Development preview
+
+In a debug, non-tester game, press **Ctrl+Shift+V** to toggle affected tile outlines
+and the `PROVISIONAL AoE` label. It defaults to off and is not installed in release
+or tester clients. Select an existing area spell with Q/R and an enemy with the
+existing controls; no new targeting interface is added. Before casting it shows
+the target's cell; during casting it uses the locked cell. Online snapshots carry
+the local player's authoritative captured cast descriptor for the same overlay.
+`scripts/dev_tools/aoe_tile_preview.gd` contains only debug drawing, not spell art.
+
+### Saves and transitions
+
+Save versions 1 and 2 remain readable; their continuous x/y schema and progression
+are unchanged. Spatial migration happens only after the destination's physics is
+ready, not in the data-only codec. `GridPlacement.resolve` requires a real swept
+connection from the old position to a nearby clear center. It never clamps or
+rounds through a wall, searches an unrelated floor, or substitutes the startup
+spawn for an invalid saved position. Already centered positions are unchanged.
+
+If the old coordinate is inside collision/outside the map, or no nearby center
+has a safe connection, online admission is refused without replacing the save.
+An offline incompatible position is preserved and movement adoption held rather
+than guessed. These cases need deliberate recovery; this migration does not
+invent which floor a corrupted location belonged to. New characters still use
+the authored new-character entrance. Tavern retains its original clear continuous
+positions while its movement hold exists.
+
+Online portal placement is checked at the authored destination marker before
+source removal; unsafe/missing arrivals leave source ownership and progress intact.
+Offline arrivals are placed through the same helper after map audit. Authored
+markers themselves never move. Scene departure clears held movement, chase,
+queued casts, old steps/routes, development preview, prediction and remote
+interpolation. The existing SceneTravel controller and interfaces are preserved.
 
 ## Interactions and enemies
 
@@ -97,6 +166,9 @@ outside the repository. The local Catacombs suite runs only when present.
 Use installed Godot 4.5.1 with `--headless --path godot_client`:
 
 - `--script res://scripts/dev_tools/hidden_grid_unit.gd`
+- `--script res://scripts/dev_tools/grid_aoe_unit.gd`
+- `--script res://scripts/dev_tools/grid_placement_unit.gd`
+- `--script res://scripts/dev_tools/grid_aoe_preview_integration.gd`
 - `--script res://scripts/dev_tools/grid_parity_unit.gd`
 - `--script res://scripts/dev_tools/grid_interaction_integration.gd`
 - `--script res://scripts/dev_tools/hidden_grid_maps.gd`

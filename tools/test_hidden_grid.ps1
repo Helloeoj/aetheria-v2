@@ -9,6 +9,10 @@ New-Item -ItemType Directory -Force -Path $EvidenceDirectory | Out-Null
 $cases = @(
     @{Name='editor'; Args='--editor --quit'},
     @{Name='grid-unit'; Args='--script res://scripts/dev_tools/hidden_grid_unit.gd'},
+    @{Name='grid-aoe'; Args='--script res://scripts/dev_tools/grid_aoe_unit.gd'},
+    @{Name='grid-placement'; Args='--script res://scripts/dev_tools/grid_placement_unit.gd'},
+    @{Name='aoe-preview'; Args='--script res://scripts/dev_tools/grid_aoe_preview_integration.gd'},
+    @{Name='orb-combat'; Args='res://scenes/dev_tools/orb_combat_smoke.tscn'},
     @{Name='grid-parity'; Args='--script res://scripts/dev_tools/grid_parity_unit.gd'},
     @{Name='grid-interactions'; Args='--script res://scripts/dev_tools/grid_interaction_integration.gd'},
     @{Name='grid-maps'; Args='--script res://scripts/dev_tools/hidden_grid_maps.gd'},

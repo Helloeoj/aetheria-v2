@@ -222,8 +222,12 @@ func _check_actual_map_collision() -> void:
 	await get_tree().process_frame
 	var player := PlayerState.new("MapCollisionRegression")
 	region.add_player("map-regression",player)
+	check(not region.players.has("map-regression"),"Invalid legacy location is rejected without guessing another floor")
+	player.x = geometry.player.x
+	player.y = geometry.player.y
+	region.add_player("map-regression",player)
 	var start := player.get_position()
-	check(start.is_equal_approx(geometry.player.get_position()),"Invalid legacy default uses authored expanded-map spawn")
+	check(region.players.get("map-regression") == player and start.distance_to(geometry.player.get_position()) <= 1.0,"Explicit new-character spawn uses its authored same-floor entrance")
 	var shape := RectangleShape2D.new()
 	shape.size = Vector2(24,24)
 	var query := PhysicsShapeQueryParameters2D.new()

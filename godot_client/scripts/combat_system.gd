@@ -2,6 +2,7 @@ class_name CombatEngine
 extends RefCounted
 
 const OrbRules := preload("res://scripts/orb_effects.gd")
+const Footprint := preload("res://scripts/spell_footprint.gd")
 
 const MIN_HIT_CHANCE := 0.05
 const MAX_HIT_CHANCE := 0.99
@@ -127,6 +128,8 @@ func cast_spell(world: Variant, caster_id: String, spell_id: String,
 		resolved_point = Vector2(target.x, target.y)
 
 	var cast_range := maxf(0.0, float(spell.get("range", 0.0)))
+	if not resolved_point.is_finite():
+		return {"ok": false, "error": "Choose a finite target location."}
 	if Vector2(caster.x, caster.y).distance_to(resolved_point) > cast_range:
 		return {"ok": false, "error": "Target is out of range for %s." % String(spell.get("name", spell_id))}
 	var mana_cost := maxi(0, int(spell.get("mana_cost", 0)))
@@ -143,6 +146,10 @@ func cast_spell(world: Variant, caster_id: String, spell_id: String,
 		"orb_element": caster.orb_element if caster.attack_style == "magic" else "",
 		"remaining": maxf(0.0, float(spell.get("cast_time_seconds", 0.0)))
 	}
+	if kind == "area":
+		var lattice := Footprint.grid_for(world)
+		cast_data["target_cell"] = world.occupied_cell(target_id) if target_point == null and target != null and world is WorldState else lattice.cell_at(resolved_point)
+		cast_data.target_point = lattice.center(cast_data.target_cell)
 	if _is_damaging_spell(spell) and caster.active_orb_effects.has("ice"):
 		cast_data.remaining = float(cast_data.remaining) / OrbRules.ATTACK_RATE_MULTIPLIER
 	active_spell_casts[caster_id] = cast_data
@@ -231,11 +238,15 @@ func _resolve_spell_cast(world: Variant, cast_data: Dictionary) -> Array[Diction
 			"projectile_id": projectile.projectile_id})
 	elif kind == "area":
 		var radius := maxf(0.0, float(spell.get("area_radius", 0.0)))
+		var lattice := Footprint.grid_for(world)
+		var target_cell: Vector2i = cast_data.get("target_cell", lattice.cell_at(target_point))
+		var affected := Footprint.cells(lattice, target_cell, spell)
 		var hit_ids: Array[String] = []
 		for candidate: CombatActor in actors.values():
 			if not candidate.is_alive or candidate.is_monster == caster.is_monster:
 				continue
-			if Vector2(candidate.x, candidate.y).distance_to(target_point) > radius:
+			var occupied: Vector2i = world.occupied_cell(candidate.entity_id) if world is WorldState else lattice.cell_at(Vector2(candidate.x,candidate.y))
+			if not affected.has(occupied):
 				continue
 			_register_monster_aggression(caster, candidate)
 			var spell_max_damage := _get_spell_max_damage(caster, spell)
@@ -261,6 +272,7 @@ func _resolve_spell_cast(world: Variant, cast_data: Dictionary) -> Array[Diction
 				events.append(death_event)
 		events.push_front({"type": "spell_area_resolved", "caster_id": caster.entity_id,
 			"spell_id": spell_id, "point": target_point, "radius": radius,
+			"target_cell": [target_cell.x,target_cell.y], "cells": Footprint.encode(affected),
 			"targets": hit_ids})
 	elif kind == "heal":
 		var hp_before := target.hp

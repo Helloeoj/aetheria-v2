@@ -123,6 +123,11 @@ level 80 retain some cast failure chance, including Starfall at 20%.
 - **Q/R** browse unlocked spells; **E** casts the selected spell.
 - Casting uses the current enemy target for hostile and area spells. Mending
   Light targets the player when no ally is selected.
+- Debug non-tester builds: Ctrl+Shift+V toggles provisional area-tile outlines,
+  off by default. Preview and damage share the movement-grid footprint function;
+  the cast locks its target cell when it starts. No final AoE sizes are approved.
+  See [Hidden grid movement](HiddenGridMovement.md#aoe-design-amendment-and-phase-5)
+  for placeholder radii, footprint counts and editable spell-data fields.
 
 ## Design guardrails
 

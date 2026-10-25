@@ -311,6 +311,7 @@ func _service_sessions() -> void:
 		var snapshot: Dictionary = public_regions[session.region_id].duplicate()
 		snapshot["actors"] = indexes[session.region_id].nearby(session.player.get_position(), interest_radius)
 		snapshot["activity"] = region.activities.snapshot(session.character_id)
+		snapshot["area_cast"] = region.area_cast(session.character_id)
 		snapshot["snapshot_id"] = _snapshot_id
 		snapshot["revision"] = session.revision
 		snapshot["state"] = session.state
@@ -479,14 +480,22 @@ func _travel(session: Dictionary, portal_id: String) -> Dictionary:
 		return {"ok": false, "message": "Character ownership changed during travel."}
 	if next == null:
 		return {"ok": false, "message": "The destination is unavailable."}
-	region.activities.close(session.character_id)
-	region.remove_player(session.character_id)
 	var next_geometry: Node = next.geometry_game
 	var marker := next_geometry.get_parent().get_node_or_null("SpawnPoints/" + portal.destination_spawn_id) as Node2D
-	if marker != null:
-		var local_point: Vector2 = next_geometry.to_local(marker.global_position)
-		session.player.x = (local_point.x - next_geometry.map_origin.x) / next_geometry.TILE_SIZE
-		session.player.y = (next_geometry.map_origin.y + next_geometry.map_height - local_point.y) / next_geometry.TILE_SIZE
+	if marker == null:
+		return {"ok": false, "message": "The destination entrance is unavailable."}
+	var local_point: Vector2 = next_geometry.to_local(marker.global_position)
+	var authored := Vector2((local_point.x-next_geometry.map_origin.x)/next_geometry.TILE_SIZE,
+		(next_geometry.map_origin.y+next_geometry.map_height-local_point.y)/next_geometry.TILE_SIZE)
+	var arrival := next._safe_position(authored)
+	if not arrival.is_finite():
+		return {"ok": false, "message": "No collision-safe arrival exists on this entrance's floor."}
+	# Validate before removal: a bad marker must not orphan the character or
+	# replace a durable location with an unrelated spawn on another floor.
+	region.activities.close(session.character_id)
+	region.remove_player(session.character_id)
+	session.player.x = arrival.x
+	session.player.y = arrival.y
 	session.region_id = destination
 	next.add_player(session.character_id, session.player)
 	return {"ok": true, "message": "Entered " + destination + "."}

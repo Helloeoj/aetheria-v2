@@ -64,9 +64,31 @@ var cooking_controller: Node
 var online_view: Node
 var grid_adapter: Node
 var offline_mining: Node
+var aoe_preview: Node2D
 
 func grid_adoption_report() -> Dictionary:
 	return grid_adapter.report if grid_adapter != null else {"enabled": false, "reason": "not a map scene"}
+
+func prepare_area_exit() -> void:
+	_reset_held_movement()
+	auto_chase_target = false
+	spell_cast_requested = false
+	if is_instance_valid(interactions):
+		interactions.cancel_walk()
+	if world != null:
+		world.grid_travellers.clear()
+		for actor: CombatActor in combat.actors.values():
+			actor.grid_active = false
+		combat.active_spell_casts.clear()
+		combat.projectiles.clear()
+	if is_instance_valid(aoe_preview):
+		aoe_preview.enabled = false
+		aoe_preview.authoritative_cast.clear()
+	if is_instance_valid(online_view):
+		online_view.clear_motion()
+
+func _exit_tree() -> void:
+	prepare_area_exit()
 
 func _prepare_grid_movement() -> void:
 	if not map_scene_mode:
@@ -74,6 +96,7 @@ func _prepare_grid_movement() -> void:
 	grid_adapter = preload("res://scripts/grid_map_adapter.gd").new()
 	add_child(grid_adapter)
 	grid_adapter.configure(self)
+	world.cell_grid = grid_adapter.grid
 	var travel := get_node_or_null("/root/SceneTravel")
 	if not has_meta("online_server_geometry") and travel != null and travel.is_transitioning():
 		await travel.transition_finished
@@ -85,6 +108,20 @@ func _prepare_grid_movement() -> void:
 	grid_adapter.grid.clear_cache()
 	if grid_adapter.audit().enabled and (not Network.online() or has_meta("online_server_geometry")):
 		world.set_grid(grid_adapter.grid)
+		var placed := preload("res://scripts/grid_placement.gd").resolve(world.grid,player.get_position())
+		if placed.is_finite():
+			var actor: CombatActor = combat.actors.get(player.entity_id)
+			if actor != null:
+				actor.x = placed.x
+				actor.y = placed.y
+				player.x = placed.x
+				player.y = placed.y
+				world.grid_traveller(actor.entity_id)
+				_update_sprite_position(actor.entity_id)
+				_update_map_camera()
+		else:
+			world.set_grid(null)
+			grid_adapter.report = {"enabled":false,"reason":"current position has no same-floor checked center; location preserved"}
 	print("[Grid movement] ", area_name, " ", JSON.stringify(grid_adapter.report))
 
 func request_crafting(station: Node2D) -> void:
@@ -508,6 +545,11 @@ func _ready() -> void:
 	_update_map_camera()
 	print("[UI] I opens the character journal; K toggles skill testing. F5 spawns monsters; F7 opens the sprite viewer; P tests fishing anywhere.")
 	_prepare_grid_movement.call_deferred()
+	if OS.is_debug_build() and not OS.has_feature("tester_client") and not has_meta("online_server_geometry"):
+		aoe_preview = preload("res://scripts/dev_tools/aoe_tile_preview.gd").new()
+		aoe_preview.game = self
+		aoe_preview.z_index = 8
+		add_child(aoe_preview)
 	if not Network.online() and not has_meta("online_server_geometry"):
 		offline_mining = preload("res://scripts/offline_mining_controller.gd").new()
 		add_child(offline_mining)
@@ -691,6 +733,10 @@ func _physics_process(delta: float) -> void:
 	queue_redraw()
 
 func _unhandled_input(event: InputEvent) -> void:
+	if aoe_preview != null and event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_V and event.ctrl_pressed and event.shift_pressed and not _ui_is_editing():
+		aoe_preview.toggle()
+		get_viewport().set_input_as_handled()
+		return
 	if Network.online() and (not Network.authenticated or (online_view != null and online_view.activity_panel.visible)):
 		return
 	if Network.online() and event is InputEventKey and event.keycode in [KEY_F5, KEY_F6, KEY_F7]:

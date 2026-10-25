@@ -92,6 +92,7 @@ func _run() -> void:
 	check(host.regions.size() == 3,"Travel reuses one shared region per approved map")
 	check(http.requests.size() == 4,"Each successful travel persists exactly one destination state")
 	await _retirement_during_destination_load(outskirts)
+	await _invalid_arrival(session)
 	host.queue_free()
 	await get_tree().process_frame
 	_finish()
@@ -162,7 +163,12 @@ func _travel_and_check(session: Dictionary, destination: String) -> void:
 	check(not source.players.has(player.entity_id) and not source.world.combat.actors.has(player.entity_id),"Source map retains no departed actor")
 	var marker := target.geometry_game.get_parent().get_node("SpawnPoints/"+portal.destination_spawn_id) as Node2D
 	var expected := _simulation_position(target.geometry_game,marker.global_position)
-	check(player.get_position().distance_to(expected) <= 0.001,"Destination uses the real server-authored spawn marker")
+	if target.world.grid != null:
+		check(target.world.grid.is_center(player.get_position()) and target.world.grid.clear_segment(expected,player.get_position()) and player.get_position().distance_to(expected) <= 1.0,"Destination uses a swept same-floor center at the authored marker")
+		var step := target.world.grid_traveller(player.entity_id)
+		check(not step.active and step.route.is_empty(), "Portal arrival has no stale movement segment or route")
+	else:
+		check(player.get_position().distance_to(expected) <= 0.001,"Held area retains continuous authored arrival")
 	check(target.geometry_game.has_meta("online_server_geometry"),"Destination map runs in dedicated server geometry mode")
 	check(await host._persist(session),"Fake account service durably acknowledges the travel snapshot")
 	check(session.state.region_id == destination and session.state.x == player.x and session.state.y == player.y,"Acknowledged save contains destination region and marker coordinates")
@@ -196,6 +202,20 @@ func _retirement_during_destination_load(outskirts: AuthoritativeRegion) -> void
 		check(not region.players.has(player.entity_id) and not region.world.combat.actors.has(player.entity_id),"Stale travel cannot install a destination or orphan source actor")
 	check(http.requests.size() == before,"Rejected stale travel never persists a replacement state")
 	check(outskirts.players.get(spectator.entity_id) == spectator,"Stale travel does not affect the other source peer")
+
+func _invalid_arrival(session: Dictionary) -> void:
+	var source: AuthoritativeRegion = host.regions[session.region_id]
+	var portal := _portal(source,"golem")
+	_seed_at_portal(source,session.player,portal)
+	var marker: Node2D = host.regions.golem.geometry_game.get_parent().get_node("SpawnPoints/"+portal.destination_spawn_id)
+	var original := marker.position
+	var start: Vector2 = session.player.get_position()
+	marker.position = Vector2(-100000,-100000)
+	var result: Dictionary = await host._travel(session,str(source.geometry_game.get_parent().get_path_to(portal)))
+	check(not result.get("ok",false),"Unsafe portal arrival is rejected before actor transfer")
+	check(session.region_id == "outskirts" and source.players.get(session.character_id) == session.player and session.player.get_position() == start,"Failed placement preserves source ownership and position")
+	check(session.player.gold == 17 and session.player.backpack.size() == 1,"Failed placement preserves progression and inventory")
+	marker.position = original
 
 func _finish() -> void:
 	print("[Online region travel] %d checks, %d failures" % [checks,failures])
