@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "created": "2026-10-26",
-  "status": "candidate",
-  "user_visual_approval": "pending",
+  "status": "approved source art",
+  "user_visual_approval": "approved by user on2026-10-26: this works!",
   "runtime_installation": "not installed",
   "provider": "PixelLab AI",
   "model": "Pro Flash",
@@ -49,27 +49,29 @@
   },
   "assets": [
     {
-      "file": "bronze-ore-full-south.png",
-      "metal": "bronze",
+      "file": "copper-ore-full-south.png",
+      "metal": "copper",
       "state": "full",
       "tool": "create_object_pro_flash",
       "object_id": "f4ea7130-b15b-4d71-b681-40c1a9fead2e",
       "job_id": "8c95b8a2-f47a-4dc4-8eb5-b062fb00aa6d",
       "seed": 26102611,
       "prompt": "One complete non-depleted BRONZE ORE NODE for Aetheria, a warm bronze/copper-brown metallic ore-bearing boulder. Match the supplied existing rock reference's detailed fantasy pixel art, native fine pixel clusters, faceted beige-gray stone, low top-down camera looking north at the SOUTH-facing front, visible top and front, upper-left lighting, natural subdued colors and selective dark contours. A compact squat irregular rock outcrop with plentiful embedded bronze-colored mineral veins and small rough metallic seams visible across its upper and front rock faces, readable bronze identity without glow. Keep rocky character rather than a pile of loose crystals or gold bars. Single isolated prop, centered, complete uncropped silhouette, about 72x62 occupied pixels on the 96x96 transparent canvas. No ground mat, terrain patch, cast shadow, grass, plants, text, border, characters, creatures or extra props. One south view only.",
-      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/objects/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/f4ea7130-b15b-4d71-b681-40c1a9fead2e/rotations/unknown.png"
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/objects/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/f4ea7130-b15b-4d71-b681-40c1a9fead2e/rotations/unknown.png",
+      "original_generation_label": "bronze"
     },
     {
-      "file": "bronze-ore-depleted-south.png",
-      "metal": "bronze",
+      "file": "copper-ore-depleted-south.png",
+      "metal": "copper",
       "state": "depleted",
       "tool": "edit_image_pro_flash",
-      "source_file": "bronze-ore-full-south.png",
+      "source_file": "copper-ore-full-south.png",
       "job_id": "c98d0d90-fb98-4834-b439-8d573d6cd60f",
       "gallery_asset_id": "f843c43e-076c-5e4e-8e37-eb16d29cf6f3",
       "seed": 26102613,
       "prompt": "Make this same bronze ore node DEPLETED after mining: remove every bright bronze/copper metallic seam and exposed ore deposit, leave dull warm beige-gray bare stone with a shallow chipped extraction hollow and a few mining cracks where ore was. Keep the same recognizable rock, exact south-facing low top-down camera, fine pixel-art detail, upper-left lighting, outer rock footprint, canvas size and screen position. Keep it as a substantial remaining rock, not scattered rubble. Transparent background. No ground, grass, cast shadow, sparkles, text, characters or extra objects.",
-      "source_url": "https://api.pixellab.ai/mcp/images/c98d0d90-fb98-4834-b439-8d573d6cd60f/download"
+      "source_url": "https://api.pixellab.ai/mcp/images/c98d0d90-fb98-4834-b439-8d573d6cd60f/download",
+      "original_generation_label": "bronze"
     },
     {
       "file": "tin-ore-full-south.png",
@@ -101,5 +103,6 @@
     "foot_anchor": "Not installed; no existing mining sprite anchor exists. Author anchors and collision only when placement is requested.",
     "gameplay": "Source-art-only task. No runtime scene, controls, code or collision changed."
   },
-  "holds": "Existing unrelated PixelLab world-library generation hold preserved."
+  "holds": "Existing unrelated PixelLab world-library generation hold preserved.",
+  "sprite_label_correction": "The user clarified bronze is Copper+Tin on2026-10-26. The originally bronze-labeled node is now Copper Ore; source pixels and original prompt are unchanged. This is artwork labeling only; no item catalog or recipe data is changed."
 }

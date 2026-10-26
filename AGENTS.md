@@ -1,5 +1,18 @@
 # Aetheria debugging workflow
 
+## Crisp artwork at maximum zoom
+
+All images, objects and props must remain as crisp as the player character at
+the maximum 4x camera zoom. Preserve native pixel detail, lossless source alpha,
+nearest filtering and no mipmaps. Verify new art in a real Godot 4x render;
+source previews alone are insufficient. Follow the saved map-art specification.
+All ore/catalyst nodes must match the user-approved copper/tin rock design in
+`art_sources/ore-nodes/`. Keep source approval separate from runtime placement.
+Sprite requests authorize artwork only. Do not infer permission to implement
+mining skills, progression, drops, item definitions, crafting/smelting recipes
+or world placement from art or material-naming discussions. Wait for explicit
+gameplay requirements; even interactable-node work must stay within its scope.
+
 ## Mandatory local installation and GitHub synchronization
 
 Implement authorized changes in the active game files on the user's PC and

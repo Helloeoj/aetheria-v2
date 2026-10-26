@@ -10,6 +10,12 @@ Detailed top-down fantasy game art with crisp small pixel clusters and readable 
 
 Terrain and objects are separate. Transparent props contain complete silhouettes and internal shading, without grass/soil mats, neighboring fragments or baked ground shadows. Review on light/dark backgrounds and the actual ground. Never remove a background by globally deleting green pixels.
 
+Maximum-zoom acceptance: all images, objects and props must remain as crisp as the player character at the maximum 4x camera zoom. Keep native pixel clusters and source alpha, use nearest texture filtering with lossless import and no mipmaps, and avoid blurred source art, smooth enlargement or linear-filter overrides. Verify a real saved Godot render at Camera2D zoom 4x alongside the character; a source PNG or editor import alone does not prove runtime clarity. Preserve intentional area materials unless their appearance is explicitly in scope.
+
+Ore design authority: the copper and tin full/depleted sprites in `art_sources/ore-nodes/` were visually approved by the user on 2026-10-26. The copper node was initially bronze-labeled; the user corrected that bronze is smelted from copper plus tin and is not mined. All subsequent ore and catalyst nodes must match that south-facing low top-down rock design, pixel detail, upper-left light and transparent complete silhouette. Reuse the matching depleted host rock when only the mineral color changes; retain distinct approval and runtime-installation statuses.
+
+Scope: sprite generation and material-naming discussions authorize artwork, not mining skill behavior, progression, drops, item/catalog definitions, smelting recipes or world placement. Obtain explicit gameplay requirements before changing those systems. The Blackstone catalyst is an art concept here; no associated recipe or mining behavior is implemented by this sprite task.
+
 ## Profile: valtheiris-overworld
 
 - Camera: match existing low top-down objects and overhead terrain; upper-left object lighting.

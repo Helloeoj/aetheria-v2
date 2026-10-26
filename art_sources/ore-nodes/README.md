@@ -1,16 +1,26 @@
-# Bronze and tin ore nodes
+# Ore node source sprites
 
-Four source PNGs generated with PixelLab Pro Flash for Aetheria on 2026-10-26.
+Twenty native96x96 RGBA source PNGs: a full and depleted state for each of ten south-facing low top-down ore/catalyst designs.
 
-| Ore | Full | Depleted |
+| Sprite | Full | Depleted |
 | --- | --- | --- |
-| Bronze | `bronze-ore-full-south.png` | `bronze-ore-depleted-south.png` |
+| Copper | `copper-ore-full-south.png` | `copper-ore-depleted-south.png` |
 | Tin | `tin-ore-full-south.png` | `tin-ore-depleted-south.png` |
+| Iron | `iron-ore-full-south.png` | `iron-ore-depleted-south.png` |
+| Coal | `coal-full-south.png` | `coal-depleted-south.png` |
+| Silver | `silver-ore-full-south.png` | `silver-ore-depleted-south.png` |
+| Gold | `gold-ore-full-south.png` | `gold-ore-depleted-south.png` |
+| Mithril | `mithril-ore-full-south.png` | `mithril-ore-depleted-south.png` |
+| Adamantite | `adamantite-ore-full-south.png` | `adamantite-ore-depleted-south.png` |
+| Runite | `runite-ore-full-south.png` | `runite-ore-depleted-south.png` |
+| Blackstone catalyst | `blackstone-full-south.png` | `blackstone-depleted-south.png` |
 
-All canvases are native 96 x 96 RGBA with true transparent backgrounds and one south-facing low top-down view. The existing overworld rock `godot_client/Assets/MapTiles/Objects/Outskirts_Rocks_015.png` guided the pixel detail, camera, materials and upper-left lighting. Each depleted image was edited from its corresponding full image, with matching visible bounds and no resampling.
+The user approved the original artwork on2026-10-26, then corrected its initially bronze-labeled warm node to Copper: bronze is smelted from copper and tin and is not mined. The original pixels and generation prompts remain unchanged; only sprite filenames and labels were corrected. The eight additional designs remain candidates for user visual review. Blackstone is the user's catalyst art concept.
 
-These are candidate source assets; user visual approval is pending. They are saved here for reuse and are not connected to a runtime scene. No mining logic, controls, collision or existing artwork was changed. A future placement task must author a reviewed foot anchor and collision; the 96-pixel canvas does not set the gameplay footprint. Use nearest filtering and retain the native canvas/alpha.
+This is a sprite task only. No mining skill mechanics, progression, drops, interaction behavior, item/catalog definitions, smelting recipes or world placements were implemented. Gameplay changes explored during the task were removed after the user's explicit scope correction. Future implementation requires the user's gameplay requirements; art/material discussions do not authorize it.
 
-`provenance.json` records the complete prompts, seeds, reference, generation settings, source IDs and downloads. Technical checks verified four 96 x 96 RGBA PNGs, binary alpha, transparent borders and matching full/depleted bounds per ore. Visual review used light, dark and current overworld grass backgrounds. Review images and machine-specific evidence stay in the supporting workspace.
+PixelLab Pro Flash made the original four sprites. With PixelLab's AI allowance exhausted, the eight new full sprites were made in PixelLab's free exact pixel editor from the approved copper host rock. Only25 mineral colors (493pixels per image) change; all other stone pixels, the silhouette, native grid and alpha remain exact. Each matching depleted variant reuses the approved copper depleted image. `provenance.json` preserves original prompts/settings and naming history; `expansion-provenance.json` preserves the exact pixel-editor operations and service results.
 
-The separate PixelLab world-library generation hold remains unchanged.
+All sprites/objects/props must stay as crisp as the character at maximum Camera2D4x zoom. The only runtime setting changed by this task is the requested nearest-filter default, matching the actor's existing filter. Keep native canvases, lossless import, no mipmaps and nearest filtering. Real Godot4.5.1 GPU checks verified all20 PNGs at4x against explicit nearest references and the current peasant frame: zero differing pixels, zero nonuniform source-pixel blocks, exact opaque source RGB colors. This contained image/filter test does not assert that every existing world material or placement was tested.
+
+Source approval, runtime installation and physical footprint remain separate. No sprite is bound to a mining scene here; author reviewed anchors/collision only when placement is requested. Machine-specific render/validation evidence remains in the supporting workspace. The separate PixelLab world-library generation hold is unchanged.

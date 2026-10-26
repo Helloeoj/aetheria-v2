@@ -1,0 +1,469 @@
+{
+  "schema_version": 1,
+  "created": "2026-10-26",
+  "provider": "PixelLab",
+  "method": "Exact mineral-palette variants of approved PixelLab AI art using PixelLab's free pixel editor. No new AI generation succeeded because account has 0 remaining generations/credits.",
+  "base_approval": "The user approved this artwork in its initial bronze/tin naming, then clarified on2026-10-26 that bronze is made from Copper+Tin. The warm mineral node is now Copper; its approved pixels are unchanged.",
+  "new_art_approval": "pending",
+  "runtime_placement": "not installed",
+  "source_full": "copper-ore-full-south.png",
+  "source_full_object_id": "f4ea7130-b15b-4d71-b681-40c1a9fead2e",
+  "source_workbench_image_id": "81745f82-12f2-41fb-9d07-3260bd69b43d",
+  "source_depleted": "copper-ore-depleted-south.png",
+  "canvas": [
+    96,
+    96
+  ],
+  "direction": "south",
+  "profile": "valtheiris-overworld",
+  "pixel_policy": "Native PNGs, unchanged alpha/silhouette/stone pixels; only the25 exact mineral-ramp colors mapped shade-for-shade (493pixels). Nearest filtering, no mipmaps, no blurry resampling. Validate atCamera2D x4 against character.",
+  "assets": [
+    {
+      "key": "iron",
+      "label": "Iron",
+      "stem": "iron-ore",
+      "image_id": "2ce670b8-d746-45a8-84f6-73d67afb2b44",
+      "download_url": "https://api.pixellab.ai/mcp/pixel-tools/2ce670b8-d746-45a8-84f6-73d67afb2b44/image.png",
+      "full_file": "iron-ore-full-south.png",
+      "depleted_file": "iron-ore-depleted-south.png",
+      "tool": "pixelart_workbench edit",
+      "changes": [
+        {
+          "operation": "map_colors",
+          "layer": "image",
+          "frames": [
+            1
+          ],
+          "region": [
+            0,
+            0,
+            95,
+            95
+          ],
+          "colors": {
+            "#593018": "#41332c",
+            "#512c16": "#3b2e28",
+            "#68381d": "#4b3c34",
+            "#452614": "#332722",
+            "#7b4525": "#58473f",
+            "#94562f": "#6a574e",
+            "#874f2b": "#614f46",
+            "#9d5e33": "#705d53",
+            "#372112": "#29201b",
+            "#6c4124": "#4e3e37",
+            "#a96639": "#79645a",
+            "#5d3920": "#43352e",
+            "#b57241": "#816c62",
+            "#c6814b": "#8d776d",
+            "#d59056": "#978177",
+            "#49311f": "#352a24",
+            "#815938": "#5d4b42",
+            "#eaaa6b": "#a69085",
+            "#a1734b": "#735f55",
+            "#644b33": "#483a32",
+            "#f0bb7b": "#aa9489",
+            "#503e2b": "#3a2e28",
+            "#745c41": "#54433b",
+            "#c29a6e": "#8a756a",
+            "#f8d095": "#b09a8f"
+          },
+          "reason": "Approved bronze mineral ramp becomes iron; preserve stone, outline, alpha and exact pixel grid."
+        }
+      ],
+      "depleted_source": "copper-ore-depleted-south.png"
+    },
+    {
+      "key": "coal",
+      "label": "Coal",
+      "stem": "coal",
+      "image_id": "2b29aca3-63f2-43cc-9d13-6fcc81032b52",
+      "download_url": "https://api.pixellab.ai/mcp/pixel-tools/2b29aca3-63f2-43cc-9d13-6fcc81032b52/image.png",
+      "full_file": "coal-full-south.png",
+      "depleted_file": "coal-depleted-south.png",
+      "tool": "pixelart_workbench edit",
+      "changes": [
+        {
+          "operation": "map_colors",
+          "layer": "image",
+          "frames": [
+            1
+          ],
+          "region": [
+            0,
+            0,
+            95,
+            95
+          ],
+          "colors": {
+            "#593018": "#202225",
+            "#512c16": "#1c1e21",
+            "#68381d": "#27292d",
+            "#452614": "#17181b",
+            "#7b4525": "#303337",
+            "#94562f": "#3b3f44",
+            "#874f2b": "#35383d",
+            "#9d5e33": "#404349",
+            "#372112": "#101113",
+            "#6c4124": "#292b2f",
+            "#a96639": "#45494f",
+            "#5d3920": "#222427",
+            "#b57241": "#4b4f56",
+            "#c6814b": "#53585f",
+            "#d59056": "#5b5f67",
+            "#49311f": "#181a1d",
+            "#815938": "#32363a",
+            "#eaaa6b": "#656a72",
+            "#a1734b": "#42454b",
+            "#644b33": "#25272b",
+            "#f0bb7b": "#686d75",
+            "#503e2b": "#1c1e20",
+            "#745c41": "#2c2f33",
+            "#c29a6e": "#51565d",
+            "#f8d095": "#6c7179"
+          },
+          "reason": "Approved bronze mineral ramp becomes coal; preserve stone, outline, alpha and exact pixel grid."
+        }
+      ],
+      "depleted_source": "copper-ore-depleted-south.png"
+    },
+    {
+      "key": "silver",
+      "label": "Silver",
+      "stem": "silver-ore",
+      "image_id": "14c9f35d-be9a-4ef8-80e0-e697228589da",
+      "download_url": "https://api.pixellab.ai/mcp/pixel-tools/14c9f35d-be9a-4ef8-80e0-e697228589da/image.png",
+      "full_file": "silver-ore-full-south.png",
+      "depleted_file": "silver-ore-depleted-south.png",
+      "tool": "pixelart_workbench edit",
+      "changes": [
+        {
+          "operation": "map_colors",
+          "layer": "image",
+          "frames": [
+            1
+          ],
+          "region": [
+            0,
+            0,
+            95,
+            95
+          ],
+          "colors": {
+            "#593018": "#62656b",
+            "#512c16": "#5b5e64",
+            "#68381d": "#6f7379",
+            "#452614": "#515459",
+            "#7b4525": "#7f848a",
+            "#94562f": "#969aa0",
+            "#874f2b": "#8a8e94",
+            "#9d5e33": "#9ea2a8",
+            "#372112": "#45484d",
+            "#6c4124": "#72767c",
+            "#a96639": "#a9adb3",
+            "#5d3920": "#65696f",
+            "#b57241": "#b4b8be",
+            "#c6814b": "#c4c8cd",
+            "#d59056": "#d2d5da",
+            "#49311f": "#54585d",
+            "#815938": "#85898f",
+            "#eaaa6b": "#e6e9ed",
+            "#a1734b": "#a2a6ac",
+            "#644b33": "#6b6f75",
+            "#f0bb7b": "#eceff3",
+            "#503e2b": "#5a5e63",
+            "#745c41": "#797d83",
+            "#c29a6e": "#c0c4c9",
+            "#f8d095": "#f4f6fa"
+          },
+          "reason": "Approved bronze mineral ramp becomes silver; preserve stone, outline, alpha and exact pixel grid."
+        }
+      ],
+      "depleted_source": "copper-ore-depleted-south.png"
+    },
+    {
+      "key": "gold",
+      "label": "Gold",
+      "stem": "gold-ore",
+      "image_id": "ee17bc9c-bce7-483a-b815-17f7dc94ec3f",
+      "download_url": "https://api.pixellab.ai/mcp/pixel-tools/ee17bc9c-bce7-483a-b815-17f7dc94ec3f/image.png",
+      "full_file": "gold-ore-full-south.png",
+      "depleted_file": "gold-ore-depleted-south.png",
+      "tool": "pixelart_workbench edit",
+      "changes": [
+        {
+          "operation": "map_colors",
+          "layer": "image",
+          "frames": [
+            1
+          ],
+          "region": [
+            0,
+            0,
+            95,
+            95
+          ],
+          "colors": {
+            "#593018": "#614615",
+            "#512c16": "#594011",
+            "#68381d": "#6f531b",
+            "#452614": "#4d360d",
+            "#7b4525": "#816425",
+            "#94562f": "#997b35",
+            "#874f2b": "#8d6f2c",
+            "#9d5e33": "#a2843b",
+            "#372112": "#402b09",
+            "#6c4124": "#73571d",
+            "#a96639": "#ae9043",
+            "#5d3920": "#644a16",
+            "#b57241": "#b99c4d",
+            "#c6814b": "#caad5b",
+            "#d59056": "#d8bd69",
+            "#49311f": "#51390f",
+            "#815938": "#876a29",
+            "#eaaa6b": "#ecd37d",
+            "#a1734b": "#a6883e",
+            "#644b33": "#6b5019",
+            "#f0bb7b": "#f2d983",
+            "#503e2b": "#583f11",
+            "#745c41": "#7b5e21",
+            "#c29a6e": "#c6a958",
+            "#f8d095": "#fae28c"
+          },
+          "reason": "Approved bronze mineral ramp becomes gold; preserve stone, outline, alpha and exact pixel grid."
+        }
+      ],
+      "depleted_source": "copper-ore-depleted-south.png"
+    },
+    {
+      "key": "mithril",
+      "label": "Mithril",
+      "stem": "mithril-ore",
+      "image_id": "5ff717c8-1b23-43d7-b979-d2a0dca4b8e3",
+      "download_url": "https://api.pixellab.ai/mcp/pixel-tools/5ff717c8-1b23-43d7-b979-d2a0dca4b8e3/image.png",
+      "full_file": "mithril-ore-full-south.png",
+      "depleted_file": "mithril-ore-depleted-south.png",
+      "tool": "pixelart_workbench edit",
+      "changes": [
+        {
+          "operation": "map_colors",
+          "layer": "image",
+          "frames": [
+            1
+          ],
+          "region": [
+            0,
+            0,
+            95,
+            95
+          ],
+          "colors": {
+            "#593018": "#1f2550",
+            "#512c16": "#1b2148",
+            "#68381d": "#272f5e",
+            "#452614": "#161a3d",
+            "#7b4525": "#323c6f",
+            "#94562f": "#434f86",
+            "#874f2b": "#3a457a",
+            "#9d5e33": "#4a568f",
+            "#372112": "#101330",
+            "#6c4124": "#2a3161",
+            "#a96639": "#53609a",
+            "#5d3920": "#212854",
+            "#b57241": "#5c6ba5",
+            "#c6814b": "#6a7ab5",
+            "#d59056": "#7889c3",
+            "#49311f": "#181c41",
+            "#815938": "#364075",
+            "#eaaa6b": "#8c9ed6",
+            "#a1734b": "#4c5992",
+            "#644b33": "#252c5a",
+            "#f0bb7b": "#92a4dc",
+            "#503e2b": "#1b2048",
+            "#745c41": "#2e3769",
+            "#c29a6e": "#6776b1",
+            "#f8d095": "#9aace3"
+          },
+          "reason": "Approved bronze mineral ramp becomes mithril; preserve stone, outline, alpha and exact pixel grid."
+        }
+      ],
+      "depleted_source": "copper-ore-depleted-south.png"
+    },
+    {
+      "key": "adamantite",
+      "label": "Adamantite",
+      "stem": "adamantite-ore",
+      "image_id": "a7b47fc9-357a-421e-9649-c627fa5b8579",
+      "download_url": "https://api.pixellab.ai/mcp/pixel-tools/a7b47fc9-357a-421e-9649-c627fa5b8579/image.png",
+      "full_file": "adamantite-ore-full-south.png",
+      "depleted_file": "adamantite-ore-depleted-south.png",
+      "tool": "pixelart_workbench edit",
+      "changes": [
+        {
+          "operation": "map_colors",
+          "layer": "image",
+          "frames": [
+            1
+          ],
+          "region": [
+            0,
+            0,
+            95,
+            95
+          ],
+          "colors": {
+            "#593018": "#1e4629",
+            "#512c16": "#1a3f24",
+            "#68381d": "#255331",
+            "#452614": "#15351e",
+            "#7b4525": "#2f633c",
+            "#94562f": "#3e794c",
+            "#874f2b": "#366e43",
+            "#9d5e33": "#438051",
+            "#372112": "#102917",
+            "#6c4124": "#275633",
+            "#a96639": "#4b8b59",
+            "#5d3920": "#20492b",
+            "#b57241": "#539562",
+            "#c6814b": "#5fa46e",
+            "#d59056": "#6ab079",
+            "#49311f": "#173820",
+            "#815938": "#326840",
+            "#eaaa6b": "#7bc389",
+            "#a1734b": "#468454",
+            "#644b33": "#234f2f",
+            "#f0bb7b": "#80c88e",
+            "#503e2b": "#1a3e24",
+            "#745c41": "#2b5d38",
+            "#c29a6e": "#5ca06b",
+            "#f8d095": "#86cf94"
+          },
+          "reason": "Approved bronze mineral ramp becomes adamantite; preserve stone, outline, alpha and exact pixel grid."
+        }
+      ],
+      "depleted_source": "copper-ore-depleted-south.png"
+    },
+    {
+      "key": "runite",
+      "label": "Runite",
+      "stem": "runite-ore",
+      "image_id": "dfbe0ab3-f7e7-4a8c-9129-a04b485ca90e",
+      "download_url": "https://api.pixellab.ai/mcp/pixel-tools/dfbe0ab3-f7e7-4a8c-9129-a04b485ca90e/image.png",
+      "full_file": "runite-ore-full-south.png",
+      "depleted_file": "runite-ore-depleted-south.png",
+      "tool": "pixelart_workbench edit",
+      "changes": [
+        {
+          "operation": "map_colors",
+          "layer": "image",
+          "frames": [
+            1
+          ],
+          "region": [
+            0,
+            0,
+            95,
+            95
+          ],
+          "colors": {
+            "#593018": "#1d4d4f",
+            "#512c16": "#194547",
+            "#68381d": "#245b5e",
+            "#452614": "#13393c",
+            "#7b4525": "#306e70",
+            "#94562f": "#408789",
+            "#874f2b": "#377a7c",
+            "#9d5e33": "#479092",
+            "#372112": "#0e2c2e",
+            "#6c4124": "#275f62",
+            "#a96639": "#509b9d",
+            "#5d3920": "#1f5153",
+            "#b57241": "#59a7a9",
+            "#c6814b": "#68b8ba",
+            "#d59056": "#76c7c8",
+            "#49311f": "#153d3f",
+            "#815938": "#337476",
+            "#eaaa6b": "#8adddd",
+            "#a1734b": "#4a9396",
+            "#644b33": "#22575a",
+            "#f0bb7b": "#90e3e3",
+            "#503e2b": "#184446",
+            "#745c41": "#2b676a",
+            "#c29a6e": "#64b4b6",
+            "#f8d095": "#98ebeb"
+          },
+          "reason": "Approved bronze mineral ramp becomes runite; preserve stone, outline, alpha and exact pixel grid."
+        }
+      ],
+      "depleted_source": "copper-ore-depleted-south.png"
+    },
+    {
+      "key": "blackstone",
+      "label": "Blackstone catalyst",
+      "stem": "blackstone",
+      "image_id": "6be70bf3-60b4-4162-a804-88e21dc9da8e",
+      "download_url": "https://api.pixellab.ai/mcp/pixel-tools/6be70bf3-60b4-4162-a804-88e21dc9da8e/image.png",
+      "full_file": "blackstone-full-south.png",
+      "depleted_file": "blackstone-depleted-south.png",
+      "tool": "pixelart_workbench edit",
+      "changes": [
+        {
+          "operation": "map_colors",
+          "layer": "image",
+          "frames": [
+            1
+          ],
+          "region": [
+            0,
+            0,
+            95,
+            95
+          ],
+          "colors": {
+            "#593018": "#251e2b",
+            "#512c16": "#211b26",
+            "#68381d": "#2d2433",
+            "#452614": "#1b161f",
+            "#7b4525": "#362b3e",
+            "#94562f": "#42344d",
+            "#874f2b": "#3c2f45",
+            "#9d5e33": "#463752",
+            "#372112": "#141117",
+            "#6c4124": "#2e2536",
+            "#a96639": "#4c3b59",
+            "#5d3920": "#27202d",
+            "#b57241": "#523f60",
+            "#c6814b": "#5a456a",
+            "#d59056": "#614973",
+            "#49311f": "#1d1821",
+            "#815938": "#392d42",
+            "#eaaa6b": "#6a507f",
+            "#a1734b": "#483855",
+            "#644b33": "#2b2231",
+            "#f0bb7b": "#6d5182",
+            "#503e2b": "#211b25",
+            "#745c41": "#32283a",
+            "#c29a6e": "#584368",
+            "#f8d095": "#715487"
+          },
+          "reason": "Approved bronze mineral ramp becomes blackstone; preserve stone, outline, alpha and exact pixel grid."
+        }
+      ],
+      "depleted_source": "copper-ore-depleted-south.png"
+    }
+  ],
+  "catalog_scope": "No gameplay catalog, recipe, mining data or skill behavior changes are part of this completed sprite task. Existing acquisition restrictions remain unchanged.",
+  "depleted_reuse": "All8 new variants share the approved copper host-rock design, so each depleted file is a byte-identical copy of copper-ore-depleted-south.png (originally bronze-labeled before the user's alloy correction).",
+  "attempts": {
+    "failed_pro_flash_edits": [
+      "iron",
+      "coal",
+      "gold"
+    ],
+    "error": "no generations or credits remaining",
+    "new_generation_outputs": 0,
+    "successful_free_pixel_edits": 8
+  },
+  "naming_note": "Original tool edit reasons say bronze because that was the approved source label at editing time; later user correction reclassified the unchanged host-rock artwork as Copper. Exact executed color-map operations are retained.",
+  "material_notes": "Artwork naming only: Bronze is smelted from Copper+Tin and is not mined. Blackstone is the user's catalyst concept for Blacksteel. These notes do not authorize or implement smelting recipes, item definitions, mining mechanics, progression, drops, interaction behavior or placements.",
+  "scope_correction": "Any exploratory gameplay edits made during this task were removed after the user clarified sprites-only scope. Only source sprites, art documentation and the requested nearest-filter rendering default are retained."
+}
