@@ -2,6 +2,7 @@ extends RefCounted
 ## Authored metadata only. Disabled rewards never enter the live acquisition pool.
 const Protocol := preload("res://network/world_protocol.gd")
 const Acquisition := preload("res://scripts/acquisition_rules.gd")
+const Selection := preload("res://scripts/orders/orders_selection.gd")
 const KINDS := ["riddle", "search", "cipher", "fishing", "cooking", "equipment", "combat"]
 const TIERS := ["deckhand", "smuggler", "corsair", "dread_captain"]
 const MAX_COUNT := 2147483647
@@ -32,6 +33,12 @@ func validate(config: Dictionary) -> Array[String]:
 			errors.append(field + " must be an array.")
 	if not errors.is_empty():
 		return errors
+	if not config.get("family_weights",{}) is Dictionary:
+		errors.append("Family weights must be an object.")
+		return errors
+	for kind: Variant in config.get("family_weights",{}):
+		if kind not in KINDS or not _number(config.family_weights[kind],0.0,1000000.0):
+			errors.append("Invalid directive family weight: "+str(kind))
 	var tiers: Dictionary = config.tiers
 	var enabled: bool = config.enabled
 	for tier_id: String in TIERS:
@@ -53,6 +60,10 @@ func validate(config: Dictionary) -> Array[String]:
 				errors.append(tier_id + ": invalid " + String(pair[0]) + "/" + String(pair[1]) + ".")
 		if not _integer(tier.get("slots"), 1, 3) or not _integer(tier.get("max_gates"), 0, 3) or not _number(tier.get("gate_chance"), 0.0, 1.0) or (enabled and not _integer(tier.get("reward_rolls"), 1, 8)):
 			errors.append(tier_id + ": invalid slots, gates or reward rolls.")
+		elif _integer(tier.get("min_directives"),2,7) and int(tier.slots) > int(tier.min_directives):
+			errors.append(tier_id + ": available slots exceed minimum directive count.")
+		if tier_id == "deckhand" and (tier.get("max_gates") != 0 or tier.get("gate_chance") != 0 or tier.get("skill_min") != 0 or tier.get("skill_max") != 0):
+			errors.append("Deckhand Orders must remain ungated.")
 	for key: String in tiers:
 		if key not in TIERS:
 			errors.append("Unknown Orders tier: " + key)
@@ -62,6 +73,8 @@ func validate(config: Dictionary) -> Array[String]:
 	for value: Variant in config.deferred:
 		if not value is Dictionary or value.get("enabled") != false or not _text(value.get("reason")):
 			errors.append("Deferred content must remain disabled with an explicit reason.")
+	if not errors.is_empty():
+		return errors
 	if not enabled:
 		if not config.anchors.is_empty() or not config.templates.is_empty() or not config.base_rewards.is_empty() or config.acquisition.get("fishing_chance") != 0 or config.acquisition.get("monster_chance") != 0:
 			errors.append("Disabled framework must not bind live content, rewards or acquisition probabilities.")
@@ -77,9 +90,6 @@ func validate(config: Dictionary) -> Array[String]:
 		if not _scene_has_node(String(anchor.get("region_id", "")), String(anchor.get("node_path", "")), String(anchor.get("interaction_kind", ""))):
 			errors.append(id + ": anchor node is absent or incompatible with its interaction kind.")
 	var ids := {}
-	var ordinary_counts := {}
-	for tier_id: String in TIERS:
-		ordinary_counts[tier_id] = 0
 	for value: Variant in config.templates:
 		if not value is Dictionary:
 			errors.append("Template must be an object.")
@@ -89,9 +99,15 @@ func validate(config: Dictionary) -> Array[String]:
 		if id.is_empty() or ids.has(id):
 			errors.append("Missing or duplicate template ID: " + id)
 		ids[id] = true
+		if not row.get("enabled",true) is bool:
+			errors.append(id + ": enabled must be a boolean.")
+			continue
+		if row.get("enabled",true) == false:
+			continue
 		var anchor_id := String(row.get("anchor_id", ""))
 		if not anchors.get(anchor_id) is Dictionary:
 			errors.append(id + ": unknown anchor.")
+			continue
 		if String(row.get("kind", "")) not in KINDS or not _tier_refs(row.get("tiers")) or not _text(row.get("text")) or not _number(row.get("weight"), 0.000001, 1000000.0):
 			errors.append(id + ": invalid kind, tiers, text or weight.")
 			continue
@@ -99,12 +115,17 @@ func validate(config: Dictionary) -> Array[String]:
 		for tier_id: String in row.tiers:
 			if tier_id not in anchor.get("tiers", []):
 				errors.append(id + ": tier cannot reach this anchor.")
-			if row.kind in ["riddle", "search", "cipher"]:
-				ordinary_counts[tier_id] += 1
 		if row.has("skill") and String(row.skill) not in SkillProgression.SKILL_IDS:
 			errors.append(id + ": unknown actual game skill.")
 		if row.has("level") and (not row.has("skill") or not _integer(row.level, 1, 100)):
 			errors.append(id + ": level requires an actual skill and range 1–100.")
+		if row.has("skill") and not row.has("level"):
+			errors.append(id + ": skill requires an explicit level.")
+		if _integer(row.get("level"),1,100):
+			for tier_id: String in row.tiers:
+				var tier: Dictionary = tiers[tier_id]
+				if int(tier.max_gates) == 0 or not _number(row.level,float(tier.skill_min),float(tier.skill_max)):
+					errors.append(id + ": requirement exceeds its tier's gate rules.")
 		if row.has("item_name") and GameData.get_item_by_name(String(row.item_name)).is_empty():
 			errors.append(id + ": unknown actual catalog item.")
 		if row.kind == "cipher" and not _text(row.get("answer")):
@@ -115,15 +136,18 @@ func validate(config: Dictionary) -> Array[String]:
 			var item := GameData.get_item_by_name(String(row.get("item_name", "")))
 			if row.get("skill") != skill or not _integer(row.get("level"), 1, 100) or anchor.get("interaction_kind") != interaction or item.is_empty() or String(item.get("fish_species", "")) != String(row.get("target_id", "")):
 				errors.append(id + ": activity gate must reference a real species, skill and station.")
-			for tier_id: String in row.tiers:
-				var tier: Dictionary = tiers.get(tier_id, {})
-				if not _number(row.get("level"), float(tier.get("skill_min", 101)), float(tier.get("skill_max", -1))):
-					errors.append(id + ": gate exceeds its tier skill range.")
 		if row.kind in ["equipment", "combat"]:
 			errors.append(id + ": equipment and combat templates await verified content support.")
+	if not errors.is_empty():
+		return errors
 	for tier_id: String in TIERS:
-		if int(ordinary_counts[tier_id]) < int(tiers.get(tier_id, {}).get("max_directives", 100)):
-			errors.append(tier_id + ": insufficient ordinary directives.")
+		var viable := false
+		for pool: Dictionary in Selection.pools(config,tier_id).values():
+			if int(pool.ordinary_count) >= int(tiers[tier_id].max_directives):
+				viable = true
+				break
+		if not viable:
+			errors.append(tier_id + ": insufficient distinct ordinary directives after excluding the final cache and disabled families.")
 	if config.base_rewards.is_empty():
 		errors.append("Orders require an existing base reward pool.")
 	for value: Variant in config.base_rewards:

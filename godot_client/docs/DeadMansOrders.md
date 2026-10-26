@@ -37,6 +37,24 @@ treasure-hunt content release. Existing login, saves, gameplay, maps and artwork
 - Authored-template generation with weighted choices, optional order-level gates,
   randomized reveal order, bounded concurrent directives and final cache selection.
   No runtime AI, generated lore, map fragments, fixed quest chain or new skill.
+- Part 5 selection pass: task families are weighted independently of how many
+  alternative clue texts they contain. Optional `family_weights` accepts known
+  directive kinds with finite weights from 0 to 1,000,000; omitted kinds use neutral
+  weight 1, and zero excludes a family. No production weight values were chosen.
+  Within a chosen family, existing authored template weights still select the text.
+- Alternative template IDs/texts for the same objective binding cannot appear twice
+  in one Order. Generation prefers another task kind when available, then minimizes
+  adjacent identical kinds in the reveal order with randomized ties.
+- Cache eligibility counts distinct ordinary objectives after excluding that cache
+  and disabled families. Invalid libraries fail validation before a packet is used.
+  Configuring a gate chance does not require inventing gated content: when no eligible
+  gate exists, generation uses ordinary tasks; an undersupplied gated library uses
+  only its available distinct gates. Gate chance is still rolled once per Order.
+- Disabled future templates are excluded before resolving their world references.
+  Enabled flags must be actual booleans. Skill ranges and gate limits apply to all
+  enabled templates, including skill-gated riddles. Deckhand stays ungated, concurrent
+  slots cannot exceed minimum task count, and malformed requirement/count types are
+  rejected without script errors.
 - Durable per-tier lifecycle counters prevent a stale activation from consuming a
   second item, including after abandonment/claim. At most one active instance per
   tier; additional sealed packets can remain in the backpack.
@@ -87,6 +105,7 @@ treasure-hunt content release. Existing login, saves, gameplay, maps and artwork
 | Needs content, information or later implementation | What is needed |
 |---|---|
 | Live world anchors and caches | User-selected locations, valid interaction targets, access and route checks |
+| Part 5 world-dependent constraints | Authored access/travel metadata and backtracking budgets after locations are selected |
 | Live directive library | Riddles, descriptions, cipher answers, desired tasks and tier assignments |
 | NPC/contact objectives | Existing or separately approved NPCs and dialogue hooks |
 | Equipment and combat content bindings | Obtainable gear, actual requirements, eligible enemy targets and attribution rules |
@@ -116,6 +135,8 @@ armor and the combat-effect mega consumables. Stoneward Ring is not in the selec
 
 - `scripts/orders/order_book.gd`: bounded private save validation and public projection.
 - `scripts/orders/orders_definitions.gd`: disabled configuration and enabled-content validation.
+- `scripts/orders/orders_selection.gd`: shared eligible pools, objective identity,
+  family filtering and varied reveal order for the Part 5 selection rules.
 - `scripts/orders/orders_service.gd`: generation, activation, directives, claims and abandonment.
 - `scripts/orders/orders_targets.gd`: future target resolution through existing authored
   interaction APIs; no coordinates or targets are embedded in this code.
@@ -130,7 +151,7 @@ armor and the combat-effect mega consumables. Stoneward Ring is not in the selec
 ## Validation and developer inspection
 
 Run `tools/test_orders.py --godot <installed Godot 4.5.1 console executable>`.
-It runs physical inventory/collection, reader/input, definitions, rules (10,000
+It runs focused generation selection, physical inventory/collection, reader/input, definitions, rules (10,000
 generations per tier), authority, activity hooks, journal, character codec and real
 in-process host transport/persistence tests. Logs/results are written
 outside the repository; script/native errors fail the runner even with exit code zero.
@@ -172,3 +193,15 @@ failing/passing atomicity regression. Machine logs and screenshots stay outside 
 This validates inventory/Orders framework behavior, not live content or economy
 balance. New v4 saves require the matching updated authoritative host/backend code;
 the existing database schema needs no migration.
+
+The Part 5 selection pass adds focused regressions for unavailable/partial gates,
+disabled and malformed definitions, family weight filtering/frequencies, alternative
+wording, duplicate bindings, cache feasibility and minimum-repeat reveal order. The
+40,000-Order simulation also checks actual per-tier gate frequencies, requirement
+ranges, gate maxima and concurrent available slots. This pass leaves actual locations,
+NPCs, equipment/contact/combat/cursed content and travel constraints deferred.
+Fresh Part 5 verification: all ten Orders suites pass, including 28 focused generation
+checks and 43 rules checks plus 40,000 generated Orders. Inventory reading, physical
+item lifecycle, definitions, authority, activity integration, journal, codec and real
+host persistence/transport regressions pass. Editor import and Login startup also
+pass without script/native errors. Independent review reports no remaining findings.

@@ -78,6 +78,9 @@ func _run() -> void:
 	_check_actions(Service,config)
 	var simulations := 0
 	for tier: String in ["deckhand","smuggler","corsair","dread_captain"]:
+		var gated_orders := 0
+		var invalid_requirements := 0
+		var invalid_slots := 0
 		for index in range(10000):
 			var generated: Dictionary = service.generate(tier,p.entity_id,index+1)
 			if not generated.ok:
@@ -89,13 +92,24 @@ func _run() -> void:
 				check(false,"Generated directive counts follow tier limits")
 				break
 			var exact := {}
+			var gated := 0
+			var available_count := 0
 			for directive: Dictionary in sample.directives:
 				var key: String = directive.template_id+":"+directive.anchor_id
 				if exact.has(key) or directive.anchor_id == sample.cache:
 					check(false,"No duplicate directive/anchor or final cache target")
 					break
 				exact[key] = true
+				available_count += int(directive.state == "available")
+				if int(directive.level) > 0:
+					gated += 1
+					invalid_requirements += int(int(directive.level) < int(settings.skill_min) or int(directive.level) > int(settings.skill_max))
+			invalid_requirements += int(gated > int(settings.max_gates))
+			invalid_slots += int(available_count != int(settings.slots))
+			gated_orders += int(gated > 0)
 			simulations += 1
+		check(invalid_requirements == 0 and invalid_slots == 0,"10,000 "+tier+" Orders preserve gate ranges, maxima and concurrent slots")
+		check(absf(float(gated_orders)/10000.0-float(config.tiers[tier].gate_chance)) < 0.02,"10,000 "+tier+" Orders follow the configured order-level gate frequency")
 	check(simulations == 40000,"40,000 randomized orders generated across all tiers")
 	_finish()
 

@@ -2,13 +2,19 @@ extends RefCounted
 ## Pure authoritative rules. Callers supply trusted world/action context, never wire data.
 const Book := preload("res://scripts/orders/order_book.gd")
 const Definitions := preload("res://scripts/orders/orders_definitions.gd")
+const Selection := preload("res://scripts/orders/orders_selection.gd")
 var config: Dictionary = {}
 var random := RandomNumberGenerator.new()
 var errors: Array[String] = []
+var _selection_pools: Dictionary = {}
 
 func configure(definitions: Dictionary, rng: RandomNumberGenerator = null) -> Dictionary:
 	errors = Definitions.new().validate(definitions)
 	config = definitions.duplicate(true) if errors.is_empty() else {}
+	_selection_pools.clear()
+	if enabled():
+		for tier: String in Book.TIERS:
+			_selection_pools[tier] = Selection.pools(config,tier)
 	if rng != null:
 		random = rng
 	else:
@@ -52,30 +58,27 @@ func generate(tier: String, owner_id: String, generation: int) -> Dictionary:
 	var settings: Dictionary = config.tiers[tier]
 	var count := random.randi_range(int(settings.min_directives),int(settings.max_directives))
 	var cache_ids: Array = []
-	for anchor_id: String in config.anchors:
-		if tier in config.anchors[anchor_id].tiers:
+	var gated_caches: Array = []
+	for anchor_id: String in _selection_pools.get(tier,{}):
+		var pool: Dictionary = _selection_pools[tier][anchor_id]
+		if int(pool.ordinary_count) >= count:
 			cache_ids.append(anchor_id)
-	_shuffle(cache_ids)
+			if int(pool.gate_count) > 0: gated_caches.append(anchor_id)
 	var wants_gate := int(settings.max_gates) > 0 and random.randf() < float(settings.gate_chance)
-	var gate_count := random.randi_range(1,mini(count,int(settings.max_gates))) if wants_gate else 0
+	var requested_gates := random.randi_range(1,mini(count,int(settings.max_gates))) if wants_gate else 0
+	if wants_gate and not gated_caches.is_empty(): cache_ids = gated_caches
+	_shuffle(cache_ids)
 	for cache_id: String in cache_ids:
-		var ordinary: Array = []
-		var gates: Array = []
-		for template: Dictionary in config.templates:
-			if tier not in template.tiers or template.anchor_id == cache_id or not bool(template.get("enabled",true)):
-				continue
-			if template.kind == "equipment" or int(template.get("level",0)) > 0:
-				gates.append(template)
-			else:
-				ordinary.append(template)
-		if gates.size() < gate_count or ordinary.size() < count-gate_count:
-			continue
+		var pool: Dictionary = _selection_pools[tier][cache_id]
+		var ordinary: Array = pool.ordinary.duplicate()
+		var gates: Array = pool.gates.duplicate()
+		var gate_count := mini(requested_gates,int(pool.gate_count))
 		var picked: Array = []
 		for index in range(gate_count):
-			picked.append(_take_weighted(gates))
+			picked.append(_take_directive(gates,String(picked.back().kind) if not picked.is_empty() else ""))
 		for index in range(count-gate_count):
-			picked.append(_take_weighted(ordinary))
-		_shuffle(picked)
+			picked.append(_take_directive(ordinary,String(picked.back().kind) if not picked.is_empty() else ""))
+		picked = Selection.reveal_order(picked,random)
 		var directives: Array = []
 		for index in range(picked.size()):
 			var row: Dictionary = picked[index]
@@ -243,6 +246,22 @@ func _take_weighted(pool: Array) -> Dictionary:
 			pool.remove_at(index)
 			return result
 	return {}
+
+func _take_directive(pool: Array, previous_kind: String) -> Dictionary:
+	var groups := {}
+	for row: Dictionary in pool:
+		if not groups.has(row.kind): groups[row.kind] = []
+		groups[row.kind].append(row)
+	var families: Array = []
+	for kind: String in groups:
+		if groups.size() > 1 and kind == previous_kind: continue
+		families.append({"kind":kind,"weight":Selection.family_weight(config,kind)})
+	var family := _take_weighted(families)
+	var selected := _take_weighted(groups[family.kind])
+	var key := Selection.objective_key(selected)
+	for index in range(pool.size()-1,-1,-1):
+		if Selection.objective_key(pool[index]) == key: pool.remove_at(index)
+	return selected
 
 func _shuffle(values: Array) -> void:
 	for index in range(values.size()-1,0,-1):
