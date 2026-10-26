@@ -65,6 +65,7 @@ var online_view: Node
 var grid_adapter: Node
 var offline_mining: Node
 var aoe_preview: Node2D
+var orders_controller: Node
 
 func grid_adoption_report() -> Dictionary:
 	return grid_adapter.report if grid_adapter != null else {"enabled": false, "reason": "not a map scene"}
@@ -371,7 +372,7 @@ func _ready() -> void:
 	var travel := get_node_or_null("/root/SceneTravel")
 	var resuming_character := false
 	if Network.online() and Network.authenticated:
-		var decoded: Dictionary = preload("res://network/character_codec.gd").decode(Network.saved_state, Network.username, Network.character_id)
+		var decoded: Dictionary = preload("res://network/character_codec.gd").decode_public(Network.saved_state, Network.username, Network.character_id)
 		if decoded.ok:
 			player = decoded.player
 			resuming_character = true
@@ -445,6 +446,10 @@ func _ready() -> void:
 	_update_ui_scale()
 	spawn_menu.configure(self, _active_monster_database())
 	item_menu.configure(self, GameData.items_by_id)
+	orders_controller = preload("res://scripts/orders/orders_controller.gd").new()
+	orders_controller.name = "OrdersController"
+	add_child(orders_controller)
+	orders_controller.configure(self)
 	inventory_menu.configure(self)
 	skill_debug_panel = SkillDebugPanel.new()
 	skill_debug_panel.name = "SkillDebugPanel"

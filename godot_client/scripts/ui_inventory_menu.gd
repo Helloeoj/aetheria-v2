@@ -1,10 +1,10 @@
 class_name InventoryMenu
 extends Control
 
-enum Page { INVENTORY, SKILLS, SPELLS, EQUIPMENT, COMBAT }
+enum Page { INVENTORY, SKILLS, SPELLS, EQUIPMENT, COMBAT, ORDERS }
 
-const PAGE_NAMES := ["Inventory", "Skills", "Spells", "Equipment", "Combat"]
-const PAGE_ICONS := ["bag", "skills", "spells", "equipment", "combat"]
+const PAGE_NAMES := ["Inventory", "Skills", "Spells", "Equipment", "Combat", "Captain's Ledger"]
+const PAGE_ICONS := ["bag", "skills", "spells", "equipment", "combat", "bag"]
 const SLOT_LAYOUT := [
 	["Head", "head"], ["Neck", "neck"], ["Cape", "cape"], ["Chest", "chest"],
 	["Legs", "legs"], ["Weapon", "weapon"], ["Shield", "shield"],
@@ -44,6 +44,7 @@ var _scroll_positions: Dictionary = {}
 var _skill_session_header: HBoxContainer
 var _skill_session_label: Label
 var _skill_session_labels: Dictionary = {}
+var _orders_ledger := preload("res://scripts/orders/orders_ledger.gd").new()
 
 func configure(game_ref: Node) -> void:
 	game = game_ref
@@ -102,7 +103,7 @@ func on_mouse_press(position: Vector2) -> bool:
 	return visible and panel != null and panel.get_global_rect().has_point(position)
 
 func select_page(index: int) -> void:
-	selected_page = clampi(index, Page.INVENTORY, Page.COMBAT)
+	selected_page = clampi(index, Page.INVENTORY, Page.ORDERS)
 	if tabs != null and tabs.current_tab != selected_page:
 		tabs.set_block_signals(true)
 		tabs.current_tab = selected_page
@@ -136,6 +137,8 @@ func refresh_view() -> void:
 			_build_equipment(player)
 		Page.COMBAT:
 			_build_combat(player)
+		Page.ORDERS:
+			_orders_ledger.build(self)
 	_update_skill_training_readout()
 	_last_signature = _state_signature()
 	_restore_scroll.call_deferred()
@@ -283,6 +286,10 @@ func _build_inventory(player: PlayerState) -> void:
 	details.add_child(_label("%s  ·  %s" % [String(selected.get("type", "Item")), String(selected.get("rarity", "common")).capitalize()], 12, FantasyUI.MUTED, true))
 	var quantity_text := "In backpack: %d" % int(player.backpack.get(selected_item_name, 0)) if InventorySystem.is_stackable(selected_item_name) else "Individual fish · Uses 1 backpack slot"
 	details.add_child(_label(quantity_text, 13, FantasyUI.IVORY, true))
+	if selected.has("order_tier"):
+		var open_order := _action_button("Open order", _open_sealed_order.bind(selected_item_name))
+		open_order.disabled = not _orders_enabled()
+		details.add_child(open_order)
 	var can_equip: bool = selected.get("slot", null) != null
 	var meets_requirement := EquipmentProgression.can_equip(player, selected)
 	if can_equip:
@@ -580,6 +587,8 @@ func _inventory_context_input(event: InputEvent, item_name: String, source: Cont
 		{"label": equip_label, "disabled": item.get("slot", null) == null or not EquipmentProgression.can_equip(_player(), item), "action": _handle_equip.bind(item_name)},
 		{"label": "Drop", "action": _handle_drop.bind(item_name, 1)}
 	]
+	if item.has("order_tier"):
+		entries.push_front({"label": "Open order", "disabled": not _orders_enabled(), "action": _open_sealed_order.bind(item_name)})
 	if amount > 1 and InventorySystem.is_stackable(item_name):
 		entries.append({"label": "Drop all (%d)" % amount, "action": _handle_drop.bind(item_name, amount)})
 	if int(item.get("food_healing", 0)) > 0:
@@ -709,6 +718,30 @@ func _set_status(message: String) -> void:
 	if footer != null:
 		footer.text = message
 
+func _orders_controller() -> Object:
+	if not is_instance_valid(game):
+		return null
+	for property: Dictionary in game.get_property_list():
+		if String(property.get("name", "")) == "orders_controller":
+			return game.get("orders_controller") as Object
+	return null
+
+func _open_sealed_order(item_name: String) -> void:
+	var controller := _orders_controller()
+	if controller == null:
+		_set_status("Orders are unavailable in this area.")
+		return
+	var view: Dictionary = controller.view()
+	if view.get("enabled", true) == false:
+		_set_status(String(view.get("message", "Orders await validated content.")))
+		return
+	controller.open_sealed(item_name)
+	select_page(Page.ORDERS)
+
+func _orders_enabled() -> bool:
+	var controller := _orders_controller()
+	return controller != null and controller.view().get("enabled", true) != false
+
 func _state_signature() -> String:
 	var player := _player()
 	if player == null:
@@ -719,6 +752,9 @@ func _state_signature() -> String:
 	elif selected_page == Page.SPELLS:
 		state["mana"] = player.current_mana
 		state["alive"] = player.current_hp > 0
+	elif selected_page == Page.ORDERS:
+		var controller := _orders_controller()
+		state["orders"] = controller.view() if controller != null else {}
 	return JSON.stringify(state)
 
 func _player() -> PlayerState:

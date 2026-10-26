@@ -3,6 +3,8 @@ extends RefCounted
 ## One server simulation per region. Commands carry intent; rules and clock stay here.
 const Activities := preload("res://network/region_activities.gd")
 const MiningEngine := preload("res://scripts/mining_service.gd")
+const OrdersService := preload("res://scripts/orders/orders_service.gd")
+const OrdersTargets := preload("res://scripts/orders/orders_targets.gd")
 const SPEED := 4.0
 const INPUT_LIFETIME := 0.25
 const STEP := 1.0 / 60.0
@@ -17,7 +19,10 @@ const SCHEMA := {
 	"mine_start": ["deposit_id", "deposit_generation"], "mine_stop": [],
 	"fish_input": ["action", "steering", "encounter_id", "input_id", "action_id", "expected_state", "phase_elapsed", "plan_ack"], "pale_move": ["slot"], "pale_drop": ["slot"],
 	"cook_start": ["station_id", "item_name", "quantity", "start_token", "action_id"], "cook_flip": ["encounter_id", "prompt_id", "action_id"], "cook_cancel": [],
-	"attack_style": ["style"], "select_spell": ["spell_id"]
+	"attack_style": ["style"], "select_spell": ["spell_id"],
+	"order_open": ["tier", "generation"],
+	"order_interact": ["order_id", "directive_id", "anchor_id", "answer"],
+	"order_claim": ["order_id", "anchor_id"], "order_abandon": ["order_id"]
 }
 var region_id := ""
 var players: Dictionary = {}
@@ -31,6 +36,7 @@ var _ground_mutations: Dictionary = {} # character_id -> ordered unpublished/res
 var _mutation_serials: Dictionary = {} # Monotonic across disconnect/rejoin and discard.
 var activities: RefCounted
 var mining: RefCounted
+var orders := OrdersService.new()
 var _mining_nodes: Dictionary = {}
 var _inputs: Dictionary = {}
 var _walks: Dictionary = {}
@@ -60,6 +66,9 @@ func configure(id: String, game: Node) -> void:
 			world.terrain_collision_handler = Callable(game, "_query_map_terrain_collision")
 	activities = Activities.new()
 	activities.configure(self)
+	var orders_data: Dictionary = preload("res://scripts/orders/orders_definitions.gd").new().load_data()
+	if orders_data.ok:
+		orders.configure(orders_data.config)
 	var definitions := MiningDefinitions.new()
 	var loaded := definitions.load_data()
 	if not loaded.ok:
@@ -146,6 +155,8 @@ func submit(character_id: String, command: Dictionary) -> Dictionary:
 	var actor: CombatActor = world.combat.actors.get(character_id)
 	if actor == null or not actor.is_alive:
 		return _result(false, "dead", "You must be alive.")
+	if kind.begins_with("order_"):
+		return _order_command(character_id,command)
 	if world.grid != null and kind in ["fish_start", "cook_start", "mine_start", "craft", "purchase", "pickup"]:
 		if not world.at_grid_rest(character_id):
 			return _result(false, "moving", "Finish your step before starting an activity.")
@@ -802,7 +813,7 @@ func _validate(command: Dictionary) -> Dictionary:
 		if key in ["x", "y", "steering", "phase_elapsed"]:
 			if not (value is int or value is float) or not is_finite(float(value)):
 				return _result(false, "invalid", "Expected a finite number.")
-		elif key in ["slot", "quantity", "encounter_id", "input_id", "action_id", "expected_state", "plan_ack", "prompt_id", "deposit_generation"] and not (kind == "unequip" and key == "slot"):
+		elif key in ["slot", "quantity", "encounter_id", "input_id", "action_id", "expected_state", "plan_ack", "prompt_id", "deposit_generation", "generation"] and not (kind == "unequip" and key == "slot"):
 			if not (value is int or value is float) or not is_finite(float(value)) or floor(float(value)) != float(value) or float(value) < 0.0 or float(value) > 2147483647.0:
 				return _result(false, "invalid", "Expected a supported integer.")
 		elif key != "direction":
@@ -818,3 +829,41 @@ func _vector(value: Variant) -> Vector2:
 
 func _result(ok: bool, code: String = "ok", message: String = "") -> Dictionary:
 	return {"ok": ok, "code": code, "message": message}
+
+func _order_command(id: String, command: Dictionary) -> Dictionary:
+	var player: PlayerState = players[id]
+	if _in_combat(id) or player.in_combat or activities.active(id) or world.combat.active_spell_casts.has(id):
+		return _result(false,"busy","Finish combat and other activities first.")
+	if world.grid != null and not world.at_grid_rest(id):
+		return _result(false,"moving","Finish your step before interacting with an order.")
+	var order_id := String(command.get("order_id",""))
+	var anchor_id := String(command.get("anchor_id",""))
+	var context := OrdersTargets.context(geometry_game,orders.config,region_id,anchor_id,player,world)
+	var outcome: Dictionary
+	match String(command.type):
+		"order_open":
+			outcome = orders.open(player,String(command.get("tier","")),int(command.get("generation",-1)))
+		"order_abandon":
+			outcome = orders.abandon(player,order_id)
+		"order_interact":
+			outcome = orders.interact(player,order_id,String(command.get("directive_id","")),anchor_id,context,String(command.get("answer","")))
+		"order_claim":
+			outcome = orders.claim(player,order_id,anchor_id,context)
+		_:
+			return _result(false,"unsupported","Unsupported order action.")
+	if outcome.ok:
+		dirty[id] = true
+	return outcome
+
+func record_order_action(id: String, kind: String, target_id: String, station_id: String) -> void:
+	## Trusted successful-action hook. Never exposed as a client command.
+	if not orders.enabled() or not players.has(id) or frozen.has(id):
+		return
+	for anchor_id: String in orders.config.get("anchors",{}):
+		var anchor: Dictionary = orders.config.anchors[anchor_id]
+		if anchor.get("region_id") != region_id or anchor.get("node_path") != station_id:
+			continue
+		var context := OrdersTargets.context(geometry_game,orders.config,region_id,anchor_id,players[id],world)
+		if orders.on_event(players[id],kind,target_id,context):
+			dirty[id] = true
+			return

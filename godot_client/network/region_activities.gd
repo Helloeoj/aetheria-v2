@@ -146,7 +146,7 @@ func submit(id: String, command: Dictionary) -> Dictionary:
 			meta.action_ack = action_id
 			if cooking[id].state != CookingSession.State.FLIP_PENDING:
 				return _result(false, "Wait for the server's flip prompt.")
-			cooking[id].flip()
+			_record_cooking_results(id, cooking[id].flip())
 			meta.phase += 1
 
 		_:
@@ -167,6 +167,8 @@ func advance(id: String, delta: float) -> void:
 			data.remaining = maxf(0.0, float(data.remaining) - delta)
 		var before := [session.state, player.get_skill_experience("fishing"), player.fishing_pale.duplicate()]
 		session.advance(delta, input)
+		if before[0] != FishingSession.State.CAUGHT and session.state == FishingSession.State.CAUGHT:
+			region.record_order_action(id, "fishing", String(session.fish.get("fish_species", session.fish.get("name", ""))), String(station_ids.get(id, "")))
 		if before != [session.state, player.get_skill_experience("fishing"), player.fishing_pale]:
 			region.dirty[id] = true
 	if cooking.has(id):
@@ -176,13 +178,22 @@ func advance(id: String, delta: float) -> void:
 			region.dirty[id] = true
 			return
 		var before := [session.state, session.remaining, session.reward_xp]
-		session.advance(delta)
+		_record_cooking_results(id, session.advance(delta))
 		if before[0] != session.state:
 			_cook_meta[id].phase += 1
 			if session.state == CookingSession.State.FLIP_PENDING:
 				_cook_meta[id].prompt += 1
 		if before != [session.state, session.remaining, session.reward_xp]:
 			region.dirty[id] = true
+
+func _record_cooking_results(id: String, results: Array[Dictionary]) -> void:
+	for result: Dictionary in results:
+		if bool(result.get("burnt", true)):
+			continue
+		var output := GameData.get_item_by_name(String(result.get("output", "")))
+		var species := String(output.get("fish_species", ""))
+		if not species.is_empty() and output.get("fish_state") == "cooked":
+			region.record_order_action(id, "cooking", species, String(station_ids.get(id, "")))
 
 func snapshot(id: String) -> Dictionary:
 	if fishing.has(id):

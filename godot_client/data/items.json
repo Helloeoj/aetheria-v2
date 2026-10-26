@@ -6577,5 +6577,57 @@
     "generic_loot": true,
     "craftable": false,
     "description": "Combine with Iron Ore at a blacksmith furnace to make Steel Ingots. Gathering deposits are future content."
+  },
+  {
+    "id": 9001,
+    "name": "Sealed Deckhand's Order",
+    "type": "Order",
+    "material": "Parchment",
+    "tier": 1,
+    "slot": null,
+    "rarity": "rare",
+    "generic_loot": false,
+    "craftable": false,
+    "order_tier": "deckhand",
+    "description": "A sealed packet of Dead Man's Orders. Content and acquisition are not enabled yet."
+  },
+  {
+    "id": 9002,
+    "name": "Sealed Smuggler's Order",
+    "type": "Order",
+    "material": "Parchment",
+    "tier": 2,
+    "slot": null,
+    "rarity": "rare",
+    "generic_loot": false,
+    "craftable": false,
+    "order_tier": "smuggler",
+    "description": "A sealed packet of Dead Man's Orders. Content and acquisition are not enabled yet."
+  },
+  {
+    "id": 9003,
+    "name": "Sealed Corsair's Order",
+    "type": "Order",
+    "material": "Parchment",
+    "tier": 3,
+    "slot": null,
+    "rarity": "rare",
+    "generic_loot": false,
+    "craftable": false,
+    "order_tier": "corsair",
+    "description": "A sealed packet of Dead Man's Orders. Content and acquisition are not enabled yet."
+  },
+  {
+    "id": 9004,
+    "name": "Sealed Dread Captain's Order",
+    "type": "Order",
+    "material": "Parchment",
+    "tier": 4,
+    "slot": null,
+    "rarity": "rare",
+    "generic_loot": false,
+    "craftable": false,
+    "order_tier": "dread_captain",
+    "description": "A sealed packet of Dead Man's Orders. Content and acquisition are not enabled yet."
   }
 ]

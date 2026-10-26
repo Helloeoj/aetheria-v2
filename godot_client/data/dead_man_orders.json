@@ -1,0 +1,212 @@
+{
+  "version": 1,
+  "enabled": false,
+  "content_status": "framework_only_awaiting_user_content",
+  "note": "The framework is intentionally disabled. No locations, NPCs, directives, acquisition odds, reward quantities or gold values are enabled or invented. Deferred entries document user-requested designs only.",
+  "tiers": {
+    "deckhand": {
+      "name": "Deckhand",
+      "item_name": "Sealed Deckhand's Order",
+      "item_id": 9001,
+      "min_directives": 2,
+      "max_directives": 3,
+      "slots": 2,
+      "gate_chance": 0,
+      "max_gates": 0,
+      "skill_min": 0,
+      "skill_max": 0
+    },
+    "smuggler": {
+      "name": "Smuggler",
+      "item_name": "Sealed Smuggler's Order",
+      "item_id": 9002,
+      "min_directives": 3,
+      "max_directives": 4,
+      "slots": 2,
+      "gate_chance": 0.35,
+      "max_gates": 1,
+      "skill_min": 20,
+      "skill_max": 40
+    },
+    "corsair": {
+      "name": "Corsair",
+      "item_name": "Sealed Corsair's Order",
+      "item_id": 9003,
+      "min_directives": 4,
+      "max_directives": 5,
+      "slots": 2,
+      "gate_chance": 0.6,
+      "max_gates": 2,
+      "skill_min": 40,
+      "skill_max": 65
+    },
+    "dread_captain": {
+      "name": "Dread Captain",
+      "item_name": "Sealed Dread Captain's Order",
+      "item_id": 9004,
+      "min_directives": 5,
+      "max_directives": 7,
+      "slots": 3,
+      "gate_chance": 0.8,
+      "max_gates": 3,
+      "skill_min": 65,
+      "skill_max": 90
+    }
+  },
+  "anchors": {},
+  "templates": [],
+  "base_rewards": [],
+  "acquisition": {
+    "fishing_chance": 0,
+    "monster_chance": 0
+  },
+  "deferred": [
+    {
+      "id": "sunfall_blade",
+      "name": "Sunfall, the King's Blade",
+      "category": "mega_weapon",
+      "enabled": false,
+      "reason": "Approved art and a cosmetic variant at the existing Runite/Starforged power level are not installed."
+    },
+    {
+      "id": "stormwake_bow",
+      "name": "Stormwake Greatbow",
+      "category": "mega_weapon",
+      "enabled": false,
+      "reason": "Approved art and a cosmetic variant at the existing Runite/Starforged power level are not installed."
+    },
+    {
+      "id": "last_star_staff",
+      "name": "Staff of the Last Star",
+      "category": "mega_weapon",
+      "enabled": false,
+      "reason": "Approved art and a cosmetic variant at the existing Runite/Starforged power level are not installed."
+    },
+    {
+      "id": "wolf_pendant",
+      "name": "Pendant of the Wolf",
+      "category": "cosmetic_shapeshift",
+      "enabled": false,
+      "reason": "Approved art and cosmetic shapeshift renderer are not installed. No combat or movement bonuses."
+    },
+    {
+      "id": "moonfang_pendant",
+      "name": "Pendant of the Moonfang",
+      "category": "mega_cosmetic_shapeshift",
+      "enabled": false,
+      "reason": "Approved art and cosmetic shapeshift renderer are not installed. No combat or movement bonuses."
+    },
+    {
+      "id": "slime_pendant",
+      "name": "Pendant of the Slime",
+      "category": "candidate_cosmetic_shapeshift",
+      "enabled": false,
+      "reason": "Approved art and cosmetic shapeshift renderer are not installed. No combat or movement bonuses."
+    },
+    {
+      "id": "titan_pendant",
+      "name": "Pendant of the Golem Titan",
+      "category": "candidate_cosmetic_shapeshift",
+      "enabled": false,
+      "reason": "Approved art and cosmetic shapeshift renderer are not installed. No combat or movement bonuses."
+    },
+    {
+      "id": "balm",
+      "name": "Salt-Saint's Balm",
+      "category": "consumable",
+      "enabled": false,
+      "reason": "No approved art or consumable mechanic is installed."
+    },
+    {
+      "id": "blackflame",
+      "name": "Blackflame Resin",
+      "category": "resin",
+      "enabled": false,
+      "reason": "No approved art or resin mechanic is installed."
+    },
+    {
+      "id": "thornwake",
+      "name": "Thornwake Resin",
+      "category": "candidate_resin",
+      "enabled": false,
+      "reason": "Candidate only; no approved art or mechanic is installed."
+    },
+    {
+      "id": "moonlit_bait",
+      "name": "Moonlit Bait",
+      "category": "bait",
+      "enabled": false,
+      "reason": "No approved art, catalog item, catch pool or bait mechanic is installed."
+    },
+    {
+      "id": "waystone",
+      "name": "Waystone Tablet",
+      "category": "candidate_utility",
+      "enabled": false,
+      "reason": "Candidate only; no approved art or utility mechanic is installed."
+    },
+    {
+      "id": "crownless_helm",
+      "name": "Crownless Helm",
+      "category": "mega_gear",
+      "enabled": false,
+      "reason": "Approved original art, catalog definition and mega-tier balance are not installed."
+    },
+    {
+      "id": "crownless_platebody",
+      "name": "Crownless Platebody",
+      "category": "mega_gear",
+      "enabled": false,
+      "reason": "Approved original art, catalog definition and mega-tier balance are not installed."
+    },
+    {
+      "id": "crownless_platelegs",
+      "name": "Crownless Platelegs",
+      "category": "mega_gear",
+      "enabled": false,
+      "reason": "Approved original art, catalog definition and mega-tier balance are not installed."
+    },
+    {
+      "id": "crownless_tricorn",
+      "name": "Crownless Tricorn",
+      "category": "mega_gear",
+      "enabled": false,
+      "reason": "Approved original art, catalog definition and mega-tier balance are not installed."
+    },
+    {
+      "id": "crownless_longcoat",
+      "name": "Crownless Longcoat",
+      "category": "mega_gear",
+      "enabled": false,
+      "reason": "Approved original art, catalog definition and mega-tier balance are not installed."
+    },
+    {
+      "id": "crownless_breeches",
+      "name": "Crownless Breeches",
+      "category": "mega_gear",
+      "enabled": false,
+      "reason": "Approved original art, catalog definition and mega-tier balance are not installed."
+    },
+    {
+      "id": "crownless_cowl",
+      "name": "Crownless Cowl",
+      "category": "mega_gear",
+      "enabled": false,
+      "reason": "Approved original art, catalog definition and mega-tier balance are not installed."
+    },
+    {
+      "id": "crownless_robe",
+      "name": "Crownless Robe",
+      "category": "mega_gear",
+      "enabled": false,
+      "reason": "Approved original art, catalog definition and mega-tier balance are not installed."
+    },
+    {
+      "id": "crownless_leg_wraps",
+      "name": "Crownless Leg Wraps",
+      "category": "mega_gear",
+      "enabled": false,
+      "reason": "Approved original art, catalog definition and mega-tier balance are not installed."
+    }
+  ]
+}

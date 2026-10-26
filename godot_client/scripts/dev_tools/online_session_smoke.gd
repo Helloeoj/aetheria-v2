@@ -55,7 +55,8 @@ func _run() -> void:
 	check(error == OK, "World transport connects")
 	await net.joined
 	check(net.authenticated and net.character_id == config.character_id, "Backend identity owns the world actor")
-	check(CharacterCodec.decode(net.saved_state,net.username,net.character_id).ok, "Initial or returning character loaded durably through the current backward-compatible codec")
+	check(CharacterCodec.decode_public(net.saved_state,net.username,net.character_id).ok, "Initial or returning character loaded durably through the current backward-compatible codec")
+	check(not net.saved_state.has("dead_man_orders") and net.saved_state.has("orders_view"), "Joined packet contains only the public order projection")
 	if config.has("expected_state"):
 		var expected: Dictionary = config.expected_state
 		check(net.saved_state.inventory == expected.inventory and net.saved_state.skill_experience == expected.skill_experience and net.saved_state.gold == expected.gold, "Inventory and progress resume across login sessions")
@@ -67,6 +68,8 @@ func _run() -> void:
 	check(game.player.entity_id == net.character_id, "Rendered map uses persistent online identity")
 	await get_tree().create_timer(1).timeout
 	check(net.latest_snapshot.has("movement_ack") and net.latest_snapshot.has("server_time"), "Live world publishes movement reconciliation metadata")
+	var public_save: Dictionary = net.latest_snapshot.get("state", {})
+	check(not public_save.has("dead_man_orders") and public_save.has("orders_view"), "Live snapshots contain only acknowledged public orders")
 	# Loading the full map blocks polling and drains queued startup snapshots.
 	# Require two fresh movement-enabled snapshots at live cadence;
 	# prediction deliberately freezes after 250 ms without authoritative state.

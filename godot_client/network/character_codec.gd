@@ -1,7 +1,8 @@
 class_name CharacterCodec
 extends RefCounted
 ## Versioned server saves contain approved item IDs, never client item statistics.
-const VERSION := 2
+const VERSION := 3
+const OrderBook := preload("res://scripts/orders/order_book.gd")
 const MAX_COUNT := 2147483647
 const MAX_INVENTORY_ENTRIES := 4096
 const TIMERS := ["food_cooldown_seconds", "food_attack_cooldown_seconds", "food_attack_interval_seconds"]
@@ -15,6 +16,8 @@ static func initial(username: String, character_id: String, region_id: String) -
 	return {"ok": true, "player": p, "region_id": region_id}
 
 static func encode(p: PlayerState, region_id: String) -> Dictionary:
+	if not OrderBook.validate_book(p.dead_man_orders, p.entity_id):
+		return {} # Invalid authoritative state must fail persistence, never erase orders.
 	var inventory: Array = []
 	var names := p.backpack.keys()
 	names.sort()
@@ -35,21 +38,28 @@ static func encode(p: PlayerState, region_id: String) -> Dictionary:
 		"quiver_item_id": int(p.quiver_item.get("id", 0)), "quiver_amount": p.quiver_amount,
 		"quick_food_id": int(GameData.get_item_by_name(p.quick_food_name).get("id", 0)),
 		"attack_style": p.attack_style, "selected_spell_id": p.selected_spell_id,
+		"dead_man_orders": p.dead_man_orders.duplicate(true),
 	}
 	for timer: String in TIMERS:
 		state[timer] = p.get(timer)
 	return state
 
 static func decode(state: Dictionary, username: String, character_id: String) -> Dictionary:
+	if state.has("public_projection") or state.has("orders_view"):
+		return _bad("save_projection")
 	var version := _integer(state.get("version", -1), VERSION)
-	if version not in [1, VERSION]:
+	if version not in [1, 2, VERSION]:
 		return _bad("save_version")
+	var book: Variant = state.get("dead_man_orders", OrderBook.empty_book() if version < 3 else null)
+	if not OrderBook.validate_book(book, character_id):
+		return _bad("save_orders")
 	if not state.get("region_id") is String or String(state.region_id).length() > 64:
 		return _bad("save_location")
 	if not _finite(state.get("x")) or not _finite(state.get("y")):
 		return _bad("save_location")
 	var p := PlayerState.new(username)
 	p.entity_id = character_id
+	p.dead_man_orders = book.duplicate(true)
 	p.x = float(state.x)
 	p.y = float(state.y)
 	var experience: Variant = state.get("skill_experience")
@@ -141,8 +151,28 @@ static func decode(state: Dictionary, username: String, character_id: String) ->
 		p.set(timer, float(state[timer]))
 	return {"ok": true, "player": p, "region_id": String(state.region_id)}
 
+static func public_state(full_saved: Dictionary) -> Dictionary:
+	var projected := full_saved.duplicate(true)
+	projected.erase("dead_man_orders")
+	projected["public_projection"] = true
+	projected["orders_view"] = OrderBook.public_book(full_saved.get("dead_man_orders", OrderBook.empty_book()))
+	return projected
+
+static func decode_public(state: Dictionary, username: String, character_id: String) -> Dictionary:
+	if state.get("public_projection") != true or state.has("dead_man_orders") or not state.get("orders_view") is Dictionary:
+		return _bad("save_projection")
+	var base := state.duplicate(true)
+	base.erase("public_projection")
+	base.erase("orders_view")
+	base["dead_man_orders"] = OrderBook.empty_book()
+	var decoded := decode(base, username, character_id)
+	if decoded.ok:
+		decoded.player.orders_view = state.orders_view.duplicate(true)
+	return decoded
+
 static func apply_to(p: PlayerState, saved: Dictionary) -> bool:
-	var decoded := decode(saved, p.name, p.entity_id)
+	var projected: bool = saved.get("public_projection") == true
+	var decoded := decode_public(saved, p.name, p.entity_id) if projected else decode(saved, p.name, p.entity_id)
 	if not decoded.ok:
 		return false
 	var other: PlayerState = decoded.player
@@ -150,6 +180,10 @@ static func apply_to(p: PlayerState, saved: Dictionary) -> bool:
 		p.set(field, other.get(field))
 	for field: String in TIMERS:
 		p.set(field, other.get(field))
+	if projected:
+		p.orders_view = other.orders_view.duplicate(true)
+	else:
+		p.dead_man_orders = other.dead_man_orders.duplicate(true)
 	return true
 
 static func _item(value: Variant) -> Dictionary:

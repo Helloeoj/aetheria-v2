@@ -199,7 +199,7 @@ func _join(peer_id: int, ticket: String) -> void:
 		_departed(peer_id)
 		return
 	Network.mark_admitted(peer_id)
-	Network.send_control(peer_id, {"type": "joined", "character_id": session.character_id, "username": session.username, "region_id": region_id, "state": session.state, "revision": session.revision})
+	Network.send_control(peer_id, {"type": "joined", "character_id": session.character_id, "username": session.username, "region_id": region_id, "state": CharacterCodec.public_state(session.state), "revision": session.revision})
 
 func _command(peer_id: int, raw: Dictionary) -> void:
 	if not sessions.has(peer_id) or _stopping:
@@ -314,7 +314,7 @@ func _service_sessions() -> void:
 		snapshot["area_cast"] = region.area_cast(session.character_id)
 		snapshot["snapshot_id"] = _snapshot_id
 		snapshot["revision"] = session.revision
-		snapshot["state"] = session.state
+		snapshot["state"] = CharacterCodec.public_state(session.state)
 		snapshot["saving"] = session.saving or not session.pending.is_empty()
 		snapshot["population"] = sessions.size()
 		snapshot["capacity"] = max_players

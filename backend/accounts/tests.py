@@ -144,6 +144,28 @@ class AccountApiTests(TestCase):
         from backend.accounts.models import Character
         self.assertEqual(Character.objects.get(pk=claim['character_id']).state, body['state'])
 
+    def test_orders_v3_save_is_atomic_idempotent_and_restored_with_inventory(self):
+        self.register()
+        login = self.login()
+        claim = self.claim(login['token'])
+        state = {'version': 3, 'inventory': [{'item_id': 235, 'count': 2}],
+            'dead_man_orders': {'version': 1,
+                'generations': {'deckhand': 1, 'smuggler': 0, 'corsair': 0, 'dread_captain': 0},
+                'orders': {'deckhand': {'id': 'persistent-order', 'owner': claim['character_id'],
+                    'state': 'active', 'hidden_cache': [3, 8]}}}}
+        body = self.save_body(claim, state)
+        first = self.post('/internal/save', body, internal=True)
+        self.assertEqual(first, {'ok': True, 'revision': 1})
+        self.assertEqual(self.post('/internal/save', body, internal=True), first)
+        from backend.accounts.models import Character, Journal
+        self.assertEqual(Character.objects.get(pk=claim['character_id']).state, state)
+        self.assertEqual(Journal.objects.filter(character_id=claim['character_id']).count(), 1)
+        release = self.save_body({**claim, 'revision': 1}, state)
+        self.assertTrue(self.post('/internal/release', release, internal=True)['ok'])
+        restored = self.claim(login['token'])
+        self.assertEqual(restored['state'], state)
+        self.assertEqual(restored['revision'], 2)
+
     def test_password_nfc_preserves_spaces_and_boundary_lengths(self):
         password = '  A password Cafe\u0301  '
         result = self.post('/api/register', {'username': 'UnicodePass', 'password': password,

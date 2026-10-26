@@ -1,0 +1,737 @@
+{
+  "version": 1,
+  "economy_status": "provisional_test_defaults",
+  "economy_note": "Acquisition probabilities, gold ranges, stack quantities and weights are conservative implementation test defaults; they are not a promise of final economy balance.",
+  "tiers": {
+    "deckhand": {
+      "name": "Deckhand",
+      "item_name": "Sealed Deckhand's Order",
+      "item_id": 9001,
+      "min_directives": 2,
+      "max_directives": 3,
+      "slots": 2,
+      "gate_chance": 0,
+      "max_gates": 0,
+      "skill_min": 0,
+      "skill_max": 0,
+      "gold_min": 25,
+      "gold_max": 60,
+      "reward_rolls": 1
+    },
+    "smuggler": {
+      "name": "Smuggler",
+      "item_name": "Sealed Smuggler's Order",
+      "item_id": 9002,
+      "min_directives": 3,
+      "max_directives": 4,
+      "slots": 2,
+      "gate_chance": 0.35,
+      "max_gates": 1,
+      "skill_min": 20,
+      "skill_max": 40,
+      "gold_min": 60,
+      "gold_max": 120,
+      "reward_rolls": 1
+    },
+    "corsair": {
+      "name": "Corsair",
+      "item_name": "Sealed Corsair's Order",
+      "item_id": 9003,
+      "min_directives": 4,
+      "max_directives": 5,
+      "slots": 2,
+      "gate_chance": 0.6,
+      "max_gates": 2,
+      "skill_min": 40,
+      "skill_max": 65,
+      "gold_min": 120,
+      "gold_max": 220,
+      "reward_rolls": 1
+    },
+    "dread_captain": {
+      "name": "Dread Captain",
+      "item_name": "Sealed Dread Captain's Order",
+      "item_id": 9004,
+      "min_directives": 5,
+      "max_directives": 7,
+      "slots": 3,
+      "gate_chance": 0.8,
+      "max_gates": 3,
+      "skill_min": 65,
+      "skill_max": 90,
+      "gold_min": 220,
+      "gold_max": 400,
+      "reward_rolls": 1
+    }
+  },
+  "anchors": {
+    "outskirts_tavern": {
+      "region_id": "outskirts",
+      "node_path": "Combat/TavernEntrance",
+      "interaction_kind": "portal",
+      "label": "Tavern entrance",
+      "hint": "Outside the tavern in the east outskirts.",
+      "tiers": [
+        "deckhand",
+        "smuggler",
+        "corsair",
+        "dread_captain"
+      ]
+    },
+    "river_upper": {
+      "region_id": "outskirts",
+      "node_path": "Combat/RiverFishingSpot",
+      "interaction_kind": "fish",
+      "label": "Upper river fishing spot",
+      "hint": "The upper of the two marked river fishing spots in the outskirts.",
+      "tiers": [
+        "deckhand",
+        "smuggler",
+        "corsair",
+        "dread_captain"
+      ]
+    },
+    "river_lower": {
+      "region_id": "outskirts",
+      "node_path": "Combat/LowerRiverFishingSpot",
+      "interaction_kind": "fish",
+      "label": "Lower river fishing spot",
+      "hint": "The lower of the two marked river fishing spots in the outskirts.",
+      "tiers": [
+        "deckhand",
+        "smuggler",
+        "corsair",
+        "dread_captain"
+      ]
+    },
+    "outskirts_cave": {
+      "region_id": "outskirts",
+      "node_path": "Combat/GolemCaveEntrance",
+      "interaction_kind": "portal",
+      "label": "Golem cave entrance",
+      "hint": "The cave entrance in the east outskirts; remain outside for this directive.",
+      "tiers": [
+        "deckhand",
+        "smuggler",
+        "corsair",
+        "dread_captain"
+      ]
+    },
+    "tavern_exit": {
+      "region_id": "tavern",
+      "node_path": "Combat/TavernExit",
+      "interaction_kind": "portal",
+      "label": "Tavern exit",
+      "hint": "Inside the tavern, beside the exit to the outskirts.",
+      "tiers": [
+        "deckhand",
+        "smuggler",
+        "corsair",
+        "dread_captain"
+      ]
+    },
+    "tavern_stove": {
+      "region_id": "tavern",
+      "node_path": "Combat/Stove",
+      "interaction_kind": "cook",
+      "label": "Tavern stove",
+      "hint": "The existing cooking stove inside the tavern.",
+      "tiers": [
+        "deckhand",
+        "smuggler",
+        "corsair",
+        "dread_captain"
+      ]
+    },
+    "golem_exit": {
+      "region_id": "golem",
+      "node_path": "Combat/EastCaveExit",
+      "interaction_kind": "portal",
+      "label": "Golem Kingdom east exit",
+      "hint": "Inside Golem Kingdom, at the east exit toward the outskirts.",
+      "tiers": [
+        "corsair",
+        "dread_captain"
+      ]
+    }
+  },
+  "templates": [
+    {
+      "id": "outskirts_tavern_riddle",
+      "kind": "riddle",
+      "tiers": [
+        "deckhand",
+        "smuggler",
+        "corsair",
+        "dread_captain"
+      ],
+      "anchor_id": "outskirts_tavern",
+      "text": "Before a warm room, I stand beneath the open sky. Find the tavern door from outside.",
+      "weight": 1
+    },
+    {
+      "id": "outskirts_tavern_search",
+      "kind": "search",
+      "tiers": [
+        "deckhand",
+        "smuggler",
+        "corsair",
+        "dread_captain"
+      ],
+      "anchor_id": "outskirts_tavern",
+      "text": "Search the threshold outside the east outskirts tavern.",
+      "weight": 1
+    },
+    {
+      "id": "river_upper_riddle",
+      "kind": "riddle",
+      "tiers": [
+        "deckhand",
+        "smuggler",
+        "corsair",
+        "dread_captain"
+      ],
+      "anchor_id": "river_upper",
+      "text": "Two places welcome the line; choose the river mark above its twin.",
+      "weight": 1
+    },
+    {
+      "id": "river_upper_search",
+      "kind": "search",
+      "tiers": [
+        "deckhand",
+        "smuggler",
+        "corsair",
+        "dread_captain"
+      ],
+      "anchor_id": "river_upper",
+      "text": "Search beside the upper river fishing spot.",
+      "weight": 1
+    },
+    {
+      "id": "river_lower_riddle",
+      "kind": "riddle",
+      "tiers": [
+        "deckhand",
+        "smuggler",
+        "corsair",
+        "dread_captain"
+      ],
+      "anchor_id": "river_lower",
+      "text": "Follow the pair of fishing marks downward; the lower one holds this instruction.",
+      "weight": 1
+    },
+    {
+      "id": "river_lower_search",
+      "kind": "search",
+      "tiers": [
+        "deckhand",
+        "smuggler",
+        "corsair",
+        "dread_captain"
+      ],
+      "anchor_id": "river_lower",
+      "text": "Search beside the lower river fishing spot.",
+      "weight": 1
+    },
+    {
+      "id": "outskirts_cave_riddle",
+      "kind": "riddle",
+      "tiers": [
+        "deckhand",
+        "smuggler",
+        "corsair",
+        "dread_captain"
+      ],
+      "anchor_id": "outskirts_cave",
+      "text": "Stone lies beyond me, but open sky stays overhead. Find the cave mouth from the outskirts.",
+      "weight": 1
+    },
+    {
+      "id": "outskirts_cave_search",
+      "kind": "search",
+      "tiers": [
+        "deckhand",
+        "smuggler",
+        "corsair",
+        "dread_captain"
+      ],
+      "anchor_id": "outskirts_cave",
+      "text": "Search outside the Golem cave entrance in the outskirts.",
+      "weight": 1
+    },
+    {
+      "id": "tavern_exit_riddle",
+      "kind": "riddle",
+      "tiers": [
+        "deckhand",
+        "smuggler",
+        "corsair",
+        "dread_captain"
+      ],
+      "anchor_id": "tavern_exit",
+      "text": "From the warm room I lead back to the open air. Stand at the tavern exit.",
+      "weight": 1
+    },
+    {
+      "id": "tavern_exit_search",
+      "kind": "search",
+      "tiers": [
+        "deckhand",
+        "smuggler",
+        "corsair",
+        "dread_captain"
+      ],
+      "anchor_id": "tavern_exit",
+      "text": "Search inside the tavern beside its exit.",
+      "weight": 1
+    },
+    {
+      "id": "tavern_stove_riddle",
+      "kind": "riddle",
+      "tiers": [
+        "deckhand",
+        "smuggler",
+        "corsair",
+        "dread_captain"
+      ],
+      "anchor_id": "tavern_stove",
+      "text": "Within the tavern I turn a catch into a meal. Find the stove.",
+      "weight": 1
+    },
+    {
+      "id": "tavern_stove_search",
+      "kind": "search",
+      "tiers": [
+        "deckhand",
+        "smuggler",
+        "corsair",
+        "dread_captain"
+      ],
+      "anchor_id": "tavern_stove",
+      "text": "Search beside the cooking stove inside the tavern.",
+      "weight": 1
+    },
+    {
+      "id": "golem_exit_riddle",
+      "kind": "riddle",
+      "tiers": [
+        "corsair",
+        "dread_captain"
+      ],
+      "anchor_id": "golem_exit",
+      "text": "From stone halls I point east toward the open outskirts. Find the kingdom exit.",
+      "weight": 1
+    },
+    {
+      "id": "golem_exit_search",
+      "kind": "search",
+      "tiers": [
+        "corsair",
+        "dread_captain"
+      ],
+      "anchor_id": "golem_exit",
+      "text": "Search beside the east exit inside Golem Kingdom.",
+      "weight": 1
+    },
+    {
+      "id": "cipher_stove",
+      "kind": "cipher",
+      "tiers": [
+        "corsair",
+        "dread_captain"
+      ],
+      "anchor_id": "tavern_stove",
+      "text": "Reverse these letters: EVOTS. Find the decoded place inside the tavern.",
+      "answer": "stove",
+      "weight": 1
+    },
+    {
+      "id": "cipher_river",
+      "kind": "cipher",
+      "tiers": [
+        "corsair",
+        "dread_captain"
+      ],
+      "anchor_id": "river_lower",
+      "text": "Shift each letter back one: MPXFS SJWFS. Find the decoded fishing mark.",
+      "answer": "lower river",
+      "weight": 1
+    },
+    {
+      "id": "smuggler_river_upper_catch",
+      "kind": "fishing",
+      "tiers": [
+        "smuggler"
+      ],
+      "anchor_id": "river_upper",
+      "text": "With Fishing level 20 or higher, land a Raw Reedkip at the upper river fishing spot after this directive becomes active.",
+      "target_id": "Reedkip",
+      "skill": "fishing",
+      "level": 20,
+      "item_name": "Raw Reedkip",
+      "weight": 1
+    },
+    {
+      "id": "smuggler_river_lower_catch",
+      "kind": "fishing",
+      "tiers": [
+        "smuggler"
+      ],
+      "anchor_id": "river_lower",
+      "text": "With Fishing level 20 or higher, land a Raw Reedkip at the lower river fishing spot after this directive becomes active.",
+      "target_id": "Reedkip",
+      "skill": "fishing",
+      "level": 20,
+      "item_name": "Raw Reedkip",
+      "weight": 1
+    },
+    {
+      "id": "smuggler_stove_cook",
+      "kind": "cooking",
+      "tiers": [
+        "smuggler"
+      ],
+      "anchor_id": "tavern_stove",
+      "text": "With Cooking level 20 or higher, successfully cook a Raw Reedkip at the tavern stove after this directive becomes active. Burnt fish do not count.",
+      "target_id": "Reedkip",
+      "skill": "cooking",
+      "level": 20,
+      "item_name": "Reedkip",
+      "weight": 1
+    },
+    {
+      "id": "corsair_river_upper_catch",
+      "kind": "fishing",
+      "tiers": [
+        "corsair"
+      ],
+      "anchor_id": "river_upper",
+      "text": "With Fishing level 40 or higher, land a Raw Reedkip at the upper river fishing spot after this directive becomes active.",
+      "target_id": "Reedkip",
+      "skill": "fishing",
+      "level": 40,
+      "item_name": "Raw Reedkip",
+      "weight": 1
+    },
+    {
+      "id": "corsair_river_lower_catch",
+      "kind": "fishing",
+      "tiers": [
+        "corsair"
+      ],
+      "anchor_id": "river_lower",
+      "text": "With Fishing level 40 or higher, land a Raw Reedkip at the lower river fishing spot after this directive becomes active.",
+      "target_id": "Reedkip",
+      "skill": "fishing",
+      "level": 40,
+      "item_name": "Raw Reedkip",
+      "weight": 1
+    },
+    {
+      "id": "corsair_stove_cook",
+      "kind": "cooking",
+      "tiers": [
+        "corsair"
+      ],
+      "anchor_id": "tavern_stove",
+      "text": "With Cooking level 40 or higher, successfully cook a Raw Reedkip at the tavern stove after this directive becomes active. Burnt fish do not count.",
+      "target_id": "Reedkip",
+      "skill": "cooking",
+      "level": 40,
+      "item_name": "Reedkip",
+      "weight": 1
+    },
+    {
+      "id": "dread_captain_river_upper_catch",
+      "kind": "fishing",
+      "tiers": [
+        "dread_captain"
+      ],
+      "anchor_id": "river_upper",
+      "text": "With Fishing level 65 or higher, land a Raw Reedkip at the upper river fishing spot after this directive becomes active.",
+      "target_id": "Reedkip",
+      "skill": "fishing",
+      "level": 65,
+      "item_name": "Raw Reedkip",
+      "weight": 1
+    },
+    {
+      "id": "dread_captain_river_lower_catch",
+      "kind": "fishing",
+      "tiers": [
+        "dread_captain"
+      ],
+      "anchor_id": "river_lower",
+      "text": "With Fishing level 65 or higher, land a Raw Reedkip at the lower river fishing spot after this directive becomes active.",
+      "target_id": "Reedkip",
+      "skill": "fishing",
+      "level": 65,
+      "item_name": "Raw Reedkip",
+      "weight": 1
+    },
+    {
+      "id": "dread_captain_stove_cook",
+      "kind": "cooking",
+      "tiers": [
+        "dread_captain"
+      ],
+      "anchor_id": "tavern_stove",
+      "text": "With Cooking level 65 or higher, successfully cook a Raw Reedkip at the tavern stove after this directive becomes active. Burnt fish do not count.",
+      "target_id": "Reedkip",
+      "skill": "cooking",
+      "level": 65,
+      "item_name": "Reedkip",
+      "weight": 1
+    }
+  ],
+  "base_rewards": [
+    {
+      "item_name": "Feathers",
+      "min": 1,
+      "max": 6,
+      "weight": 4
+    },
+    {
+      "item_name": "Arrow Shafts",
+      "min": 1,
+      "max": 6,
+      "weight": 4
+    },
+    {
+      "item_name": "Bowstring",
+      "min": 1,
+      "max": 3,
+      "weight": 3
+    },
+    {
+      "item_name": "Bronze Ore",
+      "min": 1,
+      "max": 3,
+      "weight": 3
+    },
+    {
+      "item_name": "Bronze Ingot",
+      "min": 1,
+      "max": 2,
+      "weight": 3
+    },
+    {
+      "item_name": "Bronze Arrowheads",
+      "min": 1,
+      "max": 5,
+      "weight": 3
+    },
+    {
+      "item_name": "Iron Ore",
+      "min": 1,
+      "max": 2,
+      "weight": 2
+    },
+    {
+      "item_name": "Iron Ingot",
+      "min": 1,
+      "max": 2,
+      "weight": 2
+    },
+    {
+      "item_name": "Bronze Arrows",
+      "min": 1,
+      "max": 6,
+      "weight": 3
+    },
+    {
+      "item_name": "Iron Arrows",
+      "min": 1,
+      "max": 4,
+      "weight": 2
+    },
+    {
+      "item_name": "Low Grade Fish Food",
+      "min": 1,
+      "max": 4,
+      "weight": 4
+    },
+    {
+      "item_name": "Medium Grade Fish Food",
+      "min": 1,
+      "max": 3,
+      "weight": 2
+    },
+    {
+      "item_name": "High Grade Fish Food",
+      "min": 1,
+      "max": 2,
+      "weight": 1
+    }
+  ],
+  "acquisition": {
+    "fishing_chance": 0.002,
+    "monster_chance": 0.002
+  },
+  "deferred": [
+    {
+      "id": "sunfall_blade",
+      "name": "Sunfall, the King's Blade",
+      "category": "mega_weapon",
+      "enabled": false,
+      "reason": "Approved art and a cosmetic variant at the existing Runite/Starforged power level are not installed."
+    },
+    {
+      "id": "stormwake_bow",
+      "name": "Stormwake Greatbow",
+      "category": "mega_weapon",
+      "enabled": false,
+      "reason": "Approved art and a cosmetic variant at the existing Runite/Starforged power level are not installed."
+    },
+    {
+      "id": "last_star_staff",
+      "name": "Staff of the Last Star",
+      "category": "mega_weapon",
+      "enabled": false,
+      "reason": "Approved art and a cosmetic variant at the existing Runite/Starforged power level are not installed."
+    },
+    {
+      "id": "wolf_pendant",
+      "name": "Pendant of the Wolf",
+      "category": "cosmetic_shapeshift",
+      "enabled": false,
+      "reason": "Approved art and cosmetic shapeshift renderer are not installed. No combat or movement bonuses."
+    },
+    {
+      "id": "moonfang_pendant",
+      "name": "Pendant of the Moonfang",
+      "category": "mega_cosmetic_shapeshift",
+      "enabled": false,
+      "reason": "Approved art and cosmetic shapeshift renderer are not installed. No combat or movement bonuses."
+    },
+    {
+      "id": "slime_pendant",
+      "name": "Pendant of the Slime",
+      "category": "candidate_cosmetic_shapeshift",
+      "enabled": false,
+      "reason": "Approved art and cosmetic shapeshift renderer are not installed. No combat or movement bonuses."
+    },
+    {
+      "id": "titan_pendant",
+      "name": "Pendant of the Golem Titan",
+      "category": "candidate_cosmetic_shapeshift",
+      "enabled": false,
+      "reason": "Approved art and cosmetic shapeshift renderer are not installed. No combat or movement bonuses."
+    },
+    {
+      "id": "balm",
+      "name": "Salt-Saint's Balm",
+      "category": "consumable",
+      "enabled": false,
+      "reason": "No approved art or consumable mechanic is installed."
+    },
+    {
+      "id": "blackflame",
+      "name": "Blackflame Resin",
+      "category": "resin",
+      "enabled": false,
+      "reason": "No approved art or resin mechanic is installed."
+    },
+    {
+      "id": "thornwake",
+      "name": "Thornwake Resin",
+      "category": "candidate_resin",
+      "enabled": false,
+      "reason": "Candidate only; no approved art or mechanic is installed."
+    },
+    {
+      "id": "moonlit_bait",
+      "name": "Moonlit Bait",
+      "category": "bait",
+      "enabled": false,
+      "reason": "No approved art, catalog item, catch pool or bait mechanic is installed."
+    },
+    {
+      "id": "waystone",
+      "name": "Waystone Tablet",
+      "category": "candidate_utility",
+      "enabled": false,
+      "reason": "Candidate only; no approved art or utility mechanic is installed."
+    },
+    {
+      "id": "combat_directives",
+      "name": "Combat directives",
+      "category": "directive",
+      "enabled": false,
+      "reason": "Target-specific kill events require verified encounter eligibility before enabling authored combat templates."
+    },
+    {
+      "id": "equipment_directives",
+      "name": "Equipment directives",
+      "category": "directive",
+      "enabled": false,
+      "reason": "Await verified obtainable gear requirements and matching authored action hooks."
+    },
+    {
+      "id": "crownless_helm",
+      "name": "Crownless Helm",
+      "category": "mega_gear",
+      "enabled": false,
+      "reason": "Approved original art, catalog definition and mega-tier balance are not installed."
+    },
+    {
+      "id": "crownless_platebody",
+      "name": "Crownless Platebody",
+      "category": "mega_gear",
+      "enabled": false,
+      "reason": "Approved original art, catalog definition and mega-tier balance are not installed."
+    },
+    {
+      "id": "crownless_platelegs",
+      "name": "Crownless Platelegs",
+      "category": "mega_gear",
+      "enabled": false,
+      "reason": "Approved original art, catalog definition and mega-tier balance are not installed."
+    },
+    {
+      "id": "crownless_tricorn",
+      "name": "Crownless Tricorn",
+      "category": "mega_gear",
+      "enabled": false,
+      "reason": "Approved original art, catalog definition and mega-tier balance are not installed."
+    },
+    {
+      "id": "crownless_longcoat",
+      "name": "Crownless Longcoat",
+      "category": "mega_gear",
+      "enabled": false,
+      "reason": "Approved original art, catalog definition and mega-tier balance are not installed."
+    },
+    {
+      "id": "crownless_breeches",
+      "name": "Crownless Breeches",
+      "category": "mega_gear",
+      "enabled": false,
+      "reason": "Approved original art, catalog definition and mega-tier balance are not installed."
+    },
+    {
+      "id": "crownless_cowl",
+      "name": "Crownless Cowl",
+      "category": "mega_gear",
+      "enabled": false,
+      "reason": "Approved original art, catalog definition and mega-tier balance are not installed."
+    },
+    {
+      "id": "crownless_robe",
+      "name": "Crownless Robe",
+      "category": "mega_gear",
+      "enabled": false,
+      "reason": "Approved original art, catalog definition and mega-tier balance are not installed."
+    },
+    {
+      "id": "crownless_leg_wraps",
+      "name": "Crownless Leg Wraps",
+      "category": "mega_gear",
+      "enabled": false,
+      "reason": "Approved original art, catalog definition and mega-tier balance are not installed."
+    }
+  ],
+  "enabled": true,
+  "fixture_notice": "SYNTHETIC VALIDATION FIXTURE ONLY. No locations, prose, quantities or probabilities in this fixture are approved shipping content."
+}

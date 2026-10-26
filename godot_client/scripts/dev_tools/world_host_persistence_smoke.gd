@@ -1,5 +1,5 @@
 extends Node
-## Isolated regression coverage: no account requests, world listeners or live saves.
+## Isolated coverage: scripted account replies, ephemeral loopback transport, no live saves.
 
 class TestHost extends "res://network/world_host.gd":
 	func _ready() -> void:
@@ -65,6 +65,7 @@ func _run() -> void:
 	await heartbeat_retries_pending_release_and_finishes_logout()
 	await command_intents_during_normal_save()
 	await failed_pending_rejects_new_intents()
+	await transport_projects_acknowledged_orders()
 	print("[World host persistence] %d checks, %d failures" % [checks, failures])
 	get_tree().quit(0 if failures == 0 else 1)
 
@@ -228,5 +229,70 @@ func failed_pending_rejects_new_intents() -> void:
 	f.region.advance(0.1)
 	check(f.session.player.get_position().is_equal_approx(before), "An in-flight final release rejects gameplay input")
 	f.session.saving = false
+	f.host.queue_free()
+	await get_tree().process_frame
+
+func transport_projects_acknowledged_orders() -> void:
+	# Use a separate in-process client multiplayer root: real joined/snapshot RPCs,
+	# scripted account responses, no account service or player storage.
+	var f := fixture(1010)
+	f.host.sessions.clear()
+	f.region.remove_player("stable-character")
+	f.session.player.dead_man_orders = load("res://scripts/dev_tools/character_persistence_smoke.gd").private_orders_fixture("stable-character")
+	var state := CharacterCodec.encode(f.session.player, "outskirts")
+	f.http.replies.assign([{"ok": true, "state": state, "username": "PersistenceTest",
+		"character_id": "stable-character", "lease_token": "test-lease", "revision": 4},
+		{"ok": true, "revision": 5}])
+	var port := 36000 + int(Crypto.new().generate_random_bytes(2).decode_u16(0)) % 20000
+	var error: Error = Network.host(port, 2)
+	check(error == OK, "Isolated packet test binds its local test transport")
+	if error != OK:
+		f.host.queue_free()
+		return
+	Network.join_requested.connect(f.host._join)
+	var root := Node.new()
+	root.name = "OrdersTestClient"
+	add_child(root)
+	var api := SceneMultiplayer.new()
+	get_tree().set_multiplayer(api, root.get_path())
+	var client: Node = load("res://autoload/network_manager.gd").new()
+	client.name = "Network"
+	client.auto_scene = false
+	client.mode = client.Mode.CLIENT
+	client.world_id = Network.world_id
+	client._ticket = "isolated-orders-ticket"
+	root.add_child(client)
+	var peer := ENetMultiplayerPeer.new()
+	error = peer.create_client("127.0.0.1", port, 3)
+	check(error == OK, "Isolated projection client starts")
+	api.multiplayer_peer = peer
+	var deadline := Time.get_ticks_msec() + 3000
+	while not client.authenticated and Time.get_ticks_msec() < deadline:
+		await get_tree().process_frame
+	check(client.authenticated, "Joined result reaches the real client RPC consumer")
+	if client.authenticated:
+		check(not client.saved_state.has("dead_man_orders") and client.saved_state.has("orders_view"), "Actual joined packet omits the private order book")
+		check(client.saved_state.get("public_projection") == true, "Joined packet identifies its public projection")
+		check(not JSON.stringify(client.saved_state).contains("SECRET_"), "Actual joined packet hides future directives, answers and cache")
+		var session: Dictionary = f.host.sessions.values()[0]
+		# Live changes are deliberately not acknowledged or persisted yet.
+		session.player.dead_man_orders.generations.deckhand = 17
+		session.saving = true
+		f.host._service_sessions()
+		deadline = Time.get_ticks_msec() + 3000
+		while int(client.latest_snapshot.get("snapshot_id", -1)) < 0 and Time.get_ticks_msec() < deadline:
+			await get_tree().process_frame
+		var sent: Dictionary = client.latest_snapshot.get("state", {})
+		check(not sent.has("dead_man_orders") and sent.has("orders_view"), "Actual owner snapshot omits the private order book")
+		check(int(sent.get("orders_view", {}).get("generations", {}).get("deckhand", -1)) == 1, "Snapshots project acknowledged state rather than uncommitted order changes")
+		check(not JSON.stringify(sent).contains("SECRET_"), "Actual owner snapshot hides future directives, answers and cache")
+		check(session.state.dead_man_orders.generations.deckhand == 1, "Projection does not mutate acknowledged state")
+	Network.join_requested.disconnect(f.host._join)
+	peer.close()
+	Network.multiplayer.multiplayer_peer.close()
+	Network.multiplayer.multiplayer_peer = null
+	Network.mode = Network.Mode.OFFLINE
+	get_tree().set_multiplayer(null, root.get_path())
+	root.queue_free()
 	f.host.queue_free()
 	await get_tree().process_frame
