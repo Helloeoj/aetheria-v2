@@ -4,8 +4,8 @@
   "provider": "PixelLab",
   "method": "Exact mineral-palette variants of approved PixelLab AI art using PixelLab's free pixel editor. No new AI generation succeeded because account has 0 remaining generations/credits.",
   "base_approval": "The user approved this artwork in its initial bronze/tin naming, then clarified on2026-10-26 that bronze is made from Copper+Tin. The warm mineral node is now Copper; its approved pixels are unchanged.",
-  "new_art_approval": "pending",
-  "runtime_placement": "not installed",
+  "new_art_approval": "Selected by user for canonical reusable prop library on2026-10-26.",
+  "runtime_placement": "Installed as scene-tile library; no placements in existing world scenes.",
   "source_full": "copper-ore-full-south.png",
   "source_full_object_id": "f4ea7130-b15b-4d71-b681-40c1a9fead2e",
   "source_workbench_image_id": "81745f82-12f2-41fb-9d07-3260bd69b43d",
@@ -465,5 +465,7 @@
   },
   "naming_note": "Original tool edit reasons say bronze because that was the approved source label at editing time; later user correction reclassified the unchanged host-rock artwork as Copper. Exact executed color-map operations are retained.",
   "material_notes": "Artwork naming only: Bronze is smelted from Copper+Tin and is not mined. Blackstone is the user's catalyst concept for Blacksteel. These notes do not authorize or implement smelting recipes, item definitions, mining mechanics, progression, drops, interaction behavior or placements.",
-  "scope_correction": "Any exploratory gameplay edits made during this task were removed after the user clarified sprites-only scope. Only source sprites, art documentation and the requested nearest-filter rendering default are retained."
+  "scope_correction": "Any exploratory gameplay edits made during this task were removed after the user clarified sprites-only scope. Only source sprites, art documentation and the requested nearest-filter rendering default are retained.",
+  "library_manifest": "godot_client/Assets/MapTiles/OreNodes/manifest.json",
+  "subsequent_authorization": "Explicit user request adds visual map-library props with physical bases; mining skill, recipes, items, drops and progression remain unchanged."
 }

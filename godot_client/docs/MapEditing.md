@@ -56,6 +56,14 @@ the character is behind their trunk; the character draws in front after passing
 below it. Keep object and actor Z indices at 0 so they remain on the same sorting
 plane. The object scene's `Footprint` node provides its actual sorting position.
 
+### Place ore nodes
+
+For ore nodes, see [Place ore nodes](OreNodes.md). The existing **Rocks** and
+**Props** layers now include source **2 — Ore Nodes - Full and Depleted**: twenty
+whole-object stamps with matching anchors and physical bases. Choose the named
+ore and paint it; do not assemble substitute rock clusters. Start with three
+32-pixel cells between node centers, or four cells beside walking routes.
+
 ## Edit collision
 
 Open an object's scene under

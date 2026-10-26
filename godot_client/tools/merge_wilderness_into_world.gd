@@ -11,6 +11,8 @@ const WORLD_ORIGIN := Vector2(-1536, -3072)
 const WORLD_SIZE := Vector2(3072, 5728)
 const TERRAIN_ALIASES := {"Paths": "PathsAndQuays", "Roads": "PathsAndQuays"}
 const ReviewInstaller := preload("res://tools/apply_review_sections.gd")
+const ORE_SCENE_SOURCE := "res://Assets/Tilesets/OreNodeSceneTiles.tres"
+const ORE_SOURCE_ID := 2
 
 var _world: Node2D
 var _wilderness: Node2D
@@ -136,6 +138,9 @@ func _merge() -> bool:
 	var review_result: Dictionary = ReviewInstaller.apply(_world)
 	if not bool(review_result.get("ok", false)):
 		return _error("Cannot retain reviewed terrain: " + str(review_result.get("errors", [])))
+	# Register reusable ore props after the original/wilderness sources, without placing cells.
+	if not ensure_ore_source(_object_set):
+		return _error("Cannot retain the ore prop palette at source 2; check its resource and existing source IDs.")
 	# Save and reload once so the packed world references external TileSet files.
 	for record in _world_sets:
 		var tileset := record["tileset"] as TileSet
@@ -158,6 +163,36 @@ func _merge() -> bool:
 		return _error("Cannot save the unified world: " + error_string(save_error))
 	print("[ValtheirisWorld] Saved %s. Preserved %d existing cells; appended %d wilderness cells across %d total layers, %d new layers, %d external world TileSets." % [OUTPUT_SCENE, _existing_cells, _appended_cells, _world.get_child_count(), _new_layers, _world_sets.size()])
 	return true
+
+
+static func ensure_ore_source(tileset: TileSet, source_path: String = ORE_SCENE_SOURCE) -> bool:
+	if tileset == null or tileset.tile_size != Vector2i(32, 32):
+		return false
+	if source_path.is_empty() or not ResourceLoader.exists(source_path):
+		return false
+	var ore_source := ResourceLoader.load(source_path) as TileSetScenesCollectionSource
+	if ore_source == null or ore_source.get_scene_tiles_count() != 20:
+		return false
+	for tile_id in 20:
+		if not ore_source.has_scene_tile_id(tile_id) or ore_source.get_scene_tile_scene(tile_id) == null:
+			return false
+	if tileset.has_source(ORE_SOURCE_ID):
+		var existing := tileset.get_source(ORE_SOURCE_ID) as TileSetScenesCollectionSource
+		if existing == null or existing.get_scene_tiles_count() != ore_source.get_scene_tiles_count():
+			return false
+		for tile_id in 20:
+			if not existing.has_scene_tile_id(tile_id):
+				return false
+			var scene := existing.get_scene_tile_scene(tile_id)
+			if scene == null or scene.resource_path != ore_source.get_scene_tile_scene(tile_id).resource_path:
+				return false
+		return true
+	# A source belongs to one TileSet; share its PackedScenes without stealing the palette source.
+	var installed := ore_source.duplicate(false) as TileSetScenesCollectionSource
+	if installed == null:
+		return false
+	tileset.add_source(installed, ORE_SOURCE_ID)
+	return tileset.has_source(ORE_SOURCE_ID) and tileset.get_source(ORE_SOURCE_ID) == installed
 
 
 func _append_sources(destination: TileSet, incoming: TileSet) -> Dictionary:

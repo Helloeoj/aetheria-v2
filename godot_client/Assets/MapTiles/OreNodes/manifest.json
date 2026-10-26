@@ -1,0 +1,938 @@
+{
+  "version": 1,
+  "tile_size": [
+    32,
+    32
+  ],
+  "native_canvas_size": [
+    96,
+    96
+  ],
+  "native_scale": 1,
+  "world_source_id": 2,
+  "standalone_source_id": 0,
+  "scene_collection": "res://Assets/Tilesets/OreNodeSceneTiles.tres",
+  "world_tileset": "res://Assets/Tilesets/WorldMapObjects.tres",
+  "standalone_tileset": "res://Assets/Tilesets/OreNodes.tres",
+  "spacing": {
+    "default": 96,
+    "wide": 128
+  },
+  "spacing_guide": "Place node roots three 32px cells apart for compact clusters and four cells apart along busy routes. Preserve 96px source canvases at native scale.",
+  "collision_coordinate_space": "footprint_local",
+  "collision_note": "Two convex 8-point physical-base polygons per prop. Footprint and root origins coincide. Full/depleted states share identical anchors and collision.",
+  "anchor_note": "Anchor is the image-space foot/sort origin; Visual position is its negative. Native image pixels are not resized to the 32px map grid.",
+  "texture_import": {
+    "compression": "lossless",
+    "mipmaps": false,
+    "filter": "nearest"
+  },
+  "source_art_directory": "art_sources/ore-nodes",
+  "source_status": "Canonical user-selected prop family, installed for reusable map placement. Tin revised to the same shared shape at the user request. No existing world nodes placed or changed.",
+  "entries": [
+    {
+      "id": "copper",
+      "name": "Copper",
+      "anchor": [
+        48,
+        72
+      ],
+      "collision_polygons": [
+        [
+          [
+            8.0,
+            -15.0
+          ],
+          [
+            2.728,
+            -7.222
+          ],
+          [
+            -10.0,
+            -4.0
+          ],
+          [
+            -22.728,
+            -7.222
+          ],
+          [
+            -28.0,
+            -15.0
+          ],
+          [
+            -22.728,
+            -22.778
+          ],
+          [
+            -10.0,
+            -26.0
+          ],
+          [
+            2.728,
+            -22.778
+          ]
+        ],
+        [
+          [
+            28.0,
+            -4.0
+          ],
+          [
+            25.071,
+            1.657
+          ],
+          [
+            18.0,
+            4.0
+          ],
+          [
+            10.929,
+            1.657
+          ],
+          [
+            8.0,
+            -4.0
+          ],
+          [
+            10.929,
+            -9.657
+          ],
+          [
+            18.0,
+            -12.0
+          ],
+          [
+            25.071,
+            -9.657
+          ]
+        ]
+      ],
+      "full": {
+        "scene": "res://scenes/MapProps/OreNodes/CopperOreFull.tscn",
+        "texture": "res://Assets/MapTiles/OreNodes/copper-ore-full-south.png",
+        "tile_id": 0,
+        "source_sha256": "7b49208acb93d41a5fcc1a57c4f8c2a2d8ce6eef6ac968608e4e7346074e145e"
+      },
+      "depleted": {
+        "scene": "res://scenes/MapProps/OreNodes/CopperOreDepleted.tscn",
+        "texture": "res://Assets/MapTiles/OreNodes/copper-ore-depleted-south.png",
+        "tile_id": 1,
+        "source_sha256": "5297617356958530cf04bddd5186174aa629063e142ad080832bbaad215f0e08"
+      }
+    },
+    {
+      "id": "tin",
+      "name": "Tin",
+      "anchor": [
+        48,
+        72
+      ],
+      "collision_polygons": [
+        [
+          [
+            8.0,
+            -15.0
+          ],
+          [
+            2.728,
+            -7.222
+          ],
+          [
+            -10.0,
+            -4.0
+          ],
+          [
+            -22.728,
+            -7.222
+          ],
+          [
+            -28.0,
+            -15.0
+          ],
+          [
+            -22.728,
+            -22.778
+          ],
+          [
+            -10.0,
+            -26.0
+          ],
+          [
+            2.728,
+            -22.778
+          ]
+        ],
+        [
+          [
+            28.0,
+            -4.0
+          ],
+          [
+            25.071,
+            1.657
+          ],
+          [
+            18.0,
+            4.0
+          ],
+          [
+            10.929,
+            1.657
+          ],
+          [
+            8.0,
+            -4.0
+          ],
+          [
+            10.929,
+            -9.657
+          ],
+          [
+            18.0,
+            -12.0
+          ],
+          [
+            25.071,
+            -9.657
+          ]
+        ]
+      ],
+      "full": {
+        "scene": "res://scenes/MapProps/OreNodes/TinOreFull.tscn",
+        "texture": "res://Assets/MapTiles/OreNodes/tin-ore-full-south.png",
+        "tile_id": 2,
+        "source_sha256": "baa502b73c899a67c9d82a8f999b7bcd9a9a84cea635b8020ff4e623b8812f2b"
+      },
+      "depleted": {
+        "scene": "res://scenes/MapProps/OreNodes/TinOreDepleted.tscn",
+        "texture": "res://Assets/MapTiles/OreNodes/tin-ore-depleted-south.png",
+        "tile_id": 3,
+        "source_sha256": "5297617356958530cf04bddd5186174aa629063e142ad080832bbaad215f0e08"
+      }
+    },
+    {
+      "id": "iron",
+      "name": "Iron",
+      "anchor": [
+        48,
+        72
+      ],
+      "collision_polygons": [
+        [
+          [
+            8.0,
+            -15.0
+          ],
+          [
+            2.728,
+            -7.222
+          ],
+          [
+            -10.0,
+            -4.0
+          ],
+          [
+            -22.728,
+            -7.222
+          ],
+          [
+            -28.0,
+            -15.0
+          ],
+          [
+            -22.728,
+            -22.778
+          ],
+          [
+            -10.0,
+            -26.0
+          ],
+          [
+            2.728,
+            -22.778
+          ]
+        ],
+        [
+          [
+            28.0,
+            -4.0
+          ],
+          [
+            25.071,
+            1.657
+          ],
+          [
+            18.0,
+            4.0
+          ],
+          [
+            10.929,
+            1.657
+          ],
+          [
+            8.0,
+            -4.0
+          ],
+          [
+            10.929,
+            -9.657
+          ],
+          [
+            18.0,
+            -12.0
+          ],
+          [
+            25.071,
+            -9.657
+          ]
+        ]
+      ],
+      "full": {
+        "scene": "res://scenes/MapProps/OreNodes/IronOreFull.tscn",
+        "texture": "res://Assets/MapTiles/OreNodes/iron-ore-full-south.png",
+        "tile_id": 4,
+        "source_sha256": "4c40db0026991852ec232f9504caccfdc2292ea7bdb028583793120400e2c1b1"
+      },
+      "depleted": {
+        "scene": "res://scenes/MapProps/OreNodes/IronOreDepleted.tscn",
+        "texture": "res://Assets/MapTiles/OreNodes/iron-ore-depleted-south.png",
+        "tile_id": 5,
+        "source_sha256": "5297617356958530cf04bddd5186174aa629063e142ad080832bbaad215f0e08"
+      }
+    },
+    {
+      "id": "coal",
+      "name": "Coal",
+      "anchor": [
+        48,
+        72
+      ],
+      "collision_polygons": [
+        [
+          [
+            8.0,
+            -15.0
+          ],
+          [
+            2.728,
+            -7.222
+          ],
+          [
+            -10.0,
+            -4.0
+          ],
+          [
+            -22.728,
+            -7.222
+          ],
+          [
+            -28.0,
+            -15.0
+          ],
+          [
+            -22.728,
+            -22.778
+          ],
+          [
+            -10.0,
+            -26.0
+          ],
+          [
+            2.728,
+            -22.778
+          ]
+        ],
+        [
+          [
+            28.0,
+            -4.0
+          ],
+          [
+            25.071,
+            1.657
+          ],
+          [
+            18.0,
+            4.0
+          ],
+          [
+            10.929,
+            1.657
+          ],
+          [
+            8.0,
+            -4.0
+          ],
+          [
+            10.929,
+            -9.657
+          ],
+          [
+            18.0,
+            -12.0
+          ],
+          [
+            25.071,
+            -9.657
+          ]
+        ]
+      ],
+      "full": {
+        "scene": "res://scenes/MapProps/OreNodes/CoalFull.tscn",
+        "texture": "res://Assets/MapTiles/OreNodes/coal-full-south.png",
+        "tile_id": 6,
+        "source_sha256": "d2c81bae1e25f75e7c26da785a5cc7d734efa2d314d01c37d7a671fa0ff18396"
+      },
+      "depleted": {
+        "scene": "res://scenes/MapProps/OreNodes/CoalDepleted.tscn",
+        "texture": "res://Assets/MapTiles/OreNodes/coal-depleted-south.png",
+        "tile_id": 7,
+        "source_sha256": "5297617356958530cf04bddd5186174aa629063e142ad080832bbaad215f0e08"
+      }
+    },
+    {
+      "id": "silver",
+      "name": "Silver",
+      "anchor": [
+        48,
+        72
+      ],
+      "collision_polygons": [
+        [
+          [
+            8.0,
+            -15.0
+          ],
+          [
+            2.728,
+            -7.222
+          ],
+          [
+            -10.0,
+            -4.0
+          ],
+          [
+            -22.728,
+            -7.222
+          ],
+          [
+            -28.0,
+            -15.0
+          ],
+          [
+            -22.728,
+            -22.778
+          ],
+          [
+            -10.0,
+            -26.0
+          ],
+          [
+            2.728,
+            -22.778
+          ]
+        ],
+        [
+          [
+            28.0,
+            -4.0
+          ],
+          [
+            25.071,
+            1.657
+          ],
+          [
+            18.0,
+            4.0
+          ],
+          [
+            10.929,
+            1.657
+          ],
+          [
+            8.0,
+            -4.0
+          ],
+          [
+            10.929,
+            -9.657
+          ],
+          [
+            18.0,
+            -12.0
+          ],
+          [
+            25.071,
+            -9.657
+          ]
+        ]
+      ],
+      "full": {
+        "scene": "res://scenes/MapProps/OreNodes/SilverOreFull.tscn",
+        "texture": "res://Assets/MapTiles/OreNodes/silver-ore-full-south.png",
+        "tile_id": 8,
+        "source_sha256": "a9fe99fa94d229abcf4d4e51f591e9cf1adefc3d3f0b59a7f0a8e3197b0c0d79"
+      },
+      "depleted": {
+        "scene": "res://scenes/MapProps/OreNodes/SilverOreDepleted.tscn",
+        "texture": "res://Assets/MapTiles/OreNodes/silver-ore-depleted-south.png",
+        "tile_id": 9,
+        "source_sha256": "5297617356958530cf04bddd5186174aa629063e142ad080832bbaad215f0e08"
+      }
+    },
+    {
+      "id": "gold",
+      "name": "Gold",
+      "anchor": [
+        48,
+        72
+      ],
+      "collision_polygons": [
+        [
+          [
+            8.0,
+            -15.0
+          ],
+          [
+            2.728,
+            -7.222
+          ],
+          [
+            -10.0,
+            -4.0
+          ],
+          [
+            -22.728,
+            -7.222
+          ],
+          [
+            -28.0,
+            -15.0
+          ],
+          [
+            -22.728,
+            -22.778
+          ],
+          [
+            -10.0,
+            -26.0
+          ],
+          [
+            2.728,
+            -22.778
+          ]
+        ],
+        [
+          [
+            28.0,
+            -4.0
+          ],
+          [
+            25.071,
+            1.657
+          ],
+          [
+            18.0,
+            4.0
+          ],
+          [
+            10.929,
+            1.657
+          ],
+          [
+            8.0,
+            -4.0
+          ],
+          [
+            10.929,
+            -9.657
+          ],
+          [
+            18.0,
+            -12.0
+          ],
+          [
+            25.071,
+            -9.657
+          ]
+        ]
+      ],
+      "full": {
+        "scene": "res://scenes/MapProps/OreNodes/GoldOreFull.tscn",
+        "texture": "res://Assets/MapTiles/OreNodes/gold-ore-full-south.png",
+        "tile_id": 10,
+        "source_sha256": "39f0b27dd545aeb7274d19abcc1211e54f299fa3d69d2dce4338d7d20d1a921d"
+      },
+      "depleted": {
+        "scene": "res://scenes/MapProps/OreNodes/GoldOreDepleted.tscn",
+        "texture": "res://Assets/MapTiles/OreNodes/gold-ore-depleted-south.png",
+        "tile_id": 11,
+        "source_sha256": "5297617356958530cf04bddd5186174aa629063e142ad080832bbaad215f0e08"
+      }
+    },
+    {
+      "id": "mithril",
+      "name": "Mithril",
+      "anchor": [
+        48,
+        72
+      ],
+      "collision_polygons": [
+        [
+          [
+            8.0,
+            -15.0
+          ],
+          [
+            2.728,
+            -7.222
+          ],
+          [
+            -10.0,
+            -4.0
+          ],
+          [
+            -22.728,
+            -7.222
+          ],
+          [
+            -28.0,
+            -15.0
+          ],
+          [
+            -22.728,
+            -22.778
+          ],
+          [
+            -10.0,
+            -26.0
+          ],
+          [
+            2.728,
+            -22.778
+          ]
+        ],
+        [
+          [
+            28.0,
+            -4.0
+          ],
+          [
+            25.071,
+            1.657
+          ],
+          [
+            18.0,
+            4.0
+          ],
+          [
+            10.929,
+            1.657
+          ],
+          [
+            8.0,
+            -4.0
+          ],
+          [
+            10.929,
+            -9.657
+          ],
+          [
+            18.0,
+            -12.0
+          ],
+          [
+            25.071,
+            -9.657
+          ]
+        ]
+      ],
+      "full": {
+        "scene": "res://scenes/MapProps/OreNodes/MithrilOreFull.tscn",
+        "texture": "res://Assets/MapTiles/OreNodes/mithril-ore-full-south.png",
+        "tile_id": 12,
+        "source_sha256": "7bc3ecd1aaf1ab6875b2e84958b9b13ca485ddfb8de2a63b27916f37b8abb995"
+      },
+      "depleted": {
+        "scene": "res://scenes/MapProps/OreNodes/MithrilOreDepleted.tscn",
+        "texture": "res://Assets/MapTiles/OreNodes/mithril-ore-depleted-south.png",
+        "tile_id": 13,
+        "source_sha256": "5297617356958530cf04bddd5186174aa629063e142ad080832bbaad215f0e08"
+      }
+    },
+    {
+      "id": "adamantite",
+      "name": "Adamantite",
+      "anchor": [
+        48,
+        72
+      ],
+      "collision_polygons": [
+        [
+          [
+            8.0,
+            -15.0
+          ],
+          [
+            2.728,
+            -7.222
+          ],
+          [
+            -10.0,
+            -4.0
+          ],
+          [
+            -22.728,
+            -7.222
+          ],
+          [
+            -28.0,
+            -15.0
+          ],
+          [
+            -22.728,
+            -22.778
+          ],
+          [
+            -10.0,
+            -26.0
+          ],
+          [
+            2.728,
+            -22.778
+          ]
+        ],
+        [
+          [
+            28.0,
+            -4.0
+          ],
+          [
+            25.071,
+            1.657
+          ],
+          [
+            18.0,
+            4.0
+          ],
+          [
+            10.929,
+            1.657
+          ],
+          [
+            8.0,
+            -4.0
+          ],
+          [
+            10.929,
+            -9.657
+          ],
+          [
+            18.0,
+            -12.0
+          ],
+          [
+            25.071,
+            -9.657
+          ]
+        ]
+      ],
+      "full": {
+        "scene": "res://scenes/MapProps/OreNodes/AdamantiteOreFull.tscn",
+        "texture": "res://Assets/MapTiles/OreNodes/adamantite-ore-full-south.png",
+        "tile_id": 14,
+        "source_sha256": "73d6004696943bd654d9b5c50b3b22b954a9312dd95746c3899dc68f77af93fb"
+      },
+      "depleted": {
+        "scene": "res://scenes/MapProps/OreNodes/AdamantiteOreDepleted.tscn",
+        "texture": "res://Assets/MapTiles/OreNodes/adamantite-ore-depleted-south.png",
+        "tile_id": 15,
+        "source_sha256": "5297617356958530cf04bddd5186174aa629063e142ad080832bbaad215f0e08"
+      }
+    },
+    {
+      "id": "runite",
+      "name": "Runite",
+      "anchor": [
+        48,
+        72
+      ],
+      "collision_polygons": [
+        [
+          [
+            8.0,
+            -15.0
+          ],
+          [
+            2.728,
+            -7.222
+          ],
+          [
+            -10.0,
+            -4.0
+          ],
+          [
+            -22.728,
+            -7.222
+          ],
+          [
+            -28.0,
+            -15.0
+          ],
+          [
+            -22.728,
+            -22.778
+          ],
+          [
+            -10.0,
+            -26.0
+          ],
+          [
+            2.728,
+            -22.778
+          ]
+        ],
+        [
+          [
+            28.0,
+            -4.0
+          ],
+          [
+            25.071,
+            1.657
+          ],
+          [
+            18.0,
+            4.0
+          ],
+          [
+            10.929,
+            1.657
+          ],
+          [
+            8.0,
+            -4.0
+          ],
+          [
+            10.929,
+            -9.657
+          ],
+          [
+            18.0,
+            -12.0
+          ],
+          [
+            25.071,
+            -9.657
+          ]
+        ]
+      ],
+      "full": {
+        "scene": "res://scenes/MapProps/OreNodes/RuniteOreFull.tscn",
+        "texture": "res://Assets/MapTiles/OreNodes/runite-ore-full-south.png",
+        "tile_id": 16,
+        "source_sha256": "d7c7a44cad2431df4ea8e365312d5c9e96465ec63f3cc2cf8b4df7589776f4fa"
+      },
+      "depleted": {
+        "scene": "res://scenes/MapProps/OreNodes/RuniteOreDepleted.tscn",
+        "texture": "res://Assets/MapTiles/OreNodes/runite-ore-depleted-south.png",
+        "tile_id": 17,
+        "source_sha256": "5297617356958530cf04bddd5186174aa629063e142ad080832bbaad215f0e08"
+      }
+    },
+    {
+      "id": "blackstone",
+      "name": "Blackstone",
+      "anchor": [
+        48,
+        72
+      ],
+      "collision_polygons": [
+        [
+          [
+            8.0,
+            -15.0
+          ],
+          [
+            2.728,
+            -7.222
+          ],
+          [
+            -10.0,
+            -4.0
+          ],
+          [
+            -22.728,
+            -7.222
+          ],
+          [
+            -28.0,
+            -15.0
+          ],
+          [
+            -22.728,
+            -22.778
+          ],
+          [
+            -10.0,
+            -26.0
+          ],
+          [
+            2.728,
+            -22.778
+          ]
+        ],
+        [
+          [
+            28.0,
+            -4.0
+          ],
+          [
+            25.071,
+            1.657
+          ],
+          [
+            18.0,
+            4.0
+          ],
+          [
+            10.929,
+            1.657
+          ],
+          [
+            8.0,
+            -4.0
+          ],
+          [
+            10.929,
+            -9.657
+          ],
+          [
+            18.0,
+            -12.0
+          ],
+          [
+            25.071,
+            -9.657
+          ]
+        ]
+      ],
+      "full": {
+        "scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
+        "texture": "res://Assets/MapTiles/OreNodes/blackstone-full-south.png",
+        "tile_id": 18,
+        "source_sha256": "1521785a19c4f25ac610399a444d5bd635da9b5ea083d3c5bc32ac971639df80"
+      },
+      "depleted": {
+        "scene": "res://scenes/MapProps/OreNodes/BlackstoneDepleted.tscn",
+        "texture": "res://Assets/MapTiles/OreNodes/blackstone-depleted-south.png",
+        "tile_id": 19,
+        "source_sha256": "5297617356958530cf04bddd5186174aa629063e142ad080832bbaad215f0e08"
+      }
+    }
+  ],
+  "shared_shape": "All ten ores use the same approved host rock and depleted sprite. Only mineral streak colors differ.",
+  "future_reuse_policy": "Whenever an ore node is requested, reuse this family and its named scene. Do not paint random substitute rock clusters or regenerate the design without an explicit request.",
+  "placement_guide": "res://docs/OreNodes.md",
+  "gameplay_scope": "Static visual props and physical bases only. No mining rules, drops, progression, interactions, item definitions or recipes."
+}

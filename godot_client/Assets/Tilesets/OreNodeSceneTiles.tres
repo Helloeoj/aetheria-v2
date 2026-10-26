@@ -1,0 +1,45 @@
+[gd_resource type="TileSetScenesCollectionSource" load_steps=21 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/MapProps/OreNodes/CopperOreFull.tscn" id="1_scene"]
+[ext_resource type="PackedScene" path="res://scenes/MapProps/OreNodes/CopperOreDepleted.tscn" id="2_scene"]
+[ext_resource type="PackedScene" path="res://scenes/MapProps/OreNodes/TinOreFull.tscn" id="3_scene"]
+[ext_resource type="PackedScene" path="res://scenes/MapProps/OreNodes/TinOreDepleted.tscn" id="4_scene"]
+[ext_resource type="PackedScene" path="res://scenes/MapProps/OreNodes/IronOreFull.tscn" id="5_scene"]
+[ext_resource type="PackedScene" path="res://scenes/MapProps/OreNodes/IronOreDepleted.tscn" id="6_scene"]
+[ext_resource type="PackedScene" path="res://scenes/MapProps/OreNodes/CoalFull.tscn" id="7_scene"]
+[ext_resource type="PackedScene" path="res://scenes/MapProps/OreNodes/CoalDepleted.tscn" id="8_scene"]
+[ext_resource type="PackedScene" path="res://scenes/MapProps/OreNodes/SilverOreFull.tscn" id="9_scene"]
+[ext_resource type="PackedScene" path="res://scenes/MapProps/OreNodes/SilverOreDepleted.tscn" id="10_scene"]
+[ext_resource type="PackedScene" path="res://scenes/MapProps/OreNodes/GoldOreFull.tscn" id="11_scene"]
+[ext_resource type="PackedScene" path="res://scenes/MapProps/OreNodes/GoldOreDepleted.tscn" id="12_scene"]
+[ext_resource type="PackedScene" path="res://scenes/MapProps/OreNodes/MithrilOreFull.tscn" id="13_scene"]
+[ext_resource type="PackedScene" path="res://scenes/MapProps/OreNodes/MithrilOreDepleted.tscn" id="14_scene"]
+[ext_resource type="PackedScene" path="res://scenes/MapProps/OreNodes/AdamantiteOreFull.tscn" id="15_scene"]
+[ext_resource type="PackedScene" path="res://scenes/MapProps/OreNodes/AdamantiteOreDepleted.tscn" id="16_scene"]
+[ext_resource type="PackedScene" path="res://scenes/MapProps/OreNodes/RuniteOreFull.tscn" id="17_scene"]
+[ext_resource type="PackedScene" path="res://scenes/MapProps/OreNodes/RuniteOreDepleted.tscn" id="18_scene"]
+[ext_resource type="PackedScene" path="res://scenes/MapProps/OreNodes/BlackstoneFull.tscn" id="19_scene"]
+[ext_resource type="PackedScene" path="res://scenes/MapProps/OreNodes/BlackstoneDepleted.tscn" id="20_scene"]
+
+[resource]
+resource_name = "Ore Nodes - Full and Depleted"
+scenes/0/scene = ExtResource("1_scene")
+scenes/1/scene = ExtResource("2_scene")
+scenes/2/scene = ExtResource("3_scene")
+scenes/3/scene = ExtResource("4_scene")
+scenes/4/scene = ExtResource("5_scene")
+scenes/5/scene = ExtResource("6_scene")
+scenes/6/scene = ExtResource("7_scene")
+scenes/7/scene = ExtResource("8_scene")
+scenes/8/scene = ExtResource("9_scene")
+scenes/9/scene = ExtResource("10_scene")
+scenes/10/scene = ExtResource("11_scene")
+scenes/11/scene = ExtResource("12_scene")
+scenes/12/scene = ExtResource("13_scene")
+scenes/13/scene = ExtResource("14_scene")
+scenes/14/scene = ExtResource("15_scene")
+scenes/15/scene = ExtResource("16_scene")
+scenes/16/scene = ExtResource("17_scene")
+scenes/17/scene = ExtResource("18_scene")
+scenes/18/scene = ExtResource("19_scene")
+scenes/19/scene = ExtResource("20_scene")

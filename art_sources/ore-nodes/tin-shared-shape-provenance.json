@@ -1,0 +1,65 @@
+{
+  "created": "2026-10-26",
+  "provider": "PixelLab",
+  "method": "free exact pixel-editor palette variant of approved copper host rock",
+  "request": "Make tin use the same rock shape as all other ores; distinguish it with tin-colored streaks.",
+  "source": "copper-ore-full-south.png",
+  "source_workbench_image_id": "d433bf15-03af-496c-90a5-40296cd4ef62",
+  "image_id": "853f9c13-fc67-4bac-a614-8fed5ac7650a",
+  "download": "https://api.pixellab.ai/mcp/pixel-tools/853f9c13-fc67-4bac-a614-8fed5ac7650a/image.png",
+  "changes": [
+    {
+      "operation": "map_colors",
+      "layer": "image",
+      "frames": [
+        1
+      ],
+      "region": [
+        0,
+        0,
+        95,
+        95
+      ],
+      "colors": {
+        "#593018": "#44494d",
+        "#512c16": "#3e4347",
+        "#68381d": "#4e5459",
+        "#452614": "#363a3e",
+        "#7b4525": "#5c6267",
+        "#94562f": "#6e757a",
+        "#874f2b": "#646b70",
+        "#9d5e33": "#747b81",
+        "#372112": "#2c3033",
+        "#6c4124": "#51575c",
+        "#a96639": "#7d848a",
+        "#5d3920": "#474c50",
+        "#b57241": "#868e94",
+        "#c6814b": "#939aa1",
+        "#d59056": "#9ea6ac",
+        "#49311f": "#393d41",
+        "#815938": "#60676c",
+        "#eaaa6b": "#aeb6bc",
+        "#a1734b": "#777e84",
+        "#644b33": "#4c5155",
+        "#f0bb7b": "#b3bac1",
+        "#503e2b": "#3e4246",
+        "#745c41": "#575d62",
+        "#c29a6e": "#90979e",
+        "#f8d095": "#b9c1c7"
+      },
+      "reason": "Tin uses the exact common ore silhouette/stone, with dull pewter-gray veins distinct from bright silver."
+    }
+  ],
+  "full": "tin-ore-full-south.png",
+  "depleted": "tin-ore-depleted-south.png",
+  "depleted_reused_from": "copper-ore-depleted-south.png",
+  "pixels_changed": 493,
+  "invariants": [
+    "same96x96 canvas",
+    "exact source alpha and silhouette",
+    "all non-mineral stone pixels unchanged",
+    "same anchor[48,72]",
+    "same physical base collision as all other nodes"
+  ],
+  "supersedes": "Original different-shaped tin source, retained under history/ for provenance only; never use it as a node."
+}

@@ -3,7 +3,7 @@
   "created": "2026-10-26",
   "status": "approved source art",
   "user_visual_approval": "approved by user on2026-10-26: this works!",
-  "runtime_installation": "not installed",
+  "runtime_installation": "Installed as visual prop library; see godot_client/Assets/MapTiles/OreNodes/manifest.json. No world placements or mining behavior.",
   "provider": "PixelLab AI",
   "model": "Pro Flash",
   "request": "Four single-angle south-facing ore node sprites: bronze full/depleted, tin full/depleted. Match Aetheria camera and art style.",
@@ -74,7 +74,7 @@
       "original_generation_label": "bronze"
     },
     {
-      "file": "tin-ore-full-south.png",
+      "file": "history/tin-original-full-south.png",
       "metal": "tin",
       "state": "full",
       "tool": "create_object_pro_flash",
@@ -82,19 +82,23 @@
       "job_id": "9d9c09b7-3219-459a-8dd6-8d594354db53",
       "seed": 26102612,
       "prompt": "One complete non-depleted TIN ORE NODE for Aetheria, a naturally weathered beige-gray boulder with plentiful embedded SILVERY TIN mineral veins. Match the supplied existing rock reference's detailed fantasy pixel art, native fine pixel clusters, faceted warm gray-beige stone, low top-down camera looking north at the SOUTH-facing front, visible top and front, upper-left lighting, subdued natural colors and selective dark contours. A compact squat irregular rock outcrop with dull silvery pewter-gray metallic mineral seams embedded across the upper and front rock faces, pale cool silver highlights, easy to distinguish from warm bronze ore, no blue glow. Keep rocky character rather than a pile of loose crystals or metal bars. Single isolated prop, centered, complete uncropped silhouette, about 72x62 occupied pixels on the 96x96 transparent canvas. No ground mat, terrain patch, cast shadow, grass, plants, text, border, characters, creatures or extra props. One south view only.",
-      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/objects/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/9c0b96e9-1232-4a6c-b739-31f85bef62fa/rotations/unknown.png"
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/objects/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/9c0b96e9-1232-4a6c-b739-31f85bef62fa/rotations/unknown.png",
+      "superseded_by": "tin-ore-full-south.png",
+      "status": "Superseded original; current shared shape is documented in tin-shared-shape-provenance.json"
     },
     {
-      "file": "tin-ore-depleted-south.png",
+      "file": "history/tin-original-depleted-south.png",
       "metal": "tin",
       "state": "depleted",
       "tool": "edit_image_pro_flash",
-      "source_file": "tin-ore-full-south.png",
+      "source_file": "history/tin-original-full-south.png",
       "job_id": "9401ef7e-120f-48a8-b7b6-d581fc26e94b",
       "gallery_asset_id": "f328f255-951f-5e3e-a788-9a510fc40c3b",
       "seed": 26102614,
       "prompt": "Make this same tin ore node DEPLETED after mining: remove every bright silvery pewter mineral seam and exposed tin deposit, leave dull warm gray-beige bare stone with a shallow chipped extraction hollow and a few mining cracks where ore was. Keep the same recognizable rock, exact south-facing low top-down camera, fine pixel-art detail, upper-left lighting, outer rock footprint, canvas size and screen position. Keep it as a substantial remaining rock, not scattered rubble. Transparent background. No ground, grass, cast shadow, sparkles, text, characters or extra objects.",
-      "source_url": "https://api.pixellab.ai/mcp/images/9401ef7e-120f-48a8-b7b6-d581fc26e94b/download"
+      "source_url": "https://api.pixellab.ai/mcp/images/9401ef7e-120f-48a8-b7b6-d581fc26e94b/download",
+      "superseded_by": "tin-ore-depleted-south.png",
+      "status": "Superseded original; current shared shape is documented in tin-shared-shape-provenance.json"
     }
   ],
   "review": {
@@ -104,5 +108,7 @@
     "gameplay": "Source-art-only task. No runtime scene, controls, code or collision changed."
   },
   "holds": "Existing unrelated PixelLab world-library generation hold preserved.",
-  "sprite_label_correction": "The user clarified bronze is Copper+Tin on2026-10-26. The originally bronze-labeled node is now Copper Ore; source pixels and original prompt are unchanged. This is artwork labeling only; no item catalog or recipe data is changed."
+  "sprite_label_correction": "The user clarified bronze is Copper+Tin on2026-10-26. The originally bronze-labeled node is now Copper Ore; source pixels and original prompt are unchanged. This is artwork labeling only; no item catalog or recipe data is changed.",
+  "tin_revision": "User requested tin match the shared ore shape; originals archived and current pair documented separately.",
+  "library_selection": "User selected this family for reusable map placement on2026-10-26; Tin subsequently revised to the common host-rock shape."
 }

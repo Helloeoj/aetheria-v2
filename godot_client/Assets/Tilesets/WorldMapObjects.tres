@@ -1,4 +1,6 @@
-[gd_resource type="TileSet" load_steps=540 format=3]
+[gd_resource type="TileSet" load_steps=541 format=3]
+
+[ext_resource type="TileSetScenesCollectionSource" path="res://Assets/Tilesets/OreNodeSceneTiles.tres" id="ore_nodes"]
 
 [ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0000_Outskirts_Walls_000.tscn" id="1_rpbbt"]
 [ext_resource type="PackedScene" path="res://scenes/MapObjectsGenerated/0001_Outskirts_Buildings_001.tscn" id="2_ytwf1"]
@@ -1086,3 +1088,4 @@ resource_name = "Valtheiris World Map Objects"
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetScenesCollectionSource_c7inm")
 sources/1 = SubResource("TileSetScenesCollectionSource_msror")
+sources/2 = ExtResource("ore_nodes")

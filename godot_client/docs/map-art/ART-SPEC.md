@@ -18,6 +18,15 @@ Scope: sprite generation and material-naming discussions authorize artwork, not 
 
 ## Profile: valtheiris-overworld
 
+Canonical ore props: use `res://scenes/MapProps/OreNodes/` and source 2 of
+`res://Assets/Tilesets/WorldMapObjects.tres` whenever an ore node is requested.
+`res://Assets/Tilesets/OreNodes.tres` supplies the same named props on new maps.
+All ten ores now share the same host-rock shape, anchor (48,72), depleted sprite
+and physical base; only mineral streak colors differ, including revised Tin.
+Use 96px/three-cell centers in compact clusters and 128px/four-cell spacing at
+walking routes. See `docs/OreNodes.md` and the runtime manifest. This installs
+a placeable library; it does not add world placements or mining skill behavior.
+
 - Camera: match existing low top-down objects and overhead terrain; upper-left object lighting.
 - Mood: peaceful royal countryside, healthy olive/yellow-green vegetation, warm tan roads, beige-gray stones, blue water; restrained clutter. Do not introduce ruins, battle damage or heavy road wear unless requested.
 - Grid: 32 × 32 world-pixel terrain cells. Existing brush atlases are 256 × 64 with sixteen native cells. Whole objects have varied canvas sizes; preserve each canvas and root anchor. A terrain cell is not a requirement that every object fit in 32 pixels.

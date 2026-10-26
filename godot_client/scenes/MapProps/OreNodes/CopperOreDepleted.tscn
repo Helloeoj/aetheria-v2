@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/MapTiles/OreNodes/copper-ore-depleted-south.png" id="1_texture"]
+
+[node name="CopperOreDepleted" type="Node2D"]
+y_sort_enabled = true
+texture_filter = 1
+metadata/ore_id = "copper"
+metadata/ore_state = "depleted"
+
+[node name="Footprint" type="StaticBody2D" parent="." groups=["map_object", "world_solid"]]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Visual" type="Sprite2D" parent="Footprint"]
+position = Vector2(-48, -72)
+texture_filter = 1
+texture = ExtResource("1_texture")
+centered = false
+
+[node name="MainBase" type="CollisionPolygon2D" parent="Footprint"]
+polygon = PackedVector2Array(8, -15, 2.728, -7.222, -10, -4, -22.728, -7.222, -28, -15, -22.728, -22.778, -10, -26, 2.728, -22.778)
+
+[node name="CompanionBase" type="CollisionPolygon2D" parent="Footprint"]
+polygon = PackedVector2Array(28, -4, 25.071, 1.657, 18, 4, 10.929, 1.657, 8, -4, 10.929, -9.657, 18, -12, 25.071, -9.657)

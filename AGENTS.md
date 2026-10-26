@@ -8,6 +8,13 @@ nearest filtering and no mipmaps. Verify new art in a real Godot 4x render;
 source previews alone are insufficient. Follow the saved map-art specification.
 All ore/catalyst nodes must match the user-approved copper/tin rock design in
 `art_sources/ore-nodes/`. Keep source approval separate from runtime placement.
+Whenever an ore node is requested, reuse the canonical placeable scenes in
+`godot_client/scenes/MapProps/OreNodes/` or the Ore Nodes source 2 palette in
+`WorldMapObjects.tres`; see `godot_client/docs/OreNodes.md` and its manifest.
+Do not paint substitute rock clusters. All ores, including Tin, use the same
+host-rock shape and aligned depleted state, distinguished by mineral colors.
+Use 96px/three-cell centers for compact clusters and 128px/four-cell centers
+beside walking routes; keep the 32px placement grid and native artwork scale.
 Sprite requests authorize artwork only. Do not infer permission to implement
 mining skills, progression, drops, item definitions, crafting/smelting recipes
 or world placement from art or material-naming discussions. Wait for explicit
