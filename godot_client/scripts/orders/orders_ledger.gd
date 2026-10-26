@@ -6,8 +6,8 @@ var _answers := {}
 
 func build(menu: Control) -> void:
 	var column: VBoxContainer = menu._column(menu.body)
-	column.add_child(menu._label("Dead Man's Orders", 20, FantasyUI.GOLD))
-	column.add_child(menu._label("Follow available directives, then search for the revealed cache in the world.", 13, FantasyUI.MUTED, true))
+	column.add_child(menu._label("Captain's Ledger", 20, FantasyUI.GOLD))
+	column.add_child(menu._label("Your exclusive reward collection and current hunts. Orders can also be read directly from your backpack.", 13, FantasyUI.MUTED, true))
 	var scroll: ScrollContainer = menu._scroll("OrdersScroll")
 	column.add_child(scroll)
 	var contents: VBoxContainer = menu._column(scroll, 12)
@@ -15,28 +15,59 @@ func build(menu: Control) -> void:
 	var view: Dictionary = controller.view() if controller != null else {}
 	if view.get("enabled", true) == false:
 		contents.add_child(menu._label(String(view.get("message", "Orders await validated content.")), 14, FantasyUI.GOLD, true))
+	_build_collection(menu,contents,view)
+	contents.add_child(menu._label("Current Orders",19,FantasyUI.GOLD))
 	var orders: Dictionary = view.get("orders", {})
 	for tier: String in TIERS:
 		var title := String(TITLES[tier])
 		var sealed_name := "Sealed %s's Order" % title
 		var sealed := int(menu._player().backpack.get(sealed_name, 0))
+		var opened := int(menu._player().backpack.get(title+"'s Order",0))
 		var order: Dictionary = orders.get(tier, {})
 		var card := PanelContainer.new()
 		card.add_theme_stylebox_override("panel", menu._card_style(false))
 		contents.add_child(card)
 		var section: VBoxContainer = menu._column(card, 7)
 		section.add_child(menu._label(title, 18, FantasyUI.GOLD))
-		section.add_child(menu._label("Sealed orders: %d" % sealed, 12, FantasyUI.TEAL))
+		section.add_child(menu._label("Sealed: %d · Opened: %d · Total: %d" % [sealed,opened,sealed+opened], 12, FantasyUI.TEAL))
+		section.add_child(menu._label("Completed: %d" % int(view.get("completed",{}).get(tier,0)),12,FantasyUI.TEAL))
 		if order.is_empty():
 			section.add_child(menu._label("No active orders", 13, FantasyUI.MUTED, true))
 		else:
+			if opened == 1 and order.get("state","") in ["active","cache_revealed","suspended"]:
+				section.add_child(menu._action_button("Read order",menu._read_order.bind(tier)))
 			_build_order(menu, section, controller, order)
 		if sealed > 0 and controller != null:
 			var open: Button = menu._action_button("Open %s order" % title, menu._open_sealed_order.bind(sealed_name))
 			open.disabled = view.get("enabled", true) == false
 			section.add_child(open)
 
+func _build_collection(menu: Control, contents: VBoxContainer, view: Dictionary) -> void:
+	contents.add_child(menu._label("Collection log",19,FantasyUI.GOLD))
+	contents.add_child(menu._label("Records rewards earned from Dead Man's Orders. Buying, picking up or receiving an item does not fill this log.",12,FantasyUI.MUTED,true))
+	var counts: Dictionary = view.get("collection",{})
+	var entries := {}
+	for item: Dictionary in GameData.items:
+		if item.get("orders_exclusive",false) == true:
+			entries[str(int(item.id))] = String(item.name)
+	# Retain earned history even when a reward is later retired from the catalog.
+	for id: String in counts:
+		if not entries.has(id):
+			var item := GameData.get_item(int(id))
+			entries[id] = String(item.get("name","Retired reward #"+id))
+	if entries.is_empty():
+		contents.add_child(menu._label("No exclusive rewards have been added yet. Your collection will appear here when those items are implemented.",13,FantasyUI.MUTED,true))
+		return
+	var obtained := 0
+	for id: String in entries:
+		obtained += int(int(counts.get(id,0)) > 0)
+	contents.add_child(menu._label("Collected: %d / %d" % [obtained,entries.size()],13,FantasyUI.TEAL))
+	for id: String in entries:
+		var count := int(counts.get(id,0))
+		contents.add_child(menu._label("%s · Obtained: %d%s" % [entries[id],count," · Not yet obtained" if count == 0 else ""],14,FantasyUI.IVORY if count > 0 else FantasyUI.MUTED,true))
+
 func _build_order(menu: Control, section: VBoxContainer, controller: Object, order: Dictionary) -> void:
+	var actions_ready: bool = controller != null and controller.view().get("enabled",true) != false
 	var order_id := String(order.get("id", ""))
 	var state := String(order.get("state", "active"))
 	var statuses := {"active": "Active", "cache_revealed": "Cache revealed", "claimed": "Claimed", "abandoned": "Abandoned", "suspended": "Suspended"}
@@ -78,7 +109,7 @@ func _build_order(menu: Control, section: VBoxContainer, controller: Object, ord
 			var search: Button = menu._action_button("Search here", func() -> void:
 				if controller != null:
 					controller.search(order_id, directive_id, answer.text if is_instance_valid(answer) else ""))
-			search.disabled = controller == null
+			search.disabled = not actions_ready
 			section.add_child(search)
 		else:
 			section.add_child(menu._label("Progress updates as you complete this activity in the world.", 12, FantasyUI.MUTED, true))
@@ -90,7 +121,7 @@ func _build_order(menu: Control, section: VBoxContainer, controller: Object, ord
 		var claim: Button = menu._action_button("Search for cache here", func() -> void:
 			if controller != null:
 				controller.claim(order_id))
-		claim.disabled = controller == null
+		claim.disabled = not actions_ready
 		section.add_child(claim)
 	if state == "claimed":
 		section.add_child(menu._label("Cache claimed", 15, FantasyUI.TEAL))

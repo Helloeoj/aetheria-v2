@@ -661,7 +661,10 @@ func _input(event: InputEvent) -> void:
 		_toggle_character_menu()
 		get_viewport().set_input_as_handled()
 	elif event.keycode == KEY_ESCAPE and inventory_menu != null and inventory_menu.visible:
-		_toggle_character_menu()
+		if inventory_menu._order_reader.is_open():
+			inventory_menu.on_key_press(event)
+		else:
+			_toggle_character_menu()
 		get_viewport().set_input_as_handled()
 
 func _ui_is_editing() -> bool:
@@ -1109,6 +1112,8 @@ func _collect_ground_drop(drop: GroundItemDrop) -> bool:
 	return true
 
 func drop_inventory_item(item_name: String, quantity: int = 1) -> bool:
+	if not InventorySystem.can_drop(item_name):
+		return false
 	if Network.online():
 		return Network.send_action({"type": "drop", "item_name": item_name, "quantity": quantity})
 	AetheriaDiagnostics.event("Inventory", "drop backpack item", {"item": item_name, "quantity": quantity})

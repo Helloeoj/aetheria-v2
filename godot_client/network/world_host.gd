@@ -267,7 +267,7 @@ func _process_commands(session: Dictionary) -> void:
 			session.erase("movement_at")
 		if result.get("ok", false) and not await _persist(session):
 			break
-		Network.send_control(session.peer, {"type": "result", "code": result.get("code", ""), "message": result.get("message", "")})
+		Network.send_control(session.peer, {"type": "result", "sequence":serial, "ok":result.get("ok",false), "code": result.get("code", ""), "message": result.get("message", "")})
 	session.busy = false
 
 func _physics_process(delta: float) -> void:

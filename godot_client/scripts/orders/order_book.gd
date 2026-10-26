@@ -4,19 +4,49 @@ const TIERS := ["deckhand", "smuggler", "corsair", "dread_captain"]
 const STATES := ["active", "cache_revealed", "claimed", "abandoned", "suspended"]
 const KINDS := ["riddle", "search", "cipher", "fishing", "cooking", "equipment", "combat"]
 const MAX_COUNT := 2147483647
+const LIVE_STATES := ["active", "cache_revealed", "suspended"]
+const TITLES := {"deckhand":"Deckhand", "smuggler":"Smuggler", "corsair":"Corsair", "dread_captain":"Dread Captain"}
 
 static func empty_book() -> Dictionary:
-	return {"version":1,"generations":{"deckhand":0,"smuggler":0,"corsair":0,"dread_captain":0},"orders":{}}
+	return {"version":2,"generations":{"deckhand":0,"smuggler":0,"corsair":0,"dread_captain":0},"orders":{},
+		"collection":{},"completed":{"deckhand":0,"smuggler":0,"corsair":0,"dread_captain":0}}
+
+static func opened_name(tier: String) -> String:
+	return String(TITLES.get(tier,"")) + "'s Order" if tier in TIERS else ""
+
+static func migrate_legacy(value: Variant, owner_id: String) -> Dictionary:
+	if not value is Dictionary or value.get("version") != 1 or value.size() != 3:
+		return {}
+	var migrated: Dictionary = value.duplicate(true)
+	migrated.version = 2
+	migrated.collection = {}
+	migrated.completed = empty_book().completed
+	return migrated if validate_book(migrated,owner_id) else {}
+
+static func inventory_valid(player: Variant) -> bool:
+	if not validate_book(player.dead_man_orders,player.entity_id):
+		return false
+	for tier: String in TIERS:
+		var order: Dictionary = player.dead_man_orders.orders.get(tier,{})
+		var expected := int(order.get("state","") in LIVE_STATES)
+		if int(player.backpack.get(opened_name(tier),0)) != expected:
+			return false
+	return true
 
 static func validate_book(value: Variant, owner_id: String = "") -> bool:
-	if not value is Dictionary or value.size() != 3 or value.get("version") != 1:
+	if not value is Dictionary or value.size() != 5 or value.get("version") != 2:
 		return false
+	if not value.get("collection") is Dictionary or value.collection.size() > 4096 or not value.get("completed") is Dictionary or value.completed.size() != TIERS.size():
+		return false
+	for item_id: Variant in value.collection:
+		if not item_id is String or not item_id.is_valid_int() or str(int(item_id)) != item_id or int(item_id) <= 0 or int(item_id) > MAX_COUNT or not integer(value.collection[item_id],1,MAX_COUNT):
+			return false
 	if not value.get("generations") is Dictionary or not value.get("orders") is Dictionary:
 		return false
 	if value.generations.size() != TIERS.size() or value.orders.size() > TIERS.size():
 		return false
 	for tier: String in TIERS:
-		if not integer(value.generations.get(tier),0,MAX_COUNT):
+		if not integer(value.generations.get(tier),0,MAX_COUNT) or not integer(value.completed.get(tier),0,MAX_COUNT):
 			return false
 	var ids := {}
 	for tier: Variant in value.orders:
@@ -93,7 +123,7 @@ static func _order_valid(order: Dictionary, tier: String, generation: int, owner
 static func public_book(book: Dictionary) -> Dictionary:
 	if not validate_book(book):
 		return {"generations":{},"orders":{}}
-	var result := {"generations":book.generations.duplicate(),"orders":{}}
+	var result := {"generations":book.generations.duplicate(),"orders":{},"collection":book.collection.duplicate(),"completed":book.completed.duplicate()}
 	for tier: String in book.orders:
 		var order: Dictionary = book.orders[tier]
 		var shown := {"id":order.id,"tier":tier,"state":order.state,"completed":0,

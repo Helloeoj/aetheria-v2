@@ -97,6 +97,7 @@ func prepare_order(kind: String) -> Dictionary:
 		row.item_name = "Raw Reedkip" if kind == "fishing" else "Reedkip"
 	player.dead_man_orders.generations.smuggler = 1
 	player.dead_man_orders.orders.smuggler = order
+	player.backpack["Smuggler's Order"] = 1
 	check(Book.validate_book(player.dead_man_orders,player.entity_id),"Controlled active action directives remain a valid persistent Book")
 	return order
 

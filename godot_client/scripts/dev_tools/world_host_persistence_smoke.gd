@@ -239,6 +239,7 @@ func transport_projects_acknowledged_orders() -> void:
 	f.host.sessions.clear()
 	f.region.remove_player("stable-character")
 	f.session.player.dead_man_orders = load("res://scripts/dev_tools/character_persistence_smoke.gd").private_orders_fixture("stable-character")
+	f.session.player.add_item("Deckhand's Order")
 	var state := CharacterCodec.encode(f.session.player, "outskirts")
 	f.http.replies.assign([{"ok": true, "state": state, "username": "PersistenceTest",
 		"character_id": "stable-character", "lease_token": "test-lease", "revision": 4},
@@ -250,6 +251,7 @@ func transport_projects_acknowledged_orders() -> void:
 		f.host.queue_free()
 		return
 	Network.join_requested.connect(f.host._join)
+	Network.command_received.connect(f.host._command)
 	var root := Node.new()
 	root.name = "OrdersTestClient"
 	add_child(root)
@@ -274,6 +276,15 @@ func transport_projects_acknowledged_orders() -> void:
 		check(not client.saved_state.has("dead_man_orders") and client.saved_state.has("orders_view"), "Actual joined packet omits the private order book")
 		check(client.saved_state.get("public_projection") == true, "Joined packet identifies its public projection")
 		check(not JSON.stringify(client.saved_state).contains("SECRET_"), "Actual joined packet hides future directives, answers and cache")
+		var results: Array[Dictionary] = []
+		client.action_result.connect(func(serial: int, response: Dictionary) -> void:
+			results.append({"serial":serial,"response":response}))
+		check(client.send_action({"type":"order_open","tier":"deckhand","generation":1}),"Real client sends an Order activation intent")
+		var sent_serial: int = client.sequence
+		deadline = Time.get_ticks_msec()+3000
+		while results.is_empty() and Time.get_ticks_msec() < deadline:
+			await get_tree().process_frame
+		check(results.size() == 1 and int(results[0].serial) == sent_serial and results[0].response.get("ok") == false and not String(results[0].response.get("message","")).is_empty(),"Rejected Order activation arrives with its command identity and failure reason")
 		var session: Dictionary = f.host.sessions.values()[0]
 		# Live changes are deliberately not acknowledged or persisted yet.
 		session.player.dead_man_orders.generations.deckhand = 17
@@ -288,6 +299,7 @@ func transport_projects_acknowledged_orders() -> void:
 		check(not JSON.stringify(sent).contains("SECRET_"), "Actual owner snapshot hides future directives, answers and cache")
 		check(session.state.dead_man_orders.generations.deckhand == 1, "Projection does not mutate acknowledged state")
 	Network.join_requested.disconnect(f.host._join)
+	Network.command_received.disconnect(f.host._command)
 	peer.close()
 	Network.multiplayer.multiplayer_peer.close()
 	Network.multiplayer.multiplayer_peer = null

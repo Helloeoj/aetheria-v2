@@ -90,7 +90,7 @@ func _run() -> void:
 	]}}
 	menu.select_page(5)
 	check(not labels(menu).contains("HIDDEN SENTINEL"), "sealed directives remain hidden")
-	check(labels(menu).contains("1 / 3") and labels(menu).contains("Sealed orders: 2"), "ledger presents progress and sealed inventory count")
+	check(labels(menu).contains("1 / 3") and labels(menu).contains("Sealed: 2"), "ledger presents progress and sealed inventory count")
 	check(labels(menu).contains("Sealed directives: 2"), "ledger shows hidden directive count without its content")
 	check(labels(menu).contains("Target item: Raw Minnow"), "activity target item is not presented as required equipment")
 	var answer: LineEdit = menu.find_child("CipherAnswer", true, false)

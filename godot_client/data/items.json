@@ -6589,6 +6589,7 @@
     "generic_loot": false,
     "craftable": false,
     "order_tier": "deckhand",
+    "stackable": false,
     "description": "A sealed packet of Dead Man's Orders. Content and acquisition are not enabled yet."
   },
   {
@@ -6602,6 +6603,7 @@
     "generic_loot": false,
     "craftable": false,
     "order_tier": "smuggler",
+    "stackable": false,
     "description": "A sealed packet of Dead Man's Orders. Content and acquisition are not enabled yet."
   },
   {
@@ -6615,6 +6617,7 @@
     "generic_loot": false,
     "craftable": false,
     "order_tier": "corsair",
+    "stackable": false,
     "description": "A sealed packet of Dead Man's Orders. Content and acquisition are not enabled yet."
   },
   {
@@ -6628,6 +6631,67 @@
     "generic_loot": false,
     "craftable": false,
     "order_tier": "dread_captain",
+    "stackable": false,
     "description": "A sealed packet of Dead Man's Orders. Content and acquisition are not enabled yet."
+  },
+  {
+    "id": 9005,
+    "name": "Deckhand's Order",
+    "type": "Order",
+    "material": "Parchment",
+    "tier": 1,
+    "slot": null,
+    "rarity": "rare",
+    "generic_loot": false,
+    "craftable": false,
+    "stackable": false,
+    "order_tier": "deckhand",
+    "order_opened": true,
+    "description": "Your opened Deckhand's Order. Click to read its instructions. Bound to your character."
+  },
+  {
+    "id": 9006,
+    "name": "Smuggler's Order",
+    "type": "Order",
+    "material": "Parchment",
+    "tier": 2,
+    "slot": null,
+    "rarity": "rare",
+    "generic_loot": false,
+    "craftable": false,
+    "stackable": false,
+    "order_tier": "smuggler",
+    "order_opened": true,
+    "description": "Your opened Smuggler's Order. Click to read its instructions. Bound to your character."
+  },
+  {
+    "id": 9007,
+    "name": "Corsair's Order",
+    "type": "Order",
+    "material": "Parchment",
+    "tier": 3,
+    "slot": null,
+    "rarity": "rare",
+    "generic_loot": false,
+    "craftable": false,
+    "stackable": false,
+    "order_tier": "corsair",
+    "order_opened": true,
+    "description": "Your opened Corsair's Order. Click to read its instructions. Bound to your character."
+  },
+  {
+    "id": 9008,
+    "name": "Dread Captain's Order",
+    "type": "Order",
+    "material": "Parchment",
+    "tier": 4,
+    "slot": null,
+    "rarity": "rare",
+    "generic_loot": false,
+    "craftable": false,
+    "stackable": false,
+    "order_tier": "dread_captain",
+    "order_opened": true,
+    "description": "Your opened Dread Captain's Order. Click to read its instructions. Bound to your character."
   }
 ]

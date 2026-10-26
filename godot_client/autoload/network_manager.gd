@@ -7,6 +7,7 @@ const BetaProfile = preload("res://network/beta_profile.gd")
 signal status_changed
 signal joined
 signal snapshot_received(snapshot: Dictionary)
+signal action_result(sequence: int, result: Dictionary)
 signal command_received(peer_id: int, command: Dictionary)
 signal join_requested(peer_id: int, ticket: String)
 signal peer_departed(peer_id: int)
@@ -368,6 +369,8 @@ func _response(payload: PackedByteArray) -> void:
 				get_tree().change_scene_to_file("res://scenes/Login.tscn")
 		"error", "notice", "result":
 			status = String(response.get("message", response.get("code", "")))
+			if response.get("type") == "result" and response.has("sequence"):
+				action_result.emit(int(response.sequence),response.duplicate(true))
 	status_changed.emit()
 
 @rpc("authority", "call_remote", "unreliable", 1)

@@ -21,7 +21,7 @@ func enabled() -> bool:
 func open(player: PlayerState, tier: String, expected_generation: int) -> Dictionary:
 	if not enabled():
 		return _result(false,"unconfigured","Dead Man's Orders await configured directives, locations and rewards.")
-	if tier not in Book.TIERS or not Book.validate_book(player.dead_man_orders,player.entity_id):
+	if tier not in Book.TIERS or not Book.inventory_valid(player):
 		return _result(false,"invalid","The order or saved progress is unavailable.")
 	var book: Dictionary = player.dead_man_orders
 	if int(book.generations[tier]) != expected_generation or expected_generation >= Book.MAX_COUNT:
@@ -32,14 +32,19 @@ func open(player: PlayerState, tier: String, expected_generation: int) -> Dictio
 	var item_name: String = config.tiers[tier].item_name
 	if int(player.backpack.get(item_name,0)) <= 0:
 		return _result(false,"inventory","You need an owned sealed order.")
+	var opened_item := Book.opened_name(tier)
+	var names_after := player.backpack.size()-int(int(player.backpack[item_name]) == 1)+1
+	if GameData.get_item_by_name(opened_item).is_empty() or names_after > 4096:
+		return _result(false,"capacity","Make room for the opened Order. Your sealed packet is unchanged.")
 	var generated := generate(tier,player.entity_id,expected_generation+1)
 	if not generated.ok:
 		return generated
 	if not player.remove_item(item_name,1):
 		return _result(false,"inventory","The sealed order is unavailable.")
+	InventorySystem.add_to_backpack(player,opened_item,1)
 	book.generations[tier] = expected_generation+1
 	book.orders[tier] = generated.order
-	return _result(true,"opened","The order is recorded in your Captain's Ledger.")
+	return _result(true,"opened","The opened Order is in your backpack. Click it to read its instructions.")
 
 func generate(tier: String, owner_id: String, generation: int) -> Dictionary:
 	if not enabled() or tier not in config.get("tiers",{}) or owner_id.is_empty() or generation < 1:
@@ -111,7 +116,7 @@ func interact(player: PlayerState, order_id: String, directive_id: String, ancho
 
 func on_event(player: PlayerState, kind: String, target_id: String, context: Dictionary) -> bool:
 	# Capture one match only: newly revealed directives cannot consume this event again.
-	if not Book.validate_book(player.dead_man_orders,player.entity_id):
+	if not Book.inventory_valid(player):
 		return false
 	for tier: String in Book.TIERS:
 		var order: Dictionary = player.dead_man_orders.orders.get(tier,{})
@@ -131,18 +136,36 @@ func claim(player: PlayerState, order_id: String, anchor_id: String, context: Di
 	if order.is_empty() or order.state != "cache_revealed" or order.cache != anchor_id or not _context_valid(anchor_id,context):
 		return _result(false,"cache","This cache is not ready or you are not at its location.")
 	var rewards: Dictionary = order.rewards
+	var book: Dictionary = player.dead_man_orders
+	if int(book.completed[order.tier]) >= Book.MAX_COUNT:
+		return _result(false,"capacity","The completion record needs recovery. The cache remains unclaimed.")
 	if player.gold > Book.MAX_COUNT-int(rewards.gold):
 		return _result(false,"capacity","There is not enough currency capacity. The cache remains unclaimed.")
 	var new_names := 0
+	var new_collection_ids := 0
 	for entry: Dictionary in rewards.items:
 		if GameData.get_item_by_name(entry.item_name).is_empty() or not InventorySystem.can_add_to_backpack(player,entry.item_name,int(entry.count)):
 			return _result(false,"capacity","Make room for the complete reward. The cache remains unclaimed.")
 		new_names += int(not player.backpack.has(entry.item_name))
-	if player.backpack.size()+new_names > 4096:
+		var item := GameData.get_item_by_name(entry.item_name)
+		if item.get("orders_exclusive",false) == true:
+			var item_id := str(int(item.id))
+			new_collection_ids += int(not book.collection.has(item_id))
+			if int(book.collection.get(item_id,0)) > Book.MAX_COUNT-int(entry.count):
+				return _result(false,"capacity","The collection record needs recovery. The cache remains unclaimed.")
+	if book.collection.size()+new_collection_ids > 4096:
+		return _result(false,"capacity","The collection record needs recovery. The cache remains unclaimed.")
+	if player.backpack.size()+new_names-1 > 4096:
 		return _result(false,"capacity","Make room for the complete reward. The cache remains unclaimed.")
 	for entry: Dictionary in rewards.items:
 		InventorySystem.add_to_backpack(player,entry.item_name,int(entry.count))
+		var item := GameData.get_item_by_name(entry.item_name)
+		if item.get("orders_exclusive",false) == true:
+			var item_id := str(int(item.id))
+			book.collection[item_id] = int(book.collection.get(item_id,0))+int(entry.count)
 	player.gold += int(rewards.gold)
+	player.remove_item(Book.opened_name(order.tier),1)
+	book.completed[order.tier] = int(book.completed[order.tier])+1
 	order.state = "claimed"
 	return _result(true,"claimed","The treasure has been claimed.")
 
@@ -150,11 +173,12 @@ func abandon(player: PlayerState, order_id: String) -> Dictionary:
 	var order := _owned(player,order_id)
 	if order.is_empty() or order.state not in ["active","cache_revealed","suspended"]:
 		return _result(false,"order","That order is no longer active.")
+	player.remove_item(Book.opened_name(order.tier),1)
 	order.state = "abandoned"
 	return _result(true,"abandoned","Order abandoned. Its sealed item is not restored.")
 
 func _owned(player: PlayerState, order_id: String) -> Dictionary:
-	if not Book.validate_book(player.dead_man_orders,player.entity_id):
+	if not Book.inventory_valid(player):
 		return {}
 	for order: Dictionary in player.dead_man_orders.orders.values():
 		if order.id == order_id and order.owner == player.entity_id:

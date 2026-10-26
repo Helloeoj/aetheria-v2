@@ -294,6 +294,8 @@ func submit(character_id: String, command: Dictionary) -> Dictionary:
 		"drop":
 			var name := GameData.canonical_item_name(String(command.get("item_name", "")))
 			var quantity := int(command.get("quantity", 1))
+			if not InventorySystem.can_drop(name):
+				return _result(false,"bound","Opened Orders are bound to you. Use Abandon order to destroy one.")
 			if quantity < 1 or GameData.get_item_by_name(name).is_empty() or not InventorySystem.remove_from_backpack(player, name, quantity):
 				return _result(false, "inventory", "That item quantity is unavailable.")
 			_stage_drop(character_id, name, quantity, player.get_position())

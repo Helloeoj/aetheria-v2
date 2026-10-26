@@ -15,7 +15,10 @@ static func is_stackable(item_name: String) -> bool:
 	var item := GameData.get_item_by_name(item_name)
 	# Backpack quantities remain compatible with saves, shops and item transfer.
 	# Raw, cooked and burnt fish each occupy an individual slot.
-	return String(item.get("fish_species", "")).is_empty()
+	return not item.has("order_tier") and item.get("stackable",true) != false and String(item.get("fish_species", "")).is_empty()
+
+static func can_drop(item_name: String) -> bool:
+	return GameData.get_item_by_name(item_name).get("order_opened",false) != true
 
 static func inventory_slots(player: Variant) -> Array[Dictionary]:
 	normalize_backpack(player)
@@ -31,7 +34,13 @@ static func inventory_slots(player: Variant) -> Array[Dictionary]:
 			slots.append({"name": item_name, "quantity": quantity})
 		else:
 			for _copy_index in range(quantity):
-				slots.append({"name": item_name, "quantity": 1})
+				var slot := {"name": item_name, "quantity": 1}
+				var item := GameData.get_item_by_name(item_name)
+				if item.get("order_opened",false) == true:
+					var book: Dictionary = player.orders_view if not player.orders_view.is_empty() else player.dead_man_orders
+					var order: Dictionary = book.get("orders",{}).get(String(item.get("order_tier","")),{})
+					slot["order_id"] = String(order.get("id",""))
+				slots.append(slot)
 	return slots
 
 static func add_to_backpack(player: Variant, item_name: String, amount: int = 1) -> void:

@@ -74,7 +74,7 @@ func _run() -> void:
 	check(not codec.decode(old, "a", "b").ok, "Migration never defaults missing old skills")
 	p.add_skill_experience("mining", 121)
 	var current: Dictionary = codec.encode(p, "outskirts")
-	check(current.version == 3, "New saves use version 3")
+	check(current.version == 4, "New saves use version 4")
 	var mined: Dictionary = codec.decode(current, "a", "b")
 	check(mined.ok and mined.player.get_skill_experience("mining") == 121, "Mining award survives round trip")
 	current.version = 2
@@ -89,7 +89,8 @@ func _run() -> void:
 	get_tree().quit(0 if failures == 0 else 1)
 
 func orders_persistence(codec: Script, player: PlayerState) -> void:
-	var empty := {"version": 1, "generations": {"deckhand": 0, "smuggler": 0, "corsair": 0, "dread_captain": 0}, "orders": {}}
+	var empty := {"version": 2, "generations": {"deckhand": 0, "smuggler": 0, "corsair": 0, "dread_captain": 0}, "orders": {},
+		"collection":{},"completed":{"deckhand":0,"smuggler":0,"corsair":0,"dread_captain":0}}
 	var saved: Dictionary = codec.encode(player, "outskirts")
 	check(saved.get("dead_man_orders") == empty, "New characters persist a bounded empty order book")
 	for version: int in [1, 2]:
@@ -122,6 +123,7 @@ func orders_persistence(codec: Script, player: PlayerState) -> void:
 	check(codec.encode(player, "outskirts").get("dead_man_orders") == empty, "Applying client view preserves private character state")
 	var private_book := private_orders_fixture(player.entity_id)
 	player.dead_man_orders = private_book.duplicate(true)
+	player.add_item("Deckhand's Order")
 	saved = codec.encode(player, "outskirts")
 	var round_trip: Dictionary = codec.decode(JSON.parse_string(JSON.stringify(saved)), player.name, player.entity_id)
 	check(round_trip.ok, "An individualized private order survives JSON decoding")
@@ -151,7 +153,8 @@ func orders_persistence(codec: Script, player: PlayerState) -> void:
 	check(codec.encode(local, "outskirts").is_empty(), "Malformed live orders cannot be persisted as a reset empty book")
 
 static func private_orders_fixture(owner_id: String) -> Dictionary:
-	return {"version": 1, "generations": {"deckhand": 1, "smuggler": 0, "corsair": 0, "dread_captain": 0},
+	return {"version": 2, "generations": {"deckhand": 1, "smuggler": 0, "corsair": 0, "dread_captain": 0},
+		"collection":{},"completed":{"deckhand":0,"smuggler":0,"corsair":0,"dread_captain":0},
 		"orders": {"deckhand": {"id": "11111111111111111111111111111111", "owner": owner_id, "tier": "deckhand",
 			"generation": 1, "config_version": 1, "state": "active", "slots": 1,
 			"directives": [

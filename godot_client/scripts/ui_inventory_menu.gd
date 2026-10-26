@@ -45,6 +45,7 @@ var _skill_session_header: HBoxContainer
 var _skill_session_label: Label
 var _skill_session_labels: Dictionary = {}
 var _orders_ledger := preload("res://scripts/orders/orders_ledger.gd").new()
+var _order_reader := preload("res://scripts/orders/orders_reader.gd").new()
 
 func configure(game_ref: Node) -> void:
 	game = game_ref
@@ -90,6 +91,9 @@ func toggle() -> void:
 func on_key_press(event: InputEventKey) -> bool:
 	if not visible:
 		return false
+	if event.keycode == KEY_ESCAPE and _order_reader.is_open():
+		_order_reader.close()
+		return true
 	if event.keycode in [KEY_ESCAPE, KEY_I]:
 		toggle()
 		return true
@@ -140,6 +144,7 @@ func refresh_view() -> void:
 		Page.ORDERS:
 			_orders_ledger.build(self)
 	_update_skill_training_readout()
+	_order_reader.refresh(self)
 	_last_signature = _state_signature()
 	_restore_scroll.call_deferred()
 
@@ -231,7 +236,7 @@ func _build_shell() -> void:
 func _build_inventory(player: PlayerState) -> void:
 	var left := _column(body)
 	left.add_child(_label("Backpack", 18, FantasyUI.IVORY))
-	left.add_child(_label("Left-click to select. Right-click for item actions.", 12, FantasyUI.MUTED))
+	left.add_child(_label("Click an Order to read it. Right-click for item actions.", 12, FantasyUI.MUTED))
 	var scroll := _scroll("InventoryScroll")
 	left.add_child(scroll)
 	var grid := _grid(5, 7)
@@ -253,7 +258,7 @@ func _build_inventory(player: PlayerState) -> void:
 		button.set_meta("inventory_slot", slot_index)
 		button.set_meta("item_name", item_name)
 		button.tooltip_text = "%s\n%s" % [item_name, _equipment_requirement_text(player, item)]
-		button.pressed.connect(_inspect_item.bind(item_name, slot_index))
+		button.pressed.connect(_inventory_item_pressed.bind(item_name, slot_index))
 		button.gui_input.connect(_inventory_context_input.bind(item_name, button))
 		var card := _button_column(button, 4)
 		card.add_child(_item_icon(item, 40))
@@ -284,12 +289,17 @@ func _build_inventory(player: PlayerState) -> void:
 	details.add_child(_label(selected_item_name, 19, FantasyUI.GOLD, true))
 	details.add_child(_label("%s  ·  Tier %d" % [String(selected.get("material", "Item")), int(selected.get("tier", 1))], 13, FantasyUI.TEAL, true))
 	details.add_child(_label("%s  ·  %s" % [String(selected.get("type", "Item")), String(selected.get("rarity", "common")).capitalize()], 12, FantasyUI.MUTED, true))
-	var quantity_text := "In backpack: %d" % int(player.backpack.get(selected_item_name, 0)) if InventorySystem.is_stackable(selected_item_name) else "Individual fish · Uses 1 backpack slot"
+	var quantity_text := "In backpack: %d" % int(player.backpack.get(selected_item_name, 0)) if InventorySystem.is_stackable(selected_item_name) else ("Individual Order · Uses 1 backpack slot" if selected.has("order_tier") else "Individual fish · Uses 1 backpack slot")
 	details.add_child(_label(quantity_text, 13, FantasyUI.IVORY, true))
 	if selected.has("order_tier"):
-		var open_order := _action_button("Open order", _open_sealed_order.bind(selected_item_name))
-		open_order.disabled = not _orders_enabled()
-		details.add_child(open_order)
+		if selected.get("order_opened",false) == true:
+			details.add_child(_label("Bound to your character. Abandoning destroys this Order and its progress.",13,FantasyUI.MUTED,true))
+			details.add_child(_action_button("Read order",_read_order.bind(String(selected.order_tier))))
+		else:
+			var open_order := _action_button("Open order", _open_sealed_order.bind(selected_item_name))
+			open_order.disabled = not _orders_enabled()
+			details.add_child(open_order)
+		return
 	var can_equip: bool = selected.get("slot", null) != null
 	var meets_requirement := EquipmentProgression.can_equip(player, selected)
 	if can_equip:
@@ -569,6 +579,15 @@ func _inspect_item(item_name: String, slot_index: int = -1) -> void:
 	selected_inventory_slot_index = slot_index
 	refresh_view()
 
+func _inventory_item_pressed(item_name: String, slot_index: int = -1) -> void:
+	_inspect_item(item_name,slot_index)
+	var item := GameData.get_item_by_name(item_name)
+	if item.has("order_tier"):
+		if item.get("order_opened",false) == true:
+			_read_order(String(item.order_tier))
+		else:
+			_open_sealed_order(item_name)
+
 func _inspect_equipment(slot: String) -> void:
 	selected_equipment_slot = slot
 	refresh_view()
@@ -588,7 +607,10 @@ func _inventory_context_input(event: InputEvent, item_name: String, source: Cont
 		{"label": "Drop", "action": _handle_drop.bind(item_name, 1)}
 	]
 	if item.has("order_tier"):
-		entries.push_front({"label": "Open order", "disabled": not _orders_enabled(), "action": _open_sealed_order.bind(item_name)})
+		if item.get("order_opened",false) == true:
+			entries = [{"label":"Read order","action":_read_order.bind(String(item.order_tier))}]
+		else:
+			entries.push_front({"label": "Open order", "disabled": not _orders_enabled(), "action": _open_sealed_order.bind(item_name)})
 	if amount > 1 and InventorySystem.is_stackable(item_name):
 		entries.append({"label": "Drop all (%d)" % amount, "action": _handle_drop.bind(item_name, amount)})
 	if int(item.get("food_healing", 0)) > 0:
@@ -622,6 +644,9 @@ func _equipment_context_input(event: InputEvent, slot: String, source: Control) 
 	game.get("context_menu").show_options(String(item.get("name", "Equipment")), entries, at)
 
 func _handle_drop(item_name: String, quantity: int) -> void:
+	if not InventorySystem.can_drop(item_name):
+		_set_status("Opened Orders are bound to you. Use Abandon order to destroy one.")
+		return
 	if not InventorySystem.is_stackable(item_name):
 		quantity = 1
 	if bool(game.call("drop_inventory_item", item_name, quantity)):
@@ -735,8 +760,14 @@ func _open_sealed_order(item_name: String) -> void:
 	if view.get("enabled", true) == false:
 		_set_status(String(view.get("message", "Orders await validated content.")))
 		return
+	var tier := String(GameData.get_item_by_name(item_name).get("order_tier",""))
+	var next_generation := int(view.get("generations",{}).get(tier,0))+1
+	_order_reader.show_order(self,tier,next_generation)
 	controller.open_sealed(item_name)
-	select_page(Page.ORDERS)
+	refresh_view()
+
+func _read_order(tier: String) -> void:
+	_order_reader.show_order(self,tier)
 
 func _orders_enabled() -> bool:
 	var controller := _orders_controller()
@@ -752,7 +783,7 @@ func _state_signature() -> String:
 	elif selected_page == Page.SPELLS:
 		state["mana"] = player.current_mana
 		state["alive"] = player.current_hp > 0
-	elif selected_page == Page.ORDERS:
+	if selected_page == Page.ORDERS or _order_reader.is_open():
 		var controller := _orders_controller()
 		state["orders"] = controller.view() if controller != null else {}
 	return JSON.stringify(state)
@@ -885,6 +916,7 @@ func _update_layout() -> void:
 	var viewport_size := FantasyUI.viewport_size(self)
 	panel.position = Vector2(22, 52)
 	panel.size = Vector2(minf(PANEL_SIZE.x, viewport_size.x - 44.0), minf(PANEL_SIZE.y, viewport_size.y - 76.0))
+	_order_reader.refresh(self)
 
 func _item_icon_key(item: Dictionary) -> String:
 	var slot := String(item.get("slot", "")) if item.get("slot", null) != null else ""

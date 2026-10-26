@@ -1,7 +1,7 @@
 class_name CharacterCodec
 extends RefCounted
 ## Versioned server saves contain approved item IDs, never client item statistics.
-const VERSION := 3
+const VERSION := 4
 const OrderBook := preload("res://scripts/orders/order_book.gd")
 const MAX_COUNT := 2147483647
 const MAX_INVENTORY_ENTRIES := 4096
@@ -16,7 +16,7 @@ static func initial(username: String, character_id: String, region_id: String) -
 	return {"ok": true, "player": p, "region_id": region_id}
 
 static func encode(p: PlayerState, region_id: String) -> Dictionary:
-	if not OrderBook.validate_book(p.dead_man_orders, p.entity_id):
+	if not OrderBook.inventory_valid(p):
 		return {} # Invalid authoritative state must fail persistence, never erase orders.
 	var inventory: Array = []
 	var names := p.backpack.keys()
@@ -45,12 +45,18 @@ static func encode(p: PlayerState, region_id: String) -> Dictionary:
 	return state
 
 static func decode(state: Dictionary, username: String, character_id: String) -> Dictionary:
+	return _decode(state,username,character_id,false)
+
+static func _decode(state: Dictionary, username: String, character_id: String, projection: bool) -> Dictionary:
 	if state.has("public_projection") or state.has("orders_view"):
 		return _bad("save_projection")
 	var version := _integer(state.get("version", -1), VERSION)
-	if version not in [1, 2, VERSION]:
+	if version not in [1, 2, 3, VERSION]:
 		return _bad("save_version")
 	var book: Variant = state.get("dead_man_orders", OrderBook.empty_book() if version < 3 else null)
+	var legacy_orders: bool = version < 4 and book is Dictionary and book.get("version") == 1
+	if legacy_orders:
+		book = OrderBook.migrate_legacy(book,character_id)
 	if not OrderBook.validate_book(book, character_id):
 		return _bad("save_orders")
 	if not state.get("region_id") is String or String(state.region_id).length() > 64:
@@ -92,6 +98,17 @@ static func decode(state: Dictionary, username: String, character_id: String) ->
 		if item.is_empty() or count <= 0 or p.backpack.has(String(item.name)):
 			return _bad("save_inventory")
 		p.backpack[String(item.name)] = count
+	if legacy_orders and not projection:
+		for tier: String in OrderBook.TIERS:
+			var name := OrderBook.opened_name(tier)
+			if p.backpack.has(name):
+				return _bad("save_orders_inventory")
+			if book.orders.get(tier,{}).get("state","") in OrderBook.LIVE_STATES:
+				if not InventorySystem.can_add_to_backpack(p,name,1):
+					return _bad("save_orders_inventory")
+				p.backpack[name] = 1
+	if not projection and not OrderBook.inventory_valid(p):
+		return _bad("save_orders_inventory")
 	var equipment: Variant = state.get("equipment")
 	if not equipment is Dictionary:
 		return _bad("save_equipment")
@@ -165,7 +182,7 @@ static func decode_public(state: Dictionary, username: String, character_id: Str
 	base.erase("public_projection")
 	base.erase("orders_view")
 	base["dead_man_orders"] = OrderBook.empty_book()
-	var decoded := decode(base, username, character_id)
+	var decoded := _decode(base, username, character_id, true)
 	if decoded.ok:
 		decoded.player.orders_view = state.orders_view.duplicate(true)
 	return decoded

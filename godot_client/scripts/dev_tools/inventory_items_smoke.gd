@@ -50,6 +50,10 @@ func _run() -> void:
 		game.player.backpack.clear()
 		game.player.add_item(String(item.name), 1)
 		menu._inspect_item(String(item.name))
+		if item.has("order_tier"):
+			var action := "Read order" if item.get("order_opened",false) == true else "Open order"
+			check(_find_button(menu,action) != null,"%s offers its inventory Order action" % item.name)
+			continue
 		button = _find_button(menu, "Not equippable")
 		check(button != null and button.disabled, "%s details support an empty equipment slot" % item.name)
 	game.player.backpack.clear()

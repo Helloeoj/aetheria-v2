@@ -26,8 +26,9 @@ var current_mana := 10
 var selected_spell_id := ""
 var gold := 0
 var backpack: Dictionary = {} # item name -> quantity
-var dead_man_orders: Dictionary = {"version": 1,
-	"generations": {"deckhand": 0, "smuggler": 0, "corsair": 0, "dread_captain": 0}, "orders": {}}
+var dead_man_orders: Dictionary = {"version": 2,
+	"generations": {"deckhand": 0, "smuggler": 0, "corsair": 0, "dread_captain": 0}, "orders": {},
+	"collection": {}, "completed": {"deckhand": 0, "smuggler": 0, "corsair": 0, "dread_captain": 0}}
 var orders_view: Dictionary = {} # Client projection; never authoritative saved state.
 var fishing_pale: Array[String] = [] # Fixed positions; an empty string is an empty slot.
 var equipment: Dictionary = {
