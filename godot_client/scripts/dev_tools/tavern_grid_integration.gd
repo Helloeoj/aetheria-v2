@@ -65,7 +65,7 @@ func _run() -> void:
 	check(route.size() > 12, "left-to-right route detours outside the whole hearth island")
 	for point: Vector2 in route:
 		var pixel: Vector2 = game._screen_position(point.x,point.y)
-		check(not Rect2(284.25,352.5,357,262.5).has_point(pixel), "route respects full body clearance around the island")
+		check(not Rect2(284.25,370.5,357,244.5).has_point(pixel), "route respects full body clearance around the island's physical base")
 	place(Vector2(280,496))
 	var key := InputEventKey.new()
 	key.keycode = KEY_D

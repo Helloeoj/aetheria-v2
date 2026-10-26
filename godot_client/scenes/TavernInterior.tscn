@@ -44,6 +44,15 @@ position = Vector2(464, 656)
 [node name="BartenderAisle" type="Marker2D" parent="GridProbes"]
 position = Vector2(576, 144)
 
+[node name="BarWalkBehind" type="Marker2D" parent="GridProbes"]
+position = Vector2(408, 176)
+
+[node name="KitchenWalkBehind" type="Marker2D" parent="GridProbes"]
+position = Vector2(792, 208)
+
+[node name="NorthBenchApproach" type="Marker2D" parent="GridProbes"]
+position = Vector2(472, 368)
+
 [node name="Combat" type="Node2D" parent="."]
 y_sort_enabled = true
 script = ExtResource("2_game")

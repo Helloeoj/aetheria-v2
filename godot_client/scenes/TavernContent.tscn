@@ -291,7 +291,7 @@ polygon = PackedVector2Array(76, 547, 94, 547, 94, 639, 76, 639)
 polygon = PackedVector2Array(1155, 529, 1194, 529, 1194, 618, 1155, 618)
 
 [node name="Base09" type="CollisionPolygon2D" parent="PhysicalBases"]
-polygon = PackedVector2Array(172, 226, 738, 226, 738, 283, 172, 283)
+polygon = PackedVector2Array(172, 252, 738, 252, 738, 283, 172, 283)
 
 [node name="Base10" type="CollisionPolygon2D" parent="PhysicalBases"]
 polygon = PackedVector2Array(172, 158, 214, 158, 214, 283, 172, 283)
@@ -333,7 +333,7 @@ polygon = PackedVector2Array(865, 128, 1016, 128, 1016, 214, 865, 214)
 polygon = PackedVector2Array(1015, 133, 1170, 133, 1170, 214, 1015, 214)
 
 [node name="Base23" type="CollisionPolygon2D" parent="PhysicalBases"]
-polygon = PackedVector2Array(933, 277, 1123, 277, 1123, 335, 933, 335)
+polygon = PackedVector2Array(933, 299, 1123, 299, 1123, 335, 933, 335)
 
 [node name="Base24" type="CollisionPolygon2D" parent="PhysicalBases"]
 polygon = PackedVector2Array(1170, 145, 1194, 145, 1194, 330, 1170, 330)
@@ -342,7 +342,7 @@ polygon = PackedVector2Array(1170, 145, 1194, 145, 1194, 330, 1170, 330)
 polygon = PackedVector2Array(472, 571, 758, 571, 758, 722, 472, 722)
 
 [node name="Base26" type="CollisionPolygon2D" parent="PhysicalBases"]
-polygon = PackedVector2Array(478, 506, 753, 506, 753, 537, 478, 537)
+polygon = PackedVector2Array(478, 510, 753, 510, 753, 537, 478, 537)
 
 [node name="Base27" type="CollisionPolygon2D" parent="PhysicalBases"]
 polygon = PackedVector2Array(478, 772, 753, 772, 753, 804, 478, 804)
@@ -378,4 +378,4 @@ polygon = PackedVector2Array(83, 993, 410, 993, 410, 1082, 83, 1082)
 polygon = PackedVector2Array(844, 993, 1188, 993, 1188, 1082, 844, 1082)
 
 [node name="Base38" type="CollisionPolygon2D" parent="PhysicalBases"]
-polygon = PackedVector2Array(395, 486, 839, 486, 839, 804, 395, 804)
+polygon = PackedVector2Array(395, 510, 839, 510, 839, 804, 395, 804)

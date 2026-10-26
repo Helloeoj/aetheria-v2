@@ -40,10 +40,22 @@ Geometry and navigation share the source-space obstacles in `layout.json`.
 ### Central hearth no-entry area and shared grid
 
 The user requested the whole hearth/seating island be inaccessible, without any
-artwork change. One extra collision rectangle covers source `(395,486)` through
+artwork change. One extra collision rectangle covers source `(395,510)` through
 `(839,804)`: the hearth, all four surrounding benches and their interior gaps.
 The source/runtime PNG, foreground UVs, furniture positions and display scale are
 unchanged. Both physical collision and the existing navigation read that obstacle.
+
+The north edge follows the bench's lower physical base, not its raised artwork
+edge. The player can stand one 32px tile closer behind that bench, at world
+`(472,368)`, while the next row toward the hearth stays blocked.
+
+The bar counter and kitchen island already have feet-sorted foreground polygons.
+Their collision bases start at source Y252 and Y299 respectively, leaving direct
+horizontal walking rows at world Y176 (bar) and Y208 (kitchen). Counter tops
+cover the player's lower body on those rows; they are not full-sprite blockers.
+Visible polygons, UVs, anchors and all source/runtime image pixels are unchanged.
+The furniture fronts remain solid. Physical collision, legacy navigation,
+shared-grid paths and server movement all use the same updated bases.
 
 The Tavern now uses the shared hidden 32-world-pixel movement/AoE grid. Its fixed
 map-local lattice origin is `(8,0)` pixels, authored as `gameplay_grid_origin`
@@ -104,3 +116,11 @@ for GPU-rendered overview, door, stove UI and maximum-zoom character comparisons
 `--script res://scripts/dev_tools/tavern_art_check.gd -- --output=<absolute PNG>`
 renders the actor-free scene at native source density for pixel comparison.
 Keep output outside the repository and inspect stderr, not just the exit code.
+
+`--script res://scripts/dev_tools/tavern_walkbehind_integration.gd` checks the
+three screenshot-reported routes with native keys, click walking and server
+commands, including solid furniture fronts and inner hearth. For real 4x GPU
+occlusion checks, run without `--headless`, adding
+`-- --capture-directory=<absolute evidence directory>`; it verifies that the
+foreground hides lower-body pixels but leaves upper-body pixels visible and
+saves kitchen, bar and north-bench captures.

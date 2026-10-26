@@ -36,7 +36,9 @@ def main():
 
     # Each source-space polygon samples the original PNG at the exact same UVs.
     # Narrow polygons follow silhouettes; the original base remains byte-exact.
-    add('BarCounter', [[169,158],[213,158],[213,220],[737,222],[737,273],[208,282],[172,263]], [172,226,566,57])
+    # Raised counter tops overlap actors behind them; only the lower physical
+    # bases block feet. Keep their original foreground polygons and UVs intact.
+    add('BarCounter', [[169,158],[213,158],[213,220],[737,222],[737,273],[208,282],[172,263]], [172,252,566,31])
     add('BarReturn', rectangle(172,158,42,125), [172,158,42,125])
     for i in range(9):
         x = 217 + i*57
@@ -44,10 +46,10 @@ def main():
     add('KitchenDivider', rectangle(802,16,55,349), [802,0,55,365])
     add('KitchenRearCounter', rectangle(865,128,151,86), [865,128,151,86])
     add('Stove', rectangle(1015,133,155,81), [1015,133,155,81])
-    add('KitchenIsland', [[931,260],[1117,260],[1126,277],[1126,335],[931,335]], [933,277,190,58])
+    add('KitchenIsland', [[931,260],[1117,260],[1126,277],[1126,335],[931,335]], [933,299,190,36])
     add('KitchenSideCabinet', rectangle(1170,145,24,185), [1170,145,24,185])
     add('Hearth', [[477,560],[751,560],[766,570],[766,715],[754,728],[472,728],[464,717],[464,573]], [472,571,286,151])
-    add('HearthNorthBench', rectangle(477,486,277,51), [478,506,275,31])
+    add('HearthNorthBench', rectangle(477,486,277,51), [478,510,275,27])
     add('HearthSouthBench', rectangle(477,750,277,54), [478,772,275,32])
     add('HearthWestBench', rectangle(395,545,39,204), [395,550,39,199])
     add('HearthEastBench', rectangle(799,545,40,204), [799,550,40,199])
@@ -64,9 +66,9 @@ def main():
                  [78,1082,496,172],[670,1082,524,172],[574,1140,96,114],
                  [76,181,52,150],[76,547,18,92],[1155,529,39,89]]
     obstacles += [obj['collision'] for obj in objects if obj['collision']]
-    # User-authorized no-entry island: hearth, surrounding benches and all gaps
-    # between them. Collision/navigation only; original artwork/UVs stay exact.
-    obstacles.append([395,486,444,318])
+    # Keep the hearth and inner seating gaps blocked, but let actors stand
+    # behind the north bench's raised back edge at the next gameplay tile.
+    obstacles.append([395,510,444,294])
     layout = dict(source_size=[1254,1254], world_pixels_per_source_pixel=0.75,
                   objects=objects, obstacles=obstacles,
                   entrance=[627,1040], stove_approach=[1145,242],
