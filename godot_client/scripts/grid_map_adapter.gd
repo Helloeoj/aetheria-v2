@@ -10,8 +10,9 @@ var _shape := RectangleShape2D.new()
 func configure(owner_game: Node2D) -> void:
 	game = owner_game
 	_shape.size = Vector2(24, 24)
-	# A fixed map-local pixel (0,0), projected into the existing Y-up simulation.
-	grid.configure(Vector2(-game.map_origin.x / 32.0, (game.map_origin.y + game.map_height) / 32.0),
+	# Authored once per map, never camera/player-derived. Most areas use (0,0).
+	var pixel_origin: Vector2 = game.get_parent().get_meta("gameplay_grid_origin", Vector2.ZERO)
+	grid.configure(Vector2((pixel_origin.x - game.map_origin.x) / 32.0, (game.map_origin.y + game.map_height - pixel_origin.y) / 32.0),
 		game.world.movement_min, game.world.movement_max)
 	grid.point_clear = _point_clear
 	grid.sweep_clear = _sweep_clear
@@ -41,9 +42,6 @@ func simulation_point(global_point: Vector2) -> Vector2:
 func audit() -> Dictionary:
 	completed = true
 	var root := game.get_parent()
-	if root.scene_file_path.ends_with("TavernInterior.tscn"):
-		report = {"enabled": false, "reason": "28.5px and 30.75px table aisles have incompatible center alignments; geometry preserved", "checks": 0}
-		return report
 	var probes: Array[Vector2] = []
 	var spawns := root.get_node_or_null("SpawnPoints")
 	if spawns != null:
@@ -54,6 +52,10 @@ func audit() -> Dictionary:
 			probes.append(simulation_point(marker.global_position))
 	if probes.is_empty():
 		probes.append(game.player.get_position())
+	var authored_probes := root.get_node_or_null("GridProbes")
+	if authored_probes != null:
+		for marker: Node2D in authored_probes.get_children():
+			probes.append(simulation_point(marker.global_position))
 	# Existing Catacombs data supplies topology probes, not gameplay cell size.
 	if root.scene_file_path.ends_with("CatacombsFloor01.tscn"):
 		var path := "res://Assets/Maps/GolemCatacombs/Floor01/layout.json"

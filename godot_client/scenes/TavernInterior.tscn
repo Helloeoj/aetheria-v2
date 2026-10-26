@@ -13,6 +13,7 @@
 y_sort_enabled = true
 texture_filter = 1
 script = ExtResource("8_navigation")
+metadata/gameplay_grid_origin = Vector2(8, 0)
 
 [node name="Backdrop" type="Polygon2D" parent="."]
 z_index = -1000
@@ -25,6 +26,23 @@ polygon = PackedVector2Array(-3000, -3000, 4000, -3000, 4000, 4000, -3000, 4000)
 
 [node name="Entrance" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(470.25, 780)
+
+[node name="GridProbes" type="Node2D" parent="."]
+
+[node name="WestCirculation" type="Marker2D" parent="GridProbes"]
+position = Vector2(272, 496)
+
+[node name="EastCirculation" type="Marker2D" parent="GridProbes"]
+position = Vector2(656, 496)
+
+[node name="NorthCirculation" type="Marker2D" parent="GridProbes"]
+position = Vector2(464, 336)
+
+[node name="SouthCirculation" type="Marker2D" parent="GridProbes"]
+position = Vector2(464, 656)
+
+[node name="BartenderAisle" type="Marker2D" parent="GridProbes"]
+position = Vector2(576, 144)
 
 [node name="Combat" type="Node2D" parent="."]
 y_sort_enabled = true

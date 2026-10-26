@@ -376,3 +376,6 @@ polygon = PackedVector2Array(83, 993, 410, 993, 410, 1082, 83, 1082)
 
 [node name="Base37" type="CollisionPolygon2D" parent="PhysicalBases"]
 polygon = PackedVector2Array(844, 993, 1188, 993, 1188, 1082, 844, 1082)
+
+[node name="Base38" type="CollisionPolygon2D" parent="PhysicalBases"]
+polygon = PackedVector2Array(395, 486, 839, 486, 839, 804, 395, 804)

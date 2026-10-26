@@ -21,6 +21,14 @@ func _place(point: Vector2) -> void:
 	var actor: CombatActor = game.combat.actors[game.player.entity_id]
 	actor.x = (local.x - game.map_origin.x) / game.TILE_SIZE
 	actor.y = (game.map_origin.y + game.map_height - local.y) / game.TILE_SIZE
+	if game.world.grid != null:
+		var cell: Variant = game.world.grid.recovery_cell(Vector2(actor.x,actor.y))
+		check(cell != null, "fixture placement has a collision-safe tile center")
+		if cell == null: return
+		var center: Vector2 = game.world.grid.center(cell)
+		actor.x = center.x
+		actor.y = center.y
+		game.world.grid_travellers.erase(actor.entity_id)
 	game.player.x = actor.x
 	game.player.y = actor.y
 	game._update_sprite_position(actor.entity_id)
@@ -61,6 +69,9 @@ func _settle_travel(path: String) -> void:
 	game.set_physics_process(false)
 	await get_tree().physics_frame
 	await get_tree().process_frame
+	for frame in range(60):
+		if game.grid_adapter != null and game.grid_adapter.completed: break
+		await get_tree().physics_frame
 
 func _walk_until_stopped() -> void:
 	for step in range(240):
@@ -119,7 +130,7 @@ func _run() -> void:
 	await _settle_travel(TAVERN)
 	check(game.player == player_ref and game.player.gold == 47 and game.player.backpack == before_inventory, "entry retains exact player, inventory and gold")
 	var spawn: Node2D = game.get_parent().get_node("SpawnPoints/Entrance")
-	check(game.actor_sprites[game.player.entity_id].global_position.distance_to(spawn.global_position) < 0.1, "entry lands safely inside south door")
+	check(game.actor_sprites[game.player.entity_id].global_position.distance_to(spawn.global_position) < 23 and game.world.grid.is_center(game.player.get_position()), "entry lands safely at a tile center inside south door")
 	check(game.actor_sprites[game.player.entity_id].animated_sprite.scale == Vector2(0.75, 0.75), "character retains native display scale")
 	check(game.get_parent().get_node("TavernContent").scale == Vector2(0.75, 0.75), "interior matches character source-pixel density")
 	check(game.get_parent().get_node("TavernContent/ApprovedArtwork").texture_filter == CanvasItem.TEXTURE_FILTER_PARENT_NODE, "art inherits the nearest-filtered content")
@@ -128,10 +139,10 @@ func _run() -> void:
 		check(not room.interaction_path(spawn.global_position,source_point * 0.75).is_empty(), "room route reaches " + str(source_point))
 	game.interactions.walk_here(Vector2(776,200) * 0.75)
 	await _walk_until_stopped()
-	check(game.actor_sprites[game.player.entity_id].global_position.distance_to(Vector2(776,200) * 0.75) < 3, "physical walking reaches the bartender aisle")
+	check(game.actor_sprites[game.player.entity_id].global_position.distance_to(Vector2(776,200) * 0.75) < 23 and game.world.grid.is_center(game.player.get_position()), "physical walking reaches a safe bartender-aisle tile center")
 	game.interactions.walk_here(spawn.global_position)
 	await _walk_until_stopped()
-	check(game.actor_sprites[game.player.entity_id].global_position.distance_to(spawn.global_position) < 3, "bartender aisle connects back to the common room")
+	check(game.actor_sprites[game.player.entity_id].global_position.distance_to(spawn.global_position) < 23 and game.world.grid.is_center(game.player.get_position()), "bartender aisle connects back to a common-room tile center")
 	var query := PhysicsPointQueryParameters2D.new()
 	query.collision_mask = 1
 	query.position = Vector2(620,640) * 0.75
@@ -208,7 +219,7 @@ func _run() -> void:
 	await _settle_travel(OVERWORLD)
 	check(game.player == player_ref and game.player.gold == 47, "return preserves the running character")
 	var marker: Node2D = game.get_parent().get_node("SpawnPoints/TavernReturn")
-	check(game.actor_sprites[game.player.entity_id].global_position.distance_to(marker.global_position) < 0.1, "return lands outside existing tavern")
+	check(game.actor_sprites[game.player.entity_id].global_position.distance_to(marker.global_position) < 23 and game.world.grid.is_center(game.player.get_position()), "return lands at a safe tile center outside existing tavern")
 	door = game.get_node("TavernEntrance")
 	_click(door.to_global(door.click_rect.get_center()), MOUSE_BUTTON_RIGHT)
 	_menu_action("Enter Tavern")

@@ -73,6 +73,9 @@ func _run() -> void:
 	await get_tree().process_frame
 	game = scene.get_node("Combat")
 	game.set_physics_process(false)
+	for frame in range(60):
+		if game.grid_adapter != null and game.grid_adapter.completed: break
+		await get_tree().physics_frame
 	var controller: Node = game.cooking_controller
 	controller.set_physics_process(false)
 	controller.set_process(false)
@@ -81,6 +84,16 @@ func _run() -> void:
 	var actor: CombatActor = game.combat.actors[game.player.entity_id]
 	actor.x = (local.x - game.map_origin.x) / game.TILE_SIZE
 	actor.y = (game.map_origin.y + game.map_height - local.y) / game.TILE_SIZE
+	if game.world.grid != null:
+		var cell: Variant = game.world.grid.recovery_cell(Vector2(actor.x,actor.y))
+		check(cell != null, "stove fixture has a collision-safe tile center")
+		if cell == null:
+			_finish()
+			return
+		var center: Vector2 = game.world.grid.center(cell)
+		actor.x = center.x
+		actor.y = center.y
+		game.world.grid_travellers.erase(actor.entity_id)
 	game.player.x = actor.x
 	game.player.y = actor.y
 	game._update_sprite_position(actor.entity_id)
@@ -96,6 +109,9 @@ func _run() -> void:
 	await get_tree().process_frame
 	await get_tree().process_frame
 	check(panel.visible, "Nearby actual stove opens shared Cooking UI")
+	if not panel.visible:
+		_finish()
+		return
 	var action := panel.find_child("FlipAction", true, false) as Button
 	check(action != null, "Actual Cooking panel has a prominent FLIP button")
 	if action == null:

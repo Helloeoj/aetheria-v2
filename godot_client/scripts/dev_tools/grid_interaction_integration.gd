@@ -173,11 +173,11 @@ func _run() -> void:
 	region.add_player("tavern-walker", online)
 	var goal: Vector2 = game.interactions._simulation_position(game.get_node("Stove").approach_position())
 	check(not region.world.has_line_of_sight(online.get_position(), goal), "tavern route fixture crosses furniture on its direct ray")
-	check(region.submit("tavern-walker", {"type":"walk","x":goal.x,"y":goal.y}).ok, "server uses existing tavern navigation around furniture")
+	check(region.submit("tavern-walker", {"type":"walk","x":goal.x,"y":goal.y}).ok, "server uses shared Tavern grid routes around furniture")
 	for frame in range(600):
 		region.advance(1.0 / 30.0)
-	check(online.get_position().distance_to(goal) < 0.05, "legacy narrow-passage area reaches destination online")
-	check(game.world.grid == null, "tavern compatibility hold remains intact")
+	check(online.get_position().distance_to(goal) <= 0.72 and region.world.at_grid_rest("tavern-walker"), "Tavern server walk reaches a safe tile center near its off-grid destination")
+	check(game.world.grid != null and region.world.grid != null, "Tavern shares grid movement offline and online")
 	tavern.queue_free()
 	await process_frame
 	print("[Grid interaction] %d checks, %d failures" % [checks, failures])

@@ -10,6 +10,7 @@ $cases = @(
     @{Name='editor'; Args='--editor --quit'},
     @{Name='grid-unit'; Args='--script res://scripts/dev_tools/hidden_grid_unit.gd'},
     @{Name='grid-controls'; Args='--script res://scripts/dev_tools/grid_control_integration.gd'},
+    @{Name='tavern-grid'; Args='--script res://scripts/dev_tools/tavern_grid_integration.gd'},
     @{Name='grid-aoe'; Args='--script res://scripts/dev_tools/grid_aoe_unit.gd'},
     @{Name='grid-placement'; Args='--script res://scripts/dev_tools/grid_placement_unit.gd'},
     @{Name='aoe-preview'; Args='--script res://scripts/dev_tools/grid_aoe_preview_integration.gd'},

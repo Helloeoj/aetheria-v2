@@ -2,8 +2,11 @@
 
 Gameplay cells are 32 world pixels (one existing simulation unit). Art, actor
 display scale and 24px collision shapes are unchanged. The map-local pixel origin
-is fixed at `(0,0)`, projected into the existing Y-up simulation; it does not follow
+is fixed at `(0,0)` by default, projected into the existing Y-up simulation; it does not follow
 the camera or shift when map bounds expand. Negative cells use floor division.
+The Tavern authors `(8,0)` as root `gameplay_grid_origin` metadata to align its
+existing bartender aisle. That same immutable map lattice governs movement,
+AoE, prediction and server occupancy; artwork and cell size do not change.
 
 `HiddenGrid` supplies geometry-derived cell clearance, full-body swept edges,
 diagonal cardinal clearance and bounded A* searches (8192 expanded cells).
@@ -46,9 +49,10 @@ remain separate, pre-existing uncommitted work. Its 24px navigation data is not
 replaced or rounded into the 32px lattice. The adapter reads existing room probes
 without modifying its assets or routing script. The area is optional when absent.
 
-The tavern deliberately retains continuous movement: the two table aisles are
-28.5px and 30.75px wide, and have no common center alignment on a 32px lattice.
-Neither collision nor artwork is changed to conceal that incompatibility.
+The Tavern now passes the audit. The user explicitly chose to block its entire
+central hearth/seating island, including the former incompatible narrow aisles.
+Its approved artwork is unchanged. Authored circulation probes check routes
+outside the island and behind the bar; stove and exit ranges remain unchanged.
 
 ## AoE design amendment and phase 5
 
@@ -85,8 +89,7 @@ the selected target's committed cell at cast start (or the explicit point's cell
 for existing backend calls). Resolution uses actors' committed occupancy at the
 normal damage time, so leaving a tile takes effect on arrival, not on crossing
 its visual midpoint. Numeric damage, mana, timing and unlocks are unchanged.
-The map lattice also exists in Tavern, but its held movement remains continuous;
-occupancy there is the cell containing authoritative position.
+The Tavern uses the same grid occupancy rules, with its authored `(8,0)` origin.
 
 ### Development preview
 
@@ -112,8 +115,9 @@ has a safe connection, online admission is refused without replacing the save.
 An offline incompatible position is preserved and movement adoption held rather
 than guessed. These cases need deliberate recovery; this migration does not
 invent which floor a corrupted location belonged to. New characters still use
-the authored new-character entrance. Tavern retains its original clear continuous
-positions while its movement hold exists.
+the authored new-character entrance. Legacy Tavern positions inside the newly
+blocked hearth island are refused without overwriting saves rather than silently
+teleported through collision; they need deliberate recovery.
 
 Online portal placement is checked at the authored destination marker before
 source removal; unsafe/missing arrivals leave source ownership and progress intact.
@@ -150,8 +154,9 @@ The authoritative region uses the same world/grid/traveller code. Walk commands
 are validated by a checked route instead of requiring a straight terrain ray.
 Interaction walk commands name a registered target; the server derives its
 position, range and eligibility rather than trusting client-supplied coordinates
-or range. Public drops also retain ownership checks. The tavern uses its existing
-navigation around furniture while its grid adoption remains on hold.
+or range. Public drops also retain ownership checks. The Tavern uses shared grid
+routes outside its blocked hearth island; its legacy navigation reads the same
+obstacle for any remaining direct navigation consumers.
 
 Snapshots add grid metadata and each actor's committed cell, segment target,
 active flag, displacement epoch and bounded arrival history (eight centers).

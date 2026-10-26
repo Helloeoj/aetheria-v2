@@ -33,10 +33,7 @@ func _run() -> void:
 			var report: Dictionary = game.grid_adoption_report()
 			print("[Grid audit] ", scene_path, " ", JSON.stringify(report))
 			check(not report.is_empty(), "audit produces a decision")
-			if scene_path.ends_with("TavernInterior.tscn"):
-				check(game.world.grid == null and not report.enabled, "incompatible narrow tavern aisles retain legacy movement")
-			else:
-				check(report.enabled, "compatible area enables grid: " + scene_path)
+			check(report.enabled, "compatible area enables grid: " + scene_path)
 			if report.enabled:
 				var grid = game.world.grid
 				if scene_path.ends_with("CatacombsFloor01.tscn"):

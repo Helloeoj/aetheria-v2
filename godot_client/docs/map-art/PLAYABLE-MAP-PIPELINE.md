@@ -117,7 +117,9 @@ This process is the standard for future sections across the entire game.
 Existing maps require area-by-area completion and validation, not an automatic
 global switch. Golem Kingdom currently adopts the grid against its existing
 geometry, but its full art layering/collision design is not thereby finished or
-approved. Tavern movement remains held while its 28.5px/30.75px aisles are
-incompatible; redesign requires the user's area-design process above. Preserve
+approved. The user subsequently approved a collision-only Tavern exception:
+block the whole hearth/seating island, preserving every artwork pixel. With
+that exclusion and its fixed `(8,0)` map-grid origin, Tavern circulation now
+passes grid adoption. This is not permission for a visual redesign. Preserve
 existing Catacombs work and its separate native navigation/art scale. No area
 art, collision or gameplay is redesigned by saving these instructions.

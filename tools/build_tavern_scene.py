@@ -64,6 +64,9 @@ def main():
                  [78,1082,496,172],[670,1082,524,172],[574,1140,96,114],
                  [76,181,52,150],[76,547,18,92],[1155,529,39,89]]
     obstacles += [obj['collision'] for obj in objects if obj['collision']]
+    # User-authorized no-entry island: hearth, surrounding benches and all gaps
+    # between them. Collision/navigation only; original artwork/UVs stay exact.
+    obstacles.append([395,486,444,318])
     layout = dict(source_size=[1254,1254], world_pixels_per_source_pixel=0.75,
                   objects=objects, obstacles=obstacles,
                   entrance=[627,1040], stove_approach=[1145,242],

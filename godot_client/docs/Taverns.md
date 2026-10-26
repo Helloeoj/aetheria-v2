@@ -37,6 +37,28 @@ Moving a furniture group visually requires a separate floor/art variant; moving
 only its foreground polygon would leave its original appearance in the base.
 Geometry and navigation share the source-space obstacles in `layout.json`.
 
+### Central hearth no-entry area and shared grid
+
+The user requested the whole hearth/seating island be inaccessible, without any
+artwork change. One extra collision rectangle covers source `(395,486)` through
+`(839,804)`: the hearth, all four surrounding benches and their interior gaps.
+The source/runtime PNG, foreground UVs, furniture positions and display scale are
+unchanged. Both physical collision and the existing navigation read that obstacle.
+
+The Tavern now uses the shared hidden 32-world-pixel movement/AoE grid. Its fixed
+map-local lattice origin is `(8,0)` pixels, authored as `gameplay_grid_origin`
+metadata on the root scene. This aligns tile centers with the existing bartender
+aisle without moving any visible object. Other maps keep their existing origin.
+`GridProbes` validate outside circulation on all four sides and behind the bar;
+the usual audit also checks the entrance, exit and stove approaches. WASD and
+click walking take the outside routes. Portal arrivals use safe nearby centers;
+the authored markers and original cooking range/interface remain unchanged.
+
+An old saved position inside the newly blocked island cannot be rounded through
+the new obstacle: the existing safe-placement policy refuses online admission
+without overwriting that save. Such a position needs deliberate recovery; no
+new automatic teleport or progression migration was added here.
+
 `python tools/build_tavern_scene.py` deliberately regenerates the content scene,
 layout and copied runtime PNG. It does not edit pixels. Preserve manual content
 edits before running it; edit the builder definitions when changing generated
