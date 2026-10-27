@@ -33,11 +33,19 @@ named scene into the y-sorted content. Keep 96px centers for compact pockets,
 rock. Place nodes against the outer room walls, leaving room centers and the
 main loop clear. Do not paint replacement rock clusters into the terrain.
 
-The installed layout has 12 nodes, three each of copper, tin, iron and coal.
-Their physical bases remain within 32px of an outer wall and their foot anchors
-within 64px, with all bases fully on the floor. Each room retains an authored
-48px through-lane, and every south/front approach remains reachable. The north
-rim iron node replaces the previous iron placement in the northeast passage.
+The user's annotated empty map replaces the earlier proposed placement layout.
+Its 15 dots request three copper, three tin, four iron and five coal nodes.
+`Assets/Maps/BrackenMine/ore-markers.json` preserves every dot, color and the
+documented small correction for any wall, object or movement conflict.
+Unconflicted marks stay exact. Do not add nodes or rebalance the ore counts.
+
+Each dot denotes the visible alpha rectangle center. The canonical root is
+24px below that center. Match marked positions at integer native pixels; do
+not snap them to 32px or move the independent movement/AoE grid. Full visible
+silhouettes must remain on the floor with 2px wall clearance, at least 4px from
+other ore, and no overlap with the existing cart/supplies. Physical approaches
+may use any accessible side, particularly for nodes beside southern walls.
+Never force artwork into a wall to satisfy a foot-anchor proximity threshold.
 
 The supply cart and crate/barrel assembly are reusable transparent scene props.
 Touching and overlapping crates remain complete assemblies because the flat
@@ -73,6 +81,7 @@ Existing mining systems and production data are unchanged by this map task.
 Run Godot 4.5.1 with the installed project and the scoped development checks:
 
 - `res://scripts/dev_tools/bracken_mine_geometry.gd`
+- `res://scripts/dev_tools/bracken_mine_visuals.gd`
 - `res://scenes/dev_tools/bracken_mine_travel.tscn`
 
 These checks cover actual installed geometry, actor clearance, shared-grid paths
@@ -80,14 +89,24 @@ and portal/state behavior. Supplement them with a real scene render at camera4x
 alongside the current character; source previews alone cannot verify runtime
 clarity or depth ordering. Keep generated evidence outside the repository.
 
-After the user's room-boundary placement correction on 2026-10-27, installed
-validation passed 2194 geometry checks and 58 offline/server travel checks.
-The original installation also passed the existing 19 portal, 26 scene-state
-and 111 server-travel checks. All 332 clear grid centers connect to the arrival.
-The placement regression rejects the previous scattered layout, checks wall
-proximity and alcove placement, and sweeps a 48px body through all four rooms.
-The actual installed GPU composition matches the prepared source outside the
-12 canonical ores;
-all 23256 opaque ore pixels retain their exact RGB, and 4x environment pixel
-blocks have no nonuniform samples. The character appears only in separate
-verification renders. The source and scene contain no baked actors.
+The previous 12-node arrangement passed base-collider checks but was rejected
+by the user for visible wall clipping and blocked routes. Those old passing
+counts do not validate its artwork. The new silhouette regression first failed
+that arrangement, including nine rocks with alpha outside the authored floor.
+It independently pins the 15 supplied dots and colors and checks the actual
+imported alpha for every ore and both extracted supply props.
+
+Keep fresh visual, geometry, runtime-grid and travel results in the supporting
+task record. Real GPU overview and 4x renders must accompany the checks; the
+character appears only in separate verification evidence. Source and scene
+contain no baked actors. Existing ore textures, floor outlines and terrain
+artwork remain unchanged by the marked-placement correction.
+
+Marked-placement validation on 2026-10-27: 437 full-silhouette checks,
+2560 geometry/grid checks and 58 travel checks passed. All 324 physically clear
+grid centers connect to the entrance, and the installed main adapter validates
+all 25 room/approach probes. Reserved through-lanes measure 48px in the western
+rooms and 32px in the denser eastern pockets; the actual actor is 24px wide.
+The real GPU render retains all 29070 opaque ore pixels exactly, preserves the
+terrain outside ore masks and has no nonuniform 4x pixel blocks. Ten conflicted
+marks receive documented corrections of 6–35px; five marks remain exact.

@@ -29,7 +29,10 @@ a placeable library; it does not add world placements or mining skill behavior.
 
 Ore placement: keep nodes against room boundaries. Room centers, entrances and
 main walking routes must stay clear; retain reachable approaches from the room.
-Check the actual physical bases and shared-grid paths after every layout change.
+User-annotated ore dots/colors override generic spacing and prop snapping; only
+conflicted nodes may move minimally. Verify full visible silhouettes against
+walls and other props, physical bases and shared-grid approaches. Base-only
+clearance is insufficient. Preserve the movement grid when matching marked art.
 
 - Camera: match existing low top-down objects and overhead terrain; upper-left object lighting.
 - Mood: peaceful royal countryside, healthy olive/yellow-green vegetation, warm tan roads, beige-gray stones, blue water; restrained clutter. Do not introduce ruins, battle damage or heavy road wear unless requested.

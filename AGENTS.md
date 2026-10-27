@@ -17,7 +17,10 @@ Use 96px/three-cell centers for compact clusters and 128px/four-cell centers
 beside walking routes; keep the 32px placement grid and native artwork scale.
 Place ore nodes against room boundaries, never in room centers or across
 walking routes. Keep the main paths clear and each node accessible from the
-room. Verify physical bases and shared-grid routes after moving nodes.
+room. User-marked positions and colors take priority over default spacing and
+prop snapping; move only conflicted nodes minimally. Check the entire visible
+sprite against walls/other props as well as its physical bases and reachable
+shared-grid approaches. Small base colliders alone do not prove visual clearance.
 Sprite requests authorize artwork only. Do not infer permission to implement
 mining skills, progression, drops, item definitions, crafting/smelting recipes
 or world placement from art or material-naming discussions. Wait for explicit

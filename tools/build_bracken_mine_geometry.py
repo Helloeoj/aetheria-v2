@@ -67,20 +67,13 @@ POOL = [(958,153),(982,152),(1005,151),(1033,151),(1059,160),
 (1084,169),(1109,182),(1129,207),(1149,225),(1144,243),(1116,253),
 (1092,254),(1060,263),(1032,268),(1006,270),(983,268),(962,257),
 (943,244),(928,224),(928,202),(940,184),(948,168)]
-ORES = [
-("CopperNorthWest", "copper", (288,160)),
-("TinNorthWest", "tin", (384,192)),
-("CopperNorthPassage", "copper", (480,256)),
-("TinWestOne", "tin", (128,448)),
-("TinWestTwo", "tin", (224,480)),
-("CopperWest", "copper", (320,512)),
-("IronWestOne", "iron", (416,512)),
-("IronWestTwo", "iron", (512,480)),
-("CoalNorthEast", "coal", (1248,256)),
-("IronNorthRim", "iron", (576,288)),
-("CoalSouthEastOne", "coal", (1280,608)),
-("CoalSouthEastTwo", "coal", (1408,672)),
-]
+# The user's annotated image replaces the earlier proposed placement roster.
+# A dot is the visible rock center, not its foot anchor. Integer positions keep
+# native pixels crisp; the movement/AoE lattice remains independently fixed.
+MARKERS = json.loads((OUTPUT / "ore-markers.json").read_text(encoding="utf-8"))["markers"]
+ORES = [(m["id"], m["ore_id"],
+    (m["dot_center"][0] + m["adjustment"][0],
+     m["dot_center"][1] + m["adjustment"][1] + 24)) for m in MARKERS]
 PROBES = [
 ("EntranceApproach", (768,896)),("SouthJunction", (784,720)),
 ("WestLoop", (560,496)),("NorthLoop", (720,272)),
@@ -88,13 +81,9 @@ PROBES = [
 ("NorthWestAlcove", (304,208)),("WestAlcove", (240,544)),
 ("NorthEastAlcove", (1280,304)),("SouthEastAlcove", (1328,688)),
 ]
-# All ores sit against outer alcove walls with a clear south/front approach.
-# Room centers and connecting passages remain free of ore bases.
-FRONT_OFFSETS = {}
-
-def front(name, position):
-    offset = FRONT_OFFSETS.get(name, (0,32))
-    return (position[0] + offset[0], position[1] + offset[1])
+def approach(name, position):
+    marker = next(m for m in MARKERS if m["id"] == name)
+    return tuple(marker["approach"])
 
 def packed(points):
     return "PackedVector2Array(" + ", ".join(str(v) for p in points for v in p) + ")"
@@ -109,10 +98,10 @@ def main():
         "floor_boundary":FLOOR,
         "exclusions":[{"name":"CentralRockIsland","polygon":ISLAND},{"name":"NorthPool","polygon":POOL}],
         "arrival":[768,928],"exit_approach":[768,896],
-        "probes":[{"name":n,"position":p} for n,p in PROBES] + [{"name":n+"Front","position":front(n,p)} for n,ore,p in ORES],
-        "ores":[{"name":n,"ore_id":ore,"position":p,"front_approach":front(n,p),"scale":[1,1],"role":"visual prop with canonical physical bases; no mining rules"} for n,ore,p in ORES],
+        "probes":[{"name":n,"position":p} for n,p in PROBES] + [{"name":n+"Approach","position":approach(n,p)} for n,ore,p in ORES],
+        "ores":[{"name":n,"user_marker_id":n,"ore_id":ore,"position":p,"approach":approach(n,p),"scale":[1,1],"role":"visual prop with canonical physical bases; no mining rules"} for n,ore,p in ORES],
         "ore_placement_status":"Installed canonical scene placements; gameplay mining definitions remain unmodified.",
-        "ore_placement_policy":"Outer room walls only; no nodes in room centers or connecting passages. Keep physical bases within 32px of the outer wall, foot anchors within 64px, clear 48px room through-lanes and reachable south/front approaches.",
+        "ore_placement_policy":"Only the user's fifteen annotated locations and ore colors. Visible centers follow dots; only documented conflicts receive minimum inward corrections. Full sprite alpha clears walls and other props; each physical base has a reachable adjacent approach. No arbitrary near-wall thresholds or ore-count balancing.",
     }
     (OUTPUT / "layout.json").write_text(json.dumps(layout,indent=2)+"\n",encoding="utf-8")
     # Floor meets the southern world edge. Its complement therefore has one
@@ -145,9 +134,9 @@ def main():
         text += ['',f'[node name="{name}" type="Marker2D" parent="GridProbes"]',
             f'position = Vector2({position[0]}, {position[1]})']
     for name,ore,position in ORES:
-        approach = front(name,position)
-        text += ['',f'[node name="{name}Front" type="Marker2D" parent="GridProbes"]',
-            f'position = Vector2({approach[0]}, {approach[1]})']
+        point = approach(name,position)
+        text += ['',f'[node name="{name}Approach" type="Marker2D" parent="GridProbes"]',
+            f'position = Vector2({point[0]}, {point[1]})']
     SCENE.write_text("\n".join(text)+"\n",encoding="utf-8")
     # Runtime grid adoption reads the wrapper's probes. Regenerate that one
     # bounded block with content so moving a rock cannot leave stale routes.

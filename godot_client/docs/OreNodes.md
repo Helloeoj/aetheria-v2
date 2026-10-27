@@ -39,6 +39,14 @@ Place nodes **against room boundaries**, with access from the room. Keep room
 centers, entrances and main walking routes clear. Do not scatter nodes across
 the middle of a room. Verify the physical bases and shared-grid routes after
 placement; an empty-looking gap in the image does not prove actor clearance.
+Also check the entire visible sprite against walls and other objects: the
+ground-base colliders are much smaller than the rock artwork.
+
+If the user provides marked positions and ore colors, follow those marks.
+They override the default spacing and object snapping below. A mark denotes
+the visible rock center, independent of the canonical foot anchor. Move only
+conflicted nodes minimally, record the reason, and retain native integer pixels
+and the unchanged movement lattice. Do not add extra nodes or balance the roster.
 
 Use **96 world pixels / three grid cells between node centers** for compact,
 RuneScape-inspired ore clusters. Leave clear access along the south/front side.

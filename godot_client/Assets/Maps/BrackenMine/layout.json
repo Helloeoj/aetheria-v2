@@ -1334,203 +1334,123 @@
       ]
     },
     {
-      "name": "CopperNorthWestFront",
+      "name": "IronNWNorthApproach",
       "position": [
-        288,
-        192
+        336,
+        208
       ]
     },
     {
-      "name": "TinNorthWestFront",
+      "name": "CoalNWWestApproach",
       "position": [
-        384,
-        224
+        304,
+        208
       ]
     },
     {
-      "name": "CopperNorthPassageFront",
+      "name": "CoalNWEastApproach",
       "position": [
-        480,
-        288
+        400,
+        240
       ]
     },
     {
-      "name": "TinWestOneFront",
+      "name": "IronNWSouthApproach",
       "position": [
-        128,
-        480
+        336,
+        240
       ]
     },
     {
-      "name": "TinWestTwoFront",
+      "name": "CopperWestNorthApproach",
       "position": [
-        224,
-        512
+        208,
+        528
       ]
     },
     {
-      "name": "CopperWestFront",
+      "name": "CopperWestEastApproach",
       "position": [
-        320,
-        544
+        272,
+        528
       ]
     },
     {
-      "name": "IronWestOneFront",
+      "name": "TinWestWestApproach",
       "position": [
-        416,
-        544
+        144,
+        560
       ]
     },
     {
-      "name": "IronWestTwoFront",
+      "name": "TinWestSouthApproach",
       "position": [
-        512,
-        512
+        304,
+        560
       ]
     },
     {
-      "name": "CoalNorthEastFront",
+      "name": "TinNorthEastApproach",
       "position": [
-        1248,
-        288
+        1232,
+        304
       ]
     },
     {
-      "name": "IronNorthRimFront",
+      "name": "CopperNorthEastApproach",
       "position": [
-        576,
-        320
+        1264,
+        304
       ]
     },
     {
-      "name": "CoalSouthEastOneFront",
+      "name": "CoalSETopApproach",
       "position": [
-        1280,
-        640
+        1328,
+        656
       ]
     },
     {
-      "name": "CoalSouthEastTwoFront",
+      "name": "CoalSEEastApproach",
       "position": [
-        1408,
-        704
+        1392,
+        688
+      ]
+    },
+    {
+      "name": "CoalSEBottomApproach",
+      "position": [
+        1296,
+        688
+      ]
+    },
+    {
+      "name": "IronSEWestApproach",
+      "position": [
+        1232,
+        688
+      ]
+    },
+    {
+      "name": "IronSEBottomApproach",
+      "position": [
+        1360,
+        688
       ]
     }
   ],
   "ores": [
     {
-      "name": "CopperNorthWest",
-      "ore_id": "copper",
-      "position": [
-        288,
-        160
-      ],
-      "front_approach": [
-        288,
-        192
-      ],
-      "scale": [
-        1,
-        1
-      ],
-      "role": "visual prop with canonical physical bases; no mining rules"
-    },
-    {
-      "name": "TinNorthWest",
-      "ore_id": "tin",
-      "position": [
-        384,
-        192
-      ],
-      "front_approach": [
-        384,
-        224
-      ],
-      "scale": [
-        1,
-        1
-      ],
-      "role": "visual prop with canonical physical bases; no mining rules"
-    },
-    {
-      "name": "CopperNorthPassage",
-      "ore_id": "copper",
-      "position": [
-        480,
-        256
-      ],
-      "front_approach": [
-        480,
-        288
-      ],
-      "scale": [
-        1,
-        1
-      ],
-      "role": "visual prop with canonical physical bases; no mining rules"
-    },
-    {
-      "name": "TinWestOne",
-      "ore_id": "tin",
-      "position": [
-        128,
-        448
-      ],
-      "front_approach": [
-        128,
-        480
-      ],
-      "scale": [
-        1,
-        1
-      ],
-      "role": "visual prop with canonical physical bases; no mining rules"
-    },
-    {
-      "name": "TinWestTwo",
-      "ore_id": "tin",
-      "position": [
-        224,
-        480
-      ],
-      "front_approach": [
-        224,
-        512
-      ],
-      "scale": [
-        1,
-        1
-      ],
-      "role": "visual prop with canonical physical bases; no mining rules"
-    },
-    {
-      "name": "CopperWest",
-      "ore_id": "copper",
-      "position": [
-        320,
-        512
-      ],
-      "front_approach": [
-        320,
-        544
-      ],
-      "scale": [
-        1,
-        1
-      ],
-      "role": "visual prop with canonical physical bases; no mining rules"
-    },
-    {
-      "name": "IronWestOne",
+      "name": "IronNWNorth",
+      "user_marker_id": "IronNWNorth",
       "ore_id": "iron",
       "position": [
-        416,
-        512
+        345,
+        190
       ],
-      "front_approach": [
-        416,
-        544
+      "approach": [
+        336,
+        208
       ],
       "scale": [
         1,
@@ -1539,15 +1459,52 @@
       "role": "visual prop with canonical physical bases; no mining rules"
     },
     {
-      "name": "IronWestTwo",
+      "name": "CoalNWWest",
+      "user_marker_id": "CoalNWWest",
+      "ore_id": "coal",
+      "position": [
+        258,
+        215
+      ],
+      "approach": [
+        304,
+        208
+      ],
+      "scale": [
+        1,
+        1
+      ],
+      "role": "visual prop with canonical physical bases; no mining rules"
+    },
+    {
+      "name": "CoalNWEast",
+      "user_marker_id": "CoalNWEast",
+      "ore_id": "coal",
+      "position": [
+        407,
+        210
+      ],
+      "approach": [
+        400,
+        240
+      ],
+      "scale": [
+        1,
+        1
+      ],
+      "role": "visual prop with canonical physical bases; no mining rules"
+    },
+    {
+      "name": "IronNWSouth",
+      "user_marker_id": "IronNWSouth",
       "ore_id": "iron",
       "position": [
-        512,
-        480
+        307,
+        265
       ],
-      "front_approach": [
-        512,
-        512
+      "approach": [
+        336,
+        240
       ],
       "scale": [
         1,
@@ -1556,15 +1513,124 @@
       "role": "visual prop with canonical physical bases; no mining rules"
     },
     {
-      "name": "CoalNorthEast",
+      "name": "CopperWestNorth",
+      "user_marker_id": "CopperWestNorth",
+      "ore_id": "copper",
+      "position": [
+        195,
+        503
+      ],
+      "approach": [
+        208,
+        528
+      ],
+      "scale": [
+        1,
+        1
+      ],
+      "role": "visual prop with canonical physical bases; no mining rules"
+    },
+    {
+      "name": "CopperWestEast",
+      "user_marker_id": "CopperWestEast",
+      "ore_id": "copper",
+      "position": [
+        284,
+        510
+      ],
+      "approach": [
+        272,
+        528
+      ],
+      "scale": [
+        1,
+        1
+      ],
+      "role": "visual prop with canonical physical bases; no mining rules"
+    },
+    {
+      "name": "TinWestWest",
+      "user_marker_id": "TinWestWest",
+      "ore_id": "tin",
+      "position": [
+        141,
+        543
+      ],
+      "approach": [
+        144,
+        560
+      ],
+      "scale": [
+        1,
+        1
+      ],
+      "role": "visual prop with canonical physical bases; no mining rules"
+    },
+    {
+      "name": "TinWestSouth",
+      "user_marker_id": "TinWestSouth",
+      "ore_id": "tin",
+      "position": [
+        280,
+        595
+      ],
+      "approach": [
+        304,
+        560
+      ],
+      "scale": [
+        1,
+        1
+      ],
+      "role": "visual prop with canonical physical bases; no mining rules"
+    },
+    {
+      "name": "TinNorthEast",
+      "user_marker_id": "TinNorthEast",
+      "ore_id": "tin",
+      "position": [
+        1222,
+        283
+      ],
+      "approach": [
+        1232,
+        304
+      ],
+      "scale": [
+        1,
+        1
+      ],
+      "role": "visual prop with canonical physical bases; no mining rules"
+    },
+    {
+      "name": "CopperNorthEast",
+      "user_marker_id": "CopperNorthEast",
+      "ore_id": "copper",
+      "position": [
+        1268,
+        273
+      ],
+      "approach": [
+        1264,
+        304
+      ],
+      "scale": [
+        1,
+        1
+      ],
+      "role": "visual prop with canonical physical bases; no mining rules"
+    },
+    {
+      "name": "CoalSETop",
+      "user_marker_id": "CoalSETop",
       "ore_id": "coal",
       "position": [
-        1248,
-        256
+        1343,
+        623
       ],
-      "front_approach": [
-        1248,
-        288
+      "approach": [
+        1328,
+        656
       ],
       "scale": [
         1,
@@ -1573,32 +1639,52 @@
       "role": "visual prop with canonical physical bases; no mining rules"
     },
     {
-      "name": "IronNorthRim",
+      "name": "CoalSEEast",
+      "user_marker_id": "CoalSEEast",
+      "ore_id": "coal",
+      "position": [
+        1402,
+        662
+      ],
+      "approach": [
+        1392,
+        688
+      ],
+      "scale": [
+        1,
+        1
+      ],
+      "role": "visual prop with canonical physical bases; no mining rules"
+    },
+    {
+      "name": "CoalSEBottom",
+      "user_marker_id": "CoalSEBottom",
+      "ore_id": "coal",
+      "position": [
+        1310,
+        727
+      ],
+      "approach": [
+        1296,
+        688
+      ],
+      "scale": [
+        1,
+        1
+      ],
+      "role": "visual prop with canonical physical bases; no mining rules"
+    },
+    {
+      "name": "IronSEWest",
+      "user_marker_id": "IronSEWest",
       "ore_id": "iron",
       "position": [
-        576,
-        288
+        1196,
+        658
       ],
-      "front_approach": [
-        576,
-        320
-      ],
-      "scale": [
-        1,
-        1
-      ],
-      "role": "visual prop with canonical physical bases; no mining rules"
-    },
-    {
-      "name": "CoalSouthEastOne",
-      "ore_id": "coal",
-      "position": [
-        1280,
-        608
-      ],
-      "front_approach": [
-        1280,
-        640
+      "approach": [
+        1232,
+        688
       ],
       "scale": [
         1,
@@ -1607,15 +1693,16 @@
       "role": "visual prop with canonical physical bases; no mining rules"
     },
     {
-      "name": "CoalSouthEastTwo",
-      "ore_id": "coal",
+      "name": "IronSEBottom",
+      "user_marker_id": "IronSEBottom",
+      "ore_id": "iron",
       "position": [
-        1408,
-        672
+        1375,
+        727
       ],
-      "front_approach": [
-        1408,
-        704
+      "approach": [
+        1360,
+        688
       ],
       "scale": [
         1,
@@ -1625,5 +1712,5 @@
     }
   ],
   "ore_placement_status": "Installed canonical scene placements; gameplay mining definitions remain unmodified.",
-  "ore_placement_policy": "Outer room walls only; no nodes in room centers or connecting passages. Keep physical bases within 32px of the outer wall, foot anchors within 64px, clear 48px room through-lanes and reachable south/front approaches."
+  "ore_placement_policy": "Only the user's fifteen annotated locations and ore colors. Visible centers follow dots; only documented conflicts receive minimum inward corrections. Full sprite alpha clears walls and other props; each physical base has a reachable adjacent approach. No arbitrary near-wall thresholds or ore-count balancing."
 }

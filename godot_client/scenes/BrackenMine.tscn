@@ -56,41 +56,50 @@ position = Vector2(1280, 304)
 [node name="SouthEastAlcove" type="Marker2D" parent="GridProbes"]
 position = Vector2(1328, 688)
 
-[node name="CopperNorthWestFront" type="Marker2D" parent="GridProbes"]
-position = Vector2(288, 192)
+[node name="IronNWNorthApproach" type="Marker2D" parent="GridProbes"]
+position = Vector2(336, 208)
 
-[node name="TinNorthWestFront" type="Marker2D" parent="GridProbes"]
-position = Vector2(384, 224)
+[node name="CoalNWWestApproach" type="Marker2D" parent="GridProbes"]
+position = Vector2(304, 208)
 
-[node name="CopperNorthPassageFront" type="Marker2D" parent="GridProbes"]
-position = Vector2(480, 288)
+[node name="CoalNWEastApproach" type="Marker2D" parent="GridProbes"]
+position = Vector2(400, 240)
 
-[node name="TinWestOneFront" type="Marker2D" parent="GridProbes"]
-position = Vector2(128, 480)
+[node name="IronNWSouthApproach" type="Marker2D" parent="GridProbes"]
+position = Vector2(336, 240)
 
-[node name="TinWestTwoFront" type="Marker2D" parent="GridProbes"]
-position = Vector2(224, 512)
+[node name="CopperWestNorthApproach" type="Marker2D" parent="GridProbes"]
+position = Vector2(208, 528)
 
-[node name="CopperWestFront" type="Marker2D" parent="GridProbes"]
-position = Vector2(320, 544)
+[node name="CopperWestEastApproach" type="Marker2D" parent="GridProbes"]
+position = Vector2(272, 528)
 
-[node name="IronWestOneFront" type="Marker2D" parent="GridProbes"]
-position = Vector2(416, 544)
+[node name="TinWestWestApproach" type="Marker2D" parent="GridProbes"]
+position = Vector2(144, 560)
 
-[node name="IronWestTwoFront" type="Marker2D" parent="GridProbes"]
-position = Vector2(512, 512)
+[node name="TinWestSouthApproach" type="Marker2D" parent="GridProbes"]
+position = Vector2(304, 560)
 
-[node name="CoalNorthEastFront" type="Marker2D" parent="GridProbes"]
-position = Vector2(1248, 288)
+[node name="TinNorthEastApproach" type="Marker2D" parent="GridProbes"]
+position = Vector2(1232, 304)
 
-[node name="IronNorthRimFront" type="Marker2D" parent="GridProbes"]
-position = Vector2(576, 320)
+[node name="CopperNorthEastApproach" type="Marker2D" parent="GridProbes"]
+position = Vector2(1264, 304)
 
-[node name="CoalSouthEastOneFront" type="Marker2D" parent="GridProbes"]
-position = Vector2(1280, 640)
+[node name="CoalSETopApproach" type="Marker2D" parent="GridProbes"]
+position = Vector2(1328, 656)
 
-[node name="CoalSouthEastTwoFront" type="Marker2D" parent="GridProbes"]
-position = Vector2(1408, 704)
+[node name="CoalSEEastApproach" type="Marker2D" parent="GridProbes"]
+position = Vector2(1392, 688)
+
+[node name="CoalSEBottomApproach" type="Marker2D" parent="GridProbes"]
+position = Vector2(1296, 688)
+
+[node name="IronSEWestApproach" type="Marker2D" parent="GridProbes"]
+position = Vector2(1232, 688)
+
+[node name="IronSEBottomApproach" type="Marker2D" parent="GridProbes"]
+position = Vector2(1360, 688)
 
 [node name="Combat" type="Node2D" parent="."]
 y_sort_enabled = true

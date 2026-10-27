@@ -1,0 +1,265 @@
+{
+  "schema": 1,
+  "source": "User's annotated empty 1536x1024 Bracken Mine image, 2026-10-27; dot centers manually transcribed and independently reviewed.",
+  "marker_interpretation": "Visible alpha rectangle center; scene foot anchor is center plus (0,24).",
+  "conflict_policy": "Only conflicting nodes may move, by the smallest distance needed; user clarified this explicitly. No extra nodes, replacements, resizing or movement-grid changes.",
+  "wall_clearance_pixels": 2,
+  "node_clearance_pixels": 4,
+  "markers": [
+    {
+      "id": "IronNWNorth",
+      "ore_id": "iron",
+      "dot_center": [
+        322,
+        140
+      ],
+      "adjustment": [
+        23,
+        26
+      ],
+      "reason": "Wall clips the marked silhouette; joint correction also preserves swept grid access behind this rock and to adjacent nodes.",
+      "approach": [
+        336,
+        208
+      ]
+    },
+    {
+      "id": "CoalNWWest",
+      "ore_id": "coal",
+      "dot_center": [
+        258,
+        181
+      ],
+      "adjustment": [
+        0,
+        10
+      ],
+      "reason": "Marked coal/iron silhouettes overlap; joint correction prevents their physical bases sealing the northwest pocket.",
+      "approach": [
+        304,
+        208
+      ]
+    },
+    {
+      "id": "CoalNWEast",
+      "ore_id": "coal",
+      "dot_center": [
+        399,
+        164
+      ],
+      "adjustment": [
+        8,
+        22
+      ],
+      "reason": "Wall clips the marked silhouette; joint correction leaves clearance from north iron and reachable adjacent grid approaches.",
+      "approach": [
+        400,
+        240
+      ]
+    },
+    {
+      "id": "IronNWSouth",
+      "ore_id": "iron",
+      "dot_center": [
+        293,
+        217
+      ],
+      "adjustment": [
+        14,
+        24
+      ],
+      "reason": "Marked silhouette overlaps adjacent coal; smallest tested inward correction also opens swept access to both northern nodes.",
+      "approach": [
+        336,
+        240
+      ]
+    },
+    {
+      "id": "CopperWestNorth",
+      "ore_id": "copper",
+      "dot_center": [
+        195,
+        444
+      ],
+      "adjustment": [
+        0,
+        35
+      ],
+      "reason": "Wall clips the marked silhouette; 35px south is the nearest tested dot-preserving correction that also keeps the west pocket connected.",
+      "approach": [
+        208,
+        528
+      ]
+    },
+    {
+      "id": "CopperWestEast",
+      "ore_id": "copper",
+      "dot_center": [
+        284,
+        480
+      ],
+      "adjustment": [
+        0,
+        6
+      ],
+      "reason": "Small inward correction clears the wall scallop above the rock.",
+      "approach": [
+        272,
+        528
+      ]
+    },
+    {
+      "id": "TinWestWest",
+      "ore_id": "tin",
+      "dot_center": [
+        141,
+        519
+      ],
+      "adjustment": [
+        0,
+        0
+      ],
+      "reason": "Exact user mark retained.",
+      "approach": [
+        144,
+        560
+      ]
+    },
+    {
+      "id": "TinWestSouth",
+      "ore_id": "tin",
+      "dot_center": [
+        280,
+        571
+      ],
+      "adjustment": [
+        0,
+        0
+      ],
+      "reason": "Exact user mark retained.",
+      "approach": [
+        304,
+        560
+      ]
+    },
+    {
+      "id": "TinNorthEast",
+      "ore_id": "tin",
+      "dot_center": [
+        1223,
+        225
+      ],
+      "adjustment": [
+        -1,
+        34
+      ],
+      "reason": "Northern wall conflicts; joint correction also prevents an isolated grid pocket behind the tin without blocking the room approach.",
+      "approach": [
+        1232,
+        304
+      ]
+    },
+    {
+      "id": "CopperNorthEast",
+      "ore_id": "copper",
+      "dot_center": [
+        1293,
+        231
+      ],
+      "adjustment": [
+        -25,
+        18
+      ],
+      "reason": "Northern wall conflicts; minimum tested joint correction keeps the tin, cart and all northeast grid centers clear.",
+      "approach": [
+        1264,
+        304
+      ]
+    },
+    {
+      "id": "CoalSETop",
+      "ore_id": "coal",
+      "dot_center": [
+        1355,
+        582
+      ],
+      "adjustment": [
+        -12,
+        17
+      ],
+      "reason": "Northern wall conflicts; inward-left correction also clears the adjacent coal.",
+      "approach": [
+        1328,
+        656
+      ]
+    },
+    {
+      "id": "CoalSEEast",
+      "ore_id": "coal",
+      "dot_center": [
+        1402,
+        638
+      ],
+      "adjustment": [
+        0,
+        0
+      ],
+      "reason": "Exact user mark retained.",
+      "approach": [
+        1392,
+        688
+      ]
+    },
+    {
+      "id": "CoalSEBottom",
+      "ore_id": "coal",
+      "dot_center": [
+        1310,
+        703
+      ],
+      "adjustment": [
+        0,
+        0
+      ],
+      "reason": "Exact user mark retained.",
+      "approach": [
+        1296,
+        688
+      ]
+    },
+    {
+      "id": "IronSEWest",
+      "ore_id": "iron",
+      "dot_center": [
+        1196,
+        634
+      ],
+      "adjustment": [
+        0,
+        0
+      ],
+      "reason": "Exact user mark retained.",
+      "approach": [
+        1232,
+        688
+      ]
+    },
+    {
+      "id": "IronSEBottom",
+      "ore_id": "iron",
+      "dot_center": [
+        1375,
+        687
+      ],
+      "adjustment": [
+        0,
+        16
+      ],
+      "reason": "The marked base seals two southeast grid pockets; a 16px south correction opens adjacent swept access while preserving all other southeast marks.",
+      "approach": [
+        1360,
+        688
+      ]
+    }
+  ]
+}
