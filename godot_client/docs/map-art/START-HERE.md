@@ -3,6 +3,12 @@
 Use this entry point for map creation, expansion, image edits and reusable environment assets.
 Goal: retain the current visual quality while reducing repeated generation, extraction and project discovery.
 
+**Required for every worldbuilding change:** follow
+[WORLD-BUILDING-CHECKLIST.md](WORLD-BUILDING-CHECKLIST.md) before generating,
+importing, placing, moving or resizing new or existing props. Run its native-art
+and actual-physics gate, then inspect a real 4x Godot render. A dirty crop or a
+green geometry report alone is not a completed prop.
+
 ## New map sections: approved image to playable scene
 
 For a new area or a substantial area redesign, follow the user's

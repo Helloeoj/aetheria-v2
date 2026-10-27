@@ -105,3 +105,21 @@ limitations, test evidence, configuration and explicit instrumentation APIs.
 Do not commit generated ADC output, native logs, validation output, or
 machine-specific paths/settings. Keep native logging available. Do not alter
 art, maps, balance or unrelated architecture for diagnostic integration.
+
+## Mandatory worldbuilding gate
+
+Before any new/reused prop, world placement, move, scale, state variant or
+collision change, read and follow
+`godot_client/docs/map-art/WORLD-BUILDING-CHECKLIST.md`. This applies to all
+worldbuilding and PixelLab work. Declare native size/density/anchor first;
+never call a dirty/blurry crop a finished prop. Reuse clean complete sources
+or properly redraw/convert/repair at native resolution. Inspect alpha, stray
+pixels, full silhouette and light/dark/ground previews. Preserve art holds.
+
+Run `tools/worldbuilding.py` against the actual changed content scene and its
+task contract. Test real transformed collision bases against walls, peers,
+floor/bounds, exact approaches, reserved lane widths and shared-grid routes.
+Record a real Godot 4x render alongside the player and inspect visual wall
+cut-ins, ground contact and depth sorting. Automatic checks do not grant
+visual approval. Missing/failed evidence keeps the work pending; never
+auto-reposition objects or change existing gameplay to hide a failing check.

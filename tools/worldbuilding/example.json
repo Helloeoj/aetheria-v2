@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "scene": "res://scenes/dev_tools/worldbuilding_lab.tscn",
+  "bounds": [0, 0, 512, 384],
+  "grid_origin": [0, 0],
+  "floor_polygon": [[0, 0], [512, 0], [512, 384], [0, 384]],
+  "props": [{"node": "Props/Copper", "blocking": true}],
+  "anchors": [
+    {"id": "arrival", "point": [48, 176]},
+    {"id": "exit", "point": [464, 176]},
+    {"id": "ore-front", "point": [272, 144]}
+  ],
+  "routes": [
+    {"id": "main-walkway", "points": [[48, 176], [464, 176]], "width": 48}
+  ],
+  "assets": [
+    {
+      "texture": "res://Assets/MapTiles/OreNodes/copper-ore-full-south.png",
+      "native_size": [96, 96],
+      "anchor": [48, 72],
+      "world_pixels_per_source_pixel": 1
+    }
+  ]
+}

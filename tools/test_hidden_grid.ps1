@@ -14,6 +14,7 @@ $cases = @(
     @{Name='tavern-walkbehind'; Args='--script res://scripts/dev_tools/tavern_walkbehind_integration.gd'},
     @{Name='grid-aoe'; Args='--script res://scripts/dev_tools/grid_aoe_unit.gd'},
     @{Name='grid-placement'; Args='--script res://scripts/dev_tools/grid_placement_unit.gd'},
+    @{Name='worldbuilding'; Args='--script res://tools/worldbuilding_audit_test.gd'},
     @{Name='aoe-preview'; Args='--script res://scripts/dev_tools/grid_aoe_preview_integration.gd'},
     @{Name='orb-combat'; Args='res://scenes/dev_tools/orb_combat_smoke.tscn'},
     @{Name='grid-parity'; Args='--script res://scripts/dev_tools/grid_parity_unit.gd'},

@@ -1,5 +1,12 @@
 # Small task records and prompts
 
+All worldbuilding records must also complete the mandatory
+[worldbuilding checklist](WORLD-BUILDING-CHECKLIST.md), including the contract
+for `tools/worldbuilding.py`, native-art checks, actual-physics results and
+separate real Godot 4x visual review. This applies to reused props as well as
+new PixelLab artwork. Copy `tools/worldbuilding/example.json` for a starting
+contract; replace the lab scene and probes with the actual changed area.
+
 Copy the relevant brief into one task folder under the supporting workspace's `work/map-planning/tasks/<task-id>/`. Bracketed fields are intentional template fields, not current instructions to generate or install artwork.
 
 ## Local repair brief
@@ -40,6 +47,9 @@ Need: [object type and number genuinely missing after checking the index]
 Profile / reference: [profile, one complete existing object]
 Native canvas / foot anchor: [width, height / x, y]
 Physical size: [intended world footprint; separate from canvas dimensions]
+Native density / preparation: [world pixels per source pixel; reuse / clean native generation / redraw or repair]
+Geometry contract / results: [task JSON; floor/bounds; changed props; exact approaches; protected lanes; report]
+Visual evidence: [1x light/dark/ground inspection; real Godot 4x with player; wall contact and sorting]
 Output: one complete transparent PNG per object, exact generation provenance,
 reviewed anchor, light/dark/ground preview. Preserve originals.
 Sample first: one representative asset; expand only if it meets the brief.
