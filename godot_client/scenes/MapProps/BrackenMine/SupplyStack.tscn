@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/Maps/BrackenMine/Props/SupplyStack.png" id="1"]
+
+[node name="SupplyStack" type="Node2D"]
+y_sort_enabled = true
+texture_filter = 1
+metadata/source_family = "bracken-mine-approved"
+
+[node name="Footprint" type="StaticBody2D" parent="." groups=["map_object", "world_solid"]]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Visual" type="Sprite2D" parent="Footprint"]
+position = Vector2(-86, -114)
+texture_filter = 1
+texture = ExtResource("1")
+centered = false
+
+[node name="Base1" type="CollisionPolygon2D" parent="Footprint"]
+polygon = PackedVector2Array(-60, -80, -42, -88, -6, -72, -6, -50, -22, -46, -42, -56, -60, -62)
+
+[node name="Base2" type="CollisionPolygon2D" parent="Footprint"]
+polygon = PackedVector2Array(-4, -52, 10, -58, 24, -52, 24, -34, 12, -26, -4, -32)
+
+[node name="Base3" type="CollisionPolygon2D" parent="Footprint"]
+polygon = PackedVector2Array(-22, -24, -2, -32, 28, -20, 26, -6, 2, 4, -20, -4)
+
+[node name="Base4" type="CollisionPolygon2D" parent="Footprint"]
+polygon = PackedVector2Array(-84, -92, -74, -96, -62, -92, -64, -82, -76, -80, -84, -84)

@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/Maps/BrackenMine/Props/MineCart.png" id="1"]
+
+[node name="MineCart" type="Node2D"]
+y_sort_enabled = true
+texture_filter = 1
+metadata/source_family = "bracken-mine-approved"
+
+[node name="Footprint" type="StaticBody2D" parent="." groups=["map_object", "world_solid"]]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Visual" type="Sprite2D" parent="Footprint"]
+position = Vector2(-38, -52)
+texture_filter = 1
+texture = ExtResource("1")
+centered = false
+
+[node name="Base1" type="CollisionPolygon2D" parent="Footprint"]
+polygon = PackedVector2Array(-30, -26, -16, -32, 20, -16, 30, -4, 20, 2, -6, -2, -28, -14)

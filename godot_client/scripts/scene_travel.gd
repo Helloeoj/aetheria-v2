@@ -134,6 +134,8 @@ func request_travel(game: Node, destination_scene: String, spawn_id: String) -> 
 		_loading_label.text = "Entering Golem Kingdom…"
 	elif destination_scene.contains("TavernInterior"):
 		_loading_label.text = "Entering the tavern…"
+	elif destination_scene.contains("BrackenMine"):
+		_loading_label.text = "Entering Bracken Mine…"
 	else:
 		_loading_label.text = "Returning to the outskirts…"
 	_complete_travel.call_deferred(game, destination_scene)

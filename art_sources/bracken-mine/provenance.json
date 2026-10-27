@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "area": "Bracken Mine",
+  "approval": {
+    "date": "2026-10-27",
+    "evidence": "User in chat approved these areas conditional on the approved ore nodes fitting and requested the remaining map pipeline steps.",
+    "master": "approved-base.png",
+    "composition": "approved-candidate.png",
+    "later_roster": ["copper", "tin", "iron", "coal"]
+  },
+  "generation": {
+    "service": "built-in image generation",
+    "prompt": "generation-prompt.txt",
+    "requested_size": [1536, 1024],
+    "actual_size": [1536, 1024],
+    "original_filename": "exec-46bc97d7-91de-4d6f-94cd-f3d8c245114f.png",
+    "references": ["current-outskirts-and-harbor.png (style/camera)", "art_sources/ore-nodes/copper-ore-full-south.png (style/native ore scale; not drawn into base)", "godot_client/Assets/Maps/GolemEntrance/GolemCave.png (rock materials)"]
+  },
+  "pixel_export": {
+    "palette_reference": "pixellab-native-grid.png",
+    "palette_service": "PixelLab unzoom_image",
+    "job_id": "b572d5c8-a7ab-4752-9db0-0a49d7003ab4",
+    "gallery_asset_id": "926ba3d2-2eee-5692-aa9b-57df18d0403d",
+    "download": "https://api.pixellab.ai/mcp/images/b572d5c8-a7ab-4752-9db0-0a49d7003ab4/download",
+    "charged_generations": 0.1,
+    "native_grid_size": [384,256],
+    "palette_colors": 256,
+    "runtime_source": "pixel-base.png",
+    "runtime_source_size": [1536,1024],
+    "method": "Deterministic 2px nearest-neighbor sample grid and shared PixelLab palette, no dithering; preserve approved world dimensions and visible geometry. Source master remains unchanged.",
+    "builder": "tools/build_bracken_mine_art.py",
+    "review": "Runtime Godot4x rendering required; successful quantization alone is not visual approval."
+  },
+  "reuse": {
+    "ore_library": "godot_client/scenes/MapProps/OreNodes/",
+    "ore_pixels_modified": false,
+    "ore_scale": [1,1],
+    "exterior_cave_art": "godot_client/Assets/Maps/GolemEntrance/GolemCave.png",
+    "existing_golem_portal_modified": false
+  },
+  "mapping": {"image_pixels_per_world_pixel":1,"world_size":[1536,1024],"gameplay_grid_size":32,"gameplay_grid_origin":[0,0]},
+  "scope": "Environment art, map layering/geometry, canonical ore visual placements, and existing scene-travel integration. No mining skill rules or item/recipe changes."
+}

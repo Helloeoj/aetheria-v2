@@ -1,0 +1,138 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/BrackenMineContent.tscn" id="1_content"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="2_game"]
+[ext_resource type="Script" path="res://scripts/ui_spawn_menu.gd" id="3_spawn"]
+[ext_resource type="Script" path="res://scripts/ui_item_menu.gd" id="4_item"]
+[ext_resource type="Script" path="res://scripts/ui_inventory_menu.gd" id="5_inventory"]
+[ext_resource type="Script" path="res://scripts/cave_portal.gd" id="6_portal"]
+
+[node name="BrackenMine" type="Node2D"]
+y_sort_enabled = true
+texture_filter = 1
+metadata/gameplay_grid_origin = Vector2(0, 0)
+
+[node name="Backdrop" type="Polygon2D" parent="."]
+z_index = -1000
+color = Color(0.02, 0.025, 0.028, 1)
+polygon = PackedVector2Array(-3000, -3000, 4500, -3000, 4500, 4000, -3000, 4000)
+
+[node name="BrackenMineContent" parent="." instance=ExtResource("1_content")]
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="Entrance" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(768, 928)
+
+[node name="GridProbes" type="Node2D" parent="."]
+
+[node name="EntranceApproach" type="Marker2D" parent="GridProbes"]
+position = Vector2(768, 896)
+
+[node name="SouthJunction" type="Marker2D" parent="GridProbes"]
+position = Vector2(784, 720)
+
+[node name="WestLoop" type="Marker2D" parent="GridProbes"]
+position = Vector2(560, 496)
+
+[node name="NorthLoop" type="Marker2D" parent="GridProbes"]
+position = Vector2(720, 272)
+
+[node name="EastLoop" type="Marker2D" parent="GridProbes"]
+position = Vector2(1104, 464)
+
+[node name="SouthLoop" type="Marker2D" parent="GridProbes"]
+position = Vector2(816, 624)
+
+[node name="NorthWestAlcove" type="Marker2D" parent="GridProbes"]
+position = Vector2(304, 208)
+
+[node name="WestAlcove" type="Marker2D" parent="GridProbes"]
+position = Vector2(208, 496)
+
+[node name="NorthEastAlcove" type="Marker2D" parent="GridProbes"]
+position = Vector2(1280, 304)
+
+[node name="SouthEastAlcove" type="Marker2D" parent="GridProbes"]
+position = Vector2(1328, 688)
+
+[node name="CopperNorthWestFront" type="Marker2D" parent="GridProbes"]
+position = Vector2(288, 240)
+
+[node name="TinNorthWestFront" type="Marker2D" parent="GridProbes"]
+position = Vector2(352, 256)
+
+[node name="CopperNorthPassageFront" type="Marker2D" parent="GridProbes"]
+position = Vector2(448, 288)
+
+[node name="TinWestOneFront" type="Marker2D" parent="GridProbes"]
+position = Vector2(160, 544)
+
+[node name="TinWestTwoFront" type="Marker2D" parent="GridProbes"]
+position = Vector2(256, 576)
+
+[node name="CopperWestFront" type="Marker2D" parent="GridProbes"]
+position = Vector2(352, 544)
+
+[node name="IronWestOneFront" type="Marker2D" parent="GridProbes"]
+position = Vector2(448, 544)
+
+[node name="IronWestTwoFront" type="Marker2D" parent="GridProbes"]
+position = Vector2(544, 640)
+
+[node name="CoalNorthEastFront" type="Marker2D" parent="GridProbes"]
+position = Vector2(1248, 288)
+
+[node name="IronNorthEastFront" type="Marker2D" parent="GridProbes"]
+position = Vector2(1120, 384)
+
+[node name="CoalSouthEastOneFront" type="Marker2D" parent="GridProbes"]
+position = Vector2(1280, 672)
+
+[node name="CoalSouthEastTwoFront" type="Marker2D" parent="GridProbes"]
+position = Vector2(1376, 672)
+
+[node name="Combat" type="Node2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("2_game")
+map_width = 1536.0
+map_height = 1024.0
+area_name = "Bracken Mine"
+initial_spawn_id = "Entrance"
+
+[node name="OutskirtsExit" type="Node2D" parent="Combat"]
+position = Vector2(768, 864)
+script = ExtResource("6_portal")
+portal_name = "Valtheiris"
+destination_scene = "res://scenes/EastOutskirtsLayered.tscn"
+destination_spawn_id = "BrackenMineReturn"
+approach_offset = Vector2(0, 32)
+interaction_radius = 56.0
+click_rect = Rect2(-48, -64, 96, 128)
+
+[node name="UI" type="CanvasLayer" parent="Combat"]
+
+[node name="SpawnMenu" type="Control" parent="Combat/UI"]
+visible = false
+layout_mode = 3
+script = ExtResource("3_spawn")
+
+[node name="ItemMenu" type="Control" parent="Combat/UI"]
+visible = false
+layout_mode = 3
+script = ExtResource("4_item")
+
+[node name="InventoryMenu" type="Control" parent="Combat/UI"]
+visible = false
+layout_mode = 3
+script = ExtResource("5_inventory")
+
+[node name="MapCamera" type="Camera2D" parent="."]
+position = Vector2(768, 928)
+zoom = Vector2(1.5, 1.5)
+limit_left = 0
+limit_top = 0
+limit_right = 1536
+limit_bottom = 1024
+
+[editable path="BrackenMineContent"]

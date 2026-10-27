@@ -1,0 +1,143 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/BrackenMineArtwork.tscn" id="1_art"]
+[ext_resource type="PackedScene" path="res://scenes/MapProps/OreNodes/CopperOreFull.tscn" id="2_copper"]
+[ext_resource type="PackedScene" path="res://scenes/MapProps/OreNodes/TinOreFull.tscn" id="3_tin"]
+[ext_resource type="PackedScene" path="res://scenes/MapProps/OreNodes/IronOreFull.tscn" id="4_iron"]
+[ext_resource type="PackedScene" path="res://scenes/MapProps/OreNodes/CoalFull.tscn" id="5_coal"]
+
+[node name="BrackenMineContent" type="Node2D"]
+y_sort_enabled = true
+texture_filter = 1
+metadata/gameplay_grid_origin = Vector2(0, 0)
+
+[node name="BrackenMineArtwork" parent="." instance=ExtResource("1_art")]
+
+[node name="Collision" type="StaticBody2D" parent="." groups=["world_solid"]]
+collision_layer = 1
+collision_mask = 0
+
+[node name="ExteriorRock" type="CollisionPolygon2D" parent="Collision"]
+polygon = PackedVector2Array(0, 0, 1536, 0, 1536, 1024, 900, 1024, 892, 1004, 884, 986, 880, 962, 872, 939, 858, 915, 851, 893, 848, 872, 853, 849, 861, 830, 870, 807, 881, 791, 894, 773, 905, 754, 918, 735, 939, 712, 958, 697, 978, 678, 999, 659, 1019, 641, 1040, 627, 1056, 610, 1070, 594, 1084, 590, 1092, 603, 1087, 620, 1094, 638, 1109, 652, 1125, 657, 1144, 671, 1163, 681, 1183, 686, 1200, 699, 1220, 708, 1239, 718, 1261, 726, 1283, 731, 1306, 737, 1328, 742, 1350, 742, 1373, 742, 1399, 733, 1423, 725, 1436, 710, 1455, 699, 1461, 679, 1457, 661, 1445, 642, 1431, 629, 1427, 610, 1413, 595, 1393, 589, 1379, 579, 1361, 573, 1344, 565, 1327, 569, 1310, 564, 1292, 569, 1270, 567, 1249, 565, 1230, 557, 1214, 545, 1213, 529, 1225, 519, 1232, 505, 1250, 491, 1253, 473, 1241, 455, 1225, 437, 1209, 424, 1193, 412, 1181, 400, 1172, 386, 1172, 369, 1180, 352, 1195, 338, 1212, 332, 1232, 328, 1249, 329, 1267, 332, 1286, 336, 1303, 338, 1322, 347, 1345, 343, 1359, 354, 1377, 351, 1396, 356, 1412, 352, 1432, 348, 1450, 336, 1449, 319, 1433, 300, 1416, 288, 1396, 280, 1380, 269, 1362, 264, 1345, 256, 1330, 244, 1309, 239, 1289, 229, 1269, 219, 1247, 217, 1227, 217, 1205, 227, 1184, 235, 1162, 247, 1141, 250, 1121, 262, 1098, 264, 1072, 270, 1044, 273, 1014, 282, 990, 284, 966, 277, 941, 268, 921, 257, 901, 244, 883, 230, 858, 226, 839, 227, 812, 218, 789, 219, 765, 227, 735, 230, 710, 240, 684, 245, 663, 256, 641, 264, 618, 268, 591, 260, 569, 257, 545, 248, 523, 238, 501, 224, 481, 208, 468, 191, 451, 178, 431, 165, 409, 158, 381, 149, 359, 142, 332, 132, 308, 128, 282, 129, 256, 136, 234, 145, 210, 153, 186, 165, 177, 181, 159, 188, 139, 191, 122, 198, 128, 212, 147, 221, 166, 218, 180, 227, 200, 225, 214, 239, 236, 243, 254, 250, 278, 254, 299, 271, 318, 277, 340, 283, 363, 289, 375, 302, 393, 310, 408, 331, 426, 342, 446, 348, 467, 352, 481, 365, 494, 378, 500, 394, 513, 408, 514, 425, 502, 442, 486, 456, 469, 466, 449, 471, 430, 465, 407, 456, 384, 449, 364, 458, 342, 452, 319, 457, 293, 453, 269, 456, 246, 447, 220, 446, 196, 441, 169, 438, 147, 428, 128, 416, 110, 404, 91, 416, 79, 437, 70, 454, 61, 476, 45, 497, 55, 512, 60, 533, 76, 547, 88, 565, 107, 570, 126, 584, 152, 589, 177, 603, 205, 602, 229, 610, 254, 610, 281, 610, 310, 607, 334, 589, 359, 586, 382, 575, 405, 574, 422, 588, 438, 603, 453, 629, 455, 658, 471, 681, 492, 685, 509, 704, 536, 709, 551, 729, 576, 737, 592, 756, 617, 765, 631, 787, 653, 798, 665, 820, 686, 838, 688, 870, 692, 900, 694, 930, 704, 957, 700, 982, 704, 1024, 0, 1024)
+
+[node name="CentralRockIsland" type="CollisionPolygon2D" parent="Collision"]
+polygon = PackedVector2Array(776, 285, 797, 289, 811, 299, 832, 304, 848, 322, 872, 328, 887, 343, 910, 347, 929, 358, 948, 365, 963, 379, 987, 386, 1003, 406, 1021, 417, 1032, 439, 1029, 459, 1015, 479, 994, 489, 978, 509, 950, 519, 932, 537, 905, 546, 883, 559, 858, 568, 838, 580, 815, 576, 793, 581, 772, 576, 752, 580, 732, 571, 713, 559, 697, 540, 682, 526, 667, 515, 646, 502, 650, 480, 660, 462, 667, 439, 678, 418, 688, 393, 706, 375, 717, 351, 737, 337, 748, 317, 754, 300)
+
+[node name="NorthPool" type="CollisionPolygon2D" parent="Collision"]
+polygon = PackedVector2Array(958, 153, 982, 152, 1005, 151, 1033, 151, 1059, 160, 1084, 169, 1109, 182, 1129, 207, 1149, 225, 1144, 243, 1116, 253, 1092, 254, 1060, 263, 1032, 268, 1006, 270, 983, 268, 962, 257, 943, 244, 928, 224, 928, 202, 940, 184, 948, 168)
+
+[node name="NorthBounds" type="CollisionPolygon2D" parent="Collision"]
+polygon = PackedVector2Array(-64, -64, 1600, -64, 1600, 0, -64, 0)
+
+[node name="SouthBounds" type="CollisionPolygon2D" parent="Collision"]
+polygon = PackedVector2Array(-64, 1024, 1600, 1024, 1600, 1088, -64, 1088)
+
+[node name="WestBounds" type="CollisionPolygon2D" parent="Collision"]
+polygon = PackedVector2Array(-64, 0, 0, 0, 0, 1024, -64, 1024)
+
+[node name="EastBounds" type="CollisionPolygon2D" parent="Collision"]
+polygon = PackedVector2Array(1536, 0, 1600, 0, 1600, 1024, 1536, 1024)
+
+[node name="CopperNorthWest" parent="." instance=ExtResource("2_copper")]
+position = Vector2(256, 224)
+
+[node name="TinNorthWest" parent="." instance=ExtResource("3_tin")]
+position = Vector2(352, 224)
+
+[node name="CopperNorthPassage" parent="." instance=ExtResource("2_copper")]
+position = Vector2(448, 256)
+
+[node name="TinWestOne" parent="." instance=ExtResource("3_tin")]
+position = Vector2(160, 512)
+
+[node name="TinWestTwo" parent="." instance=ExtResource("3_tin")]
+position = Vector2(256, 544)
+
+[node name="CopperWest" parent="." instance=ExtResource("2_copper")]
+position = Vector2(352, 512)
+
+[node name="IronWestOne" parent="." instance=ExtResource("4_iron")]
+position = Vector2(448, 512)
+
+[node name="IronWestTwo" parent="." instance=ExtResource("4_iron")]
+position = Vector2(544, 608)
+
+[node name="CoalNorthEast" parent="." instance=ExtResource("5_coal")]
+position = Vector2(1248, 256)
+
+[node name="IronNorthEast" parent="." instance=ExtResource("4_iron")]
+position = Vector2(1120, 352)
+
+[node name="CoalSouthEastOne" parent="." instance=ExtResource("5_coal")]
+position = Vector2(1280, 640)
+
+[node name="CoalSouthEastTwo" parent="." instance=ExtResource("5_coal")]
+position = Vector2(1376, 640)
+
+[node name="GridProbes" type="Node2D" parent="."]
+
+[node name="EntranceApproach" type="Marker2D" parent="GridProbes"]
+position = Vector2(768, 896)
+
+[node name="SouthJunction" type="Marker2D" parent="GridProbes"]
+position = Vector2(784, 720)
+
+[node name="WestLoop" type="Marker2D" parent="GridProbes"]
+position = Vector2(560, 496)
+
+[node name="NorthLoop" type="Marker2D" parent="GridProbes"]
+position = Vector2(720, 272)
+
+[node name="EastLoop" type="Marker2D" parent="GridProbes"]
+position = Vector2(1104, 464)
+
+[node name="SouthLoop" type="Marker2D" parent="GridProbes"]
+position = Vector2(816, 624)
+
+[node name="NorthWestAlcove" type="Marker2D" parent="GridProbes"]
+position = Vector2(304, 208)
+
+[node name="WestAlcove" type="Marker2D" parent="GridProbes"]
+position = Vector2(208, 496)
+
+[node name="NorthEastAlcove" type="Marker2D" parent="GridProbes"]
+position = Vector2(1280, 304)
+
+[node name="SouthEastAlcove" type="Marker2D" parent="GridProbes"]
+position = Vector2(1328, 688)
+
+[node name="CopperNorthWestFront" type="Marker2D" parent="GridProbes"]
+position = Vector2(288, 240)
+
+[node name="TinNorthWestFront" type="Marker2D" parent="GridProbes"]
+position = Vector2(352, 256)
+
+[node name="CopperNorthPassageFront" type="Marker2D" parent="GridProbes"]
+position = Vector2(448, 288)
+
+[node name="TinWestOneFront" type="Marker2D" parent="GridProbes"]
+position = Vector2(160, 544)
+
+[node name="TinWestTwoFront" type="Marker2D" parent="GridProbes"]
+position = Vector2(256, 576)
+
+[node name="CopperWestFront" type="Marker2D" parent="GridProbes"]
+position = Vector2(352, 544)
+
+[node name="IronWestOneFront" type="Marker2D" parent="GridProbes"]
+position = Vector2(448, 544)
+
+[node name="IronWestTwoFront" type="Marker2D" parent="GridProbes"]
+position = Vector2(544, 640)
+
+[node name="CoalNorthEastFront" type="Marker2D" parent="GridProbes"]
+position = Vector2(1248, 288)
+
+[node name="IronNorthEastFront" type="Marker2D" parent="GridProbes"]
+position = Vector2(1120, 384)
+
+[node name="CoalSouthEastOneFront" type="Marker2D" parent="GridProbes"]
+position = Vector2(1280, 672)
+
+[node name="CoalSouthEastTwoFront" type="Marker2D" parent="GridProbes"]
+position = Vector2(1376, 672)

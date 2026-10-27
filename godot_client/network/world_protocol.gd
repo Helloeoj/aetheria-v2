@@ -7,6 +7,7 @@ const REGIONS := {
 	"golem": "res://scenes/GolemKingdom.tscn",
 	"tavern": "res://scenes/TavernInterior.tscn",
 	"catacombs": "res://scenes/CatacombsFloor01.tscn",
+	"bracken_mine": "res://scenes/BrackenMine.tscn",
 }
 
 static func pack(message: Dictionary) -> PackedByteArray:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b2cmijgymeb0q"]
+[gd_scene load_steps=16 format=3 uid="uid://b2cmijgymeb0q"]
 
 [ext_resource type="Script" uid="uid://fiyvgsy2evop" path="res://scripts/main.gd" id="7_combat"]
 [ext_resource type="Script" uid="uid://dkoen8ba025fg" path="res://scripts/ui_spawn_menu.gd" id="8_spawn"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/fishing_spot.gd" id="13_fishing"]
 [ext_resource type="PackedScene" path="res://scenes/GolemCaveEntrance.tscn" id="14_golem_cave"]
 [ext_resource type="Script" path="res://scripts/cave_portal.gd" id="15_tavern"]
+[ext_resource type="PackedScene" path="res://scenes/BrackenMineEntrance.tscn" id="16_mine"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_map_vertical_bounds"]
 size = Vector2(32, 2656)
@@ -72,6 +73,9 @@ map_height = 5728.0
 [node name="GolemCaveEntrance" parent="Combat" instance=ExtResource("14_golem_cave")]
 position = Vector2(128, -2520)
 
+[node name="BrackenMineEntrance" parent="Combat" instance=ExtResource("16_mine")]
+position = Vector2(672, -96)
+
 [node name="TavernEntrance" type="Node2D" parent="Combat"]
 position = Vector2(-632, -2450)
 script = ExtResource("15_tavern")
@@ -125,5 +129,8 @@ position = Vector2(128, -2430)
 
 [node name="TavernReturn" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(-632, -2374)
+
+[node name="BrackenMineReturn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(672, 0)
 
 [editable path="PlayableMapContent"]
