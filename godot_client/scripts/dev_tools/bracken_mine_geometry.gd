@@ -51,6 +51,30 @@ func polygon(points: Array) -> PackedVector2Array:
 		result.append(vector(pair))
 	return result
 
+func boundary_distance(point: Vector2, boundary: PackedVector2Array) -> float:
+	var distance := INF
+	for i in range(boundary.size()):
+		distance = minf(distance, point.distance_to(Geometry2D.get_closest_point_to_segment(point, boundary[i], boundary[(i + 1) % boundary.size()])))
+	return distance
+
+func audit_room_lanes() -> void:
+	# Authored room-center routes must fit two actor widths, without weaving
+	# around ore. These supplement the existing 24px movement/path checks.
+	var lanes := {
+		"Northwest room": [Vector2(256, 208), Vector2(352, 240), Vector2(480, 304), Vector2(560, 336)],
+		"West room": [Vector2(160, 528), Vector2(256, 544), Vector2(384, 544), Vector2(480, 544), Vector2(576, 528)],
+		"Northeast room": [Vector2(1104, 336), Vector2(1184, 296), Vector2(1280, 304)],
+		"Southeast room": [Vector2(1184, 624), Vector2(1280, 672), Vector2(1344, 688)],
+	}
+	shape.size = BODY * 2.0
+	for room: String in lanes:
+		var points: Array = lanes[room]
+		for i in range(points.size()):
+			check(point_clear(sim(points[i])), room + " keeps a 48px room-center walking lane at " + str(points[i]))
+			if i > 0:
+				check(sweep_clear(sim(points[i - 1]), sim(points[i])), room + " has a continuous 48px through-lane from %s to %s" % [points[i - 1], points[i]])
+	shape.size = BODY
+
 func checked_route(start: Vector2, goal: Vector2, label: String, allowed := Callable()) -> PackedVector2Array:
 	var route := grid.path(sim(start), sim(goal), 0.0, allowed)
 	check(not route.is_empty(), label + " has a 32px center route")
@@ -133,6 +157,9 @@ func _run() -> void:
 	check(not sweep_clear(sim(Vector2(768, 1008)), sim(Vector2(768, 1064))), "south entrance world bounds prevent exterior escape")
 	var roster := {"copper":0, "tin":0, "iron":0, "coal":0}
 	var ore_positions: Array[Vector2] = []
+	# Alcoves only: the outer boundary beside a connecting passage is not a
+	# substitute for the user's requested room-wall placement.
+	var ore_rooms := [Rect2(128, 128, 512, 192), Rect2(64, 416, 480, 192), Rect2(1216, 224, 256, 128), Rect2(1216, 576, 256, 160)]
 	for ore: Dictionary in layout.ores:
 		var node: Node2D = content.get_node(str(ore.name))
 		var ore_id := str(node.get_meta("ore_id", ""))
@@ -143,15 +170,25 @@ func _run() -> void:
 		check(node.get_script() == null and not node.is_in_group("mining_deposit"), str(node.name) + " remains prop without new mining rules")
 		check(fmod(node.position.x, 32.0) == 0 and fmod(node.position.y, 32.0) == 0, str(node.name) + " respects 32px placement snapping")
 		check(node.get_node_or_null("Footprint/MainBase") != null and node.get_node_or_null("Footprint/CompanionBase") != null, str(node.name) + " retains paired colliders")
+		var in_room := false
+		for room: Rect2 in ore_rooms:
+			in_room = in_room or room.has_point(node.position)
+		check(in_room, str(node.name) + " stays in a room alcove rather than a connecting passage")
+		check(boundary_distance(node.position, floor_polygon) <= 64.0, str(node.name) + " foot anchor stays within two cells of the outer room wall")
+		var base_wall_distance := INF
 		for base_name: String in ["MainBase", "CompanionBase"]:
 			var base: CollisionPolygon2D = node.get_node("Footprint/" + base_name)
 			for local_point: Vector2 in base.polygon:
-				check(Geometry2D.is_point_in_polygon(content.to_local(base.to_global(local_point)), floor_polygon), str(node.name) + " physical base stays on approved floor")
+				var base_point := content.to_local(base.to_global(local_point))
+				check(Geometry2D.is_point_in_polygon(base_point, floor_polygon), str(node.name) + " physical base stays on approved floor")
+				base_wall_distance = minf(base_wall_distance, boundary_distance(base_point, floor_polygon))
+		check(base_wall_distance <= 32.0, str(node.name) + " physical base hugs the outer room wall within one cell")
 		var front := vector(ore.front_approach)
 		check(front.y >= node.position.y + 16.0 and front.distance_to(node.position) <= 48.0, str(node.name) + " approach remains immediately south/front of base")
 		check(point_clear(sim(front)), str(node.name) + " exact front fits 24px body at " + str(front))
 		checked_route(arrival, front, str(node.name) + " front approach")
 		ore_positions.append(node.position)
+	audit_room_lanes()
 	for ore_id: String in roster:
 		check(roster[ore_id] == 3, "balanced roster contains three " + ore_id + " props")
 	for i in range(ore_positions.size()):
@@ -198,6 +235,14 @@ func _run() -> void:
 			if not reached.has(cell + direction) and grid.connected(cell, cell + direction):
 				frontier.append(cell + direction)
 	check(reached.size() == clear_cells, "all %d physically clear grid centers connect to arrival (%d reached)" % [clear_cells, reached.size()])
+	if reached.size() != clear_cells:
+		var isolated: Array[Vector2] = []
+		for y in range(-32, 0):
+			for x in range(0, 48):
+				var cell := Vector2i(x, y)
+				if grid.walkable(cell) and not reached.has(cell):
+					isolated.append(pixel(grid.center(cell)))
+		printerr("[Bracken isolated centers] ", isolated)
 	print("[Bracken geometry metrics] ", JSON.stringify({"clear_cells":clear_cells,"reachable_cells":reached.size(),"safe_diagonals":safe_diagonals,"rejected_corners":rejected_corners,"exterior_samples":blocked_exterior,"roster":roster}))
 	content.queue_free()
 	await process_frame

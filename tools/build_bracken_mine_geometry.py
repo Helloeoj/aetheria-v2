@@ -10,6 +10,7 @@ import json
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "godot_client/Assets/Maps/BrackenMine"
 SCENE = ROOT / "godot_client/scenes/BrackenMineContent.tscn"
+WRAPPER = ROOT / "godot_client/scenes/BrackenMine.tscn"
 
 # Continuous floor boundary, starting at the left edge of the south entrance,
 # following its illustrated floor-side rock edges around all four alcoves.
@@ -67,29 +68,29 @@ POOL = [(958,153),(982,152),(1005,151),(1033,151),(1059,160),
 (1092,254),(1060,263),(1032,268),(1006,270),(983,268),(962,257),
 (943,244),(928,224),(928,202),(940,184),(948,168)]
 ORES = [
-("CopperNorthWest", "copper", (256,224)),
-("TinNorthWest", "tin", (352,224)),
-("CopperNorthPassage", "copper", (448,256)),
-("TinWestOne", "tin", (160,512)),
-("TinWestTwo", "tin", (256,544)),
-("CopperWest", "copper", (352,512)),
-("IronWestOne", "iron", (448,512)),
-("IronWestTwo", "iron", (544,608)),
+("CopperNorthWest", "copper", (288,160)),
+("TinNorthWest", "tin", (384,192)),
+("CopperNorthPassage", "copper", (480,256)),
+("TinWestOne", "tin", (128,448)),
+("TinWestTwo", "tin", (224,480)),
+("CopperWest", "copper", (320,512)),
+("IronWestOne", "iron", (416,512)),
+("IronWestTwo", "iron", (512,480)),
 ("CoalNorthEast", "coal", (1248,256)),
-("IronNorthEast", "iron", (1120,352)),
-("CoalSouthEastOne", "coal", (1280,640)),
-("CoalSouthEastTwo", "coal", (1376,640)),
+("IronNorthRim", "iron", (576,288)),
+("CoalSouthEastOne", "coal", (1280,608)),
+("CoalSouthEastTwo", "coal", (1408,672)),
 ]
 PROBES = [
 ("EntranceApproach", (768,896)),("SouthJunction", (784,720)),
 ("WestLoop", (560,496)),("NorthLoop", (720,272)),
 ("EastLoop", (1104,464)),("SouthLoop", (816,624)),
-("NorthWestAlcove", (304,208)),("WestAlcove", (208,496)),
+("NorthWestAlcove", (304,208)),("WestAlcove", (240,544)),
 ("NorthEastAlcove", (1280,304)),("SouthEastAlcove", (1328,688)),
 ]
-# A front approach is an explicit safe actor position, independent of artwork
-# bounds. The northwest room's near wall requires a southeast front approach.
-FRONT_OFFSETS = {"CopperNorthWest": (32,16)}
+# All ores sit against outer alcove walls with a clear south/front approach.
+# Room centers and connecting passages remain free of ore bases.
+FRONT_OFFSETS = {}
 
 def front(name, position):
     offset = FRONT_OFFSETS.get(name, (0,32))
@@ -111,6 +112,7 @@ def main():
         "probes":[{"name":n,"position":p} for n,p in PROBES] + [{"name":n+"Front","position":front(n,p)} for n,ore,p in ORES],
         "ores":[{"name":n,"ore_id":ore,"position":p,"front_approach":front(n,p),"scale":[1,1],"role":"visual prop with canonical physical bases; no mining rules"} for n,ore,p in ORES],
         "ore_placement_status":"Installed canonical scene placements; gameplay mining definitions remain unmodified.",
+        "ore_placement_policy":"Outer room walls only; no nodes in room centers or connecting passages. Keep physical bases within 32px of the outer wall, foot anchors within 64px, clear 48px room through-lanes and reachable south/front approaches.",
     }
     (OUTPUT / "layout.json").write_text(json.dumps(layout,indent=2)+"\n",encoding="utf-8")
     # Floor meets the southern world edge. Its complement therefore has one
@@ -147,6 +149,17 @@ def main():
         text += ['',f'[node name="{name}Front" type="Marker2D" parent="GridProbes"]',
             f'position = Vector2({approach[0]}, {approach[1]})']
     SCENE.write_text("\n".join(text)+"\n",encoding="utf-8")
+    # Runtime grid adoption reads the wrapper's probes. Regenerate that one
+    # bounded block with content so moving a rock cannot leave stale routes.
+    wrapper = WRAPPER.read_text(encoding="utf-8")
+    start = wrapper.index('[node name="GridProbes" type="Node2D" parent="."]')
+    end = wrapper.index('[node name="Combat" type="Node2D" parent="."]', start)
+    probes = ['[node name="GridProbes" type="Node2D" parent="."]']
+    for probe in layout["probes"]:
+        x, y = probe["position"]
+        probes += ['', f'[node name="{probe["name"]}" type="Marker2D" parent="GridProbes"]',
+            f'position = Vector2({x}, {y})']
+    WRAPPER.write_text(wrapper[:start] + "\n".join(probes) + "\n\n" + wrapper[end:], encoding="utf-8")
     print(f"Built authored mine geometry, {len(PROBES)+len(ORES)} probes and {len(ORES)} canonical ore instances.")
 
 if __name__ == "__main__":

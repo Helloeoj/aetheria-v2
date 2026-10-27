@@ -28,9 +28,16 @@ their existing native scale.
 
 Canonical ores are individual instances from `scenes/MapProps/OreNodes/`.
 Use the existing **Ore Nodes - Full and Depleted** scene collection or drag a
-named scene into the y-sorted content. Keep96px centers for compact pockets,
+named scene into the y-sorted content. Keep 96px centers for compact pockets,
 128px alongside walking routes, and retain clear access at the front of each
-rock. Do not paint replacement rock clusters into the terrain.
+rock. Place nodes against the outer room walls, leaving room centers and the
+main loop clear. Do not paint replacement rock clusters into the terrain.
+
+The installed layout has 12 nodes, three each of copper, tin, iron and coal.
+Their physical bases remain within 32px of an outer wall and their foot anchors
+within 64px, with all bases fully on the floor. Each room retains an authored
+48px through-lane, and every south/front approach remains reachable. The north
+rim iron node replaces the previous iron placement in the northeast passage.
 
 The supply cart and crate/barrel assembly are reusable transparent scene props.
 Touching and overlapping crates remain complete assemblies because the flat
@@ -43,7 +50,8 @@ to their continuous stone/timber support. No actors are baked into map artwork.
 extraction, repaired hidden floor and native terrain TileSets. It verifies exact
 recomposition of the prepared source and prohibits repair outside prop masks.
 `tools/build_bracken_mine_geometry.py` authors content from explicit traced
-floor/exclusion polygons, placement records and room probes. Geometry is not
+floor/exclusion polygons, placement records and room probes. It also synchronizes
+the wrapper's runtime adoption probes whenever placements move. Geometry is not
 inferred from image colors. See `Assets/Maps/BrackenMine/layout.json` and
 `decomposition.json` for the exact current records.
 
@@ -72,10 +80,14 @@ and portal/state behavior. Supplement them with a real scene render at camera4x
 alongside the current character; source previews alone cannot verify runtime
 clarity or depth ordering. Keep generated evidence outside the repository.
 
-Installed validation on 2026-10-27 passed 2248 geometry checks, 58 offline/server
-travel checks, and the existing 19 portal, 26 scene-state and 111 server-travel
-checks. All 328 clear grid centers connect to the arrival. The actual installed
-GPU composition matches the prepared source outside the 12 canonical ores;
+After the user's room-boundary placement correction on 2026-10-27, installed
+validation passed 2194 geometry checks and 58 offline/server travel checks.
+The original installation also passed the existing 19 portal, 26 scene-state
+and 111 server-travel checks. All 332 clear grid centers connect to the arrival.
+The placement regression rejects the previous scattered layout, checks wall
+proximity and alcove placement, and sweeps a 48px body through all four rooms.
+The actual installed GPU composition matches the prepared source outside the
+12 canonical ores;
 all 23256 opaque ore pixels retain their exact RGB, and 4x environment pixel
 blocks have no nonuniform samples. The character appears only in separate
 verification renders. The source and scene contain no baked actors.

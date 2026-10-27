@@ -27,6 +27,10 @@ Use 96px/three-cell centers in compact clusters and 128px/four-cell spacing at
 walking routes. See `docs/OreNodes.md` and the runtime manifest. This installs
 a placeable library; it does not add world placements or mining skill behavior.
 
+Ore placement: keep nodes against room boundaries. Room centers, entrances and
+main walking routes must stay clear; retain reachable approaches from the room.
+Check the actual physical bases and shared-grid paths after every layout change.
+
 - Camera: match existing low top-down objects and overhead terrain; upper-left object lighting.
 - Mood: peaceful royal countryside, healthy olive/yellow-green vegetation, warm tan roads, beige-gray stones, blue water; restrained clutter. Do not introduce ruins, battle damage or heavy road wear unless requested.
 - Grid: 32 × 32 world-pixel terrain cells. Existing brush atlases are 256 × 64 with sixteen native cells. Whole objects have varied canvas sizes; preserve each canvas and root anchor. A terrain cell is not a requirement that every object fit in 32 pixels.

@@ -35,6 +35,11 @@ rock-base collision together.
 
 ## Spacing guide
 
+Place nodes **against room boundaries**, with access from the room. Keep room
+centers, entrances and main walking routes clear. Do not scatter nodes across
+the middle of a room. Verify the physical bases and shared-grid routes after
+placement; an empty-looking gap in the image does not prove actor clearance.
+
 Use **96 world pixels / three grid cells between node centers** for compact,
 RuneScape-inspired ore clusters. Leave clear access along the south/front side.
 Use **128 pixels / four cells** along walking routes so a full character-width

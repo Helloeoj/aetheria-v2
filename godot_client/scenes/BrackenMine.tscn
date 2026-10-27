@@ -48,7 +48,7 @@ position = Vector2(816, 624)
 position = Vector2(304, 208)
 
 [node name="WestAlcove" type="Marker2D" parent="GridProbes"]
-position = Vector2(208, 496)
+position = Vector2(240, 544)
 
 [node name="NorthEastAlcove" type="Marker2D" parent="GridProbes"]
 position = Vector2(1280, 304)
@@ -57,40 +57,40 @@ position = Vector2(1280, 304)
 position = Vector2(1328, 688)
 
 [node name="CopperNorthWestFront" type="Marker2D" parent="GridProbes"]
-position = Vector2(288, 240)
+position = Vector2(288, 192)
 
 [node name="TinNorthWestFront" type="Marker2D" parent="GridProbes"]
-position = Vector2(352, 256)
+position = Vector2(384, 224)
 
 [node name="CopperNorthPassageFront" type="Marker2D" parent="GridProbes"]
-position = Vector2(448, 288)
+position = Vector2(480, 288)
 
 [node name="TinWestOneFront" type="Marker2D" parent="GridProbes"]
-position = Vector2(160, 544)
+position = Vector2(128, 480)
 
 [node name="TinWestTwoFront" type="Marker2D" parent="GridProbes"]
-position = Vector2(256, 576)
+position = Vector2(224, 512)
 
 [node name="CopperWestFront" type="Marker2D" parent="GridProbes"]
-position = Vector2(352, 544)
+position = Vector2(320, 544)
 
 [node name="IronWestOneFront" type="Marker2D" parent="GridProbes"]
-position = Vector2(448, 544)
+position = Vector2(416, 544)
 
 [node name="IronWestTwoFront" type="Marker2D" parent="GridProbes"]
-position = Vector2(544, 640)
+position = Vector2(512, 512)
 
 [node name="CoalNorthEastFront" type="Marker2D" parent="GridProbes"]
 position = Vector2(1248, 288)
 
-[node name="IronNorthEastFront" type="Marker2D" parent="GridProbes"]
-position = Vector2(1120, 384)
+[node name="IronNorthRimFront" type="Marker2D" parent="GridProbes"]
+position = Vector2(576, 320)
 
 [node name="CoalSouthEastOneFront" type="Marker2D" parent="GridProbes"]
-position = Vector2(1280, 672)
+position = Vector2(1280, 640)
 
 [node name="CoalSouthEastTwoFront" type="Marker2D" parent="GridProbes"]
-position = Vector2(1376, 672)
+position = Vector2(1408, 704)
 
 [node name="Combat" type="Node2D" parent="."]
 y_sort_enabled = true
