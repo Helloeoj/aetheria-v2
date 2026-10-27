@@ -38,6 +38,7 @@ var activities: RefCounted
 var mining: RefCounted
 var orders := OrdersService.new()
 var _mining_nodes: Dictionary = {}
+var _order_mining_generations: Dictionary = {}
 var _inputs: Dictionary = {}
 var _walks: Dictionary = {}
 var _walk_approaches: Dictionary = {}
@@ -81,10 +82,10 @@ func configure(id: String, game: Node) -> void:
 		func(character: String, deposit: String) -> Dictionary:
 			var region: RefCounted = owner.get_ref()
 			return region._mining_context(character, deposit) if region != null else {},
-		func(character: String, _event: Dictionary) -> void:
+		func(character: String, event: Dictionary) -> void:
 			var region: RefCounted = owner.get_ref()
 			if region != null:
-				region.dirty[character] = true,
+				region._on_mining_reward(character,event),
 		rng)
 	_discover_stations()
 	_discover_mining()
@@ -278,6 +279,7 @@ func submit(character_id: String, command: Dictionary) -> Dictionary:
 			var crafted := CraftingService.craft(player, String(command.get("recipe_id", "")), String(station.station), int(command.get("quantity", 1)))
 			if not crafted.ok:
 				return _result(false, "craft", String(crafted.get("message", "Cannot craft.")))
+			record_order_action(character_id,"crafting",String(command.get("recipe_id","")),String(command.get("station_id","")))
 			dirty[character_id] = true
 			return _result(true, "ok", String(crafted.get("message", "Crafted.")))
 		"purchase":
@@ -611,6 +613,7 @@ func _handle_events(events: Array) -> void:
 			if players.has(owner_id) and not frozen.has(owner_id):
 				players[owner_id].gold += int(loot.get("gold", 0))
 				dirty[owner_id] = true
+				_record_order_defeat(owner_id,monster)
 			var items: Array = loot.get("items", [])
 			if items.is_empty() and loot.get("item") is Dictionary:
 				items.append({"item": loot.item, "quantity": loot.get("quantity", 1)})
@@ -867,5 +870,44 @@ func record_order_action(id: String, kind: String, target_id: String, station_id
 			continue
 		var context := OrdersTargets.context(geometry_game,orders.config,region_id,anchor_id,players[id],world)
 		if orders.on_event(players[id],kind,target_id,context):
+			dirty[id] = true
+			return
+
+func _on_mining_reward(id: String, event: Dictionary) -> void:
+	if not players.has(id) or frozen.has(id): return
+	dirty[id] = true
+	if event.get("type") != "skill_experience_gained" or event.get("skill") != "mining": return
+	var deposit_id := String(event.get("deposit_id",""))
+	var node: Variant = _mining_nodes.get(deposit_id)
+	if not is_instance_valid(node) or not event.get("ore_item_id") is int or not event.get("deposit_generation") is int: return
+	var generation := int(event.deposit_generation)
+	if int(node.ore_item_id) != int(event.ore_item_id) or generation <= int(_order_mining_generations.get(deposit_id,-1)): return
+	var current: Dictionary = {}
+	for state: Dictionary in mining.deposit_snapshots():
+		if state.deposit_id == deposit_id:
+			current = state
+			break
+	if current.get("state") != "depleted" or int(current.get("generation",-1)) != generation: return
+	_order_mining_generations[deposit_id] = generation
+	var item := GameData.get_item(int(event.ore_item_id))
+	var root: Node = geometry_game.get_parent() if geometry_game != null else null
+	if root != null and not item.is_empty():
+		record_order_action(id,"mining",String(item.name),String(root.get_path_to(node)))
+
+func _record_order_defeat(id: String, monster: MonsterState) -> void:
+	var actor: CombatActor = world.combat.actors.get(monster.entity_id)
+	if actor == null or not actor.is_monster or actor.is_alive or actor.hp > 0 or not actor.death_reported or actor.get_meta("orders_death_consumed",false): return
+	actor.set_meta("orders_death_consumed",true)
+	if not orders.enabled() or not players.has(id) or frozen.has(id): return
+	var template := GameData.get_monster_by_name(monster.name)
+	if template.is_empty() or int(template.get("id",-1)) != monster.monster_id: return
+	for anchor_id: String in orders.config.get("anchors",{}):
+		var anchor: Dictionary = orders.config.anchors[anchor_id]
+		var targets: Variant = anchor.get("combat_targets",[])
+		if not targets is Array or monster.name not in targets: continue
+		var approach := OrdersTargets.resolve(geometry_game,orders.config,region_id,anchor_id)
+		if approach.is_empty() or Vector2(actor.x,actor.y).distance_to(approach.point) > float(approach.reach): continue
+		var context := OrdersTargets.context(geometry_game,orders.config,region_id,anchor_id,players[id],world)
+		if orders.on_event(players[id],"combat",monster.name,context):
 			dirty[id] = true
 			return

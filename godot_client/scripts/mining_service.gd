@@ -139,7 +139,9 @@ func _attempt(id: String) -> void:
 	player.add_skill_experience("mining", int(ore.xp_reward))
 	if _reward.is_valid():
 		_reward.call(id, {"type": "skill_experience_gained", "entity_id": id, "skill": "mining",
-			"experience_gained": player.get_skill_experience("mining") - before})
+			"experience_gained": player.get_skill_experience("mining") - before,
+			"ore_item_id":int(ore.item_id),"deposit_id":String(deposit.deposit_id),
+			"deposit_generation":int(deposit.generation)})
 
 func _invalid(context: Dictionary, session: Dictionary, deposit: Dictionary) -> String:
 	var player: PlayerState = context.get("player")

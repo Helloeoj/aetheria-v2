@@ -60,9 +60,11 @@ treasure-hunt content release. Existing login, saves, gameplay, maps and artwork
   tier; additional sealed packets can remain in the backpack.
 - All directives, cache and base reward selections are generated once. Activation
   fails without consuming the packet when content is unconfigured or invalid.
-- Search/riddle/cipher/equipment validation entry points and trusted action completion
-  entry point. Available directives can complete in either order; completing one
-  reveals the next sealed directive. Earlier or sealed actions do not grant credit.
+- Shared riddle/search/cipher/equipment interaction handlers and fishing/cooking/
+  Mining/crafting/combat action handlers. Action events cannot bypass a cipher answer
+  or equipment interaction. Available directives can complete in either order;
+  completing one reveals the next sealed directive. Earlier or sealed actions do
+  not grant credit.
 - Existing authoritative fishing/cooking success hooks carry actual species/station
   information. Failed catches, burnt/cancelled cooking and repeated feedback do not
   earn credit; a successful action still works at the XP cap.
@@ -100,6 +102,40 @@ treasure-hunt content release. Existing login, saves, gameplay, maps and artwork
 - Real game Escape closes the reader first. Window resizing keeps the reader's Close
   and action controls on-screen.
 
+## Part 6 directive handlers
+
+These are reusable framework capabilities. Actual tasks, locations and NPCs remain
+deferred, and production Orders remain disabled.
+
+| Type | Completed framework | Still needed before live use |
+|---|---|---|
+| A: Landmark riddle | Existing authored-text interaction with server location/range validation | Approved riddle text and real landmark bindings |
+| B: Hidden stash | Existing nearby search interaction; no shovel or fragments invented | Approved searchable objects and bindings |
+| C: Contact | Explicitly unavailable; enabled templates fail validation | NPC selection, established lore and an actual dialogue/completion system |
+| D: Skill trial | Existing fishing/cooking hooks plus native Mining success and crafting recipe transactions | Approved tasks and stable station/deposit bindings; Mining also needs an obtainable approved pickaxe |
+| E: Equipment | Actual nonzero equip requirements, correct worn slot, obtainable-item and tier validation; requirements displayed in the reader/Ledger | Approved gear/task/tier/location choices |
+| F: Cipher | Existing authored answer comparison with normalized text; generic events cannot bypass it | Original cipher texts, answers and targets |
+| G: Ordinary combat | Existing authoritative death/attacker attribution; actual dead catalog monster, explicit target binding and player/monster proximity; duplicate deaths excluded | Eligible enemies and authored location bindings |
+| H: Cursed crew | Explicitly unavailable; ordinary combat cannot substitute approved bosses | Approved lore, encounters, ownership, recovery and art |
+
+Mining credit follows the committed ore transaction and works at the XP cap. Deposit
+identity and generation suppress replay credit. The approved pickaxe metadata is
+currently empty, so enabled Mining templates fail validation rather than receive a
+fabricated tool. The native Mining test prerequisite double is used only in isolated
+tests and grants no production tool.
+
+Crafting credit follows one successful native recipe transaction at its actual
+station. A batch grants at most one directive completion; missing ingredients or
+failed transactions grant none. Crafting has no trainable skill, so its directives
+cannot borrow another skill or introduce a made-up crafting level/XP requirement.
+The existing dynamic station setup is unchanged; future authored bindings need stable
+nodes. No general harvesting system was added.
+
+The new action connections run in the authoritative region. They do not add offline
+sandbox activity completion hooks. No wire command accepts a supplied completion
+event, and no normal scene, spawn, loot rule, recipe, rate or item catalog changed in
+this phase. Native death attribution continues to determine the credited player.
+
 ## Deliberately not supplied
 
 | Needs content, information or later implementation | What is needed |
@@ -108,7 +144,8 @@ treasure-hunt content release. Existing login, saves, gameplay, maps and artwork
 | Part 5 world-dependent constraints | Authored access/travel metadata and backtracking budgets after locations are selected |
 | Live directive library | Riddles, descriptions, cipher answers, desired tasks and tier assignments |
 | NPC/contact objectives | Existing or separately approved NPCs and dialogue hooks |
-| Equipment and combat content bindings | Obtainable gear, actual requirements, eligible enemy targets and attribution rules |
+| Equipment and combat content bindings | Approved obtainable gear/tier choices, eligible enemy targets and locations; handlers reuse actual equip rules and native death attribution |
+| Mining prerequisites and crafting bindings | Approved obtainable pickaxes, task choices and stable authored deposit/station nodes |
 | Cursed crews/captains | Approved lore, art, AI/spawn content, encounter ownership and recovery rules |
 | Order acquisition | Approved eligible sources, tier mapping and drop rates; no live sources are bound |
 | Reward pools and balance | Approved items, quantities, rates and target completion-time/economy assumptions |
@@ -137,6 +174,8 @@ armor and the combat-effect mega consumables. Stoneward Ring is not in the selec
 - `scripts/orders/orders_definitions.gd`: disabled configuration and enabled-content validation.
 - `scripts/orders/orders_selection.gd`: shared eligible pools, objective identity,
   family filtering and varied reveal order for the Part 5 selection rules.
+- `scripts/orders/orders_directives.gd`: shared interaction/event capabilities,
+  actual equipment requirements and action-specific enabled-template validation.
 - `scripts/orders/orders_service.gd`: generation, activation, directives, claims and abandonment.
 - `scripts/orders/orders_targets.gd`: future target resolution through existing authored
   interaction APIs; no coordinates or targets are embedded in this code.
@@ -151,8 +190,9 @@ armor and the combat-effect mega consumables. Stoneward Ring is not in the selec
 ## Validation and developer inspection
 
 Run `tools/test_orders.py --godot <installed Godot 4.5.1 console executable>`.
-It runs focused generation selection, physical inventory/collection, reader/input, definitions, rules (10,000
-generations per tier), authority, activity hooks, journal, character codec and real
+It runs focused directive/native-action and generation selection, physical inventory/
+collection, reader/input, definitions, rules (10,000 generations per tier), authority,
+activity hooks, journal, character codec and real
 in-process host transport/persistence tests. Logs/results are written
 outside the repository; script/native errors fail the runner even with exit code zero.
 
@@ -205,3 +245,13 @@ checks and 43 rules checks plus 40,000 generated Orders. Inventory reading, phys
 item lifecycle, definitions, authority, activity integration, journal, codec and real
 host persistence/transport regressions pass. Editor import and Login startup also
 pass without script/native errors. Independent review reports no remaining findings.
+
+Fresh Part 6 verification: all eleven Orders suites pass, including 49 focused
+directive checks, the existing 40,000-Order rules simulation, inventory reader,
+ownership, activities, journal, codec and real host persistence/transport. All eight
+Mining suites and all thirteen networking suites pass. Native crafting reports
+1,202 transaction checks and 18 UI checks with zero failures. Editor import and Login
+startup complete without script/native errors. Independent read-only review found
+no issues requiring changes. The focused regressions first reproduced event-based
+cipher bypass, missing action credit and malformed requirement handling, then passed
+after their fixes. Test geometry/content never changes normal maps or real saves.

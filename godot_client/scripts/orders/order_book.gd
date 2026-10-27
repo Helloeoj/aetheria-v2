@@ -2,7 +2,8 @@ extends RefCounted
 ## Bounded private order instances. Public views never contain sealed content.
 const TIERS := ["deckhand", "smuggler", "corsair", "dread_captain"]
 const STATES := ["active", "cache_revealed", "claimed", "abandoned", "suspended"]
-const KINDS := ["riddle", "search", "cipher", "fishing", "cooking", "equipment", "combat"]
+const Handlers := preload("res://scripts/orders/orders_directives.gd")
+const KINDS := Handlers.KINDS
 const MAX_COUNT := 2147483647
 const LIVE_STATES := ["active", "cache_revealed", "suspended"]
 const TITLES := {"deckhand":"Deckhand", "smuggler":"Smuggler", "corsair":"Corsair", "dread_captain":"Dread Captain"}
@@ -134,7 +135,8 @@ static func public_book(book: Dictionary) -> Dictionary:
 				continue
 			shown.completed += int(directive.state == "completed")
 			shown.directives.append({"id":directive.id,"kind":directive.kind,"text":directive.text,
-				"state":directive.state,"requirements":{"skill":directive.skill,"level":directive.level,"equipment":directive.item_name}})
+				"state":directive.state,"requirements":{"skill":directive.skill,"level":directive.level,"equipment":directive.item_name,
+				"equipment_levels":Handlers.equipment_levels(GameData.get_item_by_name(directive.item_name)) if directive.kind == "equipment" else {}}})
 		if order.state in ["cache_revealed","claimed"]:
 			shown["cache"] = order.cache_info.duplicate(true)
 		if order.state == "claimed":

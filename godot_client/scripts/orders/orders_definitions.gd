@@ -3,10 +3,12 @@ extends RefCounted
 const Protocol := preload("res://network/world_protocol.gd")
 const Acquisition := preload("res://scripts/acquisition_rules.gd")
 const Selection := preload("res://scripts/orders/orders_selection.gd")
-const KINDS := ["riddle", "search", "cipher", "fishing", "cooking", "equipment", "combat"]
+const Handlers := preload("res://scripts/orders/orders_directives.gd")
+const KINDS := Handlers.KINDS
 const TIERS := ["deckhand", "smuggler", "corsair", "dread_captain"]
 const MAX_COUNT := 2147483647
-const INTERACTION_SCRIPTS := {"portal":"res://scripts/cave_portal.gd", "fish":"res://scripts/fishing_spot.gd", "cook":"res://scripts/cooking_station.gd"}
+const INTERACTION_SCRIPTS := {"portal":"res://scripts/cave_portal.gd", "fish":"res://scripts/fishing_spot.gd", "cook":"res://scripts/cooking_station.gd",
+	"mine":"res://scripts/mining_deposit.gd","craft":"res://scripts/crafting_station.gd"}
 const SAFE_BASE_REWARDS := ["Feathers", "Arrow Shafts", "Bowstring", "Bronze Ore", "Bronze Ingot", "Bronze Arrowheads", "Iron Ore", "Iron Ingot", "Bronze Arrows", "Iron Arrows", "Low Grade Fish Food", "Medium Grade Fish Food", "High Grade Fish Food"]
 var _scene_node_kinds: Dictionary = {}
 
@@ -85,7 +87,7 @@ func validate(config: Dictionary) -> Array[String]:
 			errors.append("Invalid anchor: " + id)
 			continue
 		var anchor: Dictionary = anchors[id]
-		if not _text(anchor.get("label")) or not _text(anchor.get("hint")) or String(anchor.get("interaction_kind", "")) not in ["portal", "fish", "cook"] or not _tier_refs(anchor.get("tiers")):
+		if not _text(anchor.get("label")) or not _text(anchor.get("hint")) or String(anchor.get("interaction_kind", "")) not in INTERACTION_SCRIPTS or not _tier_refs(anchor.get("tiers")):
 			errors.append(id + ": invalid anchor interaction, text or tiers.")
 		if not _scene_has_node(String(anchor.get("region_id", "")), String(anchor.get("node_path", "")), String(anchor.get("interaction_kind", ""))):
 			errors.append(id + ": anchor node is absent or incompatible with its interaction kind.")
@@ -136,8 +138,8 @@ func validate(config: Dictionary) -> Array[String]:
 			var item := GameData.get_item_by_name(String(row.get("item_name", "")))
 			if row.get("skill") != skill or not _integer(row.get("level"), 1, 100) or anchor.get("interaction_kind") != interaction or item.is_empty() or String(item.get("fish_species", "")) != String(row.get("target_id", "")):
 				errors.append(id + ": activity gate must reference a real species, skill and station.")
-		if row.kind in ["equipment", "combat"]:
-			errors.append(id + ": equipment and combat templates await verified content support.")
+		for message: String in Handlers.validate_template(row,anchor,tiers):
+			errors.append(id+": "+message)
 	if not errors.is_empty():
 		return errors
 	for tier_id: String in TIERS:

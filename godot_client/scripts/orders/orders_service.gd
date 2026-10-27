@@ -3,6 +3,7 @@ extends RefCounted
 const Book := preload("res://scripts/orders/order_book.gd")
 const Definitions := preload("res://scripts/orders/orders_definitions.gd")
 const Selection := preload("res://scripts/orders/orders_selection.gd")
+const Handlers := preload("res://scripts/orders/orders_directives.gd")
 var config: Dictionary = {}
 var random := RandomNumberGenerator.new()
 var errors: Array[String] = []
@@ -107,7 +108,7 @@ func interact(player: PlayerState, order_id: String, directive_id: String, ancho
 	for directive: Dictionary in order.directives:
 		if directive.id != directive_id:
 			continue
-		if directive.state != "available" or directive.kind not in ["riddle","search","cipher","equipment"]:
+		if directive.state != "available" or not Handlers.is_interaction(directive.kind):
 			return _result(false,"directive","That directive is not available for this interaction.")
 		if directive.anchor_id != anchor_id or not _context_valid(anchor_id,context) or not _requirements(player,directive):
 			return _result(false,"requirements","Check the location, distance and directive requirements.")
@@ -119,7 +120,7 @@ func interact(player: PlayerState, order_id: String, directive_id: String, ancho
 
 func on_event(player: PlayerState, kind: String, target_id: String, context: Dictionary) -> bool:
 	# Capture one match only: newly revealed directives cannot consume this event again.
-	if not Book.inventory_valid(player):
+	if not Handlers.is_event(kind) or not Book.inventory_valid(player):
 		return false
 	for tier: String in Book.TIERS:
 		var order: Dictionary = player.dead_man_orders.orders.get(tier,{})
@@ -194,17 +195,7 @@ func _context_valid(anchor_id: String, context: Dictionary) -> bool:
 	return context.get("in_range") == true and context.get("anchor_id") == anchor_id and context.get("region_id") == config.anchors[anchor_id].region_id
 
 func _requirements(player: PlayerState, directive: Dictionary) -> bool:
-	if not String(directive.skill).is_empty() and player.get_skill_level(directive.skill) < int(directive.level):
-		return false
-	if directive.kind == "equipment":
-		var item := GameData.get_item_by_name(directive.item_name)
-		if item.is_empty() or EquipmentProgression.requirements(item).is_empty() or not EquipmentProgression.can_equip(player,item):
-			return false
-		for worn: Dictionary in player.equipment.values():
-			if worn.get("id") == item.get("id"):
-				return true
-		return false
-	return true
+	return Handlers.meets_requirements(player,directive)
 
 func _complete(order: Dictionary, directive: Dictionary) -> void:
 	directive.state = "completed"

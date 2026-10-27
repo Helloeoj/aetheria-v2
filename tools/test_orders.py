@@ -9,6 +9,7 @@ import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
 SUITES = {
+    "directives": ("scene", "res://scenes/dev_tools/orders_directives_smoke.tscn", r"\[Orders directives\] (\d+) checks, 0 failures"),
     "generation": ("scene", "res://scenes/dev_tools/orders_generation_smoke.tscn", r"\[Orders generation\] (\d+) checks, 0 failures"),
     "reader": ("scene", "res://scenes/dev_tools/orders_reader_smoke.tscn", r"\[Orders reader\] (\d+) checks, 0 failures"),
     "inventory": ("scene", "res://scenes/dev_tools/orders_inventory_smoke.tscn", r"\[Orders inventory\] (\d+) checks, 0 failures"),

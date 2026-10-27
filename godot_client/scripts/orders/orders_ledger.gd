@@ -154,12 +154,14 @@ func _requirement_text(requirements: Dictionary, kind: String) -> String:
 	if not skill.is_empty():
 		parts.append("Requires %s %d" % [skill.capitalize(), int(requirements.get("level", 1))])
 	var equipment: Variant = requirements.get("equipment", "")
-	var item_label := "Target item: " if kind in ["fishing", "cooking"] else "Equipment: "
+	var item_label := "Target item: " if kind in ["fishing", "cooking", "mining", "crafting"] else "Equipment: "
 	if equipment is Array:
 		if not equipment.is_empty():
 			parts.append(item_label + ", ".join(equipment))
 	elif not str(equipment).is_empty():
 		parts.append(item_label + str(equipment))
+	for required_skill: String in requirements.get("equipment_levels",{}):
+		parts.append("Requires %s %d" % [required_skill.capitalize(),int(requirements.equipment_levels[required_skill])])
 	return " · ".join(parts)
 
 func _reward_text(rewards: Variant) -> String:
