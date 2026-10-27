@@ -5,6 +5,8 @@
 The standard metal ladder is Bronze, Iron, Steel, Blacksteel, Mithril,
 Adamantite, Starforged. Existing Runite equipment IDs and numerical stats are
 preserved under Starforged display names. Historical Runite names still resolve.
+Starforged is now drop-exclusive, not a crafting tier. See
+[Starforged acquisition](StarforgedAcquisition.md) for retirement and supply gaps.
 
 Cloth capes are Homespun, Woven, Runic, Enchanted, Astral, Empyrean and Celestial.
 Every standard cape uses `material: Cloth` and `crafting_skill: tailoring`.
@@ -24,8 +26,9 @@ catalogs omit those retired records. Each canonical staff tier also has Fire,
 Ice, Lightning and Hurricane variants with the same base numerical stats and
 an `orb_element` identifier. Those variants do not enter generic loot.
 
-The catalog now defines all seven metal ores, ingots, arrowheads, arrows and
-bolts; all seven approved leather and cloth materials; the starter hide and
+The catalog retains all seven metal tiers' IDs, including inert historical
+Starforged Ore/Ingot records; defines arrowheads, arrows and bolts; all seven
+approved leather and cloth materials; the starter hide and
 creature-derived higher hides/scales/skin; Animal Sinew; tier-1 Logs and Wooden
 Staff Body; plain and empowered Magic Orbs; and four elemental sigils. No tree
 species, mining deposits, new bosses or artwork are added. Existing Ripped
@@ -44,12 +47,16 @@ is the permanent conversion of one existing orb using one existing sigil.
 ## Runtime source enforcement
 
 `scripts/acquisition_rules.gd` reads `data/acquisition.json` and exposes static
-`can_drop(item, monster)` and `can_purchase(item)` predicates. These are source
+`can_drop(item, monster)`, `can_purchase(item)`, `can_mine(item)` and
+`can_manufacture(item)` predicates. These are source
 eligibility checks, not drop rolls. `LootSystem` calls the drop predicate in
 both explicit guaranteed/common/rare tables and generic candidate pools.
 An explicit table cannot bypass source restrictions by naming a protected item.
 
-- Starforged crafting materials/components: Golem Titan only.
+- Starforged Ore/Ingot: retired, no acquisition or crafting use; IDs kept for saves.
+- Starforged equipment/ammunition/components: no manufacturing, mining or shop
+  acquisition. Existing equipment eligibility is unchanged; component/ammunition
+  Golem Titan eligibility remains pending actual drop tables/rates.
 - Aetherwyrm Leather: Aetherwyrm only; its encounter is future content.
 - Celestial Cloth: blocked until its boss source is chosen.
 - Any new tier-7 Crafting or Ammunition record without a policy: blocked.
@@ -69,8 +76,9 @@ An explicit table cannot bypass source restrictions by naming a protected item.
 
 Boss eligibility uses the exact configured names Golem Titan, Aetherwyrm and
 Demon Overlord. A generic `is_boss` flag does not qualify an unrelated monster.
-The existing Golem Titan is tier 5; its explicit Starforged source eligibility
-does not depend on pretending that its current tier is 7.
+The existing Golem Titan is tier 5; remaining Starforged component/ammunition
+eligibility does not depend on pretending that its current tier is 7. No explicit
+Starforged gear drop table exists yet, and tier-5 fallback cannot supply tier-7 gear.
 
 Pending boss/cultist sources have `generic_loot: false` and `supply_pending`
 metadata. Their future tables can author reviewed probabilities without adding

@@ -3,7 +3,8 @@
 The crafting service exchanges approved backpack ingredients atomically. It does
 not award XP or calculate craft duration; those decisions remain deferred.
 Pending recipe rows describe coverage without supplying invented quantities.
-There are 93 available exchanges and 131 pending routes.
+There are 82 available exchanges and 125 pending routes. Starforged manufacturing
+is removed; see [Starforged acquisition](StarforgedAcquisition.md).
 
 ## Available exchanges
 
@@ -45,7 +46,7 @@ armor piece, shield, arrowhead and bolt, plus arrow assembly at Fletching. Bows,
 crossbows (including undefined limb components), capes, staffs and wands are
 excluded from this addition. Rings and necklaces remain drop-only. The existing
 dagger/longsword costs are unchanged; new costs scale with the finished piece.
-All seven existing metal tiers now have the ten metal equipment routes above,
+The six craftable metal tiers (Bronze through Adamantite) have the ten equipment routes above,
 using the same per-category ingot costs as Bronze. Furnace recipes consume one
 matching ore per ingot, except Steel: **1 Iron Ore + 1 Coal -> 1 Steel Ingot**.
 Both alloy ingredients scale with the requested quantity and are consumed
@@ -58,10 +59,11 @@ ground drops wherever authored item visuals are unavailable. Authored item
 visuals take precedence. Furnace/anvil menus show completed recipes with icons;
 unfinished crossbow components remain pending and hidden at these stations.
 For unsaved testing, use the existing Developer sandbox and F6 item menu:
-F6 opens a Smithing view of 84 items: 70 equipment pieces, six usable ores, Coal
-and seven ingots. Click a row to grant the chosen quantity (1-100); equippable
+F6 opens a Smithing view of 72 items: 60 equipment pieces, five usable ores, Coal
+and six ingots. Click a row to grant the chosen quantity (1-100); equippable
 gear follows existing requirements. Typed IDs, Enter and PageUp/PageDown remain
-available. All Items retains access to the original full developer catalog.
+available. All Items retains the full catalog for inspection, but neither view
+can grant Starforged equipment or retired Starforged materials.
 Bronze Ore is item ID 235 and Bronze Ingot is item ID 236. Login, saves and online
 crafting authority remain unchanged; debug item grants remain offline. The
 existing menus appear above the chat/food HUD and retain their original UI scale.
@@ -77,7 +79,7 @@ Staff assembly consumes its body and orb. A plain staff has no orb status effect
 The following routes appear as unavailable until ingredient quantities and yields
 are approved. Possessing materials does not enable them.
 
-- Anvil: higher metal tiers' arrowheads, crossbow metal components and bolts.
+- Anvil: higher craftable metal tiers' arrowheads, crossbow metal components and bolts.
   Bolts require the respective metal ingots; no wooden bolt
   shaft or feather requirement is added.
 - Fletching: logs into arrow shafts, staff bodies, and wooden crossbow stocks;
@@ -111,11 +113,12 @@ catalog identifiers until their future log/material mapping is specified.
 | 4 | Blacksteel | Troll Leather | Enchanted | Enchanted |
 | 5 | Mithril | Dragon Scale Leather | Astral | Astral |
 | 6 | Adamantite | Demon Skin Leather | Empyrean | Empyrean |
-| 7 | Starforged | Aetherwyrm Leather | Celestial | Celestial |
+| 7 | Starforged (drop-only equipment; no metal crafting) | Aetherwyrm Leather | Celestial | Celestial |
 
-Crafting components can be monster loot. Highest-tier materials are boss-only:
-Starforged Ore comes from Golem Titan, Aetherwyrm Leather from the future
-Aetherwyrm boss, and Celestial material from a still-undecided future boss. A
+Crafting components can be monster loot. Starforged Ore/Ingot are retired;
+all Starforged manufacturing is prohibited. Remaining highest-tier materials
+are boss-only: Aetherwyrm Leather from the future Aetherwyrm boss, and Celestial
+material from a still-undecided future boss. A
 celestial beast is a proposal, not a finished encounter. Future tree and ore
 gathering must preserve this restriction.
 
@@ -215,7 +218,7 @@ checks, save-codec compatibility and ore/ingot icons. It does not claim a live
 account-server end-to-end test or add an alternative minigame UI.
 
 Catalog/menu regression: `res://scenes/dev_tools/smithing_catalog_smoke.tscn`
-checks all seven tiers, exact equipment costs, Steel alloy inputs, replay and
+checks all six craftable tiers, exact equipment costs, Steel alloy inputs, replay and
 missing-material rejection, server transactions, save serialization, real F6
 keyboard/mouse input, quantities, overflow, online grant rejection, station
 buttons, exclusions and icons. The optional `--capture=<folder>` argument saves

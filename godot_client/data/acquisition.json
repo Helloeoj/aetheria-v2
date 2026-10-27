@@ -370,20 +370,16 @@
       "supply_pending": true
     },
     "Starforged Ore": {
-      "drop_route": "bosses",
-      "source_names": [
-        "Golem Titan"
-      ],
+      "drop_route": "none",
+      "source_names": [],
       "purchase": false,
-      "supply_pending": true
+      "supply_pending": false
     },
     "Starforged Ingot": {
-      "drop_route": "bosses",
-      "source_names": [
-        "Golem Titan"
-      ],
+      "drop_route": "none",
+      "source_names": [],
       "purchase": false,
-      "supply_pending": true
+      "supply_pending": false
     },
     "Starforged Arrowheads": {
       "drop_route": "bosses",

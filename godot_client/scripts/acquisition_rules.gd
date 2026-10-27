@@ -3,6 +3,11 @@ extends RefCounted
 
 static var _policy: Dictionary = {}
 
+static func can_manufacture(item: Dictionary) -> bool:
+	# Shared by crafting and any future salvage/reconstruction output. Use the
+	# canonical material, not historical name aliases belonging to Celestial gear.
+	return not item.is_empty() and item.get("material") != "Starforged" and not bool(item.get("legacy_placeholder", false)) and not bool(item.get("drop_only", false)) and bool(item.get("craftable", true))
+
 static func policy() -> Dictionary:
 	if _policy.is_empty():
 		var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string("res://data/acquisition.json"))
@@ -38,12 +43,16 @@ static func can_drop(item: Dictionary, monster: Variant) -> bool:
 	return route == "monster" and not source.is_empty() and _tier_allows(item, source)
 
 static func can_purchase(item: Dictionary) -> bool:
+	if item.get("material") == "Starforged":
+		return false
 	if item.is_empty() or bool(item.get("legacy_placeholder", false)) or _is_top_material(item):
 		return false
 	var rule: Dictionary = policy().get("item_policies", {}).get(String(item.get("name", "")), {})
 	return bool(rule.get("purchase", false))
 
 static func can_mine(item: Dictionary) -> bool:
+	if item.get("material") == "Starforged":
+		return false
 	if item.is_empty() or bool(item.get("legacy_placeholder", false)) or not bool(item.get("generic_loot", true)):
 		return false
 	if bool(item.get("boss_material", false)) or _is_top_material(item):

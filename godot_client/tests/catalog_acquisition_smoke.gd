@@ -111,7 +111,7 @@ func _check_policies(rules: GDScript) -> void:
 		var item: Dictionary = data.get_item_by_name(item_name)
 		_check(not rules.can_drop(item, ordinary), "No normal monster top material: " + item_name)
 		_check(not rules.can_purchase(item), "No shop top material: " + item_name)
-	_check(rules.can_drop(data.get_item_by_name("Starforged Ore"), titan), "Titan supplies Starforged Ore despite existing tier 5")
+	_check(not rules.can_drop(data.get_item_by_name("Starforged Ore"), titan), "Retired Starforged Ore cannot drop even from Titan")
 	_check(not rules.can_drop(data.get_item_by_name("Starforged Ore"), aetherwyrm), "Other boss cannot drop Starforged Ore")
 	_check(rules.can_drop(data.get_item_by_name("Aetherwyrm Leather"), aetherwyrm), "Aetherwyrm supplies its leather")
 	_check(not rules.can_drop(data.get_item_by_name("Celestial Cloth"), titan), "Celestial boss remains unresolved")

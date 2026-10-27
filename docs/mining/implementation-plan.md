@@ -21,7 +21,7 @@ this checkpoint as playable Mining or completed content validation.
 
 - Work in the active game repository; read its `AGENTS.md`. Preserve unrelated dirty files. Follow `docs/DevelopmentSync.md` for scoped commits/pushes on `codex/<task-name>`.
 - No new item IDs, substitute tools, duplicate inventory/XP/item registries, unrelated refactors or changes to existing Fishing/Cooking interfaces.
-- Production pickaxe definitions stay empty until real approved catalog items exist. Steel Ore 242 is excluded; Starforged Ore 256 remains Golem Titan-only.
+- Production pickaxe definitions stay empty until real approved catalog items exist. Steel Ore 242 is excluded; Starforged Ore 256 and Ingot 257 are retired compatibility records with no acquisition or crafting route. Starforged equipment is drop-exclusive.
 - Values in the design are proposed tuning. Production ore rows, tool IDs and visual/placement bindings require content decisions before activation; infrastructure/tests can proceed first.
 - Runtime deposits reset on host restart/region recreation; committed character inventory/XP persists. Cross-host/world-state persistence is outside V1.
 

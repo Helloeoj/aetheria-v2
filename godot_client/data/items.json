@@ -3769,7 +3769,9 @@
     "special_effect": null,
     "aliases": [
       "Runite Dagger"
-    ]
+    ],
+    "craftable": false,
+    "drop_only": true
   },
   {
     "id": 181,
@@ -3794,7 +3796,9 @@
     "special_effect": null,
     "aliases": [
       "Runite Shortsword"
-    ]
+    ],
+    "craftable": false,
+    "drop_only": true
   },
   {
     "id": 182,
@@ -3819,7 +3823,9 @@
     "special_effect": null,
     "aliases": [
       "Runite Longsword"
-    ]
+    ],
+    "craftable": false,
+    "drop_only": true
   },
   {
     "id": 183,
@@ -3844,7 +3850,9 @@
     "special_effect": null,
     "aliases": [
       "Runite Mace"
-    ]
+    ],
+    "craftable": false,
+    "drop_only": true
   },
   {
     "id": 184,
@@ -3869,7 +3877,9 @@
     "special_effect": null,
     "aliases": [
       "Runite Warmaul"
-    ]
+    ],
+    "craftable": false,
+    "drop_only": true
   },
   {
     "id": 185,
@@ -3893,7 +3903,9 @@
     "special_effect": null,
     "aliases": [
       "Runite Bow"
-    ]
+    ],
+    "craftable": false,
+    "drop_only": true
   },
   {
     "id": 186,
@@ -3917,7 +3929,9 @@
     "special_effect": null,
     "aliases": [
       "Runite Crossbow"
-    ]
+    ],
+    "craftable": false,
+    "drop_only": true
   },
   {
     "id": 187,
@@ -4003,7 +4017,9 @@
     "special_effect": null,
     "aliases": [
       "Runite Helmet"
-    ]
+    ],
+    "craftable": false,
+    "drop_only": true
   },
   {
     "id": 190,
@@ -4027,7 +4043,9 @@
     "special_effect": null,
     "aliases": [
       "Runite Platebody"
-    ]
+    ],
+    "craftable": false,
+    "drop_only": true
   },
   {
     "id": 191,
@@ -4051,7 +4069,9 @@
     "special_effect": null,
     "aliases": [
       "Runite Platelegs"
-    ]
+    ],
+    "craftable": false,
+    "drop_only": true
   },
   {
     "id": 192,
@@ -4075,7 +4095,9 @@
     "special_effect": null,
     "aliases": [
       "Runite Kiteshield"
-    ]
+    ],
+    "craftable": false,
+    "drop_only": true
   },
   {
     "id": 193,
@@ -4099,7 +4121,9 @@
     "special_effect": null,
     "aliases": [
       "Runite Square Shield"
-    ]
+    ],
+    "craftable": false,
+    "drop_only": true
   },
   {
     "id": 194,
@@ -5218,8 +5242,9 @@
     "rarity": "common",
     "generic_loot": false,
     "craftable": false,
-    "description": "Smelt at a blacksmith furnace. Gathering deposits are future content.",
-    "boss_material": true
+    "description": "Retired resource retained for saved inventories. Cannot be acquired or used in crafting.",
+    "boss_material": true,
+    "legacy_placeholder": true
   },
   {
     "id": 257,
@@ -5230,9 +5255,10 @@
     "slot": null,
     "rarity": "common",
     "generic_loot": false,
-    "craftable": true,
-    "crafting_skill": "smithing",
-    "boss_material": true
+    "craftable": false,
+    "boss_material": true,
+    "legacy_placeholder": true,
+    "description": "Retired resource retained for saved inventories. Cannot be acquired or used in crafting."
   },
   {
     "id": 258,
@@ -5243,9 +5269,9 @@
     "slot": null,
     "rarity": "common",
     "generic_loot": false,
-    "craftable": true,
-    "crafting_skill": "smithing",
-    "boss_material": true
+    "craftable": false,
+    "boss_material": true,
+    "drop_only": true
   },
   {
     "id": 259,
@@ -5256,10 +5282,10 @@
     "slot": null,
     "rarity": "common",
     "generic_loot": false,
-    "craftable": true,
-    "crafting_skill": "smithing",
+    "craftable": false,
     "ammo_type": "bolt",
-    "boss_material": true
+    "boss_material": true,
+    "drop_only": true
   },
   {
     "id": 260,
@@ -6561,10 +6587,10 @@
     "slot": null,
     "rarity": "common",
     "generic_loot": false,
-    "craftable": true,
-    "crafting_skill": "fletching",
+    "craftable": false,
     "ammo_type": "arrow",
-    "boss_material": true
+    "boss_material": true,
+    "drop_only": true
   },
   {
     "id": 329,

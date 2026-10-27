@@ -30,6 +30,8 @@ static func category(item: Dictionary) -> String:
 static func item_ids(db: Dictionary) -> Array[int]:
 	var result: Array[int] = []
 	for key: Variant in db:
+		# category() also supplies retained equipment icons; keep classification.
+		if db[key].get("material") == "Starforged": continue
 		if not category(db[key]).is_empty(): result.append(int(key))
 	result.sort_custom(func(a: int, b: int) -> bool:
 		var left: Dictionary = db[a]

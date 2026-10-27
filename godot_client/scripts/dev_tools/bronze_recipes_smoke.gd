@@ -128,8 +128,19 @@ func _station_ui() -> void:
 		if station == null: continue
 		game.player.backpack.clear()
 		_supplies(game.player, entry, 1)
-		game.player.x = station.simulation_position.x
-		game.player.y = station.simulation_position.y
+		while game.grid_adapter != null and not game.grid_adapter.completed:
+			await get_tree().physics_frame
+		var point: Vector2 = station.simulation_position
+		if game.world.grid != null:
+			var route: PackedVector2Array = game.world.grid.path(game.player.get_position(), point, 2.5)
+			check(not route.is_empty(), "Station has a reachable grid approach")
+			if not route.is_empty(): point = route[-1]
+		var actor: CombatActor = game.combat.actors[game.player.entity_id]
+		actor.x = point.x
+		actor.y = point.y
+		game.player.x = point.x
+		game.player.y = point.y
+		game._update_sprite_position(actor.entity_id)
 		game.request_crafting(station)
 		var button: Button
 		for candidate: Node in game.crafting_panel.content.get_children():

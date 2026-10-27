@@ -1,6 +1,6 @@
 extends Node
 ## Completed catalog -> real exchanges -> original F6 and crafting interfaces.
-const METALS := ["Bronze", "Iron", "Steel", "Blacksteel", "Mithril", "Adamantite", "Starforged"]
+const METALS := ["Bronze", "Iron", "Steel", "Blacksteel", "Mithril", "Adamantite"]
 const GEAR := [["Dagger", 1], ["Shortsword", 2], ["Longsword", 3], ["Mace", 3], ["Warmaul", 4], ["Helmet", 2], ["Platebody", 5], ["Platelegs", 3], ["Kiteshield", 3], ["Square Shield", 2]]
 class Geometry extends Node2D:
 	var map_width := 1536.0
@@ -71,7 +71,7 @@ func _run() -> void:
 
 func _catalog_and_recipes() -> void:
 	var ids: Array = catalog.item_ids(GameData.items_by_id)
-	check(ids.size() == 84, "Seven tiers provide 70 gear pieces and fourteen material items")
+	check(ids.size() == 72, "Six craftable tiers provide 60 gear pieces and twelve material items")
 	for metal: String in METALS:
 		var player := PlayerState.new()
 		player.add_item("Iron Ore" if metal == "Steel" else metal + " Ore", 10)
@@ -147,7 +147,7 @@ func _menus() -> void:
 	game.player.backpack.clear()
 	await key(KEY_F6)
 	var menu: Control = game.item_menu
-	check(menu.visible and menu.display_ids.size() == 84, "Existing F6 opens the filtered completed Smithing list")
+	check(menu.visible and menu.display_ids.size() == 72, "Existing F6 opens the filtered completed Smithing list")
 	menu.quantity.value = 10
 	await click(menu.get_global_transform_with_canvas() * Vector2(170, 212))
 	check(game.player.backpack.get("Bronze Ore", 0) == 10, "Clicking ore row gives chosen stack quantity")
@@ -170,14 +170,20 @@ func _menus() -> void:
 	menu.view_picker.select(1)
 	menu.view_picker.item_selected.emit(1)
 	check(menu.display_ids.size() == GameData.items_by_id.size(), "Original complete catalog remains in All Items")
+	var before_restricted: Dictionary = game.player.backpack.duplicate(true)
+	for view in [0, 1]:
+		menu.view_picker.select(view)
+		for id in [180, 256, 257, 258, 259, 328]:
+			menu._give_item(GameData.get_item(id))
+			check(game.player.backpack == before_restricted and menu.status_text.contains("Starforged"), "Neither F6 view grants Starforged gear or resources: " + str(id))
 	menu.view_picker.select(0)
 	menu.view_picker.item_selected.emit(0)
 	menu.quantity.value = 1
 	var equipped_before: Dictionary = game.player.equipment.duplicate(true)
-	for digit: String in str(int(GameData.get_item_by_name("Starforged Dagger").id)):
+	for digit: String in str(int(GameData.get_item_by_name("Adamantite Dagger").id)):
 		await key(digit.unicode_at(0) as Key)
 	await key(KEY_ENTER)
-	check(game.player.backpack.get("Starforged Dagger", 0) == 1 and game.player.equipment == equipped_before, "Typed IDs remain usable and locked equipment stays in backpack")
+	check(game.player.backpack.get("Adamantite Dagger", 0) == 1 and game.player.equipment == equipped_before, "Typed IDs remain usable and locked equipment stays in backpack")
 	menu.visible_input = str(int(GameData.get_item_by_name("Bronze Bow").id))
 	await key(KEY_ENTER)
 	check(not game.player.backpack.has("Bronze Bow"), "Smithing view cannot grant excluded bows by ID")
@@ -214,8 +220,19 @@ func _menus() -> void:
 		if station.station_id == "anvil": anvil = station
 		if station.station_id == "furnace": furnace = station
 	for station: Node2D in [anvil, furnace]:
-		game.player.x = station.simulation_position.x
-		game.player.y = station.simulation_position.y
+		while game.grid_adapter != null and not game.grid_adapter.completed:
+			await get_tree().physics_frame
+		var point: Vector2 = station.simulation_position
+		if game.world.grid != null:
+			var route: PackedVector2Array = game.world.grid.path(game.player.get_position(), point, 2.5)
+			check(not route.is_empty(), "Station has a reachable grid approach")
+			if not route.is_empty(): point = route[-1]
+		var actor: CombatActor = game.combat.actors[game.player.entity_id]
+		actor.x = point.x
+		actor.y = point.y
+		game.player.x = point.x
+		game.player.y = point.y
+		game._update_sprite_position(actor.entity_id)
 		game.request_crafting(station)
 		var names: Array[String] = []
 		for button: Node in game.crafting_panel.content.get_children():
@@ -227,9 +244,9 @@ func _menus() -> void:
 		for metal: String in METALS:
 			check(names.has(metal + (" Dagger" if station == anvil else " Ingot")), "Station menu covers existing material: " + metal)
 		await capture("anvil-completed-items" if station == anvil else "all-ore-ingot-recipes")
-		game.player.backpack = {"Starforged Ingot": 5} if station == anvil else {"Iron Ore": 2, "Coal": 2}
+		game.player.backpack = {"Adamantite Ingot": 5} if station == anvil else {"Iron Ore": 2, "Coal": 2}
 		game.crafting_panel.amount.value = 1 if station == anvil else 2
-		var recipe_id := "starforged_platebody" if station == anvil else "smelt_steel"
+		var recipe_id := "adamantite_platebody" if station == anvil else "smelt_steel"
 		for button: Node in game.crafting_panel.content.get_children():
 			if button.get_meta("recipe_id", "") == recipe_id:
 				var scroll := game.crafting_panel.content.get_parent() as ScrollContainer
@@ -238,7 +255,7 @@ func _menus() -> void:
 				await frames()
 				await click(button.get_global_transform_with_canvas() * (button.size / 2.0))
 				break
-		check(game.player.backpack == ({"Starforged Platebody": 1} if station == anvil else {"Steel Ingot": 2}), "Actual station button spends exact higher-tier/alloy ingredients: " + recipe_id)
+		check(game.player.backpack == ({"Adamantite Platebody": 1} if station == anvil else {"Steel Ingot": 2}), "Actual station button spends exact higher-tier/alloy ingredients: " + recipe_id)
 		await key(KEY_ESCAPE)
 		check(not game.crafting_panel.visible, "Escape closes the original station menu")
 	scene.queue_free()

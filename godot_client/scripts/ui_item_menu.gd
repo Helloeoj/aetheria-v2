@@ -80,6 +80,9 @@ func _give_item(item: Dictionary) -> void:
 	if Network.online():
 		status_text = "Developer item grants are available offline only."
 		return
+	if item.get("material") == "Starforged":
+		status_text = "Starforged equipment is drop-only; its Ore and Ingot are retired."
+		return
 	if view_picker.selected == 0 and Smithing.category(item).is_empty():
 		status_text = "This item is outside the Smithing list."
 		return

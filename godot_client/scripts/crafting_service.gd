@@ -3,6 +3,7 @@ extends RefCounted
 ## Immediate, atomic backpack exchanges. Pending recipes never consume materials.
 
 const RECIPE_PATH := "res://data/recipes.json"
+const Acquisition := preload("res://scripts/acquisition_rules.gd")
 const MAX_BATCH := 2147483647
 const MAX_COUNT := 9223372036854775807
 const ELEMENTS := ["fire", "ice", "lightning", "hurricane"]
@@ -90,6 +91,8 @@ static func _quantities(entries: Variant, quantity: int) -> Dictionary:
 		var item := GameData.get_item_by_name(String(entry.get("item", "")))
 		if item.is_empty():
 			return _failure("A recipe item is unavailable: " + String(entry.get("item", "")))
+		if bool(item.get("legacy_placeholder", false)):
+			return _failure("Retired items cannot be used in crafting.")
 		var raw_count: Variant = entry.get("quantity", 0)
 		if not (raw_count is int or raw_count is float):
 			return _failure("This recipe has an invalid ingredient quantity.")
@@ -132,6 +135,8 @@ static func _consume(backpack: Dictionary, canonical_name: String, quantity: int
 
 static func _output_allowed(recipe_id: String, item_name: String) -> bool:
 	var item := GameData.get_item_by_name(item_name)
+	if not Acquisition.can_manufacture(item):
+		return false
 	var slot: Variant = item.get("slot", null)
 	if (slot != null and String(slot) in ["ring", "neck"]) or int(item.get("tier", 0)) > 7:
 		return false
