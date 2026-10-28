@@ -1,8 +1,8 @@
 {
-  "schema": 1,
+  "schema": 2,
   "area": "Valtherian Mines",
   "request_date": "2026-10-27",
-  "status": "Artwork candidates; user image approval pending; not installed",
+  "status": "Larger-room tile-authored layout/art candidate v3; user image approval pending; not installed",
   "entrance": {
     "file": "unapproved/entrance-east-v1.png",
     "native_canvas": [
@@ -51,31 +51,40 @@
     "review": "Complete single alpha silhouette, native source preserved, no disconnected specks, east-facing. Real Godot4x comparison with existing player reviewed. Exact final physical placement/portal contract pending."
   },
   "whole_map": {
-    "file": "unapproved/whole-map-v1.png",
+    "file": "unapproved/whole-map-v3.png",
     "native_canvas": [
-      1086,
-      1448
+      1703,
+      924
     ],
     "mode": "RGB",
-    "sha256": "aa9019186e21aba6c947a223e4197b357072f8853712d6b638353074a9e2f661",
+    "opaque_background": true,
+    "sha256": "8ddfeb0018110c36f3937592a09b378f61b9122d1d2f761eb4f6931dffedea90",
     "generator": "built-in image_gen",
-    "prompt": "unapproved/whole-map-v1.prompt.txt",
-    "style_reference": "art_sources/bracken-mine/pixel-base.png",
-    "requested_canvas": [
-      1536,
-      2048
+    "prompt": "unapproved/whole-map-v3.prompt.txt",
+    "status": "Larger-room candidate; whole-image user art approval pending",
+    "geometry_reference": "planning/tile-guide-v3.svg",
+    "style_reference": "unapproved/whole-map-v2.png",
+    "tile_contract": "planning/tile-layout-v3.json",
+    "planned_world_pixels": [
+      6144,
+      3328
     ],
-    "actual_canvas_selected_by_tool": [
-      1086,
-      1448
+    "planned_world_cells": [
+      192,
+      104
     ],
-    "world_pixels_per_source_pixel_proposal": 1,
-    "mapping_status": "Unapproved; do not stretch to requested dimensions",
-    "entry": "East edge, lower-right section",
-    "intended_use": "Original winding/branching combat and mining dungeon; about eight major floor pockets and two circuits",
+    "gameplay_cell_pixels": 32,
+    "fixed_grid_origin": [
+      0,
+      0
+    ],
+    "main_corridor_cells": 6,
+    "branch_corridor_cells": 4,
+    "entry": "East edge/right; long westward main route with five distinct side branches",
     "actors_baked": false,
     "ore_props_baked": false,
-    "review": "Source layout/material/camera review only. Crispness and shared-grid clearance at runtime are not certified. Whole-map user image approval required before decomposition/scene implementation."
+    "mapping_status": "Downsampled art overview, not native runtime terrain; do not stretch it into a game background",
+    "review": "Environment-only visual review and structural plan checks. Exact generated wall/floor alignment, final physics, depth sorting and installed terrain crispness remain pending."
   },
   "preservation": [
     "Existing BrackenMine floor,15user-markedores and portals unchanged",
@@ -93,11 +102,76 @@
     "status": "Rejected for production: generator ignored native canvas and left fringe/edge artifacts; never scaled into a finished prop"
   },
   "holds": {
-    "whole_map_artwork_approval": "pending",
+    "whole_map_artwork_approval": "pending for v3; v2 liked direction but required larger rooms; v1 rejected",
     "worldbuilding_actual_scene_contract": "pending; no final scene/placement authored",
-    "map_runtime_4x_review": "pending",
+    "map_runtime_4x_review": "pending for actual native terrain;4x structural room/player size examples completed",
     "entrance_native4x_preview": "reviewed in memory against actual world and player; not final portal/collision validation",
     "installation": "not performed",
     "PixelLab_revision": "Unavailable after first generation: no remaining generations or credit; original preserved"
-  }
+  },
+  "whole_map_history": [
+    {
+      "file": "unapproved/whole-map-v1.png",
+      "native_canvas": [
+        1086,
+        1448
+      ],
+      "mode": "RGB",
+      "sha256": "aa9019186e21aba6c947a223e4197b357072f8853712d6b638353074a9e2f661",
+      "generator": "built-in image_gen",
+      "prompt": "unapproved/whole-map-v1.prompt.txt",
+      "style_reference": "art_sources/bracken-mine/pixel-base.png",
+      "requested_canvas": [
+        1536,
+        2048
+      ],
+      "actual_canvas_selected_by_tool": [
+        1086,
+        1448
+      ],
+      "world_pixels_per_source_pixel_proposal": 1,
+      "mapping_status": "Rejected layout; immutable reference only; do not install",
+      "entry": "East edge, lower-right section",
+      "intended_use": "Original winding/branching combat and mining dungeon; about eight major floor pockets and two circuits",
+      "actors_baked": false,
+      "ore_props_baked": false,
+      "review": "Source layout/material/camera review only. Crispness and shared-grid clearance at runtime are not certified. Whole-map user image approval required before decomposition/scene implementation.",
+      "status": "rejected by user: compact blob of rooms, insufficient end-to-end progression"
+    },
+    {
+      "file": "unapproved/whole-map-v2.png",
+      "native_canvas": [
+        1774,
+        887
+      ],
+      "mode": "RGB",
+      "opaque_background": true,
+      "sha256": "5e229f77d4134db97e593a4ba1439e9993493fd501d3c7f5afd11b0356555f87",
+      "generator": "built-in image_gen",
+      "prompt": "unapproved/whole-map-v2.prompt.txt",
+      "status": "Direction/topology liked by user; rooms too small; superseded by v3 room revision",
+      "geometry_reference": "planning/progression-guide-v2.svg",
+      "actors_baked": false,
+      "ore_props_baked": false,
+      "mapping_status": "Overview only; no runtime world-pixel mapping or upscale authorized"
+    }
+  ],
+  "background_instruction": "Accidental remove-background request explicitly canceled; keep opaque dark background",
+  "tile_plan_verification": {
+    "generator": "planning/build_tile_plan_v3.py",
+    "connected_floor_cells": 5498,
+    "all_declared_clear_room_rectangles_present": true,
+    "required_main_route_cut_gates": 3,
+    "scale_previews": [
+      "planning/combat-room-20x16-tile-scale-4x.png",
+      "planning/mining-room-18x14-tile-scale-4x.png"
+    ],
+    "scale_preview_method": "Actual Godot render of structural 32px-cell debug floor with original unscaled peasant, nearest filtering, camera zoom4. Debug actors exist only in quality previews; no actor is baked into environment artwork.",
+    "limits": "Planning geometry and character-size examples only; no final scene, prop placements, worldbuilding certificate or installed-map4x review."
+  },
+  "tile_rule_documentation": [
+    "godot_client/docs/HiddenGridMovement.md",
+    "https://github.com/godotengine/godot-docs/blob/4.5/classes/class_tileset.md",
+    "https://github.com/godotengine/godot-docs/blob/4.5/classes/class_tilemaplayer.md"
+  ]
 }

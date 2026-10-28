@@ -1,55 +1,75 @@
-# Valtherian Mines — artwork/layout draft
+# Valtherian Mines — larger-room layout candidate
 
-The user requested an original Edgeville-inspired dungeon for both fighting
-monsters and mining, with its **own east-facing entrance beside Valtheiris's
-city wall**. These are first artwork candidates, not an installed area.
+The user requested an original dungeon for combat and mining, with its own
+east-facing entrance beside Valtheiris's wall. V3 enlarges the chambers while
+preserving the liked east-to-west journey and five separate side branches.
+The opaque dark background stays; the remove-background action was canceled.
 
-## Candidates
+## Current room and tile plan
 
-- `unapproved/whole-map-v1.png`: untouched 1086×1448 whole-map draft. A winding
-  spine connects approximately eight main chambers/gallery spaces and two
-  return circuits. The sole entrance approaches from the east in the lower-right
-  portion. Stone, tan floor, amber lamps and restrained teal accents follow the
-  existing mine reference. No characters, creatures or ore props are baked in.
-- `unapproved/entrance-east-v1.png`: native 256×192 PixelLab RGBA canvas,
-  109×91 visible silhouette, scale 1. The open mouth faces right/east. One
-  connected opaque silhouette, binary alpha, no disconnected specks. A real
-  Godot 4× preview with the original character was inspected beside the existing
-  wall; this preview adds no persistent scene/portal/collision.
+`planning/tile-layout-v3.json` uses the game's fixed 32-world-pixel cells and
+origin (0,0). The proposed world is 192×104 cells (6144×3328 pixels). More space
+comes from more native tiles; player and prop sizes stay unchanged.
 
-Exact generation prompts, native dimensions, hashes, service IDs and separate
-review/installation statuses are in `manifest.json`. Originals remain unchanged.
-The larger entrance revision is retained only in the supporting task as a
-rejected study: it ignored the native canvas and has edge artifacts. It must
-not be resized and called a finished prop.
+| Space | Clear floor in cells | Clear floor in world pixels |
+| --- | --- | --- |
+| West terminal | 24×20 | 768×640 |
+| Side combat chambers | 20×16 to 22×18 | 640×512 to 704×576 |
+| Mining galleries | 18×14 | 576×448 |
+| Main-route combat halls | 22×16 and 24×16 | 704×512 and 768×512 |
+| Main corridors | 6 wide | 192 wide |
+| Branch corridors | 4 wide | 128 wide |
 
-## Proposed use of the layout
+These are clear rectangles before prop placement, with an additional one-cell
+perimeter allowance for uneven stone. Junctions are farther apart so enlarging
+the chambers does not join the branches into a compact cluster. Roles are
+proposals only; no monster populations, ore roster or skill rules were chosen.
 
-Keep the entrance workings as a clear arrival/junction space. Use the larger
-central and northern chambers for combat, and peripheral western/eastern
-galleries for mining. Keep the through-routes open, with canonical ore scenes
-placed beside room boundaries after the image and placements are reviewed.
-These room roles are the builder's proposal; monster types, populations, levels
-and the final ore roster have not been chosen by the user.
+Run `planning/build_tile_plan_v3.py` to reproduce the JSON and SVG. It verifies
+5498 cardinally connected floor cells, every declared room rectangle, and
+three main-route cut gates that prevent branches bypassing early/middle/late
+progression. These are structural checks, not installed-map collision tests.
+The west combat hall has a 64px rock band beside the adjacent main passage
+(cells x99–100,y60–64). Check the actual native wall silhouettes there during
+assembly; a universal 96px rock-separation pass is not claimed.
 
-The proposed exterior spot is northeast of the wall's northern cap. A compact
-visible envelope beginning at world (240,-92) avoids existing opaque prop art
-in read-only scouting. Keep the wall, gate road, trees and the existing Bracken
-Mine entrance. Exact final footprint, east approach and reciprocal portal
-arrival must be tested against the actual assembled source before installation.
+The two `planning/*tile-scale-4x.png` images show the minimum combat and mining
+rooms on a diagnostic grid with the original character, rendered by Godot at
+4×. Reproduce them with `planning/render_room_scale_v3.gd` using the active
+Godot project. This is a room-size demonstration; the flat debug floor is not
+the final mine art. Actors appear only in these quality checks.
 
-## Current checkpoint
+## Preserved artwork and review states
 
-**User whole-map image approval is pending.** Follow
-`godot_client/docs/map-art/PLAYABLE-MAP-PIPELINE.md`: approve/revise the whole
-image before final decomposition or scene implementation. The tool returned a
-smaller native map than requested; do not enlarge it to pretend it has more
-detail. Confirm the native world extent, floor and room widths at the next
-stage, and return for a bounded revision if an intended route is incompatible.
+- `unapproved/whole-map-v3.png`: current larger-room artwork proposal. The
+  generated overview is smaller than the planned native world. It must not be
+  enlarged into a runtime background or treated as proof of tile alignment.
+- `unapproved/whole-map-v2.png`: the user liked its direction and branching,
+  then requested larger rooms. Preserved as the style/topology reference.
+- `unapproved/whole-map-v1.png`: rejected by the user for its compact room
+  cluster and insufficient end-to-end progression; kept unchanged for history.
+- `unapproved/entrance-east-v1.png`: clean native 256×192 PixelLab source,
+  109×91 visible silhouette. The mouth faces right/east. An actual-world,
+  in-memory Godot4× preview with the original character was inspected earlier.
+  Final collision, anchor and reciprocal travel contract remain pending.
 
-No runtime game files, world placements, ore/mining rules, combat systems,
-character saves, current maps or existing entrances were changed. The final
-`tools/worldbuilding.py` scene/placement contract and real installed-map 4×
-review remain pending; source previews and preliminary route scouting are
-not a placement certificate. PixelLab currently has no remaining generation
-credits for further native revisions.
+Exact prompts, native dimensions, hashes and service IDs are in `manifest.json`.
+Sources are copied byte-for-byte. No actors or ore nodes are baked into the map.
+The larger entrance study remains rejected for production because of its
+incorrect native canvas and edge artifacts. PixelLab has no remaining credits.
+
+## Approval and installation checkpoint
+
+**V3 whole-image approval is pending.** Follow
+`godot_client/docs/map-art/PLAYABLE-MAP-PIPELINE.md` before final decomposition
+and installation. After artwork approval, build native terrain on the authored
+grid, use whole canonical props at their approved density and anchors, and run
+`tools/worldbuilding.py` against the actual assembled scene/placement contract.
+Inspect actual-map Godot4× renders with the player for crispness, wall cut-ins,
+approaches, reserved paths and depth sorting before calling installation done.
+
+No runtime game files or permanent scenes/placements were changed. Existing
+Bracken Mine artwork, its 15 marked ores, entrances, city wall, roads, trees,
+interfaces, saves and all gameplay are preserved. The proposed exterior entrance
+spot remains northeast of the wall's northern cap; the original compact source
+and exact final geometry must be tested before installing that entrance.
