@@ -29,232 +29,203 @@ position = Vector2(6032, 2064)
 [node name="EntranceApproach" type="Marker2D" parent="GridProbes"]
 position = Vector2(6032, 2064)
 
+[node name="RoomFarWestChamber" type="Marker2D" parent="GridProbes"]
+position = Vector2(464, 720)
+
+[node name="RoomUpperWestGallery" type="Marker2D" parent="GridProbes"]
+position = Vector2(3056, 368)
+
+[node name="RoomUpperEastChamber" type="Marker2D" parent="GridProbes"]
+position = Vector2(3984, 432)
+
+[node name="RoomEastUpperChamber" type="Marker2D" parent="GridProbes"]
+position = Vector2(5744, 528)
+
+[node name="RoomLowerWestGallery" type="Marker2D" parent="GridProbes"]
+position = Vector2(1008, 2800)
+
+[node name="RoomLowerEastChamber" type="Marker2D" parent="GridProbes"]
+position = Vector2(4176, 2832)
+
+[node name="RoomWestCombatHall" type="Marker2D" parent="GridProbes"]
+position = Vector2(2736, 2128)
+
+[node name="RoomEastCombatHall" type="Marker2D" parent="GridProbes"]
+position = Vector2(4080, 1616)
+
 [node name="MainRoute01" type="Marker2D" parent="GridProbes"]
-position = Vector2(5520, 2064)
+position = Vector2(6032, 2064)
 
 [node name="MainRoute02" type="Marker2D" parent="GridProbes"]
-position = Vector2(5008, 2064)
+position = Vector2(4976, 1632)
 
 [node name="MainRoute03" type="Marker2D" parent="GridProbes"]
-position = Vector2(5008, 1552)
+position = Vector2(4960, 1616)
 
 [node name="MainRoute04" type="Marker2D" parent="GridProbes"]
-position = Vector2(4496, 1552)
+position = Vector2(4864, 1600)
 
 [node name="MainRoute05" type="Marker2D" parent="GridProbes"]
-position = Vector2(3728, 1552)
+position = Vector2(3296, 2048)
 
 [node name="MainRoute06" type="Marker2D" parent="GridProbes"]
-position = Vector2(3344, 1552)
+position = Vector2(3280, 2064)
 
 [node name="MainRoute07" type="Marker2D" parent="GridProbes"]
-position = Vector2(3344, 2192)
+position = Vector2(2016, 1344)
 
 [node name="MainRoute08" type="Marker2D" parent="GridProbes"]
-position = Vector2(2704, 2192)
+position = Vector2(1968, 1328)
 
 [node name="MainRoute09" type="Marker2D" parent="GridProbes"]
-position = Vector2(2064, 2192)
+position = Vector2(1520, 1312)
 
 [node name="MainRoute10" type="Marker2D" parent="GridProbes"]
-position = Vector2(2064, 1296)
-
-[node name="MainRoute11" type="Marker2D" parent="GridProbes"]
-position = Vector2(1552, 1296)
-
-[node name="MainRoute12" type="Marker2D" parent="GridProbes"]
 position = Vector2(1168, 1296)
 
+[node name="MainRoute11" type="Marker2D" parent="GridProbes"]
+position = Vector2(1120, 1264)
+
+[node name="MainRoute12" type="Marker2D" parent="GridProbes"]
+position = Vector2(1104, 832)
+
 [node name="MainRoute13" type="Marker2D" parent="GridProbes"]
-position = Vector2(1168, 784)
+position = Vector2(1056, 816)
 
 [node name="MainRoute14" type="Marker2D" parent="GridProbes"]
-position = Vector2(528, 784)
+position = Vector2(448, 720)
 
-[node name="EastUpperBranch00" type="Marker2D" parent="GridProbes"]
-position = Vector2(5520, 1232)
+[node name="BranchEastUpperChamber1" type="Marker2D" parent="GridProbes"]
+position = Vector2(5552, 2064)
 
-[node name="EastUpperBranch01" type="Marker2D" parent="GridProbes"]
-position = Vector2(5712, 1232)
+[node name="BranchEastUpperChamber2" type="Marker2D" parent="GridProbes"]
+position = Vector2(5616, 1280)
 
-[node name="EastUpperBranch02" type="Marker2D" parent="GridProbes"]
-position = Vector2(5712, 528)
+[node name="BranchEastUpperChamber3" type="Marker2D" parent="GridProbes"]
+position = Vector2(5744, 544)
 
-[node name="UpperEastBranch00" type="Marker2D" parent="GridProbes"]
-position = Vector2(4496, 1040)
+[node name="BranchUpperEastChamber1" type="Marker2D" parent="GridProbes"]
+position = Vector2(4400, 1600)
 
-[node name="UpperEastBranch01" type="Marker2D" parent="GridProbes"]
-position = Vector2(3984, 1040)
+[node name="BranchUpperEastChamber2" type="Marker2D" parent="GridProbes"]
+position = Vector2(4368, 1072)
 
-[node name="UpperEastBranch02" type="Marker2D" parent="GridProbes"]
-position = Vector2(3984, 464)
+[node name="BranchUpperEastChamber3" type="Marker2D" parent="GridProbes"]
+position = Vector2(3968, 432)
 
-[node name="LowerEastBranch00" type="Marker2D" parent="GridProbes"]
-position = Vector2(3728, 2384)
+[node name="BranchLowerEastChamber1" type="Marker2D" parent="GridProbes"]
+position = Vector2(3712, 1600)
 
-[node name="LowerEastBranch01" type="Marker2D" parent="GridProbes"]
-position = Vector2(4240, 2384)
+[node name="BranchLowerEastChamber2" type="Marker2D" parent="GridProbes"]
+position = Vector2(3808, 2304)
 
-[node name="LowerEastBranch02" type="Marker2D" parent="GridProbes"]
-position = Vector2(4240, 2896)
+[node name="BranchLowerEastChamber3" type="Marker2D" parent="GridProbes"]
+position = Vector2(4192, 2848)
 
-[node name="UpperWestBranch00" type="Marker2D" parent="GridProbes"]
-position = Vector2(2704, 976)
+[node name="BranchUpperWestGallery1" type="Marker2D" parent="GridProbes"]
+position = Vector2(2752, 2064)
 
-[node name="UpperWestBranch01" type="Marker2D" parent="GridProbes"]
-position = Vector2(3152, 976)
+[node name="BranchUpperWestGallery2" type="Marker2D" parent="GridProbes"]
+position = Vector2(2864, 1008)
 
-[node name="UpperWestBranch02" type="Marker2D" parent="GridProbes"]
-position = Vector2(3152, 400)
+[node name="BranchUpperWestGallery3" type="Marker2D" parent="GridProbes"]
+position = Vector2(3072, 368)
 
-[node name="LowerWestBranch00" type="Marker2D" parent="GridProbes"]
-position = Vector2(1552, 2384)
+[node name="BranchLowerWestGallery1" type="Marker2D" parent="GridProbes"]
+position = Vector2(1552, 1328)
 
-[node name="LowerWestBranch01" type="Marker2D" parent="GridProbes"]
-position = Vector2(1040, 2384)
+[node name="BranchLowerWestGallery2" type="Marker2D" parent="GridProbes"]
+position = Vector2(1312, 2304)
 
-[node name="LowerWestBranch02" type="Marker2D" parent="GridProbes"]
-position = Vector2(1040, 2896)
-
-[node name="FarWestChamber" type="Marker2D" parent="GridProbes"]
-position = Vector2(528, 784)
-
-[node name="EastUpperChamber" type="Marker2D" parent="GridProbes"]
-position = Vector2(5712, 528)
-
-[node name="UpperEastChamber" type="Marker2D" parent="GridProbes"]
-position = Vector2(3984, 464)
-
-[node name="LowerEastChamber" type="Marker2D" parent="GridProbes"]
-position = Vector2(4240, 2896)
-
-[node name="UpperWestGallery" type="Marker2D" parent="GridProbes"]
-position = Vector2(3152, 400)
-
-[node name="LowerWestGallery" type="Marker2D" parent="GridProbes"]
-position = Vector2(1040, 2896)
-
-[node name="EastCombatHall" type="Marker2D" parent="GridProbes"]
-position = Vector2(4304, 1552)
-
-[node name="WestCombatHall" type="Marker2D" parent="GridProbes"]
-position = Vector2(2800, 2192)
+[node name="BranchLowerWestGallery3" type="Marker2D" parent="GridProbes"]
+position = Vector2(1008, 2816)
 
 [node name="OreApproachBlackstone01" type="Marker2D" parent="GridProbes"]
 position = Vector2(304, 656)
-metadata/ore_marker_id = "blackstone-01"
 
 [node name="OreApproachBlackstone02" type="Marker2D" parent="GridProbes"]
 position = Vector2(784, 656)
-metadata/ore_marker_id = "blackstone-02"
 
 [node name="OreApproachMithril01" type="Marker2D" parent="GridProbes"]
 position = Vector2(240, 912)
-metadata/ore_marker_id = "mithril-01"
 
 [node name="OreApproachMithril02" type="Marker2D" parent="GridProbes"]
 position = Vector2(368, 1040)
-metadata/ore_marker_id = "mithril-02"
 
 [node name="OreApproachAdamantite01" type="Marker2D" parent="GridProbes"]
 position = Vector2(656, 1040)
-metadata/ore_marker_id = "adamantite-01"
 
 [node name="OreApproachBlackstone03" type="Marker2D" parent="GridProbes"]
 position = Vector2(2928, 336)
-metadata/ore_marker_id = "blackstone-03"
 
 [node name="OreApproachBlackstone04" type="Marker2D" parent="GridProbes"]
 position = Vector2(3312, 336)
-metadata/ore_marker_id = "blackstone-04"
 
 [node name="OreApproachBlackstone05" type="Marker2D" parent="GridProbes"]
 position = Vector2(2896, 432)
-metadata/ore_marker_id = "blackstone-05"
 
 [node name="OreApproachCoal01" type="Marker2D" parent="GridProbes"]
 position = Vector2(4144, 336)
-metadata/ore_marker_id = "coal-01"
 
 [node name="OreApproachCoal02" type="Marker2D" parent="GridProbes"]
 position = Vector2(4304, 368)
-metadata/ore_marker_id = "coal-02"
 
 [node name="OreApproachCoal03" type="Marker2D" parent="GridProbes"]
 position = Vector2(3760, 368)
-metadata/ore_marker_id = "coal-03"
 
 [node name="OreApproachCoal04" type="Marker2D" parent="GridProbes"]
 position = Vector2(3728, 656)
-metadata/ore_marker_id = "coal-04"
 
 [node name="OreApproachCoal05" type="Marker2D" parent="GridProbes"]
 position = Vector2(4176, 656)
-metadata/ore_marker_id = "coal-05"
 
 [node name="OreApproachCoal06" type="Marker2D" parent="GridProbes"]
 position = Vector2(5616, 464)
-metadata/ore_marker_id = "coal-06"
 
 [node name="OreApproachIron01" type="Marker2D" parent="GridProbes"]
 position = Vector2(5872, 464)
-metadata/ore_marker_id = "iron-01"
 
 [node name="OreApproachIron02" type="Marker2D" parent="GridProbes"]
 position = Vector2(5904, 560)
-metadata/ore_marker_id = "iron-02"
 
 [node name="OreApproachCoal07" type="Marker2D" parent="GridProbes"]
 position = Vector2(5520, 560)
-metadata/ore_marker_id = "coal-07"
 
 [node name="OreApproachIron03" type="Marker2D" parent="GridProbes"]
 position = Vector2(5904, 688)
-metadata/ore_marker_id = "iron-03"
 
 [node name="OreApproachIron04" type="Marker2D" parent="GridProbes"]
 position = Vector2(5520, 688)
-metadata/ore_marker_id = "iron-04"
 
 [node name="OreApproachMithril03" type="Marker2D" parent="GridProbes"]
 position = Vector2(912, 2736)
-metadata/ore_marker_id = "mithril-03"
 
 [node name="OreApproachAdamantite02" type="Marker2D" parent="GridProbes"]
 position = Vector2(1232, 2768)
-metadata/ore_marker_id = "adamantite-02"
 
 [node name="OreApproachMithril04" type="Marker2D" parent="GridProbes"]
 position = Vector2(784, 2768)
-metadata/ore_marker_id = "mithril-04"
 
 [node name="OreApproachBlackstone06" type="Marker2D" parent="GridProbes"]
 position = Vector2(1232, 2992)
-metadata/ore_marker_id = "blackstone-06"
 
 [node name="OreApproachBlackstone07" type="Marker2D" parent="GridProbes"]
-position = Vector2(784, 3024)
-metadata/ore_marker_id = "blackstone-07"
+position = Vector2(816, 2992)
 
 [node name="OreApproachBlackstone08" type="Marker2D" parent="GridProbes"]
 position = Vector2(4016, 2736)
-metadata/ore_marker_id = "blackstone-08"
 
 [node name="OreApproachBlackstone09" type="Marker2D" parent="GridProbes"]
 position = Vector2(3888, 2800)
-metadata/ore_marker_id = "blackstone-09"
 
 [node name="OreApproachBlackstone10" type="Marker2D" parent="GridProbes"]
 position = Vector2(3952, 3056)
-metadata/ore_marker_id = "blackstone-10"
 
 [node name="OreApproachBlackstone11" type="Marker2D" parent="GridProbes"]
 position = Vector2(4400, 3056)
-metadata/ore_marker_id = "blackstone-11"
 
 [node name="OreApproachBlackstone12" type="Marker2D" parent="GridProbes"]
-position = Vector2(4272, 3088)
-metadata/ore_marker_id = "blackstone-12"
+position = Vector2(4304, 3056)
 
 [node name="Combat" type="Node2D" parent="."]
 y_sort_enabled = true

@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "date": "2026-10-28",
-  "status": "User marker authority with documented actual-floor/wall corrections",
+  "status": "Exact approved painted-map targets restored; real floor/foreground checks separate",
   "annotation": {
     "preserved_copy": "user-ore-annotation-2026-10-28.png",
     "sha256": "6d3f3b99165cabb310ec88d34130db089ab9b2870863ba127e79c24a876b50f5",
@@ -1912,21 +1912,13 @@
           ],
           "distance_to_root": 72.401657,
           "front": false
-        },
-        {
-          "world_xy": [
-            240,
-            592
-          ],
-          "distance_to_root": 76.694198,
-          "front": false
         }
       ],
       "approach_world_xy": [
         304,
         656
       ],
-      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "approach_status": "Actual traced-floor/base-clear and body-swept connected; final Godot physics remains required",
       "name": "Blackstone01",
       "position": [
         311,
@@ -2115,7 +2107,7 @@
         784,
         656
       ],
-      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "approach_status": "Actual traced-floor/base-clear and body-swept connected; final Godot physics remains required",
       "name": "Blackstone02",
       "position": [
         792,
@@ -2304,7 +2296,7 @@
         240,
         912
       ],
-      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "approach_status": "Actual traced-floor/base-clear and body-swept connected; final Godot physics remains required",
       "name": "Mithril01",
       "position": [
         255,
@@ -2386,30 +2378,6 @@
         },
         {
           "world_xy": [
-            368,
-            1072
-          ],
-          "distance_to_root": 67.26812,
-          "front": true
-        },
-        {
-          "world_xy": [
-            400,
-            1072
-          ],
-          "distance_to_root": 68.680419,
-          "front": true
-        },
-        {
-          "world_xy": [
-            336,
-            1072
-          ],
-          "distance_to_root": 79.881162,
-          "front": true
-        },
-        {
-          "world_xy": [
             400,
             976
           ],
@@ -2485,7 +2453,7 @@
         368,
         1040
       ],
-      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "approach_status": "Actual traced-floor/base-clear and body-swept connected; final Godot physics remains required",
       "name": "Mithril02",
       "position": [
         381,
@@ -2559,46 +2527,6 @@
         },
         {
           "world_xy": [
-            720,
-            1040
-          ],
-          "distance_to_root": 52.801515,
-          "front": true
-        },
-        {
-          "world_xy": [
-            656,
-            1072
-          ],
-          "distance_to_root": 56.320511,
-          "front": true
-        },
-        {
-          "world_xy": [
-            688,
-            1072
-          ],
-          "distance_to_root": 56.320511,
-          "front": true
-        },
-        {
-          "world_xy": [
-            624,
-            1072
-          ],
-          "distance_to_root": 72.249567,
-          "front": true
-        },
-        {
-          "world_xy": [
-            720,
-            1072
-          ],
-          "distance_to_root": 72.249567,
-          "front": true
-        },
-        {
-          "world_xy": [
             656,
             976
           ],
@@ -2666,7 +2594,7 @@
         656,
         1040
       ],
-      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "approach_status": "Actual traced-floor/base-clear and body-swept connected; final Godot physics remains required",
       "name": "Adamantite01",
       "position": [
         672,
@@ -2804,14 +2732,6 @@
         },
         {
           "world_xy": [
-            2864,
-            272
-          ],
-          "distance_to_root": 68.425142,
-          "front": false
-        },
-        {
-          "world_xy": [
             2896,
             240
           ],
@@ -2839,7 +2759,7 @@
         2928,
         336
       ],
-      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "approach_status": "Actual traced-floor/base-clear and body-swept connected; final Godot physics remains required",
       "name": "Blackstone03",
       "position": [
         2925,
@@ -2945,22 +2865,6 @@
         },
         {
           "world_xy": [
-            3376,
-            336
-          ],
-          "distance_to_root": 78.294317,
-          "front": true
-        },
-        {
-          "world_xy": [
-            3344,
-            272
-          ],
-          "distance_to_root": 49.819675,
-          "front": false
-        },
-        {
-          "world_xy": [
             3248,
             304
           ],
@@ -2990,37 +2894,13 @@
           ],
           "distance_to_root": 67.779053,
           "front": false
-        },
-        {
-          "world_xy": [
-            3376,
-            304
-          ],
-          "distance_to_root": 71.007042,
-          "front": false
-        },
-        {
-          "world_xy": [
-            3344,
-            240
-          ],
-          "distance_to_root": 74.094534,
-          "front": false
-        },
-        {
-          "world_xy": [
-            3376,
-            272
-          ],
-          "distance_to_root": 77.472576,
-          "front": false
         }
       ],
       "approach_world_xy": [
         3312,
         336
       ],
-      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "approach_status": "Actual traced-floor/base-clear and body-swept connected; final Godot physics remains required",
       "name": "Blackstone04",
       "position": [
         3305,
@@ -3166,14 +3046,6 @@
         },
         {
           "world_xy": [
-            2832,
-            368
-          ],
-          "distance_to_root": 59.615434,
-          "front": false
-        },
-        {
-          "world_xy": [
             2928,
             336
           ],
@@ -3195,21 +3067,13 @@
           ],
           "distance_to_root": 76.537572,
           "front": false
-        },
-        {
-          "world_xy": [
-            2832,
-            336
-          ],
-          "distance_to_root": 77.781746,
-          "front": false
         }
       ],
       "approach_world_xy": [
         2896,
         432
       ],
-      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "approach_status": "Actual traced-floor/base-clear and body-swept connected; final Godot physics remains required",
       "name": "Blackstone05",
       "position": [
         2887,
@@ -3398,7 +3262,7 @@
         4144,
         336
       ],
-      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "approach_status": "Actual traced-floor/base-clear and body-swept connected; final Godot physics remains required",
       "name": "Coal01",
       "position": [
         4153,
@@ -3504,26 +3368,10 @@
         },
         {
           "world_xy": [
-            4336,
-            304
-          ],
-          "distance_to_root": 46.69047,
-          "front": false
-        },
-        {
-          "world_xy": [
             4240,
             336
           ],
           "distance_to_root": 62.0,
-          "front": false
-        },
-        {
-          "world_xy": [
-            4304,
-            272
-          ],
-          "distance_to_root": 64.031242,
           "front": false
         },
         {
@@ -3541,21 +3389,13 @@
           ],
           "distance_to_root": 70.682388,
           "front": false
-        },
-        {
-          "world_xy": [
-            4336,
-            272
-          ],
-          "distance_to_root": 72.470684,
-          "front": false
         }
       ],
       "approach_world_xy": [
         4304,
         368
       ],
-      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "approach_status": "Actual traced-floor/base-clear and body-swept connected; final Godot physics remains required",
       "name": "Coal02",
       "position": [
         4302,
@@ -3717,14 +3557,6 @@
         },
         {
           "world_xy": [
-            3696,
-            336
-          ],
-          "distance_to_root": 71.449283,
-          "front": false
-        },
-        {
-          "world_xy": [
             3760,
             272
           ],
@@ -3744,7 +3576,7 @@
         3760,
         368
       ],
-      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "approach_status": "Actual traced-floor/base-clear and body-swept connected; final Godot physics remains required",
       "name": "Coal03",
       "position": [
         3767,
@@ -3826,22 +3658,6 @@
         },
         {
           "world_xy": [
-            3728,
-            688
-          ],
-          "distance_to_root": 71.805292,
-          "front": true
-        },
-        {
-          "world_xy": [
-            3760,
-            688
-          ],
-          "distance_to_root": 71.805292,
-          "front": true
-        },
-        {
-          "world_xy": [
             3696,
             624
           ],
@@ -3909,7 +3725,7 @@
         3728,
         656
       ],
-      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "approach_status": "Actual traced-floor/base-clear and body-swept connected; final Godot physics remains required",
       "name": "Coal04",
       "position": [
         3744,
@@ -3975,22 +3791,6 @@
         },
         {
           "world_xy": [
-            4208,
-            688
-          ],
-          "distance_to_root": 48.373546,
-          "front": true
-        },
-        {
-          "world_xy": [
-            4176,
-            688
-          ],
-          "distance_to_root": 54.589376,
-          "front": true
-        },
-        {
-          "world_xy": [
             4144,
             656
           ],
@@ -3999,26 +3799,10 @@
         },
         {
           "world_xy": [
-            4240,
-            688
-          ],
-          "distance_to_root": 61.220911,
-          "front": true
-        },
-        {
-          "world_xy": [
             4272,
             656
           ],
           "distance_to_root": 71.805292,
-          "front": true
-        },
-        {
-          "world_xy": [
-            4144,
-            688
-          ],
-          "distance_to_root": 75.286121,
           "front": true
         },
         {
@@ -4074,7 +3858,7 @@
         4176,
         656
       ],
-      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "approach_status": "Actual traced-floor/base-clear and body-swept connected; final Godot physics remains required",
       "name": "Coal05",
       "position": [
         4202,
@@ -4212,34 +3996,10 @@
         },
         {
           "world_xy": [
-            5616,
-            368
-          ],
-          "distance_to_root": 68.359345,
-          "front": false
-        },
-        {
-          "world_xy": [
             5680,
             432
           ],
           "distance_to_root": 71.112587,
-          "front": false
-        },
-        {
-          "world_xy": [
-            5584,
-            368
-          ],
-          "distance_to_root": 72.449983,
-          "front": false
-        },
-        {
-          "world_xy": [
-            5648,
-            368
-          ],
-          "distance_to_root": 78.39005,
           "front": false
         },
         {
@@ -4255,7 +4015,7 @@
         5616,
         464
       ],
-      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "approach_status": "Actual traced-floor/base-clear and body-swept connected; final Godot physics remains required",
       "name": "Coal06",
       "position": [
         5609,
@@ -4393,22 +4153,6 @@
         },
         {
           "world_xy": [
-            5872,
-            368
-          ],
-          "distance_to_root": 70.213959,
-          "front": false
-        },
-        {
-          "world_xy": [
-            5840,
-            368
-          ],
-          "distance_to_root": 71.568149,
-          "front": false
-        },
-        {
-          "world_xy": [
             5936,
             432
           ],
@@ -4420,7 +4164,7 @@
         5872,
         464
       ],
-      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "approach_status": "Actual traced-floor/base-clear and body-swept connected; final Godot physics remains required",
       "name": "Iron01",
       "position": [
         5859,
@@ -4593,7 +4337,7 @@
         5904,
         560
       ],
-      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "approach_status": "Actual traced-floor/base-clear and body-swept connected; final Godot physics remains required",
       "name": "Iron02",
       "position": [
         5910,
@@ -4782,7 +4526,7 @@
         5520,
         560
       ],
-      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "approach_status": "Actual traced-floor/base-clear and body-swept connected; final Godot physics remains required",
       "name": "Coal07",
       "position": [
         5507,
@@ -4848,50 +4592,10 @@
         },
         {
           "world_xy": [
-            5936,
-            688
-          ],
-          "distance_to_root": 52.40229,
-          "front": true
-        },
-        {
-          "world_xy": [
             5840,
             688
           ],
           "distance_to_root": 66.887966,
-          "front": true
-        },
-        {
-          "world_xy": [
-            5904,
-            720
-          ],
-          "distance_to_root": 67.364679,
-          "front": true
-        },
-        {
-          "world_xy": [
-            5872,
-            720
-          ],
-          "distance_to_root": 71.512237,
-          "front": true
-        },
-        {
-          "world_xy": [
-            5936,
-            720
-          ],
-          "distance_to_root": 77.52419,
-          "front": true
-        },
-        {
-          "world_xy": [
-            5968,
-            688
-          ],
-          "distance_to_root": 79.15807,
           "front": true
         },
         {
@@ -4963,7 +4667,7 @@
         5904,
         688
       ],
-      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "approach_status": "Actual traced-floor/base-clear and body-swept connected; final Godot physics remains required",
       "name": "Iron03",
       "position": [
         5897,
@@ -5037,50 +4741,10 @@
         },
         {
           "world_xy": [
-            5520,
-            720
-          ],
-          "distance_to_root": 55.901699,
-          "front": true
-        },
-        {
-          "world_xy": [
             5584,
             688
           ],
           "distance_to_root": 58.694122,
-          "front": true
-        },
-        {
-          "world_xy": [
-            5552,
-            720
-          ],
-          "distance_to_root": 59.236813,
-          "front": true
-        },
-        {
-          "world_xy": [
-            5488,
-            720
-          ],
-          "distance_to_root": 69.202601,
-          "front": true
-        },
-        {
-          "world_xy": [
-            5584,
-            720
-          ],
-          "distance_to_root": 77.077883,
-          "front": true
-        },
-        {
-          "world_xy": [
-            5456,
-            688
-          ],
-          "distance_to_root": 77.491935,
           "front": true
         },
         {
@@ -5160,7 +4824,7 @@
         5520,
         688
       ],
-      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "approach_status": "Actual traced-floor/base-clear and body-swept connected; final Godot physics remains required",
       "name": "Iron04",
       "position": [
         5530,
@@ -5282,14 +4946,6 @@
         },
         {
           "world_xy": [
-            912,
-            2640
-          ],
-          "distance_to_root": 59.008474,
-          "front": false
-        },
-        {
-          "world_xy": [
             976,
             2704
           ],
@@ -5302,22 +4958,6 @@
             2704
           ],
           "distance_to_root": 65.192024,
-          "front": false
-        },
-        {
-          "world_xy": [
-            944,
-            2640
-          ],
-          "distance_to_root": 66.648331,
-          "front": false
-        },
-        {
-          "world_xy": [
-            880,
-            2640
-          ],
-          "distance_to_root": 67.601775,
           "front": false
         },
         {
@@ -5341,7 +4981,7 @@
         912,
         2736
       ],
-      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "approach_status": "Actual traced-floor/base-clear and body-swept connected; final Godot physics remains required",
       "name": "Mithril03",
       "position": [
         913,
@@ -5530,7 +5170,7 @@
         1232,
         2768
       ],
-      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "approach_status": "Actual traced-floor/base-clear and body-swept connected; final Godot physics remains required",
       "name": "Adamantite02",
       "position": [
         1242,
@@ -5596,14 +5236,6 @@
         },
         {
           "world_xy": [
-            752,
-            2768
-          ],
-          "distance_to_root": 50.695167,
-          "front": true
-        },
-        {
-          "world_xy": [
             848,
             2768
           ],
@@ -5624,14 +5256,6 @@
             2800
           ],
           "distance_to_root": 53.75872,
-          "front": true
-        },
-        {
-          "world_xy": [
-            752,
-            2800
-          ],
-          "distance_to_root": 69.354164,
           "front": true
         },
         {
@@ -5660,26 +5284,10 @@
         },
         {
           "world_xy": [
-            752,
-            2736
-          ],
-          "distance_to_root": 48.764741,
-          "front": false
-        },
-        {
-          "world_xy": [
             848,
             2736
           ],
           "distance_to_root": 50.695167,
-          "front": false
-        },
-        {
-          "world_xy": [
-            752,
-            2704
-          ],
-          "distance_to_root": 65.069194,
           "front": false
         },
         {
@@ -5711,7 +5319,7 @@
         784,
         2768
       ],
-      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "approach_status": "Actual traced-floor/base-clear and body-swept connected; final Godot physics remains required",
       "name": "Mithril04",
       "position": [
         799,
@@ -5785,42 +5393,10 @@
         },
         {
           "world_xy": [
-            1232,
-            3024
-          ],
-          "distance_to_root": 56.0803,
-          "front": true
-        },
-        {
-          "world_xy": [
-            1200,
-            3024
-          ],
-          "distance_to_root": 63.06346,
-          "front": true
-        },
-        {
-          "world_xy": [
             1168,
             2992
           ],
           "distance_to_root": 65.551506,
-          "front": true
-        },
-        {
-          "world_xy": [
-            1264,
-            3024
-          ],
-          "distance_to_root": 66.037868,
-          "front": true
-        },
-        {
-          "world_xy": [
-            1296,
-            2992
-          ],
-          "distance_to_root": 71.168813,
           "front": true
         },
         {
@@ -5900,7 +5476,7 @@
         1232,
         2992
       ],
-      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "approach_status": "Actual traced-floor/base-clear and body-swept connected; final Godot physics remains required",
       "name": "Blackstone06",
       "position": [
         1229,
@@ -5950,54 +5526,6 @@
       "approach_candidates": [
         {
           "world_xy": [
-            784,
-            3024
-          ],
-          "distance_to_root": 40.261644,
-          "front": true
-        },
-        {
-          "world_xy": [
-            752,
-            3024
-          ],
-          "distance_to_root": 44.777226,
-          "front": true
-        },
-        {
-          "world_xy": [
-            816,
-            3024
-          ],
-          "distance_to_root": 57.31492,
-          "front": true
-        },
-        {
-          "world_xy": [
-            720,
-            3024
-          ],
-          "distance_to_root": 66.61081,
-          "front": true
-        },
-        {
-          "world_xy": [
-            784,
-            3056
-          ],
-          "distance_to_root": 71.700767,
-          "front": true
-        },
-        {
-          "world_xy": [
-            752,
-            3056
-          ],
-          "distance_to_root": 74.330344,
-          "front": true
-        },
-        {
-          "world_xy": [
             816,
             2992
           ],
@@ -6014,26 +5542,10 @@
         },
         {
           "world_xy": [
-            720,
-            2992
-          ],
-          "distance_to_root": 54.451814,
-          "front": false
-        },
-        {
-          "world_xy": [
             784,
             2928
           ],
           "distance_to_root": 57.870545,
-          "front": false
-        },
-        {
-          "world_xy": [
-            720,
-            2960
-          ],
-          "distance_to_root": 59.506302,
           "front": false
         },
         {
@@ -6067,21 +5579,13 @@
           ],
           "distance_to_root": 78.108898,
           "front": false
-        },
-        {
-          "world_xy": [
-            720,
-            2928
-          ],
-          "distance_to_root": 78.517514,
-          "front": false
         }
       ],
       "approach_world_xy": [
-        784,
-        3024
+        816,
+        2992
       ],
-      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "approach_status": "Actual traced-floor/base-clear and body-swept connected; final Godot physics remains required",
       "name": "Blackstone07",
       "position": [
         774,
@@ -6179,26 +5683,10 @@
         },
         {
           "world_xy": [
-            3984,
-            2704
-          ],
-          "distance_to_root": 26.925824,
-          "front": false
-        },
-        {
-          "world_xy": [
             4048,
             2672
           ],
           "distance_to_root": 45.486262,
-          "front": false
-        },
-        {
-          "world_xy": [
-            4016,
-            2640
-          ],
-          "distance_to_root": 57.31492,
           "front": false
         },
         {
@@ -6211,26 +5699,10 @@
         },
         {
           "world_xy": [
-            3984,
-            2640
-          ],
-          "distance_to_root": 62.64982,
-          "front": false
-        },
-        {
-          "world_xy": [
             3952,
             2672
           ],
           "distance_to_root": 63.158531,
-          "front": false
-        },
-        {
-          "world_xy": [
-            4048,
-            2640
-          ],
-          "distance_to_root": 68.505474,
           "front": false
         },
         {
@@ -6254,7 +5726,7 @@
         4016,
         2736
       ],
-      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "approach_status": "Actual traced-floor/base-clear and body-swept connected; final Godot physics remains required",
       "name": "Blackstone08",
       "position": [
         4010,
@@ -6419,7 +5891,7 @@
         3888,
         2800
       ],
-      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "approach_status": "Actual traced-floor/base-clear and body-swept connected; final Godot physics remains required",
       "name": "Blackstone09",
       "position": [
         3892,
@@ -6493,34 +5965,10 @@
         },
         {
           "world_xy": [
-            3952,
-            3088
-          ],
-          "distance_to_root": 57.218878,
-          "front": true
-        },
-        {
-          "world_xy": [
-            3920,
-            3088
-          ],
-          "distance_to_root": 63.071388,
-          "front": true
-        },
-        {
-          "world_xy": [
             3888,
             3056
           ],
           "distance_to_root": 64.078077,
-          "front": true
-        },
-        {
-          "world_xy": [
-            3984,
-            3088
-          ],
-          "distance_to_root": 67.955868,
           "front": true
         },
         {
@@ -6608,7 +6056,7 @@
         3952,
         3056
       ],
-      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "approach_status": "Actual traced-floor/base-clear and body-swept connected; final Godot physics remains required",
       "name": "Blackstone10",
       "position": [
         3947,
@@ -6674,22 +6122,6 @@
         },
         {
           "world_xy": [
-            4432,
-            3088
-          ],
-          "distance_to_root": 48.507731,
-          "front": true
-        },
-        {
-          "world_xy": [
-            4400,
-            3088
-          ],
-          "distance_to_root": 54.120237,
-          "front": true
-        },
-        {
-          "world_xy": [
             4368,
             3056
           ],
@@ -6698,26 +6130,10 @@
         },
         {
           "world_xy": [
-            4464,
-            3088
-          ],
-          "distance_to_root": 61.846584,
-          "front": true
-        },
-        {
-          "world_xy": [
             4496,
             3056
           ],
           "distance_to_root": 72.780492,
-          "front": true
-        },
-        {
-          "world_xy": [
-            4368,
-            3088
-          ],
-          "distance_to_root": 74.518454,
           "front": true
         },
         {
@@ -6773,7 +6189,7 @@
         4400,
         3056
       ],
-      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "approach_status": "Actual traced-floor/base-clear and body-swept connected; final Godot physics remains required",
       "name": "Blackstone11",
       "position": [
         4425,
@@ -6821,54 +6237,6 @@
       ],
       "world_pixels_per_source_pixel": 1,
       "approach_candidates": [
-        {
-          "world_xy": [
-            4272,
-            3088
-          ],
-          "distance_to_root": 40.024992,
-          "front": true
-        },
-        {
-          "world_xy": [
-            4240,
-            3088
-          ],
-          "distance_to_root": 45.276926,
-          "front": true
-        },
-        {
-          "world_xy": [
-            4304,
-            3088
-          ],
-          "distance_to_root": 56.586217,
-          "front": true
-        },
-        {
-          "world_xy": [
-            4208,
-            3088
-          ],
-          "distance_to_root": 67.424031,
-          "front": true
-        },
-        {
-          "world_xy": [
-            4272,
-            3120
-          ],
-          "distance_to_root": 71.568149,
-          "front": true
-        },
-        {
-          "world_xy": [
-            4240,
-            3120
-          ],
-          "distance_to_root": 74.632433,
-          "front": true
-        },
         {
           "world_xy": [
             4304,
@@ -6951,10 +6319,10 @@
         }
       ],
       "approach_world_xy": [
-        4272,
-        3088
+        4304,
+        3056
       ],
-      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "approach_status": "Actual traced-floor/base-clear and body-swept connected; final Godot physics remains required",
       "name": "Blackstone12",
       "position": [
         4263,

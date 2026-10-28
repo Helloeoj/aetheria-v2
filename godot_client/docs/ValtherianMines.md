@@ -1,60 +1,15 @@
 # Valtherian Mines
 
-The approved V3 layout is a long east-to-west dungeon with five side branches
-and eight large chambers. Its separate east-facing entrance stands beside the
-Valtheiris wall. The playable wrapper is `scenes/ValtherianMines.tscn`; editable
-terrain, continuous rock collision and individual props live in
-`scenes/ValtherianMinesContent.tscn`.
+The playable map uses the exact approved V3 image the user marked with ore dots. The modular reconstruction was rejected. Preserve the approved room outlines, stone, lighting, lanterns, crystals and floor. New artwork generation is PixelLab-only; this restoration uses existing files without generation calls.
 
-The user's annotated image is preserved in
-`art_sources/valtherian-mines/approved/user-ore-annotation-2026-10-28.png`.
-There are exactly 29 canonical full ore props: Blackstone 12, Coal 7, Mithril 4,
-Adamantite 2 and Iron 4. Grey means Coal; the user corrected their typo.
-Dots denote visible sprite centers, not collider roots. Registration removes
-the screenshot border/crop before mapping to the approved layout. Actual
-placements and source registration are in `Assets/Maps/ValtherianMines/ore-markers.json`.
-Only a genuine wall/peer collision permits a minimal correction.
+`scenes/ValtherianMinesContent.tscn` contains `ApprovedMap`, exact-pixel foreground wall bands, actual painted-floor collision and individual `Ores` instances. `scenes/ValtherianMines.tscn` supplies the existing player/UI, arrival and generic exit. The backdrop source is `Assets/Maps/ValtherianMines/Approved/approved-map-v3.png`: the original1703x924 PNG, unchanged. Its registration covers6144x3328world pixels. The movement grid remains32px, origin(0,0), with the real24px body. Artwork cells and visible room shapes are independent of that movement grid.
 
-The physical grid stays 32 world pixels at origin (0,0); the world is 6144×3328.
-There are 5,498 authored floor cells. Main corridors retain six cells/192px;
-branches retain four cells/128px. Geometry comes from the approved tile
-contract, never from artwork colors. Whole canonical ore scenes keep their
-native 96px canvas, scale 1 and anchor (48,72). The unchanged player has a 24px
-body and the original peasant artwork.
+The preserved annotation and measured registration are under `art_sources/valtherian-mines/` and runtime `ore-markers.json`. The29 nodes are12Blackstone,7Coal,4Mithril,2Adamantite,4Iron. Grey is Coal. Dots specify visible sprite centers, and user-marked positions override default snapping. Reuse `scenes/MapProps/OreNodes/` and the existing `Assets/Tilesets/OreNodes.tres`; keep96px native sources, scale1 and anchor(48,72). Only genuine wall/peer conflicts permit a documented minimal shift.
 
-Native floor uses sixty complete 128px atlas regions from the clean lower
-portion of the approved material source, at 0.25 world pixels/source pixel.
-The floor-only mirrored 12x5 macro repeat duplicates matching edge texels;
-the original PNG is unchanged. Rock props are complete native wall objects
-at 0.125 density, with explicit source canvases and foot anchors in
-`Assets/Maps/ValtherianMines/wall-props.json`. Eight complete timber-and-lantern supports at 0.0625 density restore the warm back-wall detail. Their source/anchor contract is in `decor-props.json`. Low foreground wall caps meet
-the floor edge, and whole props sort at their feet. The continuous
-`CaveBoundary` owns wall physics; wall cladding does not stack duplicate bases.
+The existing east-facing mine entrance remains atworld(320,-1), with east approach(368,16) and overworld return(400,16). Arrival/exit approach inside is(6032,2064). The passive entrance is in `ValtheirisWorldContent.tscn`; `EastOutskirtsLayered.tscn` owns the artless interaction. Bracken/Golem/Tavern portals remain intact.
 
-Reusable ore props remain in `scenes/MapProps/OreNodes/` and the existing
-`Assets/Tilesets/OreNodes.tres` palette. Six whole wall scenes and a timber/lantern support are
-in `scenes/MapProps/ValtherianMines/`; `Assets/Tilesets/ValtherianMinesWalls.tres`
-provides a separate 32px editor palette without changing existing source IDs.
-When moving wall cladding, also author/validate its continuous boundary.
+Use the authored approved-image geometry and `scripts/dev_tools/build_valtherian_content.gd` to export the actual scene. `scripts/dev_tools/valtherian_approved_layers.gd` copies exact source pixels for foreground ordering. Run the actual worldbuilding contract plus approved-image physics/travel checks. `scripts/dev_tools/valtherian_approved_review.gd` captures source identity, marked ore placement and actual1x/4x player views. Full reports and captures stay outside Git in the supporting `approved-restoration/` evidence folder.
 
-The entrance uses untouched native 256×192 PixelLab artwork with
-anchor (147,139), at world (320,-1). Its approach is east of the mouth at (368,16),
-and its overworld return is (400,16). The passive prop is part of the actual
-`ValtheirisWorldContent.tscn`; the generic portal in `EastOutskirtsLayered.tscn`
-is artless. Interior arrival/exit approach is (6032,2064). Existing Bracken,
-Golem and Tavern portals retain their locations and behavior. Online servers
-must run the updated `WorldProtocol` registry before admitting the new region.
+The complete original remains unchanged beneath foreground overlays, and a source-resolution GPU capture must match all original RGB pixels. This verifies preservation, without claiming extra detail beyond the existing source resolution. Automatic tests do not substitute for the user's visual approval. Earlier modular-scene reports are historical and cannot certify this restoration.
 
-This change supplies environment, placement and ordinary scene travel. Mining
-rules, rewards, progression, smelting recipes and monster populations require
-their own gameplay requirements.
-
-Rebuild the geometry with `tools/build_valtherian_map.py` using the preserved
-marker record, then run Godot with `--script res://scripts/dev_tools/build_valtherian_content.gd`.
-Run `tools/worldbuilding.py` against
-`godot_client/Assets/Maps/ValtherianMines/worldbuilding.json`. The focused
-geometry, floor-seam and travel scripts are under `scripts/dev_tools/`.
-Generated reports and screenshots stay outside Git in the matching supporting
-map-planning task. Source provenance and acceptance statuses are recorded in
-`art_sources/valtherian-mines/`; automatic checks, agent visual review, user
-source approval and local installation remain separate.
+The map adds no mining/combat rules, recipes, progression, monster populations or reward changes. Online travel still requires an updated server region registry; local tests do not deploy servers or exercise live account persistence.

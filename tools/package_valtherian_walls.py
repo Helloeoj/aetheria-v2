@@ -74,6 +74,4 @@ centered = false
     print(json.dumps({'units':len(units),'native_density':0.125,'pixel_edits_in_packager':False}))
 
 if __name__=='__main__':
-    parser=argparse.ArgumentParser()
-    parser.add_argument('source',type=Path)
-    package(parser.parse_args().source)
+    raise SystemExit('The replacement Valtherian wall kit was rejected by the user. Do not reinstall it; preserve the approved original map.')

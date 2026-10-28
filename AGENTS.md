@@ -123,3 +123,7 @@ Record a real Godot 4x render alongside the player and inspect visual wall
 cut-ins, ground contact and depth sorting. Automatic checks do not grant
 visual approval. Missing/failed evidence keeps the work pending; never
 auto-reposition objects or change existing gameplay to hide a failing check.
+
+## PixelLab-only map generation
+
+The user rejected the2026-10-28 Valtherian modular rebuild. Use PixelLab for future new map/environment artwork. Do not use built-in imagegen, procedural replacement art or a generic wall/floor kit as a fallback. If PixelLab is unavailable or out of credits, stop generation rather than spending elsewhere. Existing user-approved images may be installed and layered losslessly when explicitly requested; preserve their visible design. A32px movement/placement grid does not authorize changing the approved artwork into rectangular rooms. Technical tests never substitute for visual approval.

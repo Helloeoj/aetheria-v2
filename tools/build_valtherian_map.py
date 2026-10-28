@@ -182,9 +182,4 @@ def build(markers_path,wall_manifest,evidence_dir):
                       'void_rectangles':len(void),'wall_mask':str(mask_path)}))
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser()
-    p.add_argument('--markers',required=True,type=Path)
-    p.add_argument('--walls',type=Path,default=AREA/'wall-props.json')
-    p.add_argument('--evidence-dir',required=True,type=Path)
-    args=p.parse_args()
-    build(args.markers,args.walls,args.evidence_dir)
+    raise SystemExit('The modular Valtherian rebuild was rejected by the user. Do not reinstall it. Use the exact approved-image restoration workflow; no replacement art generation.')

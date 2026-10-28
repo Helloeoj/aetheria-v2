@@ -1,0 +1,1493 @@
+{
+	"atlas": "res://Assets/Maps/ValtherianMines/Approved/foreground.png",
+	"atlas_size": [
+		1703,
+		206
+	],
+	"bands": [
+		{
+			"atlas_rect": [
+				0,
+				0,
+				184,
+				54
+			],
+			"foot_source_y": 328,
+			"name": "FrontWall000",
+			"source_rect": [
+				44,
+				274,
+				184,
+				54
+			]
+		},
+		{
+			"atlas_rect": [
+				186,
+				0,
+				4,
+				8
+			],
+			"foot_source_y": 209,
+			"name": "FrontWall001",
+			"source_rect": [
+				54,
+				201,
+				4,
+				8
+			]
+		},
+		{
+			"atlas_rect": [
+				192,
+				0,
+				5,
+				28
+			],
+			"foot_source_y": 781,
+			"name": "FrontWall002",
+			"source_rect": [
+				204,
+				753,
+				5,
+				28
+			]
+		},
+		{
+			"atlas_rect": [
+				199,
+				0,
+				169,
+				43
+			],
+			"foot_source_y": 871,
+			"name": "FrontWall003",
+			"source_rect": [
+				204,
+				831,
+				169,
+				43
+			]
+		},
+		{
+			"atlas_rect": [
+				370,
+				0,
+				19,
+				35
+			],
+			"foot_source_y": 290,
+			"name": "FrontWall004",
+			"source_rect": [
+				230,
+				255,
+				19,
+				35
+			]
+		},
+		{
+			"atlas_rect": [
+				391,
+				0,
+				49,
+				42
+			],
+			"foot_source_y": 279,
+			"name": "FrontWall005",
+			"source_rect": [
+				249,
+				237,
+				49,
+				42
+			]
+		},
+		{
+			"atlas_rect": [
+				442,
+				0,
+				6,
+				34
+			],
+			"foot_source_y": 686,
+			"name": "FrontWall006",
+			"source_rect": [
+				274,
+				652,
+				6,
+				34
+			]
+		},
+		{
+			"atlas_rect": [
+				450,
+				0,
+				6,
+				7
+			],
+			"foot_source_y": 641,
+			"name": "FrontWall007",
+			"source_rect": [
+				286,
+				634,
+				6,
+				7
+			]
+		},
+		{
+			"atlas_rect": [
+				458,
+				0,
+				9,
+				48
+			],
+			"foot_source_y": 371,
+			"name": "FrontWall008",
+			"source_rect": [
+				288,
+				323,
+				9,
+				48
+			]
+		},
+		{
+			"atlas_rect": [
+				469,
+				0,
+				122,
+				56
+			],
+			"foot_source_y": 414,
+			"name": "FrontWall009",
+			"source_rect": [
+				297,
+				358,
+				122,
+				56
+			]
+		},
+		{
+			"atlas_rect": [
+				593,
+				0,
+				4,
+				12
+			],
+			"foot_source_y": 717,
+			"name": "FrontWall010",
+			"source_rect": [
+				311,
+				705,
+				4,
+				12
+			]
+		},
+		{
+			"atlas_rect": [
+				599,
+				0,
+				142,
+				71
+			],
+			"foot_source_y": 713,
+			"name": "FrontWall011",
+			"source_rect": [
+				313,
+				642,
+				142,
+				71
+			]
+		},
+		{
+			"atlas_rect": [
+				743,
+				0,
+				7,
+				11
+			],
+			"foot_source_y": 261,
+			"name": "FrontWall012",
+			"source_rect": [
+				335,
+				250,
+				7,
+				11
+			]
+		},
+		{
+			"atlas_rect": [
+				752,
+				0,
+				7,
+				14
+			],
+			"foot_source_y": 285,
+			"name": "FrontWall013",
+			"source_rect": [
+				337,
+				271,
+				7,
+				14
+			]
+		},
+		{
+			"atlas_rect": [
+				761,
+				0,
+				6,
+				22
+			],
+			"foot_source_y": 316,
+			"name": "FrontWall014",
+			"source_rect": [
+				338,
+				294,
+				6,
+				22
+			]
+		},
+		{
+			"atlas_rect": [
+				769,
+				0,
+				6,
+				33
+			],
+			"foot_source_y": 261,
+			"name": "FrontWall015",
+			"source_rect": [
+				340,
+				228,
+				6,
+				33
+			]
+		},
+		{
+			"atlas_rect": [
+				777,
+				0,
+				5,
+				32
+			],
+			"foot_source_y": 498,
+			"name": "FrontWall016",
+			"source_rect": [
+				408,
+				466,
+				5,
+				32
+			]
+		},
+		{
+			"atlas_rect": [
+				784,
+				0,
+				6,
+				34
+			],
+			"foot_source_y": 526,
+			"name": "FrontWall017",
+			"source_rect": [
+				409,
+				492,
+				6,
+				34
+			]
+		},
+		{
+			"atlas_rect": [
+				792,
+				0,
+				5,
+				7
+			],
+			"foot_source_y": 337,
+			"name": "FrontWall018",
+			"source_rect": [
+				447,
+				330,
+				5,
+				7
+			]
+		},
+		{
+			"atlas_rect": [
+				799,
+				0,
+				100,
+				41
+			],
+			"foot_source_y": 420,
+			"name": "FrontWall019",
+			"source_rect": [
+				448,
+				379,
+				100,
+				41
+			]
+		},
+		{
+			"atlas_rect": [
+				901,
+				0,
+				8,
+				45
+			],
+			"foot_source_y": 539,
+			"name": "FrontWall020",
+			"source_rect": [
+				453,
+				494,
+				8,
+				45
+			]
+		},
+		{
+			"atlas_rect": [
+				911,
+				0,
+				4,
+				11
+			],
+			"foot_source_y": 612,
+			"name": "FrontWall021",
+			"source_rect": [
+				453,
+				601,
+				4,
+				11
+			]
+		},
+		{
+			"atlas_rect": [
+				917,
+				0,
+				7,
+				35
+			],
+			"foot_source_y": 662,
+			"name": "FrontWall022",
+			"source_rect": [
+				455,
+				627,
+				7,
+				35
+			]
+		},
+		{
+			"atlas_rect": [
+				926,
+				0,
+				7,
+				33
+			],
+			"foot_source_y": 603,
+			"name": "FrontWall023",
+			"source_rect": [
+				541,
+				570,
+				7,
+				33
+			]
+		},
+		{
+			"atlas_rect": [
+				935,
+				0,
+				8,
+				31
+			],
+			"foot_source_y": 523,
+			"name": "FrontWall024",
+			"source_rect": [
+				543,
+				492,
+				8,
+				31
+			]
+		},
+		{
+			"atlas_rect": [
+				945,
+				0,
+				4,
+				6
+			],
+			"foot_source_y": 343,
+			"name": "FrontWall025",
+			"source_rect": [
+				545,
+				337,
+				4,
+				6
+			]
+		},
+		{
+			"atlas_rect": [
+				951,
+				0,
+				112,
+				49
+			],
+			"foot_source_y": 635,
+			"name": "FrontWall026",
+			"source_rect": [
+				548,
+				586,
+				112,
+				49
+			]
+		},
+		{
+			"atlas_rect": [
+				1065,
+				0,
+				5,
+				32
+			],
+			"foot_source_y": 539,
+			"name": "FrontWall027",
+			"source_rect": [
+				586,
+				507,
+				5,
+				32
+			]
+		},
+		{
+			"atlas_rect": [
+				1072,
+				0,
+				4,
+				32
+			],
+			"foot_source_y": 658,
+			"name": "FrontWall028",
+			"source_rect": [
+				652,
+				626,
+				4,
+				32
+			]
+		},
+		{
+			"atlas_rect": [
+				1078,
+				0,
+				200,
+				51
+			],
+			"foot_source_y": 684,
+			"name": "FrontWall029",
+			"source_rect": [
+				656,
+				639,
+				200,
+				51
+			]
+		},
+		{
+			"atlas_rect": [
+				1280,
+				0,
+				5,
+				16
+			],
+			"foot_source_y": 539,
+			"name": "FrontWall030",
+			"source_rect": [
+				667,
+				523,
+				5,
+				16
+			]
+		},
+		{
+			"atlas_rect": [
+				1287,
+				0,
+				5,
+				32
+			],
+			"foot_source_y": 466,
+			"name": "FrontWall031",
+			"source_rect": [
+				729,
+				434,
+				5,
+				32
+			]
+		},
+		{
+			"atlas_rect": [
+				1294,
+				0,
+				6,
+				33
+			],
+			"foot_source_y": 496,
+			"name": "FrontWall032",
+			"source_rect": [
+				730,
+				463,
+				6,
+				33
+			]
+		},
+		{
+			"atlas_rect": [
+				1302,
+				0,
+				5,
+				34
+			],
+			"foot_source_y": 317,
+			"name": "FrontWall033",
+			"source_rect": [
+				731,
+				283,
+				5,
+				34
+			]
+		},
+		{
+			"atlas_rect": [
+				1309,
+				0,
+				7,
+				46
+			],
+			"foot_source_y": 347,
+			"name": "FrontWall034",
+			"source_rect": [
+				736,
+				301,
+				7,
+				46
+			]
+		},
+		{
+			"atlas_rect": [
+				1318,
+				0,
+				4,
+				33
+			],
+			"foot_source_y": 508,
+			"name": "FrontWall035",
+			"source_rect": [
+				736,
+				475,
+				4,
+				33
+			]
+		},
+		{
+			"atlas_rect": [
+				1324,
+				0,
+				6,
+				8
+			],
+			"foot_source_y": 522,
+			"name": "FrontWall036",
+			"source_rect": [
+				773,
+				514,
+				6,
+				8
+			]
+		},
+		{
+			"atlas_rect": [
+				1332,
+				0,
+				6,
+				33
+			],
+			"foot_source_y": 502,
+			"name": "FrontWall037",
+			"source_rect": [
+				775,
+				469,
+				6,
+				33
+			]
+		},
+		{
+			"atlas_rect": [
+				1340,
+				0,
+				5,
+				28
+			],
+			"foot_source_y": 384,
+			"name": "FrontWall038",
+			"source_rect": [
+				776,
+				356,
+				5,
+				28
+			]
+		},
+		{
+			"atlas_rect": [
+				1347,
+				0,
+				103,
+				71
+			],
+			"foot_source_y": 340,
+			"name": "FrontWall039",
+			"source_rect": [
+				777,
+				269,
+				103,
+				71
+			]
+		},
+		{
+			"atlas_rect": [
+				1452,
+				0,
+				5,
+				32
+			],
+			"foot_source_y": 484,
+			"name": "FrontWall040",
+			"source_rect": [
+				778,
+				452,
+				5,
+				32
+			]
+		},
+		{
+			"atlas_rect": [
+				1459,
+				0,
+				65,
+				32
+			],
+			"foot_source_y": 189,
+			"name": "FrontWall041",
+			"source_rect": [
+				780,
+				157,
+				65,
+				32
+			]
+		},
+		{
+			"atlas_rect": [
+				1526,
+				0,
+				4,
+				35
+			],
+			"foot_source_y": 470,
+			"name": "FrontWall042",
+			"source_rect": [
+				783,
+				436,
+				4,
+				35
+			]
+		},
+		{
+			"atlas_rect": [
+				1532,
+				0,
+				8,
+				11
+			],
+			"foot_source_y": 529,
+			"name": "FrontWall043",
+			"source_rect": [
+				826,
+				518,
+				8,
+				11
+			]
+		},
+		{
+			"atlas_rect": [
+				1542,
+				0,
+				4,
+				34
+			],
+			"foot_source_y": 247,
+			"name": "FrontWall044",
+			"source_rect": [
+				838,
+				213,
+				4,
+				34
+			]
+		},
+		{
+			"atlas_rect": [
+				1548,
+				0,
+				14,
+				36
+			],
+			"foot_source_y": 674,
+			"name": "FrontWall045",
+			"source_rect": [
+				856,
+				638,
+				14,
+				36
+			]
+		},
+		{
+			"atlas_rect": [
+				1564,
+				0,
+				85,
+				71
+			],
+			"foot_source_y": 636,
+			"name": "FrontWall046",
+			"source_rect": [
+				863,
+				565,
+				85,
+				71
+			]
+		},
+		{
+			"atlas_rect": [
+				1651,
+				0,
+				10,
+				37
+			],
+			"foot_source_y": 283,
+			"name": "FrontWall047",
+			"source_rect": [
+				876,
+				246,
+				10,
+				37
+			]
+		},
+		{
+			"atlas_rect": [
+				1663,
+				0,
+				11,
+				35
+			],
+			"foot_source_y": 202,
+			"name": "FrontWall048",
+			"source_rect": [
+				878,
+				167,
+				11,
+				35
+			]
+		},
+		{
+			"atlas_rect": [
+				0,
+				73,
+				41,
+				37
+			],
+			"foot_source_y": 189,
+			"name": "FrontWall049",
+			"source_rect": [
+				889,
+				152,
+				41,
+				37
+			]
+		},
+		{
+			"atlas_rect": [
+				43,
+				73,
+				5,
+				32
+			],
+			"foot_source_y": 490,
+			"name": "FrontWall050",
+			"source_rect": [
+				899,
+				458,
+				5,
+				32
+			]
+		},
+		{
+			"atlas_rect": [
+				50,
+				73,
+				4,
+				6
+			],
+			"foot_source_y": 441,
+			"name": "FrontWall051",
+			"source_rect": [
+				901,
+				435,
+				4,
+				6
+			]
+		},
+		{
+			"atlas_rect": [
+				56,
+				73,
+				8,
+				33
+			],
+			"foot_source_y": 174,
+			"name": "FrontWall052",
+			"source_rect": [
+				930,
+				141,
+				8,
+				33
+			]
+		},
+		{
+			"atlas_rect": [
+				66,
+				73,
+				72,
+				45
+			],
+			"foot_source_y": 500,
+			"name": "FrontWall053",
+			"source_rect": [
+				938,
+				455,
+				72,
+				45
+			]
+		},
+		{
+			"atlas_rect": [
+				140,
+				73,
+				5,
+				32
+			],
+			"foot_source_y": 577,
+			"name": "FrontWall054",
+			"source_rect": [
+				944,
+				545,
+				5,
+				32
+			]
+		},
+		{
+			"atlas_rect": [
+				147,
+				73,
+				4,
+				32
+			],
+			"foot_source_y": 552,
+			"name": "FrontWall055",
+			"source_rect": [
+				1005,
+				520,
+				4,
+				32
+			]
+		},
+		{
+			"atlas_rect": [
+				153,
+				73,
+				125,
+				63
+			],
+			"foot_source_y": 705,
+			"name": "FrontWall056",
+			"source_rect": [
+				1006,
+				642,
+				125,
+				63
+			]
+		},
+		{
+			"atlas_rect": [
+				280,
+				73,
+				70,
+				52
+			],
+			"foot_source_y": 237,
+			"name": "FrontWall057",
+			"source_rect": [
+				1007,
+				185,
+				70,
+				52
+			]
+		},
+		{
+			"atlas_rect": [
+				352,
+				73,
+				6,
+				12
+			],
+			"foot_source_y": 89,
+			"name": "FrontWall058",
+			"source_rect": [
+				1021,
+				77,
+				6,
+				12
+			]
+		},
+		{
+			"atlas_rect": [
+				360,
+				73,
+				36,
+				37
+			],
+			"foot_source_y": 494,
+			"name": "FrontWall059",
+			"source_rect": [
+				1041,
+				457,
+				36,
+				37
+			]
+		},
+		{
+			"atlas_rect": [
+				398,
+				73,
+				6,
+				32
+			],
+			"foot_source_y": 625,
+			"name": "FrontWall060",
+			"source_rect": [
+				1042,
+				593,
+				6,
+				32
+			]
+		},
+		{
+			"atlas_rect": [
+				406,
+				73,
+				4,
+				34
+			],
+			"foot_source_y": 557,
+			"name": "FrontWall061",
+			"source_rect": [
+				1044,
+				523,
+				4,
+				34
+			]
+		},
+		{
+			"atlas_rect": [
+				412,
+				73,
+				6,
+				25
+			],
+			"foot_source_y": 816,
+			"name": "FrontWall062",
+			"source_rect": [
+				1060,
+				791,
+				6,
+				25
+			]
+		},
+		{
+			"atlas_rect": [
+				420,
+				73,
+				200,
+				40
+			],
+			"foot_source_y": 887,
+			"name": "FrontWall063",
+			"source_rect": [
+				1060,
+				848,
+				200,
+				40
+			]
+		},
+		{
+			"atlas_rect": [
+				622,
+				73,
+				6,
+				43
+			],
+			"foot_source_y": 303,
+			"name": "FrontWall064",
+			"source_rect": [
+				1068,
+				260,
+				6,
+				43
+			]
+		},
+		{
+			"atlas_rect": [
+				630,
+				73,
+				137,
+				63
+			],
+			"foot_source_y": 351,
+			"name": "FrontWall065",
+			"source_rect": [
+				1074,
+				288,
+				137,
+				63
+			]
+		},
+		{
+			"atlas_rect": [
+				769,
+				73,
+				4,
+				32
+			],
+			"foot_source_y": 524,
+			"name": "FrontWall066",
+			"source_rect": [
+				1074,
+				492,
+				4,
+				32
+			]
+		},
+		{
+			"atlas_rect": [
+				775,
+				73,
+				226,
+				54
+			],
+			"foot_source_y": 540,
+			"name": "FrontWall067",
+			"source_rect": [
+				1078,
+				494,
+				226,
+				54
+			]
+		},
+		{
+			"atlas_rect": [
+				1003,
+				73,
+				106,
+				70
+			],
+			"foot_source_y": 244,
+			"name": "FrontWall068",
+			"source_rect": [
+				1109,
+				174,
+				106,
+				70
+			]
+		},
+		{
+			"atlas_rect": [
+				1111,
+				73,
+				4,
+				33
+			],
+			"foot_source_y": 265,
+			"name": "FrontWall069",
+			"source_rect": [
+				1114,
+				232,
+				4,
+				33
+			]
+		},
+		{
+			"atlas_rect": [
+				1117,
+				73,
+				8,
+				42
+			],
+			"foot_source_y": 712,
+			"name": "FrontWall070",
+			"source_rect": [
+				1167,
+				670,
+				8,
+				42
+			]
+		},
+		{
+			"atlas_rect": [
+				1127,
+				73,
+				8,
+				43
+			],
+			"foot_source_y": 351,
+			"name": "FrontWall071",
+			"source_rect": [
+				1246,
+				308,
+				8,
+				43
+			]
+		},
+		{
+			"atlas_rect": [
+				1137,
+				73,
+				65,
+				40
+			],
+			"foot_source_y": 495,
+			"name": "FrontWall072",
+			"source_rect": [
+				1304,
+				455,
+				65,
+				40
+			]
+		},
+		{
+			"atlas_rect": [
+				1204,
+				73,
+				9,
+				37
+			],
+			"foot_source_y": 517,
+			"name": "FrontWall073",
+			"source_rect": [
+				1304,
+				480,
+				9,
+				37
+			]
+		},
+		{
+			"atlas_rect": [
+				1215,
+				73,
+				7,
+				7
+			],
+			"foot_source_y": 422,
+			"name": "FrontWall074",
+			"source_rect": [
+				1307,
+				415,
+				7,
+				7
+			]
+		},
+		{
+			"atlas_rect": [
+				1224,
+				73,
+				6,
+				36
+			],
+			"foot_source_y": 608,
+			"name": "FrontWall075",
+			"source_rect": [
+				1363,
+				572,
+				6,
+				36
+			]
+		},
+		{
+			"atlas_rect": [
+				1232,
+				73,
+				334,
+				51
+			],
+			"foot_source_y": 627,
+			"name": "FrontWall076",
+			"source_rect": [
+				1369,
+				585,
+				334,
+				51
+			]
+		},
+		{
+			"atlas_rect": [
+				1568,
+				73,
+				8,
+				35
+			],
+			"foot_source_y": 490,
+			"name": "FrontWall077",
+			"source_rect": [
+				1409,
+				455,
+				8,
+				35
+			]
+		},
+		{
+			"atlas_rect": [
+				1578,
+				73,
+				4,
+				39
+			],
+			"foot_source_y": 155,
+			"name": "FrontWall078",
+			"source_rect": [
+				1504,
+				116,
+				4,
+				39
+			]
+		},
+		{
+			"atlas_rect": [
+				1584,
+				73,
+				66,
+				65
+			],
+			"foot_source_y": 253,
+			"name": "FrontWall079",
+			"source_rect": [
+				1504,
+				188,
+				66,
+				65
+			]
+		},
+		{
+			"atlas_rect": [
+				1652,
+				73,
+				4,
+				35
+			],
+			"foot_source_y": 501,
+			"name": "FrontWall080",
+			"source_rect": [
+				1507,
+				466,
+				4,
+				35
+			]
+		},
+		{
+			"atlas_rect": [
+				1658,
+				73,
+				4,
+				32
+			],
+			"foot_source_y": 526,
+			"name": "FrontWall081",
+			"source_rect": [
+				1510,
+				494,
+				4,
+				32
+			]
+		},
+		{
+			"atlas_rect": [
+				1664,
+				73,
+				5,
+				40
+			],
+			"foot_source_y": 418,
+			"name": "FrontWall082",
+			"source_rect": [
+				1511,
+				378,
+				5,
+				40
+			]
+		},
+		{
+			"atlas_rect": [
+				1671,
+				73,
+				8,
+				41
+			],
+			"foot_source_y": 543,
+			"name": "FrontWall083",
+			"source_rect": [
+				1549,
+				502,
+				8,
+				41
+			]
+		},
+		{
+			"atlas_rect": [
+				0,
+				145,
+				56,
+				61
+			],
+			"foot_source_y": 404,
+			"name": "FrontWall084",
+			"source_rect": [
+				1550,
+				343,
+				56,
+				61
+			]
+		},
+		{
+			"atlas_rect": [
+				58,
+				145,
+				9,
+				38
+			],
+			"foot_source_y": 503,
+			"name": "FrontWall085",
+			"source_rect": [
+				1551,
+				465,
+				9,
+				38
+			]
+		},
+		{
+			"atlas_rect": [
+				69,
+				145,
+				5,
+				32
+			],
+			"foot_source_y": 329,
+			"name": "FrontWall086",
+			"source_rect": [
+				1564,
+				297,
+				5,
+				32
+			]
+		},
+		{
+			"atlas_rect": [
+				76,
+				145,
+				13,
+				36
+			],
+			"foot_source_y": 247,
+			"name": "FrontWall087",
+			"source_rect": [
+				1603,
+				211,
+				13,
+				36
+			]
+		},
+		{
+			"atlas_rect": [
+				91,
+				145,
+				11,
+				37
+			],
+			"foot_source_y": 331,
+			"name": "FrontWall088",
+			"source_rect": [
+				1606,
+				294,
+				11,
+				37
+			]
+		},
+		{
+			"atlas_rect": [
+				104,
+				145,
+				5,
+				36
+			],
+			"foot_source_y": 357,
+			"name": "FrontWall089",
+			"source_rect": [
+				1606,
+				321,
+				5,
+				36
+			]
+		},
+		{
+			"atlas_rect": [
+				111,
+				145,
+				41,
+				40
+			],
+			"foot_source_y": 234,
+			"name": "FrontWall090",
+			"source_rect": [
+				1616,
+				194,
+				41,
+				40
+			]
+		},
+		{
+			"atlas_rect": [
+				154,
+				145,
+				12,
+				39
+			],
+			"foot_source_y": 218,
+			"name": "FrontWall091",
+			"source_rect": [
+				1657,
+				179,
+				12,
+				39
+			]
+		}
+	],
+	"copied_exact_rgba_pixels": 101707,
+	"floor_mask_sha256": "8d0ee8bb39f6bc5f1d299a7da865c9662a0992743baf8381b016b776aec9166e",
+	"method": "Reviewed visible-floor south transitions locate continuous terrain bands. Exact RGBA copied; no resize, color replacement, alpha cleanup or hidden-floor repaint. Complete immutable source remains the backdrop. These are terrain overlays, not reusable mined-rock props.",
+	"schema": 1,
+	"source": "res://Assets/Maps/ValtherianMines/Approved/approved-map-v3.png",
+	"source_rgba_mismatches": 0,
+	"source_sha256": "8ddfeb0018110c36f3937592a09b378f61b9122d1d2f761eb4f6931dffedea90",
+	"source_size": [
+		1703,
+		924
+	],
+	"source_was_opaque": true
+}

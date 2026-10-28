@@ -108,15 +108,14 @@ func _run() -> void:
 	check(layout.gameplay_cell_pixels == 32 and vector(layout.world_size) == SIZE, "world and32px grid match approved plan")
 	for pair: Array in layout.floor_cells:
 		floor_cells[Vector2i(pair[0], pair[1])] = true
-	check(floor_cells.size() == 5498, "all5498 approved floor cells retained")
-	var floor_layer := content.get_node_or_null("NativeFloor") as TileMapLayer
-	check(floor_layer != null, "actual native floor layer exists")
-	if floor_layer != null:
-		check(floor_layer.get_used_cells().size() == floor_cells.size(), "artwork contains every declared floor cell")
-		check(floor_layer.tile_set.tile_size == Vector2i(128,128) and floor_layer.global_scale == Vector2(0.25,0.25), "native128px artwork gives32world pixels")
-		check(floor_layer.to_global(floor_layer.map_to_local(Vector2i.ZERO)).is_equal_approx(Vector2(16,16)), "actual floor aligns to shared grid centers")
-		for cell: Vector2i in floor_layer.get_used_cells():
-			check(floor_cells.has(cell), "no floor artwork outside authored cell " + str(cell))
+	check(floor_cells.size() > 0, "authored painted-map floor cells supplied")
+	var approved := content.get_node_or_null("ApprovedMap") as Sprite2D
+	check(approved != null, "exact approved map is the actual rendered backdrop")
+	check(content.get_node_or_null("NativeFloor")==null and content.get_node_or_null("Walls")==null and content.get_node_or_null("Decor")==null, "rejected modular replacement is absent")
+	if approved != null:
+		check(approved.texture.get_size()==Vector2(1703,924) and not approved.centered and approved.position==Vector2.ZERO, "unchanged approved native canvas and origin")
+		check(FileAccess.get_sha256(approved.texture.resource_path)=="8ddfeb0018110c36f3937592a09b378f61b9122d1d2f761eb4f6931dffedea90", "approved source pixels are byte-identical")
+		check(approved.scale.is_equal_approx(Vector2(6144.0/1703.0,3328.0/924.0)), "approved source retains registered dot-to-world mapping")
 	var boundary := content.get_node("CaveBoundary") as StaticBody2D
 	check(boundary.collision_layer == 1, "real cave boundary blocks world layer1")
 	check(boundary.get_child_count() == layout.void_rects.size(), "all actual continuous void rectangles exist")
@@ -197,12 +196,7 @@ func _run() -> void:
 		if not path.is_empty():
 			check(grid.clear_segment(path[-1],sim(approach)), str(ore.id) + " final body sweep reaches exact approach")
 	check(roster == EXPECTED, "roster matches all five user colors")
-	check(layout.decor_props.size() == 8 and content.get_node("Decor").get_child_count() == 8, "all8 warm supports are separate placed props")
-	for decor: Dictionary in layout.decor_props:
-		var support := content.get_node("Decor/"+str(decor.name)) as Node2D
-		var visual := support.get_node("Visual") as Sprite2D
-		check(support.scene_file_path == decor.scene and support.position == vector(decor.position), str(decor.name)+" matches authored whole prop")
-		check(not support.y_sort_enabled and visual.scale == Vector2(0.0625,0.0625) and visual.texture.get_size() == Vector2(1254,1254), str(decor.name)+" retains native group, density and source")
+	check(layout.decor_props.is_empty() and layout.wall_props.is_empty(), "no rejected replacement wall or lantern props are installed")
 	var lane_checks := audit_lanes()
 	var gate_checks := audit_progression(start)
 	metrics = {"authored_floor_cells":floor_cells.size(),"body_clear_floor_cells":clear_cells.size(),"ore_occupied_floor_centers":blocked_floor,
@@ -263,7 +257,7 @@ func finish() -> void:
 	var report := {"checks":checks,"failure_count":failures.size(),"failures":failures,"metrics":metrics,
 		"scene_sha256":loaded_scene_sha,"layout_sha256":loaded_layout_sha,
 		"scope":"Actual Valtherian passive content physics/shared grid only; visual and travel approval remain separate"}
-	var file := FileAccess.open(output_dir.path_join("valtherian-mine-geometry-report.json"),FileAccess.WRITE)
+	var file := FileAccess.open(output_dir.path_join("valtherian-approved-geometry-report.json"),FileAccess.WRITE)
 	file.store_string(JSON.stringify(report,"  ")+"\n")
 	file.close()
 	print("[Valtherian geometry] ", JSON.stringify(report))
