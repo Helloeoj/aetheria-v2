@@ -78,6 +78,7 @@ func configure(client: Node) -> void:
 	composer = LineEdit.new()
 	composer.name = "ChatInput"
 	composer.placeholder_text = "Press Enter to chat…"
+	composer.tooltip_text = "Developer maps: ::help lists tile coordinates and teleport commands."
 	composer.max_length = 280
 	composer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	composer.add_theme_font_size_override("font_size", 14)
@@ -356,7 +357,7 @@ func refresh() -> void:
 		transcript.clear()
 		for event: Dictionary in social.history:
 			var channel := str(event.get("channel", "local"))
-			if social.is_blocked(str(event.get("sender_id", ""))) or (filter != "all" and filter != channel):
+			if social.is_blocked(str(event.get("sender_id", ""))) or (channel != "system" and filter != "all" and filter != channel):
 				continue
 			var color := Color("eee7d6")
 			if channel == "global":

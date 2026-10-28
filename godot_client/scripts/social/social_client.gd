@@ -213,6 +213,17 @@ func request(operation: String, data: Dictionary = {}) -> String:
 
 func send_chat(channel: String, text: String, target: String = "") -> bool:
 	var message := text.strip_edges()
+	if message.begins_with("::"):
+		var scene := get_tree().current_scene
+		var game: Node = scene.get_node_or_null("Combat") if scene != null else null
+		var commands: Node = game.get("tile_commands") if game != null else null
+		var response: String = commands.execute(message) if commands != null else "Developer commands are available in a development map."
+		history.append({"id": "command-" + str(Time.get_ticks_usec()), "channel": "system", "sender": "Developer", "text": response})
+		if history.size() > 500:
+			history.pop_front()
+		status = response
+		updated.emit()
+		return true
 	if message.is_empty() or message.length() > 280:
 		return false
 	var request_id := request("send", {"channel": channel, "text": message, "target": target.strip_edges()})

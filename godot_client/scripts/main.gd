@@ -66,6 +66,7 @@ var grid_adapter: Node
 var offline_mining: Node
 var aoe_preview: Node2D
 var orders_controller: Node
+var tile_commands: Node2D
 
 func grid_adoption_report() -> Dictionary:
 	return grid_adapter.report if grid_adapter != null else {"enabled": false, "reason": "not a map scene"}
@@ -550,6 +551,10 @@ func _ready() -> void:
 	_update_map_camera()
 	print("[UI] I opens the character journal; K toggles skill testing. F5 spawns monsters; F7 opens the sprite viewer; P tests fishing anywhere.")
 	_prepare_grid_movement.call_deferred()
+	if OS.is_debug_build() and not OS.has_feature("tester_client") and not has_meta("online_server_geometry"):
+		tile_commands = preload("res://scripts/dev_tools/tile_commands.gd").new()
+		add_child(tile_commands)
+		tile_commands.configure(self)
 	if OS.is_debug_build() and not OS.has_feature("tester_client") and not has_meta("online_server_geometry"):
 		aoe_preview = preload("res://scripts/dev_tools/aoe_tile_preview.gd").new()
 		aoe_preview.game = self
