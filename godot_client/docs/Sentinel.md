@@ -17,6 +17,26 @@ bounded peer review, corrections and persistent validation/efficiency history.
 See [SentinelAssistant.md](SentinelAssistant.md) for operation and tested limits.
 Close and reopen an already running Sentinel after installing the update.
 
+**Live server** adds a manual **Push live update** action for the existing
+configured beta host. Refresh status to inspect the selected release and its
+running world/connection services. Before publishing, Sentinel shows the target,
+source branch and saved local changes for confirmation. Builds include saved
+uncommitted files; there is no automatic Git pull or publication after edits.
+
+The action reuses `tools/server.ps1 build`: build/audit a matching client and
+server, publish the tester update through the existing capped upload, save
+players, create a private recovery backup, then restart the live world. Players
+may need to reconnect or update their client. Keep Sentinel open until the
+operation finishes; a progress log and failure details remain visible. Success
+requires a newly selected, verified client/server pair and its actual ready
+world process plus the public connection services. This checks local process
+evidence, not an external player's connection. Failed operations never retry
+automatically or force-stop a world. **Open update log** opens the private
+sanitized transcript outside the repository. Missing hosting prerequisites,
+conflicting account-data overrides and interrupted release markers block a push.
+During an update, closing Sentinel is blocked; minimizing remains available.
+The feature uses the configured Windows host and does not provision a new server.
+
 ## What you can do
 
 * **Launch Aetheria** starts the installed game engine against this project,
