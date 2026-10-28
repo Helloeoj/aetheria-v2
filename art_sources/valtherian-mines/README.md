@@ -5,6 +5,45 @@ east-facing entrance beside Valtheiris's wall. V3 enlarges the chambers while
 preserving the liked east-to-west journey and five separate side branches.
 The opaque dark background stays; the remove-background action was canceled.
 
+## Built-in generation fallback — material proof V1
+
+On 2026-10-28 the user asked for progress without PixelLab. A new bounded
+material section was generated with the built-in imagegen tool, using the
+canonical copper sprite for pixel style and V3 for the mine materials/camera.
+It consumes no PixelLab generations. This demonstrates a workable alternative;
+the liked V3 layout and its room/corridor tile plan remain unchanged.
+
+- Untouched source: `godot_client/Assets/Maps/ValtherianMines/Proofs/material-section-v1.png`.
+- Exact prompt: [native-material-proof-v1.prompt.txt](unapproved/native-material-proof-v1.prompt.txt).
+- Provenance, checks and remaining issues: [native-material-proof-v1.json](native-material-proof-v1.json).
+- Actual passive quality-proof content: `res://scenes/dev_tools/valtherian_material_proof_v1.tscn`.
+- Actual-scene contract: `planning/material-proof-v1.worldbuilding.json`.
+- Reproduce 1×/4× renders: `planning/render_material_proof_v1.gd`, with an
+  outside-Git evidence directory after `--`, using the active Godot project.
+
+The 1536×1024 source is retained whole at 0.25 world pixels/source pixel, covering
+a 384×256 world-pixel material section. At 4× camera zoom, terrain pixels map 1:1
+to screen pixels; the unchanged 64px peasant retains its 0.75 runtime scale and
+the canonical 96px copper retains scale 1 and anchor (48,72). This art density
+is explicit and does not change any existing area profile, actor, ore or the
+shared 32px gameplay lattice. The sample is not a small replacement room.
+
+Godot imported the PNG losslessly without mipmaps. The actual sample contract
+passed both assets and 43 geometry/anchor/reserved-route checks; the validator's
+four self-test groups passed. Saved actual 1× and 4× renders with original actor
+and separately instanced copper were inspected. Wall edges and floor pebbles
+remain resolved, making this a promising native-density candidate. The floor
+is still busier than the character and the wall profile is taller/blockier
+than V3's rim. **Exact style parity and user visual approval remain pending.**
+
+The generated wall foot exceeded the requested 64px band, so this sample's
+explicit physical wall/floor boundary is 80 world pixels. This is recorded only
+for the material test; no V3 floor cell, room or route changed. The opaque
+material section is not a finished reusable wall prop or seamless/corner kit.
+Next refine the material/profile match and make native reusable pieces before
+assembling and validating the actual dungeon. Do not install this section as a
+substitute map or treat its local physics pass as a full-dungeon certificate.
+
 ## 4× artwork quality hold
 
 The user likes V3's layout but requires artwork as crisp as the character at
@@ -27,7 +66,8 @@ run with the active Godot project. Supply an absolute evidence directory after
 `--`; screenshots/reports stay outside Git. This preview has no final physical
 scene or prop placement and is not a worldbuilding certificate. PixelLab's
 balance was checked on2026-10-27: zero credits and zero remaining generations;
-new PixelLab native artwork remains pending. Existing Bracken terrain is a
+new PixelLab native artwork remains pending; the built-in fallback above can
+progress independently. Existing Bracken terrain is a
 material reference, not an automatic crispness pass: its provenance includes
 downsampling and nearest enlargement into2-world-pixel clusters.
 

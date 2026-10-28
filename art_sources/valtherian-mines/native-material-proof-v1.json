@@ -1,0 +1,149 @@
+{
+  "schema": 1,
+  "date": "2026-10-28",
+  "purpose": "Bounded native-material feasibility proof without PixelLab; not a dungeon installation",
+  "generator": "built-in image_gen",
+  "pixellab_generations_consumed": 0,
+  "source": "godot_client/Assets/Maps/ValtherianMines/Proofs/material-section-v1.png",
+  "source_sha256": "19c9c4436ee4c1135668595072d4e3905647f8eee0519238f1123f24ff2abd35",
+  "source_native_size": [
+    1536,
+    1024
+  ],
+  "world_pixels_per_source_pixel": 0.25,
+  "world_extent": [
+    0,
+    0,
+    384,
+    256
+  ],
+  "source_preparation": "Untouched generated PNG, kept whole; no resizing, quantization, sharpening or cutout extraction",
+  "anchor": [
+    0,
+    0
+  ],
+  "alpha": "Fully opaque continuous terrain section, one connected component; not a standalone prop",
+  "exact_prompt": "unapproved/native-material-proof-v1.prompt.txt",
+  "references": [
+    "planning/native-material-proof-guide-v1.png",
+    "godot_client/Assets/MapTiles/OreNodes/copper-ore-full-south.png",
+    "unapproved/whole-map-v3.png"
+  ],
+  "proof_content_scene": "res://scenes/dev_tools/valtherian_material_proof_v1.tscn",
+  "reusable_material_scene": "res://scenes/dev_tools/valtherian_material_section_v1.tscn",
+  "placement_contract": "planning/material-proof-v1.worldbuilding.json",
+  "physical_bounds": [
+    0,
+    0,
+    384,
+    256
+  ],
+  "actual_proof_wall_boundary_y": 80,
+  "floor_polygon": [
+    [
+      0,
+      80
+    ],
+    [
+      384,
+      80
+    ],
+    [
+      384,
+      256
+    ],
+    [
+      0,
+      256
+    ]
+  ],
+  "gameplay_cell_pixels": 32,
+  "grid_origin": [
+    0,
+    0
+  ],
+  "copper": {
+    "scene": "res://scenes/MapProps/OreNodes/CopperOreFull.tscn",
+    "position": [
+      96,
+      144
+    ],
+    "native_size": [
+      96,
+      96
+    ],
+    "scale": 1,
+    "anchor": [
+      48,
+      72
+    ],
+    "visible_bounds_world": [
+      67,
+      92,
+      58,
+      56
+    ]
+  },
+  "player_in_render_only": {
+    "skin": "peasant",
+    "position": [
+      240,
+      176
+    ],
+    "native_canvas": [
+      64,
+      64
+    ],
+    "runtime_visual_scale": 0.75,
+    "unchanged": true,
+    "baked_in_source": false
+  },
+  "automatic_checks": {
+    "passed": true,
+    "assets_passed": 2,
+    "geometry_anchor_route_checks": 43,
+    "validator_selftest_groups": [
+      "asset-and-runner",
+      "native-art",
+      "live-physics",
+      "canonical-ore-library"
+    ]
+  },
+  "source_import": {
+    "lossless": true,
+    "mipmaps": false,
+    "nearest_filtering": true
+  },
+  "visual_review": {
+    "actual_Godot_renders": [
+      1,
+      4
+    ],
+    "reviewed_by_agents": true,
+    "observations": "Wall edges and floor pebbles remain resolved at4x beside original peasant/copper. Promising fallback; do not claim exact character parity.",
+    "remaining_issues": [
+      "Floor denser/noisier than clean character pixels",
+      "Wall profile taller/blockier than V3 rim",
+      "No seam/corner kit or complete reusable wall silhouettes produced"
+    ],
+    "user_artwork_approval": "pending"
+  },
+  "evidence_in_supporting_task": [
+    "native-material-proof-v1-godot-4x.png",
+    "native-material-proof-v1-godot-1x.png",
+    "material-proof-v1.worldbuilding-report.json",
+    "material-proof-validator-selftest.json"
+  ],
+  "evidence_policy": "Generated renders/reports stay outside Git in the matching supporting task.",
+  "scope_limits": [
+    "V3 layout and32px room contract unchanged",
+    "Only actual material-proof scene validated; no whole-dungeon certificate",
+    "No production map, entrance, portal, ore-library source or gameplay changed",
+    "Opaque section is not a final separated prop or seamless reusable cave kit"
+  ],
+  "context7_primary_sources": [
+    "https://github.com/godotengine/godot-docs/blob/4.5/classes/class_canvasitem.md",
+    "https://github.com/godotengine/godot-docs/blob/4.5/tutorials/rendering/viewports.md"
+  ],
+  "next_action": "Refine floor grain and wall-profile match, review native proof with user, then produce native reusable terrain/whole wall assets while preserving V3 layout."
+}

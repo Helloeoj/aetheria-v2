@@ -2,7 +2,7 @@
   "schema": 2,
   "area": "Valtherian Mines",
   "request_date": "2026-10-27",
-  "status": "V3 layout liked by user; overview fails4x runtime-art density; native production artwork pending; not installed",
+  "status": "V3 layout liked; built-in native material proof V1 available and locally validated; native-art user review/full dungeon assembly pending",
   "entrance": {
     "file": "unapproved/entrance-east-v1.png",
     "native_canvas": [
@@ -106,8 +106,9 @@
     "worldbuilding_actual_scene_contract": "pending; no final scene/placement authored",
     "map_runtime_4x_review": "Overview-as-runtime candidate FAILED actual Godot4x visual review; native terrain and final scene review pending",
     "entrance_native4x_preview": "reviewed in memory against actual world and player; not final portal/collision validation",
-    "installation": "not performed",
-    "PixelLab_revision": "Confirmed2026-10-27:0generations,0credits,0daily bonus; next subscription reset2026-11-12. New native-art generation pending."
+    "installation": "Only isolated dev material-proof scenes/assets added. No playable dungeon or production map placement installed.",
+    "PixelLab_revision": "Confirmed2026-10-27:0generations,0credits,0daily bonus; next subscription reset2026-11-12. New native-art generation pending.",
+    "native_material_user_review": "pending: built-in proofV1 is concrete; floor grain and wall profile need review/refinement"
   },
   "whole_map_history": [
     {
@@ -211,5 +212,12 @@
       "Reusing Bracken source without an independent4x art review"
     ],
     "installation": "No runtime scene, world placement, gameplay or existing map changed."
+  },
+  "non_pixellab_fallback": {
+    "record": "native-material-proof-v1.json",
+    "generator": "built-in image_gen",
+    "status": "Promising bounded material proof; source/runtime density validated and actual1x/4x inspected; exact style parity and user art approval pending",
+    "actual_scene_geometry_checks": 43,
+    "pixellab_generation_dependency": false
   }
 }
