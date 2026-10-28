@@ -1,0 +1,23 @@
+[gd_resource type="TileSet" load_steps=9 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/MapProps/ValtherianMines/WallBackA.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/MapProps/ValtherianMines/WallBackB.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/MapProps/ValtherianMines/WallBackC.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/MapProps/ValtherianMines/WallFrontLow.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/MapProps/ValtherianMines/WallSide.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/MapProps/ValtherianMines/WallCorner.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://scenes/MapProps/ValtherianMines/TimberLantern.tscn" id="7"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="Walls"]
+resource_name = "Valtherian Mine Whole Walls"
+scenes/0/scene = ExtResource("1")
+scenes/1/scene = ExtResource("2")
+scenes/2/scene = ExtResource("3")
+scenes/3/scene = ExtResource("4")
+scenes/4/scene = ExtResource("5")
+scenes/5/scene = ExtResource("6")
+scenes/6/scene = ExtResource("7")
+
+[resource]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("Walls")

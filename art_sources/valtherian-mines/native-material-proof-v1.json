@@ -126,7 +126,7 @@
       "Wall profile taller/blockier than V3 rim",
       "No seam/corner kit or complete reusable wall silhouettes produced"
     ],
-    "user_artwork_approval": "pending"
+    "user_artwork_approval": "approved2026-10-28: user says this is a go; continue native decomposition/placement"
   },
   "evidence_in_supporting_task": [
     "native-material-proof-v1-godot-4x.png",
@@ -145,5 +145,5 @@
     "https://github.com/godotengine/godot-docs/blob/4.5/classes/class_canvasitem.md",
     "https://github.com/godotengine/godot-docs/blob/4.5/tutorials/rendering/viewports.md"
   ],
-  "next_action": "Refine floor grain and wall-profile match, review native proof with user, then produce native reusable terrain/whole wall assets while preserving V3 layout."
+  "next_action": "Assemble native whole wall props and safe floor atlas regions into unchangedV3 layout, then validate actual dungeon."
 }

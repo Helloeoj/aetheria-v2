@@ -76,6 +76,16 @@ position = Vector2(128, -2520)
 [node name="BrackenMineEntrance" parent="Combat" instance=ExtResource("16_mine")]
 position = Vector2(672, -96)
 
+[node name="ValtherianMinesEntrance" type="Node2D" parent="Combat"]
+position = Vector2(320, -1)
+script = ExtResource("15_tavern")
+portal_name = "Valtherian Mines"
+destination_scene = "res://scenes/ValtherianMines.tscn"
+destination_spawn_id = "Entrance"
+approach_offset = Vector2(48, 17)
+interaction_radius = 56.0
+click_rect = Rect2(-80, -91, 109, 91)
+
 [node name="TavernEntrance" type="Node2D" parent="Combat"]
 position = Vector2(-632, -2450)
 script = ExtResource("15_tavern")
@@ -132,5 +142,8 @@ position = Vector2(-632, -2374)
 
 [node name="BrackenMineReturn" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(672, 0)
+
+[node name="ValtherianMinesReturn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(400, 16)
 
 [editable path="PlayableMapContent"]

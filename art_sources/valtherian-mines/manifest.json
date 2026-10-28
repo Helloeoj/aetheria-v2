@@ -2,7 +2,7 @@
   "schema": 2,
   "area": "Valtherian Mines",
   "request_date": "2026-10-27",
-  "status": "V3 layout liked; built-in native material proof V1 available and locally validated; native-art user review/full dungeon assembly pending",
+  "status": "Native playable map installed locally; actual automatic and1x/4x visual/physical review passed",
   "entrance": {
     "file": "unapproved/entrance-east-v1.png",
     "native_canvas": [
@@ -39,16 +39,16 @@
       147,
       139
     ],
-    "anchor_status": "Candidate foot/ground anchor; final collision bases and sorting remain unauthored",
+    "anchor_status": "Authored native foot anchor, actual passive content/worldbuilding and real4x placement validated",
     "style_reference": "godot_client/Assets/MapTiles/OreNodes/copper-ore-full-south.png",
-    "world_placement_status": "Not installed; actual-map in-memory native4x preview only",
+    "world_placement_status": "Installed actual ValtheirisWorldContent at320,-1 with separate generic portal in EastOutskirtsLayered",
     "proposed_world_visible_bounds": [
       240,
       -92,
       109,
       91
     ],
-    "review": "Complete single alpha silhouette, native source preserved, no disconnected specks, east-facing. Real Godot4x comparison with existing player reviewed. Exact final physical placement/portal contract pending."
+    "review": "Native source unchanged, actual exterior gate35checks passed, full4x alpha preserved with0existing-prop intersections; east approach/return and travel validated."
   },
   "whole_map": {
     "file": "unapproved/whole-map-v3.png",
@@ -61,7 +61,7 @@
     "sha256": "8ddfeb0018110c36f3937592a09b378f61b9122d1d2f761eb4f6931dffedea90",
     "generator": "built-in image_gen",
     "prompt": "unapproved/whole-map-v3.prompt.txt",
-    "status": "Layout/design liked2026-10-27; overview rejected as final runtime texture after actual4x test",
+    "status": "V3 layout/design and native material approved2026-10-28; overview remains rejected as a stretched runtime texture",
     "geometry_reference": "planning/tile-guide-v3.svg",
     "style_reference": "unapproved/whole-map-v2.png",
     "tile_contract": "planning/tile-layout-v3.json",
@@ -83,7 +83,7 @@
     "entry": "East edge/right; long westward main route with five distinct side branches",
     "actors_baked": false,
     "ore_props_baked": false,
-    "mapping_status": "Rejected at planned world scale:3.60775x/3.60173x enlargement of source. Preserve layout only; native terrain artwork required.",
+    "mapping_status": "V3 tile contract retained; runtime native floor/wall/support assembly replaces the previously rejected enlarged-overview proposal.",
     "review": "Actual Godot camera4x preview with original peasant and nearest filtering inspected: terrain visibly coarser/softer than character. This is a rejection test of the proposed flattened texture, not a final-scene certificate."
   },
   "preservation": [
@@ -102,13 +102,13 @@
     "status": "Rejected for production: generator ignored native canvas and left fringe/edge artifacts; never scaled into a finished prop"
   },
   "holds": {
-    "whole_map_artwork_approval": "V3 layout liked by user; production-native artwork not approved at4x",
-    "worldbuilding_actual_scene_contract": "pending; no final scene/placement authored",
-    "map_runtime_4x_review": "Overview-as-runtime candidate FAILED actual Godot4x visual review; native terrain and final scene review pending",
-    "entrance_native4x_preview": "reviewed in memory against actual world and player; not final portal/collision validation",
-    "installation": "Only isolated dev material-proof scenes/assets added. No playable dungeon or production map placement installed.",
+    "whole_map_artwork_approval": "V3 layout and native material source approved2026-10-28; derived full-scene review recorded separately",
+    "worldbuilding_actual_scene_contract": "PASS actual ValtherianMinesContent:12asset types,14337checks,29exactoreapproaches",
+    "map_runtime_4x_review": "PASS derived native assembly:66normalGPUcaptures and7actualphysics-overlaycaptures atfinalscenehash; old stretched overview remains rejected",
+    "entrance_native4x_preview": "Installed actual exterior reviewed at1x/4x, full-alpha and35check gate pass",
+    "installation": "Native content, wrapper, separate east-facing entrance and ordinary travel installed locally; no live-server deployment performed",
     "PixelLab_revision": "Confirmed2026-10-27:0generations,0credits,0daily bonus; next subscription reset2026-11-12. New native-art generation pending.",
-    "native_material_user_review": "pending: built-in proofV1 is concrete; floor grain and wall profile need review/refinement"
+    "native_material_user_review": "Approved2026-10-28 by user: this is a go; continue native props/marked ore placement"
   },
   "whole_map_history": [
     {
@@ -219,5 +219,18 @@
     "status": "Promising bounded material proof; source/runtime density validated and actual1x/4x inspected; exact style parity and user art approval pending",
     "actual_scene_geometry_checks": 43,
     "pixellab_generation_dependency": false
+  },
+  "native_assembly": {
+    "layout": "godot_client/Assets/Maps/ValtherianMines/layout.json",
+    "wall_props": "godot_client/Assets/Maps/ValtherianMines/wall-props.json",
+    "decor_props": "godot_client/Assets/Maps/ValtherianMines/decor-props.json",
+    "ore_markers": "godot_client/Assets/Maps/ValtherianMines/ore-markers.json",
+    "worldbuilding": "godot_client/Assets/Maps/ValtherianMines/worldbuilding.json",
+    "content": "godot_client/scenes/ValtherianMinesContent.tscn",
+    "acceptance": "acceptance.json",
+    "ore_count": 29,
+    "ore_nudges": 0,
+    "warm_supports": 8,
+    "source_overview_used_as_runtime_texture": false
   }
 }

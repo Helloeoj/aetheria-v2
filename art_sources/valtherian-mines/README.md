@@ -1,141 +1,26 @@
-# Valtherian Mines — larger-room layout candidate
+# Valtherian Mines
 
-The user requested an original dungeon for combat and mining, with its own
-east-facing entrance beside Valtheiris's wall. V3 enlarges the chambers while
-preserving the liked east-to-west journey and five separate side branches.
-The opaque dark background stays; the remove-background action was canceled.
+The user approved the larger V3 progression layout and the native material proof on 2026-10-28, then supplied 29 ore dots. Grey means Coal (the charcoal label was a typo). The final area uses a long east-to-west route, five branches, eight large chambers and its own east-facing entrance beside the Valtheiris wall.
 
-## Built-in generation fallback — material proof V1
+The native runtime assembly is in `godot_client/scenes/ValtherianMinesContent.tscn`; the playable wrapper is `ValtherianMines.tscn`. It preserves the shared 32px gameplay grid, all 5,498 authored floor cells, 192px main corridors and 128px branches. The original player and canonical 96px ore props retain their scale. No mining/combat rules, recipes, rewards or monster populations are added.
 
-On 2026-10-28 the user asked for progress without PixelLab. A new bounded
-material section was generated with the built-in imagegen tool, using the
-canonical copper sprite for pixel style and V3 for the mine materials/camera.
-It consumes no PixelLab generations. This demonstrates a workable alternative;
-the liked V3 layout and its room/corridor tile plan remain unchanged.
+## Sources and reusable assets
 
-- Untouched source: `godot_client/Assets/Maps/ValtherianMines/Proofs/material-section-v1.png`.
-- Exact prompt: [native-material-proof-v1.prompt.txt](unapproved/native-material-proof-v1.prompt.txt).
-- Provenance, checks and remaining issues: [native-material-proof-v1.json](native-material-proof-v1.json).
-- Actual passive quality-proof content: `res://scenes/dev_tools/valtherian_material_proof_v1.tscn`.
-- Actual-scene contract: `planning/material-proof-v1.worldbuilding.json`.
-- Reproduce 1×/4× renders: `planning/render_material_proof_v1.gd`, with an
-  outside-Git evidence directory after `--`, using the active Godot project.
+- V3 layout reference: `unapproved/whole-map-v3.png`, retained at its original 1703x924 resolution. Its historical folder name is preserved. The enlarged overview FAILED actual 4x review and is never runtime terrain.
+- Physical layout authority: `planning/tile-layout-v3.json`, 192x104 gameplay cells and 6144x3328 world pixels.
+- Approved native material: `godot_client/Assets/Maps/ValtherianMines/Proofs/material-section-v1.png`, untouched 1536x1024 source. Sixty complete 128px floor regions at 0.25 density produce 32px physical cells. Floor-only mirrored macro repetition preserves matching edge texels.
+- Complete wall props: `native-walls/` preserves original built-in imagegen sheets, exact prompts, export recipe and PixelLab cleanup decisions. Six whole native objects at 0.125 density, with no resampling/recoloring. PixelLab removed observed alpha1-127 background matte; all foreground RGBA128-255 remains unchanged.
+- Complete timber/lantern support: `native-walls/timber-lantern-v1.*`, native 1254x1254 at 0.0625 density, anchor(864,1200). Four native processing quadrants were cleaned with PixelLab's free masked eraser then rejoined at exact coordinates. ForegroundRGBA128-255 changed 0 pixels; the final object is one complete connected silhouette. Eight supports mount against actual back walls.
+- Runtime assets/contracts: `godot_client/Assets/Maps/ValtherianMines/`. Reusable scenes: `godot_client/scenes/MapProps/ValtherianMines/`. Editor palette: `godot_client/Assets/Tilesets/ValtherianMinesWalls.tres`. Rock/support visuals use feet sorting; continuous CaveBoundary owns their solid footprint.
+- Entrance: untouched native 256x192 PixelLab source, east-facing, anchor (147,139), world (320,-1). Its exact east approach is (368,16), return (400,16). Existing Bracken/Golem/Tavern portals remain unchanged by this task.
+- User marker authority: `approved/user-ore-annotation-2026-10-28.png`; registered positions and precise color/scene bindings: `godot_client/Assets/Maps/ValtherianMines/ore-markers.json`. Exactly 12 Blackstone, 7 Coal, 4 Mithril, 2 Adamantite, 4 Iron. All 29 rounded targets fit unchanged; 0 nudges. All 406 ore pairs clear 4px, full silhouettes clear floor/wall/decor by 2px. Screenshot crop/border is removed by measured affine registration; no naive full-image stretch.
 
-The 1536×1024 source is retained whole at 0.25 world pixels/source pixel, covering
-a 384×256 world-pixel material section. At 4× camera zoom, terrain pixels map 1:1
-to screen pixels; the unchanged 64px peasant retains its 0.75 runtime scale and
-the canonical 96px copper retains scale 1 and anchor (48,72). This art density
-is explicit and does not change any existing area profile, actor, ore or the
-shared 32px gameplay lattice. The sample is not a small replacement room.
+## Validation and acceptance
 
-Godot imported the PNG losslessly without mipmaps. The actual sample contract
-passed both assets and 43 geometry/anchor/reserved-route checks; the validator's
-four self-test groups passed. Saved actual 1× and 4× renders with original actor
-and separately instanced copper were inspected. Wall edges and floor pebbles
-remain resolved, making this a promising native-density candidate. The floor
-is still busier than the character and the wall profile is taller/blockier
-than V3's rim. **Exact style parity and user visual approval remain pending.**
+The actual scene worldbuilding contract is `Assets/Maps/ValtherianMines/worldbuilding.json`: 12 native asset types and 14,337 geometry/visual/anchor/route checks pass. The validator compares shared resource pixels once per audit but still checks every instance's scale, anchor, visibility and nearest filtering. Exact reserved lane polygons retain their full width; physics uses a recorded 0.1px per-side numerical interior only. Ordinary 24px actor queries are unchanged. All four validator self-test groups pass.
 
-The generated wall foot exceeded the requested 64px band, so this sample's
-explicit physical wall/floor boundary is 80 world pixels. This is recorded only
-for the material test; no V3 floor cell, room or route changed. The opaque
-material section is not a finished reusable wall prop or seamless/corner kit.
-Next refine the material/profile match and make native reusable pieces before
-assembling and validating the actual dungeon. Do not install this section as a
-substitute map or treat its local physics pass as a full-dungeon certificate.
+The independent actual-physics harness classifies every floor cell, accounts for 103 centers occupied by canonical ores, checks all5,395 clear centers reachable, blocks14,470 void centers, checks all 29 approaches and protects progression/branches. Focused geometry helpers have 8 tests. Offline and authoritative travel pass 154 checks with 67 actual map probes, including all 29 exact ore approaches; existing Bracken travel passes 58 checks. Live online servers need the updated registry build before admitting the new region.
 
-## 4× artwork quality hold
+The final review inspected66 actual normal GPU captures and7 actual physical overlays, including ore approaches and the last legal south-floor row. No wall/peer cut-ins or floor-edge gaps were found. Source approval, automatic checks, agent visual review and local installation are separate statuses in `manifest.json` and `acceptance.json`. Generated reports and real 1x/4x screenshots remain outside Git in the supporting task. The native material remains grainier than the player, and modular repetition is visible over large spans; nearest filtering is not represented as repairing soft source artwork. The old rejected overview is retained only as layout/history evidence.
 
-The user likes V3's layout but requires artwork as crisp as the character at
-4×. An actual Godot render tested the1703×924 overview stretched to the planned
-6144×3328 world with nearest filtering and the original unmodified peasant.
-**This failed visual review. Do not install the overview as runtime terrain.**
-Each overview pixel becomes approximately14.4 screen pixels at4×, compared
-with3 screen pixels per original character-art pixel (64px canvas,48px display).
-The earlier flat-grid examples demonstrate room size only, not terrain quality.
-
-Preserve the liked geometry, camera and materials. Production needs genuinely
-native floor/wall artwork at the area's reviewed density, with complete props
-kept separate; enlarging, quantizing or slicing this overview cannot restore
-missing detail. Prove a small native-art section beside the original character
-at4× before assembling the whole area. This is an art-quality hold, not a request
-to redesign the layout, shrink the rooms or change gameplay zoom.
-
-`planning/render_overview_density_review.gd` reproduces the rejection test when
-run with the active Godot project. Supply an absolute evidence directory after
-`--`; screenshots/reports stay outside Git. This preview has no final physical
-scene or prop placement and is not a worldbuilding certificate. PixelLab's
-balance was checked on2026-10-27: zero credits and zero remaining generations;
-new PixelLab native artwork remains pending; the built-in fallback above can
-progress independently. Existing Bracken terrain is a
-material reference, not an automatic crispness pass: its provenance includes
-downsampling and nearest enlargement into2-world-pixel clusters.
-
-## Current room and tile plan
-
-`planning/tile-layout-v3.json` uses the game's fixed 32-world-pixel cells and
-origin (0,0). The proposed world is 192×104 cells (6144×3328 pixels). More space
-comes from more native tiles; player and prop sizes stay unchanged.
-
-| Space | Clear floor in cells | Clear floor in world pixels |
-| --- | --- | --- |
-| West terminal | 24×20 | 768×640 |
-| Side combat chambers | 20×16 to 22×18 | 640×512 to 704×576 |
-| Mining galleries | 18×14 | 576×448 |
-| Main-route combat halls | 22×16 and 24×16 | 704×512 and 768×512 |
-| Main corridors | 6 wide | 192 wide |
-| Branch corridors | 4 wide | 128 wide |
-
-These are clear rectangles before prop placement, with an additional one-cell
-perimeter allowance for uneven stone. Junctions are farther apart so enlarging
-the chambers does not join the branches into a compact cluster. Roles are
-proposals only; no monster populations, ore roster or skill rules were chosen.
-
-Run `planning/build_tile_plan_v3.py` to reproduce the JSON and SVG. It verifies
-5498 cardinally connected floor cells, every declared room rectangle, and
-three main-route cut gates that prevent branches bypassing early/middle/late
-progression. These are structural checks, not installed-map collision tests.
-The west combat hall has a 64px rock band beside the adjacent main passage
-(cells x99–100,y60–64). Check the actual native wall silhouettes there during
-assembly; a universal 96px rock-separation pass is not claimed.
-
-The two `planning/*tile-scale-4x.png` images show the minimum combat and mining
-rooms on a diagnostic grid with the original character, rendered by Godot at
-4×. Reproduce them with `planning/render_room_scale_v3.gd` using the active
-Godot project. This is a room-size demonstration; the flat debug floor is not
-the final mine art. Actors appear only in these quality checks.
-
-## Preserved artwork and review states
-
-- `unapproved/whole-map-v3.png`: current larger-room artwork proposal. The
-  generated overview is smaller than the planned native world. It must not be
-  enlarged into a runtime background or treated as proof of tile alignment.
-- `unapproved/whole-map-v2.png`: the user liked its direction and branching,
-  then requested larger rooms. Preserved as the style/topology reference.
-- `unapproved/whole-map-v1.png`: rejected by the user for its compact room
-  cluster and insufficient end-to-end progression; kept unchanged for history.
-- `unapproved/entrance-east-v1.png`: clean native 256×192 PixelLab source,
-  109×91 visible silhouette. The mouth faces right/east. An actual-world,
-  in-memory Godot4× preview with the original character was inspected earlier.
-  Final collision, anchor and reciprocal travel contract remain pending.
-
-Exact prompts, native dimensions, hashes and service IDs are in `manifest.json`.
-Sources are copied byte-for-byte. No actors or ore nodes are baked into the map.
-The larger entrance study remains rejected for production because of its
-incorrect native canvas and edge artifacts. PixelLab has no remaining credits.
-
-## Approval and installation checkpoint
-
-**V3 layout is liked; native production artwork approval is pending.** Follow
-`godot_client/docs/map-art/PLAYABLE-MAP-PIPELINE.md` before final decomposition
-and installation. After artwork approval, build native terrain on the authored
-grid, use whole canonical props at their approved density and anchors, and run
-`tools/worldbuilding.py` against the actual assembled scene/placement contract.
-Inspect actual-map Godot4× renders with the player for crispness, wall cut-ins,
-approaches, reserved paths and depth sorting before calling installation done.
-
-No runtime game files or permanent scenes/placements were changed. Existing
-Bracken Mine artwork, its 15 marked ores, entrances, city wall, roads, trees,
-interfaces, saves and all gameplay are preserved. The proposed exterior entrance
-spot remains northeast of the wall's northern cap; the original compact source
-and exact final geometry must be tested before installing that entrance.
+See `godot_client/docs/ValtherianMines.md` for scene structure, rebuild commands and reusable placement conventions. Exact built-in prompts and PixelLab edit IDs are preserved alongside source assets; no PixelLab generation credits were used for the native wall/support kit.

@@ -60,3 +60,12 @@ Match this dungeon's current restored art and shared crisp material. It is an in
 - Editable content: `res://scenes/GolemKingdomContent.tscn`. Keep floor/decks/stairs on their ground draw plane. Terrain painting does not automatically update authored barriers.
 
 Read [the dungeon asset guide](../../Assets/Maps/GolemKingdom/README.md) only for dungeon-specific implementation. For overworld details use [MapEditing.md](../MapEditing.md). The older WorldChunkSetup guide is not the current map-layout authority.
+
+## Profile: valtherian-mines
+
+- Approved V3 long east-to-west dungeon, eight large chambers and five branches. Shared gameplay grid 32 world pixels at origin (0,0); world 6144x3328. Preserve six-cell main corridors and four-cell branches.
+- Runtime content: `res://scenes/ValtherianMinesContent.tscn`; wrapper and ordinary two-way travel: `res://scenes/ValtherianMines.tscn`. Separate east-facing entrance beside the Valtheiris wall.
+- Native floor atlas regions 128px at density 0.25 produce 32px world cells. Whole wall props use explicit native canvases at 0.125; whole timber/lantern support uses 0.0625. Nearest, lossless, no mipmaps; keep original character/ore density unchanged. Source overview is a layout reference and must never be stretched into runtime terrain.
+- Exactly 29 marked canonical ores: Blackstone 12, Coal 7, Mithril 4, Adamantite 2, Iron 4. Grey means Coal. All user dots/registration and actual corrections are in `Assets/Maps/ValtherianMines/ore-markers.json`; user marks override default snapping/spacing. Full alpha must clear walls/peers; move only conflicted nodes minimally.
+- Individual reusable props are in `scenes/MapProps/ValtherianMines/`, with separate `Assets/Tilesets/ValtherianMinesWalls.tres` palette. Canonical ores remain in the existing ore palette. Continuous CaveBoundary owns rock-wall/support physics; visual cladding never duplicates it.
+- Read [ValtherianMines.md](../ValtherianMines.md) and compact `Assets/Maps/ValtherianMines/{layout,wall-props,decor-props,worldbuilding}.json` as needed. Rebuild from the approved tile contract; preserve native source and exact dots. Actual scene/alpha, all-floor reachability, progression gates, travel and true 4x renders are mandatory. Source approval, automatic checks, derived-art review and installation remain separate.

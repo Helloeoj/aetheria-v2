@@ -1,0 +1,18 @@
+Use case: precise-object-edit / complete reusable game prop redraw.
+Turn the cave-wall material of IMAGE1 into SIX COMPLETE STANDALONE wall-rock props on a transparent sprite sheet. IMAGE2 is the canonical copper rock style reference only; never copy its ore streaks or create ore nodes. Reconstruct whole backs and contours rather than crop the connected wall. The user approved these materials and wants independently placeable complete props, not blurry wall cutouts.
+
+OUTPUT exact1536x1024 RGBA, true transparent background, SIX props in a strict3columns x2rows atlas. Every cell is512x512pixels. Each cell contains one complete, isolated connected rock unit, with its own fully intact silhouette. Keep at least48px clear transparent padding on all four cell edges. Objects must never touch a neighbor or cross a cell boundary. NO sheet lines, boxes, numbers, labels or decoration.
+
+Density: four source pixels equal one world pixel. Keep deliberate hard4px stepped contours and faceted shading, so the wall material reads at the same scale as the approved384x256world section and the unchanged player. The512cell is a128x128world canvas, not the visible object size. A typical unit is48-64world pixels wide and48-68world pixels high, centered nearcellX256, with its ground-contact foot nearcellY416. Clear upper-left light, taupe-gray rock ramps, small well-defined facets, dark clean internal crevices. No airbrush, blur, smooth gradients, painterly haze, giant mosaic blocks, soft glow, cast floor shadow or brown ground mat. Alpha should be clean/binary at stepped pixel contours; no translucent fringe and no disconnected flecks.
+
+Six cells, left-to-right then top-to-bottom:
+1) Tall back-wall unit: three strongly interlocked angular cave boulders, upper faces lit, a broad low stone base; visible roughly64world wide x64high. Plain gray/taupe mineral-free rock.
+2) Another complete tall back-wall unit with a different stepped silhouette and only a tiny embedded teal crystal seam. Same64x64world size and camera.
+3) Tall back-wall unit, two main natural angular rock columns and a small CONNECTED basal rock; same64wide x68high. Plain taupe stone.
+4) LOW foreground/front-wall cap: a broad connected row of shorter interlocked stones, about64world wide but ONLY28-32world high. This low silhouette keeps walking space visible in front-facing map boundaries. Same ground footY416; do not make it tall.
+5) Narrow side-wall unit: two interlocked vertical cave stone faces, about40world wide x60high. The camera remains the same low top-down view; do not rotate the image or lighting.
+6) Compact rounded-corner filler: a complete interlocked angular boulder group about48world wide x44high, still one connected silhouette. Plain stone with a restrained embedded teal seam.
+
+All props use the approved low top-down fantasy camera; natural faceted stones, no masonry bricks, no cliffs disappearing outside the image, no scenery. They should overlap naturally when placed beside one another, yet each is a complete usable object on its own. Keep all feet aligned nearcellY416 even for the shorter unit. Preserve the approved muted tan-gray stone look, not bright white new rock. Do not add large copper-colored mineral veins.
+
+ENVIRONMENT ONLY. No players, people, animals, creatures, NPCs, golems, enemies, ore nodes, pickaxes, tools, crystals lying loose, floor, dirt, moss mats, grass, water, props from another cell, beams, lamps, text, UI or watermark. Pure transparent void between units. Keep every foreground rock intact; no clipped rock tops or missing backs.

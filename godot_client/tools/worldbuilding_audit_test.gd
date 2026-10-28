@@ -75,6 +75,8 @@ func _run() -> void:
 		check(good.prop_textures[0].node == "CopperA/Footprint/Visual" and good.prop_textures[0].texture == "res://Assets/MapTiles/OreNodes/copper-ore-full-south.png" and good.prop_textures[0].world_scale == [1.0, 1.0] and good.prop_textures[0].anchor == [48.0, 72.0], "texture provenance, source anchor and native world scale come from installed sprites")
 		check(good.prop_textures[0].get("native_size", []) == [96, 96], "actual imported texture dimensions bind the current source-size contract")
 	_test_image_comparison()
+	_test_shared_texture_cache()
+	await _test_exact_reserved_lanes()
 	# A plain grouping folder must not hide overlap between distinct props.
 	var folder := Node2D.new()
 	folder.name = "Props"
@@ -238,6 +240,95 @@ func _test_image_comparison() -> void:
 	imported.set_pixel(0, 0, Color(1, 0, 0, 0.25))
 	check(not auditor.images_match(imported, source), "stale alpha at any pixel is rejected")
 	check(not auditor.images_match(Image.create(3, 2, false, Image.FORMAT_RGBA8), source), "stale imported dimensions are rejected")
+
+func _test_shared_texture_cache() -> void:
+	# Only an ignored, temporary source PNG is changed. Production artwork and
+	# imported resources remain untouched; both canonical sprites are restored.
+	var visual_a: Sprite2D = fixture.get_node("CopperA/Footprint/Visual")
+	var visual_b: Sprite2D = fixture.get_node("CopperB/Footprint/Visual")
+	var original_a: Texture2D = visual_a.texture
+	var original_b: Texture2D = visual_b.texture
+	var directory := "res://.godot/worldbuilding-cache-tests"
+	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(directory))
+	var source_path := directory.path_join("source-%s-%s.png" % [OS.get_process_id(), Time.get_ticks_usec()])
+	var source: Image = Image.load_from_file(ProjectSettings.globalize_path(original_a.resource_path))
+	check(source != null and source.save_png(ProjectSettings.globalize_path(source_path)) == OK, "shared texture regression has an isolated fresh source PNG")
+	var shared := ImageTexture.create_from_image(source)
+	shared.take_over_path(source_path)
+	visual_a.texture = shared
+	visual_b.texture = shared
+	var auditor: RefCounted = load(AUDIT_PATH).new()
+	var first: Dictionary = auditor.audit(fixture, spec())
+	check(first.passed and first.get("texture_comparisons", -1) == 1 and first.prop_textures.size() == 2, "shared loaded resource is compared once while both actual sprites remain audited")
+	var altered := source.duplicate() as Image
+	altered.set_pixel(48, 48, Color.RED)
+	var unique := ImageTexture.create_from_image(altered)
+	unique.take_over_path(source_path)
+	visual_b.texture = unique
+	# Simulate another instance encountered during the same audit after the
+	# engine replaces the resource at this path. A path-only cache is unsafe.
+	auditor._audit_visuals(fixture.get_node("CopperB"), "CopperB")
+	var separate: Dictionary = auditor.get("_result")
+	var mismatch_b := false
+	for issue: Dictionary in separate.issues:
+		mismatch_b = mismatch_b or (issue.code == "imported_texture_mismatch" and issue.node == "CopperB/Footprint/Visual")
+	check(mismatch_b and separate.get("texture_comparisons", -1) == 2, "a new resource ID at an already-checked PNG path is independently compared and stale pixels fail")
+
+	shared.take_over_path(source_path)
+	visual_a.texture = shared
+	visual_b.texture = shared
+	altered.save_png(ProjectSettings.globalize_path(source_path))
+	var changed_source: Dictionary = auditor.audit(fixture, spec())
+	var mismatch_count := 0
+	for issue: Dictionary in changed_source.issues:
+		if issue.code == "imported_texture_mismatch":
+			mismatch_count += 1
+	check(not changed_source.passed and mismatch_count == 2 and changed_source.get("texture_comparisons", -1) == 1, "a new audit reloads changed source pixels and reports cached failure for every shared instance")
+
+	source.save_png(ProjectSettings.globalize_path(source_path))
+	visual_b.scale = Vector2(2, 2)
+	visual_b.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	visual_b.visible = false
+	var per_instance: Dictionary = auditor.audit(fixture, spec())
+	var filter_b := false
+	var hidden_b := false
+	for issue: Dictionary in per_instance.issues:
+		filter_b = filter_b or (issue.code == "visual_filter" and issue.node == "CopperB/Footprint/Visual")
+		hidden_b = hidden_b or (issue.code == "missing_visual" and issue.node == "CopperB/Footprint/Visual")
+	check(not per_instance.passed and filter_b and hidden_b and per_instance.get("texture_comparisons", -1) == 1, "shared comparison cache never skips an individual sprite's filter or visibility checks")
+	check(per_instance.prop_textures.size() == 2 and per_instance.prop_textures[1].world_scale == [2.0, 2.0] and per_instance.prop_textures[1].anchor == [24.0, 36.0], "per-instance scale and foot anchor are measured again despite sharing texture pixels")
+
+	visual_b.scale = Vector2.ONE
+	visual_b.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	visual_b.visible = true
+	var recovered: Dictionary = auditor.audit(fixture, spec())
+	check(recovered.passed and recovered.get("texture_comparisons", -1) == 1, "reused auditor resets its texture comparison cache between runs and accepts restored source")
+	visual_a.texture = original_a
+	visual_b.texture = original_b
+	DirAccess.remove_absolute(ProjectSettings.globalize_path(source_path))
+
+func _test_exact_reserved_lanes() -> void:
+	# These walls leave exactly48px, matching the declared protected lane.
+	# Exact boundary contact should not require silently narrowing the manifest.
+	var north := wall("ExactLaneNorth", Vector2(256, 208), Vector2(512, 16))
+	var south := wall("ExactLaneSouth", Vector2(256, 272), Vector2(512, 16))
+	await settle()
+	var exact_contract := spec()
+	var exact: Dictionary = run_audit(exact_contract)
+	check(exact.passed, "exact-fit protected lane permits contact without positive overlap: " + JSON.stringify(exact.issues))
+	check(exact_contract.routes[0].width == 48 and exact.get("reserved_lane_query_inset_per_side_world_pixels", -1) == 0.1 and exact.get("reserved_lane_query_width_reduction_world_pixels", -1) == 0.2, "declared lane width is unchanged and the numerical interior query is explicitly recorded")
+	var body_contact := spec()
+	body_contact.anchors[1].point = [464, 228]
+	rejects(body_contact, "anchor_blocked", "reserved-lane contact tolerance never changes ordinary24px actor queries")
+	var clipped_floor := spec()
+	clipped_floor.floor_polygon = [[0, 0], [512, 0], [512, 263.95], [0, 263.95]]
+	rejects(clipped_floor, "reserved_lane_blocked", "full declared lane polygon is checked before any numerical physics inset")
+	north.position.y += 1.0
+	await settle()
+	rejects(spec(), "reserved_lane_blocked", "a genuinely narrower47px physical corridor fails its48px declaration")
+	north.free()
+	south.free()
+	await settle()
 
 func _write(path: String, text: String) -> void:
 	var file := FileAccess.open(path, FileAccess.WRITE)

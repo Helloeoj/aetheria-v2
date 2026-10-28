@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/Maps/ValtherianMines/Entrance/entrance-east-v1.png" id="1_art"]
+
+[sub_resource type="RectangleShape2D" id="EastPostBase"]
+size = Vector2(8, 10)
+
+[node name="ValtherianMinesEntranceProp" type="Node2D"]
+texture_filter = 1
+metadata/native_canvas = Vector2(256, 192)
+metadata/foot_anchor = Vector2(147, 139)
+metadata/world_pixels_per_source_pixel = 1.0
+metadata/facing = "east"
+
+[node name="Artwork" type="Sprite2D" parent="."]
+position = Vector2(-147, -139)
+texture_filter = 1
+texture = ExtResource("1_art")
+centered = false
+
+[node name="RockFootprint" type="StaticBody2D" parent="." groups=["world_solid"]]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WestRockBase" type="CollisionPolygon2D" parent="RockFootprint"]
+polygon = PackedVector2Array(-73, -27, -48, -33, -20, -21, -11, -3, -27, 0, -63, -14)
+
+[node name="EastPostBase" type="CollisionShape2D" parent="RockFootprint"]
+position = Vector2(18, -26)
+shape = SubResource("EastPostBase")

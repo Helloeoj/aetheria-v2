@@ -1,0 +1,6966 @@
+{
+  "schema": 1,
+  "date": "2026-10-28",
+  "status": "User marker authority with documented actual-floor/wall corrections",
+  "annotation": {
+    "preserved_copy": "user-ore-annotation-2026-10-28.png",
+    "sha256": "6d3f3b99165cabb310ec88d34130db089ab9b2870863ba127e79c24a876b50f5",
+    "native_size": [
+      2917,
+      1579
+    ],
+    "mode": "RGBA",
+    "notes": "Source screenshot includes grey border/cropping and Windows activation watermark; none are environmental art or placement instructions."
+  },
+  "approved_layout_reference": {
+    "game_relative_path": "art_sources/valtherian-mines/unapproved/whole-map-v3.png",
+    "sha256": "8ddfeb0018110c36f3937592a09b378f61b9122d1d2f761eb4f6931dffedea90",
+    "native_size": [
+      1703,
+      924
+    ],
+    "planned_world_size": [
+      6144,
+      3328
+    ],
+    "planned_world_cells": [
+      192,
+      104
+    ]
+  },
+  "legend": {
+    "black": "blackstone",
+    "grey": "coal",
+    "violet": "mithril",
+    "green": "adamantite",
+    "brown": "iron"
+  },
+  "legend_clarification": "Original request said charcoal for grey. User subsequently clarified COAL, reported by root during extraction; bind existing canonical CoalFull, no new charcoal resource.",
+  "counts": {
+    "blackstone": 12,
+    "mithril": 4,
+    "adamantite": 2,
+    "coal": 7,
+    "iron": 4
+  },
+  "total_markers": 29,
+  "counts_by_room": {
+    "far_west_chamber": {
+      "blackstone": 2,
+      "mithril": 2,
+      "adamantite": 1
+    },
+    "upper_west_gallery": {
+      "blackstone": 3
+    },
+    "upper_east_chamber": {
+      "coal": 5
+    },
+    "east_upper_chamber": {
+      "coal": 2,
+      "iron": 4
+    },
+    "lower_west_gallery": {
+      "blackstone": 2,
+      "mithril": 2,
+      "adamantite": 1
+    },
+    "lower_east_chamber": {
+      "blackstone": 5
+    }
+  },
+  "coordinate_conventions": {
+    "index": "(0,0) denotes first pixel center in NumPy/Pillow sample coordinates. Measured circle centroid uses exact flat-color core pixels.",
+    "edge": "(0,0) denotes upper-left image boundary; index coordinates plus(0.5,0.5) give edge coordinates. World mapping uses edge coordinates.",
+    "canonical_anchor": "Every marker denotes visible ore center, not feet. Canonical96px host rock alpha bounds[19,20,77,76], anchor[48,72], so root is24worldpx below visible center at scale1."
+  },
+  "registration": {
+    "method": "Robust six-parameter affine alignment of12000 deterministic sampled bright environmental pixels after matching Gaussian analysis blur; Gauss-Newton with6-level Huber weighting. Nine held-out25x25 wall patches independently searched over+/-3annotationpx in0.25px increments. Analysis only; source images unchanged.",
+    "source_index_to_annotation_index_affine": [
+      [
+        1.71095013248548,
+        -9.551780936026045e-05,
+        5.533603329281212
+      ],
+      [
+        -8.63879314845426e-05,
+        1.7113832113729417,
+        7.496445177220755
+      ]
+    ],
+    "annotation_index_to_source_index_affine": [
+      [
+        0.5844705721290584,
+        3.2621185199379614e-05,
+        -3.2344728467267156
+      ],
+      [
+        2.950315476059298e-05,
+        0.584322667286093,
+        -4.380506099873007
+      ]
+    ],
+    "source_edge_to_annotation_edge_affine": [
+      [
+        1.71095013248548,
+        -9.551780936026045e-05,
+        5.178176021943153
+      ],
+      [
+        -8.63879314845426e-05,
+        1.7113832113729417,
+        7.140796765500026
+      ]
+    ],
+    "annotation_edge_to_source_edge_affine": [
+      [
+        0.5844705721290584,
+        3.2621185199379614e-05,
+        -3.0267244433838445
+      ],
+      [
+        2.950315476059298e-05,
+        0.584322667286093,
+        -4.172682185093433
+      ]
+    ],
+    "held_out_landmarks": [
+      {
+        "id": "west_terminal_northwall",
+        "source_center_index_xy": [
+          100,
+          106
+        ],
+        "local_best_annotation_offset_xy": [
+          -0.5,
+          -0.25
+        ],
+        "robust_rgb_mae": 0.8053974166
+      },
+      {
+        "id": "west_terminal_southwall",
+        "source_center_index_xy": [
+          180,
+          309
+        ],
+        "local_best_annotation_offset_xy": [
+          -0.25,
+          0.25
+        ],
+        "robust_rgb_mae": 0.8612306849
+      },
+      {
+        "id": "upper_west_gallery_northwall",
+        "source_center_index_xy": [
+          825,
+          30
+        ],
+        "local_best_annotation_offset_xy": [
+          1.0,
+          -0.5
+        ],
+        "robust_rgb_mae": 1.0293909024
+      },
+      {
+        "id": "upper_east_chamber_northwall",
+        "source_center_index_xy": [
+          1150,
+          30
+        ],
+        "local_best_annotation_offset_xy": [
+          -0.5,
+          -0.5
+        ],
+        "robust_rgb_mae": 1.009742928
+      },
+      {
+        "id": "east_chamber_northwall",
+        "source_center_index_xy": [
+          1615,
+          78
+        ],
+        "local_best_annotation_offset_xy": [
+          0.5,
+          -0.25
+        ],
+        "robust_rgb_mae": 0.926877679
+      },
+      {
+        "id": "lower_west_chamber_southwall",
+        "source_center_index_xy": [
+          300,
+          859
+        ],
+        "local_best_annotation_offset_xy": [
+          0.0,
+          0.25
+        ],
+        "robust_rgb_mae": 0.735021472
+      },
+      {
+        "id": "lower_east_chamber_southwall",
+        "source_center_index_xy": [
+          1160,
+          870
+        ],
+        "local_best_annotation_offset_xy": [
+          -0.5,
+          0.5
+        ],
+        "robust_rgb_mae": 0.918406444
+      },
+      {
+        "id": "west_main_hall_southwall",
+        "source_center_index_xy": [
+          740,
+          665
+        ],
+        "local_best_annotation_offset_xy": [
+          1.0,
+          0.0
+        ],
+        "robust_rgb_mae": 0.884907599
+      },
+      {
+        "id": "east_main_hall_southwall",
+        "source_center_index_xy": [
+          1180,
+          535
+        ],
+        "local_best_annotation_offset_xy": [
+          -0.5,
+          -0.25
+        ],
+        "robust_rgb_mae": 0.528018468
+      }
+    ],
+    "held_out_residual_rms_annotation_pixels": 0.6972166887783964,
+    "held_out_residual_max_annotation_pixels": 1.118033988749895,
+    "conservative_combined_marker_world_uncertainty_pixels": 5,
+    "uncertainty_note": "Approximate conservative5worldpx includes ~1.12annotationpx worst held-out registration shift, ~1annotationpx core/antialias center uncertainty and integer-root rounding. Not a statistical confidence interval.",
+    "crop_note": "The screenshot border/cropping is handled by fitted translations and affine scale; no full-image dimension ratio was used for source registration."
+  },
+  "world_mapping": {
+    "source_edge_to_planned_world_scale_xy": [
+      3.607751027598356,
+      3.601731601731602
+    ],
+    "purpose": "Map approved overview marker locations into existing authored world-coordinate proposal only. The overview is not a runtime texture and may differ locally from exact authored floor/walls. Actual full-silhouette/collision/path testing remains required.",
+    "root_rounding": "Nearest integer targets recorded only; do not snap props to32px cells, silently rebalance ore, or move unconflicted marks."
+  },
+  "markers": [
+    {
+      "ore": "blackstone",
+      "color_name": "black",
+      "flat_core_rgb": [
+        0,
+        0,
+        0
+      ],
+      "core_pixel_count": 384,
+      "core_bounds_annotation_xyxy": [
+        141,
+        280,
+        164,
+        302
+      ],
+      "annotation_center_index_xy": [
+        152.244792,
+        290.106771
+      ],
+      "approved_v3_center_index_xy": [
+        85.757591,
+        165.139948
+      ],
+      "approved_v3_center_edge_xy": [
+        86.257591,
+        165.639948
+      ],
+      "room_id": "far_west_chamber",
+      "planned_visible_center_world_xy": [
+        311.195914,
+        596.590634
+      ],
+      "canonical_native_scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
+      "canonical_root_target_world_xy": [
+        311.195914,
+        620.590634
+      ],
+      "canonical_root_nearest_integer_world_xy": [
+        311,
+        621
+      ],
+      "canonical_visible_rect_world_xywh": [
+        282.195914,
+        568.590634,
+        58.0,
+        56.0
+      ],
+      "visible_rectangle_inside_declared_clear_room_rectangle": true,
+      "placement_status": "unmoved target only; not installed or collision/silhouette certified",
+      "id": "blackstone-01"
+    },
+    {
+      "ore": "blackstone",
+      "color_name": "black",
+      "flat_core_rgb": [
+        0,
+        0,
+        0
+      ],
+      "core_pixel_count": 389,
+      "core_bounds_annotation_xyxy": [
+        369,
+        280,
+        392,
+        303
+      ],
+      "annotation_center_index_xy": [
+        380.030848,
+        290.215938
+      ],
+      "approved_v3_center_index_xy": [
+        218.891842,
+        165.210457
+      ],
+      "approved_v3_center_edge_xy": [
+        219.391842,
+        165.710457
+      ],
+      "room_id": "far_west_chamber",
+      "planned_visible_center_world_xy": [
+        791.511142,
+        596.84459
+      ],
+      "canonical_native_scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
+      "canonical_root_target_world_xy": [
+        791.511142,
+        620.84459
+      ],
+      "canonical_root_nearest_integer_world_xy": [
+        792,
+        621
+      ],
+      "canonical_visible_rect_world_xywh": [
+        762.511142,
+        568.84459,
+        58.0,
+        56.0
+      ],
+      "visible_rectangle_inside_declared_clear_room_rectangle": true,
+      "placement_status": "unmoved target only; not installed or collision/silhouette certified",
+      "id": "blackstone-02"
+    },
+    {
+      "ore": "mithril",
+      "color_name": "violet",
+      "flat_core_rgb": [
+        102,
+        0,
+        204
+      ],
+      "core_pixel_count": 401,
+      "core_bounds_annotation_xyxy": [
+        114,
+        408,
+        137,
+        431
+      ],
+      "annotation_center_index_xy": [
+        125.428928,
+        419.284289
+      ],
+      "approved_v3_center_index_xy": [
+        70.088722,
+        240.620509
+      ],
+      "approved_v3_center_edge_xy": [
+        70.588722,
+        241.120509
+      ],
+      "room_id": "far_west_chamber",
+      "planned_visible_center_world_xy": [
+        254.666534,
+        868.451356
+      ],
+      "canonical_native_scene": "res://scenes/MapProps/OreNodes/MithrilOreFull.tscn",
+      "canonical_root_target_world_xy": [
+        254.666534,
+        892.451356
+      ],
+      "canonical_root_nearest_integer_world_xy": [
+        255,
+        892
+      ],
+      "canonical_visible_rect_world_xywh": [
+        225.666534,
+        840.451356,
+        58.0,
+        56.0
+      ],
+      "visible_rectangle_inside_declared_clear_room_rectangle": true,
+      "placement_status": "unmoved target only; not installed or collision/silhouette certified",
+      "id": "mithril-01"
+    },
+    {
+      "ore": "mithril",
+      "color_name": "violet",
+      "flat_core_rgb": [
+        102,
+        0,
+        204
+      ],
+      "core_pixel_count": 392,
+      "core_bounds_annotation_xyxy": [
+        175,
+        462,
+        198,
+        485
+      ],
+      "annotation_center_index_xy": [
+        185.533163,
+        473.048469
+      ],
+      "approved_v3_center_index_xy": [
+        105.219633,
+        272.037911
+      ],
+      "approved_v3_center_edge_xy": [
+        105.719633,
+        272.537911
+      ],
+      "room_id": "far_west_chamber",
+      "planned_visible_center_world_xy": [
+        381.410113,
+        981.608407
+      ],
+      "canonical_native_scene": "res://scenes/MapProps/OreNodes/MithrilOreFull.tscn",
+      "canonical_root_target_world_xy": [
+        381.410113,
+        1005.608407
+      ],
+      "canonical_root_nearest_integer_world_xy": [
+        381,
+        1006
+      ],
+      "canonical_visible_rect_world_xywh": [
+        352.410113,
+        953.608407,
+        58.0,
+        56.0
+      ],
+      "visible_rectangle_inside_declared_clear_room_rectangle": true,
+      "placement_status": "unmoved target only; not installed or collision/silhouette certified",
+      "id": "mithril-02"
+    },
+    {
+      "ore": "adamantite",
+      "color_name": "green",
+      "flat_core_rgb": [
+        0,
+        128,
+        85
+      ],
+      "core_pixel_count": 392,
+      "core_bounds_annotation_xyxy": [
+        313,
+        468,
+        336,
+        491
+      ],
+      "annotation_center_index_xy": [
+        323.579082,
+        479.05102
+      ],
+      "approved_v3_center_index_xy": [
+        185.903605,
+        275.549411
+      ],
+      "approved_v3_center_edge_xy": [
+        186.403605,
+        276.049411
+      ],
+      "room_id": "far_west_chamber",
+      "planned_visible_center_world_xy": [
+        672.497799,
+        994.255885
+      ],
+      "canonical_native_scene": "res://scenes/MapProps/OreNodes/AdamantiteOreFull.tscn",
+      "canonical_root_target_world_xy": [
+        672.497799,
+        1018.255885
+      ],
+      "canonical_root_nearest_integer_world_xy": [
+        672,
+        1018
+      ],
+      "canonical_visible_rect_world_xywh": [
+        643.497799,
+        966.255885,
+        58.0,
+        56.0
+      ],
+      "visible_rectangle_inside_declared_clear_room_rectangle": true,
+      "placement_status": "unmoved target only; not installed or collision/silhouette certified",
+      "id": "adamantite-01"
+    },
+    {
+      "ore": "blackstone",
+      "color_name": "black",
+      "flat_core_rgb": [
+        0,
+        0,
+        0
+      ],
+      "core_pixel_count": 396,
+      "core_bounds_annotation_xyxy": [
+        1381,
+        128,
+        1403,
+        151
+      ],
+      "annotation_center_index_xy": [
+        1391.770202,
+        138.916667
+      ],
+      "approved_v3_center_index_xy": [
+        810.218785,
+        76.832713
+      ],
+      "approved_v3_center_edge_xy": [
+        810.718785,
+        77.332713
+      ],
+      "room_id": "upper_west_gallery",
+      "planned_visible_center_world_xy": [
+        2924.87153,
+        278.531675
+      ],
+      "canonical_native_scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
+      "canonical_root_target_world_xy": [
+        2924.87153,
+        302.531675
+      ],
+      "canonical_root_nearest_integer_world_xy": [
+        2925,
+        303
+      ],
+      "canonical_visible_rect_world_xywh": [
+        2895.87153,
+        250.531675,
+        58.0,
+        56.0
+      ],
+      "visible_rectangle_inside_declared_clear_room_rectangle": true,
+      "placement_status": "unmoved target only; not installed or collision/silhouette certified",
+      "id": "blackstone-03"
+    },
+    {
+      "ore": "blackstone",
+      "color_name": "black",
+      "flat_core_rgb": [
+        0,
+        0,
+        0
+      ],
+      "core_pixel_count": 398,
+      "core_bounds_annotation_xyxy": [
+        1562,
+        128,
+        1584,
+        151
+      ],
+      "annotation_center_index_xy": [
+        1572.21608,
+        138.929648
+      ],
+      "approved_v3_center_index_xy": [
+        915.684091,
+        76.845622
+      ],
+      "approved_v3_center_edge_xy": [
+        916.184091,
+        77.345622
+      ],
+      "room_id": "upper_west_gallery",
+      "planned_visible_center_world_xy": [
+        3305.364097,
+        278.578171
+      ],
+      "canonical_native_scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
+      "canonical_root_target_world_xy": [
+        3305.364097,
+        302.578171
+      ],
+      "canonical_root_nearest_integer_world_xy": [
+        3305,
+        303
+      ],
+      "canonical_visible_rect_world_xywh": [
+        3276.364097,
+        250.578171,
+        58.0,
+        56.0
+      ],
+      "visible_rectangle_inside_declared_clear_room_rectangle": true,
+      "placement_status": "unmoved target only; not installed or collision/silhouette certified",
+      "id": "blackstone-04"
+    },
+    {
+      "ore": "blackstone",
+      "color_name": "black",
+      "flat_core_rgb": [
+        0,
+        0,
+        0
+      ],
+      "core_pixel_count": 389,
+      "core_bounds_annotation_xyxy": [
+        1363,
+        171,
+        1386,
+        193
+      ],
+      "annotation_center_index_xy": [
+        1373.820051,
+        181.141388
+      ],
+      "approved_v3_center_index_xy": [
+        799.728828,
+        101.505045
+      ],
+      "approved_v3_center_edge_xy": [
+        800.228828,
+        102.005045
+      ],
+      "room_id": "upper_west_gallery",
+      "planned_visible_center_world_xy": [
+        2887.026375,
+        367.394794
+      ],
+      "canonical_native_scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
+      "canonical_root_target_world_xy": [
+        2887.026375,
+        391.394794
+      ],
+      "canonical_root_nearest_integer_world_xy": [
+        2887,
+        391
+      ],
+      "canonical_visible_rect_world_xywh": [
+        2858.026375,
+        339.394794,
+        58.0,
+        56.0
+      ],
+      "visible_rectangle_inside_declared_clear_room_rectangle": true,
+      "placement_status": "unmoved target only; not installed or collision/silhouette certified",
+      "id": "blackstone-05"
+    },
+    {
+      "ore": "coal",
+      "color_name": "grey",
+      "flat_core_rgb": [
+        88,
+        89,
+        91
+      ],
+      "core_pixel_count": 394,
+      "core_bounds_annotation_xyxy": [
+        1963,
+        129,
+        1986,
+        152
+      ],
+      "annotation_center_index_xy": [
+        1974.01269,
+        139.928934
+      ],
+      "approved_v3_center_index_xy": [
+        1150.522418,
+        77.441381
+      ],
+      "approved_v3_center_edge_xy": [
+        1151.022418,
+        77.941381
+      ],
+      "room_id": "upper_east_chamber",
+      "planned_visible_center_world_xy": [
+        4152.602312,
+        280.723937
+      ],
+      "canonical_native_scene": "res://scenes/MapProps/OreNodes/CoalFull.tscn",
+      "canonical_root_target_world_xy": [
+        4152.602312,
+        304.723937
+      ],
+      "canonical_root_nearest_integer_world_xy": [
+        4153,
+        305
+      ],
+      "canonical_visible_rect_world_xywh": [
+        4123.602312,
+        252.723937,
+        58.0,
+        56.0
+      ],
+      "visible_rectangle_inside_declared_clear_room_rectangle": true,
+      "placement_status": "unmoved target only; not installed or collision/silhouette certified",
+      "id": "coal-01"
+    },
+    {
+      "ore": "coal",
+      "color_name": "grey",
+      "flat_core_rgb": [
+        88,
+        89,
+        91
+      ],
+      "core_pixel_count": 410,
+      "core_bounds_annotation_xyxy": [
+        2034,
+        144,
+        2057,
+        167
+      ],
+      "annotation_center_index_xy": [
+        2044.714634,
+        154.97561
+      ],
+      "approved_v3_center_index_xy": [
+        1191.846115,
+        86.235581
+      ],
+      "approved_v3_center_edge_xy": [
+        1192.346115,
+        86.735581
+      ],
+      "room_id": "upper_east_chamber",
+      "planned_visible_center_world_xy": [
+        4301.687921,
+        312.398283
+      ],
+      "canonical_native_scene": "res://scenes/MapProps/OreNodes/CoalFull.tscn",
+      "canonical_root_target_world_xy": [
+        4301.687921,
+        336.398283
+      ],
+      "canonical_root_nearest_integer_world_xy": [
+        4302,
+        336
+      ],
+      "canonical_visible_rect_world_xywh": [
+        4272.687921,
+        284.398283,
+        58.0,
+        56.0
+      ],
+      "visible_rectangle_inside_declared_clear_room_rectangle": false,
+      "placement_status": "unmoved target only; not installed or collision/silhouette certified",
+      "id": "coal-02"
+    },
+    {
+      "ore": "coal",
+      "color_name": "grey",
+      "flat_core_rgb": [
+        88,
+        89,
+        91
+      ],
+      "core_pixel_count": 400,
+      "core_bounds_annotation_xyxy": [
+        1780,
+        148,
+        1803,
+        171
+      ],
+      "annotation_center_index_xy": [
+        1791.31,
+        158.75
+      ],
+      "approved_v3_center_index_xy": [
+        1043.738686,
+        88.433567
+      ],
+      "approved_v3_center_edge_xy": [
+        1044.238686,
+        88.933567
+      ],
+      "room_id": "upper_east_chamber",
+      "planned_visible_center_world_xy": [
+        3767.353194,
+        320.314837
+      ],
+      "canonical_native_scene": "res://scenes/MapProps/OreNodes/CoalFull.tscn",
+      "canonical_root_target_world_xy": [
+        3767.353194,
+        344.314837
+      ],
+      "canonical_root_nearest_integer_world_xy": [
+        3767,
+        344
+      ],
+      "canonical_visible_rect_world_xywh": [
+        3738.353194,
+        292.314837,
+        58.0,
+        56.0
+      ],
+      "visible_rectangle_inside_declared_clear_room_rectangle": true,
+      "placement_status": "unmoved target only; not installed or collision/silhouette certified",
+      "id": "coal-03"
+    },
+    {
+      "ore": "coal",
+      "color_name": "grey",
+      "flat_core_rgb": [
+        88,
+        89,
+        91
+      ],
+      "core_pixel_count": 400,
+      "core_bounds_annotation_xyxy": [
+        1769,
+        278,
+        1792,
+        301
+      ],
+      "annotation_center_index_xy": [
+        1780.115,
+        288.9575
+      ],
+      "approved_v3_center_index_xy": [
+        1037.199786,
+        164.51643
+      ],
+      "approved_v3_center_edge_xy": [
+        1037.699786,
+        165.01643
+      ],
+      "room_id": "upper_east_chamber",
+      "planned_visible_center_world_xy": [
+        3743.762469,
+        594.344891
+      ],
+      "canonical_native_scene": "res://scenes/MapProps/OreNodes/CoalFull.tscn",
+      "canonical_root_target_world_xy": [
+        3743.762469,
+        618.344891
+      ],
+      "canonical_root_nearest_integer_world_xy": [
+        3744,
+        618
+      ],
+      "canonical_visible_rect_world_xywh": [
+        3714.762469,
+        566.344891,
+        58.0,
+        56.0
+      ],
+      "visible_rectangle_inside_declared_clear_room_rectangle": true,
+      "placement_status": "unmoved target only; not installed or collision/silhouette certified",
+      "id": "coal-04"
+    },
+    {
+      "ore": "coal",
+      "color_name": "grey",
+      "flat_core_rgb": [
+        88,
+        89,
+        91
+      ],
+      "core_pixel_count": 401,
+      "core_bounds_annotation_xyxy": [
+        1987,
+        288,
+        2009,
+        311
+      ],
+      "annotation_center_index_xy": [
+        1997.266833,
+        299.162095
+      ],
+      "approved_v3_center_index_xy": [
+        1164.118975,
+        170.485613
+      ],
+      "approved_v3_center_edge_xy": [
+        1164.618975,
+        170.985613
+      ],
+      "room_id": "upper_east_chamber",
+      "planned_visible_center_world_xy": [
+        4201.655303,
+        615.844285
+      ],
+      "canonical_native_scene": "res://scenes/MapProps/OreNodes/CoalFull.tscn",
+      "canonical_root_target_world_xy": [
+        4201.655303,
+        639.844285
+      ],
+      "canonical_root_nearest_integer_world_xy": [
+        4202,
+        640
+      ],
+      "canonical_visible_rect_world_xywh": [
+        4172.655303,
+        587.844285,
+        58.0,
+        56.0
+      ],
+      "visible_rectangle_inside_declared_clear_room_rectangle": true,
+      "placement_status": "unmoved target only; not installed or collision/silhouette certified",
+      "id": "coal-05"
+    },
+    {
+      "ore": "coal",
+      "color_name": "grey",
+      "flat_core_rgb": [
+        88,
+        89,
+        91
+      ],
+      "core_pixel_count": 402,
+      "core_bounds_annotation_xyxy": [
+        2654,
+        191,
+        2677,
+        214
+      ],
+      "annotation_center_index_xy": [
+        2664.893035,
+        202.504975
+      ],
+      "approved_v3_center_index_xy": [
+        1554.32369,
+        114.026364
+      ],
+      "approved_v3_center_edge_xy": [
+        1554.82369,
+        114.526364
+      ],
+      "room_id": "east_upper_chamber",
+      "planned_visible_center_world_xy": [
+        5609.416765,
+        412.493224
+      ],
+      "canonical_native_scene": "res://scenes/MapProps/OreNodes/CoalFull.tscn",
+      "canonical_root_target_world_xy": [
+        5609.416765,
+        436.493224
+      ],
+      "canonical_root_nearest_integer_world_xy": [
+        5609,
+        436
+      ],
+      "canonical_visible_rect_world_xywh": [
+        5580.416765,
+        384.493224,
+        58.0,
+        56.0
+      ],
+      "visible_rectangle_inside_declared_clear_room_rectangle": true,
+      "placement_status": "unmoved target only; not installed or collision/silhouette certified",
+      "id": "coal-06"
+    },
+    {
+      "ore": "iron",
+      "color_name": "brown",
+      "flat_core_rgb": [
+        97,
+        61,
+        48
+      ],
+      "core_pixel_count": 394,
+      "core_bounds_annotation_xyxy": [
+        2772,
+        192,
+        2795,
+        215
+      ],
+      "annotation_center_index_xy": [
+        2783.380711,
+        202.936548
+      ],
+      "approved_v3_center_index_xy": [
+        1623.576264,
+        114.282038
+      ],
+      "approved_v3_center_edge_xy": [
+        1624.076264,
+        114.782038
+      ],
+      "room_id": "east_upper_chamber",
+      "planned_visible_center_world_xy": [
+        5859.262809,
+        413.414092
+      ],
+      "canonical_native_scene": "res://scenes/MapProps/OreNodes/IronOreFull.tscn",
+      "canonical_root_target_world_xy": [
+        5859.262809,
+        437.414092
+      ],
+      "canonical_root_nearest_integer_world_xy": [
+        5859,
+        437
+      ],
+      "canonical_visible_rect_world_xywh": [
+        5830.262809,
+        385.414092,
+        58.0,
+        56.0
+      ],
+      "visible_rectangle_inside_declared_clear_room_rectangle": true,
+      "placement_status": "unmoved target only; not installed or collision/silhouette certified",
+      "id": "iron-01"
+    },
+    {
+      "ore": "iron",
+      "color_name": "brown",
+      "flat_core_rgb": [
+        97,
+        61,
+        48
+      ],
+      "core_pixel_count": 394,
+      "core_bounds_annotation_xyxy": [
+        2797,
+        229,
+        2820,
+        251
+      ],
+      "annotation_center_index_xy": [
+        2807.522843,
+        239.324873
+      ],
+      "approved_v3_center_index_xy": [
+        1637.687816,
+        135.545273
+      ],
+      "approved_v3_center_edge_xy": [
+        1638.187816,
+        136.045273
+      ],
+      "room_id": "east_upper_chamber",
+      "planned_visible_center_world_xy": [
+        5910.173778,
+        489.998559
+      ],
+      "canonical_native_scene": "res://scenes/MapProps/OreNodes/IronOreFull.tscn",
+      "canonical_root_target_world_xy": [
+        5910.173778,
+        513.998559
+      ],
+      "canonical_root_nearest_integer_world_xy": [
+        5910,
+        514
+      ],
+      "canonical_visible_rect_world_xywh": [
+        5881.173778,
+        461.998559,
+        58.0,
+        56.0
+      ],
+      "visible_rectangle_inside_declared_clear_room_rectangle": true,
+      "placement_status": "unmoved target only; not installed or collision/silhouette certified",
+      "id": "iron-02"
+    },
+    {
+      "ore": "coal",
+      "color_name": "grey",
+      "flat_core_rgb": [
+        88,
+        89,
+        91
+      ],
+      "core_pixel_count": 398,
+      "core_bounds_annotation_xyxy": [
+        2605,
+        230,
+        2628,
+        253
+      ],
+      "annotation_center_index_xy": [
+        2616.447236,
+        240.796482
+      ],
+      "approved_v3_center_index_xy": [
+        1526.009795,
+        136.39953
+      ],
+      "approved_v3_center_edge_xy": [
+        1526.509795,
+        136.89953
+      ],
+      "room_id": "east_upper_chamber",
+      "planned_visible_center_world_xy": [
+        5507.267283,
+        493.075364
+      ],
+      "canonical_native_scene": "res://scenes/MapProps/OreNodes/CoalFull.tscn",
+      "canonical_root_target_world_xy": [
+        5507.267283,
+        517.075364
+      ],
+      "canonical_root_nearest_integer_world_xy": [
+        5507,
+        517
+      ],
+      "canonical_visible_rect_world_xywh": [
+        5478.267283,
+        465.075364,
+        58.0,
+        56.0
+      ],
+      "visible_rectangle_inside_declared_clear_room_rectangle": true,
+      "placement_status": "unmoved target only; not installed or collision/silhouette certified",
+      "id": "coal-07"
+    },
+    {
+      "ore": "iron",
+      "color_name": "brown",
+      "flat_core_rgb": [
+        97,
+        61,
+        48
+      ],
+      "core_pixel_count": 397,
+      "core_bounds_annotation_xyxy": [
+        2791,
+        294,
+        2814,
+        317
+      ],
+      "annotation_center_index_xy": [
+        2801.488665,
+        305.168766
+      ],
+      "approved_v3_center_index_xy": [
+        1634.163165,
+        174.019174
+      ],
+      "approved_v3_center_edge_xy": [
+        1634.663165,
+        174.519174
+      ],
+      "room_id": "east_upper_chamber",
+      "planned_visible_center_world_xy": [
+        5897.457713,
+        628.571223
+      ],
+      "canonical_native_scene": "res://scenes/MapProps/OreNodes/IronOreFull.tscn",
+      "canonical_root_target_world_xy": [
+        5897.457713,
+        652.571223
+      ],
+      "canonical_root_nearest_integer_world_xy": [
+        5897,
+        653
+      ],
+      "canonical_visible_rect_world_xywh": [
+        5868.457713,
+        600.571223,
+        58.0,
+        56.0
+      ],
+      "visible_rectangle_inside_declared_clear_room_rectangle": true,
+      "placement_status": "unmoved target only; not installed or collision/silhouette certified",
+      "id": "iron-03"
+    },
+    {
+      "ore": "iron",
+      "color_name": "brown",
+      "flat_core_rgb": [
+        97,
+        61,
+        48
+      ],
+      "core_pixel_count": 401,
+      "core_bounds_annotation_xyxy": [
+        2616,
+        300,
+        2639,
+        323
+      ],
+      "annotation_center_index_xy": [
+        2627.399002,
+        311.162095
+      ],
+      "approved_v3_center_index_xy": [
+        1532.413076,
+        177.516076
+      ],
+      "approved_v3_center_edge_xy": [
+        1532.913076,
+        178.016076
+      ],
+      "room_id": "east_upper_chamber",
+      "planned_visible_center_world_xy": [
+        5530.368725,
+        641.166125
+      ],
+      "canonical_native_scene": "res://scenes/MapProps/OreNodes/IronOreFull.tscn",
+      "canonical_root_target_world_xy": [
+        5530.368725,
+        665.166125
+      ],
+      "canonical_root_nearest_integer_world_xy": [
+        5530,
+        665
+      ],
+      "canonical_visible_rect_world_xywh": [
+        5501.368725,
+        613.166125,
+        58.0,
+        56.0
+      ],
+      "visible_rectangle_inside_declared_clear_room_rectangle": true,
+      "placement_status": "unmoved target only; not installed or collision/silhouette certified",
+      "id": "iron-04"
+    },
+    {
+      "ore": "mithril",
+      "color_name": "violet",
+      "flat_core_rgb": [
+        102,
+        0,
+        204
+      ],
+      "core_pixel_count": 394,
+      "core_bounds_annotation_xyxy": [
+        426,
+        1266,
+        449,
+        1289
+      ],
+      "annotation_center_index_xy": [
+        437.43401,
+        1277.583756
+      ],
+      "approved_v3_center_index_xy": [
+        252.47451,
+        742.153548
+      ],
+      "approved_v3_center_edge_xy": [
+        252.97451,
+        742.653548
+      ],
+      "room_id": "lower_west_gallery",
+      "planned_visible_center_world_xy": [
+        912.669047,
+        2674.838752
+      ],
+      "canonical_native_scene": "res://scenes/MapProps/OreNodes/MithrilOreFull.tscn",
+      "canonical_root_target_world_xy": [
+        912.669047,
+        2698.838752
+      ],
+      "canonical_root_nearest_integer_world_xy": [
+        913,
+        2699
+      ],
+      "canonical_visible_rect_world_xywh": [
+        883.669047,
+        2646.838752,
+        58.0,
+        56.0
+      ],
+      "visible_rectangle_inside_declared_clear_room_rectangle": false,
+      "placement_status": "unmoved target only; not installed or collision/silhouette certified",
+      "id": "mithril-03"
+    },
+    {
+      "ore": "adamantite",
+      "color_name": "green",
+      "flat_core_rgb": [
+        0,
+        128,
+        85
+      ],
+      "core_pixel_count": 393,
+      "core_bounds_annotation_xyxy": [
+        582,
+        1290,
+        606,
+        1313
+      ],
+      "annotation_center_index_xy": [
+        593.618321,
+        1301.536896
+      ],
+      "approved_v3_center_index_xy": [
+        343.760424,
+        756.154518
+      ],
+      "approved_v3_center_edge_xy": [
+        344.260424,
+        756.654518
+      ],
+      "room_id": "lower_west_gallery",
+      "planned_visible_center_world_xy": [
+        1242.0059,
+        2725.266489
+      ],
+      "canonical_native_scene": "res://scenes/MapProps/OreNodes/AdamantiteOreFull.tscn",
+      "canonical_root_target_world_xy": [
+        1242.0059,
+        2749.266489
+      ],
+      "canonical_root_nearest_integer_world_xy": [
+        1242,
+        2749
+      ],
+      "canonical_visible_rect_world_xywh": [
+        1213.0059,
+        2697.266489,
+        58.0,
+        56.0
+      ],
+      "visible_rectangle_inside_declared_clear_room_rectangle": true,
+      "placement_status": "unmoved target only; not installed or collision/silhouette certified",
+      "id": "adamantite-02"
+    },
+    {
+      "ore": "mithril",
+      "color_name": "violet",
+      "flat_core_rgb": [
+        102,
+        0,
+        204
+      ],
+      "core_pixel_count": 392,
+      "core_bounds_annotation_xyxy": [
+        373,
+        1290,
+        395,
+        1313
+      ],
+      "annotation_center_index_xy": [
+        383.456633,
+        1301.65051
+      ],
+      "approved_v3_center_index_xy": [
+        220.927106,
+        756.214705
+      ],
+      "approved_v3_center_edge_xy": [
+        221.427106,
+        756.714705
+      ],
+      "room_id": "lower_west_gallery",
+      "planned_visible_center_world_xy": [
+        798.853869,
+        2725.483267
+      ],
+      "canonical_native_scene": "res://scenes/MapProps/OreNodes/MithrilOreFull.tscn",
+      "canonical_root_target_world_xy": [
+        798.853869,
+        2749.483267
+      ],
+      "canonical_root_nearest_integer_world_xy": [
+        799,
+        2749
+      ],
+      "canonical_visible_rect_world_xywh": [
+        769.853869,
+        2697.483267,
+        58.0,
+        56.0
+      ],
+      "visible_rectangle_inside_declared_clear_room_rectangle": true,
+      "placement_status": "unmoved target only; not installed or collision/silhouette certified",
+      "id": "mithril-04"
+    },
+    {
+      "ore": "blackstone",
+      "color_name": "black",
+      "flat_core_rgb": [
+        0,
+        0,
+        0
+      ],
+      "core_pixel_count": 388,
+      "core_bounds_annotation_xyxy": [
+        576,
+        1395,
+        599,
+        1418
+      ],
+      "annotation_center_index_xy": [
+        587.255155,
+        1405.311856
+      ],
+      "approved_v3_center_index_xy": [
+        340.044726,
+        816.792392
+      ],
+      "approved_v3_center_edge_xy": [
+        340.544726,
+        817.292392
+      ],
+      "room_id": "lower_west_gallery",
+      "planned_visible_center_world_xy": [
+        1228.600586,
+        2943.667835
+      ],
+      "canonical_native_scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
+      "canonical_root_target_world_xy": [
+        1228.600586,
+        2967.667835
+      ],
+      "canonical_root_nearest_integer_world_xy": [
+        1229,
+        2968
+      ],
+      "canonical_visible_rect_world_xywh": [
+        1199.600586,
+        2915.667835,
+        58.0,
+        56.0
+      ],
+      "visible_rectangle_inside_declared_clear_room_rectangle": true,
+      "placement_status": "unmoved target only; not installed or collision/silhouette certified",
+      "id": "blackstone-06"
+    },
+    {
+      "ore": "blackstone",
+      "color_name": "black",
+      "flat_core_rgb": [
+        0,
+        0,
+        0
+      ],
+      "core_pixel_count": 425,
+      "core_bounds_annotation_xyxy": [
+        360,
+        1402,
+        384,
+        1426
+      ],
+      "annotation_center_index_xy": [
+        371.691765,
+        1413.52
+      ],
+      "approved_v3_center_index_xy": [
+        214.054536,
+        821.582237
+      ],
+      "approved_v3_center_edge_xy": [
+        214.554536,
+        822.082237
+      ],
+      "room_id": "lower_west_gallery",
+      "planned_visible_center_world_xy": [
+        774.059349,
+        2960.919571
+      ],
+      "canonical_native_scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
+      "canonical_root_target_world_xy": [
+        774.059349,
+        2984.919571
+      ],
+      "canonical_root_nearest_integer_world_xy": [
+        774,
+        2985
+      ],
+      "canonical_visible_rect_world_xywh": [
+        745.059349,
+        2932.919571,
+        58.0,
+        56.0
+      ],
+      "visible_rectangle_inside_declared_clear_room_rectangle": true,
+      "placement_status": "unmoved target only; not installed or collision/silhouette certified",
+      "id": "blackstone-07"
+    },
+    {
+      "ore": "blackstone",
+      "color_name": "black",
+      "flat_core_rgb": [
+        0,
+        0,
+        0
+      ],
+      "core_pixel_count": 402,
+      "core_bounds_annotation_xyxy": [
+        1895,
+        1266,
+        1918,
+        1289
+      ],
+      "annotation_center_index_xy": [
+        1906.243781,
+        1276.768657
+      ],
+      "approved_v3_center_index_xy": [
+        1110.95057,
+        741.720601
+      ],
+      "approved_v3_center_edge_xy": [
+        1111.45057,
+        742.220601
+      ],
+      "room_id": "lower_east_chamber",
+      "planned_visible_center_world_xy": [
+        4009.836937,
+        2673.279394
+      ],
+      "canonical_native_scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
+      "canonical_root_target_world_xy": [
+        4009.836937,
+        2697.279394
+      ],
+      "canonical_root_nearest_integer_world_xy": [
+        4010,
+        2697
+      ],
+      "canonical_visible_rect_world_xywh": [
+        3980.836937,
+        2645.279394,
+        58.0,
+        56.0
+      ],
+      "visible_rectangle_inside_declared_clear_room_rectangle": true,
+      "placement_status": "unmoved target only; not installed or collision/silhouette certified",
+      "id": "blackstone-08"
+    },
+    {
+      "ore": "blackstone",
+      "color_name": "black",
+      "flat_core_rgb": [
+        0,
+        0,
+        0
+      ],
+      "core_pixel_count": 385,
+      "core_bounds_annotation_xyxy": [
+        1839,
+        1296,
+        1862,
+        1318
+      ],
+      "annotation_center_index_xy": [
+        1850.472727,
+        1306.901299
+      ],
+      "approved_v3_center_index_xy": [
+        1078.355013,
+        759.326141
+      ],
+      "approved_v3_center_edge_xy": [
+        1078.855013,
+        759.826141
+      ],
+      "room_id": "lower_east_chamber",
+      "planned_visible_center_world_xy": [
+        3892.240283,
+        2736.689825
+      ],
+      "canonical_native_scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
+      "canonical_root_target_world_xy": [
+        3892.240283,
+        2760.689825
+      ],
+      "canonical_root_nearest_integer_world_xy": [
+        3892,
+        2761
+      ],
+      "canonical_visible_rect_world_xywh": [
+        3863.240283,
+        2708.689825,
+        58.0,
+        56.0
+      ],
+      "visible_rectangle_inside_declared_clear_room_rectangle": false,
+      "placement_status": "unmoved target only; not installed or collision/silhouette certified",
+      "id": "blackstone-09"
+    },
+    {
+      "ore": "blackstone",
+      "color_name": "black",
+      "flat_core_rgb": [
+        0,
+        0,
+        0
+      ],
+      "core_pixel_count": 395,
+      "core_bounds_annotation_xyxy": [
+        1866,
+        1425,
+        1888,
+        1447
+      ],
+      "annotation_center_index_xy": [
+        1876.326582,
+        1435.387342
+      ],
+      "approved_v3_center_index_xy": [
+        1093.470022,
+        834.404212
+      ],
+      "approved_v3_center_edge_xy": [
+        1093.970022,
+        834.904212
+      ],
+      "room_id": "lower_east_chamber",
+      "planned_visible_center_world_xy": [
+        3946.771472,
+        3007.100883
+      ],
+      "canonical_native_scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
+      "canonical_root_target_world_xy": [
+        3946.771472,
+        3031.100883
+      ],
+      "canonical_root_nearest_integer_world_xy": [
+        3947,
+        3031
+      ],
+      "canonical_visible_rect_world_xywh": [
+        3917.771472,
+        2979.100883,
+        58.0,
+        56.0
+      ],
+      "visible_rectangle_inside_declared_clear_room_rectangle": true,
+      "placement_status": "unmoved target only; not installed or collision/silhouette certified",
+      "id": "blackstone-10"
+    },
+    {
+      "ore": "blackstone",
+      "color_name": "black",
+      "flat_core_rgb": [
+        0,
+        0,
+        0
+      ],
+      "core_pixel_count": 392,
+      "core_bounds_annotation_xyxy": [
+        2092,
+        1428,
+        2115,
+        1451
+      ],
+      "annotation_center_index_xy": [
+        2103.094388,
+        1439.586735
+      ],
+      "approved_v3_center_index_xy": [
+        1226.009268,
+        836.864702
+      ],
+      "approved_v3_center_edge_xy": [
+        1226.509268,
+        837.364702
+      ],
+      "room_id": "lower_east_chamber",
+      "planned_visible_center_world_xy": [
+        4424.940073,
+        3015.962911
+      ],
+      "canonical_native_scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
+      "canonical_root_target_world_xy": [
+        4424.940073,
+        3039.962911
+      ],
+      "canonical_root_nearest_integer_world_xy": [
+        4425,
+        3040
+      ],
+      "canonical_visible_rect_world_xywh": [
+        4395.940073,
+        2987.962911,
+        58.0,
+        56.0
+      ],
+      "visible_rectangle_inside_declared_clear_room_rectangle": true,
+      "placement_status": "unmoved target only; not installed or collision/silhouette certified",
+      "id": "blackstone-11"
+    },
+    {
+      "ore": "blackstone",
+      "color_name": "black",
+      "flat_core_rgb": [
+        0,
+        0,
+        0
+      ],
+      "core_pixel_count": 396,
+      "core_bounds_annotation_xyxy": [
+        2015,
+        1433,
+        2038,
+        1456
+      ],
+      "annotation_center_index_xy": [
+        2026.123737,
+        1443.906566
+      ],
+      "approved_v3_center_index_xy": [
+        1181.022329,
+        839.386607
+      ],
+      "approved_v3_center_edge_xy": [
+        1181.522329,
+        839.886607
+      ],
+      "room_id": "lower_east_chamber",
+      "planned_visible_center_world_xy": [
+        4262.638397,
+        3025.046133
+      ],
+      "canonical_native_scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
+      "canonical_root_target_world_xy": [
+        4262.638397,
+        3049.046133
+      ],
+      "canonical_root_nearest_integer_world_xy": [
+        4263,
+        3049
+      ],
+      "canonical_visible_rect_world_xywh": [
+        4233.638397,
+        2997.046133,
+        58.0,
+        56.0
+      ],
+      "visible_rectangle_inside_declared_clear_room_rectangle": true,
+      "placement_status": "unmoved target only; not installed or collision/silhouette certified",
+      "id": "blackstone-12"
+    }
+  ],
+  "scope_limits": [
+    "No positions have been nudged",
+    "No collision/visual clearance pass is claimed",
+    "Tile-plan clear-rectangle containment is informational; the plan has extra perimeter allowance and actual native wall geometry must govern conflicts",
+    "Canonical full node scenes referenced; no ore appearance or mining mechanics changed"
+  ],
+  "placements": [
+    {
+      "id": "blackstone-01",
+      "ore": "blackstone",
+      "room_id": "far_west_chamber",
+      "scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
+      "texture": "res://Assets/MapTiles/OreNodes/blackstone-full-south.png",
+      "requested_visible_center_world_xy": [
+        311.195914,
+        596.590634
+      ],
+      "rounded_target_root_world_xy": [
+        311,
+        621
+      ],
+      "root_world_xy": [
+        311,
+        621
+      ],
+      "visible_center_world_xy": [
+        311,
+        597
+      ],
+      "delta_world_xy": [
+        0,
+        0
+      ],
+      "moved": false,
+      "displacement_world_pixels": 0.0,
+      "initial_conflicts": [],
+      "correction_reasons": [],
+      "wall_art_checked": true,
+      "native_size": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        72
+      ],
+      "world_pixels_per_source_pixel": 1,
+      "approach_candidates": [
+        {
+          "world_xy": [
+            304,
+            656
+          ],
+          "distance_to_root": 35.693137,
+          "front": true
+        },
+        {
+          "world_xy": [
+            336,
+            656
+          ],
+          "distance_to_root": 43.011626,
+          "front": true
+        },
+        {
+          "world_xy": [
+            272,
+            656
+          ],
+          "distance_to_root": 52.40229,
+          "front": true
+        },
+        {
+          "world_xy": [
+            368,
+            656
+          ],
+          "distance_to_root": 66.887966,
+          "front": true
+        },
+        {
+          "world_xy": [
+            304,
+            688
+          ],
+          "distance_to_root": 67.364679,
+          "front": true
+        },
+        {
+          "world_xy": [
+            336,
+            688
+          ],
+          "distance_to_root": 71.512237,
+          "front": true
+        },
+        {
+          "world_xy": [
+            272,
+            688
+          ],
+          "distance_to_root": 77.52419,
+          "front": true
+        },
+        {
+          "world_xy": [
+            240,
+            656
+          ],
+          "distance_to_root": 79.15807,
+          "front": true
+        },
+        {
+          "world_xy": [
+            336,
+            592
+          ],
+          "distance_to_root": 38.288379,
+          "front": false
+        },
+        {
+          "world_xy": [
+            272,
+            624
+          ],
+          "distance_to_root": 39.115214,
+          "front": false
+        },
+        {
+          "world_xy": [
+            272,
+            592
+          ],
+          "distance_to_root": 48.600412,
+          "front": false
+        },
+        {
+          "world_xy": [
+            368,
+            624
+          ],
+          "distance_to_root": 57.078893,
+          "front": false
+        },
+        {
+          "world_xy": [
+            304,
+            560
+          ],
+          "distance_to_root": 61.400326,
+          "front": false
+        },
+        {
+          "world_xy": [
+            368,
+            592
+          ],
+          "distance_to_root": 63.953108,
+          "front": false
+        },
+        {
+          "world_xy": [
+            336,
+            560
+          ],
+          "distance_to_root": 65.924199,
+          "front": false
+        },
+        {
+          "world_xy": [
+            240,
+            624
+          ],
+          "distance_to_root": 71.063352,
+          "front": false
+        },
+        {
+          "world_xy": [
+            272,
+            560
+          ],
+          "distance_to_root": 72.401657,
+          "front": false
+        },
+        {
+          "world_xy": [
+            240,
+            592
+          ],
+          "distance_to_root": 76.694198,
+          "front": false
+        }
+      ],
+      "approach_world_xy": [
+        304,
+        656
+      ],
+      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "name": "Blackstone01",
+      "position": [
+        311,
+        621
+      ]
+    },
+    {
+      "id": "blackstone-02",
+      "ore": "blackstone",
+      "room_id": "far_west_chamber",
+      "scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
+      "texture": "res://Assets/MapTiles/OreNodes/blackstone-full-south.png",
+      "requested_visible_center_world_xy": [
+        791.511142,
+        596.84459
+      ],
+      "rounded_target_root_world_xy": [
+        792,
+        621
+      ],
+      "root_world_xy": [
+        792,
+        621
+      ],
+      "visible_center_world_xy": [
+        792,
+        597
+      ],
+      "delta_world_xy": [
+        0,
+        0
+      ],
+      "moved": false,
+      "displacement_world_pixels": 0.0,
+      "initial_conflicts": [],
+      "correction_reasons": [],
+      "wall_art_checked": true,
+      "native_size": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        72
+      ],
+      "world_pixels_per_source_pixel": 1,
+      "approach_candidates": [
+        {
+          "world_xy": [
+            784,
+            656
+          ],
+          "distance_to_root": 35.902646,
+          "front": true
+        },
+        {
+          "world_xy": [
+            816,
+            656
+          ],
+          "distance_to_root": 42.43819,
+          "front": true
+        },
+        {
+          "world_xy": [
+            752,
+            656
+          ],
+          "distance_to_root": 53.150729,
+          "front": true
+        },
+        {
+          "world_xy": [
+            848,
+            656
+          ],
+          "distance_to_root": 66.037868,
+          "front": true
+        },
+        {
+          "world_xy": [
+            784,
+            688
+          ],
+          "distance_to_root": 67.475922,
+          "front": true
+        },
+        {
+          "world_xy": [
+            816,
+            688
+          ],
+          "distance_to_root": 71.168813,
+          "front": true
+        },
+        {
+          "world_xy": [
+            752,
+            688
+          ],
+          "distance_to_root": 78.032045,
+          "front": true
+        },
+        {
+          "world_xy": [
+            816,
+            592
+          ],
+          "distance_to_root": 37.64306,
+          "front": false
+        },
+        {
+          "world_xy": [
+            752,
+            624
+          ],
+          "distance_to_root": 40.112342,
+          "front": false
+        },
+        {
+          "world_xy": [
+            752,
+            592
+          ],
+          "distance_to_root": 49.406477,
+          "front": false
+        },
+        {
+          "world_xy": [
+            848,
+            624
+          ],
+          "distance_to_root": 56.0803,
+          "front": false
+        },
+        {
+          "world_xy": [
+            784,
+            560
+          ],
+          "distance_to_root": 61.522354,
+          "front": false
+        },
+        {
+          "world_xy": [
+            848,
+            592
+          ],
+          "distance_to_root": 63.06346,
+          "front": false
+        },
+        {
+          "world_xy": [
+            816,
+            560
+          ],
+          "distance_to_root": 65.551506,
+          "front": false
+        },
+        {
+          "world_xy": [
+            720,
+            624
+          ],
+          "distance_to_root": 72.062473,
+          "front": false
+        },
+        {
+          "world_xy": [
+            752,
+            560
+          ],
+          "distance_to_root": 72.945185,
+          "front": false
+        },
+        {
+          "world_xy": [
+            720,
+            592
+          ],
+          "distance_to_root": 77.620873,
+          "front": false
+        }
+      ],
+      "approach_world_xy": [
+        784,
+        656
+      ],
+      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "name": "Blackstone02",
+      "position": [
+        792,
+        621
+      ]
+    },
+    {
+      "id": "mithril-01",
+      "ore": "mithril",
+      "room_id": "far_west_chamber",
+      "scene": "res://scenes/MapProps/OreNodes/MithrilOreFull.tscn",
+      "texture": "res://Assets/MapTiles/OreNodes/mithril-ore-full-south.png",
+      "requested_visible_center_world_xy": [
+        254.666534,
+        868.451356
+      ],
+      "rounded_target_root_world_xy": [
+        255,
+        892
+      ],
+      "root_world_xy": [
+        255,
+        892
+      ],
+      "visible_center_world_xy": [
+        255,
+        868
+      ],
+      "delta_world_xy": [
+        0,
+        0
+      ],
+      "moved": false,
+      "displacement_world_pixels": 0.0,
+      "initial_conflicts": [],
+      "correction_reasons": [],
+      "wall_art_checked": true,
+      "native_size": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        72
+      ],
+      "world_pixels_per_source_pixel": 1,
+      "approach_candidates": [
+        {
+          "world_xy": [
+            240,
+            912
+          ],
+          "distance_to_root": 25.0,
+          "front": true
+        },
+        {
+          "world_xy": [
+            272,
+            912
+          ],
+          "distance_to_root": 26.248809,
+          "front": true
+        },
+        {
+          "world_xy": [
+            208,
+            912
+          ],
+          "distance_to_root": 51.078371,
+          "front": true
+        },
+        {
+          "world_xy": [
+            304,
+            912
+          ],
+          "distance_to_root": 52.924474,
+          "front": true
+        },
+        {
+          "world_xy": [
+            240,
+            944
+          ],
+          "distance_to_root": 54.120237,
+          "front": true
+        },
+        {
+          "world_xy": [
+            272,
+            944
+          ],
+          "distance_to_root": 54.708317,
+          "front": true
+        },
+        {
+          "world_xy": [
+            208,
+            944
+          ],
+          "distance_to_root": 70.092796,
+          "front": true
+        },
+        {
+          "world_xy": [
+            304,
+            944
+          ],
+          "distance_to_root": 71.449283,
+          "front": true
+        },
+        {
+          "world_xy": [
+            240,
+            848
+          ],
+          "distance_to_root": 46.486557,
+          "front": false
+        },
+        {
+          "world_xy": [
+            272,
+            848
+          ],
+          "distance_to_root": 47.169906,
+          "front": false
+        },
+        {
+          "world_xy": [
+            208,
+            880
+          ],
+          "distance_to_root": 48.507731,
+          "front": false
+        },
+        {
+          "world_xy": [
+            304,
+            880
+          ],
+          "distance_to_root": 50.447993,
+          "front": false
+        },
+        {
+          "world_xy": [
+            208,
+            848
+          ],
+          "distance_to_root": 64.381674,
+          "front": false
+        },
+        {
+          "world_xy": [
+            304,
+            848
+          ],
+          "distance_to_root": 65.855903,
+          "front": false
+        },
+        {
+          "world_xy": [
+            240,
+            816
+          ],
+          "distance_to_root": 77.466122,
+          "front": false
+        },
+        {
+          "world_xy": [
+            272,
+            816
+          ],
+          "distance_to_root": 77.87811,
+          "front": false
+        },
+        {
+          "world_xy": [
+            176,
+            880
+          ],
+          "distance_to_root": 79.906195,
+          "front": false
+        }
+      ],
+      "approach_world_xy": [
+        240,
+        912
+      ],
+      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "name": "Mithril01",
+      "position": [
+        255,
+        892
+      ]
+    },
+    {
+      "id": "mithril-02",
+      "ore": "mithril",
+      "room_id": "far_west_chamber",
+      "scene": "res://scenes/MapProps/OreNodes/MithrilOreFull.tscn",
+      "texture": "res://Assets/MapTiles/OreNodes/mithril-ore-full-south.png",
+      "requested_visible_center_world_xy": [
+        381.410113,
+        981.608407
+      ],
+      "rounded_target_root_world_xy": [
+        381,
+        1006
+      ],
+      "root_world_xy": [
+        381,
+        1006
+      ],
+      "visible_center_world_xy": [
+        381,
+        982
+      ],
+      "delta_world_xy": [
+        0,
+        0
+      ],
+      "moved": false,
+      "displacement_world_pixels": 0.0,
+      "initial_conflicts": [],
+      "correction_reasons": [],
+      "wall_art_checked": true,
+      "native_size": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        72
+      ],
+      "world_pixels_per_source_pixel": 1,
+      "approach_candidates": [
+        {
+          "world_xy": [
+            368,
+            1040
+          ],
+          "distance_to_root": 36.400549,
+          "front": true
+        },
+        {
+          "world_xy": [
+            400,
+            1040
+          ],
+          "distance_to_root": 38.948684,
+          "front": true
+        },
+        {
+          "world_xy": [
+            336,
+            1040
+          ],
+          "distance_to_root": 56.400355,
+          "front": true
+        },
+        {
+          "world_xy": [
+            432,
+            1040
+          ],
+          "distance_to_root": 61.294372,
+          "front": true
+        },
+        {
+          "world_xy": [
+            368,
+            1072
+          ],
+          "distance_to_root": 67.26812,
+          "front": true
+        },
+        {
+          "world_xy": [
+            400,
+            1072
+          ],
+          "distance_to_root": 68.680419,
+          "front": true
+        },
+        {
+          "world_xy": [
+            336,
+            1072
+          ],
+          "distance_to_root": 79.881162,
+          "front": true
+        },
+        {
+          "world_xy": [
+            400,
+            976
+          ],
+          "distance_to_root": 35.510562,
+          "front": false
+        },
+        {
+          "world_xy": [
+            336,
+            1008
+          ],
+          "distance_to_root": 45.044423,
+          "front": false
+        },
+        {
+          "world_xy": [
+            432,
+            1008
+          ],
+          "distance_to_root": 51.039201,
+          "front": false
+        },
+        {
+          "world_xy": [
+            336,
+            976
+          ],
+          "distance_to_root": 54.083269,
+          "front": false
+        },
+        {
+          "world_xy": [
+            432,
+            976
+          ],
+          "distance_to_root": 59.169249,
+          "front": false
+        },
+        {
+          "world_xy": [
+            368,
+            944
+          ],
+          "distance_to_root": 63.348244,
+          "front": false
+        },
+        {
+          "world_xy": [
+            400,
+            944
+          ],
+          "distance_to_root": 64.845971,
+          "front": false
+        },
+        {
+          "world_xy": [
+            336,
+            944
+          ],
+          "distance_to_root": 76.609399,
+          "front": false
+        },
+        {
+          "world_xy": [
+            304,
+            1008
+          ],
+          "distance_to_root": 77.02597,
+          "front": false
+        }
+      ],
+      "approach_world_xy": [
+        368,
+        1040
+      ],
+      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "name": "Mithril02",
+      "position": [
+        381,
+        1006
+      ]
+    },
+    {
+      "id": "adamantite-01",
+      "ore": "adamantite",
+      "room_id": "far_west_chamber",
+      "scene": "res://scenes/MapProps/OreNodes/AdamantiteOreFull.tscn",
+      "texture": "res://Assets/MapTiles/OreNodes/adamantite-ore-full-south.png",
+      "requested_visible_center_world_xy": [
+        672.497799,
+        994.255885
+      ],
+      "rounded_target_root_world_xy": [
+        672,
+        1018
+      ],
+      "root_world_xy": [
+        672,
+        1018
+      ],
+      "visible_center_world_xy": [
+        672,
+        994
+      ],
+      "delta_world_xy": [
+        0,
+        0
+      ],
+      "moved": false,
+      "displacement_world_pixels": 0.0,
+      "initial_conflicts": [],
+      "correction_reasons": [],
+      "wall_art_checked": true,
+      "native_size": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        72
+      ],
+      "world_pixels_per_source_pixel": 1,
+      "approach_candidates": [
+        {
+          "world_xy": [
+            656,
+            1040
+          ],
+          "distance_to_root": 27.202941,
+          "front": true
+        },
+        {
+          "world_xy": [
+            688,
+            1040
+          ],
+          "distance_to_root": 27.202941,
+          "front": true
+        },
+        {
+          "world_xy": [
+            624,
+            1040
+          ],
+          "distance_to_root": 52.801515,
+          "front": true
+        },
+        {
+          "world_xy": [
+            720,
+            1040
+          ],
+          "distance_to_root": 52.801515,
+          "front": true
+        },
+        {
+          "world_xy": [
+            656,
+            1072
+          ],
+          "distance_to_root": 56.320511,
+          "front": true
+        },
+        {
+          "world_xy": [
+            688,
+            1072
+          ],
+          "distance_to_root": 56.320511,
+          "front": true
+        },
+        {
+          "world_xy": [
+            624,
+            1072
+          ],
+          "distance_to_root": 72.249567,
+          "front": true
+        },
+        {
+          "world_xy": [
+            720,
+            1072
+          ],
+          "distance_to_root": 72.249567,
+          "front": true
+        },
+        {
+          "world_xy": [
+            656,
+            976
+          ],
+          "distance_to_root": 44.94441,
+          "front": false
+        },
+        {
+          "world_xy": [
+            688,
+            976
+          ],
+          "distance_to_root": 44.94441,
+          "front": false
+        },
+        {
+          "world_xy": [
+            624,
+            1008
+          ],
+          "distance_to_root": 49.030603,
+          "front": false
+        },
+        {
+          "world_xy": [
+            720,
+            1008
+          ],
+          "distance_to_root": 49.030603,
+          "front": false
+        },
+        {
+          "world_xy": [
+            624,
+            976
+          ],
+          "distance_to_root": 63.780875,
+          "front": false
+        },
+        {
+          "world_xy": [
+            720,
+            976
+          ],
+          "distance_to_root": 63.780875,
+          "front": false
+        },
+        {
+          "world_xy": [
+            656,
+            944
+          ],
+          "distance_to_root": 75.709973,
+          "front": false
+        },
+        {
+          "world_xy": [
+            688,
+            944
+          ],
+          "distance_to_root": 75.709973,
+          "front": false
+        }
+      ],
+      "approach_world_xy": [
+        656,
+        1040
+      ],
+      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "name": "Adamantite01",
+      "position": [
+        672,
+        1018
+      ]
+    },
+    {
+      "id": "blackstone-03",
+      "ore": "blackstone",
+      "room_id": "upper_west_gallery",
+      "scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
+      "texture": "res://Assets/MapTiles/OreNodes/blackstone-full-south.png",
+      "requested_visible_center_world_xy": [
+        2924.87153,
+        278.531675
+      ],
+      "rounded_target_root_world_xy": [
+        2925,
+        303
+      ],
+      "root_world_xy": [
+        2925,
+        303
+      ],
+      "visible_center_world_xy": [
+        2925,
+        279
+      ],
+      "delta_world_xy": [
+        0,
+        0
+      ],
+      "moved": false,
+      "displacement_world_pixels": 0.0,
+      "initial_conflicts": [],
+      "correction_reasons": [],
+      "wall_art_checked": true,
+      "native_size": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        72
+      ],
+      "world_pixels_per_source_pixel": 1,
+      "approach_candidates": [
+        {
+          "world_xy": [
+            2928,
+            336
+          ],
+          "distance_to_root": 33.136083,
+          "front": true
+        },
+        {
+          "world_xy": [
+            2896,
+            336
+          ],
+          "distance_to_root": 43.931765,
+          "front": true
+        },
+        {
+          "world_xy": [
+            2960,
+            336
+          ],
+          "distance_to_root": 48.104054,
+          "front": true
+        },
+        {
+          "world_xy": [
+            2928,
+            368
+          ],
+          "distance_to_root": 65.069194,
+          "front": true
+        },
+        {
+          "world_xy": [
+            2864,
+            336
+          ],
+          "distance_to_root": 69.354164,
+          "front": true
+        },
+        {
+          "world_xy": [
+            2960,
+            368
+          ],
+          "distance_to_root": 73.824115,
+          "front": true
+        },
+        {
+          "world_xy": [
+            2992,
+            336
+          ],
+          "distance_to_root": 74.686009,
+          "front": true
+        },
+        {
+          "world_xy": [
+            2960,
+            272
+          ],
+          "distance_to_root": 46.754679,
+          "front": false
+        },
+        {
+          "world_xy": [
+            2864,
+            304
+          ],
+          "distance_to_root": 61.008196,
+          "front": false
+        },
+        {
+          "world_xy": [
+            2928,
+            240
+          ],
+          "distance_to_root": 63.071388,
+          "front": false
+        },
+        {
+          "world_xy": [
+            2992,
+            304
+          ],
+          "distance_to_root": 67.007462,
+          "front": false
+        },
+        {
+          "world_xy": [
+            2864,
+            272
+          ],
+          "distance_to_root": 68.425142,
+          "front": false
+        },
+        {
+          "world_xy": [
+            2896,
+            240
+          ],
+          "distance_to_root": 69.354164,
+          "front": false
+        },
+        {
+          "world_xy": [
+            2960,
+            240
+          ],
+          "distance_to_root": 72.069411,
+          "front": false
+        },
+        {
+          "world_xy": [
+            2992,
+            272
+          ],
+          "distance_to_root": 73.824115,
+          "front": false
+        }
+      ],
+      "approach_world_xy": [
+        2928,
+        336
+      ],
+      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "name": "Blackstone03",
+      "position": [
+        2925,
+        303
+      ]
+    },
+    {
+      "id": "blackstone-04",
+      "ore": "blackstone",
+      "room_id": "upper_west_gallery",
+      "scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
+      "texture": "res://Assets/MapTiles/OreNodes/blackstone-full-south.png",
+      "requested_visible_center_world_xy": [
+        3305.364097,
+        278.578171
+      ],
+      "rounded_target_root_world_xy": [
+        3305,
+        303
+      ],
+      "root_world_xy": [
+        3305,
+        303
+      ],
+      "visible_center_world_xy": [
+        3305,
+        279
+      ],
+      "delta_world_xy": [
+        0,
+        0
+      ],
+      "moved": false,
+      "displacement_world_pixels": 0.0,
+      "initial_conflicts": [],
+      "correction_reasons": [],
+      "wall_art_checked": true,
+      "native_size": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        72
+      ],
+      "world_pixels_per_source_pixel": 1,
+      "approach_candidates": [
+        {
+          "world_xy": [
+            3312,
+            336
+          ],
+          "distance_to_root": 33.734256,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3280,
+            336
+          ],
+          "distance_to_root": 41.400483,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3344,
+            336
+          ],
+          "distance_to_root": 51.088159,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3312,
+            368
+          ],
+          "distance_to_root": 65.375837,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3248,
+            336
+          ],
+          "distance_to_root": 65.863495,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3280,
+            368
+          ],
+          "distance_to_root": 69.641941,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3344,
+            368
+          ],
+          "distance_to_root": 75.802375,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3376,
+            336
+          ],
+          "distance_to_root": 78.294317,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3344,
+            272
+          ],
+          "distance_to_root": 49.819675,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3248,
+            304
+          ],
+          "distance_to_root": 57.008771,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3312,
+            240
+          ],
+          "distance_to_root": 63.387696,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3248,
+            272
+          ],
+          "distance_to_root": 64.884513,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3280,
+            240
+          ],
+          "distance_to_root": 67.779053,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3376,
+            304
+          ],
+          "distance_to_root": 71.007042,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3344,
+            240
+          ],
+          "distance_to_root": 74.094534,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3376,
+            272
+          ],
+          "distance_to_root": 77.472576,
+          "front": false
+        }
+      ],
+      "approach_world_xy": [
+        3312,
+        336
+      ],
+      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "name": "Blackstone04",
+      "position": [
+        3305,
+        303
+      ]
+    },
+    {
+      "id": "blackstone-05",
+      "ore": "blackstone",
+      "room_id": "upper_west_gallery",
+      "scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
+      "texture": "res://Assets/MapTiles/OreNodes/blackstone-full-south.png",
+      "requested_visible_center_world_xy": [
+        2887.026375,
+        367.394794
+      ],
+      "rounded_target_root_world_xy": [
+        2887,
+        391
+      ],
+      "root_world_xy": [
+        2887,
+        391
+      ],
+      "visible_center_world_xy": [
+        2887,
+        367
+      ],
+      "delta_world_xy": [
+        0,
+        0
+      ],
+      "moved": false,
+      "displacement_world_pixels": 0.0,
+      "initial_conflicts": [],
+      "correction_reasons": [],
+      "wall_art_checked": true,
+      "native_size": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        72
+      ],
+      "world_pixels_per_source_pixel": 1,
+      "approach_candidates": [
+        {
+          "world_xy": [
+            2896,
+            432
+          ],
+          "distance_to_root": 41.976184,
+          "front": true
+        },
+        {
+          "world_xy": [
+            2864,
+            432
+          ],
+          "distance_to_root": 47.010637,
+          "front": true
+        },
+        {
+          "world_xy": [
+            2928,
+            432
+          ],
+          "distance_to_root": 57.982756,
+          "front": true
+        },
+        {
+          "world_xy": [
+            2832,
+            432
+          ],
+          "distance_to_root": 68.600292,
+          "front": true
+        },
+        {
+          "world_xy": [
+            2896,
+            464
+          ],
+          "distance_to_root": 73.552702,
+          "front": true
+        },
+        {
+          "world_xy": [
+            2864,
+            464
+          ],
+          "distance_to_root": 76.537572,
+          "front": true
+        },
+        {
+          "world_xy": [
+            2864,
+            400
+          ],
+          "distance_to_root": 24.698178,
+          "front": false
+        },
+        {
+          "world_xy": [
+            2928,
+            400
+          ],
+          "distance_to_root": 41.976184,
+          "front": false
+        },
+        {
+          "world_xy": [
+            2928,
+            368
+          ],
+          "distance_to_root": 47.010637,
+          "front": false
+        },
+        {
+          "world_xy": [
+            2896,
+            336
+          ],
+          "distance_to_root": 55.731499,
+          "front": false
+        },
+        {
+          "world_xy": [
+            2832,
+            400
+          ],
+          "distance_to_root": 55.731499,
+          "front": false
+        },
+        {
+          "world_xy": [
+            2864,
+            336
+          ],
+          "distance_to_root": 59.615434,
+          "front": false
+        },
+        {
+          "world_xy": [
+            2832,
+            368
+          ],
+          "distance_to_root": 59.615434,
+          "front": false
+        },
+        {
+          "world_xy": [
+            2928,
+            336
+          ],
+          "distance_to_root": 68.600292,
+          "front": false
+        },
+        {
+          "world_xy": [
+            2960,
+            400
+          ],
+          "distance_to_root": 73.552702,
+          "front": false
+        },
+        {
+          "world_xy": [
+            2960,
+            368
+          ],
+          "distance_to_root": 76.537572,
+          "front": false
+        },
+        {
+          "world_xy": [
+            2832,
+            336
+          ],
+          "distance_to_root": 77.781746,
+          "front": false
+        }
+      ],
+      "approach_world_xy": [
+        2896,
+        432
+      ],
+      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "name": "Blackstone05",
+      "position": [
+        2887,
+        391
+      ]
+    },
+    {
+      "id": "coal-01",
+      "ore": "coal",
+      "room_id": "upper_east_chamber",
+      "scene": "res://scenes/MapProps/OreNodes/CoalFull.tscn",
+      "texture": "res://Assets/MapTiles/OreNodes/coal-full-south.png",
+      "requested_visible_center_world_xy": [
+        4152.602312,
+        280.723937
+      ],
+      "rounded_target_root_world_xy": [
+        4153,
+        305
+      ],
+      "root_world_xy": [
+        4153,
+        305
+      ],
+      "visible_center_world_xy": [
+        4153,
+        281
+      ],
+      "delta_world_xy": [
+        0,
+        0
+      ],
+      "moved": false,
+      "displacement_world_pixels": 0.0,
+      "initial_conflicts": [],
+      "correction_reasons": [],
+      "wall_art_checked": true,
+      "native_size": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        72
+      ],
+      "world_pixels_per_source_pixel": 1,
+      "approach_candidates": [
+        {
+          "world_xy": [
+            4144,
+            336
+          ],
+          "distance_to_root": 32.280025,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4176,
+            336
+          ],
+          "distance_to_root": 38.600518,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4112,
+            336
+          ],
+          "distance_to_root": 51.400389,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4208,
+            336
+          ],
+          "distance_to_root": 63.134776,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4144,
+            368
+          ],
+          "distance_to_root": 63.63961,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4176,
+            368
+          ],
+          "distance_to_root": 67.067131,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4112,
+            368
+          ],
+          "distance_to_root": 75.166482,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4080,
+            336
+          ],
+          "distance_to_root": 79.30952,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4176,
+            272
+          ],
+          "distance_to_root": 40.224371,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4112,
+            304
+          ],
+          "distance_to_root": 41.012193,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4112,
+            272
+          ],
+          "distance_to_root": 52.630789,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4208,
+            304
+          ],
+          "distance_to_root": 55.00909,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4208,
+            272
+          ],
+          "distance_to_root": 64.140471,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4144,
+            240
+          ],
+          "distance_to_root": 65.620119,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4176,
+            240
+          ],
+          "distance_to_root": 68.949257,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4080,
+            304
+          ],
+          "distance_to_root": 73.006849,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4112,
+            240
+          ],
+          "distance_to_root": 76.850504,
+          "front": false
+        }
+      ],
+      "approach_world_xy": [
+        4144,
+        336
+      ],
+      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "name": "Coal01",
+      "position": [
+        4153,
+        305
+      ]
+    },
+    {
+      "id": "coal-02",
+      "ore": "coal",
+      "room_id": "upper_east_chamber",
+      "scene": "res://scenes/MapProps/OreNodes/CoalFull.tscn",
+      "texture": "res://Assets/MapTiles/OreNodes/coal-full-south.png",
+      "requested_visible_center_world_xy": [
+        4301.687921,
+        312.398283
+      ],
+      "rounded_target_root_world_xy": [
+        4302,
+        336
+      ],
+      "root_world_xy": [
+        4302,
+        336
+      ],
+      "visible_center_world_xy": [
+        4302,
+        312
+      ],
+      "delta_world_xy": [
+        0,
+        0
+      ],
+      "moved": false,
+      "displacement_world_pixels": 0.0,
+      "initial_conflicts": [],
+      "correction_reasons": [],
+      "wall_art_checked": true,
+      "native_size": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        72
+      ],
+      "world_pixels_per_source_pixel": 1,
+      "approach_candidates": [
+        {
+          "world_xy": [
+            4304,
+            368
+          ],
+          "distance_to_root": 32.062439,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4272,
+            368
+          ],
+          "distance_to_root": 43.863424,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4336,
+            368
+          ],
+          "distance_to_root": 46.69047,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4304,
+            400
+          ],
+          "distance_to_root": 64.031242,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4240,
+            368
+          ],
+          "distance_to_root": 69.771054,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4272,
+            400
+          ],
+          "distance_to_root": 70.682388,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4336,
+            400
+          ],
+          "distance_to_root": 72.470684,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4336,
+            304
+          ],
+          "distance_to_root": 46.69047,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4240,
+            336
+          ],
+          "distance_to_root": 62.0,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4304,
+            272
+          ],
+          "distance_to_root": 64.031242,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4240,
+            304
+          ],
+          "distance_to_root": 69.771054,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4272,
+            272
+          ],
+          "distance_to_root": 70.682388,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4336,
+            272
+          ],
+          "distance_to_root": 72.470684,
+          "front": false
+        }
+      ],
+      "approach_world_xy": [
+        4304,
+        368
+      ],
+      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "name": "Coal02",
+      "position": [
+        4302,
+        336
+      ]
+    },
+    {
+      "id": "coal-03",
+      "ore": "coal",
+      "room_id": "upper_east_chamber",
+      "scene": "res://scenes/MapProps/OreNodes/CoalFull.tscn",
+      "texture": "res://Assets/MapTiles/OreNodes/coal-full-south.png",
+      "requested_visible_center_world_xy": [
+        3767.353194,
+        320.314837
+      ],
+      "rounded_target_root_world_xy": [
+        3767,
+        344
+      ],
+      "root_world_xy": [
+        3767,
+        344
+      ],
+      "visible_center_world_xy": [
+        3767,
+        320
+      ],
+      "delta_world_xy": [
+        0,
+        0
+      ],
+      "moved": false,
+      "displacement_world_pixels": 0.0,
+      "initial_conflicts": [],
+      "correction_reasons": [],
+      "wall_art_checked": true,
+      "native_size": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        72
+      ],
+      "world_pixels_per_source_pixel": 1,
+      "approach_candidates": [
+        {
+          "world_xy": [
+            3760,
+            368
+          ],
+          "distance_to_root": 25.0,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3792,
+            368
+          ],
+          "distance_to_root": 34.655447,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3728,
+            368
+          ],
+          "distance_to_root": 45.793013,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3760,
+            400
+          ],
+          "distance_to_root": 56.435804,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3792,
+            400
+          ],
+          "distance_to_root": 61.326992,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3824,
+            368
+          ],
+          "distance_to_root": 61.846584,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3728,
+            400
+          ],
+          "distance_to_root": 68.242216,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3696,
+            368
+          ],
+          "distance_to_root": 74.946648,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3824,
+            400
+          ],
+          "distance_to_root": 79.906195,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3760,
+            304
+          ],
+          "distance_to_root": 40.607881,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3792,
+            304
+          ],
+          "distance_to_root": 47.169906,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3728,
+            304
+          ],
+          "distance_to_root": 55.865911,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3824,
+            336
+          ],
+          "distance_to_root": 57.558666,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3824,
+            304
+          ],
+          "distance_to_root": 69.634761,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3696,
+            336
+          ],
+          "distance_to_root": 71.449283,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3760,
+            272
+          ],
+          "distance_to_root": 72.339477,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3792,
+            272
+          ],
+          "distance_to_root": 76.216796,
+          "front": false
+        }
+      ],
+      "approach_world_xy": [
+        3760,
+        368
+      ],
+      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "name": "Coal03",
+      "position": [
+        3767,
+        344
+      ]
+    },
+    {
+      "id": "coal-04",
+      "ore": "coal",
+      "room_id": "upper_east_chamber",
+      "scene": "res://scenes/MapProps/OreNodes/CoalFull.tscn",
+      "texture": "res://Assets/MapTiles/OreNodes/coal-full-south.png",
+      "requested_visible_center_world_xy": [
+        3743.762469,
+        594.344891
+      ],
+      "rounded_target_root_world_xy": [
+        3744,
+        618
+      ],
+      "root_world_xy": [
+        3744,
+        618
+      ],
+      "visible_center_world_xy": [
+        3744,
+        594
+      ],
+      "delta_world_xy": [
+        0,
+        0
+      ],
+      "moved": false,
+      "displacement_world_pixels": 0.0,
+      "initial_conflicts": [],
+      "correction_reasons": [],
+      "wall_art_checked": true,
+      "native_size": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        72
+      ],
+      "world_pixels_per_source_pixel": 1,
+      "approach_candidates": [
+        {
+          "world_xy": [
+            3728,
+            656
+          ],
+          "distance_to_root": 41.231056,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3760,
+            656
+          ],
+          "distance_to_root": 41.231056,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3696,
+            656
+          ],
+          "distance_to_root": 61.220911,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3792,
+            656
+          ],
+          "distance_to_root": 61.220911,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3728,
+            688
+          ],
+          "distance_to_root": 71.805292,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3760,
+            688
+          ],
+          "distance_to_root": 71.805292,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3696,
+            624
+          ],
+          "distance_to_root": 48.373546,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3792,
+            624
+          ],
+          "distance_to_root": 48.373546,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3696,
+            592
+          ],
+          "distance_to_root": 54.589376,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3792,
+            592
+          ],
+          "distance_to_root": 54.589376,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3728,
+            560
+          ],
+          "distance_to_root": 60.166436,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3760,
+            560
+          ],
+          "distance_to_root": 60.166436,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3696,
+            560
+          ],
+          "distance_to_root": 75.286121,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3792,
+            560
+          ],
+          "distance_to_root": 75.286121,
+          "front": false
+        }
+      ],
+      "approach_world_xy": [
+        3728,
+        656
+      ],
+      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "name": "Coal04",
+      "position": [
+        3744,
+        618
+      ]
+    },
+    {
+      "id": "coal-05",
+      "ore": "coal",
+      "room_id": "upper_east_chamber",
+      "scene": "res://scenes/MapProps/OreNodes/CoalFull.tscn",
+      "texture": "res://Assets/MapTiles/OreNodes/coal-full-south.png",
+      "requested_visible_center_world_xy": [
+        4201.655303,
+        615.844285
+      ],
+      "rounded_target_root_world_xy": [
+        4202,
+        640
+      ],
+      "root_world_xy": [
+        4202,
+        640
+      ],
+      "visible_center_world_xy": [
+        4202,
+        616
+      ],
+      "delta_world_xy": [
+        0,
+        0
+      ],
+      "moved": false,
+      "displacement_world_pixels": 0.0,
+      "initial_conflicts": [],
+      "correction_reasons": [],
+      "wall_art_checked": true,
+      "native_size": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        72
+      ],
+      "world_pixels_per_source_pixel": 1,
+      "approach_candidates": [
+        {
+          "world_xy": [
+            4176,
+            656
+          ],
+          "distance_to_root": 30.528675,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4240,
+            656
+          ],
+          "distance_to_root": 41.231056,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4208,
+            688
+          ],
+          "distance_to_root": 48.373546,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4176,
+            688
+          ],
+          "distance_to_root": 54.589376,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4144,
+            656
+          ],
+          "distance_to_root": 60.166436,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4240,
+            688
+          ],
+          "distance_to_root": 61.220911,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4272,
+            656
+          ],
+          "distance_to_root": 71.805292,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4144,
+            688
+          ],
+          "distance_to_root": 75.286121,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4208,
+            592
+          ],
+          "distance_to_root": 48.373546,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4176,
+            592
+          ],
+          "distance_to_root": 54.589376,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4144,
+            624
+          ],
+          "distance_to_root": 60.166436,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4240,
+            592
+          ],
+          "distance_to_root": 61.220911,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4272,
+            624
+          ],
+          "distance_to_root": 71.805292,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4144,
+            592
+          ],
+          "distance_to_root": 75.286121,
+          "front": false
+        }
+      ],
+      "approach_world_xy": [
+        4176,
+        656
+      ],
+      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "name": "Coal05",
+      "position": [
+        4202,
+        640
+      ]
+    },
+    {
+      "id": "coal-06",
+      "ore": "coal",
+      "room_id": "east_upper_chamber",
+      "scene": "res://scenes/MapProps/OreNodes/CoalFull.tscn",
+      "texture": "res://Assets/MapTiles/OreNodes/coal-full-south.png",
+      "requested_visible_center_world_xy": [
+        5609.416765,
+        412.493224
+      ],
+      "rounded_target_root_world_xy": [
+        5609,
+        436
+      ],
+      "root_world_xy": [
+        5609,
+        436
+      ],
+      "visible_center_world_xy": [
+        5609,
+        412
+      ],
+      "delta_world_xy": [
+        0,
+        0
+      ],
+      "moved": false,
+      "displacement_world_pixels": 0.0,
+      "initial_conflicts": [],
+      "correction_reasons": [],
+      "wall_art_checked": true,
+      "native_size": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        72
+      ],
+      "world_pixels_per_source_pixel": 1,
+      "approach_candidates": [
+        {
+          "world_xy": [
+            5616,
+            464
+          ],
+          "distance_to_root": 28.861739,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5584,
+            464
+          ],
+          "distance_to_root": 37.536649,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5648,
+            464
+          ],
+          "distance_to_root": 48.010416,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5616,
+            496
+          ],
+          "distance_to_root": 60.406953,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5552,
+            464
+          ],
+          "distance_to_root": 63.505905,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5584,
+            496
+          ],
+          "distance_to_root": 65.0,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5648,
+            496
+          ],
+          "distance_to_root": 71.561163,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5680,
+            464
+          ],
+          "distance_to_root": 76.321688,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5648,
+            400
+          ],
+          "distance_to_root": 53.075418,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5552,
+            432
+          ],
+          "distance_to_root": 57.140179,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5552,
+            400
+          ],
+          "distance_to_root": 67.416615,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5616,
+            368
+          ],
+          "distance_to_root": 68.359345,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5680,
+            432
+          ],
+          "distance_to_root": 71.112587,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5584,
+            368
+          ],
+          "distance_to_root": 72.449983,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5648,
+            368
+          ],
+          "distance_to_root": 78.39005,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5680,
+            400
+          ],
+          "distance_to_root": 79.605276,
+          "front": false
+        }
+      ],
+      "approach_world_xy": [
+        5616,
+        464
+      ],
+      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "name": "Coal06",
+      "position": [
+        5609,
+        436
+      ]
+    },
+    {
+      "id": "iron-01",
+      "ore": "iron",
+      "room_id": "east_upper_chamber",
+      "scene": "res://scenes/MapProps/OreNodes/IronOreFull.tscn",
+      "texture": "res://Assets/MapTiles/OreNodes/iron-ore-full-south.png",
+      "requested_visible_center_world_xy": [
+        5859.262809,
+        413.414092
+      ],
+      "rounded_target_root_world_xy": [
+        5859,
+        437
+      ],
+      "root_world_xy": [
+        5859,
+        437
+      ],
+      "visible_center_world_xy": [
+        5859,
+        413
+      ],
+      "delta_world_xy": [
+        0,
+        0
+      ],
+      "moved": false,
+      "displacement_world_pixels": 0.0,
+      "initial_conflicts": [],
+      "correction_reasons": [],
+      "wall_art_checked": true,
+      "native_size": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        72
+      ],
+      "world_pixels_per_source_pixel": 1,
+      "approach_candidates": [
+        {
+          "world_xy": [
+            5872,
+            464
+          ],
+          "distance_to_root": 29.966648,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5840,
+            464
+          ],
+          "distance_to_root": 33.015148,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5904,
+            464
+          ],
+          "distance_to_root": 52.478567,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5808,
+            464
+          ],
+          "distance_to_root": 57.706152,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5840,
+            496
+          ],
+          "distance_to_root": 61.983869,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5808,
+            496
+          ],
+          "distance_to_root": 77.987178,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5872,
+            400
+          ],
+          "distance_to_root": 39.217343,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5904,
+            432
+          ],
+          "distance_to_root": 45.276926,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5808,
+            432
+          ],
+          "distance_to_root": 51.244512,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5904,
+            400
+          ],
+          "distance_to_root": 58.258047,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5808,
+            400
+          ],
+          "distance_to_root": 63.007936,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5872,
+            368
+          ],
+          "distance_to_root": 70.213959,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5840,
+            368
+          ],
+          "distance_to_root": 71.568149,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5936,
+            432
+          ],
+          "distance_to_root": 77.162167,
+          "front": false
+        }
+      ],
+      "approach_world_xy": [
+        5872,
+        464
+      ],
+      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "name": "Iron01",
+      "position": [
+        5859,
+        437
+      ]
+    },
+    {
+      "id": "iron-02",
+      "ore": "iron",
+      "room_id": "east_upper_chamber",
+      "scene": "res://scenes/MapProps/OreNodes/IronOreFull.tscn",
+      "texture": "res://Assets/MapTiles/OreNodes/iron-ore-full-south.png",
+      "requested_visible_center_world_xy": [
+        5910.173778,
+        489.998559
+      ],
+      "rounded_target_root_world_xy": [
+        5910,
+        514
+      ],
+      "root_world_xy": [
+        5910,
+        514
+      ],
+      "visible_center_world_xy": [
+        5910,
+        490
+      ],
+      "delta_world_xy": [
+        0,
+        0
+      ],
+      "moved": false,
+      "displacement_world_pixels": 0.0,
+      "initial_conflicts": [],
+      "correction_reasons": [],
+      "wall_art_checked": true,
+      "native_size": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        72
+      ],
+      "world_pixels_per_source_pixel": 1,
+      "approach_candidates": [
+        {
+          "world_xy": [
+            5904,
+            560
+          ],
+          "distance_to_root": 46.389654,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5936,
+            560
+          ],
+          "distance_to_root": 52.839379,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5872,
+            560
+          ],
+          "distance_to_root": 59.665736,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5968,
+            560
+          ],
+          "distance_to_root": 74.027022,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5904,
+            592
+          ],
+          "distance_to_root": 78.230429,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5904,
+            528
+          ],
+          "distance_to_root": 15.231546,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5872,
+            528
+          ],
+          "distance_to_root": 40.496913,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5904,
+            464
+          ],
+          "distance_to_root": 50.358713,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5936,
+            464
+          ],
+          "distance_to_root": 56.356011,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5968,
+            528
+          ],
+          "distance_to_root": 59.665736,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5968,
+            496
+          ],
+          "distance_to_root": 60.728906,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5872,
+            464
+          ],
+          "distance_to_root": 62.801274,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5840,
+            528
+          ],
+          "distance_to_root": 71.386273,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5840,
+            496
+          ],
+          "distance_to_root": 72.277244,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5968,
+            464
+          ],
+          "distance_to_root": 76.576759,
+          "front": false
+        }
+      ],
+      "approach_world_xy": [
+        5904,
+        560
+      ],
+      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "name": "Iron02",
+      "position": [
+        5910,
+        514
+      ]
+    },
+    {
+      "id": "coal-07",
+      "ore": "coal",
+      "room_id": "east_upper_chamber",
+      "scene": "res://scenes/MapProps/OreNodes/CoalFull.tscn",
+      "texture": "res://Assets/MapTiles/OreNodes/coal-full-south.png",
+      "requested_visible_center_world_xy": [
+        5507.267283,
+        493.075364
+      ],
+      "rounded_target_root_world_xy": [
+        5507,
+        517
+      ],
+      "root_world_xy": [
+        5507,
+        517
+      ],
+      "visible_center_world_xy": [
+        5507,
+        493
+      ],
+      "delta_world_xy": [
+        0,
+        0
+      ],
+      "moved": false,
+      "displacement_world_pixels": 0.0,
+      "initial_conflicts": [],
+      "correction_reasons": [],
+      "wall_art_checked": true,
+      "native_size": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        72
+      ],
+      "world_pixels_per_source_pixel": 1,
+      "approach_candidates": [
+        {
+          "world_xy": [
+            5520,
+            560
+          ],
+          "distance_to_root": 44.922155,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5488,
+            560
+          ],
+          "distance_to_root": 47.010637,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5552,
+            560
+          ],
+          "distance_to_root": 62.241465,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5456,
+            560
+          ],
+          "distance_to_root": 66.70832,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5520,
+            592
+          ],
+          "distance_to_root": 76.118329,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5488,
+            592
+          ],
+          "distance_to_root": 77.369245,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5488,
+            528
+          ],
+          "distance_to_root": 21.954498,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5552,
+            528
+          ],
+          "distance_to_root": 46.324939,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5552,
+            496
+          ],
+          "distance_to_root": 49.658836,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5456,
+            528
+          ],
+          "distance_to_root": 52.17279,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5520,
+            464
+          ],
+          "distance_to_root": 54.571055,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5456,
+            496
+          ],
+          "distance_to_root": 55.154329,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5488,
+            464
+          ],
+          "distance_to_root": 56.302753,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5552,
+            464
+          ],
+          "distance_to_root": 69.526973,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5456,
+            464
+          ],
+          "distance_to_root": 73.552702,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5584,
+            528
+          ],
+          "distance_to_root": 77.781746,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5584,
+            496
+          ],
+          "distance_to_root": 79.81228,
+          "front": false
+        }
+      ],
+      "approach_world_xy": [
+        5520,
+        560
+      ],
+      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "name": "Coal07",
+      "position": [
+        5507,
+        517
+      ]
+    },
+    {
+      "id": "iron-03",
+      "ore": "iron",
+      "room_id": "east_upper_chamber",
+      "scene": "res://scenes/MapProps/OreNodes/IronOreFull.tscn",
+      "texture": "res://Assets/MapTiles/OreNodes/iron-ore-full-south.png",
+      "requested_visible_center_world_xy": [
+        5897.457713,
+        628.571223
+      ],
+      "rounded_target_root_world_xy": [
+        5897,
+        653
+      ],
+      "root_world_xy": [
+        5897,
+        653
+      ],
+      "visible_center_world_xy": [
+        5897,
+        629
+      ],
+      "delta_world_xy": [
+        0,
+        0
+      ],
+      "moved": false,
+      "displacement_world_pixels": 0.0,
+      "initial_conflicts": [],
+      "correction_reasons": [],
+      "wall_art_checked": true,
+      "native_size": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        72
+      ],
+      "world_pixels_per_source_pixel": 1,
+      "approach_candidates": [
+        {
+          "world_xy": [
+            5904,
+            688
+          ],
+          "distance_to_root": 35.693137,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5872,
+            688
+          ],
+          "distance_to_root": 43.011626,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5936,
+            688
+          ],
+          "distance_to_root": 52.40229,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5840,
+            688
+          ],
+          "distance_to_root": 66.887966,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5904,
+            720
+          ],
+          "distance_to_root": 67.364679,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5872,
+            720
+          ],
+          "distance_to_root": 71.512237,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5936,
+            720
+          ],
+          "distance_to_root": 77.52419,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5968,
+            688
+          ],
+          "distance_to_root": 79.15807,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5936,
+            624
+          ],
+          "distance_to_root": 48.600412,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5840,
+            656
+          ],
+          "distance_to_root": 57.078893,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5904,
+            592
+          ],
+          "distance_to_root": 61.400326,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5840,
+            624
+          ],
+          "distance_to_root": 63.953108,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5872,
+            592
+          ],
+          "distance_to_root": 65.924199,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5968,
+            656
+          ],
+          "distance_to_root": 71.063352,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5936,
+            592
+          ],
+          "distance_to_root": 72.401657,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5968,
+            624
+          ],
+          "distance_to_root": 76.694198,
+          "front": false
+        }
+      ],
+      "approach_world_xy": [
+        5904,
+        688
+      ],
+      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "name": "Iron03",
+      "position": [
+        5897,
+        653
+      ]
+    },
+    {
+      "id": "iron-04",
+      "ore": "iron",
+      "room_id": "east_upper_chamber",
+      "scene": "res://scenes/MapProps/OreNodes/IronOreFull.tscn",
+      "texture": "res://Assets/MapTiles/OreNodes/iron-ore-full-south.png",
+      "requested_visible_center_world_xy": [
+        5530.368725,
+        641.166125
+      ],
+      "rounded_target_root_world_xy": [
+        5530,
+        665
+      ],
+      "root_world_xy": [
+        5530,
+        665
+      ],
+      "visible_center_world_xy": [
+        5530,
+        641
+      ],
+      "delta_world_xy": [
+        0,
+        0
+      ],
+      "moved": false,
+      "displacement_world_pixels": 0.0,
+      "initial_conflicts": [],
+      "correction_reasons": [],
+      "wall_art_checked": true,
+      "native_size": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        72
+      ],
+      "world_pixels_per_source_pixel": 1,
+      "approach_candidates": [
+        {
+          "world_xy": [
+            5520,
+            688
+          ],
+          "distance_to_root": 25.079872,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5552,
+            688
+          ],
+          "distance_to_root": 31.827661,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5488,
+            688
+          ],
+          "distance_to_root": 47.88528,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5520,
+            720
+          ],
+          "distance_to_root": 55.901699,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5584,
+            688
+          ],
+          "distance_to_root": 58.694122,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5552,
+            720
+          ],
+          "distance_to_root": 59.236813,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5488,
+            720
+          ],
+          "distance_to_root": 69.202601,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5584,
+            720
+          ],
+          "distance_to_root": 77.077883,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5456,
+            688
+          ],
+          "distance_to_root": 77.491935,
+          "front": true
+        },
+        {
+          "world_xy": [
+            5520,
+            624
+          ],
+          "distance_to_root": 42.201896,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5488,
+            656
+          ],
+          "distance_to_root": 42.953463,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5552,
+            624
+          ],
+          "distance_to_root": 46.52956,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5584,
+            656
+          ],
+          "distance_to_root": 54.744863,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5488,
+            624
+          ],
+          "distance_to_root": 58.694122,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5584,
+            624
+          ],
+          "distance_to_root": 67.80118,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5520,
+            592
+          ],
+          "distance_to_root": 73.681748,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5456,
+            656
+          ],
+          "distance_to_root": 74.545288,
+          "front": false
+        },
+        {
+          "world_xy": [
+            5552,
+            592
+          ],
+          "distance_to_root": 76.243032,
+          "front": false
+        }
+      ],
+      "approach_world_xy": [
+        5520,
+        688
+      ],
+      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "name": "Iron04",
+      "position": [
+        5530,
+        665
+      ]
+    },
+    {
+      "id": "mithril-03",
+      "ore": "mithril",
+      "room_id": "lower_west_gallery",
+      "scene": "res://scenes/MapProps/OreNodes/MithrilOreFull.tscn",
+      "texture": "res://Assets/MapTiles/OreNodes/mithril-ore-full-south.png",
+      "requested_visible_center_world_xy": [
+        912.669047,
+        2674.838752
+      ],
+      "rounded_target_root_world_xy": [
+        913,
+        2699
+      ],
+      "root_world_xy": [
+        913,
+        2699
+      ],
+      "visible_center_world_xy": [
+        913,
+        2675
+      ],
+      "delta_world_xy": [
+        0,
+        0
+      ],
+      "moved": false,
+      "displacement_world_pixels": 0.0,
+      "initial_conflicts": [],
+      "correction_reasons": [],
+      "wall_art_checked": true,
+      "native_size": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        72
+      ],
+      "world_pixels_per_source_pixel": 1,
+      "approach_candidates": [
+        {
+          "world_xy": [
+            912,
+            2736
+          ],
+          "distance_to_root": 37.013511,
+          "front": true
+        },
+        {
+          "world_xy": [
+            944,
+            2736
+          ],
+          "distance_to_root": 48.270074,
+          "front": true
+        },
+        {
+          "world_xy": [
+            880,
+            2736
+          ],
+          "distance_to_root": 49.578221,
+          "front": true
+        },
+        {
+          "world_xy": [
+            912,
+            2768
+          ],
+          "distance_to_root": 69.007246,
+          "front": true
+        },
+        {
+          "world_xy": [
+            976,
+            2736
+          ],
+          "distance_to_root": 73.061618,
+          "front": true
+        },
+        {
+          "world_xy": [
+            848,
+            2736
+          ],
+          "distance_to_root": 74.793048,
+          "front": true
+        },
+        {
+          "world_xy": [
+            944,
+            2768
+          ],
+          "distance_to_root": 75.643903,
+          "front": true
+        },
+        {
+          "world_xy": [
+            880,
+            2768
+          ],
+          "distance_to_root": 76.485293,
+          "front": true
+        },
+        {
+          "world_xy": [
+            944,
+            2672
+          ],
+          "distance_to_root": 41.10961,
+          "front": false
+        },
+        {
+          "world_xy": [
+            912,
+            2640
+          ],
+          "distance_to_root": 59.008474,
+          "front": false
+        },
+        {
+          "world_xy": [
+            976,
+            2704
+          ],
+          "distance_to_root": 63.198101,
+          "front": false
+        },
+        {
+          "world_xy": [
+            848,
+            2704
+          ],
+          "distance_to_root": 65.192024,
+          "front": false
+        },
+        {
+          "world_xy": [
+            944,
+            2640
+          ],
+          "distance_to_root": 66.648331,
+          "front": false
+        },
+        {
+          "world_xy": [
+            880,
+            2640
+          ],
+          "distance_to_root": 67.601775,
+          "front": false
+        },
+        {
+          "world_xy": [
+            976,
+            2672
+          ],
+          "distance_to_root": 68.541958,
+          "front": false
+        },
+        {
+          "world_xy": [
+            848,
+            2672
+          ],
+          "distance_to_root": 70.384657,
+          "front": false
+        }
+      ],
+      "approach_world_xy": [
+        912,
+        2736
+      ],
+      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "name": "Mithril03",
+      "position": [
+        913,
+        2699
+      ]
+    },
+    {
+      "id": "adamantite-02",
+      "ore": "adamantite",
+      "room_id": "lower_west_gallery",
+      "scene": "res://scenes/MapProps/OreNodes/AdamantiteOreFull.tscn",
+      "texture": "res://Assets/MapTiles/OreNodes/adamantite-ore-full-south.png",
+      "requested_visible_center_world_xy": [
+        1242.0059,
+        2725.266489
+      ],
+      "rounded_target_root_world_xy": [
+        1242,
+        2749
+      ],
+      "root_world_xy": [
+        1242,
+        2749
+      ],
+      "visible_center_world_xy": [
+        1242,
+        2725
+      ],
+      "delta_world_xy": [
+        0,
+        0
+      ],
+      "moved": false,
+      "displacement_world_pixels": 0.0,
+      "initial_conflicts": [],
+      "correction_reasons": [],
+      "wall_art_checked": true,
+      "native_size": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        72
+      ],
+      "world_pixels_per_source_pixel": 1,
+      "approach_candidates": [
+        {
+          "world_xy": [
+            1232,
+            2768
+          ],
+          "distance_to_root": 21.470911,
+          "front": true
+        },
+        {
+          "world_xy": [
+            1264,
+            2768
+          ],
+          "distance_to_root": 29.068884,
+          "front": true
+        },
+        {
+          "world_xy": [
+            1200,
+            2768
+          ],
+          "distance_to_root": 46.097722,
+          "front": true
+        },
+        {
+          "world_xy": [
+            1232,
+            2800
+          ],
+          "distance_to_root": 51.971146,
+          "front": true
+        },
+        {
+          "world_xy": [
+            1264,
+            2800
+          ],
+          "distance_to_root": 55.542776,
+          "front": true
+        },
+        {
+          "world_xy": [
+            1296,
+            2768
+          ],
+          "distance_to_root": 57.245087,
+          "front": true
+        },
+        {
+          "world_xy": [
+            1200,
+            2800
+          ],
+          "distance_to_root": 66.068147,
+          "front": true
+        },
+        {
+          "world_xy": [
+            1296,
+            2800
+          ],
+          "distance_to_root": 74.27651,
+          "front": true
+        },
+        {
+          "world_xy": [
+            1168,
+            2768
+          ],
+          "distance_to_root": 76.400262,
+          "front": true
+        },
+        {
+          "world_xy": [
+            1200,
+            2736
+          ],
+          "distance_to_root": 43.965896,
+          "front": false
+        },
+        {
+          "world_xy": [
+            1232,
+            2704
+          ],
+          "distance_to_root": 46.097722,
+          "front": false
+        },
+        {
+          "world_xy": [
+            1264,
+            2704
+          ],
+          "distance_to_root": 50.089919,
+          "front": false
+        },
+        {
+          "world_xy": [
+            1296,
+            2736
+          ],
+          "distance_to_root": 55.542776,
+          "front": false
+        },
+        {
+          "world_xy": [
+            1200,
+            2704
+          ],
+          "distance_to_root": 61.554854,
+          "front": false
+        },
+        {
+          "world_xy": [
+            1296,
+            2704
+          ],
+          "distance_to_root": 70.292247,
+          "front": false
+        },
+        {
+          "world_xy": [
+            1168,
+            2736
+          ],
+          "distance_to_root": 75.133215,
+          "front": false
+        },
+        {
+          "world_xy": [
+            1232,
+            2672
+          ],
+          "distance_to_root": 77.646635,
+          "front": false
+        }
+      ],
+      "approach_world_xy": [
+        1232,
+        2768
+      ],
+      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "name": "Adamantite02",
+      "position": [
+        1242,
+        2749
+      ]
+    },
+    {
+      "id": "mithril-04",
+      "ore": "mithril",
+      "room_id": "lower_west_gallery",
+      "scene": "res://scenes/MapProps/OreNodes/MithrilOreFull.tscn",
+      "texture": "res://Assets/MapTiles/OreNodes/mithril-ore-full-south.png",
+      "requested_visible_center_world_xy": [
+        798.853869,
+        2725.483267
+      ],
+      "rounded_target_root_world_xy": [
+        799,
+        2749
+      ],
+      "root_world_xy": [
+        799,
+        2749
+      ],
+      "visible_center_world_xy": [
+        799,
+        2725
+      ],
+      "delta_world_xy": [
+        0,
+        0
+      ],
+      "moved": false,
+      "displacement_world_pixels": 0.0,
+      "initial_conflicts": [],
+      "correction_reasons": [],
+      "wall_art_checked": true,
+      "native_size": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        72
+      ],
+      "world_pixels_per_source_pixel": 1,
+      "approach_candidates": [
+        {
+          "world_xy": [
+            784,
+            2768
+          ],
+          "distance_to_root": 24.207437,
+          "front": true
+        },
+        {
+          "world_xy": [
+            816,
+            2768
+          ],
+          "distance_to_root": 25.495098,
+          "front": true
+        },
+        {
+          "world_xy": [
+            752,
+            2768
+          ],
+          "distance_to_root": 50.695167,
+          "front": true
+        },
+        {
+          "world_xy": [
+            848,
+            2768
+          ],
+          "distance_to_root": 52.554733,
+          "front": true
+        },
+        {
+          "world_xy": [
+            784,
+            2800
+          ],
+          "distance_to_root": 53.160135,
+          "front": true
+        },
+        {
+          "world_xy": [
+            816,
+            2800
+          ],
+          "distance_to_root": 53.75872,
+          "front": true
+        },
+        {
+          "world_xy": [
+            752,
+            2800
+          ],
+          "distance_to_root": 69.354164,
+          "front": true
+        },
+        {
+          "world_xy": [
+            848,
+            2800
+          ],
+          "distance_to_root": 70.724819,
+          "front": true
+        },
+        {
+          "world_xy": [
+            784,
+            2704
+          ],
+          "distance_to_root": 47.434165,
+          "front": false
+        },
+        {
+          "world_xy": [
+            816,
+            2704
+          ],
+          "distance_to_root": 48.104054,
+          "front": false
+        },
+        {
+          "world_xy": [
+            752,
+            2736
+          ],
+          "distance_to_root": 48.764741,
+          "front": false
+        },
+        {
+          "world_xy": [
+            848,
+            2736
+          ],
+          "distance_to_root": 50.695167,
+          "front": false
+        },
+        {
+          "world_xy": [
+            752,
+            2704
+          ],
+          "distance_to_root": 65.069194,
+          "front": false
+        },
+        {
+          "world_xy": [
+            848,
+            2704
+          ],
+          "distance_to_root": 66.52819,
+          "front": false
+        },
+        {
+          "world_xy": [
+            784,
+            2672
+          ],
+          "distance_to_root": 78.447435,
+          "front": false
+        },
+        {
+          "world_xy": [
+            816,
+            2672
+          ],
+          "distance_to_root": 78.854296,
+          "front": false
+        }
+      ],
+      "approach_world_xy": [
+        784,
+        2768
+      ],
+      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "name": "Mithril04",
+      "position": [
+        799,
+        2749
+      ]
+    },
+    {
+      "id": "blackstone-06",
+      "ore": "blackstone",
+      "room_id": "lower_west_gallery",
+      "scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
+      "texture": "res://Assets/MapTiles/OreNodes/blackstone-full-south.png",
+      "requested_visible_center_world_xy": [
+        1228.600586,
+        2943.667835
+      ],
+      "rounded_target_root_world_xy": [
+        1229,
+        2968
+      ],
+      "root_world_xy": [
+        1229,
+        2968
+      ],
+      "visible_center_world_xy": [
+        1229,
+        2944
+      ],
+      "delta_world_xy": [
+        0,
+        0
+      ],
+      "moved": false,
+      "displacement_world_pixels": 0.0,
+      "initial_conflicts": [],
+      "correction_reasons": [],
+      "wall_art_checked": true,
+      "native_size": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        72
+      ],
+      "world_pixels_per_source_pixel": 1,
+      "approach_candidates": [
+        {
+          "world_xy": [
+            1232,
+            2992
+          ],
+          "distance_to_root": 24.186773,
+          "front": true
+        },
+        {
+          "world_xy": [
+            1200,
+            2992
+          ],
+          "distance_to_root": 37.64306,
+          "front": true
+        },
+        {
+          "world_xy": [
+            1264,
+            2992
+          ],
+          "distance_to_root": 42.43819,
+          "front": true
+        },
+        {
+          "world_xy": [
+            1232,
+            3024
+          ],
+          "distance_to_root": 56.0803,
+          "front": true
+        },
+        {
+          "world_xy": [
+            1200,
+            3024
+          ],
+          "distance_to_root": 63.06346,
+          "front": true
+        },
+        {
+          "world_xy": [
+            1168,
+            2992
+          ],
+          "distance_to_root": 65.551506,
+          "front": true
+        },
+        {
+          "world_xy": [
+            1264,
+            3024
+          ],
+          "distance_to_root": 66.037868,
+          "front": true
+        },
+        {
+          "world_xy": [
+            1296,
+            2992
+          ],
+          "distance_to_root": 71.168813,
+          "front": true
+        },
+        {
+          "world_xy": [
+            1232,
+            2928
+          ],
+          "distance_to_root": 40.112342,
+          "front": false
+        },
+        {
+          "world_xy": [
+            1200,
+            2928
+          ],
+          "distance_to_root": 49.406477,
+          "front": false
+        },
+        {
+          "world_xy": [
+            1264,
+            2928
+          ],
+          "distance_to_root": 53.150729,
+          "front": false
+        },
+        {
+          "world_xy": [
+            1168,
+            2960
+          ],
+          "distance_to_root": 61.522354,
+          "front": false
+        },
+        {
+          "world_xy": [
+            1296,
+            2960
+          ],
+          "distance_to_root": 67.475922,
+          "front": false
+        },
+        {
+          "world_xy": [
+            1232,
+            2896
+          ],
+          "distance_to_root": 72.062473,
+          "front": false
+        },
+        {
+          "world_xy": [
+            1168,
+            2928
+          ],
+          "distance_to_root": 72.945185,
+          "front": false
+        },
+        {
+          "world_xy": [
+            1200,
+            2896
+          ],
+          "distance_to_root": 77.620873,
+          "front": false
+        },
+        {
+          "world_xy": [
+            1296,
+            2928
+          ],
+          "distance_to_root": 78.032045,
+          "front": false
+        }
+      ],
+      "approach_world_xy": [
+        1232,
+        2992
+      ],
+      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "name": "Blackstone06",
+      "position": [
+        1229,
+        2968
+      ]
+    },
+    {
+      "id": "blackstone-07",
+      "ore": "blackstone",
+      "room_id": "lower_west_gallery",
+      "scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
+      "texture": "res://Assets/MapTiles/OreNodes/blackstone-full-south.png",
+      "requested_visible_center_world_xy": [
+        774.059349,
+        2960.919571
+      ],
+      "rounded_target_root_world_xy": [
+        774,
+        2985
+      ],
+      "root_world_xy": [
+        774,
+        2985
+      ],
+      "visible_center_world_xy": [
+        774,
+        2961
+      ],
+      "delta_world_xy": [
+        0,
+        0
+      ],
+      "moved": false,
+      "displacement_world_pixels": 0.0,
+      "initial_conflicts": [],
+      "correction_reasons": [],
+      "wall_art_checked": true,
+      "native_size": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        72
+      ],
+      "world_pixels_per_source_pixel": 1,
+      "approach_candidates": [
+        {
+          "world_xy": [
+            784,
+            3024
+          ],
+          "distance_to_root": 40.261644,
+          "front": true
+        },
+        {
+          "world_xy": [
+            752,
+            3024
+          ],
+          "distance_to_root": 44.777226,
+          "front": true
+        },
+        {
+          "world_xy": [
+            816,
+            3024
+          ],
+          "distance_to_root": 57.31492,
+          "front": true
+        },
+        {
+          "world_xy": [
+            720,
+            3024
+          ],
+          "distance_to_root": 66.61081,
+          "front": true
+        },
+        {
+          "world_xy": [
+            784,
+            3056
+          ],
+          "distance_to_root": 71.700767,
+          "front": true
+        },
+        {
+          "world_xy": [
+            752,
+            3056
+          ],
+          "distance_to_root": 74.330344,
+          "front": true
+        },
+        {
+          "world_xy": [
+            816,
+            2992
+          ],
+          "distance_to_root": 42.579338,
+          "front": false
+        },
+        {
+          "world_xy": [
+            816,
+            2960
+          ],
+          "distance_to_root": 48.877398,
+          "front": false
+        },
+        {
+          "world_xy": [
+            720,
+            2992
+          ],
+          "distance_to_root": 54.451814,
+          "front": false
+        },
+        {
+          "world_xy": [
+            784,
+            2928
+          ],
+          "distance_to_root": 57.870545,
+          "front": false
+        },
+        {
+          "world_xy": [
+            720,
+            2960
+          ],
+          "distance_to_root": 59.506302,
+          "front": false
+        },
+        {
+          "world_xy": [
+            752,
+            2928
+          ],
+          "distance_to_root": 61.098281,
+          "front": false
+        },
+        {
+          "world_xy": [
+            816,
+            2928
+          ],
+          "distance_to_root": 70.802542,
+          "front": false
+        },
+        {
+          "world_xy": [
+            848,
+            2992
+          ],
+          "distance_to_root": 74.330344,
+          "front": false
+        },
+        {
+          "world_xy": [
+            848,
+            2960
+          ],
+          "distance_to_root": 78.108898,
+          "front": false
+        },
+        {
+          "world_xy": [
+            720,
+            2928
+          ],
+          "distance_to_root": 78.517514,
+          "front": false
+        }
+      ],
+      "approach_world_xy": [
+        784,
+        3024
+      ],
+      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "name": "Blackstone07",
+      "position": [
+        774,
+        2985
+      ]
+    },
+    {
+      "id": "blackstone-08",
+      "ore": "blackstone",
+      "room_id": "lower_east_chamber",
+      "scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
+      "texture": "res://Assets/MapTiles/OreNodes/blackstone-full-south.png",
+      "requested_visible_center_world_xy": [
+        4009.836937,
+        2673.279394
+      ],
+      "rounded_target_root_world_xy": [
+        4010,
+        2697
+      ],
+      "root_world_xy": [
+        4010,
+        2697
+      ],
+      "visible_center_world_xy": [
+        4010,
+        2673
+      ],
+      "delta_world_xy": [
+        0,
+        0
+      ],
+      "moved": false,
+      "displacement_world_pixels": 0.0,
+      "initial_conflicts": [],
+      "correction_reasons": [],
+      "wall_art_checked": true,
+      "native_size": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        72
+      ],
+      "world_pixels_per_source_pixel": 1,
+      "approach_candidates": [
+        {
+          "world_xy": [
+            4016,
+            2736
+          ],
+          "distance_to_root": 39.458839,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3984,
+            2736
+          ],
+          "distance_to_root": 46.872167,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4048,
+            2736
+          ],
+          "distance_to_root": 54.451814,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3952,
+            2736
+          ],
+          "distance_to_root": 69.892775,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4016,
+            2768
+          ],
+          "distance_to_root": 71.25307,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3984,
+            2768
+          ],
+          "distance_to_root": 75.610846,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3984,
+            2704
+          ],
+          "distance_to_root": 26.925824,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4048,
+            2672
+          ],
+          "distance_to_root": 45.486262,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4016,
+            2640
+          ],
+          "distance_to_root": 57.31492,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3952,
+            2704
+          ],
+          "distance_to_root": 58.420887,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3984,
+            2640
+          ],
+          "distance_to_root": 62.64982,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3952,
+            2672
+          ],
+          "distance_to_root": 63.158531,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4048,
+            2640
+          ],
+          "distance_to_root": 68.505474,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4080,
+            2704
+          ],
+          "distance_to_root": 70.349129,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4080,
+            2672
+          ],
+          "distance_to_root": 74.330344,
+          "front": false
+        }
+      ],
+      "approach_world_xy": [
+        4016,
+        2736
+      ],
+      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "name": "Blackstone08",
+      "position": [
+        4010,
+        2697
+      ]
+    },
+    {
+      "id": "blackstone-09",
+      "ore": "blackstone",
+      "room_id": "lower_east_chamber",
+      "scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
+      "texture": "res://Assets/MapTiles/OreNodes/blackstone-full-south.png",
+      "requested_visible_center_world_xy": [
+        3892.240283,
+        2736.689825
+      ],
+      "rounded_target_root_world_xy": [
+        3892,
+        2761
+      ],
+      "root_world_xy": [
+        3892,
+        2761
+      ],
+      "visible_center_world_xy": [
+        3892,
+        2737
+      ],
+      "delta_world_xy": [
+        0,
+        0
+      ],
+      "moved": false,
+      "displacement_world_pixels": 0.0,
+      "initial_conflicts": [],
+      "correction_reasons": [],
+      "wall_art_checked": true,
+      "native_size": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        72
+      ],
+      "world_pixels_per_source_pixel": 1,
+      "approach_candidates": [
+        {
+          "world_xy": [
+            3888,
+            2800
+          ],
+          "distance_to_root": 39.204592,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3920,
+            2800
+          ],
+          "distance_to_root": 48.010416,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3856,
+            2800
+          ],
+          "distance_to_root": 53.075418,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3888,
+            2832
+          ],
+          "distance_to_root": 71.112587,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3952,
+            2800
+          ],
+          "distance_to_root": 71.561163,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3920,
+            2832
+          ],
+          "distance_to_root": 76.321688,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3856,
+            2832
+          ],
+          "distance_to_root": 79.605276,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3856,
+            2768
+          ],
+          "distance_to_root": 36.674242,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3920,
+            2736
+          ],
+          "distance_to_root": 37.536649,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3888,
+            2704
+          ],
+          "distance_to_root": 57.140179,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3952,
+            2768
+          ],
+          "distance_to_root": 60.406953,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3920,
+            2704
+          ],
+          "distance_to_root": 63.505905,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3952,
+            2736
+          ],
+          "distance_to_root": 65.0,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3856,
+            2704
+          ],
+          "distance_to_root": 67.416615,
+          "front": false
+        }
+      ],
+      "approach_world_xy": [
+        3888,
+        2800
+      ],
+      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "name": "Blackstone09",
+      "position": [
+        3892,
+        2761
+      ]
+    },
+    {
+      "id": "blackstone-10",
+      "ore": "blackstone",
+      "room_id": "lower_east_chamber",
+      "scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
+      "texture": "res://Assets/MapTiles/OreNodes/blackstone-full-south.png",
+      "requested_visible_center_world_xy": [
+        3946.771472,
+        3007.100883
+      ],
+      "rounded_target_root_world_xy": [
+        3947,
+        3031
+      ],
+      "root_world_xy": [
+        3947,
+        3031
+      ],
+      "visible_center_world_xy": [
+        3947,
+        3007
+      ],
+      "delta_world_xy": [
+        0,
+        0
+      ],
+      "moved": false,
+      "displacement_world_pixels": 0.0,
+      "initial_conflicts": [],
+      "correction_reasons": [],
+      "wall_art_checked": true,
+      "native_size": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        72
+      ],
+      "world_pixels_per_source_pixel": 1,
+      "approach_candidates": [
+        {
+          "world_xy": [
+            3952,
+            3056
+          ],
+          "distance_to_root": 25.495098,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3920,
+            3056
+          ],
+          "distance_to_root": 36.796739,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3984,
+            3056
+          ],
+          "distance_to_root": 44.654227,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3952,
+            3088
+          ],
+          "distance_to_root": 57.218878,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3920,
+            3088
+          ],
+          "distance_to_root": 63.071388,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3888,
+            3056
+          ],
+          "distance_to_root": 64.078077,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3984,
+            3088
+          ],
+          "distance_to_root": 67.955868,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4016,
+            3056
+          ],
+          "distance_to_root": 73.389373,
+          "front": true
+        },
+        {
+          "world_xy": [
+            3952,
+            2992
+          ],
+          "distance_to_root": 39.319207,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3920,
+            2992
+          ],
+          "distance_to_root": 47.434165,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3984,
+            2992
+          ],
+          "distance_to_root": 53.75872,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3888,
+            3024
+          ],
+          "distance_to_root": 59.413803,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4016,
+            3024
+          ],
+          "distance_to_root": 69.354164,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3888,
+            2992
+          ],
+          "distance_to_root": 70.724819,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3952,
+            2960
+          ],
+          "distance_to_root": 71.175839,
+          "front": false
+        },
+        {
+          "world_xy": [
+            3920,
+            2960
+          ],
+          "distance_to_root": 75.960516,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4016,
+            2992
+          ],
+          "distance_to_root": 79.259069,
+          "front": false
+        }
+      ],
+      "approach_world_xy": [
+        3952,
+        3056
+      ],
+      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "name": "Blackstone10",
+      "position": [
+        3947,
+        3031
+      ]
+    },
+    {
+      "id": "blackstone-11",
+      "ore": "blackstone",
+      "room_id": "lower_east_chamber",
+      "scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
+      "texture": "res://Assets/MapTiles/OreNodes/blackstone-full-south.png",
+      "requested_visible_center_world_xy": [
+        4424.940073,
+        3015.962911
+      ],
+      "rounded_target_root_world_xy": [
+        4425,
+        3040
+      ],
+      "root_world_xy": [
+        4425,
+        3040
+      ],
+      "visible_center_world_xy": [
+        4425,
+        3016
+      ],
+      "delta_world_xy": [
+        0,
+        0
+      ],
+      "moved": false,
+      "displacement_world_pixels": 0.0,
+      "initial_conflicts": [],
+      "correction_reasons": [],
+      "wall_art_checked": true,
+      "native_size": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        72
+      ],
+      "world_pixels_per_source_pixel": 1,
+      "approach_candidates": [
+        {
+          "world_xy": [
+            4400,
+            3056
+          ],
+          "distance_to_root": 29.681644,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4464,
+            3056
+          ],
+          "distance_to_root": 42.154478,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4432,
+            3088
+          ],
+          "distance_to_root": 48.507731,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4400,
+            3088
+          ],
+          "distance_to_root": 54.120237,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4368,
+            3056
+          ],
+          "distance_to_root": 59.20304,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4464,
+            3088
+          ],
+          "distance_to_root": 61.846584,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4496,
+            3056
+          ],
+          "distance_to_root": 72.780492,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4368,
+            3088
+          ],
+          "distance_to_root": 74.518454,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4432,
+            2992
+          ],
+          "distance_to_root": 48.507731,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4400,
+            2992
+          ],
+          "distance_to_root": 54.120237,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4368,
+            3024
+          ],
+          "distance_to_root": 59.20304,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4464,
+            2992
+          ],
+          "distance_to_root": 61.846584,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4496,
+            3024
+          ],
+          "distance_to_root": 72.780492,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4368,
+            2992
+          ],
+          "distance_to_root": 74.518454,
+          "front": false
+        }
+      ],
+      "approach_world_xy": [
+        4400,
+        3056
+      ],
+      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "name": "Blackstone11",
+      "position": [
+        4425,
+        3040
+      ]
+    },
+    {
+      "id": "blackstone-12",
+      "ore": "blackstone",
+      "room_id": "lower_east_chamber",
+      "scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
+      "texture": "res://Assets/MapTiles/OreNodes/blackstone-full-south.png",
+      "requested_visible_center_world_xy": [
+        4262.638397,
+        3025.046133
+      ],
+      "rounded_target_root_world_xy": [
+        4263,
+        3049
+      ],
+      "root_world_xy": [
+        4263,
+        3049
+      ],
+      "visible_center_world_xy": [
+        4263,
+        3025
+      ],
+      "delta_world_xy": [
+        0,
+        0
+      ],
+      "moved": false,
+      "displacement_world_pixels": 0.0,
+      "initial_conflicts": [],
+      "correction_reasons": [],
+      "wall_art_checked": true,
+      "native_size": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        72
+      ],
+      "world_pixels_per_source_pixel": 1,
+      "approach_candidates": [
+        {
+          "world_xy": [
+            4272,
+            3088
+          ],
+          "distance_to_root": 40.024992,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4240,
+            3088
+          ],
+          "distance_to_root": 45.276926,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4304,
+            3088
+          ],
+          "distance_to_root": 56.586217,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4208,
+            3088
+          ],
+          "distance_to_root": 67.424031,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4272,
+            3120
+          ],
+          "distance_to_root": 71.568149,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4240,
+            3120
+          ],
+          "distance_to_root": 74.632433,
+          "front": true
+        },
+        {
+          "world_xy": [
+            4304,
+            3056
+          ],
+          "distance_to_root": 41.593269,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4304,
+            3024
+          ],
+          "distance_to_root": 48.020829,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4208,
+            3056
+          ],
+          "distance_to_root": 55.443665,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4272,
+            2992
+          ],
+          "distance_to_root": 57.706152,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4208,
+            3024
+          ],
+          "distance_to_root": 60.41523,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4240,
+            2992
+          ],
+          "distance_to_root": 61.465437,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4304,
+            2992
+          ],
+          "distance_to_root": 70.213959,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4336,
+            3056
+          ],
+          "distance_to_root": 73.334848,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4336,
+            3024
+          ],
+          "distance_to_root": 77.162167,
+          "front": false
+        },
+        {
+          "world_xy": [
+            4208,
+            2992
+          ],
+          "distance_to_root": 79.208585,
+          "front": false
+        }
+      ],
+      "approach_world_xy": [
+        4272,
+        3088
+      ],
+      "approach_status": "Ranked floor/base-clear grid candidates only; actual Godot reachability and swept steps remain required",
+      "name": "Blackstone12",
+      "position": [
+        4263,
+        3049
+      ]
+    }
+  ],
+  "source_annotation": "art_sources/valtherian-mines/approved/user-ore-annotation-2026-10-28.png"
+}

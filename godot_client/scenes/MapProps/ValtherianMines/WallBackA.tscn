@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/Maps/ValtherianMines/Props/WallBackA.png" id="1_texture"]
+
+[node name="WallBackA" type="Node2D"]
+y_sort_enabled = false
+texture_filter = 1
+metadata/native_canvas = Vector2i(560, 512)
+metadata/source_anchor = Vector2i(280, 504)
+metadata/world_pixels_per_source_pixel = 0.125
+metadata/boundary_cladding = true
+
+[node name="Visual" type="Sprite2D" parent="."]
+position = Vector2(-35.0, -63.0)
+scale = Vector2(0.125, 0.125)
+texture_filter = 1
+texture = ExtResource("1_texture")
+centered = false

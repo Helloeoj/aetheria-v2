@@ -1,0 +1,302 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/ValtherianMinesContent.tscn" id="1_content"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="2_game"]
+[ext_resource type="Script" path="res://scripts/ui_spawn_menu.gd" id="3_spawn"]
+[ext_resource type="Script" path="res://scripts/ui_item_menu.gd" id="4_item"]
+[ext_resource type="Script" path="res://scripts/ui_inventory_menu.gd" id="5_inventory"]
+[ext_resource type="Script" path="res://scripts/cave_portal.gd" id="6_portal"]
+
+[node name="ValtherianMines" type="Node2D"]
+y_sort_enabled = true
+texture_filter = 1
+metadata/gameplay_grid_origin = Vector2(0, 0)
+
+[node name="Backdrop" type="Polygon2D" parent="."]
+z_index = -1000
+color = Color(0.02, 0.025, 0.028, 1)
+polygon = PackedVector2Array(-3000, -3000, 9144, -3000, 9144, 6328, -3000, 6328)
+
+[node name="ValtherianMinesContent" parent="." instance=ExtResource("1_content")]
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="Entrance" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(6032, 2064)
+
+[node name="GridProbes" type="Node2D" parent="."]
+
+[node name="EntranceApproach" type="Marker2D" parent="GridProbes"]
+position = Vector2(6032, 2064)
+
+[node name="MainRoute01" type="Marker2D" parent="GridProbes"]
+position = Vector2(5520, 2064)
+
+[node name="MainRoute02" type="Marker2D" parent="GridProbes"]
+position = Vector2(5008, 2064)
+
+[node name="MainRoute03" type="Marker2D" parent="GridProbes"]
+position = Vector2(5008, 1552)
+
+[node name="MainRoute04" type="Marker2D" parent="GridProbes"]
+position = Vector2(4496, 1552)
+
+[node name="MainRoute05" type="Marker2D" parent="GridProbes"]
+position = Vector2(3728, 1552)
+
+[node name="MainRoute06" type="Marker2D" parent="GridProbes"]
+position = Vector2(3344, 1552)
+
+[node name="MainRoute07" type="Marker2D" parent="GridProbes"]
+position = Vector2(3344, 2192)
+
+[node name="MainRoute08" type="Marker2D" parent="GridProbes"]
+position = Vector2(2704, 2192)
+
+[node name="MainRoute09" type="Marker2D" parent="GridProbes"]
+position = Vector2(2064, 2192)
+
+[node name="MainRoute10" type="Marker2D" parent="GridProbes"]
+position = Vector2(2064, 1296)
+
+[node name="MainRoute11" type="Marker2D" parent="GridProbes"]
+position = Vector2(1552, 1296)
+
+[node name="MainRoute12" type="Marker2D" parent="GridProbes"]
+position = Vector2(1168, 1296)
+
+[node name="MainRoute13" type="Marker2D" parent="GridProbes"]
+position = Vector2(1168, 784)
+
+[node name="MainRoute14" type="Marker2D" parent="GridProbes"]
+position = Vector2(528, 784)
+
+[node name="EastUpperBranch00" type="Marker2D" parent="GridProbes"]
+position = Vector2(5520, 1232)
+
+[node name="EastUpperBranch01" type="Marker2D" parent="GridProbes"]
+position = Vector2(5712, 1232)
+
+[node name="EastUpperBranch02" type="Marker2D" parent="GridProbes"]
+position = Vector2(5712, 528)
+
+[node name="UpperEastBranch00" type="Marker2D" parent="GridProbes"]
+position = Vector2(4496, 1040)
+
+[node name="UpperEastBranch01" type="Marker2D" parent="GridProbes"]
+position = Vector2(3984, 1040)
+
+[node name="UpperEastBranch02" type="Marker2D" parent="GridProbes"]
+position = Vector2(3984, 464)
+
+[node name="LowerEastBranch00" type="Marker2D" parent="GridProbes"]
+position = Vector2(3728, 2384)
+
+[node name="LowerEastBranch01" type="Marker2D" parent="GridProbes"]
+position = Vector2(4240, 2384)
+
+[node name="LowerEastBranch02" type="Marker2D" parent="GridProbes"]
+position = Vector2(4240, 2896)
+
+[node name="UpperWestBranch00" type="Marker2D" parent="GridProbes"]
+position = Vector2(2704, 976)
+
+[node name="UpperWestBranch01" type="Marker2D" parent="GridProbes"]
+position = Vector2(3152, 976)
+
+[node name="UpperWestBranch02" type="Marker2D" parent="GridProbes"]
+position = Vector2(3152, 400)
+
+[node name="LowerWestBranch00" type="Marker2D" parent="GridProbes"]
+position = Vector2(1552, 2384)
+
+[node name="LowerWestBranch01" type="Marker2D" parent="GridProbes"]
+position = Vector2(1040, 2384)
+
+[node name="LowerWestBranch02" type="Marker2D" parent="GridProbes"]
+position = Vector2(1040, 2896)
+
+[node name="FarWestChamber" type="Marker2D" parent="GridProbes"]
+position = Vector2(528, 784)
+
+[node name="EastUpperChamber" type="Marker2D" parent="GridProbes"]
+position = Vector2(5712, 528)
+
+[node name="UpperEastChamber" type="Marker2D" parent="GridProbes"]
+position = Vector2(3984, 464)
+
+[node name="LowerEastChamber" type="Marker2D" parent="GridProbes"]
+position = Vector2(4240, 2896)
+
+[node name="UpperWestGallery" type="Marker2D" parent="GridProbes"]
+position = Vector2(3152, 400)
+
+[node name="LowerWestGallery" type="Marker2D" parent="GridProbes"]
+position = Vector2(1040, 2896)
+
+[node name="EastCombatHall" type="Marker2D" parent="GridProbes"]
+position = Vector2(4304, 1552)
+
+[node name="WestCombatHall" type="Marker2D" parent="GridProbes"]
+position = Vector2(2800, 2192)
+
+[node name="OreApproachBlackstone01" type="Marker2D" parent="GridProbes"]
+position = Vector2(304, 656)
+metadata/ore_marker_id = "blackstone-01"
+
+[node name="OreApproachBlackstone02" type="Marker2D" parent="GridProbes"]
+position = Vector2(784, 656)
+metadata/ore_marker_id = "blackstone-02"
+
+[node name="OreApproachMithril01" type="Marker2D" parent="GridProbes"]
+position = Vector2(240, 912)
+metadata/ore_marker_id = "mithril-01"
+
+[node name="OreApproachMithril02" type="Marker2D" parent="GridProbes"]
+position = Vector2(368, 1040)
+metadata/ore_marker_id = "mithril-02"
+
+[node name="OreApproachAdamantite01" type="Marker2D" parent="GridProbes"]
+position = Vector2(656, 1040)
+metadata/ore_marker_id = "adamantite-01"
+
+[node name="OreApproachBlackstone03" type="Marker2D" parent="GridProbes"]
+position = Vector2(2928, 336)
+metadata/ore_marker_id = "blackstone-03"
+
+[node name="OreApproachBlackstone04" type="Marker2D" parent="GridProbes"]
+position = Vector2(3312, 336)
+metadata/ore_marker_id = "blackstone-04"
+
+[node name="OreApproachBlackstone05" type="Marker2D" parent="GridProbes"]
+position = Vector2(2896, 432)
+metadata/ore_marker_id = "blackstone-05"
+
+[node name="OreApproachCoal01" type="Marker2D" parent="GridProbes"]
+position = Vector2(4144, 336)
+metadata/ore_marker_id = "coal-01"
+
+[node name="OreApproachCoal02" type="Marker2D" parent="GridProbes"]
+position = Vector2(4304, 368)
+metadata/ore_marker_id = "coal-02"
+
+[node name="OreApproachCoal03" type="Marker2D" parent="GridProbes"]
+position = Vector2(3760, 368)
+metadata/ore_marker_id = "coal-03"
+
+[node name="OreApproachCoal04" type="Marker2D" parent="GridProbes"]
+position = Vector2(3728, 656)
+metadata/ore_marker_id = "coal-04"
+
+[node name="OreApproachCoal05" type="Marker2D" parent="GridProbes"]
+position = Vector2(4176, 656)
+metadata/ore_marker_id = "coal-05"
+
+[node name="OreApproachCoal06" type="Marker2D" parent="GridProbes"]
+position = Vector2(5616, 464)
+metadata/ore_marker_id = "coal-06"
+
+[node name="OreApproachIron01" type="Marker2D" parent="GridProbes"]
+position = Vector2(5872, 464)
+metadata/ore_marker_id = "iron-01"
+
+[node name="OreApproachIron02" type="Marker2D" parent="GridProbes"]
+position = Vector2(5904, 560)
+metadata/ore_marker_id = "iron-02"
+
+[node name="OreApproachCoal07" type="Marker2D" parent="GridProbes"]
+position = Vector2(5520, 560)
+metadata/ore_marker_id = "coal-07"
+
+[node name="OreApproachIron03" type="Marker2D" parent="GridProbes"]
+position = Vector2(5904, 688)
+metadata/ore_marker_id = "iron-03"
+
+[node name="OreApproachIron04" type="Marker2D" parent="GridProbes"]
+position = Vector2(5520, 688)
+metadata/ore_marker_id = "iron-04"
+
+[node name="OreApproachMithril03" type="Marker2D" parent="GridProbes"]
+position = Vector2(912, 2736)
+metadata/ore_marker_id = "mithril-03"
+
+[node name="OreApproachAdamantite02" type="Marker2D" parent="GridProbes"]
+position = Vector2(1232, 2768)
+metadata/ore_marker_id = "adamantite-02"
+
+[node name="OreApproachMithril04" type="Marker2D" parent="GridProbes"]
+position = Vector2(784, 2768)
+metadata/ore_marker_id = "mithril-04"
+
+[node name="OreApproachBlackstone06" type="Marker2D" parent="GridProbes"]
+position = Vector2(1232, 2992)
+metadata/ore_marker_id = "blackstone-06"
+
+[node name="OreApproachBlackstone07" type="Marker2D" parent="GridProbes"]
+position = Vector2(784, 3024)
+metadata/ore_marker_id = "blackstone-07"
+
+[node name="OreApproachBlackstone08" type="Marker2D" parent="GridProbes"]
+position = Vector2(4016, 2736)
+metadata/ore_marker_id = "blackstone-08"
+
+[node name="OreApproachBlackstone09" type="Marker2D" parent="GridProbes"]
+position = Vector2(3888, 2800)
+metadata/ore_marker_id = "blackstone-09"
+
+[node name="OreApproachBlackstone10" type="Marker2D" parent="GridProbes"]
+position = Vector2(3952, 3056)
+metadata/ore_marker_id = "blackstone-10"
+
+[node name="OreApproachBlackstone11" type="Marker2D" parent="GridProbes"]
+position = Vector2(4400, 3056)
+metadata/ore_marker_id = "blackstone-11"
+
+[node name="OreApproachBlackstone12" type="Marker2D" parent="GridProbes"]
+position = Vector2(4272, 3088)
+metadata/ore_marker_id = "blackstone-12"
+
+[node name="Combat" type="Node2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("2_game")
+map_width = 6144.0
+map_height = 3328.0
+area_name = "Valtherian Mines"
+initial_spawn_id = "Entrance"
+
+[node name="OutskirtsExit" type="Node2D" parent="Combat"]
+position = Vector2(6096, 2064)
+script = ExtResource("6_portal")
+portal_name = "Valtheiris"
+destination_scene = "res://scenes/EastOutskirtsLayered.tscn"
+destination_spawn_id = "ValtherianMinesReturn"
+approach_offset = Vector2(-64, 0)
+interaction_radius = 56.0
+click_rect = Rect2(-32, -48, 64, 96)
+
+[node name="UI" type="CanvasLayer" parent="Combat"]
+
+[node name="SpawnMenu" type="Control" parent="Combat/UI"]
+visible = false
+layout_mode = 3
+script = ExtResource("3_spawn")
+
+[node name="ItemMenu" type="Control" parent="Combat/UI"]
+visible = false
+layout_mode = 3
+script = ExtResource("4_item")
+
+[node name="InventoryMenu" type="Control" parent="Combat/UI"]
+visible = false
+layout_mode = 3
+script = ExtResource("5_inventory")
+
+[node name="MapCamera" type="Camera2D" parent="."]
+position = Vector2(6032, 2064)
+zoom = Vector2(1.5, 1.5)
+limit_left = 0
+limit_top = 0
+limit_right = 6144
+limit_bottom = 3328
+
+[editable path="ValtherianMinesContent"]
