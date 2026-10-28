@@ -80,7 +80,8 @@
     "observations": "Native clusters and outlines remain resolved; no visible ore/wall/peer cut-ins or foreground floor gaps in reviewed captures. Timber/lantern supports restore warm mine detail. No source overview enlargement.",
     "limits": [
       "Native material is grainier than the character and large spans reveal modular repetition",
-      "Derived full scene follows rectilinear approved tile contract; it is not pixel-identical to the overview"
+      "Derived full scene follows rectilinear approved tile contract; it is not pixel-identical to the overview",
+      "Existing user-approved canonical ore PNGs retain softer internal shading than the unchanged character and new wall kit. Nearest filtering preserves their original texels; this placement task does not redraw the approved ore library."
     ],
     "independent_code_review": "No Important/Critical findings; final hashes and representative4x captures verified",
     "physical_overlay_renders": 7,
@@ -106,6 +107,7 @@
     "final-travel.log",
     "entrance-v1-installed.worldbuilding-report.json",
     "entrance-v1-installed-alpha-review.json",
-    "valtherian-mine-overlay-report.json"
+    "valtherian-mine-overlay-report.json",
+    "valtherian-final-visual-audit.json"
   ]
 }
