@@ -1,0 +1,103 @@
+{
+  "schema": 1,
+  "area": "Valtherian Mines",
+  "request_date": "2026-10-27",
+  "status": "Artwork candidates; user image approval pending; not installed",
+  "entrance": {
+    "file": "unapproved/entrance-east-v1.png",
+    "native_canvas": [
+      256,
+      192
+    ],
+    "mode": "RGBA",
+    "sha256": "c70d8099569663eb4b765eefe75b87d57758841e802fc83c259df21ee931e8fb",
+    "generator": "PixelLab Pro Flash",
+    "job_id": "a7b5fecc-46d0-4899-b4b8-dd9f8f198160",
+    "source_image_id": "e0fcae05-c22c-5d44-93a2-99e5ab2f8e10",
+    "generations_charged": 9,
+    "prompt": "unapproved/entrance-east-v1.prompt.txt",
+    "facing": "east; mouth opens toward screen right",
+    "world_pixels_per_source_pixel": 1,
+    "visible_alpha_bounds": [
+      67,
+      48,
+      176,
+      139
+    ],
+    "visible_size": [
+      109,
+      91
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_pixel_count": 6547,
+    "connected_alpha_components": 1,
+    "max_palette_colors": 64,
+    "anchor_candidate": [
+      147,
+      139
+    ],
+    "anchor_status": "Candidate foot/ground anchor; final collision bases and sorting remain unauthored",
+    "style_reference": "godot_client/Assets/MapTiles/OreNodes/copper-ore-full-south.png",
+    "world_placement_status": "Not installed; actual-map in-memory native4x preview only",
+    "proposed_world_visible_bounds": [
+      240,
+      -92,
+      109,
+      91
+    ],
+    "review": "Complete single alpha silhouette, native source preserved, no disconnected specks, east-facing. Real Godot4x comparison with existing player reviewed. Exact final physical placement/portal contract pending."
+  },
+  "whole_map": {
+    "file": "unapproved/whole-map-v1.png",
+    "native_canvas": [
+      1086,
+      1448
+    ],
+    "mode": "RGB",
+    "sha256": "aa9019186e21aba6c947a223e4197b357072f8853712d6b638353074a9e2f661",
+    "generator": "built-in image_gen",
+    "prompt": "unapproved/whole-map-v1.prompt.txt",
+    "style_reference": "art_sources/bracken-mine/pixel-base.png",
+    "requested_canvas": [
+      1536,
+      2048
+    ],
+    "actual_canvas_selected_by_tool": [
+      1086,
+      1448
+    ],
+    "world_pixels_per_source_pixel_proposal": 1,
+    "mapping_status": "Unapproved; do not stretch to requested dimensions",
+    "entry": "East edge, lower-right section",
+    "intended_use": "Original winding/branching combat and mining dungeon; about eight major floor pockets and two circuits",
+    "actors_baked": false,
+    "ore_props_baked": false,
+    "review": "Source layout/material/camera review only. Crispness and shared-grid clearance at runtime are not certified. Whole-map user image approval required before decomposition/scene implementation."
+  },
+  "preservation": [
+    "Existing BrackenMine floor,15user-markedores and portals unchanged",
+    "Valtheiris wall,gate,roads,trees and all current game interfaces unchanged",
+    "No actors or ore clusters baked into new environment art",
+    "No mining/combat rules,populations,recipes,progression or drops changed"
+  ],
+  "rejected_revision": {
+    "file_in_supporting_task": "entrance-east-v2.png",
+    "generator": "built-in image_gen",
+    "canvas": [
+      1448,
+      1086
+    ],
+    "status": "Rejected for production: generator ignored native canvas and left fringe/edge artifacts; never scaled into a finished prop"
+  },
+  "holds": {
+    "whole_map_artwork_approval": "pending",
+    "worldbuilding_actual_scene_contract": "pending; no final scene/placement authored",
+    "map_runtime_4x_review": "pending",
+    "entrance_native4x_preview": "reviewed in memory against actual world and player; not final portal/collision validation",
+    "installation": "not performed",
+    "PixelLab_revision": "Unavailable after first generation: no remaining generations or credit; original preserved"
+  }
+}
