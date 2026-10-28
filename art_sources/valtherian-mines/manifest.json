@@ -2,7 +2,7 @@
   "schema": 2,
   "area": "Valtherian Mines",
   "request_date": "2026-10-27",
-  "status": "Larger-room tile-authored layout/art candidate v3; user image approval pending; not installed",
+  "status": "V3 layout liked by user; overview fails4x runtime-art density; native production artwork pending; not installed",
   "entrance": {
     "file": "unapproved/entrance-east-v1.png",
     "native_canvas": [
@@ -61,7 +61,7 @@
     "sha256": "8ddfeb0018110c36f3937592a09b378f61b9122d1d2f761eb4f6931dffedea90",
     "generator": "built-in image_gen",
     "prompt": "unapproved/whole-map-v3.prompt.txt",
-    "status": "Larger-room candidate; whole-image user art approval pending",
+    "status": "Layout/design liked2026-10-27; overview rejected as final runtime texture after actual4x test",
     "geometry_reference": "planning/tile-guide-v3.svg",
     "style_reference": "unapproved/whole-map-v2.png",
     "tile_contract": "planning/tile-layout-v3.json",
@@ -83,8 +83,8 @@
     "entry": "East edge/right; long westward main route with five distinct side branches",
     "actors_baked": false,
     "ore_props_baked": false,
-    "mapping_status": "Downsampled art overview, not native runtime terrain; do not stretch it into a game background",
-    "review": "Environment-only visual review and structural plan checks. Exact generated wall/floor alignment, final physics, depth sorting and installed terrain crispness remain pending."
+    "mapping_status": "Rejected at planned world scale:3.60775x/3.60173x enlargement of source. Preserve layout only; native terrain artwork required.",
+    "review": "Actual Godot camera4x preview with original peasant and nearest filtering inspected: terrain visibly coarser/softer than character. This is a rejection test of the proposed flattened texture, not a final-scene certificate."
   },
   "preservation": [
     "Existing BrackenMine floor,15user-markedores and portals unchanged",
@@ -102,12 +102,12 @@
     "status": "Rejected for production: generator ignored native canvas and left fringe/edge artifacts; never scaled into a finished prop"
   },
   "holds": {
-    "whole_map_artwork_approval": "pending for v3; v2 liked direction but required larger rooms; v1 rejected",
+    "whole_map_artwork_approval": "V3 layout liked by user; production-native artwork not approved at4x",
     "worldbuilding_actual_scene_contract": "pending; no final scene/placement authored",
-    "map_runtime_4x_review": "pending for actual native terrain;4x structural room/player size examples completed",
+    "map_runtime_4x_review": "Overview-as-runtime candidate FAILED actual Godot4x visual review; native terrain and final scene review pending",
     "entrance_native4x_preview": "reviewed in memory against actual world and player; not final portal/collision validation",
     "installation": "not performed",
-    "PixelLab_revision": "Unavailable after first generation: no remaining generations or credit; original preserved"
+    "PixelLab_revision": "Confirmed2026-10-27:0generations,0credits,0daily bonus; next subscription reset2026-11-12. New native-art generation pending."
   },
   "whole_map_history": [
     {
@@ -173,5 +173,43 @@
     "godot_client/docs/HiddenGridMovement.md",
     "https://github.com/godotengine/godot-docs/blob/4.5/classes/class_tileset.md",
     "https://github.com/godotengine/godot-docs/blob/4.5/classes/class_tilemaplayer.md"
-  ]
+  ],
+  "runtime_density_review": {
+    "status": "FAIL:overview must not be used as enlarged runtime map",
+    "reproducer": "planning/render_overview_density_review.gd",
+    "source_dimensions": [
+      1703,
+      924
+    ],
+    "planned_world_dimensions": [
+      6144,
+      3328
+    ],
+    "world_pixels_per_source_pixel": [
+      3.607751027598356,
+      3.601731601731602
+    ],
+    "screen_pixels_per_source_pixel_at4x": [
+      14.431004110393424,
+      14.406926406926408
+    ],
+    "actual_player_source_canvas": [
+      64,
+      64
+    ],
+    "actual_player_display_height": 48,
+    "actual_player_world_pixels_per_source_pixel": 0.75,
+    "actual_player_screen_pixels_per_source_pixel_at4x": 3,
+    "filtering": "Nearest; no smooth enlargement. Correct filtering does not restore lost native detail.",
+    "evidence_in_supporting_task": "overview-stretched-to-planned-world-rejected-4x.png; overview-density-review.json",
+    "evidence_policy": "Generated screenshot/report stays outside Git in the matching supporting map task.",
+    "next_action": "Retain liked layout and32px gameplay cells. Produce a genuinely native floor/wall section using the selected area density and whole props, then inspect actual4x with original character before full assembly.",
+    "not_a_fix": [
+      "Nearest stretching of overview",
+      "Palette reduction alone",
+      "Cutting the low-resolution overview into tile regions",
+      "Reusing Bracken source without an independent4x art review"
+    ],
+    "installation": "No runtime scene, world placement, gameplay or existing map changed."
+  }
 }

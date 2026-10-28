@@ -5,6 +5,32 @@ east-facing entrance beside Valtheiris's wall. V3 enlarges the chambers while
 preserving the liked east-to-west journey and five separate side branches.
 The opaque dark background stays; the remove-background action was canceled.
 
+## 4× artwork quality hold
+
+The user likes V3's layout but requires artwork as crisp as the character at
+4×. An actual Godot render tested the1703×924 overview stretched to the planned
+6144×3328 world with nearest filtering and the original unmodified peasant.
+**This failed visual review. Do not install the overview as runtime terrain.**
+Each overview pixel becomes approximately14.4 screen pixels at4×, compared
+with3 screen pixels per original character-art pixel (64px canvas,48px display).
+The earlier flat-grid examples demonstrate room size only, not terrain quality.
+
+Preserve the liked geometry, camera and materials. Production needs genuinely
+native floor/wall artwork at the area's reviewed density, with complete props
+kept separate; enlarging, quantizing or slicing this overview cannot restore
+missing detail. Prove a small native-art section beside the original character
+at4× before assembling the whole area. This is an art-quality hold, not a request
+to redesign the layout, shrink the rooms or change gameplay zoom.
+
+`planning/render_overview_density_review.gd` reproduces the rejection test when
+run with the active Godot project. Supply an absolute evidence directory after
+`--`; screenshots/reports stay outside Git. This preview has no final physical
+scene or prop placement and is not a worldbuilding certificate. PixelLab's
+balance was checked on2026-10-27: zero credits and zero remaining generations;
+new PixelLab native artwork remains pending. Existing Bracken terrain is a
+material reference, not an automatic crispness pass: its provenance includes
+downsampling and nearest enlargement into2-world-pixel clusters.
+
 ## Current room and tile plan
 
 `planning/tile-layout-v3.json` uses the game's fixed 32-world-pixel cells and
@@ -60,7 +86,7 @@ incorrect native canvas and edge artifacts. PixelLab has no remaining credits.
 
 ## Approval and installation checkpoint
 
-**V3 whole-image approval is pending.** Follow
+**V3 layout is liked; native production artwork approval is pending.** Follow
 `godot_client/docs/map-art/PLAYABLE-MAP-PIPELINE.md` before final decomposition
 and installation. After artwork approval, build native terrain on the authored
 grid, use whole canonical props at their approved density and anchors, and run
