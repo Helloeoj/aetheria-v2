@@ -1,5 +1,6 @@
 """Distribution regressions: source exclusion, PCK versions and public-only profile."""
 import io
+import re
 import struct
 import tempfile
 import unittest
@@ -10,6 +11,18 @@ import beta_package as package
 
 
 class PackageTests(unittest.TestCase):
+    def test_retained_scripts_never_preload_excluded_or_missing_resources(self):
+        missing=[]
+        pattern=re.compile(r'''\bpreload\s*\(\s*["']res://([^"']+)["']\s*\)''')
+        for source in package.SOURCE.rglob('*.gd'):
+            relative=source.relative_to(package.SOURCE)
+            if package.excluded(relative):continue
+            for resource in pattern.findall(source.read_text(encoding='utf-8-sig')):
+                dependency=Path(resource)
+                if package.excluded(dependency) or not (package.SOURCE/dependency).is_file():
+                    missing.append(f'{relative.as_posix()} -> {resource}')
+        self.assertEqual(missing,[], 'A retained script preloads a resource absent from the beta stage')
+
     def test_source_server_developer_tools_and_secrets_are_excluded(self):
         for path in ['scripts/dev_tools/check.gd', 'scripts/server/server_main.gd',
                      'network/world_host.gd', 'network/world_host.gd.uid',

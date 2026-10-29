@@ -552,11 +552,12 @@ func _ready() -> void:
 	print("[UI] I opens the character journal; K toggles skill testing. F5 spawns monsters; F7 opens the sprite viewer; P tests fishing anywhere.")
 	_prepare_grid_movement.call_deferred()
 	if OS.is_debug_build() and not OS.has_feature("tester_client") and not has_meta("online_server_geometry"):
-		tile_commands = preload("res://scripts/dev_tools/tile_commands.gd").new()
+		# Beta exports omit dev_tools; resolve them only inside this debug guard.
+		tile_commands = load("res://scripts/dev_tools/tile_commands.gd").new()
 		add_child(tile_commands)
 		tile_commands.configure(self)
 	if OS.is_debug_build() and not OS.has_feature("tester_client") and not has_meta("online_server_geometry"):
-		aoe_preview = preload("res://scripts/dev_tools/aoe_tile_preview.gd").new()
+		aoe_preview = load("res://scripts/dev_tools/aoe_tile_preview.gd").new()
 		aoe_preview.game = self
 		aoe_preview.z_index = 8
 		add_child(aoe_preview)
