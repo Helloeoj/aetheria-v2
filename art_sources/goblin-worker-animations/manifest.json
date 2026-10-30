@@ -1,0 +1,1831 @@
+{
+  "schema_version": 1,
+  "skin_id": "goblin_worker",
+  "source_character_id": "dd308266-39ee-481b-9d23-906d0d964bee",
+  "native_base_size": [
+    56,
+    56
+  ],
+  "preserved_display_height": 44,
+  "preserved_foot_position": [
+    28,
+    53
+  ],
+  "pixel_density": "One source pixel remains one native artwork pixel; larger frame canvases retain their source transparent padding.",
+  "selection_file": "eight-direction-clips.json",
+  "selection_sha256": "ae6cae86426ef5176ebc3a287a93a42fc377fb2d71462f9b1bb842eff5952a05",
+  "source_groups": {
+    "idle": "161f2633-7d46-4e8d-a734-c903e12e1091",
+    "idle_north": "ef8e95da-ad6b-4d37-9c48-9285b12f6d70",
+    "idle_north_west": "2b62fb68-96d7-43b7-830b-be36082589de",
+    "walk": "12dc3f31-a2e0-4701-9249-8371b6180873",
+    "attack": "35eaaaf4-759b-44c6-9696-27a6d82b7e4e"
+  },
+  "approval": {
+    "date": "2026-10-30",
+    "status": "runtime_test_authorized_visual_approval_pending",
+    "authorization": "User authorized the current generated artwork for local runtime animation and combat testing. Final artwork approval remains separate and pending."
+  },
+  "frames": [
+    {
+      "source": "idle/0.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/south/frame_000.png",
+      "native_size": [
+        84,
+        72
+      ],
+      "sha256": "6ba3ef570a96d7d7e84c10efd8313147ff43120fffa75524ddc39cb164ab8d7b"
+    },
+    {
+      "source": "idle/1.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/south/frame_001.png",
+      "native_size": [
+        84,
+        72
+      ],
+      "sha256": "4b83ea49231ff294d8945d9fbc88e4347947ff2a81d3f2a948f0704402748a20"
+    },
+    {
+      "source": "idle/2.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/south/frame_002.png",
+      "native_size": [
+        84,
+        72
+      ],
+      "sha256": "c4463ffc0425b6a03ef2331d12ed080a1d760a860d13d9f83745d7de072a4a49"
+    },
+    {
+      "source": "idle/3.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/south/frame_003.png",
+      "native_size": [
+        84,
+        72
+      ],
+      "sha256": "93653f1a3345eb3a21c8585e6cb166e3816741156a158c3ed23f6788b207c488"
+    },
+    {
+      "source": "idle/4.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/south/frame_004.png",
+      "native_size": [
+        84,
+        72
+      ],
+      "sha256": "8c15b21d3b102d64e2929e9c565baaf638a2fbd6b0c16adb52c12a3903c11789"
+    },
+    {
+      "source": "eight-direction-frames/idle/south-east/0.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/south-east/frame_000.png",
+      "native_size": [
+        76,
+        76
+      ],
+      "sha256": "ed880e59f4bb79be2616f4dd576e4710f2f369a85e39524417724c392327ecec"
+    },
+    {
+      "source": "eight-direction-frames/idle/south-east/1.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/south-east/frame_001.png",
+      "native_size": [
+        76,
+        76
+      ],
+      "sha256": "0558f21d30bbef4c545d1b14064d48b499f5e58d2b9d9e02401d446b04213e66"
+    },
+    {
+      "source": "eight-direction-frames/idle/south-east/2.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/south-east/frame_002.png",
+      "native_size": [
+        76,
+        76
+      ],
+      "sha256": "fadf3c38f188db6c729a40e61273ecf5fbf4f377c5ac20ca1ce9afdd7bcf42b5"
+    },
+    {
+      "source": "eight-direction-frames/idle/south-east/3.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/south-east/frame_003.png",
+      "native_size": [
+        76,
+        76
+      ],
+      "sha256": "65cd5d37f27fed12b7edb3c35011d94b6eeacfd79945b5575b0c052f41b6b2c1"
+    },
+    {
+      "source": "eight-direction-frames/idle/south-east/4.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/south-east/frame_004.png",
+      "native_size": [
+        76,
+        76
+      ],
+      "sha256": "8c33c7602a9732646039c5759db4ba1c9ab5548c48b57a26b279e49be29ee987"
+    },
+    {
+      "source": "eight-direction-frames/idle/east/0.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/east/frame_000.png",
+      "native_size": [
+        56,
+        80
+      ],
+      "sha256": "b5167501a0c52f6f0922c5a9ce62444d084f4426c4da9b45eb107930c1a443d9"
+    },
+    {
+      "source": "eight-direction-frames/idle/east/1.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/east/frame_001.png",
+      "native_size": [
+        56,
+        80
+      ],
+      "sha256": "33313524a33c32de89be71a3f047f4eaa9eebafb9cce177cb99bd5f109fe7d14"
+    },
+    {
+      "source": "eight-direction-frames/idle/east/2.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/east/frame_002.png",
+      "native_size": [
+        56,
+        80
+      ],
+      "sha256": "825d5004649fe5fede0592dbc2bd0e6034b780845c919188c8a505c86433eef9"
+    },
+    {
+      "source": "eight-direction-frames/idle/east/3.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/east/frame_003.png",
+      "native_size": [
+        56,
+        80
+      ],
+      "sha256": "9f524d060b41aec54922c60c28fab326ed5b968b34365b875255273ecb766e5e"
+    },
+    {
+      "source": "eight-direction-frames/idle/east/4.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/east/frame_004.png",
+      "native_size": [
+        56,
+        80
+      ],
+      "sha256": "9a04e17ab4bc89ef1498a0ddebefcf08d88a93ceb03fec6633a2660659ae62c0"
+    },
+    {
+      "source": "eight-direction-frames/idle/north-east/0.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/north-east/frame_000.png",
+      "native_size": [
+        76,
+        76
+      ],
+      "sha256": "6f0ac9332e9e34abcbdfd97595db4e13334d874f213f86c2a43f4d575ac46968"
+    },
+    {
+      "source": "eight-direction-frames/idle/north-east/1.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/north-east/frame_001.png",
+      "native_size": [
+        76,
+        76
+      ],
+      "sha256": "1b58497e2dc37bf396796714ae2e680057e9bd2ecae11a2f9f03d08dc1395d72"
+    },
+    {
+      "source": "eight-direction-frames/idle/north-east/2.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/north-east/frame_002.png",
+      "native_size": [
+        76,
+        76
+      ],
+      "sha256": "c09fe91940acaeaaa53071ca4a40a30ee76f461bc514db33c8a85771d60d06cf"
+    },
+    {
+      "source": "eight-direction-frames/idle/north-east/3.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/north-east/frame_003.png",
+      "native_size": [
+        76,
+        76
+      ],
+      "sha256": "5a7d807f62880168d376281e64b66339ef0b1bf5f683443f4425aba3885f92c5"
+    },
+    {
+      "source": "eight-direction-frames/idle/north-east/4.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/north-east/frame_004.png",
+      "native_size": [
+        76,
+        76
+      ],
+      "sha256": "bd1b6602d7783ef07bd5ccae86174a901309f7609e8a852ca42c3f99390e0a1d"
+    },
+    {
+      "source": "eight-direction-pose-repair/idle/north/0.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/north/frame_000.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "eba09ee13f19db4f90575c100b0b1132a41ea674668d7b4d9db9edd8845a2b77"
+    },
+    {
+      "source": "eight-direction-pose-repair/idle/north/1.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/north/frame_001.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "82b1000e74897de885a7cda96eacc3880a5e90f5532fff2629f1fd2c424a3e31"
+    },
+    {
+      "source": "eight-direction-pose-repair/idle/north/2.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/north/frame_002.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "f5be265198067341c516e965ddae7877e4d1e7ed6d4d3ee2fcd04852e5ad08b9"
+    },
+    {
+      "source": "eight-direction-pose-repair/idle/north/3.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/north/frame_003.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "41ee6754cde607ea2fe59a0c1d2b2d65b0348072c0a5049e1ff917475a15e03e"
+    },
+    {
+      "source": "eight-direction-pose-repair/idle/north/4.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/north/frame_004.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "b29901a94a6c1eb61949703041ff79dd5e9eb5342fd56f8731465ff014fe89c4"
+    },
+    {
+      "source": "eight-direction-repairs/idle/north-west/0.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/north-west/frame_000.png",
+      "native_size": [
+        84,
+        76
+      ],
+      "sha256": "91727688a1938b90080954c29a4e08e2e410d3007dea4ce6ba408be3633f76e1"
+    },
+    {
+      "source": "eight-direction-repairs/idle/north-west/1.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/north-west/frame_001.png",
+      "native_size": [
+        84,
+        76
+      ],
+      "sha256": "5616752b4ee95f6ee624f34e8484bf8c01799c398fe35126c4e24d1b1ef61c53"
+    },
+    {
+      "source": "eight-direction-repairs/idle/north-west/2.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/north-west/frame_002.png",
+      "native_size": [
+        84,
+        76
+      ],
+      "sha256": "d07d8434c14f16463637f3e60144e79472b32490b8cf345790a6f2175b34e9ec"
+    },
+    {
+      "source": "eight-direction-repairs/idle/north-west/3.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/north-west/frame_003.png",
+      "native_size": [
+        84,
+        76
+      ],
+      "sha256": "68cf1c8892285a367094e18c2a0af60799555ed358945ac219211257d64fe78e"
+    },
+    {
+      "source": "eight-direction-repairs/idle/north-west/4.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/north-west/frame_004.png",
+      "native_size": [
+        84,
+        76
+      ],
+      "sha256": "13f683dd4115e0f610a97473118694ef6f6d377dddcde7a02ab7487d3b5bce85"
+    },
+    {
+      "source": "eight-direction-frames/idle/west/0.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/west/frame_000.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "7c6ab6c503fdbade2e3662f4457ce7cab067000a0ad9bb637ba3c337e6078baa"
+    },
+    {
+      "source": "eight-direction-frames/idle/west/1.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/west/frame_001.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "a11130a4d6a339fa1d0aa735249eec34282989f839c4e96471640545934b067a"
+    },
+    {
+      "source": "eight-direction-frames/idle/west/2.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/west/frame_002.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "dca441ecce3aca1fb3d80c70a81b41ec4a1b94c12757833976850b9ba0173b22"
+    },
+    {
+      "source": "eight-direction-frames/idle/west/3.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/west/frame_003.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "70217060b0d3dd7c5bb1e4ce89e0aa8e622bb04bdf8569b68d71dab50cc2d640"
+    },
+    {
+      "source": "eight-direction-frames/idle/west/4.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/west/frame_004.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "d69206636fecb9cff9ab05227a1ad6df5a2d29f0827d44dc2dacf071fd8fad83"
+    },
+    {
+      "source": "eight-direction-frames/idle/south-west/0.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/south-west/frame_000.png",
+      "native_size": [
+        76,
+        76
+      ],
+      "sha256": "0a5fd0f574d74ebab7a51a65a0310e00bcc767a4beff98dcc19e621e58474ef2"
+    },
+    {
+      "source": "eight-direction-frames/idle/south-west/1.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/south-west/frame_001.png",
+      "native_size": [
+        76,
+        76
+      ],
+      "sha256": "a9fef682d34ee2aef3de3d65de1e72f66424510c5dc167e492fe1aecf1c8abf4"
+    },
+    {
+      "source": "eight-direction-frames/idle/south-west/2.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/south-west/frame_002.png",
+      "native_size": [
+        76,
+        76
+      ],
+      "sha256": "15f3bcd9df16809dcff365c7fbbca4be543e9166d016c8738f930a47b55076b4"
+    },
+    {
+      "source": "eight-direction-frames/idle/south-west/3.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/south-west/frame_003.png",
+      "native_size": [
+        76,
+        76
+      ],
+      "sha256": "3e2220b4f224979c8bea382b5c4b2fda337138cdcaa49cd65830b9cd3fb70099"
+    },
+    {
+      "source": "eight-direction-frames/idle/south-west/4.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/south-west/frame_004.png",
+      "native_size": [
+        76,
+        76
+      ],
+      "sha256": "294c5e51f53fe76eb4581758b0fa802f0164fb1627f4db6125a7416e81945e11"
+    },
+    {
+      "source": "walk-v2/0.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/south/frame_000.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "6124ccae33e5858ab9969f41f6de0e567f03f5e373847ebe1dafd529b0cf4d39"
+    },
+    {
+      "source": "walk-v2/1.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/south/frame_001.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "5210c2d9fe93bba2ccbe826fdafe31f34da695ccf00b93064e3f4cdd8069c9da"
+    },
+    {
+      "source": "walk-v2/2.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/south/frame_002.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "7df0bc96ed49e302ebd3781fd1fe97e4966177c62ddb4c9b69e3605fd6257956"
+    },
+    {
+      "source": "walk-v2/3.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/south/frame_003.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "de0eee2ce71ca75725b9562c15508e583cf0576a638540bc14fc198755b2d250"
+    },
+    {
+      "source": "walk-v2/4.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/south/frame_004.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "5fad00ef054d6893a27fd2be954fff67f99b66923492bc3b64cd0a05091192f3"
+    },
+    {
+      "source": "walk-v2/5.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/south/frame_005.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "7d0018c95885e593fa0ef0a8df63c932cd37e1b9353edb20025fce542ba4797e"
+    },
+    {
+      "source": "walk-v2/6.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/south/frame_006.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "f43f8c94c96434dd4d7c089f78df796fc98cdbf001d61a1e2b74083c9dc94868"
+    },
+    {
+      "source": "walk-v2/7.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/south/frame_007.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "4bf7d32ba1610365079dc87cd052bbb49dd79e09cec2ff0fdd1d26294a7768b9"
+    },
+    {
+      "source": "eight-direction-frames/walk/south-east/0.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/south-east/frame_000.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "3bbecdc66da2df9baf7e6e0841218adbb3081a2dc9d7524d54eb97c2dd117b23"
+    },
+    {
+      "source": "eight-direction-frames/walk/south-east/1.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/south-east/frame_001.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "9555978712dd90cdff8796d9ab81a042aebd12f3fc64200a2760eeb2c2f8c403"
+    },
+    {
+      "source": "eight-direction-frames/walk/south-east/2.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/south-east/frame_002.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "20ba96250b4f3048b91c184d730a9859b1c3654e8fb00714c062ba33f1e5756a"
+    },
+    {
+      "source": "eight-direction-frames/walk/south-east/3.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/south-east/frame_003.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "77b9971a4a9723fb11ff60ae7311aeea82006e7cd95aae3679e33a577b72e2a5"
+    },
+    {
+      "source": "eight-direction-frames/walk/south-east/4.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/south-east/frame_004.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "0747e0f6877dcd03237674e961e6ccfb6b800f52d4576cfe584cec8969391dde"
+    },
+    {
+      "source": "eight-direction-frames/walk/south-east/5.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/south-east/frame_005.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "928db90a9ff69612fb47f1c297a0bc388aeb45b9a991b384147a18e0f24338f9"
+    },
+    {
+      "source": "eight-direction-frames/walk/south-east/6.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/south-east/frame_006.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "0d88567bfb893663546ce10e11f1230440be28c43dbc9deb55d6378be0493907"
+    },
+    {
+      "source": "eight-direction-frames/walk/south-east/7.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/south-east/frame_007.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "eeb2f35e7994c87c17812a5352e58f2e03b128144a73c15cb876c63540ef46a1"
+    },
+    {
+      "source": "eight-direction-frames/walk/east/0.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/east/frame_000.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "0f92640b8cfd17a5e97cdc450af41600c7fd1ab256fde9e875bc09701c7307a3"
+    },
+    {
+      "source": "eight-direction-frames/walk/east/1.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/east/frame_001.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "a3d62057e8b38114ea2df265a0303ca5be956055a5ffd3bdf2163049c5fd03a1"
+    },
+    {
+      "source": "eight-direction-frames/walk/east/2.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/east/frame_002.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "d8aa7fb3a6fd2a5a61c8233e4db877f9b61242080ba95da1357b531fcae8373f"
+    },
+    {
+      "source": "eight-direction-frames/walk/east/3.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/east/frame_003.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "3fbb698fc8e12febda424cbb1c48bdd135f3768bdf3c38fe50b44c84a336227c"
+    },
+    {
+      "source": "eight-direction-frames/walk/east/4.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/east/frame_004.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "d1ce3e6b19d9e8d227bf2a063d6d8adddb3673ae23cf02c476ce13f98e33d9cd"
+    },
+    {
+      "source": "eight-direction-frames/walk/east/5.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/east/frame_005.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "879144d2aaadd613b791e4e38481162a39e35470a12cf5cde64d135a9537f13c"
+    },
+    {
+      "source": "eight-direction-frames/walk/east/6.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/east/frame_006.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "7282c0902e9da72eabee7471008a0902323f127d2354678e85ee08b0bfbee34d"
+    },
+    {
+      "source": "eight-direction-frames/walk/east/7.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/east/frame_007.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "a92daff6ab4fccdafbc97a3a267559d14e60ea9bfd96533bc5086fa45b076616"
+    },
+    {
+      "source": "eight-direction-frames/walk/north-east/0.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/north-east/frame_000.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "decb1b09cf4070d6a40c26da56d21e5faca582cfdeb22771ea47c0ee28d59b78"
+    },
+    {
+      "source": "eight-direction-frames/walk/north-east/1.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/north-east/frame_001.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "0a211552f5e9026ea7a1f8e0a3a34400ce724c345318e3121f46072a009bc817"
+    },
+    {
+      "source": "eight-direction-frames/walk/north-east/2.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/north-east/frame_002.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "2fc41ae993829ec782de762a2f83c406a79d9366f4a1d9b0aa8d842640796ec5"
+    },
+    {
+      "source": "eight-direction-frames/walk/north-east/3.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/north-east/frame_003.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "3850a8c859d3f62a255b148ede902d74debdee31754966651e367c5920dc8292"
+    },
+    {
+      "source": "eight-direction-frames/walk/north-east/4.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/north-east/frame_004.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "47baf4ed6495b8f3cbc826c8bdeb91e639a899dc6fa72c8e00c552133441581a"
+    },
+    {
+      "source": "eight-direction-frames/walk/north-east/5.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/north-east/frame_005.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "7ec7975f14a7de9a68934bd23fc28f343b7cb308809760a386810d097c7a3279"
+    },
+    {
+      "source": "eight-direction-frames/walk/north-east/6.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/north-east/frame_006.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "b4a7da554d2963c54ff26e7aa8ee1ced94adf1b207d49ef9e71b708f402e6623"
+    },
+    {
+      "source": "eight-direction-frames/walk/north-east/7.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/north-east/frame_007.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "d85241ee3b9fe98798b1dac8e3c5a61803ed4a9bc3fa637be6c0dbdb7fa1c708"
+    },
+    {
+      "source": "eight-direction-frames/walk/north/0.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/north/frame_000.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "cac71418c97d059e3638a41c77a8de4eb4e346336b5f7255a82ee2f6f576d22c"
+    },
+    {
+      "source": "eight-direction-frames/walk/north/1.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/north/frame_001.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "1ca387dfa63f72d87a862b6fe79993456f25108312b245fede9ba08faa70ee35"
+    },
+    {
+      "source": "eight-direction-frames/walk/north/2.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/north/frame_002.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "d5c7d5e37c6c6462c29f66a7360db5b2406c7f2e81747a69a47d9a22ed0175d1"
+    },
+    {
+      "source": "eight-direction-frames/walk/north/3.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/north/frame_003.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "4923b6d99bc49ef675a2480e3044a937c89618d7549a9e72b97308d3b24f634c"
+    },
+    {
+      "source": "eight-direction-frames/walk/north/4.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/north/frame_004.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "0fda57a5d940e333923b16c4574218e9ad6727d8a919c7862ef46fd7e2123649"
+    },
+    {
+      "source": "eight-direction-frames/walk/north/5.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/north/frame_005.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "e547b6101bdf2ea6e45a195f87e7dd94ea4574ac5891f2c9bc668f75f7ad23e0"
+    },
+    {
+      "source": "eight-direction-frames/walk/north/6.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/north/frame_006.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "250ed12d154d958f20ebefebb554251b5d581ce946935cdcd78f0c92fe55665f"
+    },
+    {
+      "source": "eight-direction-frames/walk/north/7.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/north/frame_007.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "1727b07a57acf2c18916185620e309091a10ae3329898ad3cd15a9134d241763"
+    },
+    {
+      "source": "eight-direction-frames/walk/north-west/0.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/north-west/frame_000.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "a07545a1a9da78fdff2f55e9d98264dda997396ed0ce20e2cd99a2d1f811efdb"
+    },
+    {
+      "source": "eight-direction-frames/walk/north-west/1.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/north-west/frame_001.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "9190a3d0f942dcc73b4ac64165c8c030fc5a1a422090b77e608e60e9790d4a84"
+    },
+    {
+      "source": "eight-direction-frames/walk/north-west/2.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/north-west/frame_002.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "15309894881cb4bc619c07628291254a43b8dfc3aa8bf6c142412d529be3ac98"
+    },
+    {
+      "source": "eight-direction-frames/walk/north-west/3.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/north-west/frame_003.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "aa095b3397d9b5b946e0f0be4db1b2afe8b92b022c0f0c6fa6cad94a03c03b10"
+    },
+    {
+      "source": "eight-direction-frames/walk/north-west/4.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/north-west/frame_004.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "ea7d11f3344f3b8ae6ba89d50ad638453a2ed50743b212bb76a1f299604967bc"
+    },
+    {
+      "source": "eight-direction-frames/walk/north-west/5.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/north-west/frame_005.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "18e3fa472beb6b9c3e357f2e2275446039398af803656b0864f21dce270f1b9f"
+    },
+    {
+      "source": "eight-direction-frames/walk/north-west/6.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/north-west/frame_006.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "de0978ede00e136fb755ab80ef9adf9c36fe0f44d27e4edd4e4a5b7f067ae0c7"
+    },
+    {
+      "source": "eight-direction-frames/walk/north-west/7.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/north-west/frame_007.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "98b80db47642d79c2a38a631f78f8b3acaf02696c66d6cf6b06a1e0227e4fe74"
+    },
+    {
+      "source": "eight-direction-frames/walk/west/0.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/west/frame_000.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "1ecb6442e4f4924df6dc420acd46d0506dfa8c5df831e858e9651b1dc46e2413"
+    },
+    {
+      "source": "eight-direction-frames/walk/west/1.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/west/frame_001.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "340ff10dc5b09ec4973ad59f40c7e195275d2a5ccf6f8e76878fa5e9b2441229"
+    },
+    {
+      "source": "eight-direction-frames/walk/west/2.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/west/frame_002.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "860a9f9c909e7e27ff6bb9053ca69ed8f796e3940df145ad0e24827aecab7798"
+    },
+    {
+      "source": "eight-direction-frames/walk/west/3.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/west/frame_003.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "bb2c8a6adc14aecba6ec6adb393caebdc3d201855bcff7d25dcf5e13fabdf06f"
+    },
+    {
+      "source": "eight-direction-frames/walk/west/4.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/west/frame_004.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "88aa15c4a7f06439822d1b4e08b5647477294d2cdb957a8fe3d82443a7f173fc"
+    },
+    {
+      "source": "eight-direction-frames/walk/west/5.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/west/frame_005.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "b8f5998a6bbe651eaec63a13f95826adfdda723efa81a3ca5b33c18db27b3158"
+    },
+    {
+      "source": "eight-direction-frames/walk/west/6.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/west/frame_006.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "0668e687d38de28ba2981f863956295dd3fd2e2844204b93d251e2df5a1d9ed7"
+    },
+    {
+      "source": "eight-direction-frames/walk/west/7.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/west/frame_007.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "b6c5d6330009a45052d7b434524207b8b32682de312350a57ad44f78f49dcbf9"
+    },
+    {
+      "source": "eight-direction-frames/walk/south-west/0.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/south-west/frame_000.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "ab60d4195d22b19201442e7fc6d7a3f97361d32edb84f8f69c7357640eac2578"
+    },
+    {
+      "source": "eight-direction-frames/walk/south-west/1.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/south-west/frame_001.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "efbc05aa6641cf46a1aa84125f4ec85c51499c35982efc570515415c324c00a2"
+    },
+    {
+      "source": "eight-direction-frames/walk/south-west/2.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/south-west/frame_002.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "9438c720e7b75b084aaceaa91c4144abf53a9ccabe57807f5177b7a4ebb19023"
+    },
+    {
+      "source": "eight-direction-frames/walk/south-west/3.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/south-west/frame_003.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "f000bb165321a46ecfffe4e9f3c5df8971ed854d93bb3683dd14e253648492ce"
+    },
+    {
+      "source": "eight-direction-frames/walk/south-west/4.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/south-west/frame_004.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "ef5c2fee9ffedf11b85f3f66d9e03b4e31922b7ab7ae8de502e35594684c05c7"
+    },
+    {
+      "source": "eight-direction-frames/walk/south-west/5.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/south-west/frame_005.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "93f81dd6890a05c4dce125f796ed4b7c3a7c99ad93932270c9fd904e92ede71c"
+    },
+    {
+      "source": "eight-direction-frames/walk/south-west/6.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/south-west/frame_006.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "3053b257bea38df80ce716c945a7f17b5bdd37866ac4044bbca88b633ab68455"
+    },
+    {
+      "source": "eight-direction-frames/walk/south-west/7.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/walk/south-west/frame_007.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "6dc99028d0a1b5a11e8b4d64823ef0cfef1cebc62523655e5d9eb69c56e88ed0"
+    },
+    {
+      "source": "attack-v2/0.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south/frame_000.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "5a37116df3858f0b3cf323c466c509c5a77322a1ef2956aedcfa6dc4fe38673f"
+    },
+    {
+      "source": "attack-v2/1.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south/frame_001.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "2fba706776f1cd64cd208e2678dff0090a2d52f00c0f16781016a212355524ac"
+    },
+    {
+      "source": "attack-v2/2.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south/frame_002.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "d864b22c47e4e6930e3da6d51a8b4882dfb7fbde3e334219a6d53ba450f51c83"
+    },
+    {
+      "source": "attack-v2/3.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south/frame_003.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "fb4cdffc70a963339d099edf8b05fb6995b8d36f4bfa185731f1cab4d00dd35e"
+    },
+    {
+      "source": "attack-v2/4.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south/frame_004.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "3b03dfc2db51edbb4edde653ad9f8edb06cfdbccb8c507e78512c21c836750ef"
+    },
+    {
+      "source": "attack-v2/5.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south/frame_005.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "699400c4e7c45a9feeb8d6b169f1922beeb7b68d721b8bae9975529f10fccdf1"
+    },
+    {
+      "source": "attack-v2/6.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south/frame_006.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "fd6bf3ca276332e3c7b64110dfced44e7d650516dc81f128868bc45c365a5d13"
+    },
+    {
+      "source": "attack-v2/7.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south/frame_007.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "7bc32ddd87f7a8d57eb1f03377f59db6f086c0de1fc3aed561b4bc9c2893bfbc"
+    },
+    {
+      "source": "attack-v2/8.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south/frame_008.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "9d3010da5a78b23b7d9bf7088d0bbb1e3b636451d5bc17b3f6229f1cfcf1beec"
+    },
+    {
+      "source": "attack-v2/9.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south/frame_009.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "4eed260e580ea9e52ee2c5f9644743051b36d8cc976c77e1fdba3bb673e7eca1"
+    },
+    {
+      "source": "attack-v2/10.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south/frame_010.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "766dbffb10ceb5876d40f47f3f1baa7f0c2c6418e9f08047471c03c919e5dd11"
+    },
+    {
+      "source": "attack-v2/11.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south/frame_011.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "7ae54073fc7863e572de65d768f56d428638ddcf1ae45224f584e655f77ac4be"
+    },
+    {
+      "source": "eight-direction-frames/attack/south-east/0.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south-east/frame_000.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "149314db29812b649cb572efcff636975d1a0714332ff0af3166e5d5657b7c67"
+    },
+    {
+      "source": "eight-direction-frames/attack/south-east/1.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south-east/frame_001.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "a1676882aa36c4f7b99821ce6f68e4ea08e25c1580166380f279e3198f5f52e7"
+    },
+    {
+      "source": "eight-direction-frames/attack/south-east/2.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south-east/frame_002.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "47464e6b217d2446e3f1740e00e7357555c5c33d6d8d94d3925cb88906c2dbcc"
+    },
+    {
+      "source": "eight-direction-frames/attack/south-east/3.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south-east/frame_003.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "5717a84033d37fe370e3208763148d9d68dda135b9d69ec45a43ae0996b404a0"
+    },
+    {
+      "source": "eight-direction-frames/attack/south-east/4.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south-east/frame_004.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "d4bf12bf38c35caaf5113646da7f9fb7ea1c4aebc79b7eb8cc68f63fb8034883"
+    },
+    {
+      "source": "eight-direction-frames/attack/south-east/5.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south-east/frame_005.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "c6d09b5cc17c0edb2ea86c85c5dad09551d0505a9d94b3e6dc52880cd7d69353"
+    },
+    {
+      "source": "eight-direction-frames/attack/south-east/6.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south-east/frame_006.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "8243def5aa366e7caf967144924f24663bf3b5f93e8b57629fc1b3f27e2bd2a4"
+    },
+    {
+      "source": "eight-direction-frames/attack/south-east/7.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south-east/frame_007.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "553d11c65286a817d788ddcb0f5df9e2bbdc0a926923f307441598773b21a331"
+    },
+    {
+      "source": "eight-direction-frames/attack/south-east/8.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south-east/frame_008.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "4c6f41461f0cd79ae3bf15754105dc8ef52e994320fe1562b328d9788601609a"
+    },
+    {
+      "source": "eight-direction-frames/attack/south-east/9.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south-east/frame_009.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "2e2f76aaff3d6c8714782ac4d24b034e6f1ca2fa01a07f6ccd56f06017b5bb3a"
+    },
+    {
+      "source": "eight-direction-frames/attack/south-east/10.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south-east/frame_010.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "3fde52082e2ece1b1fac3e726ba254ecf9e3b34ab5e0cdc6fd73e07439ca59ac"
+    },
+    {
+      "source": "eight-direction-frames/attack/south-east/11.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south-east/frame_011.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "435e00abd1c7f71e140baf9f2bda0306c243765bfa7f1c7bb20dca777cc093e0"
+    },
+    {
+      "source": "eight-direction-frames/attack/east/0.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/east/frame_000.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "36b487107bb51fb2311562fc00fc5c5335f11cad67e219e0ec7932a3f5040a97"
+    },
+    {
+      "source": "eight-direction-frames/attack/east/1.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/east/frame_001.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "547181e625ea900f46c07edc66c5f97ce011f9aa9f4c539ded0eb92f11817107"
+    },
+    {
+      "source": "eight-direction-frames/attack/east/2.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/east/frame_002.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "c33cdaf0305e3ef93fc3e6760a09580be6a8132200a5e5660b02459a95433748"
+    },
+    {
+      "source": "eight-direction-frames/attack/east/3.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/east/frame_003.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "96266ce54dcfe38907b9d908762703a405ce7032ac19315fcbd8652aa2aff167"
+    },
+    {
+      "source": "eight-direction-frames/attack/east/4.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/east/frame_004.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "e1aa82035cb6566ada5bcb4f8926c6254f1708ad295e76f59e242e293b7d9822"
+    },
+    {
+      "source": "eight-direction-frames/attack/east/5.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/east/frame_005.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "9a28f93a88a2244290156e94eb70fec3d3333246589b12c7848d0b390f5ee014"
+    },
+    {
+      "source": "eight-direction-frames/attack/east/6.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/east/frame_006.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "3656eeff8fd9d9bef15901650e47100b901573c3ba5acbbc4bbab4f5298c15cb"
+    },
+    {
+      "source": "eight-direction-frames/attack/east/7.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/east/frame_007.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "4340ff95df6a122b25f3d633ab3fd65f8f8b0d5dee8afad670136f50526c486c"
+    },
+    {
+      "source": "eight-direction-frames/attack/east/8.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/east/frame_008.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "26222cc40732ba883b9f9d6f2f0f2d5d25db6d53ae66dc829a18d10081a7a732"
+    },
+    {
+      "source": "eight-direction-frames/attack/east/9.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/east/frame_009.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "4bb43b010598d6d4af70c3528e861f66a2d980deb615df4c25fc10dc199a56e2"
+    },
+    {
+      "source": "eight-direction-frames/attack/east/10.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/east/frame_010.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "fd9de02938b5f375f4e4155b4e37f798234bb1958b3ed59412d29eb1e5d064dd"
+    },
+    {
+      "source": "eight-direction-frames/attack/east/11.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/east/frame_011.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "920add3c37bbf9d4604e2cbde16e31f6b5162513aa1170dd00612aa313a1c6f5"
+    },
+    {
+      "source": "eight-direction-frames/attack/north-east/0.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north-east/frame_000.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "3f13c0b9826eb0090f5a134bff2eda09f94df3febd0869224aa42eebff61cf5b"
+    },
+    {
+      "source": "eight-direction-frames/attack/north-east/1.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north-east/frame_001.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "b555d397399a5ea166b5854d788642d32e68e67196c1a956c38a33d3d849992d"
+    },
+    {
+      "source": "eight-direction-frames/attack/north-east/2.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north-east/frame_002.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "56ac4704eb01cecdf3402ad64f3f946aaaf591b270f601a6ef41b5d9f61f0100"
+    },
+    {
+      "source": "eight-direction-frames/attack/north-east/3.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north-east/frame_003.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "f42eb5a3f2504795b9dc80f8ab970eb78f14156ec9515122223b437ef0229dd2"
+    },
+    {
+      "source": "eight-direction-frames/attack/north-east/4.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north-east/frame_004.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "80110c71d3dc80dd8fa72c6cd8e6c704e249e34091ca4143a1a2a301a570f6c7"
+    },
+    {
+      "source": "eight-direction-frames/attack/north-east/5.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north-east/frame_005.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "14b7d2b0fd57294c74c89749d395b7aa5de198666c2eaa541c0f9de24356aaee"
+    },
+    {
+      "source": "eight-direction-frames/attack/north-east/6.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north-east/frame_006.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "90648a6adebe1a4ebab53c0914e96a3c3678b8e361187bb24d9d1b64e825088f"
+    },
+    {
+      "source": "eight-direction-frames/attack/north-east/7.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north-east/frame_007.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "00374557c9ba82fbb81c58cc7d87c3ae91cec04f7bc3c1ccd84a5fdab67c2493"
+    },
+    {
+      "source": "eight-direction-frames/attack/north-east/8.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north-east/frame_008.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "3a60cab20b7078fb19491a713265147fe229956c222090bb1b78baf5811f7ae7"
+    },
+    {
+      "source": "eight-direction-frames/attack/north-east/9.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north-east/frame_009.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "dd3fd582e7c4a0e3ea0029513f31eabc2631483529c95ccc01d251f8d8197a7c"
+    },
+    {
+      "source": "eight-direction-frames/attack/north-east/10.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north-east/frame_010.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "cae08bbbaf3cc156c5228aa995843140f84e5a88f22420572887f1c6dfe54abb"
+    },
+    {
+      "source": "eight-direction-frames/attack/north-east/11.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north-east/frame_011.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "1806d3fabe6f8c81f18c6b7b019701f572872c271860aa6e9de21ebfbd9ba515"
+    },
+    {
+      "source": "eight-direction-frames/attack/north/0.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north/frame_000.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "a9f06cccf93931b9c789753d1bd1a69421b885599ae383cea99477e9ee88b134"
+    },
+    {
+      "source": "eight-direction-frames/attack/north/1.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north/frame_001.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "9ea6c868c639329b8ffb189a430027392fa1cb0441bfd31b5eceea487489bced"
+    },
+    {
+      "source": "eight-direction-frames/attack/north/2.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north/frame_002.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "ea438277c6cc092916d8d439472f535834ccf6b8ec6d257d93ad202578127150"
+    },
+    {
+      "source": "eight-direction-frames/attack/north/3.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north/frame_003.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "4e57aede46cc2deaf3968fa449e0ee6c2ad052832d973173cc349d555e9c7ba2"
+    },
+    {
+      "source": "eight-direction-frames/attack/north/4.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north/frame_004.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "afc7d5944172f1447679e797e1456dd96806cfb84b900940da5604bdf1421144"
+    },
+    {
+      "source": "eight-direction-frames/attack/north/5.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north/frame_005.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "2ae916cb62f42a3e5d111ac09c838668065b7271b5e6c80a546bb4e430b0b489"
+    },
+    {
+      "source": "eight-direction-frames/attack/north/6.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north/frame_006.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "9560dc21a2a201ae0446622802a92becec0850d04d3ac7c6c3acf4f8ebeca77b"
+    },
+    {
+      "source": "eight-direction-frames/attack/north/7.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north/frame_007.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "eba7d1eb7f3339197fe31717ee84934b78918a7bb831efb1366f701ea90765e6"
+    },
+    {
+      "source": "eight-direction-frames/attack/north/8.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north/frame_008.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "f7dd57013d9bef10574d05e0c49b00bfe46aa6e4dae1ecdc753050af2e56e185"
+    },
+    {
+      "source": "eight-direction-frames/attack/north/9.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north/frame_009.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "50570031101cc7388b3a38361e8e48ce054f56d432d8f7ba691bf8b3745fa4ca"
+    },
+    {
+      "source": "eight-direction-frames/attack/north/10.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north/frame_010.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "9e16ee4cbd7960d6d5a08c216817094f842ebaeeaaa481987bf59de11bfad10c"
+    },
+    {
+      "source": "eight-direction-frames/attack/north/11.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north/frame_011.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "e026967022b7dc2c3e5d74b9265d22d957e065926332f54810fccafea08bcea6"
+    },
+    {
+      "source": "eight-direction-frames/attack/north-west/0.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north-west/frame_000.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "c8f7794a41377a2fec724dc9ebd0b0e4cb68f42340a3ecf540d85619759e2be5"
+    },
+    {
+      "source": "eight-direction-frames/attack/north-west/1.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north-west/frame_001.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "9268a16b477a93c625549f8827046b8ecd3c1d3040b404d226af43590547c484"
+    },
+    {
+      "source": "eight-direction-frames/attack/north-west/2.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north-west/frame_002.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "6631674f48d71320651cc23aeaba6a7ca1b6b58ab6c8ad69d508d9f2c9765e5a"
+    },
+    {
+      "source": "eight-direction-frames/attack/north-west/3.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north-west/frame_003.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "e38f16cbd41ac2f5d3b374b21d1b947476b73174dafd26e0a46fc7e7faa9653f"
+    },
+    {
+      "source": "eight-direction-frames/attack/north-west/4.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north-west/frame_004.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "6da9db16dcc4037181618a1a7b241fc482a8a4b0617a71b99edcd2f209711ff9"
+    },
+    {
+      "source": "eight-direction-frames/attack/north-west/5.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north-west/frame_005.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "59e62a4ab0184fd8f346106a12a3eb3d9c617678d5e0c94da147e07a2ffc8764"
+    },
+    {
+      "source": "eight-direction-frames/attack/north-west/6.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north-west/frame_006.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "1fbceb99bcec7746aefbebc8ab394f9c7cb0dc8507434d898c5fc238dc3a10a4"
+    },
+    {
+      "source": "eight-direction-frames/attack/north-west/7.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north-west/frame_007.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "5464839a56555b813c048fb623aabf228f372293774545e4fe6acdca7cf05350"
+    },
+    {
+      "source": "eight-direction-frames/attack/north-west/8.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north-west/frame_008.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "8f930060165e4e7286b3819a0da1c96621ac35fab0497795199409e7c373b770"
+    },
+    {
+      "source": "eight-direction-frames/attack/north-west/9.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north-west/frame_009.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "64425759f80e88741ca9b4d4878915e694a1ccae39b06c31e4145e49e9574758"
+    },
+    {
+      "source": "eight-direction-frames/attack/north-west/10.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north-west/frame_010.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "572cc7feaa9b36bb401ca08a7fe248c8efece53f705108456d0b40bcbd34e682"
+    },
+    {
+      "source": "eight-direction-frames/attack/north-west/11.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/north-west/frame_011.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "1c5773607b7072c7a3af8d4dff37c7481be1f0301dbd9156962f9aa4885c566f"
+    },
+    {
+      "source": "eight-direction-frames/attack/west/0.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/west/frame_000.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "94dcc14f69be968e57f7cddbc64825b3a02cad611ab9752b6bd402fcc2a97a7f"
+    },
+    {
+      "source": "eight-direction-frames/attack/west/1.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/west/frame_001.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "e9547dc7eeb734fd41f50895f72e7d6d765e02758d81bd2cd434ce0b3096b0ee"
+    },
+    {
+      "source": "eight-direction-frames/attack/west/2.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/west/frame_002.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "c4e36495b61096021e38209d0645f18beaec9c18abf3c8605ab4f107e045329a"
+    },
+    {
+      "source": "eight-direction-frames/attack/west/3.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/west/frame_003.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "54d1e389845350050e55e5308ee76254bb94699e047cdae9f7cdf0273283cbb8"
+    },
+    {
+      "source": "eight-direction-frames/attack/west/4.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/west/frame_004.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "bad20daef5d0bf1535cff6e6c6ac7b39e5a6605c6c1d92de368cbd65af620f3c"
+    },
+    {
+      "source": "eight-direction-frames/attack/west/5.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/west/frame_005.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "77c3160c847e14cf23281476eec8d112db3a47ae6025ea05bcd99627aaadb8fe"
+    },
+    {
+      "source": "eight-direction-frames/attack/west/6.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/west/frame_006.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "2a08d667b0e52ff5fab892d73907c10944a2499122e9b35b3685e75810607cf6"
+    },
+    {
+      "source": "eight-direction-frames/attack/west/7.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/west/frame_007.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "5483a5767b75c15bc0c8536d31b4ecd7a4d89cd471c3b024a8309521b0c2cf13"
+    },
+    {
+      "source": "eight-direction-frames/attack/west/8.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/west/frame_008.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "f41c34e831ad44d5884a57a0e6d34efd14084edee8b8e52e9bd4b61d090dfc23"
+    },
+    {
+      "source": "eight-direction-frames/attack/west/9.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/west/frame_009.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "1d91968aef7fc8cc857439528b513a959d043a29b5e809e2e80ce8ca8d4b407e"
+    },
+    {
+      "source": "eight-direction-frames/attack/west/10.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/west/frame_010.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "1439f5ec9d5f76725731fa343b037dcd5800d156164d56f4d46f0e19409342d0"
+    },
+    {
+      "source": "eight-direction-frames/attack/west/11.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/west/frame_011.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "a685e2bbca62442e86ff34289d4d1120e3ba3db576c12084995d6e63f7733bb2"
+    },
+    {
+      "source": "eight-direction-frames/attack/south-west/0.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south-west/frame_000.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "70c4e0784159414489c4b764c15c091f0bc2a3865aa2388596e5e3cfc77e2a5f"
+    },
+    {
+      "source": "eight-direction-frames/attack/south-west/1.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south-west/frame_001.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "2fde021515dc0f79a42c79f983554104e73df69199225474a7d9d2056713b760"
+    },
+    {
+      "source": "eight-direction-frames/attack/south-west/2.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south-west/frame_002.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "d568488d9736d8bdc8a709eb55ed223fa56934297f6ad690365c285f2fdc22cb"
+    },
+    {
+      "source": "eight-direction-frames/attack/south-west/3.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south-west/frame_003.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "60c9b6d529f757647a0a0918c0bf7a19d26fb4d11fb9a6f89f0360e0f1e71e58"
+    },
+    {
+      "source": "eight-direction-frames/attack/south-west/4.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south-west/frame_004.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "a3ab898a2ab857edb13e56b08327736dd688c2691f57ed202d13623facd0d759"
+    },
+    {
+      "source": "eight-direction-frames/attack/south-west/5.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south-west/frame_005.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "55f7dca2498dd745d453f45b621de87100243793760042d377450f388420720e"
+    },
+    {
+      "source": "eight-direction-frames/attack/south-west/6.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south-west/frame_006.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "3997d9c2db7d831241ebcc73da3fbc6276ca9b5eda0490072ec2194103a36268"
+    },
+    {
+      "source": "eight-direction-frames/attack/south-west/7.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south-west/frame_007.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "6a0eabd3c510940dfa97aab509a5aa432fc4284f47240a9d3ee57adc94203c71"
+    },
+    {
+      "source": "eight-direction-frames/attack/south-west/8.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south-west/frame_008.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "13c20d734eefd1e5f99b84ac7ba673a8334c74bde684fa92bfb81b6f1fb153fe"
+    },
+    {
+      "source": "eight-direction-frames/attack/south-west/9.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south-west/frame_009.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "091cb3c4131261231da432d9c209f7bdb0fbdee5e398f6fafd264d1e64301370"
+    },
+    {
+      "source": "eight-direction-frames/attack/south-west/10.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south-west/frame_010.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "c0b2477cd834832b40eb69daceb27308f967af6df941a34f53f9cc825ff8e8d6"
+    },
+    {
+      "source": "eight-direction-frames/attack/south-west/11.png",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/attack/south-west/frame_011.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "ef19cebd83ad1806a5b3ad3221124b457e23f81904429fdc3fee4ba12ed8e889"
+    }
+  ]
+}

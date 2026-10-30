@@ -1,0 +1,1094 @@
+{
+  "skin_id": "goblin_worker",
+  "animations": {
+    "idle": {
+      "fps": 6,
+      "loop": true,
+      "directions": {
+        "south": [
+          "res://Assets/Characters/goblin_worker/animations/idle/south/frame_000.png",
+          "res://Assets/Characters/goblin_worker/animations/idle/south/frame_001.png",
+          "res://Assets/Characters/goblin_worker/animations/idle/south/frame_002.png",
+          "res://Assets/Characters/goblin_worker/animations/idle/south/frame_003.png",
+          "res://Assets/Characters/goblin_worker/animations/idle/south/frame_004.png"
+        ],
+        "south-east": [
+          "res://Assets/Characters/goblin_worker/animations/idle/south-east/frame_000.png",
+          "res://Assets/Characters/goblin_worker/animations/idle/south-east/frame_001.png",
+          "res://Assets/Characters/goblin_worker/animations/idle/south-east/frame_002.png",
+          "res://Assets/Characters/goblin_worker/animations/idle/south-east/frame_003.png",
+          "res://Assets/Characters/goblin_worker/animations/idle/south-east/frame_004.png"
+        ],
+        "east": [
+          "res://Assets/Characters/goblin_worker/animations/idle/east/frame_000.png",
+          "res://Assets/Characters/goblin_worker/animations/idle/east/frame_001.png",
+          "res://Assets/Characters/goblin_worker/animations/idle/east/frame_002.png",
+          "res://Assets/Characters/goblin_worker/animations/idle/east/frame_003.png",
+          "res://Assets/Characters/goblin_worker/animations/idle/east/frame_004.png"
+        ],
+        "north-east": [
+          "res://Assets/Characters/goblin_worker/animations/idle/north-east/frame_000.png",
+          "res://Assets/Characters/goblin_worker/animations/idle/north-east/frame_001.png",
+          "res://Assets/Characters/goblin_worker/animations/idle/north-east/frame_002.png",
+          "res://Assets/Characters/goblin_worker/animations/idle/north-east/frame_003.png",
+          "res://Assets/Characters/goblin_worker/animations/idle/north-east/frame_004.png"
+        ],
+        "north": [
+          "res://Assets/Characters/goblin_worker/animations/idle/north/frame_000.png",
+          "res://Assets/Characters/goblin_worker/animations/idle/north/frame_001.png",
+          "res://Assets/Characters/goblin_worker/animations/idle/north/frame_002.png",
+          "res://Assets/Characters/goblin_worker/animations/idle/north/frame_003.png",
+          "res://Assets/Characters/goblin_worker/animations/idle/north/frame_004.png"
+        ],
+        "north-west": [
+          "res://Assets/Characters/goblin_worker/animations/idle/north-west/frame_000.png",
+          "res://Assets/Characters/goblin_worker/animations/idle/north-west/frame_001.png",
+          "res://Assets/Characters/goblin_worker/animations/idle/north-west/frame_002.png",
+          "res://Assets/Characters/goblin_worker/animations/idle/north-west/frame_003.png",
+          "res://Assets/Characters/goblin_worker/animations/idle/north-west/frame_004.png"
+        ],
+        "west": [
+          "res://Assets/Characters/goblin_worker/animations/idle/west/frame_000.png",
+          "res://Assets/Characters/goblin_worker/animations/idle/west/frame_001.png",
+          "res://Assets/Characters/goblin_worker/animations/idle/west/frame_002.png",
+          "res://Assets/Characters/goblin_worker/animations/idle/west/frame_003.png",
+          "res://Assets/Characters/goblin_worker/animations/idle/west/frame_004.png"
+        ],
+        "south-west": [
+          "res://Assets/Characters/goblin_worker/animations/idle/south-west/frame_000.png",
+          "res://Assets/Characters/goblin_worker/animations/idle/south-west/frame_001.png",
+          "res://Assets/Characters/goblin_worker/animations/idle/south-west/frame_002.png",
+          "res://Assets/Characters/goblin_worker/animations/idle/south-west/frame_003.png",
+          "res://Assets/Characters/goblin_worker/animations/idle/south-west/frame_004.png"
+        ]
+      }
+    },
+    "walk": {
+      "fps": 9,
+      "loop": true,
+      "directions": {
+        "south": [
+          "res://Assets/Characters/goblin_worker/animations/walk/south/frame_000.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/south/frame_001.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/south/frame_002.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/south/frame_003.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/south/frame_004.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/south/frame_005.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/south/frame_006.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/south/frame_007.png"
+        ],
+        "south-east": [
+          "res://Assets/Characters/goblin_worker/animations/walk/south-east/frame_000.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/south-east/frame_001.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/south-east/frame_002.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/south-east/frame_003.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/south-east/frame_004.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/south-east/frame_005.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/south-east/frame_006.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/south-east/frame_007.png"
+        ],
+        "east": [
+          "res://Assets/Characters/goblin_worker/animations/walk/east/frame_000.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/east/frame_001.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/east/frame_002.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/east/frame_003.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/east/frame_004.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/east/frame_005.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/east/frame_006.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/east/frame_007.png"
+        ],
+        "north-east": [
+          "res://Assets/Characters/goblin_worker/animations/walk/north-east/frame_000.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/north-east/frame_001.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/north-east/frame_002.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/north-east/frame_003.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/north-east/frame_004.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/north-east/frame_005.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/north-east/frame_006.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/north-east/frame_007.png"
+        ],
+        "north": [
+          "res://Assets/Characters/goblin_worker/animations/walk/north/frame_000.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/north/frame_001.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/north/frame_002.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/north/frame_003.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/north/frame_004.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/north/frame_005.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/north/frame_006.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/north/frame_007.png"
+        ],
+        "north-west": [
+          "res://Assets/Characters/goblin_worker/animations/walk/north-west/frame_000.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/north-west/frame_001.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/north-west/frame_002.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/north-west/frame_003.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/north-west/frame_004.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/north-west/frame_005.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/north-west/frame_006.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/north-west/frame_007.png"
+        ],
+        "west": [
+          "res://Assets/Characters/goblin_worker/animations/walk/west/frame_000.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/west/frame_001.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/west/frame_002.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/west/frame_003.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/west/frame_004.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/west/frame_005.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/west/frame_006.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/west/frame_007.png"
+        ],
+        "south-west": [
+          "res://Assets/Characters/goblin_worker/animations/walk/south-west/frame_000.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/south-west/frame_001.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/south-west/frame_002.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/south-west/frame_003.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/south-west/frame_004.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/south-west/frame_005.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/south-west/frame_006.png",
+          "res://Assets/Characters/goblin_worker/animations/walk/south-west/frame_007.png"
+        ]
+      }
+    },
+    "attack": {
+      "fps": 10,
+      "loop": false,
+      "directions": {
+        "south": [
+          "res://Assets/Characters/goblin_worker/animations/attack/south/frame_000.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/south/frame_001.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/south/frame_002.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/south/frame_003.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/south/frame_004.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/south/frame_005.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/south/frame_006.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/south/frame_007.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/south/frame_008.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/south/frame_009.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/south/frame_010.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/south/frame_011.png"
+        ],
+        "south-east": [
+          "res://Assets/Characters/goblin_worker/animations/attack/south-east/frame_000.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/south-east/frame_001.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/south-east/frame_002.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/south-east/frame_003.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/south-east/frame_004.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/south-east/frame_005.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/south-east/frame_006.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/south-east/frame_007.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/south-east/frame_008.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/south-east/frame_009.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/south-east/frame_010.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/south-east/frame_011.png"
+        ],
+        "east": [
+          "res://Assets/Characters/goblin_worker/animations/attack/east/frame_000.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/east/frame_001.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/east/frame_002.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/east/frame_003.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/east/frame_004.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/east/frame_005.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/east/frame_006.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/east/frame_007.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/east/frame_008.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/east/frame_009.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/east/frame_010.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/east/frame_011.png"
+        ],
+        "north-east": [
+          "res://Assets/Characters/goblin_worker/animations/attack/north-east/frame_000.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/north-east/frame_001.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/north-east/frame_002.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/north-east/frame_003.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/north-east/frame_004.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/north-east/frame_005.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/north-east/frame_006.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/north-east/frame_007.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/north-east/frame_008.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/north-east/frame_009.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/north-east/frame_010.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/north-east/frame_011.png"
+        ],
+        "north": [
+          "res://Assets/Characters/goblin_worker/animations/attack/north/frame_000.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/north/frame_001.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/north/frame_002.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/north/frame_003.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/north/frame_004.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/north/frame_005.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/north/frame_006.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/north/frame_007.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/north/frame_008.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/north/frame_009.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/north/frame_010.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/north/frame_011.png"
+        ],
+        "north-west": [
+          "res://Assets/Characters/goblin_worker/animations/attack/north-west/frame_000.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/north-west/frame_001.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/north-west/frame_002.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/north-west/frame_003.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/north-west/frame_004.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/north-west/frame_005.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/north-west/frame_006.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/north-west/frame_007.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/north-west/frame_008.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/north-west/frame_009.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/north-west/frame_010.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/north-west/frame_011.png"
+        ],
+        "west": [
+          "res://Assets/Characters/goblin_worker/animations/attack/west/frame_000.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/west/frame_001.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/west/frame_002.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/west/frame_003.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/west/frame_004.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/west/frame_005.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/west/frame_006.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/west/frame_007.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/west/frame_008.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/west/frame_009.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/west/frame_010.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/west/frame_011.png"
+        ],
+        "south-west": [
+          "res://Assets/Characters/goblin_worker/animations/attack/south-west/frame_000.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/south-west/frame_001.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/south-west/frame_002.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/south-west/frame_003.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/south-west/frame_004.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/south-west/frame_005.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/south-west/frame_006.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/south-west/frame_007.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/south-west/frame_008.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/south-west/frame_009.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/south-west/frame_010.png",
+          "res://Assets/Characters/goblin_worker/animations/attack/south-west/frame_011.png"
+        ]
+      }
+    }
+  },
+  "frame_sizes": {
+    "res://Assets/Characters/goblin_worker/animations/idle/south/frame_000.png": [
+      84,
+      72
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/south/frame_001.png": [
+      84,
+      72
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/south/frame_002.png": [
+      84,
+      72
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/south/frame_003.png": [
+      84,
+      72
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/south/frame_004.png": [
+      84,
+      72
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/south-east/frame_000.png": [
+      76,
+      76
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/south-east/frame_001.png": [
+      76,
+      76
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/south-east/frame_002.png": [
+      76,
+      76
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/south-east/frame_003.png": [
+      76,
+      76
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/south-east/frame_004.png": [
+      76,
+      76
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/east/frame_000.png": [
+      56,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/east/frame_001.png": [
+      56,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/east/frame_002.png": [
+      56,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/east/frame_003.png": [
+      56,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/east/frame_004.png": [
+      56,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/north-east/frame_000.png": [
+      76,
+      76
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/north-east/frame_001.png": [
+      76,
+      76
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/north-east/frame_002.png": [
+      76,
+      76
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/north-east/frame_003.png": [
+      76,
+      76
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/north-east/frame_004.png": [
+      76,
+      76
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/north/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/north/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/north/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/north/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/north/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/north-west/frame_000.png": [
+      84,
+      76
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/north-west/frame_001.png": [
+      84,
+      76
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/north-west/frame_002.png": [
+      84,
+      76
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/north-west/frame_003.png": [
+      84,
+      76
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/north-west/frame_004.png": [
+      84,
+      76
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/west/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/west/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/west/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/west/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/west/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/south-west/frame_000.png": [
+      76,
+      76
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/south-west/frame_001.png": [
+      76,
+      76
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/south-west/frame_002.png": [
+      76,
+      76
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/south-west/frame_003.png": [
+      76,
+      76
+    ],
+    "res://Assets/Characters/goblin_worker/animations/idle/south-west/frame_004.png": [
+      76,
+      76
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/south/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/south/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/south/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/south/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/south/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/south/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/south/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/south/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/south-east/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/south-east/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/south-east/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/south-east/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/south-east/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/south-east/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/south-east/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/south-east/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/east/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/east/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/east/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/east/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/east/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/east/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/east/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/east/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/north-east/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/north-east/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/north-east/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/north-east/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/north-east/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/north-east/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/north-east/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/north-east/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/north/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/north/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/north/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/north/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/north/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/north/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/north/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/north/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/north-west/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/north-west/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/north-west/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/north-west/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/north-west/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/north-west/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/north-west/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/north-west/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/west/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/west/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/west/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/west/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/west/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/west/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/west/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/west/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/south-west/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/south-west/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/south-west/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/south-west/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/south-west/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/south-west/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/south-west/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/walk/south-west/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south/frame_008.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south/frame_009.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south/frame_010.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south/frame_011.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south-east/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south-east/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south-east/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south-east/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south-east/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south-east/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south-east/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south-east/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south-east/frame_008.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south-east/frame_009.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south-east/frame_010.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south-east/frame_011.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/east/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/east/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/east/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/east/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/east/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/east/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/east/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/east/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/east/frame_008.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/east/frame_009.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/east/frame_010.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/east/frame_011.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north-east/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north-east/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north-east/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north-east/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north-east/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north-east/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north-east/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north-east/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north-east/frame_008.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north-east/frame_009.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north-east/frame_010.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north-east/frame_011.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north/frame_008.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north/frame_009.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north/frame_010.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north/frame_011.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north-west/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north-west/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north-west/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north-west/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north-west/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north-west/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north-west/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north-west/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north-west/frame_008.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north-west/frame_009.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north-west/frame_010.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/north-west/frame_011.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/west/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/west/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/west/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/west/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/west/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/west/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/west/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/west/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/west/frame_008.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/west/frame_009.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/west/frame_010.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/west/frame_011.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south-west/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south-west/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south-west/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south-west/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south-west/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south-west/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south-west/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south-west/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south-west/frame_008.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south-west/frame_009.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south-west/frame_010.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/goblin_worker/animations/attack/south-west/frame_011.png": [
+      80,
+      80
+    ]
+  },
+  "provenance": {
+    "schema_version": 1,
+    "source_character_id": "dd308266-39ee-481b-9d23-906d0d964bee",
+    "source_groups": {
+      "idle": "161f2633-7d46-4e8d-a734-c903e12e1091",
+      "idle_north": "ef8e95da-ad6b-4d37-9c48-9285b12f6d70",
+      "idle_north_west": "2b62fb68-96d7-43b7-830b-be36082589de",
+      "walk": "12dc3f31-a2e0-4701-9249-8371b6180873",
+      "attack": "35eaaaf4-759b-44c6-9696-27a6d82b7e4e"
+    },
+    "selection_sha256": "ae6cae86426ef5176ebc3a287a93a42fc377fb2d71462f9b1bb842eff5952a05",
+    "source_manifest": "art_sources/goblin-worker-animations/manifest.json",
+    "visual_approval": {
+      "date": "2026-10-30",
+      "status": "runtime_test_authorized_visual_approval_pending",
+      "authorization": "User authorized the current generated artwork for local runtime animation and combat testing. Final artwork approval remains separate and pending."
+    },
+    "frame_count": 200,
+    "source_pixels": "Original lossless RGBA PNG bytes at native pixel density, including original transparent padding; no resizing, mirroring, recoloring or alpha repair.",
+    "source_manifest_sha256": "b090ebf44bd0b265325fa647751b54af905e4768cefca5661f1537765d15d482"
+  }
+}

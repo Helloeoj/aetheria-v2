@@ -24,8 +24,9 @@ centering, scale 44/60, offset (0,-25), nearest filtering, collision body and
 feet-based sorting remain in effect. Lossless texture imports have no mipmaps.
 
 `data/goblin_scout_animations.json` is a small, fixed Scout-only runtime overlay.
-CharacterSpriteLibrary loads it once after the original catalog and applies only
-Scout's action definitions, additional frame sizes and animated direction coverage.
+CharacterSpriteLibrary loads it once after the original catalog alongside the
+fixed Worker and Warrior overlays, and applies only Scout's action definitions,
+additional frame sizes and animated direction coverage from this pack.
 Original rotations, monster/player mappings and every other skin are unchanged.
 `data/character_sprites.json` and its importer still describe the original export;
 their import summary does not count these later 200 frames. Do not regenerate

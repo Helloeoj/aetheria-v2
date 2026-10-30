@@ -4,6 +4,7 @@ extends SceneTree
 
 const BASE_CATALOG := "res://data/character_sprites.json"
 const SKIN := "goblin_scout"
+const ANIMATED_GOBLIN_SKINS := ["goblin_scout", "goblin_worker", "goblin_warrior"]
 const EXPECTED_SCALE := 44.0 / 60.0
 const DIRECTIONS: Array[String] = [
 	"south", "south-east", "east", "north-east",
@@ -69,8 +70,23 @@ func _test_preservation(base: Dictionary) -> void:
 	var effective_skins: Dictionary = effective.get("skins", {})
 	_check(effective_skins.size() == base_skins.size(), "Overlay added or removed a skin.")
 	for skin_id: String in base_skins:
-		if skin_id != SKIN:
+		if skin_id not in ANIMATED_GOBLIN_SKINS:
 			_check(effective_skins.get(skin_id) == base_skins[skin_id], "Overlay changed another skin: " + skin_id)
+			continue
+		var original_skin: Dictionary = base_skins[skin_id]
+		var effective_skin: Dictionary = effective_skins.get(skin_id, {})
+		_check(effective_skin.size() == original_skin.size(), "Overlay changed skin keys: " + skin_id)
+		for key: String in original_skin:
+			if key not in ["animations", "frame_sizes", "coverage"]:
+				_check(effective_skin.get(key) == original_skin[key], "Overlay changed original skin field: %s/%s" % [skin_id, key])
+		for path: String in original_skin.get("frame_sizes", {}):
+			_check(effective_skin.get("frame_sizes", {}).get(path) == original_skin["frame_sizes"][path], "Overlay changed rotation dimensions: " + path)
+		var original_coverage: Dictionary = original_skin.get("coverage", {})
+		var effective_coverage: Dictionary = effective_skin.get("coverage", {})
+		_check(effective_coverage.size() == original_coverage.size(), "Overlay changed coverage keys: " + skin_id)
+		for key: String in original_coverage:
+			if key != "animated_directions":
+				_check(effective_coverage.get(key) == original_coverage[key], "Overlay changed original coverage field: %s/%s" % [skin_id, key])
 	var scout := CharacterSpriteLibrary.get_skin(SKIN)
 	var original: Dictionary = base_skins.get(SKIN, {})
 	_check(not scout.is_empty() and not original.is_empty(), "Scout is missing from a catalog.")

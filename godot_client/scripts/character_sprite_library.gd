@@ -4,7 +4,11 @@ extends RefCounted
 ## Build each skin once; all actors share its frame and texture resources.
 ## Missing directional actions use their own facing's rotation image.
 const CATALOG_PATH := "res://data/character_sprites.json"
-const GOBLIN_SCOUT_ANIMATIONS_PATH := "res://data/goblin_scout_animations.json"
+const ANIMATION_PACK_PATHS := {
+	"goblin_scout": "res://data/goblin_scout_animations.json",
+	"goblin_worker": "res://data/goblin_worker_animations.json",
+	"goblin_warrior": "res://data/goblin_warrior_animations.json"
+}
 const DIRECTIONS: Array[String] = [
 	"south", "south-east", "east", "north-east",
 	"north", "north-west", "west", "south-west"
@@ -23,27 +27,28 @@ static func get_catalog() -> Dictionary:
 			var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(CATALOG_PATH))
 			if parsed is Dictionary:
 				_catalog = parsed
-				_apply_goblin_scout_animations()
+				for skin_id: String in ANIMATION_PACK_PATHS:
+					_apply_animation_pack(skin_id, String(ANIMATION_PACK_PATHS[skin_id]))
 	return _catalog
 
 
-static func _apply_goblin_scout_animations() -> void:
-	# Keep the original export and its import summary reproducible. This approved
-	# later pack changes only Scout clips, frame dimensions and action coverage.
-	if not FileAccess.file_exists(GOBLIN_SCOUT_ANIMATIONS_PATH):
+static func _apply_animation_pack(skin_id: String, pack_path: String) -> void:
+	# Keep the original export and its import summary reproducible. These fixed
+	# later packs change only their skin's clips, dimensions and action coverage.
+	if not FileAccess.file_exists(pack_path):
 		return
-	var pack: Variant = JSON.parse_string(FileAccess.get_file_as_string(GOBLIN_SCOUT_ANIMATIONS_PATH))
-	if not pack is Dictionary or pack.get("skin_id", "") != "goblin_scout":
+	var pack: Variant = JSON.parse_string(FileAccess.get_file_as_string(pack_path))
+	if not pack is Dictionary or pack.get("skin_id", "") != skin_id:
 		return
-	var scout: Dictionary = _catalog.get("skins", {}).get("goblin_scout", {})
-	if scout.is_empty():
+	var skin: Dictionary = _catalog.get("skins", {}).get(skin_id, {})
+	if skin.is_empty():
 		return
 	var animations: Dictionary = pack.get("animations", {})
-	scout["animations"] = animations
-	var frame_sizes: Dictionary = scout.get("frame_sizes", {})
+	skin["animations"] = animations
+	var frame_sizes: Dictionary = skin.get("frame_sizes", {})
 	frame_sizes.merge(pack.get("frame_sizes", {}), true)
-	scout["frame_sizes"] = frame_sizes
-	var coverage: Dictionary = scout.get("coverage", {})
+	skin["frame_sizes"] = frame_sizes
+	var coverage: Dictionary = skin.get("coverage", {})
 	var animated_directions: Dictionary = {}
 	for role: String in ["idle", "walk", "attack"]:
 		var authored: Array[String] = []
@@ -53,7 +58,7 @@ static func _apply_goblin_scout_animations() -> void:
 				authored.append(direction)
 		animated_directions[role] = authored
 	coverage["animated_directions"] = animated_directions
-	scout["coverage"] = coverage
+	skin["coverage"] = coverage
 
 
 static func get_skin(skin: String) -> Dictionary:
