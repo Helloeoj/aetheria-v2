@@ -4,6 +4,7 @@ extends RefCounted
 ## Build each skin once; all actors share its frame and texture resources.
 ## Missing directional actions use their own facing's rotation image.
 const CATALOG_PATH := "res://data/character_sprites.json"
+const GOBLIN_SCOUT_ANIMATIONS_PATH := "res://data/goblin_scout_animations.json"
 const DIRECTIONS: Array[String] = [
 	"south", "south-east", "east", "north-east",
 	"north", "north-west", "west", "south-west"
@@ -22,7 +23,37 @@ static func get_catalog() -> Dictionary:
 			var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(CATALOG_PATH))
 			if parsed is Dictionary:
 				_catalog = parsed
+				_apply_goblin_scout_animations()
 	return _catalog
+
+
+static func _apply_goblin_scout_animations() -> void:
+	# Keep the original export and its import summary reproducible. This approved
+	# later pack changes only Scout clips, frame dimensions and action coverage.
+	if not FileAccess.file_exists(GOBLIN_SCOUT_ANIMATIONS_PATH):
+		return
+	var pack: Variant = JSON.parse_string(FileAccess.get_file_as_string(GOBLIN_SCOUT_ANIMATIONS_PATH))
+	if not pack is Dictionary or pack.get("skin_id", "") != "goblin_scout":
+		return
+	var scout: Dictionary = _catalog.get("skins", {}).get("goblin_scout", {})
+	if scout.is_empty():
+		return
+	var animations: Dictionary = pack.get("animations", {})
+	scout["animations"] = animations
+	var frame_sizes: Dictionary = scout.get("frame_sizes", {})
+	frame_sizes.merge(pack.get("frame_sizes", {}), true)
+	scout["frame_sizes"] = frame_sizes
+	var coverage: Dictionary = scout.get("coverage", {})
+	var animated_directions: Dictionary = {}
+	for role: String in ["idle", "walk", "attack"]:
+		var authored: Array[String] = []
+		var by_direction: Dictionary = animations.get(role, {}).get("directions", {})
+		for direction: String in DIRECTIONS:
+			if not by_direction.get(direction, []).is_empty():
+				authored.append(direction)
+		animated_directions[role] = authored
+	coverage["animated_directions"] = animated_directions
+	scout["coverage"] = coverage
 
 
 static func get_skin(skin: String) -> Dictionary:
