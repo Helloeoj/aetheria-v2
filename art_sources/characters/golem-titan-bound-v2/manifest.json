@@ -1,0 +1,154 @@
+{
+  "schema_version": 2,
+  "candidate_id": "golem_titan_bound_candidate_v2",
+  "scope": "Replace rejected animation drafts with coherent full-body idle and a bent-over ground-contact slam; review against actual Golem Kingdom map and unchanged peasant player. No runtime actor replacement or boss mechanics.",
+  "native_canvas": [
+    256,
+    256
+  ],
+  "foot_anchor": [
+    128,
+    240
+  ],
+  "candidate_world_pixels_per_source_pixel": 1,
+  "reference": "south.png (shared complete neutral pose from temporal_recovery/raw/08.png)",
+  "previous_candidate": "../golem-titan-bound-v1",
+  "motion_requirements": {
+    "idle": "Rigid stone body and complete hands; only existing chest-core light pulses, first/last pose identical. This recommended alternative awaits user preference/approval.",
+    "slam": "Whole torso hinges forward, head/shoulders descend, elbows and wrists follow; both fists visibly meet the real map ground in front of planted feet.",
+    "source_contact_guide": [
+      [
+        78,
+        248
+      ],
+      [
+        178,
+        248
+      ]
+    ],
+    "source_foot_baseline_y": 240,
+    "grounded_elements": "Feet planted and magical leg restraints anchored, achieved through whole-body motion instead of pixel strips.",
+    "preserve": "crown, red eyes, gray stone, gold bands, cyan crystals, low top-down view and previous accepted size"
+  },
+  "generation": {
+    "idle": {
+      "tool": "PixelLab animate_image_pixminimax",
+      "job_id": "01288e7a-08dc-44d4-9634-67cb66edab4e",
+      "asset_id": "c7e7071a-d662-5d65-9188-5146d9378b01",
+      "frames_requested": 16,
+      "expected_returned_frames": 17,
+      "seed": 301031,
+      "role": "rejected whole-body breathing trial"
+    },
+    "shockwave_slam": {
+      "tool": "PixelLab animate_with_skeleton_v3",
+      "job_id": "365e6b23-82bd-487c-bbc7-99d5f40489f7",
+      "asset_id": "b1f28c95-af19-5b35-b180-7b72c4e253f1",
+      "frames_requested": 14,
+      "seed": 301032,
+      "keypoints": "slam-skeleton.json",
+      "role": "ground-contact pose reference; intermediate motion rejected",
+      "rejected_transition_source_indices": [
+        5,
+        9,
+        10
+      ]
+    }
+  },
+  "status": {
+    "generation": "completed; idle rebuilt as rigid chest-core pulse; full-body temporal slam",
+    "automatic_checks": "passed final source/export checks; rigid idle body invariance and exact shared endpoints verified",
+    "visual_review": "current source/context review recorded; user artwork approval pending",
+    "real_map_player_review": "62 actual GPU captures, no capture failures",
+    "godot_4x_review": "actual 4x map/player frames captured and key contact/hand poses inspected",
+    "production_installation": "not_performed",
+    "artwork_approval": "pending"
+  },
+  "clips": {
+    "idle": {
+      "direction": "south",
+      "mode": "rigid_chest_core_pulse",
+      "frame_count": 9,
+      "durations_ms": [
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200
+      ],
+      "source_index_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "contact_frame": 0,
+      "final_image_id": "0f655365-735a-465c-ae0d-0632f697da97",
+      "geometry_changes": false,
+      "user_approval": "pending",
+      "cycle_ms": 1800
+    },
+    "shockwave_slam": {
+      "direction": "south",
+      "mode": "whole_body_keyframe_guided_motion",
+      "frame_count": 18,
+      "durations_ms": [
+        180,
+        120,
+        100,
+        100,
+        100,
+        100,
+        160,
+        90,
+        70,
+        260,
+        110,
+        110,
+        110,
+        100,
+        120,
+        120,
+        140,
+        220
+      ],
+      "source_index_order": [
+        "rest_recovery08",
+        "strike07",
+        "strike08",
+        "strike09",
+        "strike10",
+        "strike11",
+        "strike12",
+        "strike13",
+        "strike14",
+        "strike16",
+        "recovery01",
+        "recovery02",
+        "recovery03",
+        "recovery04",
+        "recovery05",
+        "recovery06",
+        "recovery07",
+        "recovery08"
+      ],
+      "contact_frame": 9,
+      "final_image_id": "e152b2e3-8d01-4cfd-8478-63fce3a58db2",
+      "first_last_shared_neutral_pose": true,
+      "pixel_body_splices": [],
+      "user_approval": "pending",
+      "cycle_ms": 2310
+    }
+  },
+  "rejected_idle_reason": "Full-body generated breathing expanded legs; generated end pose differed from original start, causing a visible loop boundary.",
+  "current_source_record": "animation-source.json"
+}

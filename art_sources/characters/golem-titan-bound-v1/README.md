@@ -1,4 +1,6 @@
-# Bound Golem Titan — first animation candidates
+# Bound Golem Titan — rejected first animation candidates
+
+User review rejected both clips: the idle has a shearing knee/knuckle splice, and the slam does not reach the ground. Earlier export checks did not test anatomy or actual floor contact. Retained for provenance; do not install these animations.
 
 This is the first south-facing animation batch for the crowned, red-eyed Titan with magical restraints around both lower legs. It is source artwork only: the live Titan, catalog, actor scale, collision, camera and boss mechanics are unchanged.
 
@@ -19,4 +21,4 @@ Frame checks passed for both corrected clips: consistent RGBA dimensions, binary
 
 Every frame was inspected in contact sheets; the native lower-body joins were also inspected at nearest 4×. The motion is an early candidate: arm-to-binding overlap and impact timing remain subject to artwork review. Automatic checks do not grant visual approval.
 
-Visual approval: pending. Runtime installation: not performed. No scene or placement contract exists for this candidate. Godot review at normal and 4× zoom, Palace framing, directional views and gameplay integration remain pending and must precede runtime acceptance. These source-only changes do not certify an installed worldbuilding scene.
+Visual approval: rejected by user. Runtime installation: not performed. No scene or placement contract exists for this candidate. Godot review at normal and 4× zoom, Palace framing, directional views and gameplay integration remain pending and must precede runtime acceptance. These source-only changes do not certify an installed worldbuilding scene.

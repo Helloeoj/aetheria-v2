@@ -34,8 +34,8 @@
   "status": {
     "reference_accepted_for_animation": true,
     "native_sprite": "candidate_prepared_and_alpha_checked",
-    "animations": "first_south_facing_drafts_prepared",
-    "visual_approval": "pending",
+    "animations": "rejected; export checks did not validate anatomy or floor contact",
+    "visual_approval": "user_rejected_animations",
     "runtime_installation": "not_performed",
     "worldbuilding_scene_checks": "not_applicable_to_unplaced_actor_art; required before any runtime placement/scale/collision change",
     "godot_4x_review": "pending runtime integration",
@@ -106,7 +106,7 @@
         "fixed_foot_contact_and_ground_seals": true,
         "edge_clipping": false
       },
-      "visual_approval": "pending"
+      "visual_approval": "user_rejected"
     },
     "shockwave_slam": {
       "direction": "south",
@@ -164,7 +164,12 @@
         "fixed_foot_contact_and_ground_seals": true,
         "edge_clipping": false
       },
-      "visual_approval": "pending"
+      "visual_approval": "user_rejected"
     }
+  },
+  "rejection": {
+    "idle": "Horizontal lower-body freezing created shearing knees and partly static/clipped knuckles.",
+    "shockwave_slam": "Fists strike waist-height air instead of reaching the floor; hand clipping also reported.",
+    "required_review": "Use actual map and unchanged player to judge whole-body motion, complete hands and actual floor contact."
   }
 }

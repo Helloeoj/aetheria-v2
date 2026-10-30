@@ -1,0 +1,525 @@
+{
+  "schema_version": 1,
+  "common_neutral_pose": {
+    "phase": "temporal_recovery",
+    "job_id": "ce30050e-7893-44b4-a714-8e0f3c7916ec",
+    "source_index": 8,
+    "local_png": "south.png",
+    "reason": "Use the same complete neutral frame for idle and slam start/recovery; eliminate the mismatched-source loop edge."
+  },
+  "idle": {
+    "mode": "rigid_stone_chest_core_pulse",
+    "join_image_id": "acfb7114-1af3-4011-8a49-6292fd41266a",
+    "final_image_id": "0f655365-735a-465c-ae0d-0632f697da97",
+    "factors": [
+      1,
+      1.05,
+      1.12,
+      1.22,
+      1.28,
+      1.22,
+      1.12,
+      1.05,
+      1
+    ],
+    "color_operations": [
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          2
+        ],
+        "region": [
+          113,
+          103,
+          143,
+          134
+        ],
+        "colors": {
+          "#046194ff": "#04669bff",
+          "#0573acff": "#0579b5ff",
+          "#059bd3ff": "#05a3deff",
+          "#07c0eeff": "#07cafaff",
+          "#088cc4ff": "#0893ceff",
+          "#108dfcff": "#1194ffff",
+          "#15e0faff": "#16ebffff",
+          "#1780e0ff": "#1886ebff",
+          "#2cadfaff": "#2eb6ffff",
+          "#33fafeff": "#36ffffff",
+          "#79f9fcff": "#7fffffff",
+          "#9ad4fcff": "#a2dfffff",
+          "#c1f9fcff": "#cbffffff",
+          "#cde3fdff": "#d7eeffff"
+        },
+        "reason": "Pulse only the existing chest-core cyan colors on one common neutral pose. Keep all geometry, legs, hands, shackles and alpha unchanged; the base pose matches the slam recovery and the loop closes exactly."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          3
+        ],
+        "region": [
+          113,
+          103,
+          143,
+          134
+        ],
+        "colors": {
+          "#046194ff": "#046da6ff",
+          "#0573acff": "#0681c1ff",
+          "#059bd3ff": "#06aeecff",
+          "#07c0eeff": "#08d7ffff",
+          "#088cc4ff": "#099ddcff",
+          "#108dfcff": "#129effff",
+          "#15e0faff": "#18fbffff",
+          "#1780e0ff": "#1a8ffbff",
+          "#2cadfaff": "#31c2ffff",
+          "#33fafeff": "#39ffffff",
+          "#79f9fcff": "#88ffffff",
+          "#9ad4fcff": "#acedffff",
+          "#c1f9fcff": "#d8ffffff",
+          "#cde3fdff": "#e6feffff"
+        },
+        "reason": "Pulse only the existing chest-core cyan colors on one common neutral pose. Keep all geometry, legs, hands, shackles and alpha unchanged; the base pose matches the slam recovery and the loop closes exactly."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          4
+        ],
+        "region": [
+          113,
+          103,
+          143,
+          134
+        ],
+        "colors": {
+          "#046194ff": "#0576b5ff",
+          "#0573acff": "#068cd2ff",
+          "#059bd3ff": "#06bdffff",
+          "#07c0eeff": "#09eaffff",
+          "#088cc4ff": "#0aabefff",
+          "#108dfcff": "#14acffff",
+          "#15e0faff": "#1affffff",
+          "#1780e0ff": "#1c9cffff",
+          "#2cadfaff": "#36d3ffff",
+          "#33fafeff": "#3effffff",
+          "#79f9fcff": "#94ffffff",
+          "#9ad4fcff": "#bcffffff",
+          "#c1f9fcff": "#ebffffff",
+          "#cde3fdff": "#faffffff"
+        },
+        "reason": "Pulse only the existing chest-core cyan colors on one common neutral pose. Keep all geometry, legs, hands, shackles and alpha unchanged; the base pose matches the slam recovery and the loop closes exactly."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          5
+        ],
+        "region": [
+          113,
+          103,
+          143,
+          134
+        ],
+        "colors": {
+          "#046194ff": "#057cbdff",
+          "#0573acff": "#0693dcff",
+          "#059bd3ff": "#06c6ffff",
+          "#07c0eeff": "#09f6ffff",
+          "#088cc4ff": "#0ab3fbff",
+          "#108dfcff": "#14b4ffff",
+          "#15e0faff": "#1bffffff",
+          "#1780e0ff": "#1da4ffff",
+          "#2cadfaff": "#38ddffff",
+          "#33fafeff": "#41ffffff",
+          "#79f9fcff": "#9bffffff",
+          "#9ad4fcff": "#c5ffffff",
+          "#c1f9fcff": "#f7ffffff",
+          "#cde3fdff": "#ffffffff"
+        },
+        "reason": "Pulse only the existing chest-core cyan colors on one common neutral pose. Keep all geometry, legs, hands, shackles and alpha unchanged; the base pose matches the slam recovery and the loop closes exactly."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          6
+        ],
+        "region": [
+          113,
+          103,
+          143,
+          134
+        ],
+        "colors": {
+          "#046194ff": "#0576b5ff",
+          "#0573acff": "#068cd2ff",
+          "#059bd3ff": "#06bdffff",
+          "#07c0eeff": "#09eaffff",
+          "#088cc4ff": "#0aabefff",
+          "#108dfcff": "#14acffff",
+          "#15e0faff": "#1affffff",
+          "#1780e0ff": "#1c9cffff",
+          "#2cadfaff": "#36d3ffff",
+          "#33fafeff": "#3effffff",
+          "#79f9fcff": "#94ffffff",
+          "#9ad4fcff": "#bcffffff",
+          "#c1f9fcff": "#ebffffff",
+          "#cde3fdff": "#faffffff"
+        },
+        "reason": "Pulse only the existing chest-core cyan colors on one common neutral pose. Keep all geometry, legs, hands, shackles and alpha unchanged; the base pose matches the slam recovery and the loop closes exactly."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          7
+        ],
+        "region": [
+          113,
+          103,
+          143,
+          134
+        ],
+        "colors": {
+          "#046194ff": "#046da6ff",
+          "#0573acff": "#0681c1ff",
+          "#059bd3ff": "#06aeecff",
+          "#07c0eeff": "#08d7ffff",
+          "#088cc4ff": "#099ddcff",
+          "#108dfcff": "#129effff",
+          "#15e0faff": "#18fbffff",
+          "#1780e0ff": "#1a8ffbff",
+          "#2cadfaff": "#31c2ffff",
+          "#33fafeff": "#39ffffff",
+          "#79f9fcff": "#88ffffff",
+          "#9ad4fcff": "#acedffff",
+          "#c1f9fcff": "#d8ffffff",
+          "#cde3fdff": "#e6feffff"
+        },
+        "reason": "Pulse only the existing chest-core cyan colors on one common neutral pose. Keep all geometry, legs, hands, shackles and alpha unchanged; the base pose matches the slam recovery and the loop closes exactly."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          8
+        ],
+        "region": [
+          113,
+          103,
+          143,
+          134
+        ],
+        "colors": {
+          "#046194ff": "#04669bff",
+          "#0573acff": "#0579b5ff",
+          "#059bd3ff": "#05a3deff",
+          "#07c0eeff": "#07cafaff",
+          "#088cc4ff": "#0893ceff",
+          "#108dfcff": "#1194ffff",
+          "#15e0faff": "#16ebffff",
+          "#1780e0ff": "#1886ebff",
+          "#2cadfaff": "#2eb6ffff",
+          "#33fafeff": "#36ffffff",
+          "#79f9fcff": "#7fffffff",
+          "#9ad4fcff": "#a2dfffff",
+          "#c1f9fcff": "#cbffffff",
+          "#cde3fdff": "#d7eeffff"
+        },
+        "reason": "Pulse only the existing chest-core cyan colors on one common neutral pose. Keep all geometry, legs, hands, shackles and alpha unchanged; the base pose matches the slam recovery and the loop closes exactly."
+      }
+    ],
+    "geometry": "All alpha and every pixel outside the chest-core rectangle remain identical across the entire loop.",
+    "preference": "Assistant-prepared rigid-body alternative; user artwork approval pending."
+  },
+  "slam": {
+    "temporal_settings": {
+      "strike": {
+        "no_background": true,
+        "enhance_prompt": false,
+        "direction": "south",
+        "view": "low top-down",
+        "subject_description": "a huge gray stone golem king with aged gold crown and armor, red eyes, cyan crystals, blue-white leg shackles and short floor-anchored magical chains",
+        "first_frame_url": "https://api.pixellab.ai/mcp/pixel-tools/72316c84-05f7-4758-b848-e588cd138065/image.png",
+        "last_frame_url": "https://api.pixellab.ai/mcp/images/365e6b23-82bd-487c-bbc7-99d5f40489f7/download?index=7",
+        "frame_count": 16,
+        "seed": 301033,
+        "initial_pose": "upright wide planted stance, arms hanging and complete fists beside knees",
+        "description": "One deliberate two-fist GROUND slam ending in the supplied bent-over pose. Lift both fists high for a heavy windup, then hinge the whole torso forward at the hips, lower head and shoulders, extend both elbows and strike the actual FLOOR in front of the planted feet with both complete knuckles. Finish low with both fists resting on the floor exactly as the final image. Keep ankles grounded, knees connected, hands and wrists solid and complete. Full-body coherent motion, intact armor and crystals throughout, no fading, dissolving, stippling, transparent holes, motion-smear, duplicated limbs, cropped hands, added particles or impact flashes. Fixed camera, size and view; leg magic remains attached."
+      },
+      "recover": {
+        "no_background": true,
+        "enhance_prompt": false,
+        "direction": "south",
+        "view": "low top-down",
+        "subject_description": "a huge gray stone golem king with aged gold crown and armor, red eyes, cyan crystals, blue-white leg shackles and short floor-anchored magical chains",
+        "first_frame_url": "https://api.pixellab.ai/mcp/images/365e6b23-82bd-487c-bbc7-99d5f40489f7/download?index=7",
+        "last_frame_url": "https://api.pixellab.ai/mcp/pixel-tools/72316c84-05f7-4758-b848-e588cd138065/image.png",
+        "frame_count": 8,
+        "seed": 301034,
+        "initial_pose": "deep forward bend with head and shoulders lowered, both complete fists resting on the floor before the feet",
+        "description": "Recover slowly from a grounded double-fist slam into the supplied upright idle. Lift BOTH complete fists off the floor, straighten the spine through the hips, raise chest/head together, and settle arms into their natural hanging pose. Knees remain connected to the hips and ankles, feet planted, leg shackles and floor chains attached. Smooth natural full-body articulation with intact stone, armor, crystals, hands and wrists throughout. No fading, dissolving, stippling, transparency holes, motion-smear, disconnected body parts, crop, camera movement, particles or new effects."
+      }
+    },
+    "source_jobs": {
+      "temporal_strike": "294429a7-5910-44f9-b83c-2f11aedd81b0",
+      "temporal_recovery": "ce30050e-7893-44b4-a714-8e0f3c7916ec"
+    },
+    "complete_frame_order": [
+      {
+        "phase": "temporal_recovery",
+        "index": 8
+      },
+      {
+        "phase": "temporal_strike",
+        "index": 7
+      },
+      {
+        "phase": "temporal_strike",
+        "index": 8
+      },
+      {
+        "phase": "temporal_strike",
+        "index": 9
+      },
+      {
+        "phase": "temporal_strike",
+        "index": 10
+      },
+      {
+        "phase": "temporal_strike",
+        "index": 11
+      },
+      {
+        "phase": "temporal_strike",
+        "index": 12
+      },
+      {
+        "phase": "temporal_strike",
+        "index": 13
+      },
+      {
+        "phase": "temporal_strike",
+        "index": 14
+      },
+      {
+        "phase": "temporal_strike",
+        "index": 16
+      },
+      {
+        "phase": "temporal_recovery",
+        "index": 1
+      },
+      {
+        "phase": "temporal_recovery",
+        "index": 2
+      },
+      {
+        "phase": "temporal_recovery",
+        "index": 3
+      },
+      {
+        "phase": "temporal_recovery",
+        "index": 4
+      },
+      {
+        "phase": "temporal_recovery",
+        "index": 5
+      },
+      {
+        "phase": "temporal_recovery",
+        "index": 6
+      },
+      {
+        "phase": "temporal_recovery",
+        "index": 7
+      },
+      {
+        "phase": "temporal_recovery",
+        "index": 8
+      }
+    ],
+    "join_image_id": "19f07170-a4d5-4962-87e0-95d5f1de0faf",
+    "final_image_id": "e152b2e3-8d01-4cfd-8478-63fce3a58db2",
+    "bounded_background_alpha_cleanup": [
+      {
+        "operation": "select_mask",
+        "layer": "image",
+        "frames": [
+          10
+        ],
+        "name": "contact_floor_mat_10",
+        "selector": {
+          "kind": "color",
+          "colors": [
+            "#7e7e7cff",
+            "#697e69ff",
+            "#586155ff",
+            "#7ea085ff",
+            "#868d69ff"
+          ],
+          "region": [
+            20,
+            224,
+            236,
+            255
+          ]
+        },
+        "reason": "Actual map review identified these measured opaque gray/green terrain-mat colors outside the knuckles. Restrict cleanup to the lower contact-border region of this bent-over pose."
+      },
+      {
+        "operation": "brush",
+        "layer": "image",
+        "frames": [
+          10
+        ],
+        "mask": "contact_floor_mat_10",
+        "mode": "erase",
+        "points": [
+          [
+            20,
+            240
+          ],
+          [
+            236,
+            240
+          ]
+        ],
+        "size": 64,
+        "shape": "square",
+        "region": [
+          20,
+          224,
+          236,
+          255
+        ],
+        "reason": "Make only the observed floor-mat pixels transparent so the actual cobbles remain visible. Keep the entire articulated body, complete hand outlines and all other pixels from this one source frame; no frozen body layers."
+      },
+      {
+        "operation": "select_mask",
+        "layer": "image",
+        "frames": [
+          11
+        ],
+        "name": "contact_floor_mat_11",
+        "selector": {
+          "kind": "color",
+          "colors": [
+            "#7e7e7cff",
+            "#697e69ff",
+            "#586155ff",
+            "#7ea085ff",
+            "#868d69ff"
+          ],
+          "region": [
+            20,
+            224,
+            236,
+            255
+          ]
+        },
+        "reason": "Actual map review identified these measured opaque gray/green terrain-mat colors outside the knuckles. Restrict cleanup to the lower contact-border region of this bent-over pose."
+      },
+      {
+        "operation": "brush",
+        "layer": "image",
+        "frames": [
+          11
+        ],
+        "mask": "contact_floor_mat_11",
+        "mode": "erase",
+        "points": [
+          [
+            20,
+            240
+          ],
+          [
+            236,
+            240
+          ]
+        ],
+        "size": 64,
+        "shape": "square",
+        "region": [
+          20,
+          224,
+          236,
+          255
+        ],
+        "reason": "Make only the observed floor-mat pixels transparent so the actual cobbles remain visible. Keep the entire articulated body, complete hand outlines and all other pixels from this one source frame; no frozen body layers."
+      },
+      {
+        "operation": "select_mask",
+        "layer": "image",
+        "frames": [
+          12
+        ],
+        "name": "contact_floor_mat_12",
+        "selector": {
+          "kind": "color",
+          "colors": [
+            "#7e7e7cff",
+            "#697e69ff",
+            "#586155ff",
+            "#7ea085ff",
+            "#868d69ff"
+          ],
+          "region": [
+            20,
+            232,
+            236,
+            255
+          ]
+        },
+        "reason": "Actual map review identified these measured opaque gray/green terrain-mat colors outside the knuckles. Restrict cleanup to the lower contact-border region of this bent-over pose."
+      },
+      {
+        "operation": "brush",
+        "layer": "image",
+        "frames": [
+          12
+        ],
+        "mask": "contact_floor_mat_12",
+        "mode": "erase",
+        "points": [
+          [
+            20,
+            240
+          ],
+          [
+            236,
+            240
+          ]
+        ],
+        "size": 64,
+        "shape": "square",
+        "region": [
+          20,
+          232,
+          236,
+          255
+        ],
+        "reason": "Make only the observed floor-mat pixels transparent so the actual cobbles remain visible. Keep the entire articulated body, complete hand outlines and all other pixels from this one source frame; no frozen body layers."
+      }
+    ],
+    "no_body_region_splices": true
+  },
+  "discarded_tests": {
+    "whole_body_idle_job": "01288e7a-08dc-44d4-9634-67cb66edab4e",
+    "idle_rejection": "Leg geometry expanded; last generated pose differed from original source and caused an edge jump.",
+    "skeleton_job": "365e6b23-82bd-487c-bbc7-99d5f40489f7",
+    "skeleton_role": "Usable clean ground-contact pose reference only; transitions with holes rejected.",
+    "skeleton_rejected_source_indices": [
+      5,
+      8,
+      9,
+      10
+    ],
+    "strike_source_15": "Omitted whole frame for visible generated motion specks; no body sections cut or frozen."
+  }
+}
