@@ -38,8 +38,12 @@ func on_key_press(event: InputEventKey) -> bool:
 			status_text = "Invalid ID (must be integer)."
 		else:
 			var monster_id := int(input_text)
-			game.spawn_monster_by_id(monster_id)
-			status_text = "Spawned monster %d." % monster_id
+			if not db.has(monster_id):
+				status_text = "Unknown monster ID %d." % monster_id
+			elif game.spawn_monster_by_id(monster_id):
+				status_text = "Spawned monster %d within 3 tiles." % monster_id
+			else:
+				status_text = "No free walkable tile within 3 tiles. Move to a clearer spot."
 		input_text = ""
 		queue_redraw()
 		return true

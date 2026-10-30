@@ -67,6 +67,7 @@ var offline_mining: Node
 var aoe_preview: Node2D
 var orders_controller: Node
 var tile_commands: Node2D
+var monster_floor_support := preload("res://scripts/floor_support.gd").new()
 
 func grid_adoption_report() -> Dictionary:
 	return grid_adapter.report if grid_adapter != null else {"enabled": false, "reason": "not a map scene"}
@@ -416,6 +417,9 @@ func _ready() -> void:
 		player.get_combat_level(), player.get_magic_level(), String(initial_spell.get("name", "spell"))
 	])
 	world = WorldState.new(player, [])
+	world.monster_spawn_validator = monster_spawn_allowed
+	if map_scene_mode:
+		monster_floor_support.configure(get_parent())
 	if map_scene_mode:
 		world.world.width = int(map_width / TILE_SIZE)
 		world.world.height = int(map_height / TILE_SIZE)
@@ -945,33 +949,52 @@ func _cycle_target() -> void:
 	target_index = (target_index + 1) % target_list.size()
 	_set_target(target_list[target_index])
 
-func spawn_monster_by_id(monster_id: int) -> void:
-	if Network.online():
-		return
+func monster_spawn_allowed(point: Vector2) -> bool:
+	if world == null or not point.is_finite():
+		return false
+	if map_scene_mode and (grid_adapter == null or not grid_adapter.completed):
+		return false
+	var grid: HiddenGrid = world.cell_grid
+	if not grid.is_center(point) or not grid.clear_point(point):
+		return false
+	return not map_scene_mode or monster_floor_support.supports_body(to_global(_screen_position(point.x, point.y)))
+
+func spawn_monster_by_id(monster_id: int) -> bool:
+	if Network.online() or Network.authenticated:
+		return false
 	AetheriaDiagnostics.event("Character", "spawn monster", {"template_id": monster_id})
 	var template: Dictionary = _active_monster_database().get(monster_id, {})
 	if template.is_empty():
 		AetheriaDiagnostics.report("Character", "Unknown active monster template", {"template_id": monster_id})
 		print("[Error] No active monster with ID %d" % monster_id)
-		return
-	var x_pos := 15.0
-	var y_pos := 15.0
-	if map_scene_mode:
-		x_pos += _map_x_offset_tiles()
-		y_pos += _map_y_offset_tiles()
+		return false
+	var occupied: Array[Vector2] = []
+	for actor: CombatActor in combat.actors.values():
+		if actor.is_alive:
+			occupied.append(Vector2(actor.x, actor.y))
+	var player_actor: CombatActor = combat.actors.get(player.entity_id)
+	var start := Vector2(player_actor.x, player_actor.y) if player_actor != null else player.get_position()
+	var point := preload("res://scripts/monster_spawn_placement.gd").nearby(world.cell_grid, start, 3.0, monster_spawn_allowed, occupied)
+	if not point.is_finite():
+		show_fishing_notice("No free walkable tile within 3 tiles. Move to a clearer spot.")
+		return false
+	var x_pos := point.x
+	var y_pos := point.y
 	var monster := MonsterState.new(template, x_pos, y_pos)
 	monster.entity_id = "monster_%d" % next_monster_number
+	if not world.register_monster_actor(monster, _create_actor_from_stats(
+		monster.entity_id, monster.name, x_pos, y_pos, monster.get_combat_stats(), true, monster.damage_type
+	)):
+		return false
 	next_monster_number += 1
 	var sprite := ActorSprite.new().configure(Vector2(TILE_SIZE, TILE_SIZE), MONSTER_COLOR, monster.entity_id)
 	sprite.set_skin(CharacterSpriteLibrary.skin_for_monster(monster.name))
 	add_child(sprite)
 	actor_sprites[monster.entity_id] = sprite
-	world.register_monster_actor(monster, _create_actor_from_stats(
-		monster.entity_id, monster.name, x_pos, y_pos, monster.get_combat_stats(), true, monster.damage_type
-	))
 	_update_sprite_position(monster.entity_id)
 	_register_monster_for_targeting(monster)
 	print("[Spawned] %s (ID %d)" % [monster.name, monster_id])
+	return true
 
 func _find_monster_by_entity_id(entity_id: String) -> MonsterState:
 	for monster: MonsterState in world.monsters:

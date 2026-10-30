@@ -65,6 +65,8 @@ func configure(id: String, game: Node) -> void:
 			world.collision_move_handler = Callable(self, "_move_collision")
 		if game.has_method("_query_map_terrain_collision"):
 			world.terrain_collision_handler = Callable(game, "_query_map_terrain_collision")
+		if game.has_method("monster_spawn_allowed"):
+			world.monster_spawn_validator = Callable(game, "monster_spawn_allowed")
 	activities = Activities.new()
 	activities.configure(self)
 	var orders_data: Dictionary = preload("res://scripts/orders/orders_definitions.gd").new().load_data()

@@ -13,6 +13,7 @@ var movement_min := Vector2.ZERO
 var movement_max := Vector2(299.0, 299.0)
 var collision_move_handler: Callable
 var terrain_collision_handler: Callable
+var monster_spawn_validator: Callable
 var grid: HiddenGrid
 var cell_grid := HiddenGrid.new() # Stable lattice also exists in movement-held areas.
 var grid_travellers: Dictionary = {}
@@ -134,10 +135,22 @@ func player_for_actor(entity_id: String) -> PlayerState:
 func player_states() -> Array:
 	return players.values() if not players.is_empty() else ([player] if player != null else [])
 
-func register_monster_actor(monster: MonsterState, actor: CombatActor) -> void:
+func register_monster_actor(monster: MonsterState, actor: CombatActor) -> bool:
+	if monster == null or actor == null:
+		return false
+	var point := Vector2(actor.x, actor.y)
+	if not cell_grid.contains(point) or (monster_spawn_validator.is_valid() and not bool(monster_spawn_validator.call(point))):
+		return false
+	if grid != null and (not grid.is_center(point) or not grid.clear_point(point)):
+		return false
 	monster.entity_id = actor.entity_id
+	monster.x = actor.x
+	monster.y = actor.y
 	monsters.append(monster)
 	combat.add_actor(actor)
+	if grid != null:
+		grid_traveller(actor.entity_id)
+	return true
 
 func remove_monster(entity_id: String) -> void:
 	grid_travellers.erase(entity_id)
