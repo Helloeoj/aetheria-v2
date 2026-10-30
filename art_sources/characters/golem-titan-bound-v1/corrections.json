@@ -1,0 +1,1101 @@
+{
+  "schema_version": 1,
+  "native": {
+    "final_image_id": "72316c84-05f7-4758-b848-e588cd138065",
+    "alpha_operations": []
+  },
+  "idle": {
+    "join_image_id": "706b4791-6a18-470a-9447-8a99e7acaf6b",
+    "final_image_id": "1f568fc3-1395-4f75-8ce5-a898a2311dc7",
+    "frame_sources": [
+      "south.png",
+      "raw/01.png",
+      "raw/02.png",
+      "raw/03.png",
+      "raw/04.png",
+      "south.png"
+    ]
+  },
+  "shockwave_slam": {
+    "original_job_id": "ca1a952a-d49a-4a72-a02f-99b7cfb7e565",
+    "original_status": "rejected: binding drift and unrequested impact flash; raw files retained in supporting workspace only",
+    "retry_job_id": "607a733d-745f-4eb5-8ea4-e985b76d69ae",
+    "retry_asset_id": "5970080e-c2c0-5e27-88dd-c05e90f3997a",
+    "join_image_id": "a974ed1d-3754-4cc4-9491-7918e9cabfe1",
+    "final_image_id": "eeba2281-ec44-44f1-88d3-0a0a11006f0c",
+    "frame_sources": [
+      "south.png",
+      "raw/01.png",
+      "raw/02.png",
+      "raw/03.png",
+      "raw/04.png",
+      "raw/05.png",
+      "raw/06.png",
+      "raw/07.png",
+      "raw/08.png",
+      "south.png"
+    ],
+    "operations": [
+      {
+        "operation": "select_mask",
+        "layer": "image",
+        "frames": [
+          2
+        ],
+        "name": "left_posed_1",
+        "selector": {
+          "kind": "color",
+          "colors": [
+            "#000000ff",
+            "#050200ff",
+            "#090200ff",
+            "#0a0b0bff",
+            "#0b0706ff",
+            "#110100ff",
+            "#121213ff",
+            "#130d05ff",
+            "#1b1715ff",
+            "#200e03ff",
+            "#24201fff",
+            "#331706ff",
+            "#332b25ff",
+            "#3a3632ff",
+            "#453b33ff",
+            "#48260fff",
+            "#4e463eff",
+            "#594a3dff",
+            "#595249ff",
+            "#5c2f0eff",
+            "#645749ff",
+            "#6a4c2cff",
+            "#6d3d14ff",
+            "#6d5f50ff",
+            "#776755ff",
+            "#7e4617ff",
+            "#82705aff",
+            "#889a7fff",
+            "#8f7a61ff",
+            "#905017ff",
+            "#9b8468ff",
+            "#a05c1aff",
+            "#a61e0bff",
+            "#a68d6fff",
+            "#b0671eff",
+            "#b09675ff",
+            "#bba17dff",
+            "#bd7222ff",
+            "#c72513ff",
+            "#ca7b24ff",
+            "#caae87ff",
+            "#d7862aff",
+            "#dabe93ff",
+            "#e4912fff",
+            "#e8d0a2ff",
+            "#ec9b36ff",
+            "#eddaa8ff",
+            "#f1a63dff",
+            "#f4e5adff",
+            "#f61a0eff",
+            "#f6321aff",
+            "#f6b148ff",
+            "#f7bb51ff",
+            "#f9c55dff",
+            "#fad068ff",
+            "#fadd76ff",
+            "#fbe989ff",
+            "#fcf3a2ff"
+          ],
+          "region": [
+            0,
+            172,
+            100,
+            216
+          ]
+        },
+        "reason": "Save the existing foreground stone-and-gold fist selection from this input frame before restoring the static restraint layer; exclude the generated blue/white impact effect."
+      },
+      {
+        "operation": "select_mask",
+        "layer": "image",
+        "frames": [
+          2
+        ],
+        "name": "right_posed_1",
+        "selector": {
+          "kind": "color",
+          "colors": [
+            "#000000ff",
+            "#050200ff",
+            "#090200ff",
+            "#0a0b0bff",
+            "#0b0706ff",
+            "#110100ff",
+            "#121213ff",
+            "#130d05ff",
+            "#1b1715ff",
+            "#200e03ff",
+            "#24201fff",
+            "#331706ff",
+            "#332b25ff",
+            "#3a3632ff",
+            "#453b33ff",
+            "#48260fff",
+            "#4e463eff",
+            "#594a3dff",
+            "#595249ff",
+            "#5c2f0eff",
+            "#645749ff",
+            "#6a4c2cff",
+            "#6d3d14ff",
+            "#6d5f50ff",
+            "#776755ff",
+            "#7e4617ff",
+            "#82705aff",
+            "#889a7fff",
+            "#8f7a61ff",
+            "#905017ff",
+            "#9b8468ff",
+            "#a05c1aff",
+            "#a61e0bff",
+            "#a68d6fff",
+            "#b0671eff",
+            "#b09675ff",
+            "#bba17dff",
+            "#bd7222ff",
+            "#c72513ff",
+            "#ca7b24ff",
+            "#caae87ff",
+            "#d7862aff",
+            "#dabe93ff",
+            "#e4912fff",
+            "#e8d0a2ff",
+            "#ec9b36ff",
+            "#eddaa8ff",
+            "#f1a63dff",
+            "#f4e5adff",
+            "#f61a0eff",
+            "#f6321aff",
+            "#f6b148ff",
+            "#f7bb51ff",
+            "#f9c55dff",
+            "#fad068ff",
+            "#fadd76ff",
+            "#fbe989ff",
+            "#fcf3a2ff"
+          ],
+          "region": [
+            155,
+            172,
+            255,
+            216
+          ]
+        },
+        "reason": "Save the existing foreground stone-and-gold fist selection from this input frame before restoring the static restraint layer; exclude the generated blue/white impact effect."
+      },
+      {
+        "operation": "select_mask",
+        "layer": "image",
+        "frames": [
+          7
+        ],
+        "name": "left_posed_6",
+        "selector": {
+          "kind": "color",
+          "colors": [
+            "#000000ff",
+            "#050200ff",
+            "#090200ff",
+            "#0a0b0bff",
+            "#0b0706ff",
+            "#110100ff",
+            "#121213ff",
+            "#130d05ff",
+            "#1b1715ff",
+            "#200e03ff",
+            "#24201fff",
+            "#331706ff",
+            "#332b25ff",
+            "#3a3632ff",
+            "#453b33ff",
+            "#48260fff",
+            "#4e463eff",
+            "#594a3dff",
+            "#595249ff",
+            "#5c2f0eff",
+            "#645749ff",
+            "#6a4c2cff",
+            "#6d3d14ff",
+            "#6d5f50ff",
+            "#776755ff",
+            "#7e4617ff",
+            "#82705aff",
+            "#889a7fff",
+            "#8f7a61ff",
+            "#905017ff",
+            "#961a0aff",
+            "#9b8468ff",
+            "#a05c1aff",
+            "#a61e0bff",
+            "#a68d6fff",
+            "#b0671eff",
+            "#b09675ff",
+            "#bba17dff",
+            "#bd7222ff",
+            "#ca7b24ff",
+            "#caae87ff",
+            "#d7862aff",
+            "#dabe93ff",
+            "#e4912fff",
+            "#e8d0a2ff",
+            "#ec9b36ff",
+            "#eddaa8ff",
+            "#f1a63dff",
+            "#f4e5adff",
+            "#f61a0eff",
+            "#f6b148ff",
+            "#f7bb51ff",
+            "#f9c55dff",
+            "#fad068ff",
+            "#fadd76ff",
+            "#fbe989ff"
+          ],
+          "region": [
+            0,
+            172,
+            100,
+            216
+          ]
+        },
+        "reason": "Save the existing foreground stone-and-gold fist selection from this input frame before restoring the static restraint layer; exclude the generated blue/white impact effect."
+      },
+      {
+        "operation": "select_mask",
+        "layer": "image",
+        "frames": [
+          7
+        ],
+        "name": "right_posed_6",
+        "selector": {
+          "kind": "color",
+          "colors": [
+            "#000000ff",
+            "#050200ff",
+            "#090200ff",
+            "#0a0b0bff",
+            "#0b0706ff",
+            "#110100ff",
+            "#121213ff",
+            "#130d05ff",
+            "#1b1715ff",
+            "#200e03ff",
+            "#24201fff",
+            "#331706ff",
+            "#332b25ff",
+            "#3a3632ff",
+            "#453b33ff",
+            "#48260fff",
+            "#4e463eff",
+            "#594a3dff",
+            "#595249ff",
+            "#5c2f0eff",
+            "#645749ff",
+            "#6a4c2cff",
+            "#6d3d14ff",
+            "#6d5f50ff",
+            "#776755ff",
+            "#7e4617ff",
+            "#82705aff",
+            "#889a7fff",
+            "#8f7a61ff",
+            "#905017ff",
+            "#961a0aff",
+            "#9b8468ff",
+            "#a05c1aff",
+            "#a61e0bff",
+            "#a68d6fff",
+            "#b0671eff",
+            "#b09675ff",
+            "#bba17dff",
+            "#bd7222ff",
+            "#ca7b24ff",
+            "#caae87ff",
+            "#d7862aff",
+            "#dabe93ff",
+            "#e4912fff",
+            "#e8d0a2ff",
+            "#ec9b36ff",
+            "#eddaa8ff",
+            "#f1a63dff",
+            "#f4e5adff",
+            "#f61a0eff",
+            "#f6b148ff",
+            "#f7bb51ff",
+            "#f9c55dff",
+            "#fad068ff",
+            "#fadd76ff",
+            "#fbe989ff"
+          ],
+          "region": [
+            155,
+            172,
+            255,
+            216
+          ]
+        },
+        "reason": "Save the existing foreground stone-and-gold fist selection from this input frame before restoring the static restraint layer; exclude the generated blue/white impact effect."
+      },
+      {
+        "operation": "select_mask",
+        "layer": "image",
+        "frames": [
+          8
+        ],
+        "name": "left_posed_7",
+        "selector": {
+          "kind": "color",
+          "colors": [
+            "#000000ff",
+            "#050200ff",
+            "#090200ff",
+            "#0a0b0bff",
+            "#0b0706ff",
+            "#110100ff",
+            "#121213ff",
+            "#130d05ff",
+            "#1b1715ff",
+            "#200e03ff",
+            "#24201fff",
+            "#331706ff",
+            "#332b25ff",
+            "#3a3632ff",
+            "#453b33ff",
+            "#48260fff",
+            "#4e463eff",
+            "#594a3dff",
+            "#595249ff",
+            "#5c2f0eff",
+            "#645749ff",
+            "#6a4c2cff",
+            "#6d3d14ff",
+            "#6d5f50ff",
+            "#776755ff",
+            "#7e4617ff",
+            "#82705aff",
+            "#880604ff",
+            "#889a7fff",
+            "#8f7a61ff",
+            "#905017ff",
+            "#9b8468ff",
+            "#a05c1aff",
+            "#a61e0bff",
+            "#a68d6fff",
+            "#b0671eff",
+            "#b09675ff",
+            "#bba17dff",
+            "#bd7222ff",
+            "#ca7b24ff",
+            "#caae87ff",
+            "#d32c17ff",
+            "#d7862aff",
+            "#dabe93ff",
+            "#e4912fff",
+            "#e8d0a2ff",
+            "#ec9b36ff",
+            "#eddaa8ff",
+            "#f1a63dff",
+            "#f4e5adff",
+            "#f61a0eff",
+            "#f6b148ff",
+            "#f7bb51ff",
+            "#f9c55dff",
+            "#fad068ff",
+            "#fadd76ff",
+            "#fbe989ff"
+          ],
+          "region": [
+            0,
+            172,
+            100,
+            216
+          ]
+        },
+        "reason": "Save the existing foreground stone-and-gold fist selection from this input frame before restoring the static restraint layer; exclude the generated blue/white impact effect."
+      },
+      {
+        "operation": "select_mask",
+        "layer": "image",
+        "frames": [
+          8
+        ],
+        "name": "right_posed_7",
+        "selector": {
+          "kind": "color",
+          "colors": [
+            "#000000ff",
+            "#050200ff",
+            "#090200ff",
+            "#0a0b0bff",
+            "#0b0706ff",
+            "#110100ff",
+            "#121213ff",
+            "#130d05ff",
+            "#1b1715ff",
+            "#200e03ff",
+            "#24201fff",
+            "#331706ff",
+            "#332b25ff",
+            "#3a3632ff",
+            "#453b33ff",
+            "#48260fff",
+            "#4e463eff",
+            "#594a3dff",
+            "#595249ff",
+            "#5c2f0eff",
+            "#645749ff",
+            "#6a4c2cff",
+            "#6d3d14ff",
+            "#6d5f50ff",
+            "#776755ff",
+            "#7e4617ff",
+            "#82705aff",
+            "#880604ff",
+            "#889a7fff",
+            "#8f7a61ff",
+            "#905017ff",
+            "#9b8468ff",
+            "#a05c1aff",
+            "#a61e0bff",
+            "#a68d6fff",
+            "#b0671eff",
+            "#b09675ff",
+            "#bba17dff",
+            "#bd7222ff",
+            "#ca7b24ff",
+            "#caae87ff",
+            "#d32c17ff",
+            "#d7862aff",
+            "#dabe93ff",
+            "#e4912fff",
+            "#e8d0a2ff",
+            "#ec9b36ff",
+            "#eddaa8ff",
+            "#f1a63dff",
+            "#f4e5adff",
+            "#f61a0eff",
+            "#f6b148ff",
+            "#f7bb51ff",
+            "#f9c55dff",
+            "#fad068ff",
+            "#fadd76ff",
+            "#fbe989ff"
+          ],
+          "region": [
+            155,
+            172,
+            255,
+            216
+          ]
+        },
+        "reason": "Save the existing foreground stone-and-gold fist selection from this input frame before restoring the static restraint layer; exclude the generated blue/white impact effect."
+      },
+      {
+        "operation": "select_mask",
+        "layer": "image",
+        "frames": [
+          9
+        ],
+        "name": "left_posed_8",
+        "selector": {
+          "kind": "color",
+          "colors": [
+            "#000000ff",
+            "#050200ff",
+            "#090200ff",
+            "#0a0b0bff",
+            "#0b0706ff",
+            "#110100ff",
+            "#121213ff",
+            "#130d05ff",
+            "#1b1715ff",
+            "#200e03ff",
+            "#24201fff",
+            "#331706ff",
+            "#332b25ff",
+            "#3a3632ff",
+            "#453b33ff",
+            "#48260fff",
+            "#4e463eff",
+            "#594a3dff",
+            "#595249ff",
+            "#5c2f0eff",
+            "#645749ff",
+            "#6a4c2cff",
+            "#6d3d14ff",
+            "#6d5f50ff",
+            "#776755ff",
+            "#7e4617ff",
+            "#82705aff",
+            "#889a7fff",
+            "#8f7a61ff",
+            "#905017ff",
+            "#9b8468ff",
+            "#a05c1aff",
+            "#a61e0bff",
+            "#a68d6fff",
+            "#b0671eff",
+            "#b09675ff",
+            "#bba17dff",
+            "#bd7222ff",
+            "#ca7b24ff",
+            "#caae87ff",
+            "#d7862aff",
+            "#dabe93ff",
+            "#e4912fff",
+            "#e8d0a2ff",
+            "#ec9b36ff",
+            "#eddaa8ff",
+            "#f1a63dff",
+            "#f4e5adff",
+            "#f61a0eff",
+            "#f6321aff",
+            "#f6b148ff",
+            "#f7bb51ff",
+            "#f9c55dff",
+            "#fad068ff",
+            "#fadd76ff",
+            "#fbe989ff",
+            "#fbf8c4ff"
+          ],
+          "region": [
+            0,
+            172,
+            100,
+            216
+          ]
+        },
+        "reason": "Save the existing foreground stone-and-gold fist selection from this input frame before restoring the static restraint layer; exclude the generated blue/white impact effect."
+      },
+      {
+        "operation": "select_mask",
+        "layer": "image",
+        "frames": [
+          9
+        ],
+        "name": "right_posed_8",
+        "selector": {
+          "kind": "color",
+          "colors": [
+            "#000000ff",
+            "#050200ff",
+            "#090200ff",
+            "#0a0b0bff",
+            "#0b0706ff",
+            "#110100ff",
+            "#121213ff",
+            "#130d05ff",
+            "#1b1715ff",
+            "#200e03ff",
+            "#24201fff",
+            "#331706ff",
+            "#332b25ff",
+            "#3a3632ff",
+            "#453b33ff",
+            "#48260fff",
+            "#4e463eff",
+            "#594a3dff",
+            "#595249ff",
+            "#5c2f0eff",
+            "#645749ff",
+            "#6a4c2cff",
+            "#6d3d14ff",
+            "#6d5f50ff",
+            "#776755ff",
+            "#7e4617ff",
+            "#82705aff",
+            "#889a7fff",
+            "#8f7a61ff",
+            "#905017ff",
+            "#9b8468ff",
+            "#a05c1aff",
+            "#a61e0bff",
+            "#a68d6fff",
+            "#b0671eff",
+            "#b09675ff",
+            "#bba17dff",
+            "#bd7222ff",
+            "#ca7b24ff",
+            "#caae87ff",
+            "#d7862aff",
+            "#dabe93ff",
+            "#e4912fff",
+            "#e8d0a2ff",
+            "#ec9b36ff",
+            "#eddaa8ff",
+            "#f1a63dff",
+            "#f4e5adff",
+            "#f61a0eff",
+            "#f6321aff",
+            "#f6b148ff",
+            "#f7bb51ff",
+            "#f9c55dff",
+            "#fad068ff",
+            "#fadd76ff",
+            "#fbe989ff",
+            "#fbf8c4ff"
+          ],
+          "region": [
+            155,
+            172,
+            255,
+            216
+          ]
+        },
+        "reason": "Save the existing foreground stone-and-gold fist selection from this input frame before restoring the static restraint layer; exclude the generated blue/white impact effect."
+      },
+      {
+        "operation": "copy_region",
+        "layer": "image",
+        "frames": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "source_layer": "image",
+        "source_frame": 1,
+        "region": [
+          0,
+          172,
+          255,
+          255
+        ],
+        "at": [
+          0,
+          172
+        ],
+        "reason": "Keep both leg shackles, legs, feet, tethers and seals on a single unchanged native layer, removing the generated impact effect."
+      },
+      {
+        "operation": "select_mask",
+        "layer": "image",
+        "frames": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "name": "left_static_tether",
+        "selector": {
+          "kind": "color",
+          "colors": [
+            "#010e24ff",
+            "#0150aaff",
+            "#04325eff",
+            "#044a86ff",
+            "#046194ff",
+            "#052036ff",
+            "#0573acff",
+            "#059bd3ff",
+            "#05ade0ff",
+            "#07c0eeff",
+            "#088cc4ff",
+            "#0b81f9ff",
+            "#0c68b2ff",
+            "#0d5272ff",
+            "#0dd2f8ff",
+            "#108dfcff",
+            "#15e0faff",
+            "#1780e0ff",
+            "#1782c2ff",
+            "#19343fff",
+            "#1a97fbff",
+            "#1fedfdff",
+            "#2383a8ff",
+            "#2cadfaff",
+            "#607e97ff",
+            "#6bc2fcff",
+            "#7fabbbff",
+            "#9ad4fcff",
+            "#afe9fdff",
+            "#cde3fdff",
+            "#d6f5fcff",
+            "#e8f9fcff",
+            "#e9effcff",
+            "#f8fafcff"
+          ],
+          "region": [
+            58,
+            185,
+            71,
+            213
+          ]
+        },
+        "reason": "Save only the exact blue-white source tether pixels in the narrow chain corridor before clearing the source's old hanging fist from the raised-arm lane."
+      },
+      {
+        "operation": "brush",
+        "layer": "image",
+        "frames": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "mode": "erase",
+        "points": [
+          [
+            0,
+            192
+          ],
+          [
+            71,
+            192
+          ]
+        ],
+        "size": 64,
+        "shape": "square",
+        "region": [
+          0,
+          172,
+          71,
+          213
+        ],
+        "reason": "Clear the old hanging-fist silhouette from the arm lane, so a raised-arm pose cannot gain a second ghost fist. The fixed foot and seal layer below this lane is untouched."
+      },
+      {
+        "operation": "copy_region",
+        "layer": "image",
+        "frames": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "source_layer": "image",
+        "source_frame": 1,
+        "region": [
+          58,
+          185,
+          71,
+          213
+        ],
+        "at": [
+          58,
+          185
+        ],
+        "mask": "left_static_tether",
+        "reason": "Restore the original narrow magical tether over transparency, without the old hanging arm."
+      },
+      {
+        "operation": "select_mask",
+        "layer": "image",
+        "frames": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "name": "right_static_tether",
+        "selector": {
+          "kind": "color",
+          "colors": [
+            "#010e24ff",
+            "#0150aaff",
+            "#04325eff",
+            "#044a86ff",
+            "#046194ff",
+            "#052036ff",
+            "#0573acff",
+            "#059bd3ff",
+            "#05ade0ff",
+            "#07c0eeff",
+            "#088cc4ff",
+            "#0b81f9ff",
+            "#0c68b2ff",
+            "#0d5272ff",
+            "#0dd2f8ff",
+            "#108dfcff",
+            "#15e0faff",
+            "#1780e0ff",
+            "#1782c2ff",
+            "#19343fff",
+            "#1a97fbff",
+            "#1fedfdff",
+            "#2383a8ff",
+            "#2cadfaff",
+            "#607e97ff",
+            "#6bc2fcff",
+            "#7fabbbff",
+            "#9ad4fcff",
+            "#afe9fdff",
+            "#cde3fdff",
+            "#d6f5fcff",
+            "#e8f9fcff",
+            "#e9effcff",
+            "#f8fafcff"
+          ],
+          "region": [
+            186,
+            185,
+            199,
+            213
+          ]
+        },
+        "reason": "Save only the exact blue-white source tether pixels in the narrow chain corridor before clearing the source's old hanging fist from the raised-arm lane."
+      },
+      {
+        "operation": "brush",
+        "layer": "image",
+        "frames": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "mode": "erase",
+        "points": [
+          [
+            186,
+            192
+          ],
+          [
+            255,
+            192
+          ]
+        ],
+        "size": 64,
+        "shape": "square",
+        "region": [
+          186,
+          172,
+          255,
+          213
+        ],
+        "reason": "Clear the old hanging-fist silhouette from the arm lane, so a raised-arm pose cannot gain a second ghost fist. The fixed foot and seal layer below this lane is untouched."
+      },
+      {
+        "operation": "copy_region",
+        "layer": "image",
+        "frames": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "source_layer": "image",
+        "source_frame": 1,
+        "region": [
+          186,
+          185,
+          199,
+          213
+        ],
+        "at": [
+          186,
+          185
+        ],
+        "mask": "right_static_tether",
+        "reason": "Restore the original narrow magical tether over transparency, without the old hanging arm."
+      },
+      {
+        "operation": "copy_region",
+        "layer": "image",
+        "frames": [
+          2
+        ],
+        "source_layer": "image",
+        "source_frame": 2,
+        "region": [
+          0,
+          172,
+          100,
+          216
+        ],
+        "at": [
+          0,
+          172
+        ],
+        "mask": "left_posed_1",
+        "reason": "Restore this frame's actual foreground fist over the fixed leg layer using the saved hand-color mask; keep the unrequested effect removed."
+      },
+      {
+        "operation": "copy_region",
+        "layer": "image",
+        "frames": [
+          2
+        ],
+        "source_layer": "image",
+        "source_frame": 2,
+        "region": [
+          155,
+          172,
+          255,
+          216
+        ],
+        "at": [
+          155,
+          172
+        ],
+        "mask": "right_posed_1",
+        "reason": "Restore this frame's actual foreground fist over the fixed leg layer using the saved hand-color mask; keep the unrequested effect removed."
+      },
+      {
+        "operation": "copy_region",
+        "layer": "image",
+        "frames": [
+          7
+        ],
+        "source_layer": "image",
+        "source_frame": 7,
+        "region": [
+          0,
+          172,
+          100,
+          216
+        ],
+        "at": [
+          0,
+          172
+        ],
+        "mask": "left_posed_6",
+        "reason": "Restore this frame's actual foreground fist over the fixed leg layer using the saved hand-color mask; keep the unrequested effect removed."
+      },
+      {
+        "operation": "copy_region",
+        "layer": "image",
+        "frames": [
+          7
+        ],
+        "source_layer": "image",
+        "source_frame": 7,
+        "region": [
+          155,
+          172,
+          255,
+          216
+        ],
+        "at": [
+          155,
+          172
+        ],
+        "mask": "right_posed_6",
+        "reason": "Restore this frame's actual foreground fist over the fixed leg layer using the saved hand-color mask; keep the unrequested effect removed."
+      },
+      {
+        "operation": "copy_region",
+        "layer": "image",
+        "frames": [
+          8
+        ],
+        "source_layer": "image",
+        "source_frame": 8,
+        "region": [
+          0,
+          172,
+          100,
+          216
+        ],
+        "at": [
+          0,
+          172
+        ],
+        "mask": "left_posed_7",
+        "reason": "Restore this frame's actual foreground fist over the fixed leg layer using the saved hand-color mask; keep the unrequested effect removed."
+      },
+      {
+        "operation": "copy_region",
+        "layer": "image",
+        "frames": [
+          8
+        ],
+        "source_layer": "image",
+        "source_frame": 8,
+        "region": [
+          155,
+          172,
+          255,
+          216
+        ],
+        "at": [
+          155,
+          172
+        ],
+        "mask": "right_posed_7",
+        "reason": "Restore this frame's actual foreground fist over the fixed leg layer using the saved hand-color mask; keep the unrequested effect removed."
+      },
+      {
+        "operation": "copy_region",
+        "layer": "image",
+        "frames": [
+          9
+        ],
+        "source_layer": "image",
+        "source_frame": 9,
+        "region": [
+          0,
+          172,
+          100,
+          216
+        ],
+        "at": [
+          0,
+          172
+        ],
+        "mask": "left_posed_8",
+        "reason": "Restore this frame's actual foreground fist over the fixed leg layer using the saved hand-color mask; keep the unrequested effect removed."
+      },
+      {
+        "operation": "copy_region",
+        "layer": "image",
+        "frames": [
+          9
+        ],
+        "source_layer": "image",
+        "source_frame": 9,
+        "region": [
+          155,
+          172,
+          255,
+          216
+        ],
+        "at": [
+          155,
+          172
+        ],
+        "mask": "right_posed_8",
+        "reason": "Restore this frame's actual foreground fist over the fixed leg layer using the saved hand-color mask; keep the unrequested effect removed."
+      }
+    ],
+    "layer_repair_image_id": "74ba06d2-9ce1-44bc-a770-7e5c6c9fb0c2",
+    "final_cleanup": "slam-final-cleanup.json"
+  },
+  "note": "All source PNGs are retained. Corrected frames are visual candidates, not runtime-approved assets. PNG sprite sheets preserve RGBA exactly. GIFs are previews only."
+}

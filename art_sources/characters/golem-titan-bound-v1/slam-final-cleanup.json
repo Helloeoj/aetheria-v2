@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "final_image_id": "eeba2281-ec44-44f1-88d3-0a0a11006f0c",
+  "previous_image_id": "74ba06d2-9ce1-44bc-a770-7e5c6c9fb0c2",
+  "operations": [
+    {
+      "operation": "patch_pixels",
+      "layer": "image",
+      "frames": [
+        3
+      ],
+      "pixels": [
+        [
+          187,
+          210,
+          "#052036ff",
+          "#00000000"
+        ]
+      ],
+      "reason": "Connected-component and nearest-4x inspection identified these isolated one-pixel remnants at the hand/static-layer boundary. Remove only the listed observed orphan pixels, preserving the connected Titan and bindings."
+    },
+    {
+      "operation": "patch_pixels",
+      "layer": "image",
+      "frames": [
+        4
+      ],
+      "pixels": [
+        [
+          187,
+          210,
+          "#052036ff",
+          "#00000000"
+        ]
+      ],
+      "reason": "Connected-component and nearest-4x inspection identified these isolated one-pixel remnants at the hand/static-layer boundary. Remove only the listed observed orphan pixels, preserving the connected Titan and bindings."
+    },
+    {
+      "operation": "patch_pixels",
+      "layer": "image",
+      "frames": [
+        5
+      ],
+      "pixels": [
+        [
+          187,
+          210,
+          "#052036ff",
+          "#00000000"
+        ]
+      ],
+      "reason": "Connected-component and nearest-4x inspection identified these isolated one-pixel remnants at the hand/static-layer boundary. Remove only the listed observed orphan pixels, preserving the connected Titan and bindings."
+    },
+    {
+      "operation": "patch_pixels",
+      "layer": "image",
+      "frames": [
+        6
+      ],
+      "pixels": [
+        [
+          187,
+          210,
+          "#052036ff",
+          "#00000000"
+        ]
+      ],
+      "reason": "Connected-component and nearest-4x inspection identified these isolated one-pixel remnants at the hand/static-layer boundary. Remove only the listed observed orphan pixels, preserving the connected Titan and bindings."
+    },
+    {
+      "operation": "patch_pixels",
+      "layer": "image",
+      "frames": [
+        7
+      ],
+      "pixels": [
+        [
+          187,
+          210,
+          "#052036ff",
+          "#00000000"
+        ],
+        [
+          202,
+          193,
+          "#eddaa8ff",
+          "#00000000"
+        ],
+        [
+          194,
+          199,
+          "#eddaa8ff",
+          "#00000000"
+        ],
+        [
+          55,
+          199,
+          "#eddaa8ff",
+          "#00000000"
+        ],
+        [
+          53,
+          197,
+          "#fbe989ff",
+          "#00000000"
+        ]
+      ],
+      "reason": "Connected-component and nearest-4x inspection identified these isolated one-pixel remnants at the hand/static-layer boundary. Remove only the listed observed orphan pixels, preserving the connected Titan and bindings."
+    }
+  ],
+  "review": "Nine observed isolated remnant pixels removed at source-layer joins; final frames re-exported and checked."
+}

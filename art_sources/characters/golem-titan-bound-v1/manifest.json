@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "candidate_id": "golem_titan_bound_candidate_v1",
+  "scope": "South-facing idle and shockwave-slam animation candidates; no live actor replacement, world placement, collision, camera, boss mechanics or interface changes.",
+  "design": {
+    "reference": "source/bound-concept.png",
+    "appearance": "gray stone, aged gold crown and trim, red eyes, cyan crystals/core; blue-white magical leg shackles with short taut ground tethers",
+    "view": "south-facing low top-down",
+    "native_canvas": [
+      256,
+      256
+    ],
+    "candidate_world_pixels_per_source_pixel": 1,
+    "intended_visible_height_world_pixels": 200,
+    "foot_anchor": [
+      128,
+      240
+    ],
+    "actual_native_visible_bbox": [
+      7,
+      23,
+      244,
+      241
+    ],
+    "actual_native_visible_height": 218
+  },
+  "steps": [
+    "Prepare isolated transparent source",
+    "Faithful native PixelLab conversion",
+    "Generate idle and two-fist slam with fixed feet and tether endpoints",
+    "Inspect every frame, alpha, identity, anchors, clipping and loop/impact timing",
+    "Save source frames, spritesheets, GIF previews and manifest; publish candidate assets separately from runtime"
+  ],
+  "status": {
+    "reference_accepted_for_animation": true,
+    "native_sprite": "candidate_prepared_and_alpha_checked",
+    "animations": "first_south_facing_drafts_prepared",
+    "visual_approval": "pending",
+    "runtime_installation": "not_performed",
+    "worldbuilding_scene_checks": "not_applicable_to_unplaced_actor_art; required before any runtime placement/scale/collision change",
+    "godot_4x_review": "pending runtime integration",
+    "automatic_frame_checks": "passed; see README for exact scope"
+  },
+  "generation": {
+    "cutout": {
+      "tool": "built-in imagegen",
+      "prompt": "Use case: background-extraction.\nPrepare the supplied Aetheria bound Golem Titan concept for sprite animation. Extract ONLY the complete Titan together with BOTH magical leg shackles, BOTH short energy chains and BOTH small magical ground-anchor glyphs. Remove the little human scale-reference character completely, remove the charcoal backdrop and all cast/contact shadow. Genuine transparent background.\nSTRICT IDENTITY PRESERVATION: Keep the Titan's same accepted low top-down south-facing camera angle, compact massive proportions, exact pose, gold crown, two red eyes, gray stone, aged-gold armor, cyan crystal spines and chest core, blue-white lower-leg rune bindings and tethers. Do not redesign, add detail, turn, change height/width ratio, change crown, change gold, change expression or sever the binding chains.\nComposition: one isolated complete subject centered on a square transparent canvas. Preserve full crown/crystal tips, hands, feet, shackles, chains and glyphs. About 12% transparent margin above the highest crystal and 8% below feet, with sufficient blank space at both sides. The body should remain about 76-80% of canvas height, leaving animation headroom. No remnants of the peasant, floor or rectangular charcoal background. Clean intentional pixel edges, no fuzzy halo, no stray pixels. Keep the binding glow tight and readable. Single static starting pose only, no sheet, no labels, no text. This is a faithful sprite preparation of the accepted design, not another character design.",
+      "local_source": "source/bound-cutout.png"
+    },
+    "native": {
+      "tool": "PixelLab image_to_pixelart",
+      "job_id": "62a38662-58f7-4b4e-9568-62bcf7422bfa",
+      "asset_id": "4a0e631c-5d4f-5399-8930-72780f50f87b",
+      "settings": {
+        "faithful": true,
+        "init_image_strength": 180,
+        "output_width": 256,
+        "output_height": 256,
+        "seed": 301026,
+        "text_guidance_scale": 6
+      }
+    }
+  },
+  "clips": {
+    "idle": {
+      "direction": "south",
+      "canvas": [
+        256,
+        256
+      ],
+      "foot_anchor": [
+        128,
+        240
+      ],
+      "corrected_frames": [
+        "idle/frames/00.png",
+        "idle/frames/01.png",
+        "idle/frames/02.png",
+        "idle/frames/03.png",
+        "idle/frames/04.png",
+        "idle/frames/05.png"
+      ],
+      "raw_job_id": "a162ced0-a319-4cf2-8afc-d8368f16c114",
+      "spritesheet": "idle/idle_spritesheet.png",
+      "playback_indexes": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "durations_ms": [
+        440,
+        220,
+        220,
+        220,
+        220
+      ],
+      "cycle_ms": 1320,
+      "preview": "previews/idle-3x-dark.gif",
+      "checks": {
+        "consistent_rgba_256": true,
+        "input_hashes_preserved": true,
+        "first_last_pose_equal": true,
+        "png_sheet_exact": true,
+        "fixed_foot_contact_and_ground_seals": true,
+        "edge_clipping": false
+      },
+      "visual_approval": "pending"
+    },
+    "shockwave_slam": {
+      "direction": "south",
+      "canvas": [
+        256,
+        256
+      ],
+      "foot_anchor": [
+        128,
+        240
+      ],
+      "corrected_frames": [
+        "shockwave_slam/frames/00.png",
+        "shockwave_slam/frames/01.png",
+        "shockwave_slam/frames/02.png",
+        "shockwave_slam/frames/03.png",
+        "shockwave_slam/frames/04.png",
+        "shockwave_slam/frames/05.png",
+        "shockwave_slam/frames/06.png",
+        "shockwave_slam/frames/07.png",
+        "shockwave_slam/frames/08.png",
+        "shockwave_slam/frames/09.png"
+      ],
+      "raw_job_id": "607a733d-745f-4eb5-8ea4-e985b76d69ae",
+      "spritesheet": "shockwave_slam/shockwave_slam_spritesheet.png",
+      "playback_indexes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "durations_ms": [
+        680,
+        180,
+        180,
+        180,
+        90,
+        70,
+        70,
+        130,
+        130
+      ],
+      "cycle_ms": 1710,
+      "preview": "previews/shockwave_slam-3x-dark.gif",
+      "checks": {
+        "consistent_rgba_256": true,
+        "input_hashes_preserved": true,
+        "first_last_pose_equal": true,
+        "png_sheet_exact": true,
+        "fixed_foot_contact_and_ground_seals": true,
+        "edge_clipping": false
+      },
+      "visual_approval": "pending"
+    }
+  }
+}

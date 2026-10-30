@@ -1,0 +1,82 @@
+{
+  "native_source_url": "https://api.pixellab.ai/mcp/pixel-tools/c5cf0695-e4e5-47d3-a319-42ef6c21d736/image.png",
+  "alpha_repairs": [
+    {
+      "operation": "flood_fill",
+      "layer": "image",
+      "frames": [
+        1
+      ],
+      "seed": [
+        0,
+        0
+      ],
+      "expected": "#818283ff",
+      "color": "#00000000",
+      "tolerance": 1,
+      "connectivity": 4,
+      "max_pixels": 31000,
+      "reason": "The native converter made the source's transparent background opaque. Both observed background shades are #818283 and #828384; remove only their edge-connected exterior, preserving the outlined Titan, lower-leg shackles, chains and ground glyphs."
+    },
+    {
+      "operation": "flood_fill",
+      "layer": "image",
+      "frames": [
+        1
+      ],
+      "seed": [
+        77,
+        114
+      ],
+      "expected": "#818283ff",
+      "color": "#00000000",
+      "tolerance": 1,
+      "max_pixels": 650,
+      "reason": "Remove the enclosed gray background gap between the left arm and torso; this 628-pixel gap is background, not stone."
+    },
+    {
+      "operation": "flood_fill",
+      "layer": "image",
+      "frames": [
+        1
+      ],
+      "seed": [
+        178,
+        113
+      ],
+      "expected": "#818283ff",
+      "color": "#00000000",
+      "tolerance": 1,
+      "max_pixels": 650,
+      "reason": "Remove the matching enclosed gray background gap between the right arm and torso; this 614-pixel gap is background, not stone."
+    }
+  ],
+  "source_ids": [
+    "ede3dfa1-1f84-417a-b5b9-220a4fd94b9c",
+    "c5cf0695-e4e5-47d3-a319-42ef6c21d736"
+  ],
+  "animations": {
+    "idle": {
+      "job_id": "a162ced0-a319-4cf2-8afc-d8368f16c114",
+      "asset_id": "231edc7a-179b-5766-acf7-cee45fc7ea3d",
+      "first_frame_url": "https://api.pixellab.ai/mcp/pixel-tools/c5cf0695-e4e5-47d3-a319-42ef6c21d736/image.png",
+      "last_frame_url": "https://api.pixellab.ai/mcp/pixel-tools/c5cf0695-e4e5-47d3-a319-42ef6c21d736/image.png",
+      "frame_count": 4,
+      "no_background": true,
+      "seed": 301027,
+      "action": "Seamless restrained idle loop, stationary bound stone Titan. Only the upper chest and shoulders slowly rise and settle by 1-2 pixels, with a subtle pulse in cyan chest crystal and red eyes. Both feet, BOTH entire lower legs, both runic shackles, both short magical chains and BOTH ground-anchor glyphs remain perfectly fixed at their exact original image coordinates for EVERY frame. No stepping, foot lifting, sliding, turning, arm swings, camera movement or scale change. Hands remain relaxed in original pose. Crown, stone face, gold trim and cyan crystal shapes remain identical. Maintain the same elevated south-facing camera. Finish in exactly the starting pose. Crisp stable pixel clusters, transparent background."
+    },
+    "shockwave_slam": {
+      "job_id": "ca1a952a-d49a-4a72-a02f-99b7cfb7e565",
+      "asset_id": "7e3b471d-ffbc-5272-93a5-4825cb90b027",
+      "first_frame_url": "https://api.pixellab.ai/mcp/pixel-tools/c5cf0695-e4e5-47d3-a319-42ef6c21d736/image.png",
+      "last_frame_url": "https://api.pixellab.ai/mcp/pixel-tools/c5cf0695-e4e5-47d3-a319-42ef6c21d736/image.png",
+      "frame_count": 8,
+      "no_background": true,
+      "seed": 301028,
+      "action": "Stationary two-fist shockwave-slam attack then return to the starting idle pose. Clear anticipation: torso leans back slightly and both massive fists rise together beside the crown, fully inside canvas. Strike: torso hinges forward and BOTH fists slam hard into the ground directly in front of his feet at the same instant, then brief heavy impact hold. Recovery: fists return to starting hanging pose. Throughout the action BOTH feet, BOTH entire lower legs, magical leg shackles, short magical chains and BOTH ground-anchor glyphs are completely rigid and fixed at exact original coordinates. No walking, jumping, stepping, sliding or rotating. Do not deform, detach or remove bindings. No shockwave VFX, dust, particles or new objects; animate only the actor. Crown, red eyes, gold armor and cyan crystal identity persist. Same camera, framing and size. Keep full fists and crown inside canvas. End exactly like first frame. Transparent background.",
+      "status": "rejected; replaced by retry recorded in corrections.json"
+    }
+  },
+  "final_native_image_id": "72316c84-05f7-4758-b848-e588cd138065"
+}
