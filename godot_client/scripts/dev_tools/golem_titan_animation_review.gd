@@ -249,6 +249,7 @@ func _finish() -> void:
 		"captures": captures, "failures": failures, "rendering_completed": failures.is_empty() and not captures.is_empty(),
 		"visual_approval": "pending", "runtime_installation": "not_performed", "integration_and_placement": "pending",
 		"scope": "Actual unchanged Golem Kingdom content and materials, temporary review actors only. Floor/body queries support review positioning; they do not certify boss placement, gameplay, hand contact, animation anatomy or visual approval. Animated actor artwork is outside worldbuilding.py passive-prop scope."}
+	report.merge(_review_metadata())
 	var file := FileAccess.open(output_dir.path_join("godot-animation-review.json"), FileAccess.WRITE)
 	if file == null:
 		_fail("Cannot save render report.")
@@ -257,3 +258,6 @@ func _finish() -> void:
 		file.close()
 	print("[Titan review] ", captures.size(), " actual GPU captures; ", failures.size(), " failures. Visual approval and placement pending.")
 	quit(0 if failures.is_empty() else 1)
+
+func _review_metadata() -> Dictionary:
+	return {}

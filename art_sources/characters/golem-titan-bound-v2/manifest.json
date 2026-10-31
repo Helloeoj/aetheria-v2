@@ -14,7 +14,7 @@
   "reference": "south.png (shared complete neutral pose from temporal_recovery/raw/08.png)",
   "previous_candidate": "../golem-titan-bound-v1",
   "motion_requirements": {
-    "idle": "User-selected subtle chest-plate and complete-arm joint motion. Fixed pelvis, legs, bindings and ground anchors; no full-body scaling or knee-line bands.",
+    "idle": "Native 25-bone skeleton and one continuous weighted mesh: spine, neck/head, clavicles, upper arms, elbows, wrists and complete fists articulate independently; pelvis, legs, feet, bindings and floor anchors stay fixed.",
     "slam": "Whole torso hinges forward, head/shoulders descend, elbows and wrists follow; both fists visibly meet the real map ground in front of planted feet.",
     "source_contact_guide": [
       [
@@ -32,56 +32,79 @@
   },
   "generation": {
     "idle": {
-      "tool": "PixelLab animate_image_pixminimax",
-      "job_id": "01288e7a-08dc-44d4-9634-67cb66edab4e",
-      "asset_id": "c7e7071a-d662-5d65-9188-5146d9378b01",
-      "frames_requested": 16,
-      "expected_returned_frames": 17,
-      "seed": 301031,
-      "role": "rejected whole-body breathing trial"
+      "method": "native Godot Skeleton2D with continuous weighted mesh",
+      "source_record": "animation-source.json#idle",
+      "bake_script_repo_relative": "godot_client/scripts/dev_tools/golem_titan_skeleton_bake.gd",
+      "direct_review_script_repo_relative": "godot_client/scripts/dev_tools/golem_titan_skeleton_review.gd"
     },
     "shockwave_slam": {
-      "tool": "PixelLab animate_with_skeleton_v3",
-      "job_id": "365e6b23-82bd-487c-bbc7-99d5f40489f7",
-      "asset_id": "b1f28c95-af19-5b35-b180-7b72c4e253f1",
-      "frames_requested": 14,
-      "seed": 301032,
-      "keypoints": "slam-skeleton.json",
-      "role": "ground-contact pose reference; intermediate motion rejected",
-      "rejected_transition_source_indices": [
-        5,
-        9,
-        10
-      ]
+      "method": "retained user-approved temporal animation",
+      "source_record": "animation-source.json#slam"
     }
   },
   "status": {
-    "generation": "completed: user-selected chest and complete-arm joint idle; retained full-body grounded slam",
-    "automatic_checks": "passed final native source, palette, protected lower-body, shared neutral, sheet round-trip and actual-map source-hash checks",
-    "visual_review": "all 12 selected joint-idle actual4x poses inspected; grounded slam retains prior actual-map inspection; user artwork approval pending",
-    "real_map_player_review": "29 new joint-idle GPU captures with no failures; retained grounded slam from prior 62-capture review",
-    "godot_4x_review": "all selected idle poses and retained slam contact/hand poses inspected against actual map and player",
+    "generation": "completed: native weighted skeletal idle; approved ground slam retained byte-for-byte",
+    "automatic_checks": "passed48nativebakes, exactsourcepalette/alpha, fixedlowerbody andcycle; source+scenehashes verified; directmapWebP exactRGBA/durations",
+    "visual_review": "all48actual4xlive-skeletonposes independentlyinspected: completefists, distinctelbow/wristmotion, connectedjoints, stableknees/bindings, nogrossarmorwarp",
+    "real_map_player_review": "105actualGPUcaptures, zerofailures; liveSkeleton2D renderedat1x/4x",
+    "godot_4x_review": "directweightedmesh reviewedbesidethe unchanged player",
     "production_installation": "not_performed",
-    "artwork_approval": "pending"
+    "artwork_approval": "slam approved; skeletal idle pending user review"
   },
   "clips": {
     "idle": {
       "direction": "south",
-      "mode": "waist_and_shoulder_joint_rig",
-      "frame_count": 12,
+      "mode": "godot_skeleton2d_continuous_weighted_mesh",
+      "frame_count": 48,
       "durations_ms": [
-        200,
-        200,
-        200,
-        200,
-        200,
-        200,
-        200,
-        200,
-        200,
-        200,
-        200,
-        200
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50
       ],
       "source_index_order": [
         0,
@@ -95,14 +118,49 @@
         8,
         9,
         10,
-        11
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47
       ],
-      "contact_frame": 0,
-      "drawing_id": "6d4ddb46-ef2e-4fe2-8c40-d8f3b3957584",
-      "rig_recipe": "idle/joint-rig.json",
-      "user_preference": "subtle chest and arm movement",
-      "user_approval": "pending",
-      "cycle_ms": 2400
+      "cycle_ms": 2400,
+      "rig_script_repo_relative": "godot_client/scripts/dev_tools/golem_titan_skeleton_rig.gd",
+      "bone_count": 25,
+      "user_preference": "subtle chest and arm movement with a real articulated skeleton",
+      "user_approval": "pending"
     },
     "shockwave_slam": {
       "direction": "south",
@@ -152,10 +210,35 @@
       "final_image_id": "e152b2e3-8d01-4cfd-8478-63fce3a58db2",
       "first_last_shared_neutral_pose": true,
       "pixel_body_splices": [],
-      "user_approval": "pending",
+      "user_approval": "approved",
       "cycle_ms": 2310
     }
   },
   "rejected_idle_reason": "Full-body generated breathing expanded legs; generated end pose differed from original start, causing a visible loop boundary.",
-  "current_source_record": "animation-source.json"
+  "current_source_record": "animation-source.json",
+  "generation_history": {
+    "idle": {
+      "tool": "PixelLab animate_image_pixminimax",
+      "job_id": "01288e7a-08dc-44d4-9634-67cb66edab4e",
+      "asset_id": "c7e7071a-d662-5d65-9188-5146d9378b01",
+      "frames_requested": 16,
+      "expected_returned_frames": 17,
+      "seed": 301031,
+      "role": "rejected whole-body breathing trial"
+    },
+    "shockwave_slam": {
+      "tool": "PixelLab animate_with_skeleton_v3",
+      "job_id": "365e6b23-82bd-487c-bbc7-99d5f40489f7",
+      "asset_id": "b1f28c95-af19-5b35-b180-7b72c4e253f1",
+      "frames_requested": 14,
+      "seed": 301032,
+      "keypoints": "slam-skeleton.json",
+      "role": "ground-contact pose reference; intermediate motion rejected",
+      "rejected_transition_source_indices": [
+        5,
+        9,
+        10
+      ]
+    }
+  }
 }

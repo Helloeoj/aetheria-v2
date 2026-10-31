@@ -8,136 +8,150 @@
     "reason": "Use the same complete neutral frame for idle and slam start/recovery; eliminate the mismatched-source loop edge."
   },
   "idle": {
-    "mode": "waist_and_shoulder_joint_rig",
-    "user_preference": "Subtle chest and arm movement",
-    "drawing_id": "6d4ddb46-ef2e-4fe2-8c40-d8f3b3957584",
-    "recipe": "idle/joint-rig.json",
-    "source_sheet": "idle/rig/full.png",
-    "source_layers": "idle/rig/layers.npz",
-    "common_source": "south.png",
-    "frame_count": 12,
+    "mode": "godot_skeleton2d_continuous_weighted_mesh",
+    "user_preference": "Subtle chest and arm movement using an articulated skeleton",
+    "rig_script_repo_relative": "godot_client/scripts/dev_tools/golem_titan_skeleton_rig.gd",
+    "rig_script_sha256": "6ffc2100c1add12b1399e785997da2705c84c337c4852d0ae6ff34ea3ccbc39b",
+    "source_texture_repo_relative": "godot_client/Assets/Characters/GolemTitanBoundCandidate/south.png",
+    "source_texture_sha256": "5c861122c97ce009979069befa2b3f15fc6f006a41d2da5fe7d813c2137dda5b",
+    "source_neutral": "south.png",
+    "bone_count": 25,
+    "hierarchy": {
+      "ankle_left": "knee_left",
+      "ankle_right": "knee_right",
+      "bindings": "",
+      "chest": "spine",
+      "clavicle_left": "chest",
+      "clavicle_right": "chest",
+      "fist_left": "wrist_left",
+      "fist_right": "wrist_right",
+      "forearm_left": "upper_arm_left",
+      "forearm_right": "upper_arm_right",
+      "head": "neck",
+      "hip_left": "pelvis",
+      "hip_right": "pelvis",
+      "knee_left": "hip_left",
+      "knee_right": "hip_right",
+      "neck": "chest",
+      "pelvis": "",
+      "shoulder_left": "clavicle_left",
+      "shoulder_right": "clavicle_right",
+      "spine": "waist",
+      "upper_arm_left": "shoulder_left",
+      "upper_arm_right": "shoulder_right",
+      "waist": "pelvis",
+      "wrist_left": "forearm_left",
+      "wrist_right": "forearm_right"
+    },
+    "vertex_count": 4225,
+    "triangle_count": 8192,
+    "maximum_influences_per_vertex": 4,
+    "weights": "Normalized, locally blended joint influences; one continuous source-textured Polygon2D. Fixed pelvis/leg/restraint controls. No extracted bitmap parts.",
+    "cycle_seconds": 2.4,
+    "frame_count": 48,
     "durations_ms": [
-      200,
-      200,
-      200,
-      200,
-      200,
-      200,
-      200,
-      200,
-      200,
-      200,
-      200,
-      200
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50
     ],
-    "chest_y_offsets": [
-      0,
-      0,
-      -1,
-      -1,
-      -2,
-      -2,
-      -2,
-      -1,
-      -1,
-      0,
-      0,
-      0
-    ],
-    "left_shoulder_degrees": [
-      0,
+    "sample_times_seconds": [
+      0.0,
+      0.05,
+      0.1,
       0.15,
+      0.2,
+      0.25,
       0.3,
+      0.35,
+      0.4,
       0.45,
+      0.5,
+      0.55,
       0.6,
+      0.65,
       0.7,
-      0.6,
-      0.45,
-      0.3,
-      0.15,
-      0,
-      0
+      0.75,
+      0.8,
+      0.85,
+      0.9,
+      0.95,
+      1.0,
+      1.05,
+      1.1,
+      1.15,
+      1.2,
+      1.25,
+      1.3,
+      1.35,
+      1.4,
+      1.45,
+      1.5,
+      1.55,
+      1.6,
+      1.65,
+      1.7,
+      1.75,
+      1.8,
+      1.85,
+      1.9,
+      1.95,
+      2.0,
+      2.05,
+      2.1,
+      2.15,
+      2.2,
+      2.25,
+      2.3,
+      2.35
     ],
-    "right_shoulder_degrees": [
-      0,
-      -0.15,
-      -0.3,
-      -0.45,
-      -0.6,
-      -0.7,
-      -0.6,
-      -0.45,
-      -0.3,
-      -0.15,
-      0,
-      0
-    ],
-    "shoulder_pivots": [
-      [
-        52,
-        114
-      ],
-      [
-        204,
-        114
-      ]
-    ],
-    "source_ownership": "Thorax and complete shoulder-to-knuckle source parts move around anatomical waist and shoulder joints. Blue/white leg-binding pixels and adjacent source shadow pixel [64,196] remain fixed. No split knee bands or hand splices.",
-    "underlap_regions": [
-      [
-        96,
-        140,
-        160,
-        154
-      ],
-      [
-        43,
-        105,
-        74,
-        118
-      ],
-      [
-        181,
-        105,
-        212,
-        118
-      ]
-    ],
-    "underlap_source": "Original source pixels only at waist and shoulders; no underpaint of fists or knees.",
-    "resampling": "nearest; native source palette and binary alpha",
-    "protected_rectangles_half_open": [
-      [
-        80,
-        153,
-        176,
-        242
-      ],
-      [
-        60,
-        217,
-        116,
-        243
-      ],
-      [
-        143,
-        217,
-        199,
-        243
-      ],
-      [
-        25,
-        217,
-        58,
-        243
-      ],
-      [
-        203,
-        217,
-        235,
-        243
-      ]
-    ],
-    "bookends": "Both equal complete south.png and slam neutral; no replacement-pose loop cut.",
+    "source_bake": "Actual Godot GPU at native256x256 from the live skeleton; separate exact2.4s endpoint verified.",
+    "main_preview": "Direct live Skeleton2D rendering against actual map/player at Camera2D zoom4, not enlarged baked animation.",
+    "native_pixels": "Source palette and binary alpha preserved; protected lower-body pixels and neutral endpoints exact.",
     "artwork_approval": "pending"
   },
   "slam": {
@@ -410,7 +424,8 @@
         "reason": "Make only the observed floor-mat pixels transparent so the actual cobbles remain visible. Keep the entire articulated body, complete hand outlines and all other pixels from this one source frame; no frozen body layers."
       }
     ],
-    "no_body_region_splices": true
+    "no_body_region_splices": true,
+    "user_artwork_approval": "approved: user explicitly praised the slam as very fluid"
   },
   "discarded_tests": {
     "whole_body_idle_job": "01288e7a-08dc-44d4-9634-67cb66edab4e",
@@ -655,6 +670,143 @@
       ],
       "geometry": "All alpha and every pixel outside the chest-core rectangle remain identical across the entire loop.",
       "preference": "Assistant-prepared rigid-body alternative; user artwork approval pending."
+    }
+  },
+  "rejected_idle_versions": {
+    "rigid_six_parts": {
+      "mode": "waist_and_shoulder_joint_rig",
+      "user_preference": "Subtle chest and arm movement",
+      "drawing_id": "6d4ddb46-ef2e-4fe2-8c40-d8f3b3957584",
+      "recipe": "idle/joint-rig.json",
+      "source_sheet": "idle/rig/full.png",
+      "source_layers": "idle/rig/layers.npz",
+      "common_source": "south.png",
+      "frame_count": 12,
+      "durations_ms": [
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200
+      ],
+      "chest_y_offsets": [
+        0,
+        0,
+        -1,
+        -1,
+        -2,
+        -2,
+        -2,
+        -1,
+        -1,
+        0,
+        0,
+        0
+      ],
+      "left_shoulder_degrees": [
+        0,
+        0.15,
+        0.3,
+        0.45,
+        0.6,
+        0.7,
+        0.6,
+        0.45,
+        0.3,
+        0.15,
+        0,
+        0
+      ],
+      "right_shoulder_degrees": [
+        0,
+        -0.15,
+        -0.3,
+        -0.45,
+        -0.6,
+        -0.7,
+        -0.6,
+        -0.45,
+        -0.3,
+        -0.15,
+        0,
+        0
+      ],
+      "shoulder_pivots": [
+        [
+          52,
+          114
+        ],
+        [
+          204,
+          114
+        ]
+      ],
+      "source_ownership": "Thorax and complete shoulder-to-knuckle source parts move around anatomical waist and shoulder joints. Blue/white leg-binding pixels and adjacent source shadow pixel [64,196] remain fixed. No split knee bands or hand splices.",
+      "underlap_regions": [
+        [
+          96,
+          140,
+          160,
+          154
+        ],
+        [
+          43,
+          105,
+          74,
+          118
+        ],
+        [
+          181,
+          105,
+          212,
+          118
+        ]
+      ],
+      "underlap_source": "Original source pixels only at waist and shoulders; no underpaint of fists or knees.",
+      "resampling": "nearest; native source palette and binary alpha",
+      "protected_rectangles_half_open": [
+        [
+          80,
+          153,
+          176,
+          242
+        ],
+        [
+          60,
+          217,
+          116,
+          243
+        ],
+        [
+          143,
+          217,
+          199,
+          243
+        ],
+        [
+          25,
+          217,
+          58,
+          243
+        ],
+        [
+          203,
+          217,
+          235,
+          243
+        ]
+      ],
+      "bookends": "Both equal complete south.png and slam neutral; no replacement-pose loop cut.",
+      "artwork_approval": "pending",
+      "user_rejection": "Idle looks like six rigid bitmap chunks; no true elbow/wrist bones. Superseded by a native weighted Skeleton2D.",
+      "historical_source_commit": "a0c39c8cad2115f9d1f31ec14fade5fceed53dbc"
     }
   }
 }
