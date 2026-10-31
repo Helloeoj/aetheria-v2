@@ -15,10 +15,10 @@
   ],
   "assets": [
     {
-      "texture": "res://Assets/MapTiles/OreNodes/copper-ore-full-south.png",
-      "native_size": [96, 96],
-      "anchor": [48, 72],
-      "world_pixels_per_source_pixel": 1
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/copper-ore-full-south.png",
+      "native_size": [128, 128],
+      "anchor": [64, 96],
+      "world_pixels_per_source_pixel": 0.75
     }
   ]
 }

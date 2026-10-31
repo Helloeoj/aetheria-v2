@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-29",
+  "operations": [
+    {
+      "provider": "built-in imagegen",
+      "operation_id": "exec-c98d713f-a56b-42bf-b75c-a19302cdaf2d",
+      "output": "generated-depleted-host.png",
+      "referenced_images": [
+        "../copper-ore-depleted-south.png",
+        "environment-style-reference.png"
+      ],
+      "transparent_background": true,
+      "prompt": "Image1 is the EDIT TARGET: our canonical depleted ore-node prop, on a 96x96 canvas. Image2 is ONLY the approved material/edge-clarity reference, never its scene or floor. Restore this EXACT two-boulder prop as a genuinely sharp high-resolution 1536x1536 transparent game asset, with fine clean contour linework and tightly separated stone shade planes like image2. We will downsample the result onto the actual character's pixel grid, so do NOT draw fake enlarged pixel blocks or a low-resolution mosaic. Do not preserve blurry enlarged 96px image steps. Render full-resolution crisp small chisel marks, fine subtle stone joints and clean faceted grey/taupe rock planes. No airbrush, fuzzy shading, noisy grain or oversharpening halo. Restrained dark edge definition, consistent upper-left light, same low top-down south-facing game projection.\nSHAPE AND REGISTRATION ARE LOCKED: exactly one taller flat-topped angular rock on the left, one much smaller low rock at its lower right, matching image1's precise shapes, orientation, proportions, spacing and visible feet. The SAME rock silhouette and footprint as image1, not the mine-wall rocks in image2. Preserve the original framing: the entire two-rock silhouette occupies only x19..76,y20..75 on the logical96x96 canvas; leave the same transparent margins. Do not enlarge the prop to fill the frame, recenter either rock, change their relative positions, or add pebbles, crystals, veins or ore. This is the depleted host rock shared by every mineral node, not a new rock design.\nReal transparent alpha background, complete unclipped silhouettes, no floor, no terrain mat, no cast shadow, no neighboring fragments, no objects or characters. All of the non-rock canvas must be transparent. Output one square transparent PNG."
+    },
+    {
+      "provider": "built-in imagegen",
+      "operation_id": "exec-a0397eb0-3163-4582-8239-c548b10b676f",
+      "output": "generated-mithril-template.png",
+      "referenced_images": [
+        "registered-host-reference.png",
+        "../mithril-ore-full-south.png"
+      ],
+      "transparent_background": true,
+      "prompt": "EDIT IMAGE1 ONLY: this is our exact shared depleted ore-node host rock. Image2 is ONLY the guide for where its purple mineral streaks belong; do not use image2's coarse rendering. Add restrained embedded violet/mithril mineral veins to image1, using the same general streak arrangement as image2: narrow jagged seams along the front and side faces of the large rock, a little on its top, and small matching seams on the small lower-right rock. The coloured seams are embedded in the stone, not crystals growing out of it. Violet is an ordinary mineral colour, not magical light: no glow, aura, particles, crystals, ground deposits or new objects.\nABSOLUTE INVARIANTS: same two boulders, same exact silhouettes, rock facets, existing shade planes, precise registration, transparent margins, feet, lighting, canvas and framing as image1. No stone is moved, enlarged, reshaped, removed or added. Do not recolour the whole rock or repaint its grey/taupe surfaces. Change ONLY a thin mineral streak layer; the depleted image and every ore must remain aligned. Keep vein edges precise and crisp, with a few well-separated dark-violet/mid-violet/pale-violet facet shades and subtle fine dark seams. Bright colours should read clearly, but never emit light.\nRender at full high resolution with sharp linework like image1, not a fake enlarged pixel-art mosaic; the engine will rasterize to the character's pixel grid. No painterly blur, antialiased fuzzy shoulders, dither, heavy noise, new scratches or extra pebbles. Real transparent alpha background, no floor/ground mat, no cast shadows or backdrop. No characters, creatures, text, UI, grid or borders. Output one complete transparent square PNG with the SAME framing as image1."
+    }
+  ]
+}

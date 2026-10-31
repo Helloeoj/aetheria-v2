@@ -17,6 +17,10 @@ func _run() -> void:
 	root.position=Vector2i(-10000,-10000)
 	root.size=Vector2i(320,240)
 	var layout:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(LAYOUT))
+	if layout.has("detail_art"):
+		printerr("Detail restoration is installed; use valtherian_clarity_review.gd. Original-source pixel identity is a historical baseline check.")
+		quit(1)
+		return
 	var scene_hash:=FileAccess.get_sha256(CONTENT)
 	var layout_hash:=FileAccess.get_sha256(LAYOUT)
 	var viewport:=SubViewport.new()

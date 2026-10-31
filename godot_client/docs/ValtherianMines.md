@@ -1,15 +1,59 @@
 # Valtherian Mines
 
-The playable map uses the exact approved V3 image the user marked with ore dots. The modular reconstruction was rejected. Preserve the approved room outlines, stone, lighting, lanterns, crystals and floor. New artwork generation is PixelLab-only; this restoration uses existing files without generation calls.
+The playable map retains the approved V3 layout and all 29 user-marked ore
+positions. The rejected modular reconstruction is not used. The user approved
+the fine-linework clarity reference and requested matching ore detail. Built-in
+imagegen is permitted by the 2026-10-29 clarification; preserve generation holds
+for other asset families and do not substitute generic wall/floor kits.
 
-`scenes/ValtherianMinesContent.tscn` contains `ApprovedMap`, exact-pixel foreground wall bands, actual painted-floor collision and individual `Ores` instances. `scenes/ValtherianMines.tscn` supplies the existing player/UI, arrival and generic exit. The backdrop source is `Assets/Maps/ValtherianMines/Approved/approved-map-v3.png`: the original1703x924 PNG, unchanged. Its registration covers6144x3328world pixels. The movement grid remains32px, origin(0,0), with the real24px body. Artwork cells and visible room shapes are independent of that movement grid.
+`scenes/ValtherianMinesContent.tscn` contains the registered backdrop, 92 foreground
+depth bands, painted-floor collision and individual `Ores` instances. The original
+1703×924 `Assets/Maps/ValtherianMines/Approved/approved-map-v3.png` remains unchanged
+(SHA256 `8ddfeb0018110c36f3937592a09b378f61b9122d1d2f761eb4f6931dffedea90`).
+The rendered restoration is `Detail/master-linework.png`, 8192×4438, covering the
+same 6144×3328 world pixels at approximately 0.75 world pixels per source texel.
+The original registration, 32px movement grid, 24px body, arrival, routes,
+collision rectangles and ore roots/approaches are unchanged. `layout.approved_art`
+records original provenance; `layout.detail_art` records the installed restoration.
 
-The preserved annotation and measured registration are under `art_sources/valtherian-mines/` and runtime `ore-markers.json`. The29 nodes are12Blackstone,7Coal,4Mithril,2Adamantite,4Iron. Grey is Coal. Dots specify visible sprite centers, and user-marked positions override default snapping. Reuse `scenes/MapProps/OreNodes/` and the existing `Assets/Tilesets/OreNodes.tres`; keep96px native sources, scale1 and anchor(48,72). Only genuine wall/peer conflicts permit a documented minimal shift.
+The detail master restores overlapping original regions with saved affine
+registration. Foreground RGB comes from that exact master, while the original
+band geometry and sort feet remain unchanged. Lossless imports, nearest filtering,
+no mipmaps and a map-only 64-colour lookup retain crisp detail at 4×. The player
+and UI do not use this material. Native file dimensions alone are not approval:
+inspect actual GPU renders for joins, wall cut-ins, contact and depth sorting.
 
-The existing east-facing mine entrance remains atworld(320,-1), with east approach(368,16) and overworld return(400,16). Arrival/exit approach inside is(6032,2064). The passive entrance is in `ValtheirisWorldContent.tscn`; `EastOutskirtsLayered.tscn` owns the artless interaction. Bracken/Golem/Tavern portals remain intact.
+`art_sources/valtherian-mines/detail-v1/` preserves raw generated regions, original
+crops, exact prompts, the approved style reference and portable registration.
+`python tools/build_valtherian_detail.py --bind` reproduces the saved master and
+foreground without generation. `scripts/dev_tools/build_valtherian_content.gd`
+exports the current scene and honours `detail_art`. Keep the original approved
+image and annotation registration intact. Do not rerun the historical baseline
+restoration as an alternative to the current detail pipeline.
 
-Use the authored approved-image geometry and `scripts/dev_tools/build_valtherian_content.gd` to export the actual scene. `scripts/dev_tools/valtherian_approved_layers.gd` copies exact source pixels for foreground ordering. Run the actual worldbuilding contract plus approved-image physics/travel checks. `scripts/dev_tools/valtherian_approved_review.gd` captures source identity, marked ore placement and actual1x/4x player views. Full reports and captures stay outside Git in the supporting `approved-restoration/` evidence folder.
+The roster remains 12 Blackstone, 7 Coal, 4 Mithril, 2 Adamantite and 4 Iron.
+Grey dots mean Coal. Reuse the canonical ore scenes/palette. Current art is
+128×128 at Visual scale 0.75, preserving the 96px world canvas, world anchor
+(48,72), root scale 1 and existing bases. Native image anchor is (64,96).
+Marker coordinates, chosen roots and exact approaches are unchanged. Only a
+genuine placement conflict permits a documented minimal move; this revision
+moved no nodes. See `OreNodes.md` for all ten full/depleted pairs.
 
-The complete original remains unchanged beneath foreground overlays, and a source-resolution GPU capture must match all original RGB pixels. This verifies preservation, without claiming extra detail beyond the existing source resolution. Automatic tests do not substitute for the user's visual approval. Earlier modular-scene reports are historical and cannot certify this restoration.
+The east-facing overworld entrance remains at (320,-1), east approach (368,16),
+return (400,16), and cave arrival/exit approach (6032,2064). The passive entrance
+is in `ValtheirisWorldContent.tscn`; `EastOutskirtsLayered.tscn` owns the artless
+interaction. The existing wrapper, player, interfaces and other portals remain.
 
-The map adds no mining/combat rules, recipes, progression, monster populations or reward changes. Online travel still requires an updated server region registry; local tests do not deploy servers or exercise live account persistence.
+Validation: run `tools/worldbuilding.py` with the actual `worldbuilding.json`,
+`valtherian_mines_geometry.gd`, `valtherian_mines_travel.tscn` and the canonical
+ore-library smoke. `valtherian_clarity_review.gd -- --output=<external-folder>`
+captures all 29 actual 4× ore approaches, room physics views and ordinary zoom.
+Historical original-source RGB checks cannot certify the deliberately restored
+RGB. Instead retain original provenance, verify current source/import identity
+and registration, and inspect the final renders. Reports/captures remain outside
+Git under the supporting `2026-10-29-valtherian-resolution` task.
+
+The user approved the clarity direction; final whole-map/ore artwork review and
+local installation are recorded independently from automatic checks. This work
+adds no mining/combat rules, recipes, progression, populations or rewards.
+Git synchronization does not deploy the live server.

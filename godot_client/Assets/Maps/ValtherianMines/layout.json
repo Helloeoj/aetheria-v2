@@ -26962,7 +26962,7 @@
       "ore": "blackstone",
       "room_id": "far_west_chamber",
       "scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
-      "texture": "res://Assets/MapTiles/OreNodes/blackstone-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/blackstone-full-south.png",
       "requested_visible_center_world_xy": [
         311.195914,
         596.590634
@@ -26989,14 +26989,14 @@
       "correction_reasons": [],
       "wall_art_checked": true,
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
-      "world_pixels_per_source_pixel": 1,
+      "world_pixels_per_source_pixel": 0.75,
       "approach_candidates": [
         {
           "world_xy": [
@@ -27144,6 +27144,14 @@
       "position": [
         311,
         621
+      ],
+      "world_anchor": [
+        48,
+        72
+      ],
+      "world_canvas_size": [
+        96,
+        96
       ]
     },
     {
@@ -27151,7 +27159,7 @@
       "ore": "blackstone",
       "room_id": "far_west_chamber",
       "scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
-      "texture": "res://Assets/MapTiles/OreNodes/blackstone-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/blackstone-full-south.png",
       "requested_visible_center_world_xy": [
         791.511142,
         596.84459
@@ -27178,14 +27186,14 @@
       "correction_reasons": [],
       "wall_art_checked": true,
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
-      "world_pixels_per_source_pixel": 1,
+      "world_pixels_per_source_pixel": 0.75,
       "approach_candidates": [
         {
           "world_xy": [
@@ -27333,6 +27341,14 @@
       "position": [
         792,
         621
+      ],
+      "world_anchor": [
+        48,
+        72
+      ],
+      "world_canvas_size": [
+        96,
+        96
       ]
     },
     {
@@ -27340,7 +27356,7 @@
       "ore": "mithril",
       "room_id": "far_west_chamber",
       "scene": "res://scenes/MapProps/OreNodes/MithrilOreFull.tscn",
-      "texture": "res://Assets/MapTiles/OreNodes/mithril-ore-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/mithril-ore-full-south.png",
       "requested_visible_center_world_xy": [
         254.666534,
         868.451356
@@ -27367,14 +27383,14 @@
       "correction_reasons": [],
       "wall_art_checked": true,
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
-      "world_pixels_per_source_pixel": 1,
+      "world_pixels_per_source_pixel": 0.75,
       "approach_candidates": [
         {
           "world_xy": [
@@ -27522,6 +27538,14 @@
       "position": [
         255,
         892
+      ],
+      "world_anchor": [
+        48,
+        72
+      ],
+      "world_canvas_size": [
+        96,
+        96
       ]
     },
     {
@@ -27529,7 +27553,7 @@
       "ore": "mithril",
       "room_id": "far_west_chamber",
       "scene": "res://scenes/MapProps/OreNodes/MithrilOreFull.tscn",
-      "texture": "res://Assets/MapTiles/OreNodes/mithril-ore-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/mithril-ore-full-south.png",
       "requested_visible_center_world_xy": [
         381.410113,
         981.608407
@@ -27556,14 +27580,14 @@
       "correction_reasons": [],
       "wall_art_checked": true,
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
-      "world_pixels_per_source_pixel": 1,
+      "world_pixels_per_source_pixel": 0.75,
       "approach_candidates": [
         {
           "world_xy": [
@@ -27679,6 +27703,14 @@
       "position": [
         381,
         1006
+      ],
+      "world_anchor": [
+        48,
+        72
+      ],
+      "world_canvas_size": [
+        96,
+        96
       ]
     },
     {
@@ -27686,7 +27718,7 @@
       "ore": "adamantite",
       "room_id": "far_west_chamber",
       "scene": "res://scenes/MapProps/OreNodes/AdamantiteOreFull.tscn",
-      "texture": "res://Assets/MapTiles/OreNodes/adamantite-ore-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/adamantite-ore-full-south.png",
       "requested_visible_center_world_xy": [
         672.497799,
         994.255885
@@ -27713,14 +27745,14 @@
       "correction_reasons": [],
       "wall_art_checked": true,
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
-      "world_pixels_per_source_pixel": 1,
+      "world_pixels_per_source_pixel": 0.75,
       "approach_candidates": [
         {
           "world_xy": [
@@ -27820,6 +27852,14 @@
       "position": [
         672,
         1018
+      ],
+      "world_anchor": [
+        48,
+        72
+      ],
+      "world_canvas_size": [
+        96,
+        96
       ]
     },
     {
@@ -27827,7 +27867,7 @@
       "ore": "blackstone",
       "room_id": "upper_west_gallery",
       "scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
-      "texture": "res://Assets/MapTiles/OreNodes/blackstone-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/blackstone-full-south.png",
       "requested_visible_center_world_xy": [
         2924.87153,
         278.531675
@@ -27854,14 +27894,14 @@
       "correction_reasons": [],
       "wall_art_checked": true,
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
-      "world_pixels_per_source_pixel": 1,
+      "world_pixels_per_source_pixel": 0.75,
       "approach_candidates": [
         {
           "world_xy": [
@@ -27985,6 +28025,14 @@
       "position": [
         2925,
         303
+      ],
+      "world_anchor": [
+        48,
+        72
+      ],
+      "world_canvas_size": [
+        96,
+        96
       ]
     },
     {
@@ -27992,7 +28040,7 @@
       "ore": "blackstone",
       "room_id": "upper_west_gallery",
       "scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
-      "texture": "res://Assets/MapTiles/OreNodes/blackstone-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/blackstone-full-south.png",
       "requested_visible_center_world_xy": [
         3305.364097,
         278.578171
@@ -28019,14 +28067,14 @@
       "correction_reasons": [],
       "wall_art_checked": true,
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
-      "world_pixels_per_source_pixel": 1,
+      "world_pixels_per_source_pixel": 0.75,
       "approach_candidates": [
         {
           "world_xy": [
@@ -28126,6 +28174,14 @@
       "position": [
         3305,
         303
+      ],
+      "world_anchor": [
+        48,
+        72
+      ],
+      "world_canvas_size": [
+        96,
+        96
       ]
     },
     {
@@ -28133,7 +28189,7 @@
       "ore": "blackstone",
       "room_id": "upper_west_gallery",
       "scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
-      "texture": "res://Assets/MapTiles/OreNodes/blackstone-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/blackstone-full-south.png",
       "requested_visible_center_world_xy": [
         2887.026375,
         367.394794
@@ -28160,14 +28216,14 @@
       "correction_reasons": [],
       "wall_art_checked": true,
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
-      "world_pixels_per_source_pixel": 1,
+      "world_pixels_per_source_pixel": 0.75,
       "approach_candidates": [
         {
           "world_xy": [
@@ -28299,6 +28355,14 @@
       "position": [
         2887,
         391
+      ],
+      "world_anchor": [
+        48,
+        72
+      ],
+      "world_canvas_size": [
+        96,
+        96
       ]
     },
     {
@@ -28306,7 +28370,7 @@
       "ore": "coal",
       "room_id": "upper_east_chamber",
       "scene": "res://scenes/MapProps/OreNodes/CoalFull.tscn",
-      "texture": "res://Assets/MapTiles/OreNodes/coal-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/coal-full-south.png",
       "requested_visible_center_world_xy": [
         4152.602312,
         280.723937
@@ -28333,14 +28397,14 @@
       "correction_reasons": [],
       "wall_art_checked": true,
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
-      "world_pixels_per_source_pixel": 1,
+      "world_pixels_per_source_pixel": 0.75,
       "approach_candidates": [
         {
           "world_xy": [
@@ -28488,6 +28552,14 @@
       "position": [
         4153,
         305
+      ],
+      "world_anchor": [
+        48,
+        72
+      ],
+      "world_canvas_size": [
+        96,
+        96
       ]
     },
     {
@@ -28495,7 +28567,7 @@
       "ore": "coal",
       "room_id": "upper_east_chamber",
       "scene": "res://scenes/MapProps/OreNodes/CoalFull.tscn",
-      "texture": "res://Assets/MapTiles/OreNodes/coal-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/coal-full-south.png",
       "requested_visible_center_world_xy": [
         4301.687921,
         312.398283
@@ -28522,14 +28594,14 @@
       "correction_reasons": [],
       "wall_art_checked": true,
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
-      "world_pixels_per_source_pixel": 1,
+      "world_pixels_per_source_pixel": 0.75,
       "approach_candidates": [
         {
           "world_xy": [
@@ -28621,6 +28693,14 @@
       "position": [
         4302,
         336
+      ],
+      "world_anchor": [
+        48,
+        72
+      ],
+      "world_canvas_size": [
+        96,
+        96
       ]
     },
     {
@@ -28628,7 +28708,7 @@
       "ore": "coal",
       "room_id": "upper_east_chamber",
       "scene": "res://scenes/MapProps/OreNodes/CoalFull.tscn",
-      "texture": "res://Assets/MapTiles/OreNodes/coal-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/coal-full-south.png",
       "requested_visible_center_world_xy": [
         3767.353194,
         320.314837
@@ -28655,14 +28735,14 @@
       "correction_reasons": [],
       "wall_art_checked": true,
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
-      "world_pixels_per_source_pixel": 1,
+      "world_pixels_per_source_pixel": 0.75,
       "approach_candidates": [
         {
           "world_xy": [
@@ -28802,6 +28882,14 @@
       "position": [
         3767,
         344
+      ],
+      "world_anchor": [
+        48,
+        72
+      ],
+      "world_canvas_size": [
+        96,
+        96
       ]
     },
     {
@@ -28809,7 +28897,7 @@
       "ore": "coal",
       "room_id": "upper_east_chamber",
       "scene": "res://scenes/MapProps/OreNodes/CoalFull.tscn",
-      "texture": "res://Assets/MapTiles/OreNodes/coal-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/coal-full-south.png",
       "requested_visible_center_world_xy": [
         3743.762469,
         594.344891
@@ -28836,14 +28924,14 @@
       "correction_reasons": [],
       "wall_art_checked": true,
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
-      "world_pixels_per_source_pixel": 1,
+      "world_pixels_per_source_pixel": 0.75,
       "approach_candidates": [
         {
           "world_xy": [
@@ -28951,6 +29039,14 @@
       "position": [
         3744,
         618
+      ],
+      "world_anchor": [
+        48,
+        72
+      ],
+      "world_canvas_size": [
+        96,
+        96
       ]
     },
     {
@@ -28958,7 +29054,7 @@
       "ore": "coal",
       "room_id": "upper_east_chamber",
       "scene": "res://scenes/MapProps/OreNodes/CoalFull.tscn",
-      "texture": "res://Assets/MapTiles/OreNodes/coal-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/coal-full-south.png",
       "requested_visible_center_world_xy": [
         4201.655303,
         615.844285
@@ -28985,14 +29081,14 @@
       "correction_reasons": [],
       "wall_art_checked": true,
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
-      "world_pixels_per_source_pixel": 1,
+      "world_pixels_per_source_pixel": 0.75,
       "approach_candidates": [
         {
           "world_xy": [
@@ -29084,6 +29180,14 @@
       "position": [
         4202,
         640
+      ],
+      "world_anchor": [
+        48,
+        72
+      ],
+      "world_canvas_size": [
+        96,
+        96
       ]
     },
     {
@@ -29091,7 +29195,7 @@
       "ore": "coal",
       "room_id": "east_upper_chamber",
       "scene": "res://scenes/MapProps/OreNodes/CoalFull.tscn",
-      "texture": "res://Assets/MapTiles/OreNodes/coal-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/coal-full-south.png",
       "requested_visible_center_world_xy": [
         5609.416765,
         412.493224
@@ -29118,14 +29222,14 @@
       "correction_reasons": [],
       "wall_art_checked": true,
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
-      "world_pixels_per_source_pixel": 1,
+      "world_pixels_per_source_pixel": 0.75,
       "approach_candidates": [
         {
           "world_xy": [
@@ -29241,6 +29345,14 @@
       "position": [
         5609,
         436
+      ],
+      "world_anchor": [
+        48,
+        72
+      ],
+      "world_canvas_size": [
+        96,
+        96
       ]
     },
     {
@@ -29248,7 +29360,7 @@
       "ore": "iron",
       "room_id": "east_upper_chamber",
       "scene": "res://scenes/MapProps/OreNodes/IronOreFull.tscn",
-      "texture": "res://Assets/MapTiles/OreNodes/iron-ore-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/iron-ore-full-south.png",
       "requested_visible_center_world_xy": [
         5859.262809,
         413.414092
@@ -29275,14 +29387,14 @@
       "correction_reasons": [],
       "wall_art_checked": true,
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
-      "world_pixels_per_source_pixel": 1,
+      "world_pixels_per_source_pixel": 0.75,
       "approach_candidates": [
         {
           "world_xy": [
@@ -29390,6 +29502,14 @@
       "position": [
         5859,
         437
+      ],
+      "world_anchor": [
+        48,
+        72
+      ],
+      "world_canvas_size": [
+        96,
+        96
       ]
     },
     {
@@ -29397,7 +29517,7 @@
       "ore": "iron",
       "room_id": "east_upper_chamber",
       "scene": "res://scenes/MapProps/OreNodes/IronOreFull.tscn",
-      "texture": "res://Assets/MapTiles/OreNodes/iron-ore-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/iron-ore-full-south.png",
       "requested_visible_center_world_xy": [
         5910.173778,
         489.998559
@@ -29424,14 +29544,14 @@
       "correction_reasons": [],
       "wall_art_checked": true,
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
-      "world_pixels_per_source_pixel": 1,
+      "world_pixels_per_source_pixel": 0.75,
       "approach_candidates": [
         {
           "world_xy": [
@@ -29563,6 +29683,14 @@
       "position": [
         5910,
         514
+      ],
+      "world_anchor": [
+        48,
+        72
+      ],
+      "world_canvas_size": [
+        96,
+        96
       ]
     },
     {
@@ -29570,7 +29698,7 @@
       "ore": "coal",
       "room_id": "east_upper_chamber",
       "scene": "res://scenes/MapProps/OreNodes/CoalFull.tscn",
-      "texture": "res://Assets/MapTiles/OreNodes/coal-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/coal-full-south.png",
       "requested_visible_center_world_xy": [
         5507.267283,
         493.075364
@@ -29597,14 +29725,14 @@
       "correction_reasons": [],
       "wall_art_checked": true,
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
-      "world_pixels_per_source_pixel": 1,
+      "world_pixels_per_source_pixel": 0.75,
       "approach_candidates": [
         {
           "world_xy": [
@@ -29752,6 +29880,14 @@
       "position": [
         5507,
         517
+      ],
+      "world_anchor": [
+        48,
+        72
+      ],
+      "world_canvas_size": [
+        96,
+        96
       ]
     },
     {
@@ -29759,7 +29895,7 @@
       "ore": "iron",
       "room_id": "east_upper_chamber",
       "scene": "res://scenes/MapProps/OreNodes/IronOreFull.tscn",
-      "texture": "res://Assets/MapTiles/OreNodes/iron-ore-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/iron-ore-full-south.png",
       "requested_visible_center_world_xy": [
         5897.457713,
         628.571223
@@ -29786,14 +29922,14 @@
       "correction_reasons": [],
       "wall_art_checked": true,
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
-      "world_pixels_per_source_pixel": 1,
+      "world_pixels_per_source_pixel": 0.75,
       "approach_candidates": [
         {
           "world_xy": [
@@ -29893,6 +30029,14 @@
       "position": [
         5897,
         653
+      ],
+      "world_anchor": [
+        48,
+        72
+      ],
+      "world_canvas_size": [
+        96,
+        96
       ]
     },
     {
@@ -29900,7 +30044,7 @@
       "ore": "iron",
       "room_id": "east_upper_chamber",
       "scene": "res://scenes/MapProps/OreNodes/IronOreFull.tscn",
-      "texture": "res://Assets/MapTiles/OreNodes/iron-ore-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/iron-ore-full-south.png",
       "requested_visible_center_world_xy": [
         5530.368725,
         641.166125
@@ -29927,14 +30071,14 @@
       "correction_reasons": [],
       "wall_art_checked": true,
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
-      "world_pixels_per_source_pixel": 1,
+      "world_pixels_per_source_pixel": 0.75,
       "approach_candidates": [
         {
           "world_xy": [
@@ -30050,6 +30194,14 @@
       "position": [
         5530,
         665
+      ],
+      "world_anchor": [
+        48,
+        72
+      ],
+      "world_canvas_size": [
+        96,
+        96
       ]
     },
     {
@@ -30057,7 +30209,7 @@
       "ore": "mithril",
       "room_id": "lower_west_gallery",
       "scene": "res://scenes/MapProps/OreNodes/MithrilOreFull.tscn",
-      "texture": "res://Assets/MapTiles/OreNodes/mithril-ore-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/mithril-ore-full-south.png",
       "requested_visible_center_world_xy": [
         912.669047,
         2674.838752
@@ -30084,14 +30236,14 @@
       "correction_reasons": [],
       "wall_art_checked": true,
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
-      "world_pixels_per_source_pixel": 1,
+      "world_pixels_per_source_pixel": 0.75,
       "approach_candidates": [
         {
           "world_xy": [
@@ -30207,6 +30359,14 @@
       "position": [
         913,
         2699
+      ],
+      "world_anchor": [
+        48,
+        72
+      ],
+      "world_canvas_size": [
+        96,
+        96
       ]
     },
     {
@@ -30214,7 +30374,7 @@
       "ore": "adamantite",
       "room_id": "lower_west_gallery",
       "scene": "res://scenes/MapProps/OreNodes/AdamantiteOreFull.tscn",
-      "texture": "res://Assets/MapTiles/OreNodes/adamantite-ore-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/adamantite-ore-full-south.png",
       "requested_visible_center_world_xy": [
         1242.0059,
         2725.266489
@@ -30241,14 +30401,14 @@
       "correction_reasons": [],
       "wall_art_checked": true,
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
-      "world_pixels_per_source_pixel": 1,
+      "world_pixels_per_source_pixel": 0.75,
       "approach_candidates": [
         {
           "world_xy": [
@@ -30396,6 +30556,14 @@
       "position": [
         1242,
         2749
+      ],
+      "world_anchor": [
+        48,
+        72
+      ],
+      "world_canvas_size": [
+        96,
+        96
       ]
     },
     {
@@ -30403,7 +30571,7 @@
       "ore": "mithril",
       "room_id": "lower_west_gallery",
       "scene": "res://scenes/MapProps/OreNodes/MithrilOreFull.tscn",
-      "texture": "res://Assets/MapTiles/OreNodes/mithril-ore-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/mithril-ore-full-south.png",
       "requested_visible_center_world_xy": [
         798.853869,
         2725.483267
@@ -30430,14 +30598,14 @@
       "correction_reasons": [],
       "wall_art_checked": true,
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
-      "world_pixels_per_source_pixel": 1,
+      "world_pixels_per_source_pixel": 0.75,
       "approach_candidates": [
         {
           "world_xy": [
@@ -30545,6 +30713,14 @@
       "position": [
         799,
         2749
+      ],
+      "world_anchor": [
+        48,
+        72
+      ],
+      "world_canvas_size": [
+        96,
+        96
       ]
     },
     {
@@ -30552,7 +30728,7 @@
       "ore": "blackstone",
       "room_id": "lower_west_gallery",
       "scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
-      "texture": "res://Assets/MapTiles/OreNodes/blackstone-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/blackstone-full-south.png",
       "requested_visible_center_world_xy": [
         1228.600586,
         2943.667835
@@ -30579,14 +30755,14 @@
       "correction_reasons": [],
       "wall_art_checked": true,
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
-      "world_pixels_per_source_pixel": 1,
+      "world_pixels_per_source_pixel": 0.75,
       "approach_candidates": [
         {
           "world_xy": [
@@ -30702,6 +30878,14 @@
       "position": [
         1229,
         2968
+      ],
+      "world_anchor": [
+        48,
+        72
+      ],
+      "world_canvas_size": [
+        96,
+        96
       ]
     },
     {
@@ -30709,7 +30893,7 @@
       "ore": "blackstone",
       "room_id": "lower_west_gallery",
       "scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
-      "texture": "res://Assets/MapTiles/OreNodes/blackstone-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/blackstone-full-south.png",
       "requested_visible_center_world_xy": [
         774.059349,
         2960.919571
@@ -30736,14 +30920,14 @@
       "correction_reasons": [],
       "wall_art_checked": true,
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
-      "world_pixels_per_source_pixel": 1,
+      "world_pixels_per_source_pixel": 0.75,
       "approach_candidates": [
         {
           "world_xy": [
@@ -30811,6 +30995,14 @@
       "position": [
         774,
         2985
+      ],
+      "world_anchor": [
+        48,
+        72
+      ],
+      "world_canvas_size": [
+        96,
+        96
       ]
     },
     {
@@ -30818,7 +31010,7 @@
       "ore": "blackstone",
       "room_id": "lower_east_chamber",
       "scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
-      "texture": "res://Assets/MapTiles/OreNodes/blackstone-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/blackstone-full-south.png",
       "requested_visible_center_world_xy": [
         4009.836937,
         2673.279394
@@ -30845,14 +31037,14 @@
       "correction_reasons": [],
       "wall_art_checked": true,
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
-      "world_pixels_per_source_pixel": 1,
+      "world_pixels_per_source_pixel": 0.75,
       "approach_candidates": [
         {
           "world_xy": [
@@ -30952,6 +31144,14 @@
       "position": [
         4010,
         2697
+      ],
+      "world_anchor": [
+        48,
+        72
+      ],
+      "world_canvas_size": [
+        96,
+        96
       ]
     },
     {
@@ -30959,7 +31159,7 @@
       "ore": "blackstone",
       "room_id": "lower_east_chamber",
       "scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
-      "texture": "res://Assets/MapTiles/OreNodes/blackstone-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/blackstone-full-south.png",
       "requested_visible_center_world_xy": [
         3892.240283,
         2736.689825
@@ -30986,14 +31186,14 @@
       "correction_reasons": [],
       "wall_art_checked": true,
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
-      "world_pixels_per_source_pixel": 1,
+      "world_pixels_per_source_pixel": 0.75,
       "approach_candidates": [
         {
           "world_xy": [
@@ -31117,6 +31317,14 @@
       "position": [
         3892,
         2761
+      ],
+      "world_anchor": [
+        48,
+        72
+      ],
+      "world_canvas_size": [
+        96,
+        96
       ]
     },
     {
@@ -31124,7 +31332,7 @@
       "ore": "blackstone",
       "room_id": "lower_east_chamber",
       "scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
-      "texture": "res://Assets/MapTiles/OreNodes/blackstone-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/blackstone-full-south.png",
       "requested_visible_center_world_xy": [
         3946.771472,
         3007.100883
@@ -31151,14 +31359,14 @@
       "correction_reasons": [],
       "wall_art_checked": true,
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
-      "world_pixels_per_source_pixel": 1,
+      "world_pixels_per_source_pixel": 0.75,
       "approach_candidates": [
         {
           "world_xy": [
@@ -31282,6 +31490,14 @@
       "position": [
         3947,
         3031
+      ],
+      "world_anchor": [
+        48,
+        72
+      ],
+      "world_canvas_size": [
+        96,
+        96
       ]
     },
     {
@@ -31289,7 +31505,7 @@
       "ore": "blackstone",
       "room_id": "lower_east_chamber",
       "scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
-      "texture": "res://Assets/MapTiles/OreNodes/blackstone-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/blackstone-full-south.png",
       "requested_visible_center_world_xy": [
         4424.940073,
         3015.962911
@@ -31316,14 +31532,14 @@
       "correction_reasons": [],
       "wall_art_checked": true,
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
-      "world_pixels_per_source_pixel": 1,
+      "world_pixels_per_source_pixel": 0.75,
       "approach_candidates": [
         {
           "world_xy": [
@@ -31415,6 +31631,14 @@
       "position": [
         4425,
         3040
+      ],
+      "world_anchor": [
+        48,
+        72
+      ],
+      "world_canvas_size": [
+        96,
+        96
       ]
     },
     {
@@ -31422,7 +31646,7 @@
       "ore": "blackstone",
       "room_id": "lower_east_chamber",
       "scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
-      "texture": "res://Assets/MapTiles/OreNodes/blackstone-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/blackstone-full-south.png",
       "requested_visible_center_world_xy": [
         4262.638397,
         3025.046133
@@ -31449,14 +31673,14 @@
       "correction_reasons": [],
       "wall_art_checked": true,
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
-      "world_pixels_per_source_pixel": 1,
+      "world_pixels_per_source_pixel": 0.75,
       "approach_candidates": [
         {
           "world_xy": [
@@ -31548,6 +31772,14 @@
       "position": [
         4263,
         3049
+      ],
+      "world_anchor": [
+        48,
+        72
+      ],
+      "world_canvas_size": [
+        96,
+        96
       ]
     }
   ],
@@ -33223,5 +33455,31 @@
         ]
       ]
     }
-  ]
+  ],
+  "detail_art": {
+    "texture": "res://Assets/Maps/ValtherianMines/Detail/master-linework.png",
+    "native_size": [
+      8192,
+      4438
+    ],
+    "world_size": [
+      6144,
+      3328
+    ],
+    "world_pixels_per_source_pixel": [
+      0.75,
+      0.7498873366381252
+    ],
+    "anchor": [
+      0,
+      0
+    ],
+    "source_sha256": "08b7e53eac003b2803732f2831922761352b693c909dd9c6c6cf3bb249d7ec8a",
+    "original_approved_texture": "res://Assets/Maps/ValtherianMines/Approved/approved-map-v3.png",
+    "original_approved_sha256": "8ddfeb0018110c36f3937592a09b378f61b9122d1d2f761eb4f6931dffedea90",
+    "material": "res://Assets/Maps/ValtherianMines/Detail/CrispMine.tres",
+    "foreground": "res://Assets/Maps/ValtherianMines/Detail/foreground-bands.json",
+    "status": "Installed clarity restoration; user-approved linework style; complete visual review recorded separately",
+    "policy": "Restore fine linework at character density. Preserve original world registration, floor trace, collisions, ore roots, routes and travel. Original approved image remains immutable provenance."
+  }
 }

@@ -124,6 +124,15 @@ cut-ins, ground contact and depth sorting. Automatic checks do not grant
 visual approval. Missing/failed evidence keeps the work pending; never
 auto-reposition objects or change existing gameplay to hide a failing check.
 
-## PixelLab-only map generation
+## Map generation clarification — 2026-10-29
 
-The user rejected the2026-10-28 Valtherian modular rebuild. Use PixelLab for future new map/environment artwork. Do not use built-in imagegen, procedural replacement art or a generic wall/floor kit as a fallback. If PixelLab is unavailable or out of credits, stop generation rather than spending elsewhere. Existing user-approved images may be installed and layered losslessly when explicitly requested; preserve their visible design. A32px movement/placement grid does not authorize changing the approved artwork into rectangular rooms. Technical tests never substitute for visual approval.
+The user clarified that the PixelLab-only restriction was a misunderstanding.
+Built-in imagegen is permitted for map/environment artwork using the approved
+style and Golem Kingdom whole-image workflow. The rejected Valtherian modular
+rebuild failed because of crude blockiness, gaps, seams and jank. Preserve the
+visible design of approved artwork; do not substitute procedural art or a generic
+wall/floor kit or redesign geometry to fit a 32px grid. Keep environment art free
+of actors/creatures and retain other generation holds. Candidate artwork, user
+visual approval and local installation are separate statuses. Installation still
+requires the actual placement contract, worldbuilding checks and real Godot 4×
+review with the player; technical checks never substitute for visual approval.

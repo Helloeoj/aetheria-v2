@@ -3,6 +3,7 @@ extends SceneTree
 const LAYOUT:="res://Assets/Maps/ValtherianMines/layout.json"
 const OUTPUT:="res://scenes/ValtherianMinesContent.tscn"
 const FOREGROUND=preload("res://scripts/dev_tools/valtherian_approved_layers.gd")
+const DETAIL_FOREGROUND=preload("res://scripts/dev_tools/valtherian_detail_layers.gd")
 func _initialize() -> void:
 	_build.call_deferred()
 func _build() -> void:
@@ -21,7 +22,8 @@ func _build() -> void:
 		content.free()
 		quit(1)
 		return
-	var art:Dictionary=data["approved_art"]
+	var detail_art:Dictionary=data.get("detail_art",{})
+	var art:Dictionary=data["approved_art"] if detail_art.is_empty() else detail_art
 	var backdrop:=Sprite2D.new()
 	backdrop.name="ApprovedMap"
 	backdrop.centered=false
@@ -29,6 +31,8 @@ func _build() -> void:
 	backdrop.scale=Vector2(float(art["world_size"][0])/float(art["native_size"][0]),float(art["world_size"][1])/float(art["native_size"][1]))
 	backdrop.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST
 	backdrop.z_index=-100
+	if not detail_art.is_empty():
+		backdrop.material=load("res://Assets/Maps/ValtherianMines/Detail/CrispMine.tres")
 	content.add_child(backdrop)
 	backdrop.owner=content
 	var collision:=StaticBody2D.new()
@@ -60,7 +64,7 @@ func _build() -> void:
 			instance.position=Vector2(record["position"][0],record["position"][1])
 			folder.add_child(instance)
 			instance.owner=content
-	var foreground:Node2D=FOREGROUND.build(data)
+	var foreground:Node2D=FOREGROUND.build(data) if detail_art.is_empty() else DETAIL_FOREGROUND.build(data)
 	content.add_child(foreground)
 	_own(foreground,content)
 	var packed:=PackedScene.new()

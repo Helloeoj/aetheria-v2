@@ -163,26 +163,44 @@ def _asset(marker: dict, repo: Path) -> dict:
     if scene != expected:
         raise ValueError(f"{marker['id']}: expected existing canonical {ore} scene")
     text = (repo / "godot_client" / scene.removeprefix("res://")).read_text(encoding="utf-8")
+    visual_scale = (1, 1)
     for section in re.split(r"(?=^\[node )", text, flags=re.MULTILINE)[1:]:
         header, _, attributes = section.partition("\n")
         position = re.search(r"^position = Vector2\(([^)]+)\)", attributes, flags=re.MULTILINE)
         scale = re.search(r"^scale = Vector2\(([^)]+)\)", attributes, flags=re.MULTILINE)
-        if scale and tuple(float(value.strip()) for value in scale[1].split(",")) != (1, 1):
-            raise ValueError(f"{scene}: unexpected transformed canonical node; use the actual-scene validator")
+        node_scale = tuple(float(value.strip()) for value in scale[1].split(",")) if scale else (1, 1)
         coordinates = tuple(float(value.strip()) for value in position[1].split(",")) if position else (0, 0)
         if 'type="Sprite2D"' in header:
+            visual_scale = node_scale
+            if visual_scale not in ((1, 1), (0.75, 0.75)):
+                raise ValueError(f"{scene}: unsupported canonical visual density")
             if coordinates != (-48, -72) or "centered = false" not in attributes:
                 raise ValueError(f"{scene}: canonical source anchor changed")
-        elif coordinates != (0, 0):
+        elif coordinates != (0, 0) or node_scale != (1, 1):
             raise ValueError(f"{scene}: unexpected canonical base transform")
     textures = re.findall(r'\[ext_resource type="Texture2D" path="([^"]+)"', text)
     if len(textures) != 1:
         raise ValueError(f"{scene}: expected one standalone canonical texture")
     texture = textures[0]
     with Image.open(repo / "godot_client" / texture.removeprefix("res://")) as image:
-        if image.size != (96, 96):
-            raise ValueError(f"{texture}: canonical native canvas changed")
-        alpha = np.array(image.convert("RGBA"))[:, :, 3] > 0
+        native_size = image.size
+        if (native_size, visual_scale) not in (((96, 96), (1, 1)), ((128, 128), (0.75, 0.75))):
+            raise ValueError(f"{texture}: canonical native canvas/density must retain the96-world-pixel canvas")
+        native_alpha = np.array(image.convert("RGBA"))[:, :, 3] > 0
+    # Rasterize coverage conservatively for the existing world-pixel collision
+    # proposal algorithm. This is analysis only; runtime PNGs remain native128.
+    # A source pixel crossing a fractional world boundary covers both pixels.
+    if visual_scale == (1, 1):
+        alpha = native_alpha
+    else:
+        alpha = np.zeros((96, 96), dtype=bool)
+        native_ys, native_xs = np.nonzero(native_alpha)
+        left = np.floor(native_xs * 0.75).astype(int)
+        top = np.floor(native_ys * 0.75).astype(int)
+        right = np.ceil((native_xs + 1) * 0.75).astype(int) - 1
+        bottom = np.ceil((native_ys + 1) * 0.75).astype(int) - 1
+        for xs, ys in ((left, top), (right, top), (left, bottom), (right, bottom)):
+            alpha[ys, xs] = True
     ys, xs = np.nonzero(alpha)
     if not len(xs):
         raise ValueError(f"{texture}: empty canonical silhouette")
@@ -195,7 +213,8 @@ def _asset(marker: dict, repo: Path) -> dict:
     if len(polygons) != 2:
         raise ValueError(f"{scene}: expected both canonical rock bases")
     return {"scene": scene, "texture": texture, "alpha": alpha, "xs": xs,
-            "ys": ys, "dilated": _dilate(alpha, 4), "polygons": polygons}
+            "ys": ys, "dilated": _dilate(alpha, 4), "polygons": polygons,
+            "native_size": list(native_size), "visual_scale": list(visual_scale)}
 
 
 def _peer_overlap(a: dict, root_a: tuple[int, int], b: dict, root_b: tuple[int, int]) -> bool:

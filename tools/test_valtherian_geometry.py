@@ -84,9 +84,8 @@ class GeometryTests(unittest.TestCase):
 
     def test_wall_conflict_uses_the_smallest_integer_displacement(self):
         cells = {(x,y) for x in range(10) for y in range(10)}
-        with Image.open(ROOT / "godot_client/Assets/MapTiles/OreNodes/iron-ore-full-south.png") as source:
-            alpha = source.getchannel("A")
-            opaque = [(x-48,y-72) for y in range(96) for x in range(96) if alpha.getpixel((x,y))]
+        asset = geometry._asset(marker("iron-01", 160, 160), ROOT)
+        opaque = [(int(x)-48, int(y)-72) for x,y in zip(asset["xs"], asset["ys"])]
         wall = min(opaque, key=lambda point: (point[1], point[0]))
         wall = (wall[0]+160, wall[1]+184)
         with tempfile.TemporaryDirectory() as directory:
@@ -126,6 +125,33 @@ class GeometryTests(unittest.TestCase):
         wrong["canonical_native_scene"] = "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn"
         with self.assertRaises(ValueError):
             geometry.place_ores({"markers": [marker("iron-01",160,160), wrong]}, ROOT, cells)
+
+    def test_native128_visual_density_conservatively_covers_fractional_world_pixels(self):
+        # Native pixel (1,1) occupies [.75,1.5) on each world axis and must
+        # conservatively cover all four integer pixels rather than shrink away.
+        with tempfile.TemporaryDirectory() as directory:
+            repo = Path(directory)
+            scene_dir = repo / "godot_client/scenes/MapProps/OreNodes"
+            scene_dir.mkdir(parents=True)
+            scene = scene_dir / "IronOreFull.tscn"
+            text = (ROOT / "tools/ore-integration/original-scenes.json").read_text()
+            original = json.loads(text)["res://scenes/MapProps/OreNodes/IronOreFull.tscn"]
+            scene.write_text(original.replace("position = Vector2(-48, -72)",
+                                              "position = Vector2(-48, -72)\nscale = Vector2(0.75, 0.75)"))
+            image_path = repo / "godot_client/Assets/MapTiles/OreNodes/iron-ore-full-south.png"
+            image_path.parent.mkdir(parents=True)
+            image = Image.new("RGBA", (128,128))
+            image.putpixel((1,1), (70,80,90,255))
+            image.save(image_path)
+            asset = geometry._asset(marker("iron-01", 160, 160), repo)
+            self.assertEqual(asset["alpha"].shape, (96,96))
+            self.assertEqual(set(zip(asset["xs"],asset["ys"])), {(0,0),(1,0),(0,1),(1,1)})
+            self.assertEqual(asset["native_size"], [128,128])
+            self.assertEqual(asset["visual_scale"], [0.75,0.75])
+            # Root scale must remain1: density applies only to the Sprite2D.
+            scene.write_text(scene.read_text().replace('y_sort_enabled = true', 'scale = Vector2(0.75, 0.75)\ny_sort_enabled = true'))
+            with self.assertRaises(ValueError):
+                geometry._asset(marker("iron-01", 160, 160), repo)
 
 
 if __name__ == "__main__":

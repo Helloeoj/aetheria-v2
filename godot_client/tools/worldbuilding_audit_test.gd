@@ -72,8 +72,8 @@ func _run() -> void:
 	check(good.rendering_verified == false, "geometry success never claims visual approval")
 	check(good.get("prop_textures", []).size() == 2, "actual canonical sprite textures are reported for source contract binding")
 	if good.get("prop_textures", []).size() == 2:
-		check(good.prop_textures[0].node == "CopperA/Footprint/Visual" and good.prop_textures[0].texture == "res://Assets/MapTiles/OreNodes/copper-ore-full-south.png" and good.prop_textures[0].world_scale == [1.0, 1.0] and good.prop_textures[0].anchor == [48.0, 72.0], "texture provenance, source anchor and native world scale come from installed sprites")
-		check(good.prop_textures[0].get("native_size", []) == [96, 96], "actual imported texture dimensions bind the current source-size contract")
+		check(good.prop_textures[0].node == "CopperA/Footprint/Visual" and good.prop_textures[0].texture == "res://Assets/MapTiles/OreNodes/Detail128/copper-ore-full-south.png" and good.prop_textures[0].world_scale == [0.75, 0.75] and good.prop_textures[0].anchor == [64.0, 96.0], "texture provenance, source anchor and native world scale come from installed sprites")
+		check(good.prop_textures[0].get("native_size", []) == [128, 128], "actual imported texture dimensions bind the current source-size contract")
 	_test_image_comparison()
 	_test_shared_texture_cache()
 	await _test_exact_reserved_lanes()
@@ -194,7 +194,9 @@ func _run() -> void:
 	transformed.routes = [{"id":"lane", "points":[[160, 512], [992, 512]], "width":48}]
 	check(run_audit(transformed).passed, "scaled/translated parent uses actual world transforms")
 	var transformed_report := run_audit(transformed)
-	check(transformed_report.prop_textures[0].world_scale == [2.0, 2.0] and transformed_report.prop_textures[0].anchor == [48.0, 72.0], "native source anchor survives parent scaling while physical pixel density is reported")
+	var transformed_visual: Dictionary = transformed_report.prop_textures[0]
+	var transformed_anchor := Vector2(transformed_visual.anchor[0], transformed_visual.anchor[1])
+	check(transformed_visual.world_scale == [1.5, 1.5] and transformed_anchor.is_equal_approx(Vector2(64,96)), "native source anchor survives parent scaling while physical pixel density is reported: " + JSON.stringify(transformed_visual))
 	obstacle = wall("ScaledOverlap", Vector2(118, 81), Vector2(12, 12))
 	await settle()
 	rejects(transformed, "footprint_overlap", "scaled parent overlap remains detectable")

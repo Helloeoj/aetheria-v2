@@ -110,12 +110,22 @@ func _run() -> void:
 		floor_cells[Vector2i(pair[0], pair[1])] = true
 	check(floor_cells.size() > 0, "authored painted-map floor cells supplied")
 	var approved := content.get_node_or_null("ApprovedMap") as Sprite2D
-	check(approved != null, "exact approved map is the actual rendered backdrop")
+	check(approved != null, "approved registered map is the actual rendered backdrop")
 	check(content.get_node_or_null("NativeFloor")==null and content.get_node_or_null("Walls")==null and content.get_node_or_null("Decor")==null, "rejected modular replacement is absent")
 	if approved != null:
-		check(approved.texture.get_size()==Vector2(1703,924) and not approved.centered and approved.position==Vector2.ZERO, "unchanged approved native canvas and origin")
-		check(FileAccess.get_sha256(approved.texture.resource_path)=="8ddfeb0018110c36f3937592a09b378f61b9122d1d2f761eb4f6931dffedea90", "approved source pixels are byte-identical")
-		check(approved.scale.is_equal_approx(Vector2(6144.0/1703.0,3328.0/924.0)), "approved source retains registered dot-to-world mapping")
+		# The approved low-density image remains immutable provenance. Detail
+		# restoration may replace rendered texels, never its world registration.
+		check(FileAccess.get_sha256(str(layout.approved_art.texture))=="8ddfeb0018110c36f3937592a09b378f61b9122d1d2f761eb4f6931dffedea90", "original approved source remains byte-identical")
+		var art: Dictionary = layout.get("detail_art", layout.approved_art)
+		var native := vector(art.native_size)
+		var density := SIZE / native
+		check(approved.texture.resource_path == str(art.texture) and approved.texture.get_size() == native, "rendered texture matches declared native artwork")
+		check(not approved.centered and approved.position == Vector2.ZERO and approved.scale.is_equal_approx(density), "rendered artwork retains world origin and extent")
+		check(FileAccess.get_sha256(approved.texture.resource_path) == str(art.source_sha256), "rendered artwork matches recorded source hash")
+		if layout.has("detail_art"):
+			check(native == Vector2(8192,4438) and absf(density.x - 0.75) < 0.0002 and absf(density.y - 0.75) < 0.0002, "restored backdrop uses character detail density")
+			check(approved.texture_filter == CanvasItem.TEXTURE_FILTER_NEAREST, "restored backdrop uses nearest filtering")
+			check(approved.material is ShaderMaterial and approved.material.resource_path == str(art.material), "restored palette material is confined to map artwork")
 	var boundary := content.get_node("CaveBoundary") as StaticBody2D
 	check(boundary.collision_layer == 1, "real cave boundary blocks world layer1")
 	check(boundary.get_child_count() == layout.void_rects.size(), "all actual continuous void rectangles exist")

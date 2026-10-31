@@ -1,0 +1,485 @@
+[
+  {
+    "id": "r0c0",
+    "original_art_pixels": 35560,
+    "before_content_xor": 5927,
+    "after_content_xor": 2319,
+    "affine_source_to_generated": [
+      [
+        0.9957118630409241,
+        0.008676895871758461,
+        -1.243478775024414
+      ],
+      [
+        0.0015020744176581502,
+        0.9826184511184692,
+        -7.196153163909912
+      ]
+    ],
+    "semantic_registration_correlation": 0.9986196424906174,
+    "method": "Single affine registration of semantic outer-art/ochre-floor distance fields; nearest artwork coordinate remap. No dense warp.",
+    "registered_rgb_sha256": "f011da3b3d115cc54a929fd183a9abf90e36001e7cbc8f8ac8f5bfd26c0944e3"
+  },
+  {
+    "id": "r0c1",
+    "original_art_pixels": 11070,
+    "before_content_xor": 4192,
+    "after_content_xor": 1747,
+    "affine_source_to_generated": [
+      [
+        0.9694437384605408,
+        -0.009699257090687752,
+        0.011330485343933105
+      ],
+      [
+        -0.021585028618574142,
+        0.8932275772094727,
+        -5.011308193206787
+      ]
+    ],
+    "semantic_registration_correlation": 0.9969229622868094,
+    "method": "Single affine registration of semantic outer-art/ochre-floor distance fields; nearest artwork coordinate remap. No dense warp.",
+    "registered_rgb_sha256": "1260b3fa80c06a37904397d42edf9de9b27a20046d48d88e72ee5f414bef9d9e"
+  },
+  {
+    "id": "r0c3",
+    "original_art_pixels": 36926,
+    "before_content_xor": 7689,
+    "after_content_xor": 2582,
+    "affine_source_to_generated": [
+      [
+        0.9802233576774597,
+        0.00318691018037498,
+        -0.8307546377182007
+      ],
+      [
+        0.007899916730821133,
+        0.9732716083526611,
+        -1.5019547939300537
+      ]
+    ],
+    "semantic_registration_correlation": 0.99552215111385,
+    "method": "Single affine registration of semantic outer-art/ochre-floor distance fields; nearest artwork coordinate remap. No dense warp.",
+    "registered_rgb_sha256": "559a83a66de33c1f4152b9bbb9d583d1186f46d36488f775ae4d4e39e32cb44d"
+  },
+  {
+    "id": "r0c4",
+    "original_art_pixels": 45844,
+    "before_content_xor": 8719,
+    "after_content_xor": 3280,
+    "affine_source_to_generated": [
+      [
+        0.9639038443565369,
+        0.00627824617549777,
+        -1.5666511058807373
+      ],
+      [
+        0.0011343295918777585,
+        0.9514793753623962,
+        -0.5632448196411133
+      ]
+    ],
+    "semantic_registration_correlation": 0.9963237644490841,
+    "method": "Single affine registration of semantic outer-art/ochre-floor distance fields; nearest artwork coordinate remap. No dense warp.",
+    "registered_rgb_sha256": "5c0e740cf28f8c59a79d9ff6fd82a7a25e9e100959df49a0e2d8540d8ce1fcf5"
+  },
+  {
+    "id": "r0c5",
+    "original_art_pixels": 6124,
+    "before_content_xor": 1808,
+    "after_content_xor": 1063,
+    "affine_source_to_generated": [
+      [
+        1.022528886795044,
+        0.004603593610227108,
+        -2.0545670986175537
+      ],
+      [
+        0.03386889025568962,
+        0.9852721095085144,
+        -4.491393089294434
+      ]
+    ],
+    "semantic_registration_correlation": 0.9942169178367095,
+    "method": "Single affine registration of semantic outer-art/ochre-floor distance fields; nearest artwork coordinate remap. No dense warp.",
+    "registered_rgb_sha256": "6e9d1fc45e623c18173da4cba02c9e182427e986f362d191aa48056e8e639f41"
+  },
+  {
+    "id": "r0c6",
+    "original_art_pixels": 34716,
+    "before_content_xor": 12611,
+    "after_content_xor": 2705,
+    "affine_source_to_generated": [
+      [
+        0.9720718860626221,
+        -0.0011599926510825753,
+        -0.4858284592628479
+      ],
+      [
+        0.0025291091296821833,
+        0.9634093642234802,
+        -18.8779296875
+      ]
+    ],
+    "semantic_registration_correlation": 0.9957257383931343,
+    "method": "Single affine registration of semantic outer-art/ochre-floor distance fields; nearest artwork coordinate remap. No dense warp.",
+    "registered_rgb_sha256": "cc963f45321f146c456396c8de6c727c011490ad22c7efdff67d66d767bb06d6"
+  },
+  {
+    "id": "r1c0",
+    "original_art_pixels": 22653,
+    "before_content_xor": 3467,
+    "after_content_xor": 2289,
+    "affine_source_to_generated": [
+      [
+        1.035357117652893,
+        -0.06054918095469475,
+        -2.865738868713379
+      ],
+      [
+        0.00606022821739316,
+        1.0054560899734497,
+        -7.890810012817383
+      ]
+    ],
+    "semantic_registration_correlation": 0.9951072401074855,
+    "method": "Single affine registration of semantic outer-art/ochre-floor distance fields; nearest artwork coordinate remap. No dense warp.",
+    "registered_rgb_sha256": "1cbd42c49bb579780cd5bf5dd474a534cb6b1224b5ca4d807429dfdcec72c166"
+  },
+  {
+    "id": "r1c1",
+    "original_art_pixels": 32482,
+    "before_content_xor": 7063,
+    "after_content_xor": 3773,
+    "affine_source_to_generated": [
+      [
+        0.9880812764167786,
+        0.015494827181100845,
+        -4.04455041885376
+      ],
+      [
+        -0.008654204197227955,
+        0.9557968974113464,
+        1.0116583108901978
+      ]
+    ],
+    "semantic_registration_correlation": 0.9956907943320317,
+    "method": "Single affine registration of semantic outer-art/ochre-floor distance fields; nearest artwork coordinate remap. No dense warp.",
+    "registered_rgb_sha256": "83773a8b7f79d1acd89adb71c7688e6ed75c71a3f35289a4ccbc79f7e63a9ea0"
+  },
+  {
+    "id": "r1c2",
+    "original_art_pixels": 20806,
+    "before_content_xor": 5881,
+    "after_content_xor": 3436,
+    "affine_source_to_generated": [
+      [
+        1.0134100914001465,
+        -0.007626479025930166,
+        -2.0175862312316895
+      ],
+      [
+        0.00999978743493557,
+        0.9498282074928284,
+        -4.143395900726318
+      ]
+    ],
+    "semantic_registration_correlation": 0.9964010276712651,
+    "method": "Single affine registration of semantic outer-art/ochre-floor distance fields; nearest artwork coordinate remap. No dense warp.",
+    "registered_rgb_sha256": "17d1b6bd98093590fcc9d9c143f7003dd130207b2e01d264ec8a6b4d5f808d9a"
+  },
+  {
+    "id": "r1c3",
+    "original_art_pixels": 31679,
+    "before_content_xor": 5206,
+    "after_content_xor": 2829,
+    "affine_source_to_generated": [
+      [
+        1.0002673864364624,
+        -0.0018170516705140471,
+        0.3725024163722992
+      ],
+      [
+        0.0018263085512444377,
+        0.9583395719528198,
+        0.3980025053024292
+      ]
+    ],
+    "semantic_registration_correlation": 0.9943660912154956,
+    "method": "Single affine registration of semantic outer-art/ochre-floor distance fields; nearest artwork coordinate remap. No dense warp.",
+    "registered_rgb_sha256": "935984a4be9dd15f1054f05c000ee9950e8d2ac71b8f3386bacdf9d0f5329a70"
+  },
+  {
+    "id": "r1c4",
+    "original_art_pixels": 41880,
+    "before_content_xor": 2552,
+    "after_content_xor": 2516,
+    "affine_source_to_generated": [
+      [
+        1.0058047771453857,
+        0.006569314282387495,
+        -2.110774278640747
+      ],
+      [
+        -0.002571800258010626,
+        0.9906495213508606,
+        2.057671070098877
+      ]
+    ],
+    "semantic_registration_correlation": 0.9943551515016539,
+    "method": "Single affine registration of semantic outer-art/ochre-floor distance fields; nearest artwork coordinate remap. No dense warp.",
+    "registered_rgb_sha256": "cd83c421016a065d63383eae37ba54ffb3d8a7127f388cea11c2574614db261f"
+  },
+  {
+    "id": "r1c5",
+    "original_art_pixels": 29182,
+    "before_content_xor": 2854,
+    "after_content_xor": 1839,
+    "affine_source_to_generated": [
+      [
+        1.0201541185379028,
+        -0.018048783764243126,
+        1.2467024326324463
+      ],
+      [
+        -0.002803985495120287,
+        0.9982969164848328,
+        -1.7475221157073975
+      ]
+    ],
+    "semantic_registration_correlation": 0.9974238853024175,
+    "method": "Single affine registration of semantic outer-art/ochre-floor distance fields; nearest artwork coordinate remap. No dense warp.",
+    "registered_rgb_sha256": "9e19ded7080044a376e9e81633a6e9bae7969aa3b64435d5dcf3b432349c18d9"
+  },
+  {
+    "id": "r1c6",
+    "original_art_pixels": 21803,
+    "before_content_xor": 3279,
+    "after_content_xor": 3073,
+    "affine_source_to_generated": [
+      [
+        1.0237386226654053,
+        0.014207386411726475,
+        -3.0936319828033447
+      ],
+      [
+        0.004504322540014982,
+        0.9707176089286804,
+        2.0085651874542236
+      ]
+    ],
+    "semantic_registration_correlation": 0.9966055829891701,
+    "method": "Single affine registration of semantic outer-art/ochre-floor distance fields; nearest artwork coordinate remap. No dense warp.",
+    "registered_rgb_sha256": "7d7e0f16949aa81b1b2671bc65152e5cc4323619982d4e1f598f1a29c36be665"
+  },
+  {
+    "id": "r2c1",
+    "original_art_pixels": 26942,
+    "before_content_xor": 8292,
+    "after_content_xor": 3709,
+    "affine_source_to_generated": [
+      [
+        0.9779052734375,
+        0.007327550556510687,
+        -1.0592601299285889
+      ],
+      [
+        0.016154631972312927,
+        0.9512001276016235,
+        -3.9244179725646973
+      ]
+    ],
+    "semantic_registration_correlation": 0.9913530738410339,
+    "method": "Single affine registration of semantic outer-art/ochre-floor distance fields; nearest artwork coordinate remap. No dense warp.",
+    "registered_rgb_sha256": "c75117ad155921df5688948188041f3a0f8d5cb0bd773c40657fe1bea2564ea5"
+  },
+  {
+    "id": "r2c2",
+    "original_art_pixels": 33985,
+    "before_content_xor": 6285,
+    "after_content_xor": 4200,
+    "affine_source_to_generated": [
+      [
+        0.9842451214790344,
+        0.009389079175889492,
+        2.109307289123535
+      ],
+      [
+        0.006813423242419958,
+        0.9764328002929688,
+        -3.8942437171936035
+      ]
+    ],
+    "semantic_registration_correlation": 0.994293126816478,
+    "method": "Single affine registration of semantic outer-art/ochre-floor distance fields; nearest artwork coordinate remap. No dense warp.",
+    "registered_rgb_sha256": "592600dbc5e1d3cf67da23466cab812a386a7ad275cce4a9f6d64942f2be1562"
+  },
+  {
+    "id": "r2c3",
+    "original_art_pixels": 44832,
+    "before_content_xor": 10722,
+    "after_content_xor": 2719,
+    "affine_source_to_generated": [
+      [
+        0.9354633092880249,
+        0.00327523285523057,
+        -1.0470256805419922
+      ],
+      [
+        0.009057974442839622,
+        0.9265674352645874,
+        -1.6069674491882324
+      ]
+    ],
+    "semantic_registration_correlation": 0.9930727484361196,
+    "method": "Single affine registration of semantic outer-art/ochre-floor distance fields; nearest artwork coordinate remap. No dense warp.",
+    "registered_rgb_sha256": "58c5e29e0392d652f652dece376bde06e9b5eb9d41f037037df0469c219e9e9e"
+  },
+  {
+    "id": "r2c4",
+    "original_art_pixels": 40163,
+    "before_content_xor": 13099,
+    "after_content_xor": 6270,
+    "affine_source_to_generated": [
+      [
+        0.9782606363296509,
+        0.022323792800307274,
+        -8.550666809082031
+      ],
+      [
+        -0.004128407221287489,
+        0.8725611567497253,
+        -0.25049272179603577
+      ]
+    ],
+    "semantic_registration_correlation": 0.9787152214373089,
+    "method": "Single affine registration of semantic outer-art/ochre-floor distance fields; nearest artwork coordinate remap. No dense warp.",
+    "registered_rgb_sha256": "828eed00512db0aaa0025e81ad33c72c693c89aafefb7c643dd185747633d1ec"
+  },
+  {
+    "id": "r2c5",
+    "original_art_pixels": 28347,
+    "before_content_xor": 4557,
+    "after_content_xor": 3022,
+    "affine_source_to_generated": [
+      [
+        0.9920183420181274,
+        0.011751745827496052,
+        -3.2772247791290283
+      ],
+      [
+        0.006949310190975666,
+        1.0081875324249268,
+        -4.028061866760254
+      ]
+    ],
+    "semantic_registration_correlation": 0.9921302493193328,
+    "method": "Single affine registration of semantic outer-art/ochre-floor distance fields; nearest artwork coordinate remap. No dense warp.",
+    "registered_rgb_sha256": "98e2c544c8dae1a91cb7e171a8be73352b6c78203e1ed4e037617f82c66da476"
+  },
+  {
+    "id": "r2c6",
+    "original_art_pixels": 28558,
+    "before_content_xor": 5545,
+    "after_content_xor": 3574,
+    "affine_source_to_generated": [
+      [
+        0.9736496806144714,
+        0.007779550272971392,
+        0.3795899450778961
+      ],
+      [
+        0.0029994267970323563,
+        1.0094395875930786,
+        -5.364719390869141
+      ]
+    ],
+    "semantic_registration_correlation": 0.9970558023772679,
+    "method": "Single affine registration of semantic outer-art/ochre-floor distance fields; nearest artwork coordinate remap. No dense warp.",
+    "registered_rgb_sha256": "a65a58c1c0792f7c5b619a486a35749fc62c52c94c2644ca69485b7a75fcf615"
+  },
+  {
+    "id": "r3c0",
+    "original_art_pixels": 13227,
+    "before_content_xor": 2879,
+    "after_content_xor": 1283,
+    "affine_source_to_generated": [
+      [
+        1.0862330198287964,
+        0.003514030482620001,
+        -22.43449592590332
+      ],
+      [
+        -0.014865459874272346,
+        1.0187633037567139,
+        -0.5416039228439331
+      ]
+    ],
+    "semantic_registration_correlation": 0.9954470737069092,
+    "method": "Single affine registration of semantic outer-art/ochre-floor distance fields; nearest artwork coordinate remap. No dense warp.",
+    "registered_rgb_sha256": "e6aa56e52213932c885534ffd0d8508b23e9e960a9b13cfc1b0e89a9adb34d77"
+  },
+  {
+    "id": "r3c1",
+    "original_art_pixels": 29583,
+    "before_content_xor": 3446,
+    "after_content_xor": 2593,
+    "affine_source_to_generated": [
+      [
+        1.0093015432357788,
+        -0.0012130397371947765,
+        0.4326898753643036
+      ],
+      [
+        0.011303117498755455,
+        0.9873641133308411,
+        0.8788707852363586
+      ]
+    ],
+    "semantic_registration_correlation": 0.9972083581963105,
+    "method": "Single affine registration of semantic outer-art/ochre-floor distance fields; nearest artwork coordinate remap. No dense warp.",
+    "registered_rgb_sha256": "4a5bbce35d42a330b930aa5ad9642790cd469c3dd4fbc148f20e516e06c2b836"
+  },
+  {
+    "id": "r3c4",
+    "original_art_pixels": 36486,
+    "before_content_xor": 4973,
+    "after_content_xor": 2611,
+    "affine_source_to_generated": [
+      [
+        0.9720155000686646,
+        0.011170993559062481,
+        6.500530242919922
+      ],
+      [
+        -0.0020766130182892084,
+        0.9684707522392273,
+        1.8017469644546509
+      ]
+    ],
+    "semantic_registration_correlation": 0.9967929046105586,
+    "method": "Single affine registration of semantic outer-art/ochre-floor distance fields; nearest artwork coordinate remap. No dense warp.",
+    "registered_rgb_sha256": "b5d528f6d7f4059be2ff372e397681c55e93c59e185b38697a33a5e24d04073b"
+  },
+  {
+    "id": "r3c5",
+    "original_art_pixels": 15121,
+    "before_content_xor": 5094,
+    "after_content_xor": 2080,
+    "affine_source_to_generated": [
+      [
+        0.994551420211792,
+        0.001470997929573059,
+        -8.264581680297852
+      ],
+      [
+        0.03386148437857628,
+        0.8966547846794128,
+        -4.275951862335205
+      ]
+    ],
+    "semantic_registration_correlation": 0.995772687408159,
+    "method": "Single affine registration of semantic outer-art/ochre-floor distance fields; nearest artwork coordinate remap. No dense warp.",
+    "registered_rgb_sha256": "952f4010ac54405b285ab18d713d26a9b747f67d424dd3c2e78d6d11b3359829"
+  }
+]

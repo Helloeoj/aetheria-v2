@@ -1,8 +1,10 @@
-# Canonical ore node props
+# Original ore node sources and canonical library
 
-The game's reusable ore library contains twenty native 96 x 96 RGBA sprites: full and depleted states for Copper, Tin, Iron, Coal, Silver, Gold, Mithril, Adamantite, Runite and Blackstone.
+This directory preserves the original twenty native 96 x 96 RGBA sprites: full and depleted states for Copper, Tin, Iron, Coal, Silver, Gold, Mithril, Adamantite, Runite and Blackstone.
 
 All ten now use **the same host-rock silhouette, stone pixels, foot anchor and depleted state**. Only the mineral streak colors distinguish the ores. Tin was revised at the user's request to match the shared shape, using dull pewter-gray streaks; the original different-shaped tin is archived under `history/` for provenance only. The initially bronze-labeled warm node was corrected to Copper because bronze is an alloy of copper and tin.
+
+The current finer-detail revision is in `detail-v1/`: twenty native 128px sprites at Visual scale 0.75. Canonical scenes now use that revision, preserving the original 96px world canvas, world anchor, physical bases, mineral palettes and root scale 1. See `detail-v1/README.md` for saved inputs, exact prompts and reproduction. The historical generation details below describe the preserved originals.
 
 ## Place the props
 
@@ -10,9 +12,9 @@ Open `godot_client/scenes/ValtheirisWorldContent.tscn` in Godot, select **Rocks*
 
 For direct drag/drop, use the individual scenes in `godot_client/scenes/MapProps/OreNodes/`. Other maps can use `godot_client/Assets/Tilesets/OreNodes.tres`, which has the same stamps at source 0. Complete instructions: `godot_client/docs/OreNodes.md`.
 
-Keep the 32 x 32 placement grid and native artwork scale 1. Start with 96 world pixels / three grid cells between centers in compact clusters; allow 128 pixels / four cells along walking routes. The shared image-space anchor is (48,72). Each prop includes two compact physical-base colliders, rather than a collider around the transparent canvas. Full and depleted state swaps keep the same base.
+Keep the 32 x 32 placement grid and native artwork scale 1. Start with 96 world pixels / three grid cells between centers in compact clusters; allow 128 pixels / four cells along walking routes. The shared world anchor is (48,72); current 128px artwork uses image anchor (64,96) at Visual scale 0.75. Each prop includes two compact physical-base colliders, rather than a collider around the transparent canvas. Full and depleted state swaps keep the same base.
 
-Whenever an ore node is requested, reference this library and reuse its named props. Do not paint substitute random rock clusters. The canonical runtime paths, adjacent scene IDs, anchors, footprints and spacing are recorded in `godot_client/Assets/MapTiles/OreNodes/manifest.json`. Runtime PNGs are byte-identical to the current source PNGs here.
+Whenever an ore node is requested, reference this library and reuse its named props. Do not paint substitute random rock clusters. The canonical runtime paths, adjacent scene IDs, anchors, footprints and spacing are recorded in `godot_client/Assets/MapTiles/OreNodes/manifest.json`. Current Detail128 runtime PNGs are byte-identical to the source PNGs in `detail-v1/`.
 
 ## Pixel detail and provenance
 

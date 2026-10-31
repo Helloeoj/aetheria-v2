@@ -1,12 +1,14 @@
-[gd_scene load_steps=828 format=3]
+[gd_scene load_steps=829 format=3]
 
-[ext_resource type="Texture2D" path="res://Assets/Maps/ValtherianMines/Approved/approved-map-v3.png" id="1_bfqtq"]
+[ext_resource type="Texture2D" path="res://Assets/Maps/ValtherianMines/Detail/master-linework.png" id="1_bfqtq"]
 [ext_resource type="PackedScene" path="res://scenes/MapProps/OreNodes/BlackstoneFull.tscn" id="2_u4k3a"]
 [ext_resource type="PackedScene" path="res://scenes/MapProps/OreNodes/MithrilOreFull.tscn" id="3_45iof"]
 [ext_resource type="PackedScene" path="res://scenes/MapProps/OreNodes/AdamantiteOreFull.tscn" id="4_lsmu2"]
 [ext_resource type="PackedScene" path="res://scenes/MapProps/OreNodes/CoalFull.tscn" id="5_vpacs"]
 [ext_resource type="PackedScene" path="res://scenes/MapProps/OreNodes/IronOreFull.tscn" id="6_3gglp"]
-[ext_resource type="Texture2D" path="res://Assets/Maps/ValtherianMines/Approved/foreground.png" id="7_6bcvv"]
+[ext_resource type="Texture2D" path="res://Assets/Maps/ValtherianMines/Detail/foreground.png" id="7_6bcvv"]
+
+[ext_resource type="Material" path="res://Assets/Maps/ValtherianMines/Detail/CrispMine.tres" id="8_detail_palette"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3bc2"]
 size = Vector2(6144, 223.30736)
@@ -2474,9 +2476,10 @@ texture_filter = 1
 metadata/gameplay_grid_origin = Vector2(0, 0)
 
 [node name="ApprovedMap" type="Sprite2D" parent="."]
+material = ExtResource("8_detail_palette")
 z_index = -100
 texture_filter = 1
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("1_bfqtq")
 centered = false
 
@@ -5979,14 +5982,15 @@ metadata/approved_source_rect = [44.0, 274.0, 184.0, 54.0]
 metadata/approved_foot_source_y = 328.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall000"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1181.3679)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(44, 274)
+offset = Vector2(212, 1317)
 region_enabled = true
-region_rect = Rect2(0, 0, 184, 54)
+region_rect = Rect2(0, 0, 885, 259)
 region_filter_clip_enabled = true
 
 [node name="FrontWall001" type="Node2D" parent="ApprovedForeground"]
@@ -5995,14 +5999,15 @@ metadata/approved_source_rect = [54.0, 201.0, 4.0, 8.0]
 metadata/approved_foot_source_y = 209.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall001"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -752.7619)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(54, 201)
+offset = Vector2(260, 966)
 region_enabled = true
-region_rect = Rect2(186, 0, 4, 8)
+region_rect = Rect2(887, 0, 19, 38)
 region_filter_clip_enabled = true
 
 [node name="FrontWall002" type="Node2D" parent="ApprovedForeground"]
@@ -6011,14 +6016,15 @@ metadata/approved_source_rect = [204.0, 753.0, 5.0, 28.0]
 metadata/approved_foot_source_y = 781.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall002"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -2812.9524)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(204, 753)
+offset = Vector2(982, 3617)
 region_enabled = true
-region_rect = Rect2(192, 0, 5, 28)
+region_rect = Rect2(908, 0, 24, 135)
 region_filter_clip_enabled = true
 
 [node name="FrontWall003" type="Node2D" parent="ApprovedForeground"]
@@ -6027,14 +6033,15 @@ metadata/approved_source_rect = [204.0, 831.0, 169.0, 43.0]
 metadata/approved_foot_source_y = 871.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall003"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -3137.1082)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(204, 831)
+offset = Vector2(982, 3992)
 region_enabled = true
-region_rect = Rect2(199, 0, 169, 43)
+region_rect = Rect2(934, 0, 813, 206)
 region_filter_clip_enabled = true
 
 [node name="FrontWall004" type="Node2D" parent="ApprovedForeground"]
@@ -6043,14 +6050,15 @@ metadata/approved_source_rect = [230.0, 255.0, 19.0, 35.0]
 metadata/approved_foot_source_y = 290.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall004"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1044.5022)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(230, 255)
+offset = Vector2(1107, 1225)
 region_enabled = true
-region_rect = Rect2(370, 0, 19, 35)
+region_rect = Rect2(1749, 0, 91, 168)
 region_filter_clip_enabled = true
 
 [node name="FrontWall005" type="Node2D" parent="ApprovedForeground"]
@@ -6059,14 +6067,15 @@ metadata/approved_source_rect = [249.0, 237.0, 49.0, 42.0]
 metadata/approved_foot_source_y = 279.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall005"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1004.8831)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(249, 237)
+offset = Vector2(1198, 1139)
 region_enabled = true
-region_rect = Rect2(391, 0, 49, 42)
+region_rect = Rect2(1842, 0, 236, 202)
 region_filter_clip_enabled = true
 
 [node name="FrontWall006" type="Node2D" parent="ApprovedForeground"]
@@ -6075,14 +6084,15 @@ metadata/approved_source_rect = [274.0, 652.0, 6.0, 34.0]
 metadata/approved_foot_source_y = 686.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall006"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -2470.7878)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(274, 652)
+offset = Vector2(1319, 3132)
 region_enabled = true
-region_rect = Rect2(442, 0, 6, 34)
+region_rect = Rect2(2080, 0, 28, 163)
 region_filter_clip_enabled = true
 
 [node name="FrontWall007" type="Node2D" parent="ApprovedForeground"]
@@ -6091,14 +6101,15 @@ metadata/approved_source_rect = [286.0, 634.0, 6.0, 7.0]
 metadata/approved_foot_source_y = 641.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall007"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -2308.71)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(286, 634)
+offset = Vector2(1376, 3046)
 region_enabled = true
-region_rect = Rect2(450, 0, 6, 7)
+region_rect = Rect2(2110, 0, 29, 33)
 region_filter_clip_enabled = true
 
 [node name="FrontWall008" type="Node2D" parent="ApprovedForeground"]
@@ -6107,14 +6118,15 @@ metadata/approved_source_rect = [288.0, 323.0, 9.0, 48.0]
 metadata/approved_foot_source_y = 371.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall008"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1336.2424)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(288, 323)
+offset = Vector2(1386, 1552)
 region_enabled = true
-region_rect = Rect2(458, 0, 9, 48)
+region_rect = Rect2(2141, 0, 43, 230)
 region_filter_clip_enabled = true
 
 [node name="FrontWall009" type="Node2D" parent="ApprovedForeground"]
@@ -6123,14 +6135,15 @@ metadata/approved_source_rect = [297.0, 358.0, 122.0, 56.0]
 metadata/approved_foot_source_y = 414.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall009"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1491.1168)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(297, 358)
+offset = Vector2(1429, 1720)
 region_enabled = true
-region_rect = Rect2(469, 0, 122, 56)
+region_rect = Rect2(2186, 0, 587, 269)
 region_filter_clip_enabled = true
 
 [node name="FrontWall010" type="Node2D" parent="ApprovedForeground"]
@@ -6139,14 +6152,15 @@ metadata/approved_source_rect = [311.0, 705.0, 4.0, 12.0]
 metadata/approved_foot_source_y = 717.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall010"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -2582.4414)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(311, 705)
+offset = Vector2(1497, 3387)
 region_enabled = true
-region_rect = Rect2(593, 0, 4, 12)
+region_rect = Rect2(2775, 0, 19, 57)
 region_filter_clip_enabled = true
 
 [node name="FrontWall011" type="Node2D" parent="ApprovedForeground"]
@@ -6155,14 +6169,15 @@ metadata/approved_source_rect = [313.0, 642.0, 142.0, 71.0]
 metadata/approved_foot_source_y = 713.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall011"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -2568.0347)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(313, 642)
+offset = Vector2(1506, 3084)
 region_enabled = true
-region_rect = Rect2(599, 0, 142, 71)
+region_rect = Rect2(2796, 0, 683, 341)
 region_filter_clip_enabled = true
 
 [node name="FrontWall012" type="Node2D" parent="ApprovedForeground"]
@@ -6171,14 +6186,15 @@ metadata/approved_source_rect = [335.0, 250.0, 7.0, 11.0]
 metadata/approved_foot_source_y = 261.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall012"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -940.05194)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(335, 250)
+offset = Vector2(1612, 1201)
 region_enabled = true
-region_rect = Rect2(743, 0, 7, 11)
+region_rect = Rect2(3481, 0, 34, 53)
 region_filter_clip_enabled = true
 
 [node name="FrontWall013" type="Node2D" parent="ApprovedForeground"]
@@ -6187,14 +6203,15 @@ metadata/approved_source_rect = [337.0, 271.0, 7.0, 14.0]
 metadata/approved_foot_source_y = 285.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall013"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1026.4935)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(337, 271)
+offset = Vector2(1622, 1302)
 region_enabled = true
-region_rect = Rect2(752, 0, 7, 14)
+region_rect = Rect2(3517, 0, 33, 67)
 region_filter_clip_enabled = true
 
 [node name="FrontWall014" type="Node2D" parent="ApprovedForeground"]
@@ -6203,14 +6220,15 @@ metadata/approved_source_rect = [338.0, 294.0, 6.0, 22.0]
 metadata/approved_foot_source_y = 316.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall014"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1138.1472)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(338, 294)
+offset = Vector2(1626, 1413)
 region_enabled = true
-region_rect = Rect2(761, 0, 6, 22)
+region_rect = Rect2(3552, 0, 29, 105)
 region_filter_clip_enabled = true
 
 [node name="FrontWall015" type="Node2D" parent="ApprovedForeground"]
@@ -6219,14 +6237,15 @@ metadata/approved_source_rect = [340.0, 228.0, 6.0, 33.0]
 metadata/approved_foot_source_y = 261.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall015"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -940.05194)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(340, 228)
+offset = Vector2(1636, 1096)
 region_enabled = true
-region_rect = Rect2(769, 0, 6, 33)
+region_rect = Rect2(3583, 0, 29, 158)
 region_filter_clip_enabled = true
 
 [node name="FrontWall016" type="Node2D" parent="ApprovedForeground"]
@@ -6235,14 +6254,15 @@ metadata/approved_source_rect = [408.0, 466.0, 5.0, 32.0]
 metadata/approved_foot_source_y = 498.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall016"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1793.6624)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(408, 466)
+offset = Vector2(1963, 2239)
 region_enabled = true
-region_rect = Rect2(777, 0, 5, 32)
+region_rect = Rect2(3614, 0, 24, 153)
 region_filter_clip_enabled = true
 
 [node name="FrontWall017" type="Node2D" parent="ApprovedForeground"]
@@ -6251,14 +6271,15 @@ metadata/approved_source_rect = [409.0, 492.0, 6.0, 34.0]
 metadata/approved_foot_source_y = 526.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall017"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1894.5107)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(409, 492)
+offset = Vector2(1968, 2364)
 region_enabled = true
-region_rect = Rect2(784, 0, 6, 34)
+region_rect = Rect2(3640, 0, 29, 163)
 region_filter_clip_enabled = true
 
 [node name="FrontWall018" type="Node2D" parent="ApprovedForeground"]
@@ -6267,14 +6288,15 @@ metadata/approved_source_rect = [447.0, 330.0, 5.0, 7.0]
 metadata/approved_foot_source_y = 337.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall018"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1213.7836)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(447, 330)
+offset = Vector2(2151, 1585)
 region_enabled = true
-region_rect = Rect2(792, 0, 5, 7)
+region_rect = Rect2(3671, 0, 24, 34)
 region_filter_clip_enabled = true
 
 [node name="FrontWall019" type="Node2D" parent="ApprovedForeground"]
@@ -6283,14 +6305,15 @@ metadata/approved_source_rect = [448.0, 379.0, 100.0, 41.0]
 metadata/approved_foot_source_y = 420.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall019"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1512.7273)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(448, 379)
+offset = Vector2(2156, 1821)
 region_enabled = true
-region_rect = Rect2(799, 0, 100, 41)
+region_rect = Rect2(3697, 0, 481, 197)
 region_filter_clip_enabled = true
 
 [node name="FrontWall020" type="Node2D" parent="ApprovedForeground"]
@@ -6299,14 +6322,15 @@ metadata/approved_source_rect = [453.0, 494.0, 8.0, 45.0]
 metadata/approved_foot_source_y = 539.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall020"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1941.3333)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(453, 494)
+offset = Vector2(2180, 2373)
 region_enabled = true
-region_rect = Rect2(901, 0, 8, 45)
+region_rect = Rect2(4180, 0, 38, 216)
 region_filter_clip_enabled = true
 
 [node name="FrontWall021" type="Node2D" parent="ApprovedForeground"]
@@ -6315,14 +6339,15 @@ metadata/approved_source_rect = [453.0, 601.0, 4.0, 11.0]
 metadata/approved_foot_source_y = 612.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall021"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -2204.2598)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(453, 601)
+offset = Vector2(2180, 2887)
 region_enabled = true
-region_rect = Rect2(911, 0, 4, 11)
+region_rect = Rect2(4220, 0, 19, 53)
 region_filter_clip_enabled = true
 
 [node name="FrontWall022" type="Node2D" parent="ApprovedForeground"]
@@ -6331,14 +6356,15 @@ metadata/approved_source_rect = [455.0, 627.0, 7.0, 35.0]
 metadata/approved_foot_source_y = 662.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall022"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -2384.3462)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(455, 627)
+offset = Vector2(2189, 3012)
 region_enabled = true
-region_rect = Rect2(917, 0, 7, 35)
+region_rect = Rect2(4241, 0, 34, 168)
 region_filter_clip_enabled = true
 
 [node name="FrontWall023" type="Node2D" parent="ApprovedForeground"]
@@ -6347,14 +6373,15 @@ metadata/approved_source_rect = [541.0, 570.0, 7.0, 33.0]
 metadata/approved_foot_source_y = 603.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall023"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -2171.8442)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(541, 570)
+offset = Vector2(2603, 2738)
 region_enabled = true
-region_rect = Rect2(926, 0, 7, 33)
+region_rect = Rect2(4277, 0, 34, 159)
 region_filter_clip_enabled = true
 
 [node name="FrontWall024" type="Node2D" parent="ApprovedForeground"]
@@ -6363,14 +6390,15 @@ metadata/approved_source_rect = [543.0, 492.0, 8.0, 31.0]
 metadata/approved_foot_source_y = 523.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall024"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1883.7056)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(543, 492)
+offset = Vector2(2613, 2364)
 region_enabled = true
-region_rect = Rect2(935, 0, 8, 31)
+region_rect = Rect2(4313, 0, 38, 148)
 region_filter_clip_enabled = true
 
 [node name="FrontWall025" type="Node2D" parent="ApprovedForeground"]
@@ -6379,14 +6407,15 @@ metadata/approved_source_rect = [545.0, 337.0, 4.0, 6.0]
 metadata/approved_foot_source_y = 343.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall025"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1235.3939)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(545, 337)
+offset = Vector2(2622, 1619)
 region_enabled = true
-region_rect = Rect2(945, 0, 4, 6)
+region_rect = Rect2(4353, 0, 19, 29)
 region_filter_clip_enabled = true
 
 [node name="FrontWall026" type="Node2D" parent="ApprovedForeground"]
@@ -6395,14 +6424,15 @@ metadata/approved_source_rect = [548.0, 586.0, 112.0, 49.0]
 metadata/approved_foot_source_y = 635.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall026"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -2287.0996)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(548, 586)
+offset = Vector2(2637, 2815)
 region_enabled = true
-region_rect = Rect2(951, 0, 112, 49)
+region_rect = Rect2(4374, 0, 538, 235)
 region_filter_clip_enabled = true
 
 [node name="FrontWall027" type="Node2D" parent="ApprovedForeground"]
@@ -6411,14 +6441,15 @@ metadata/approved_source_rect = [586.0, 507.0, 5.0, 32.0]
 metadata/approved_foot_source_y = 539.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall027"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1941.3333)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(586, 507)
+offset = Vector2(2819, 2436)
 region_enabled = true
-region_rect = Rect2(1065, 0, 5, 32)
+region_rect = Rect2(4914, 0, 24, 153)
 region_filter_clip_enabled = true
 
 [node name="FrontWall028" type="Node2D" parent="ApprovedForeground"]
@@ -6427,14 +6458,15 @@ metadata/approved_source_rect = [652.0, 626.0, 4.0, 32.0]
 metadata/approved_foot_source_y = 658.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall028"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -2369.9395)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(652, 626)
+offset = Vector2(3137, 3007)
 region_enabled = true
-region_rect = Rect2(1072, 0, 4, 32)
+region_rect = Rect2(4940, 0, 19, 154)
 region_filter_clip_enabled = true
 
 [node name="FrontWall029" type="Node2D" parent="ApprovedForeground"]
@@ -6443,14 +6475,15 @@ metadata/approved_source_rect = [656.0, 639.0, 200.0, 51.0]
 metadata/approved_foot_source_y = 684.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall029"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -2463.5845)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(656, 639)
+offset = Vector2(3156, 3070)
 region_enabled = true
-region_rect = Rect2(1078, 0, 200, 51)
+region_rect = Rect2(4961, 0, 962, 245)
 region_filter_clip_enabled = true
 
 [node name="FrontWall030" type="Node2D" parent="ApprovedForeground"]
@@ -6459,14 +6492,15 @@ metadata/approved_source_rect = [667.0, 523.0, 5.0, 16.0]
 metadata/approved_foot_source_y = 539.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall030"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1941.3333)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(667, 523)
+offset = Vector2(3209, 2512)
 region_enabled = true
-region_rect = Rect2(1280, 0, 5, 16)
+region_rect = Rect2(5925, 0, 24, 77)
 region_filter_clip_enabled = true
 
 [node name="FrontWall031" type="Node2D" parent="ApprovedForeground"]
@@ -6475,14 +6509,15 @@ metadata/approved_source_rect = [729.0, 434.0, 5.0, 32.0]
 metadata/approved_foot_source_y = 466.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall031"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1678.4069)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(729, 434)
+offset = Vector2(3507, 2085)
 region_enabled = true
-region_rect = Rect2(1287, 0, 5, 32)
+region_rect = Rect2(5951, 0, 24, 154)
 region_filter_clip_enabled = true
 
 [node name="FrontWall032" type="Node2D" parent="ApprovedForeground"]
@@ -6491,14 +6526,15 @@ metadata/approved_source_rect = [730.0, 463.0, 6.0, 33.0]
 metadata/approved_foot_source_y = 496.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall032"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1786.4589)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(730, 463)
+offset = Vector2(3512, 2224)
 region_enabled = true
-region_rect = Rect2(1294, 0, 6, 33)
+region_rect = Rect2(5977, 0, 29, 159)
 region_filter_clip_enabled = true
 
 [node name="FrontWall033" type="Node2D" parent="ApprovedForeground"]
@@ -6507,14 +6543,15 @@ metadata/approved_source_rect = [731.0, 283.0, 5.0, 34.0]
 metadata/approved_foot_source_y = 317.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall033"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1141.7489)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(731, 283)
+offset = Vector2(3517, 1360)
 region_enabled = true
-region_rect = Rect2(1302, 0, 5, 34)
+region_rect = Rect2(6008, 0, 24, 163)
 region_filter_clip_enabled = true
 
 [node name="FrontWall034" type="Node2D" parent="ApprovedForeground"]
@@ -6523,14 +6560,15 @@ metadata/approved_source_rect = [736.0, 301.0, 7.0, 46.0]
 metadata/approved_foot_source_y = 347.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall034"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1249.8009)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(736, 301)
+offset = Vector2(3541, 1446)
 region_enabled = true
-region_rect = Rect2(1309, 0, 7, 46)
+region_rect = Rect2(6034, 0, 34, 221)
 region_filter_clip_enabled = true
 
 [node name="FrontWall035" type="Node2D" parent="ApprovedForeground"]
@@ -6539,14 +6577,15 @@ metadata/approved_source_rect = [736.0, 475.0, 4.0, 33.0]
 metadata/approved_foot_source_y = 508.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall035"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1829.6796)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(736, 475)
+offset = Vector2(3541, 2282)
 region_enabled = true
-region_rect = Rect2(1318, 0, 4, 33)
+region_rect = Rect2(6070, 0, 19, 158)
 region_filter_clip_enabled = true
 
 [node name="FrontWall036" type="Node2D" parent="ApprovedForeground"]
@@ -6555,14 +6594,15 @@ metadata/approved_source_rect = [773.0, 514.0, 6.0, 8.0]
 metadata/approved_foot_source_y = 522.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall036"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1880.1039)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(773, 514)
+offset = Vector2(3719, 2469)
 region_enabled = true
-region_rect = Rect2(1324, 0, 6, 8)
+region_rect = Rect2(6091, 0, 29, 39)
 region_filter_clip_enabled = true
 
 [node name="FrontWall037" type="Node2D" parent="ApprovedForeground"]
@@ -6571,14 +6611,15 @@ metadata/approved_source_rect = [775.0, 469.0, 6.0, 33.0]
 metadata/approved_foot_source_y = 502.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall037"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1808.0692)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(775, 469)
+offset = Vector2(3729, 2253)
 region_enabled = true
-region_rect = Rect2(1332, 0, 6, 33)
+region_rect = Rect2(6122, 0, 28, 159)
 region_filter_clip_enabled = true
 
 [node name="FrontWall038" type="Node2D" parent="ApprovedForeground"]
@@ -6587,14 +6628,15 @@ metadata/approved_source_rect = [776.0, 356.0, 5.0, 28.0]
 metadata/approved_foot_source_y = 384.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall038"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1383.065)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(776, 356)
+offset = Vector2(3733, 1710)
 region_enabled = true
-region_rect = Rect2(1340, 0, 5, 28)
+region_rect = Rect2(6152, 0, 24, 135)
 region_filter_clip_enabled = true
 
 [node name="FrontWall039" type="Node2D" parent="ApprovedForeground"]
@@ -6603,14 +6645,15 @@ metadata/approved_source_rect = [777.0, 269.0, 103.0, 71.0]
 metadata/approved_foot_source_y = 340.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall039"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1224.5887)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(777, 269)
+offset = Vector2(3738, 1293)
 region_enabled = true
-region_rect = Rect2(1347, 0, 103, 71)
+region_rect = Rect2(6178, 0, 496, 341)
 region_filter_clip_enabled = true
 
 [node name="FrontWall040" type="Node2D" parent="ApprovedForeground"]
@@ -6619,14 +6662,15 @@ metadata/approved_source_rect = [778.0, 452.0, 5.0, 32.0]
 metadata/approved_foot_source_y = 484.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall040"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1743.238)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(778, 452)
+offset = Vector2(3743, 2171)
 region_enabled = true
-region_rect = Rect2(1452, 0, 5, 32)
+region_rect = Rect2(6676, 0, 24, 154)
 region_filter_clip_enabled = true
 
 [node name="FrontWall041" type="Node2D" parent="ApprovedForeground"]
@@ -6635,14 +6679,15 @@ metadata/approved_source_rect = [780.0, 157.0, 65.0, 32.0]
 metadata/approved_foot_source_y = 189.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall041"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -680.72723)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(780, 157)
+offset = Vector2(3753, 755)
 region_enabled = true
-region_rect = Rect2(1459, 0, 65, 32)
+region_rect = Rect2(6702, 0, 312, 153)
 region_filter_clip_enabled = true
 
 [node name="FrontWall042" type="Node2D" parent="ApprovedForeground"]
@@ -6651,14 +6696,15 @@ metadata/approved_source_rect = [783.0, 436.0, 4.0, 35.0]
 metadata/approved_foot_source_y = 470.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall042"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1692.8138)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(783, 436)
+offset = Vector2(3767, 2095)
 region_enabled = true
-region_rect = Rect2(1526, 0, 4, 35)
+region_rect = Rect2(7016, 0, 19, 168)
 region_filter_clip_enabled = true
 
 [node name="FrontWall043" type="Node2D" parent="ApprovedForeground"]
@@ -6667,14 +6713,15 @@ metadata/approved_source_rect = [826.0, 518.0, 8.0, 11.0]
 metadata/approved_foot_source_y = 529.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall043"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1905.316)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(826, 518)
+offset = Vector2(3974, 2488)
 region_enabled = true
-region_rect = Rect2(1532, 0, 8, 11)
+region_rect = Rect2(7037, 0, 38, 53)
 region_filter_clip_enabled = true
 
 [node name="FrontWall044" type="Node2D" parent="ApprovedForeground"]
@@ -6683,14 +6730,15 @@ metadata/approved_source_rect = [838.0, 213.0, 4.0, 34.0]
 metadata/approved_foot_source_y = 247.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall044"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -889.6277)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(838, 213)
+offset = Vector2(4032, 1024)
 region_enabled = true
-region_rect = Rect2(1542, 0, 4, 34)
+region_rect = Rect2(7077, 0, 19, 163)
 region_filter_clip_enabled = true
 
 [node name="FrontWall045" type="Node2D" parent="ApprovedForeground"]
@@ -6699,14 +6747,15 @@ metadata/approved_source_rect = [856.0, 638.0, 14.0, 36.0]
 metadata/approved_foot_source_y = 674.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall045"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -2427.5671)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(856, 638)
+offset = Vector2(4118, 3065)
 region_enabled = true
-region_rect = Rect2(1548, 0, 14, 36)
+region_rect = Rect2(7098, 0, 67, 173)
 region_filter_clip_enabled = true
 
 [node name="FrontWall046" type="Node2D" parent="ApprovedForeground"]
@@ -6715,14 +6764,15 @@ metadata/approved_source_rect = [863.0, 565.0, 85.0, 71.0]
 metadata/approved_foot_source_y = 636.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall046"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -2290.7012)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(863, 565)
+offset = Vector2(4152, 2714)
 region_enabled = true
-region_rect = Rect2(1564, 0, 85, 71)
+region_rect = Rect2(7167, 0, 409, 341)
 region_filter_clip_enabled = true
 
 [node name="FrontWall047" type="Node2D" parent="ApprovedForeground"]
@@ -6731,14 +6781,15 @@ metadata/approved_source_rect = [876.0, 246.0, 10.0, 37.0]
 metadata/approved_foot_source_y = 283.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall047"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1019.29004)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(876, 246)
+offset = Vector2(4214, 1182)
 region_enabled = true
-region_rect = Rect2(1651, 0, 10, 37)
+region_rect = Rect2(7578, 0, 48, 178)
 region_filter_clip_enabled = true
 
 [node name="FrontWall048" type="Node2D" parent="ApprovedForeground"]
@@ -6747,14 +6798,15 @@ metadata/approved_source_rect = [878.0, 167.0, 11.0, 35.0]
 metadata/approved_foot_source_y = 202.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall048"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -727.54974)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(878, 167)
+offset = Vector2(4224, 803)
 region_enabled = true
-region_rect = Rect2(1663, 0, 11, 35)
+region_rect = Rect2(7628, 0, 53, 168)
 region_filter_clip_enabled = true
 
 [node name="FrontWall049" type="Node2D" parent="ApprovedForeground"]
@@ -6763,14 +6815,15 @@ metadata/approved_source_rect = [889.0, 152.0, 41.0, 37.0]
 metadata/approved_foot_source_y = 189.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall049"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -680.72723)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(889, 152)
+offset = Vector2(4277, 731)
 region_enabled = true
-region_rect = Rect2(0, 73, 41, 37)
+region_rect = Rect2(7683, 0, 197, 177)
 region_filter_clip_enabled = true
 
 [node name="FrontWall050" type="Node2D" parent="ApprovedForeground"]
@@ -6779,14 +6832,15 @@ metadata/approved_source_rect = [899.0, 458.0, 5.0, 32.0]
 metadata/approved_foot_source_y = 490.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall050"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1764.8485)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(899, 458)
+offset = Vector2(4325, 2200)
 region_enabled = true
-region_rect = Rect2(43, 73, 5, 32)
+region_rect = Rect2(7882, 0, 24, 154)
 region_filter_clip_enabled = true
 
 [node name="FrontWall051" type="Node2D" parent="ApprovedForeground"]
@@ -6795,14 +6849,15 @@ metadata/approved_source_rect = [901.0, 435.0, 4.0, 6.0]
 metadata/approved_foot_source_y = 441.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall051"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1588.3636)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(901, 435)
+offset = Vector2(4335, 2090)
 region_enabled = true
-region_rect = Rect2(50, 73, 4, 6)
+region_rect = Rect2(7908, 0, 19, 29)
 region_filter_clip_enabled = true
 
 [node name="FrontWall052" type="Node2D" parent="ApprovedForeground"]
@@ -6811,14 +6866,15 @@ metadata/approved_source_rect = [930.0, 141.0, 8.0, 33.0]
 metadata/approved_foot_source_y = 174.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall052"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -626.7013)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(930, 141)
+offset = Vector2(4474, 678)
 region_enabled = true
-region_rect = Rect2(56, 73, 8, 33)
+region_rect = Rect2(7929, 0, 39, 158)
 region_filter_clip_enabled = true
 
 [node name="FrontWall053" type="Node2D" parent="ApprovedForeground"]
@@ -6827,14 +6883,15 @@ metadata/approved_source_rect = [938.0, 455.0, 72.0, 45.0]
 metadata/approved_foot_source_y = 500.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall053"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1800.8657)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(938, 455)
+offset = Vector2(4513, 2186)
 region_enabled = true
-region_rect = Rect2(66, 73, 72, 45)
+region_rect = Rect2(0, 343, 346, 216)
 region_filter_clip_enabled = true
 
 [node name="FrontWall054" type="Node2D" parent="ApprovedForeground"]
@@ -6843,14 +6900,15 @@ metadata/approved_source_rect = [944.0, 545.0, 5.0, 32.0]
 metadata/approved_foot_source_y = 577.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall054"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -2078.1992)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(944, 545)
+offset = Vector2(4541, 2618)
 region_enabled = true
-region_rect = Rect2(140, 73, 5, 32)
+region_rect = Rect2(348, 343, 25, 154)
 region_filter_clip_enabled = true
 
 [node name="FrontWall055" type="Node2D" parent="ApprovedForeground"]
@@ -6859,14 +6917,15 @@ metadata/approved_source_rect = [1005.0, 520.0, 4.0, 32.0]
 metadata/approved_foot_source_y = 552.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall055"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1988.1558)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1005, 520)
+offset = Vector2(4835, 2498)
 region_enabled = true
-region_rect = Rect2(147, 73, 4, 32)
+region_rect = Rect2(375, 343, 19, 154)
 region_filter_clip_enabled = true
 
 [node name="FrontWall056" type="Node2D" parent="ApprovedForeground"]
@@ -6875,14 +6934,15 @@ metadata/approved_source_rect = [1006.0, 642.0, 125.0, 63.0]
 metadata/approved_foot_source_y = 705.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall056"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -2539.2207)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1006, 642)
+offset = Vector2(4840, 3084)
 region_enabled = true
-region_rect = Rect2(153, 73, 125, 63)
+region_rect = Rect2(396, 343, 601, 303)
 region_filter_clip_enabled = true
 
 [node name="FrontWall057" type="Node2D" parent="ApprovedForeground"]
@@ -6891,14 +6951,15 @@ metadata/approved_source_rect = [1007.0, 185.0, 70.0, 52.0]
 metadata/approved_foot_source_y = 237.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall057"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -853.61035)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1007, 185)
+offset = Vector2(4845, 889)
 region_enabled = true
-region_rect = Rect2(280, 73, 70, 52)
+region_rect = Rect2(999, 343, 336, 250)
 region_filter_clip_enabled = true
 
 [node name="FrontWall058" type="Node2D" parent="ApprovedForeground"]
@@ -6907,14 +6968,15 @@ metadata/approved_source_rect = [1021.0, 77.0, 6.0, 12.0]
 metadata/approved_foot_source_y = 89.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall058"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -320.5541)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1021, 77)
+offset = Vector2(4912, 370)
 region_enabled = true
-region_rect = Rect2(352, 73, 6, 12)
+region_rect = Rect2(1337, 343, 29, 58)
 region_filter_clip_enabled = true
 
 [node name="FrontWall059" type="Node2D" parent="ApprovedForeground"]
@@ -6923,14 +6985,15 @@ metadata/approved_source_rect = [1041.0, 457.0, 36.0, 37.0]
 metadata/approved_foot_source_y = 494.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall059"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1779.2554)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1041, 457)
+offset = Vector2(5008, 2195)
 region_enabled = true
-region_rect = Rect2(360, 73, 36, 37)
+region_rect = Rect2(1368, 343, 173, 178)
 region_filter_clip_enabled = true
 
 [node name="FrontWall060" type="Node2D" parent="ApprovedForeground"]
@@ -6939,14 +7002,15 @@ metadata/approved_source_rect = [1042.0, 593.0, 6.0, 32.0]
 metadata/approved_foot_source_y = 625.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall060"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -2251.0823)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1042, 593)
+offset = Vector2(5013, 2849)
 region_enabled = true
-region_rect = Rect2(398, 73, 6, 32)
+region_rect = Rect2(1543, 343, 29, 153)
 region_filter_clip_enabled = true
 
 [node name="FrontWall061" type="Node2D" parent="ApprovedForeground"]
@@ -6955,14 +7019,15 @@ metadata/approved_source_rect = [1044.0, 523.0, 4.0, 34.0]
 metadata/approved_foot_source_y = 557.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall061"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -2006.1644)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1044, 523)
+offset = Vector2(5022, 2512)
 region_enabled = true
-region_rect = Rect2(406, 73, 4, 34)
+region_rect = Rect2(1574, 343, 20, 164)
 region_filter_clip_enabled = true
 
 [node name="FrontWall062" type="Node2D" parent="ApprovedForeground"]
@@ -6971,14 +7036,15 @@ metadata/approved_source_rect = [1060.0, 791.0, 6.0, 25.0]
 metadata/approved_foot_source_y = 816.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall062"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -2939.013)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1060, 791)
+offset = Vector2(5099, 3800)
 region_enabled = true
-region_rect = Rect2(412, 73, 6, 25)
+region_rect = Rect2(1596, 343, 29, 120)
 region_filter_clip_enabled = true
 
 [node name="FrontWall063" type="Node2D" parent="ApprovedForeground"]
@@ -6987,14 +7053,15 @@ metadata/approved_source_rect = [1060.0, 848.0, 200.0, 40.0]
 metadata/approved_foot_source_y = 887.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall063"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -3194.7358)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1060, 848)
+offset = Vector2(5099, 4073)
 region_enabled = true
-region_rect = Rect2(420, 73, 200, 40)
+region_rect = Rect2(1627, 343, 963, 193)
 region_filter_clip_enabled = true
 
 [node name="FrontWall064" type="Node2D" parent="ApprovedForeground"]
@@ -7003,14 +7070,15 @@ metadata/approved_source_rect = [1068.0, 260.0, 6.0, 43.0]
 metadata/approved_foot_source_y = 303.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall064"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1091.3247)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1068, 260)
+offset = Vector2(5138, 1249)
 region_enabled = true
-region_rect = Rect2(622, 73, 6, 43)
+region_rect = Rect2(2592, 343, 29, 207)
 region_filter_clip_enabled = true
 
 [node name="FrontWall065" type="Node2D" parent="ApprovedForeground"]
@@ -7019,14 +7087,15 @@ metadata/approved_source_rect = [1074.0, 288.0, 137.0, 63.0]
 metadata/approved_foot_source_y = 351.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall065"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1264.2078)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1074, 288)
+offset = Vector2(5167, 1384)
 region_enabled = true
-region_rect = Rect2(630, 73, 137, 63)
+region_rect = Rect2(2623, 343, 659, 302)
 region_filter_clip_enabled = true
 
 [node name="FrontWall066" type="Node2D" parent="ApprovedForeground"]
@@ -7035,14 +7104,15 @@ metadata/approved_source_rect = [1074.0, 492.0, 4.0, 32.0]
 metadata/approved_foot_source_y = 524.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall066"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1887.3074)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1074, 492)
+offset = Vector2(5167, 2364)
 region_enabled = true
-region_rect = Rect2(769, 73, 4, 32)
+region_rect = Rect2(3284, 343, 19, 153)
 region_filter_clip_enabled = true
 
 [node name="FrontWall067" type="Node2D" parent="ApprovedForeground"]
@@ -7051,14 +7121,15 @@ metadata/approved_source_rect = [1078.0, 494.0, 226.0, 54.0]
 metadata/approved_foot_source_y = 540.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall067"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1944.935)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1078, 494)
+offset = Vector2(5186, 2373)
 region_enabled = true
-region_rect = Rect2(775, 73, 226, 54)
+region_rect = Rect2(3305, 343, 1087, 260)
 region_filter_clip_enabled = true
 
 [node name="FrontWall068" type="Node2D" parent="ApprovedForeground"]
@@ -7067,14 +7138,15 @@ metadata/approved_source_rect = [1109.0, 174.0, 106.0, 70.0]
 metadata/approved_foot_source_y = 244.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall068"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -878.8225)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1109, 174)
+offset = Vector2(5335, 836)
 region_enabled = true
-region_rect = Rect2(1003, 73, 106, 70)
+region_rect = Rect2(4394, 343, 510, 336)
 region_filter_clip_enabled = true
 
 [node name="FrontWall069" type="Node2D" parent="ApprovedForeground"]
@@ -7083,14 +7155,15 @@ metadata/approved_source_rect = [1114.0, 232.0, 4.0, 33.0]
 metadata/approved_foot_source_y = 265.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall069"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -954.45886)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1114, 232)
+offset = Vector2(5359, 1115)
 region_enabled = true
-region_rect = Rect2(1111, 73, 4, 33)
+region_rect = Rect2(4906, 343, 19, 158)
 region_filter_clip_enabled = true
 
 [node name="FrontWall070" type="Node2D" parent="ApprovedForeground"]
@@ -7099,14 +7172,15 @@ metadata/approved_source_rect = [1167.0, 670.0, 8.0, 42.0]
 metadata/approved_foot_source_y = 712.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall070"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -2564.4329)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1167, 670)
+offset = Vector2(5614, 3219)
 region_enabled = true
-region_rect = Rect2(1117, 73, 8, 42)
+region_rect = Rect2(4927, 343, 39, 201)
 region_filter_clip_enabled = true
 
 [node name="FrontWall071" type="Node2D" parent="ApprovedForeground"]
@@ -7115,14 +7189,15 @@ metadata/approved_source_rect = [1246.0, 308.0, 8.0, 43.0]
 metadata/approved_foot_source_y = 351.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall071"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1264.2078)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1246, 308)
+offset = Vector2(5994, 1480)
 region_enabled = true
-region_rect = Rect2(1127, 73, 8, 43)
+region_rect = Rect2(4968, 343, 39, 206)
 region_filter_clip_enabled = true
 
 [node name="FrontWall072" type="Node2D" parent="ApprovedForeground"]
@@ -7131,14 +7206,15 @@ metadata/approved_source_rect = [1304.0, 455.0, 65.0, 40.0]
 metadata/approved_foot_source_y = 495.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall072"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1782.857)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1304, 455)
+offset = Vector2(6273, 2186)
 region_enabled = true
-region_rect = Rect2(1137, 73, 65, 40)
+region_rect = Rect2(5009, 343, 313, 192)
 region_filter_clip_enabled = true
 
 [node name="FrontWall073" type="Node2D" parent="ApprovedForeground"]
@@ -7147,14 +7223,15 @@ metadata/approved_source_rect = [1304.0, 480.0, 9.0, 37.0]
 metadata/approved_foot_source_y = 517.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall073"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1862.0952)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1304, 480)
+offset = Vector2(6273, 2306)
 region_enabled = true
-region_rect = Rect2(1204, 73, 9, 37)
+region_rect = Rect2(5324, 343, 43, 178)
 region_filter_clip_enabled = true
 
 [node name="FrontWall074" type="Node2D" parent="ApprovedForeground"]
@@ -7163,14 +7240,15 @@ metadata/approved_source_rect = [1307.0, 415.0, 7.0, 7.0]
 metadata/approved_foot_source_y = 422.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall074"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1519.9307)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1307, 415)
+offset = Vector2(6288, 1994)
 region_enabled = true
-region_rect = Rect2(1215, 73, 7, 7)
+region_rect = Rect2(5369, 343, 33, 33)
 region_filter_clip_enabled = true
 
 [node name="FrontWall075" type="Node2D" parent="ApprovedForeground"]
@@ -7179,14 +7257,15 @@ metadata/approved_source_rect = [1363.0, 572.0, 6.0, 36.0]
 metadata/approved_foot_source_y = 608.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall075"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -2189.8528)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1363, 572)
+offset = Vector2(6557, 2748)
 region_enabled = true
-region_rect = Rect2(1224, 73, 6, 36)
+region_rect = Rect2(5404, 343, 29, 173)
 region_filter_clip_enabled = true
 
 [node name="FrontWall076" type="Node2D" parent="ApprovedForeground"]
@@ -7195,14 +7274,15 @@ metadata/approved_source_rect = [1369.0, 585.0, 334.0, 51.0]
 metadata/approved_foot_source_y = 627.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall076"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -2258.2856)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1369, 585)
+offset = Vector2(6586, 2810)
 region_enabled = true
-region_rect = Rect2(1232, 73, 334, 51)
+region_rect = Rect2(5435, 343, 1606, 245)
 region_filter_clip_enabled = true
 
 [node name="FrontWall077" type="Node2D" parent="ApprovedForeground"]
@@ -7211,14 +7291,15 @@ metadata/approved_source_rect = [1409.0, 455.0, 8.0, 35.0]
 metadata/approved_foot_source_y = 490.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall077"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1764.8485)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1409, 455)
+offset = Vector2(6778, 2186)
 region_enabled = true
-region_rect = Rect2(1568, 73, 8, 35)
+region_rect = Rect2(7043, 343, 39, 168)
 region_filter_clip_enabled = true
 
 [node name="FrontWall078" type="Node2D" parent="ApprovedForeground"]
@@ -7227,14 +7308,15 @@ metadata/approved_source_rect = [1504.0, 116.0, 4.0, 39.0]
 metadata/approved_foot_source_y = 155.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall078"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -558.2684)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1504, 116)
+offset = Vector2(7235, 558)
 region_enabled = true
-region_rect = Rect2(1578, 73, 4, 39)
+region_rect = Rect2(7084, 343, 19, 187)
 region_filter_clip_enabled = true
 
 [node name="FrontWall079" type="Node2D" parent="ApprovedForeground"]
@@ -7243,14 +7325,15 @@ metadata/approved_source_rect = [1504.0, 188.0, 66.0, 65.0]
 metadata/approved_foot_source_y = 253.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall079"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -911.2381)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1504, 188)
+offset = Vector2(7235, 903)
 region_enabled = true
-region_rect = Rect2(1584, 73, 66, 65)
+region_rect = Rect2(7105, 343, 318, 313)
 region_filter_clip_enabled = true
 
 [node name="FrontWall080" type="Node2D" parent="ApprovedForeground"]
@@ -7259,14 +7342,15 @@ metadata/approved_source_rect = [1507.0, 466.0, 4.0, 35.0]
 metadata/approved_foot_source_y = 501.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall080"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1804.4675)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1507, 466)
+offset = Vector2(7250, 2239)
 region_enabled = true
-region_rect = Rect2(1652, 73, 4, 35)
+region_rect = Rect2(7425, 343, 19, 168)
 region_filter_clip_enabled = true
 
 [node name="FrontWall081" type="Node2D" parent="ApprovedForeground"]
@@ -7275,14 +7359,15 @@ metadata/approved_source_rect = [1510.0, 494.0, 4.0, 32.0]
 metadata/approved_foot_source_y = 526.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall081"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1894.5107)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1510, 494)
+offset = Vector2(7264, 2373)
 region_enabled = true
-region_rect = Rect2(1658, 73, 4, 32)
+region_rect = Rect2(7446, 343, 19, 154)
 region_filter_clip_enabled = true
 
 [node name="FrontWall082" type="Node2D" parent="ApprovedForeground"]
@@ -7291,14 +7376,15 @@ metadata/approved_source_rect = [1511.0, 378.0, 5.0, 40.0]
 metadata/approved_foot_source_y = 418.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall082"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1505.5238)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1511, 378)
+offset = Vector2(7269, 1816)
 region_enabled = true
-region_rect = Rect2(1664, 73, 5, 40)
+region_rect = Rect2(7467, 343, 24, 192)
 region_filter_clip_enabled = true
 
 [node name="FrontWall083" type="Node2D" parent="ApprovedForeground"]
@@ -7307,14 +7393,15 @@ metadata/approved_source_rect = [1549.0, 502.0, 8.0, 41.0]
 metadata/approved_foot_source_y = 543.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall083"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1955.7402)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1549, 502)
+offset = Vector2(7452, 2412)
 region_enabled = true
-region_rect = Rect2(1671, 73, 8, 41)
+region_rect = Rect2(7493, 343, 38, 197)
 region_filter_clip_enabled = true
 
 [node name="FrontWall084" type="Node2D" parent="ApprovedForeground"]
@@ -7323,14 +7410,15 @@ metadata/approved_source_rect = [1550.0, 343.0, 56.0, 61.0]
 metadata/approved_foot_source_y = 404.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall084"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1455.0995)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1550, 343)
+offset = Vector2(7457, 1648)
 region_enabled = true
-region_rect = Rect2(0, 145, 56, 61)
+region_rect = Rect2(7533, 343, 269, 293)
 region_filter_clip_enabled = true
 
 [node name="FrontWall085" type="Node2D" parent="ApprovedForeground"]
@@ -7339,14 +7427,15 @@ metadata/approved_source_rect = [1551.0, 465.0, 9.0, 38.0]
 metadata/approved_foot_source_y = 503.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall085"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1811.671)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1551, 465)
+offset = Vector2(7461, 2234)
 region_enabled = true
-region_rect = Rect2(58, 145, 9, 38)
+region_rect = Rect2(7804, 343, 44, 182)
 region_filter_clip_enabled = true
 
 [node name="FrontWall086" type="Node2D" parent="ApprovedForeground"]
@@ -7355,14 +7444,15 @@ metadata/approved_source_rect = [1564.0, 297.0, 5.0, 32.0]
 metadata/approved_foot_source_y = 329.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall086"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1184.9697)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1564, 297)
+offset = Vector2(7524, 1427)
 region_enabled = true
-region_rect = Rect2(69, 145, 5, 32)
+region_rect = Rect2(7850, 343, 24, 154)
 region_filter_clip_enabled = true
 
 [node name="FrontWall087" type="Node2D" parent="ApprovedForeground"]
@@ -7371,14 +7461,15 @@ metadata/approved_source_rect = [1603.0, 211.0, 13.0, 36.0]
 metadata/approved_foot_source_y = 247.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall087"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -889.6277)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1603, 211)
+offset = Vector2(7711, 1014)
 region_enabled = true
-region_rect = Rect2(76, 145, 13, 36)
+region_rect = Rect2(7876, 343, 63, 173)
 region_filter_clip_enabled = true
 
 [node name="FrontWall088" type="Node2D" parent="ApprovedForeground"]
@@ -7387,14 +7478,15 @@ metadata/approved_source_rect = [1606.0, 294.0, 11.0, 37.0]
 metadata/approved_foot_source_y = 331.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall088"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1192.1731)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1606, 294)
+offset = Vector2(7726, 1413)
 region_enabled = true
-region_rect = Rect2(91, 145, 11, 37)
+region_rect = Rect2(7941, 343, 53, 177)
 region_filter_clip_enabled = true
 
 [node name="FrontWall089" type="Node2D" parent="ApprovedForeground"]
@@ -7403,14 +7495,15 @@ metadata/approved_source_rect = [1606.0, 321.0, 5.0, 36.0]
 metadata/approved_foot_source_y = 357.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall089"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -1285.8181)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1606, 321)
+offset = Vector2(7726, 1542)
 region_enabled = true
-region_rect = Rect2(104, 145, 5, 36)
+region_rect = Rect2(7996, 343, 24, 173)
 region_filter_clip_enabled = true
 
 [node name="FrontWall090" type="Node2D" parent="ApprovedForeground"]
@@ -7419,14 +7512,15 @@ metadata/approved_source_rect = [1616.0, 194.0, 41.0, 40.0]
 metadata/approved_foot_source_y = 234.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall090"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -842.8052)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1616, 194)
+offset = Vector2(7774, 932)
 region_enabled = true
-region_rect = Rect2(111, 145, 41, 40)
+region_rect = Rect2(0, 681, 197, 192)
 region_filter_clip_enabled = true
 
 [node name="FrontWall091" type="Node2D" parent="ApprovedForeground"]
@@ -7435,12 +7529,13 @@ metadata/approved_source_rect = [1657.0, 179.0, 12.0, 39.0]
 metadata/approved_foot_source_y = 218.0
 
 [node name="ExactPixels" type="Sprite2D" parent="ApprovedForeground/FrontWall091"]
+material = ExtResource("8_detail_palette")
 texture_filter = 1
 position = Vector2(0, -785.1775)
-scale = Vector2(3.6077511, 3.6017315)
+scale = Vector2(0.75, 0.7498873366)
 texture = ExtResource("7_6bcvv")
 centered = false
-offset = Vector2(1657, 179)
+offset = Vector2(7971, 860)
 region_enabled = true
-region_rect = Rect2(154, 145, 12, 39)
+region_rect = Rect2(199, 681, 58, 188)
 region_filter_clip_enabled = true

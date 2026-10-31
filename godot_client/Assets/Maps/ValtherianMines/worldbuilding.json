@@ -9420,64 +9420,104 @@
   ],
   "assets": [
     {
-      "texture": "res://Assets/MapTiles/OreNodes/blackstone-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/blackstone-full-south.png",
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
+        64,
+        96
+      ],
+      "world_pixels_per_source_pixel": 0.75,
+      "world_anchor": [
         48,
         72
       ],
-      "world_pixels_per_source_pixel": 1
+      "world_canvas_size": [
+        96,
+        96
+      ]
     },
     {
-      "texture": "res://Assets/MapTiles/OreNodes/mithril-ore-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/mithril-ore-full-south.png",
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
+        64,
+        96
+      ],
+      "world_pixels_per_source_pixel": 0.75,
+      "world_anchor": [
         48,
         72
       ],
-      "world_pixels_per_source_pixel": 1
+      "world_canvas_size": [
+        96,
+        96
+      ]
     },
     {
-      "texture": "res://Assets/MapTiles/OreNodes/adamantite-ore-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/adamantite-ore-full-south.png",
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
+        64,
+        96
+      ],
+      "world_pixels_per_source_pixel": 0.75,
+      "world_anchor": [
         48,
         72
       ],
-      "world_pixels_per_source_pixel": 1
+      "world_canvas_size": [
+        96,
+        96
+      ]
     },
     {
-      "texture": "res://Assets/MapTiles/OreNodes/coal-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/coal-full-south.png",
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
+        64,
+        96
+      ],
+      "world_pixels_per_source_pixel": 0.75,
+      "world_anchor": [
         48,
         72
       ],
-      "world_pixels_per_source_pixel": 1
+      "world_canvas_size": [
+        96,
+        96
+      ]
     },
     {
-      "texture": "res://Assets/MapTiles/OreNodes/iron-ore-full-south.png",
+      "texture": "res://Assets/MapTiles/OreNodes/Detail128/iron-ore-full-south.png",
       "native_size": [
-        96,
-        96
+        128,
+        128
       ],
       "anchor": [
+        64,
+        96
+      ],
+      "world_pixels_per_source_pixel": 0.75,
+      "world_anchor": [
         48,
         72
       ],
-      "world_pixels_per_source_pixel": 1
+      "world_canvas_size": [
+        96,
+        96
+      ]
     }
   ]
 }
