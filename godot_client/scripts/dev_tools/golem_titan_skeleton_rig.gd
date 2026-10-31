@@ -1,7 +1,8 @@
 extends Node2D
 ## Review-only native 256px skin, never registered in gameplay or a catalog.
 ## Origin is the PNG's TOP LEFT. Place this node at world_anchor - FOOT_ANCHOR.
-## One unchanged texture and one shared-vertex Polygon2D; no image cutouts.
+## One unchanged texture and one Polygon2D; no image cutouts. Touching hand
+## and restraint surfaces have separate vertices so neither pins the other.
 ## Bone coordinates and amplitudes are native pixels, before camera zoom.
 
 const SOURCE_TEXTURE := "res://Assets/Characters/GolemTitanBoundCandidate/south.png"
@@ -9,8 +10,8 @@ const NATIVE_SIZE := Vector2i(256, 256)
 const FOOT_ANCHOR := Vector2(128, 240)
 const CYCLE_SECONDS := 2.4
 const MESH_STEP := 4
-# Anatomical closed-fist surface, including its thumb. Character-left mirrors
-# this footprint two pixels lower. The whole fist must share one transform;
+# Anatomical closed-fist surfaces, including their distinct thumb silhouettes.
+# Each whole fist must share one transform;
 # only the wrist transition may blend. These are weights, not texture cutouts.
 const RIGHT_FIST_POINTS := [
 	Vector2(18, 177), Vector2(31, 173), Vector2(35, 169), Vector2(47, 169),
@@ -19,6 +20,14 @@ const RIGHT_FIST_POINTS := [
 	Vector2(56, 201), Vector2(49, 205),
 	Vector2(33, 206), Vector2(23, 202), Vector2(18, 197), Vector2(15, 188),
 	Vector2(16, 182),
+]
+const LEFT_FIST_POINTS := [
+	Vector2(187, 169), Vector2(195, 169), Vector2(202, 173), Vector2(210, 174),
+	Vector2(218, 175), Vector2(227, 180), Vector2(234, 184), Vector2(239, 189),
+	Vector2(240, 196), Vector2(237, 202), Vector2(230, 207), Vector2(223, 211),
+	Vector2(213, 210), Vector2(206, 208), Vector2(198, 205), Vector2(193, 201),
+	Vector2(189, 197), Vector2(184, 194), Vector2(182, 190), Vector2(181, 183),
+	Vector2(181, 179), Vector2(184, 174),
 ]
 const PINNED_RECTS := [
 	Rect2(80, 153, 96, 89),
@@ -64,6 +73,9 @@ var _joint_positions: Dictionary = {}
 var _source_image: Image
 var _built := false
 var _right_fist_outline := PackedVector2Array(RIGHT_FIST_POINTS)
+var _left_fist_outline := PackedVector2Array(LEFT_FIST_POINTS)
+var _vertex_owners: Dictionary = {}
+var _left_hand_vertices: Dictionary = {}
 var _debug_skeleton := false
 var _debug_overlay: BoneOverlay
 
@@ -137,6 +149,7 @@ func _build_skin() -> void:
 	skin.skeleton = skin.get_path_to(skeleton)
 	var vertices := PackedVector2Array()
 	var triangles: Array[PackedInt32Array] = []
+	var binding_triangles: Array[PackedInt32Array] = []
 	var vertex_indexes: Dictionary = {}
 	var columns := NATIVE_SIZE.x / MESH_STEP + 1
 	var rows := NATIVE_SIZE.y / MESH_STEP + 1
@@ -151,12 +164,14 @@ func _build_skin() -> void:
 				for dy in MESH_STEP:
 					for dx in MESH_STEP:
 						var p := Vector2(x + dx, y + dy)
-						var fa := _mesh_vertex(p, vertices, vertex_indexes)
-						var fb := _mesh_vertex(p + Vector2(1, 0), vertices, vertex_indexes)
-						var fc := _mesh_vertex(p + Vector2(0, 1), vertices, vertex_indexes)
-						var fd := _mesh_vertex(p + Vector2(1, 1), vertices, vertex_indexes)
-						triangles.append(PackedInt32Array([fa, fb, fd]))
-						triangles.append(PackedInt32Array([fa, fd, fc]))
+						var owner := _right_image_cell_owner(Vector2i(p)) if p.x >= 180.0 else ""
+						var fa := _mesh_vertex(p, vertices, vertex_indexes, owner)
+						var fb := _mesh_vertex(p + Vector2(1, 0), vertices, vertex_indexes, owner)
+						var fc := _mesh_vertex(p + Vector2(0, 1), vertices, vertex_indexes, owner)
+						var fd := _mesh_vertex(p + Vector2(1, 1), vertices, vertex_indexes, owner)
+						var faces := binding_triangles if owner == "bindings" else triangles
+						faces.append(PackedInt32Array([fa, fb, fd]))
+						faces.append(PackedInt32Array([fa, fd, fc]))
 				continue
 			# Conforming fans share every refined edge vertex. This avoids cracks
 			# between the 1px hand mesh and the unchanged 4px body mesh.
@@ -188,6 +203,9 @@ func _build_skin() -> void:
 				triangles.append(PackedInt32Array([b, d, c]))
 	skin.polygon = vertices
 	skin.uv = vertices
+	# The fixed magical surface can occlude the moving hand at their contact.
+	# Its position and texels remain fixed rather than dragging the thumb.
+	triangles.append_array(binding_triangles)
 	skin.polygons = triangles
 	var per_bone: Dictionary = {}
 	for bone_name: String in bones:
@@ -195,7 +213,8 @@ func _build_skin() -> void:
 		weights.resize(vertices.size())
 		per_bone[bone_name] = weights
 	for index in vertices.size():
-		var local_weights := _weights_at(vertices[index])
+		var owner: String = _vertex_owners.get(index, "")
+		var local_weights := {owner: 1.0} if not owner.is_empty() else _weights_at(vertices[index], vertices[index].x < 128.0)
 		for bone_name: String in local_weights:
 			per_bone[bone_name][index] = local_weights[bone_name]
 	for bone_name: String in bones:
@@ -203,10 +222,10 @@ func _build_skin() -> void:
 		skin.add_bone(skeleton.get_path_to(bones[bone_name]), per_bone[bone_name])
 
 
-func _weights_at(point: Vector2) -> Dictionary:
+func _weights_at(point: Vector2, use_hand_mask: bool = true) -> Dictionary:
 	# Fist ownership takes precedence over broad leg/binding protections. The
 	# previous rules caught the inner thumbs while the other fingers moved.
-	var hand_bone := _hand_bone_at(point)
+	var hand_bone := _hand_bone_at(point) if use_hand_mask else ""
 	if not hand_bone.is_empty():
 		return {hand_bone: 1.0}
 	# Bind the glyphs, blue lower restraints and the floor to a separate fixed bone.
@@ -259,11 +278,16 @@ func _weights_at(point: Vector2) -> Dictionary:
 	return result
 
 
-func _mesh_vertex(point: Vector2, vertices: PackedVector2Array, indexes: Dictionary) -> int:
-	if not indexes.has(point):
-		indexes[point] = vertices.size()
+func _mesh_vertex(point: Vector2, vertices: PackedVector2Array, indexes: Dictionary, owner: String = "") -> int:
+	var key: Variant = point if owner.is_empty() else Vector3(point.x, point.y, 1.0 if owner == "fist_left" else 2.0)
+	if not indexes.has(key):
+		indexes[key] = vertices.size()
+		if not owner.is_empty():
+			_vertex_owners[vertices.size()] = owner
+		if owner == "fist_left":
+			_left_hand_vertices[point] = vertices.size()
 		vertices.append(point)
-	return int(indexes[point])
+	return int(indexes[key])
 
 
 func _fine_hand_cell(x: int, y: int) -> bool:
@@ -271,19 +295,43 @@ func _fine_hand_cell(x: int, y: int) -> bool:
 
 
 func _hand_bone_at(point: Vector2) -> String:
-	var local := point if point.x < 128.0 else Vector2(256.0 - point.x, point.y - 2.0)
-	if not Rect2(13, 160, 62, 49).has_point(local):
+	var bounds := Rect2(13, 160, 62, 49) if point.x < 128.0 else Rect2(178, 166, 66, 48)
+	if not bounds.has_point(point):
 		return ""
-	var inside := Geometry2D.is_point_in_polygon(local, _right_fist_outline)
+	var outline := _right_fist_outline if point.x < 128.0 else _left_fist_outline
+	var inside := Geometry2D.is_point_in_polygon(point, outline)
 	if not inside:
 		# Cover the full triangles sampling an edge texel, while the nearby
 		# separate blue restraint retains its original fixed supports.
-		for index in _right_fist_outline.size():
-			var nearest := Geometry2D.get_closest_point_to_segment(local, _right_fist_outline[index], _right_fist_outline[(index + 1) % _right_fist_outline.size()])
-			if nearest.distance_to(local) <= 1.5:
+		for index in outline.size():
+			var nearest := Geometry2D.get_closest_point_to_segment(point, outline[index], outline[(index + 1) % outline.size()])
+			if nearest.distance_to(point) <= 1.5:
 				inside = true
 				break
 	return ("fist_right" if point.x < 128.0 else "fist_left") if inside else ""
+
+
+func _right_image_cell_owner(pixel: Vector2i) -> String:
+	var color := _source_image.get_pixelv(pixel)
+	var binding_zone := pixel.x <= 207 and pixel.y >= 166
+	var cyan := color.g > color.r + 20.0 / 255.0 and color.b > color.r + 20.0 / 255.0
+	var icy_white := color.g > 0.66 and color.b > 0.72 and color.b >= color.r * 0.98
+	if binding_zone and color.a > 0.1 and (cyan or icy_white):
+		return "bindings"
+	var center := Vector2(pixel) + Vector2(0.5, 0.5)
+	if Geometry2D.is_point_in_polygon(center, _left_fist_outline):
+		return "fist_left"
+	# Include the outline texel when the authored contour crosses its square,
+	# rather than leaving a black fingertip pixel attached to the static mask.
+	for index in _left_fist_outline.size():
+		var nearest := Geometry2D.get_closest_point_to_segment(center, _left_fist_outline[index], _left_fist_outline[(index + 1) % _left_fist_outline.size()])
+		if center.distance_to(nearest) <= 0.75:
+			return "fist_left"
+	return ""
+
+
+func get_hand_vertex_index(point: Vector2, bone_name: String) -> int:
+	return int(_left_hand_vertices.get(point, -1)) if bone_name == "fist_left" else skin.polygon.find(point)
 
 
 func _near_lower_binding(point: Vector2) -> bool:
@@ -400,20 +448,22 @@ func get_rig_report() -> Dictionary:
 		maximum_error = maxf(maximum_error, absf(1.0 - total))
 		# A thumb next to a restraint belongs to its fist, not the old broad
 		# restraint-support heuristic. Count only genuinely fixed ownership.
-		if _hand_bone_at(vertices[vertex_index]).is_empty() and (_is_protected(vertices[vertex_index]) or _near_lower_binding(vertices[vertex_index]) or vertices[vertex_index].y >= 204.0):
+		var owner: String = _vertex_owners.get(vertex_index, "")
+		if owner == "bindings" or (owner != "fist_left" and _hand_bone_at(vertices[vertex_index]).is_empty() and (_is_protected(vertices[vertex_index]) or _near_lower_binding(vertices[vertex_index]) or vertices[vertex_index].y >= 204.0)):
 			protected_vertices += 1
 			maximum_pin_delta = maxf(maximum_pin_delta, vertices[vertex_index].distance_to(deformed[vertex_index]))
 	var hierarchy: Dictionary = {}
 	for definition: Array in JOINTS:
 		hierarchy[definition[0]] = definition[1]
 	return {
-		"implementation": "Godot Skeleton2D + Bone2D + one continuous weighted Polygon2D",
+		"implementation": "Godot Skeleton2D + Bone2D + one weighted Polygon2D with anatomical hand/restraint seam",
 		"native_size": [256, 256], "origin": "source_top_left", "foot_anchor": [128, 240],
 		"cycle_seconds": CYCLE_SECONDS, "automatic_playback": false,
 		"bone_count": bones.size(), "bone_names": bones.keys(), "hierarchy": hierarchy,
 		"vertex_count": vertices.size(), "triangle_count": skin.polygons.size(),
 		"mesh_step_native_pixels": MESH_STEP, "maximum_influences_per_vertex": 4,
 		"hand_mesh_step_native_pixels": 1, "closed_fists_have_rigid_skin_weights": true,
+		"right_image_thumb_has_independent_surface_vertices": true,
 		"maximum_weight_normalization_error": maximum_error,
 		"protected_vertex_count": protected_vertices,
 		"current_maximum_protected_vertex_displacement": maximum_pin_delta,

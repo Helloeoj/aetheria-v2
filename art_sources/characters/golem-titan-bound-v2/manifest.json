@@ -45,17 +45,17 @@
   },
   "status": {
     "generation": "completed: native weighted skeletal idle; approved ground slam retained byte-for-byte",
-    "automatic_checks": "Passed hand rigidity regression, conforming mesh topology, native palette/alpha and fixed bindings. All48 direct4x map frames unchanged outside hand neighborhoods; WebP frames and timings exact.",
-    "visual_review": "All48 current actual4x hand poses inspected; animated close-up supplied for user motion review. Skeletal idle artwork approval pending.",
+    "automatic_checks": "Passed actual right-thumb regression, UV coverage, native source and exact loop/sheet checks. All48 native/actual4x frames outside right-hand area unchanged, including approved left hand. All2045 binding pixels fixed.",
+    "visual_review": "All48 current actual4x right-hand poses inspected; wider animated close-up supplied for user motion review.",
     "real_map_player_review": "105 fresh actual GPU captures with zero failures for the hand repair; actual map/player retained.",
     "godot_4x_review": "directweightedmesh reviewedbesidethe unchanged player",
     "production_installation": "not_performed",
-    "artwork_approval": "slam approved; skeletal idle pending user review"
+    "artwork_approval": "Slam and screen-left hand motion approved; corrected screen-right hand motion pending."
   },
   "clips": {
     "idle": {
       "direction": "south",
-      "mode": "godot_skeleton2d_continuous_weighted_mesh",
+      "mode": "godot_skeleton2d_weighted_mesh",
       "frame_count": 48,
       "durations_ms": [
         50,
@@ -161,7 +161,11 @@
       "rig_script_repo_relative": "godot_client/scripts/dev_tools/golem_titan_skeleton_rig.gd",
       "bone_count": 25,
       "user_preference": "subtle chest and arm movement with a real articulated skeleton",
-      "user_approval": "pending"
+      "user_approval": "pending",
+      "component_approval": {
+        "screen_left_hand": "approved and preserved",
+        "screen_right_hand": "corrected; user motion review pending"
+      }
     },
     "shockwave_slam": {
       "direction": "south",

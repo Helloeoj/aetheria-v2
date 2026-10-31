@@ -3,7 +3,7 @@ extends SceneTree
 const RIG := preload("res://scripts/dev_tools/golem_titan_skeleton_rig.gd")
 const HAND_POINTS := {
 	"fist_right": [Vector2(64, 176), Vector2(64, 184), Vector2(36, 184), Vector2(44, 192), Vector2(40, 200)],
-	"fist_left": [Vector2(192, 176), Vector2(192, 184), Vector2(220, 184), Vector2(212, 192), Vector2(216, 200)],
+	"fist_left": [Vector2(192, 176), Vector2(192, 184), Vector2(220, 184), Vector2(212, 192), Vector2(216, 200), Vector2(182, 180), Vector2(184, 188), Vector2(186, 184)],
 }
 
 func _initialize() -> void:
@@ -14,11 +14,18 @@ func _run() -> void:
 	root.add_child(rig)
 	await process_frame
 	var failures: Array[String] = []
-	# Refinement must share edges with the existing body mesh, without holes
-	# or duplicate faces at the transition to the denser hand neighborhoods.
+	# The rest UV surface must cover the source exactly. Hand/restraint seams
+	# intentionally duplicate vertex indexes at the same source position.
 	var edge_counts: Dictionary = {}
 	var mesh_area := 0.0
 	var mesh_vertices: PackedVector2Array = rig.skin.polygon
+	var position_indexes: Dictionary = {}
+	var canonical := PackedInt32Array()
+	for index in mesh_vertices.size():
+		var point: Vector2 = mesh_vertices[index]
+		if not position_indexes.has(point):
+			position_indexes[point] = index
+		canonical.append(int(position_indexes[point]))
 	for triangle: PackedInt32Array in rig.skin.polygons:
 		var a: Vector2 = mesh_vertices[triangle[0]]
 		var b: Vector2 = mesh_vertices[triangle[1]]
@@ -28,8 +35,8 @@ func _run() -> void:
 			failures.append("Degenerate or reversed rest triangle.")
 		mesh_area += area
 		for edge in 3:
-			var first := triangle[edge]
-			var second := triangle[(edge + 1) % 3]
+			var first := canonical[triangle[edge]]
+			var second := canonical[triangle[(edge + 1) % 3]]
 			var key := Vector2i(mini(first, second), maxi(first, second))
 			edge_counts[key] = int(edge_counts.get(key, 0)) + 1
 	for edge: Vector2i in edge_counts:
@@ -47,19 +54,18 @@ func _run() -> void:
 			var weights: Dictionary = rig.call("_weights_at", point)
 			if weights.size() != 1 or not is_equal_approx(float(weights.get(name, 0.0)), 1.0):
 				failures.append("%s at %s is not wholly owned by its hand: %s" % [name, point, weights])
-	var vertices: PackedVector2Array = rig.skin.polygon
 	var maximum_shape_error := 0.0
 	for index in 48:
 		rig.sample_at_seconds(2.4 * float(index) / 48.0)
 		var deformed: PackedVector2Array = rig.get_deformed_vertices()
 		for name: String in HAND_POINTS:
 			var reference: Vector2 = HAND_POINTS[name][2]
-			var reference_index := vertices.find(reference)
+			var reference_index: int = rig.get_hand_vertex_index(reference, name)
 			if reference_index < 0:
 				failures.append("Missing regression reference vertex: " + str(reference))
 				continue
 			for point: Vector2 in HAND_POINTS[name]:
-				var point_index := vertices.find(point)
+				var point_index: int = rig.get_hand_vertex_index(point, name)
 				if point_index < 0:
 					failures.append("Missing hand vertex: " + str(point))
 					continue

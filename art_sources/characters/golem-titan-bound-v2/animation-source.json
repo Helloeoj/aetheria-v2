@@ -8,10 +8,10 @@
     "reason": "Use the same complete neutral frame for idle and slam start/recovery; eliminate the mismatched-source loop edge."
   },
   "idle": {
-    "mode": "godot_skeleton2d_continuous_weighted_mesh",
+    "mode": "godot_skeleton2d_weighted_mesh",
     "user_preference": "Subtle chest and arm movement using an articulated skeleton",
     "rig_script_repo_relative": "godot_client/scripts/dev_tools/golem_titan_skeleton_rig.gd",
-    "rig_script_sha256": "daf45b91bc0b1c2a56d1e8d2a90a6832dc44b33348b879a1a862b4f00f4d3bdd",
+    "rig_script_sha256": "0f7b0b6e9807231617b15e78cba74033f4193e57f2f7059517a77636756576d6",
     "source_texture_repo_relative": "godot_client/Assets/Characters/GolemTitanBoundCandidate/south.png",
     "source_texture_sha256": "5c861122c97ce009979069befa2b3f15fc6f006a41d2da5fe7d813c2137dda5b",
     "source_neutral": "south.png",
@@ -43,10 +43,10 @@
       "wrist_left": "forearm_left",
       "wrist_right": "forearm_right"
     },
-    "vertex_count": 11490,
+    "vertex_count": 11931,
     "triangle_count": 22722,
     "maximum_influences_per_vertex": 4,
-    "weights": "Normalized local joint weights across one continuous mesh; each closed fist, including its thumb, has one rigid hand-bone influence. The transition blends at the wrist. Fixed leg and magical-binding ownership stays separate.",
+    "weights": "One whole source texture on a weighted mesh. Distinct closed-fist contours own their complete thumbs. The right-image hand and adjacent fixed magic use separate UV surface vertices; their cells retain independent bone weights. Pose tracks and approved left-hand motion are unchanged.",
     "cycle_seconds": 2.4,
     "frame_count": 48,
     "durations_ms": [
@@ -164,7 +164,35 @@
       "actual_map_comparison": "All48 actual4x frames are pixel-identical to the previous idle outside the two hand neighborhoods.",
       "binding_pixels_checked": 2045,
       "binding_pixel_changes": 0,
-      "artwork_approval": "pending user motion review"
+      "artwork_approval": "pending user motion review",
+      "user_followup": "Left image approved; the mirrored right-image thumb contour still missed three fixed thumb vertices."
+    },
+    "right_image_hand_repair": {
+      "date": "2026-10-31",
+      "previous_source_commit": "652bdf797e8795278b427302df8e1a5071022ef4",
+      "reason": "The right-image thumb extends inward beyond the mirrored selection, touches the fixed binding, and retained three stationary vertices.",
+      "actual_thumb_regression_points_native": [
+        [
+          182,
+          180
+        ],
+        [
+          184,
+          188
+        ],
+        [
+          186,
+          184
+        ]
+      ],
+      "correction": "Trace its actual asymmetric silhouette; give the fist and touching binding separate surface vertices using the unchanged whole texture. Retain the complete fist outline with its hand.",
+      "before_distance_error_native_px": 1.54796982,
+      "after_max_distance_error_native_px": 2.289e-05,
+      "left_hand_motion": "user-approved and pixel-identical in all48 native/actual4x poses",
+      "other_animation": "all pixels outside the right-hand neighborhood unchanged in all48 native/actual4x poses",
+      "binding_pixels_checked": 2045,
+      "binding_changes": 0,
+      "right_hand_artwork_approval": "pending user motion review"
     }
   },
   "slam": {
