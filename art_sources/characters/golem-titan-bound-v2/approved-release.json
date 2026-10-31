@@ -1,0 +1,519 @@
+{
+  "schema_version": 1,
+  "release_id": "golem-titan-bound-final-2026-10-31",
+  "status": "approved_and_finalized",
+  "approval": {
+    "status": "approved",
+    "date": "2026-10-31",
+    "basis": "User: beautiful. finalize thise",
+    "art_revision_commit": "95abdca9e2842e33e88d56d8cfc12dc7a91da1cc",
+    "scope": "Final skeletal idle, both corrected hands, crown/red eyes/leg bindings, and grounded slam. Source animation release; world placement and boss mechanics remain separate."
+  },
+  "native_canvas": [
+    256,
+    256
+  ],
+  "foot_anchor": [
+    128,
+    240
+  ],
+  "world_pixels_per_source_pixel": 1,
+  "clips": {
+    "idle": {
+      "frame_count": 48,
+      "cycle_ms": 2400,
+      "approval": "approved"
+    },
+    "shockwave_slam": {
+      "frame_count": 18,
+      "cycle_ms": 2310,
+      "approval": "approved"
+    }
+  },
+  "live_idle_rig": "godot_client/scripts/dev_tools/golem_titan_skeleton_rig.gd",
+  "slam_contact_frame": 9,
+  "slam_contact_start_ms": 1020,
+  "files": [
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/animation-source.json",
+      "bytes": 27371,
+      "sha256": "b07e789935cc9deb17c9d4744c6cb7118a4813126b49ca7b460731f9405e4712"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/final-export.png",
+      "bytes": 553828,
+      "sha256": "ed3b9a4f31a8f73e06c388825c8a24f0c34a6a5373c2d5f3681d8167b530a7bf"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/00.png",
+      "bytes": 70252,
+      "sha256": "d9bd176d9028b03eb387ad29627178095e4c970e506da1184cc81f7ca863028b"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/01.png",
+      "bytes": 70252,
+      "sha256": "d9bd176d9028b03eb387ad29627178095e4c970e506da1184cc81f7ca863028b"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/02.png",
+      "bytes": 70252,
+      "sha256": "d9bd176d9028b03eb387ad29627178095e4c970e506da1184cc81f7ca863028b"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/03.png",
+      "bytes": 70406,
+      "sha256": "ae3c1b8c924b3f7f88dd2a5113ece41619f7792f73883efdb50c0c1a246b8cb4"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/04.png",
+      "bytes": 70983,
+      "sha256": "5e465b77b7c4f19974f20736762c037461d7348f18cf655ca0d7b2580634af5e"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/05.png",
+      "bytes": 70398,
+      "sha256": "1c6491fad42825e646c30b3853e06e3bf8f6d22af084416c5d0fad693e89307c"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/06.png",
+      "bytes": 70624,
+      "sha256": "5d8d675662fc353fc7dfec468d39351bc5cc6b57273faa02d3ae071820ec26d8"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/07.png",
+      "bytes": 70190,
+      "sha256": "4d0b0648e564e8c56891ba96d9d6e1232abf7a5debe5e9e85d4fd846dfaf874f"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/08.png",
+      "bytes": 70161,
+      "sha256": "59d709a33a41fde9e70d3c5faa227d1c69e9c6c0434fdc12010904f07c13b99e"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/09.png",
+      "bytes": 70300,
+      "sha256": "adbdf476b6f97294e97f019ff7854dc2915d97a5ac2ad8eae353bab9c870495e"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/10.png",
+      "bytes": 70489,
+      "sha256": "d2ac52936e58b14c58e678bd0666ec885a874a05cc9d3bf3ed746da7d0b2e91b"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/11.png",
+      "bytes": 70819,
+      "sha256": "cb5d6e215a48855ad978800de71903920dac69467b196e31110a4963860721c3"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/12.png",
+      "bytes": 71085,
+      "sha256": "9b1773daf6f651cc0fe15b553b81aebe6fd49ca0a0cde1f0da055cca3272027e"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/13.png",
+      "bytes": 70635,
+      "sha256": "dc9062e07d25b70526ac1caaf041af40c3cd80992dd0f01bd3c7daafda669215"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/14.png",
+      "bytes": 70471,
+      "sha256": "45e776bcb0641bfe388d3e2b048f4e35c978be5c1957b84e51eeec9968c3f0f8"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/15.png",
+      "bytes": 70347,
+      "sha256": "2091c93b0a7251365549f417eb774ddafd55b99b36faec5a20d9a8c5b6c313b2"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/16.png",
+      "bytes": 70800,
+      "sha256": "4d28ec7b5a10e1009037fb0756a7644d4b17a45e2bd2d8248107f209f4bf849f"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/17.png",
+      "bytes": 70596,
+      "sha256": "32dc15aa8868c647f1de0f36827b36dcc245c8d7c6239a612d737a6bd47f5cb5"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/18.png",
+      "bytes": 70621,
+      "sha256": "8f297ab0df0d83bd262581ad032ff83b3b9b575f260958da2baaa3a38ad07f1d"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/19.png",
+      "bytes": 70480,
+      "sha256": "e4b48dea56a208849abcb167bcf0f7c6ccbc4e52c2e0f43829c3908c76618c0c"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/20.png",
+      "bytes": 70250,
+      "sha256": "2669f2fa1e964bdf7c73f25f4c961ae833fba0c55524a3abddbe8cddda4a1ace"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/21.png",
+      "bytes": 70316,
+      "sha256": "b5356ff1bc08a79b1375aa3b88cc937d28f17eb2ffae3aa4cf0ed93d598f19cc"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/22.png",
+      "bytes": 70593,
+      "sha256": "365ee681f390839ac5a0e61d1c24225b6f68755ee32509179fa9f8b9fe543af2"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/23.png",
+      "bytes": 70537,
+      "sha256": "ffde94194e356e3e47dbee7540c973330e3f82afaf2e1fbf2fe100f953242f63"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/24.png",
+      "bytes": 70527,
+      "sha256": "7a2e95660d11a9e489037b90f7cceacff69af6853dd1078102fecb8526417cb2"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/25.png",
+      "bytes": 70397,
+      "sha256": "c8a2a25b3aad57e91e00e754ff11a34ee83e2dae979663a3dee37f7b5bed8aef"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/26.png",
+      "bytes": 70440,
+      "sha256": "c65d2963e6d42dee94b8aff734a9b7c06f227ea9b66ebabe55ae22989b5cf80a"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/27.png",
+      "bytes": 70445,
+      "sha256": "a6d8ad5cf4e48cd0bbc0da8d09e2ba76f9fc7777b5b600266e40a81c64b70f67"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/28.png",
+      "bytes": 70674,
+      "sha256": "c58c1d1dacba9dbdd88d80da8a3a03900f029c3eb2b32e839fb7539c1b42d2e7"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/29.png",
+      "bytes": 70504,
+      "sha256": "ea2849779068ad9ea558c93737d0e9a3d4b5d84e9e116387ddc23dce7f9e23a3"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/30.png",
+      "bytes": 70500,
+      "sha256": "4c5792e45a0a7d0a4bc31efc6a50592b98fd7efff83555b03fcbf00757f37f73"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/31.png",
+      "bytes": 70476,
+      "sha256": "d67ffeb2cffff0edc74c391d64af3da8187de3f618889e342d7ff94107231fc6"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/32.png",
+      "bytes": 70348,
+      "sha256": "54b882d26a2ed5ca8b872b0acc2476d7f0e1accaa7dc765829048d6bd32049b4"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/33.png",
+      "bytes": 70252,
+      "sha256": "b7782e877281c8cba014c8da67fd7e11bd123e55dff3a207b2127ec1ed29d4bd"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/34.png",
+      "bytes": 70197,
+      "sha256": "4b8edf59c908b68eea6fb01092517af7cde532b48cb6179d817ac86c0ecfcd13"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/35.png",
+      "bytes": 70449,
+      "sha256": "f44e74dd0fcf17fcaccad12014043cafaadbcd0f590adf2cfc0627fd45d68f51"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/36.png",
+      "bytes": 70884,
+      "sha256": "4af57f15c7170b8bcd4fb4c3048282184c7324018da17d98d8b0314188e976e7"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/37.png",
+      "bytes": 70516,
+      "sha256": "1ae9b37c8ec363152af6838c590d33a101a22d7361438b70587dcef4c9eb7c74"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/38.png",
+      "bytes": 70478,
+      "sha256": "b0346817ab1dc73e5b5e291a04fee4e7776b5ac473d9684a2edd06d4de935f52"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/39.png",
+      "bytes": 70575,
+      "sha256": "db4101d57910d03077720f37c6366a41282c8b0b61ec8e3e0186d61eadf1194f"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/40.png",
+      "bytes": 70329,
+      "sha256": "d0a619c3efdd6cc015c4f3e2b90c6fccd6ba06b02a5db1a9d0b2d44bb9d6945d"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/41.png",
+      "bytes": 70358,
+      "sha256": "af2d3aa579685b01925b3fd0b032c2a090a7009c41697f7314779090ba48ff6c"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/42.png",
+      "bytes": 70498,
+      "sha256": "636a4b60d5a4bcae02df9d9f36c2eebca94bec73e3315d1418288e7d33ba86a6"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/43.png",
+      "bytes": 70846,
+      "sha256": "86a7df55e16696b4245c502e01a7a994766a0f4b36f8d8c72fb0bf10f2416515"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/44.png",
+      "bytes": 70275,
+      "sha256": "5839858a3eb1bc1f7830cd4b8d1f12223298597e1060b0fabeb0aa734455ea1e"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/45.png",
+      "bytes": 70332,
+      "sha256": "c38131b194194fa18371b0bf0669c4c072d892a07e524b3e83762ef15d62f2c6"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/46.png",
+      "bytes": 70252,
+      "sha256": "d9bd176d9028b03eb387ad29627178095e4c970e506da1184cc81f7ca863028b"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/frames/47.png",
+      "bytes": 70252,
+      "sha256": "d9bd176d9028b03eb387ad29627178095e4c970e506da1184cc81f7ca863028b"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/idle/idle_spritesheet.png",
+      "bytes": 207942,
+      "sha256": "a001d7998b4a8a76129c468bc6faafef3c3b44defeb33b83763dbf8c407008b5"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/manifest.json",
+      "bytes": 7407,
+      "sha256": "1cfcdd2922599fd8acb80a397a0a1d3dd244bf00911a61f6f42cb78a3575d956"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/previews/all-frames-contact-sheet-2x.png",
+      "bytes": 2531548,
+      "sha256": "76f2e38d5f80515e2aa0a960711e1acbb9bd49e6e86e226f970d299d6be031a7"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/previews/idle-3x-dark.gif",
+      "bytes": 5067591,
+      "sha256": "513df923bf6d2b50964ea4a6632fa2448ac4fdef24464e6eb04c2854bedd409a"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/previews/idle-contact-sheet-2x.png",
+      "bytes": 1320992,
+      "sha256": "22cc199ba692697cea8ff1cbe275ed9e2cac2f0cf7f200ed1a53d201705d2d75"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/previews/idle-native-transparent.gif",
+      "bytes": 1159973,
+      "sha256": "e41443b9b9fef2f6f4259efa077ba7334757eddd405cbbae5284310c06c42687"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/previews/shockwave_slam-3x-dark.gif",
+      "bytes": 1645434,
+      "sha256": "f33c2e175b5e84e151025e59e639d8b29b36fda45048cdc2a7b0e3aaaaf7225d"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/previews/shockwave_slam-contact-sheet-2x.png",
+      "bytes": 1211966,
+      "sha256": "48967b7b8d687ce5cac16697c6f0f6a300ea615ba67bd49381e688ba931e009d"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/previews/shockwave_slam-native-transparent.gif",
+      "bytes": 382136,
+      "sha256": "01106964965696059e22e6a1afc09e55c5bcdf58cd8a2b61e40f5431a77370bd"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/README.md",
+      "bytes": 4665,
+      "sha256": "ef30a47edfd9b93c25440f5dd91379b539c929b9f467bd660919e54b3c6df0fc"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/shockwave_slam/final-export.png",
+      "bytes": 1057741,
+      "sha256": "cdc6f7d7cbec7b2170bf046bcf44ba47ff6d39c0308db5aac968f8ce0aa11322"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/shockwave_slam/frames/00.png",
+      "bytes": 57257,
+      "sha256": "6888e68a870be593171c76f6103cd780fc778ae319a166b83274d1e34956d83e"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/shockwave_slam/frames/01.png",
+      "bytes": 62691,
+      "sha256": "02b5851dbab678c8778ab171ab3998adf6f64681de9fcbb625214025e3e9891a"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/shockwave_slam/frames/02.png",
+      "bytes": 61835,
+      "sha256": "b5745b841027e059c78f7adfea5d7ec7275c300cf3857ae30e6c71b1cc57ec7b"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/shockwave_slam/frames/03.png",
+      "bytes": 58257,
+      "sha256": "cfe01a9bfe62298d4fedd1c270cdcb1139bc31e1167fe2485ae0352567f0faa1"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/shockwave_slam/frames/04.png",
+      "bytes": 54488,
+      "sha256": "27af4d4fd7129325864f67ae4b3875d607b2494b54d1134ebacd28d0f8b8488b"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/shockwave_slam/frames/05.png",
+      "bytes": 52806,
+      "sha256": "518aa7a2960f1a9f9048ba234c98aabb73a03557a5874ccc906d11aa83e58184"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/shockwave_slam/frames/06.png",
+      "bytes": 51461,
+      "sha256": "f4a92a0ed61468a54fa0974c42860ed87607e319e8a141f01fddd401503d5931"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/shockwave_slam/frames/07.png",
+      "bytes": 50671,
+      "sha256": "8fd961987b71ad4d9994db1edef2da9c24eaf032ae32bfc14d86fe19c67600b8"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/shockwave_slam/frames/08.png",
+      "bytes": 45757,
+      "sha256": "2bbf8167bfd5689aeeb9c2a3aed6a1ada73d2dca9c1b0c2d30e6930214d9fca7"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/shockwave_slam/frames/09.png",
+      "bytes": 41661,
+      "sha256": "b75ecb58a113e5a5b0584e0e74a260cb9cccc0d503dcbaf8189172e19d669361"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/shockwave_slam/frames/10.png",
+      "bytes": 42335,
+      "sha256": "94a62ec453b17b74fc3ceabe3de08662e5aa33d2b07516f5eaf4ecdac6beef7a"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/shockwave_slam/frames/11.png",
+      "bytes": 43808,
+      "sha256": "d32dee17590784b70ee1ffa2b1fdae9f84d4f28459f15a5efd7bb1e2662f9f73"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/shockwave_slam/frames/12.png",
+      "bytes": 45878,
+      "sha256": "2df885e4c0ae8dfbf9ac5689f5b04e6f8638dd3a8b2042678c6c1ace4c806e70"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/shockwave_slam/frames/13.png",
+      "bytes": 56271,
+      "sha256": "33b38c94c1388b0c869be5ff94689eb463f8509afcf653e034485342a7863394"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/shockwave_slam/frames/14.png",
+      "bytes": 59961,
+      "sha256": "e13f3b29d9a9e78437f4dfd7b7c7efc16562ec9af667bd26fd91d7f72fff5a63"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/shockwave_slam/frames/15.png",
+      "bytes": 59575,
+      "sha256": "f92863b36f4a4c639677318b89b55764ce2b5323c75fbcba881713afba612ec3"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/shockwave_slam/frames/16.png",
+      "bytes": 57508,
+      "sha256": "0247ca388e89b3787f9261db465390c66f5f8232a7c8328910fa23b551b27111"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/shockwave_slam/frames/17.png",
+      "bytes": 57257,
+      "sha256": "6888e68a870be593171c76f6103cd780fc778ae319a166b83274d1e34956d83e"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/shockwave_slam/shockwave_slam_spritesheet.png",
+      "bytes": 834211,
+      "sha256": "c5bb7b7e57d53ea091d657660fb05f163994620a1ca1d2ee82bf6e9c7f72dbc9"
+    },
+    {
+      "path": "art_sources/characters/golem-titan-bound-v2/south.png",
+      "bytes": 70100,
+      "sha256": "5c861122c97ce009979069befa2b3f15fc6f006a41d2da5fe7d813c2137dda5b"
+    },
+    {
+      "path": "godot_client/Assets/Characters/GolemTitanBoundCandidate/south.png",
+      "bytes": 70100,
+      "sha256": "5c861122c97ce009979069befa2b3f15fc6f006a41d2da5fe7d813c2137dda5b"
+    },
+    {
+      "path": "godot_client/Assets/Characters/GolemTitanBoundCandidate/south.png.import",
+      "bytes": 962,
+      "sha256": "1a79db2dd127a60dd630420b66a2b4f44189df9c29ce12a65bde7c7b35342ca2"
+    },
+    {
+      "path": "godot_client/scripts/dev_tools/golem_titan_animation_review.gd",
+      "bytes": 12874,
+      "sha256": "28420b5d70be416cf274f2ee2f26e77e2d882a261caca3512b24a811fbd90a5d"
+    },
+    {
+      "path": "godot_client/scripts/dev_tools/golem_titan_animation_review.gd.uid",
+      "bytes": 20,
+      "sha256": "c9ce7f801ed1c909a9b3d8f2a7792b729f12ae17c225f0bd5ae475fe701dcdda"
+    },
+    {
+      "path": "godot_client/scripts/dev_tools/golem_titan_hand_rig_test.gd",
+      "bytes": 3769,
+      "sha256": "75d3dcc23b5b3123fc2cf22f54b0c246c2e665210c2fa306f75f78bf157945f5"
+    },
+    {
+      "path": "godot_client/scripts/dev_tools/golem_titan_hand_rig_test.gd.uid",
+      "bytes": 20,
+      "sha256": "14b8760e46e909c5db0ab8447ba3f551b9fdefef95cf0d27cf66d996f3039cdd"
+    },
+    {
+      "path": "godot_client/scripts/dev_tools/golem_titan_skeleton_bake.gd",
+      "bytes": 5762,
+      "sha256": "e8451ed9db17dc3e6fa981969f2fc9e1d5d207e67869550caa23e9935bdd2dbe"
+    },
+    {
+      "path": "godot_client/scripts/dev_tools/golem_titan_skeleton_bake.gd.uid",
+      "bytes": 20,
+      "sha256": "fb75e068b72e1cc23435597b2dbe9506ee29e5737a27f4f8f743e879b0f1bdc5"
+    },
+    {
+      "path": "godot_client/scripts/dev_tools/golem_titan_skeleton_review.gd",
+      "bytes": 3706,
+      "sha256": "be34130b48d450cc135b379e0281713099010d6d655947911b8928e94748fb6c"
+    },
+    {
+      "path": "godot_client/scripts/dev_tools/golem_titan_skeleton_review.gd.uid",
+      "bytes": 20,
+      "sha256": "ac4e904896790062402ab6fe931f69001b6cf4a4b4f71e404db218c90bbe34b2"
+    },
+    {
+      "path": "godot_client/scripts/dev_tools/golem_titan_skeleton_rig.gd",
+      "bytes": 21264,
+      "sha256": "0f7b0b6e9807231617b15e78cba74033f4193e57f2f7059517a77636756576d6"
+    },
+    {
+      "path": "godot_client/scripts/dev_tools/golem_titan_skeleton_rig.gd.uid",
+      "bytes": 20,
+      "sha256": "a0b977b592fe23453aa3d2158e7260ed81f6f797249a8d47ed66f327e1c3bffd"
+    }
+  ],
+  "reference_previews": [
+    {
+      "path": "Review/idle-map-player-4x.webp",
+      "sha256": "7b97274cd45b22121d128b965feac117804ec263a80cd6d93a062a5c45c0eeb1"
+    },
+    {
+      "path": "Review/hands-4x.webp",
+      "sha256": "15ece13d0745bece950adba62ffcff31bc89bf84870e3ded27e1097b69df72fb"
+    },
+    {
+      "path": "Review/ground-slam-map-player-4x.webp",
+      "sha256": "4d4cb9f48aae279769603410e3c31d622f516cbddf7decc24ae8b373551486ae"
+    }
+  ],
+  "installation_status": "approved source animation package; world placement and boss mechanics are separate integration work",
+  "checksum_scope": "exact approved archive bytes"
+}

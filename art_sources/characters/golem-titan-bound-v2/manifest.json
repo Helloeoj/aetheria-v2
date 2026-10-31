@@ -44,13 +44,14 @@
     }
   },
   "status": {
-    "generation": "completed: native weighted skeletal idle; approved ground slam retained byte-for-byte",
+    "generation": "finalized: approved skeletal idle and grounded slam",
     "automatic_checks": "Passed actual right-thumb regression, UV coverage, native source and exact loop/sheet checks. All48 native/actual4x frames outside right-hand area unchanged, including approved left hand. All2045 binding pixels fixed.",
-    "visual_review": "All48 current actual4x right-hand poses inspected; wider animated close-up supplied for user motion review.",
+    "visual_review": "Approved by user on 2026-10-31 after review of the corrected right-hand animation.",
     "real_map_player_review": "105 fresh actual GPU captures with zero failures for the hand repair; actual map/player retained.",
     "godot_4x_review": "directweightedmesh reviewedbesidethe unchanged player",
     "production_installation": "not_performed",
-    "artwork_approval": "Slam and screen-left hand motion approved; corrected screen-right hand motion pending."
+    "artwork_approval": "approved",
+    "source_release": "finalized"
   },
   "clips": {
     "idle": {
@@ -161,10 +162,10 @@
       "rig_script_repo_relative": "godot_client/scripts/dev_tools/golem_titan_skeleton_rig.gd",
       "bone_count": 25,
       "user_preference": "subtle chest and arm movement with a real articulated skeleton",
-      "user_approval": "pending",
+      "user_approval": "approved",
       "component_approval": {
         "screen_left_hand": "approved and preserved",
-        "screen_right_hand": "corrected; user motion review pending"
+        "screen_right_hand": "approved"
       }
     },
     "shockwave_slam": {
@@ -245,5 +246,13 @@
         10
       ]
     }
-  }
+  },
+  "approval": {
+    "status": "approved",
+    "date": "2026-10-31",
+    "basis": "User: beautiful. finalize thise",
+    "art_revision_commit": "95abdca9e2842e33e88d56d8cfc12dc7a91da1cc",
+    "scope": "Final skeletal idle, both corrected hands, crown/red eyes/leg bindings, and grounded slam. Source animation release; world placement and boss mechanics remain separate."
+  },
+  "approved_release": "approved-release.json"
 }

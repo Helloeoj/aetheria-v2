@@ -152,7 +152,7 @@
     "source_bake": "Actual Godot GPU at native256x256 from the live skeleton; separate exact2.4s endpoint verified.",
     "main_preview": "Direct live Skeleton2D rendering against actual map/player at Camera2D zoom4, not enlarged baked animation.",
     "native_pixels": "Source palette and binary alpha preserved; protected lower-body pixels and neutral endpoints exact.",
-    "artwork_approval": "pending",
+    "artwork_approval": "approved on 2026-10-31",
     "hand_repair": {
       "date": "2026-10-31",
       "reason": "Inner thumbs were assigned to fixed leg/binding controls while the other fingers moved; mixed weights also stretched the closed fists.",
@@ -164,7 +164,7 @@
       "actual_map_comparison": "All48 actual4x frames are pixel-identical to the previous idle outside the two hand neighborhoods.",
       "binding_pixels_checked": 2045,
       "binding_pixel_changes": 0,
-      "artwork_approval": "pending user motion review",
+      "artwork_approval": "historical pass superseded: left hand approved; its earlier right-hand mask was rejected and corrected",
       "user_followup": "Left image approved; the mirrored right-image thumb contour still missed three fixed thumb vertices."
     },
     "right_image_hand_repair": {
@@ -192,7 +192,7 @@
       "other_animation": "all pixels outside the right-hand neighborhood unchanged in all48 native/actual4x poses",
       "binding_pixels_checked": 2045,
       "binding_changes": 0,
-      "right_hand_artwork_approval": "pending user motion review"
+      "right_hand_artwork_approval": "approved on 2026-10-31"
     }
   },
   "slam": {
@@ -466,7 +466,7 @@
       }
     ],
     "no_body_region_splices": true,
-    "user_artwork_approval": "approved: user explicitly praised the slam as very fluid"
+    "user_artwork_approval": "approved; retained without changes"
   },
   "discarded_tests": {
     "whole_body_idle_job": "01288e7a-08dc-44d4-9634-67cb66edab4e",
@@ -849,5 +849,12 @@
       "user_rejection": "Idle looks like six rigid bitmap chunks; no true elbow/wrist bones. Superseded by a native weighted Skeleton2D.",
       "historical_source_commit": "a0c39c8cad2115f9d1f31ec14fade5fceed53dbc"
     }
+  },
+  "final_approval": {
+    "status": "approved",
+    "date": "2026-10-31",
+    "basis": "User: beautiful. finalize thise",
+    "art_revision_commit": "95abdca9e2842e33e88d56d8cfc12dc7a91da1cc",
+    "scope": "Final skeletal idle, both corrected hands, crown/red eyes/leg bindings, and grounded slam. Source animation release; world placement and boss mechanics remain separate."
   }
 }
