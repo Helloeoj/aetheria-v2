@@ -9,6 +9,17 @@ const NATIVE_SIZE := Vector2i(256, 256)
 const FOOT_ANCHOR := Vector2(128, 240)
 const CYCLE_SECONDS := 2.4
 const MESH_STEP := 4
+# Anatomical closed-fist surface, including its thumb. Character-left mirrors
+# this footprint two pixels lower. The whole fist must share one transform;
+# only the wrist transition may blend. These are weights, not texture cutouts.
+const RIGHT_FIST_POINTS := [
+	Vector2(18, 177), Vector2(31, 173), Vector2(35, 169), Vector2(47, 169),
+	Vector2(56, 163), Vector2(63, 162), Vector2(69, 166), Vector2(72, 173),
+	Vector2(69, 178), Vector2(68, 180), Vector2(67, 188), Vector2(61, 195),
+	Vector2(56, 201), Vector2(49, 205),
+	Vector2(33, 206), Vector2(23, 202), Vector2(18, 197), Vector2(15, 188),
+	Vector2(16, 182),
+]
 const PINNED_RECTS := [
 	Rect2(80, 153, 96, 89),
 	Rect2(60, 217, 56, 26),
@@ -52,6 +63,7 @@ var bones: Dictionary = {}
 var _joint_positions: Dictionary = {}
 var _source_image: Image
 var _built := false
+var _right_fist_outline := PackedVector2Array(RIGHT_FIST_POINTS)
 var _debug_skeleton := false
 var _debug_overlay: BoneOverlay
 
@@ -125,13 +137,44 @@ func _build_skin() -> void:
 	skin.skeleton = skin.get_path_to(skeleton)
 	var vertices := PackedVector2Array()
 	var triangles: Array[PackedInt32Array] = []
+	var vertex_indexes: Dictionary = {}
 	var columns := NATIVE_SIZE.x / MESH_STEP + 1
 	var rows := NATIVE_SIZE.y / MESH_STEP + 1
 	for row in rows:
 		for column in columns:
-			vertices.append(Vector2(column * MESH_STEP, row * MESH_STEP))
+			_mesh_vertex(Vector2(column * MESH_STEP, row * MESH_STEP), vertices, vertex_indexes)
 	for row in rows - 1:
 		for column in columns - 1:
+			var x: int = column * MESH_STEP
+			var y: int = row * MESH_STEP
+			if _fine_hand_cell(x, y):
+				for dy in MESH_STEP:
+					for dx in MESH_STEP:
+						var p := Vector2(x + dx, y + dy)
+						var fa := _mesh_vertex(p, vertices, vertex_indexes)
+						var fb := _mesh_vertex(p + Vector2(1, 0), vertices, vertex_indexes)
+						var fc := _mesh_vertex(p + Vector2(0, 1), vertices, vertex_indexes)
+						var fd := _mesh_vertex(p + Vector2(1, 1), vertices, vertex_indexes)
+						triangles.append(PackedInt32Array([fa, fb, fd]))
+						triangles.append(PackedInt32Array([fa, fd, fc]))
+				continue
+			# Conforming fans share every refined edge vertex. This avoids cracks
+			# between the 1px hand mesh and the unchanged 4px body mesh.
+			var refined_edges := [_fine_hand_cell(x, y - 4), _fine_hand_cell(x + 4, y), _fine_hand_cell(x, y + 4), _fine_hand_cell(x - 4, y)]
+			if true in refined_edges:
+				var corners := [Vector2(x, y), Vector2(x + 4, y), Vector2(x + 4, y + 4), Vector2(x, y + 4)]
+				var boundary: Array[int] = []
+				for edge in 4:
+					var start: Vector2 = corners[edge]
+					var finish: Vector2 = corners[(edge + 1) % 4]
+					boundary.append(_mesh_vertex(start, vertices, vertex_indexes))
+					if refined_edges[edge]:
+						for offset in range(1, 4):
+							boundary.append(_mesh_vertex(start.lerp(finish, float(offset) / 4.0), vertices, vertex_indexes))
+				var center := _mesh_vertex(Vector2(x + 2, y + 2), vertices, vertex_indexes)
+				for edge in boundary.size():
+					triangles.append(PackedInt32Array([center, boundary[edge], boundary[(edge + 1) % boundary.size()]]))
+				continue
 			var a := row * columns + column
 			var b := a + 1
 			var c := a + columns
@@ -161,6 +204,11 @@ func _build_skin() -> void:
 
 
 func _weights_at(point: Vector2) -> Dictionary:
+	# Fist ownership takes precedence over broad leg/binding protections. The
+	# previous rules caught the inner thumbs while the other fingers moved.
+	var hand_bone := _hand_bone_at(point)
+	if not hand_bone.is_empty():
+		return {hand_bone: 1.0}
 	# Bind the glyphs, blue lower restraints and the floor to a separate fixed bone.
 	# This pins vertices only; it never extracts/repaints texture pixels.
 	if point.y >= 204.0 or _is_protected(point) or _near_lower_binding(point):
@@ -209,6 +257,33 @@ func _weights_at(point: Vector2) -> Dictionary:
 		if weight > 0.0:
 			result[bone_name] = weight
 	return result
+
+
+func _mesh_vertex(point: Vector2, vertices: PackedVector2Array, indexes: Dictionary) -> int:
+	if not indexes.has(point):
+		indexes[point] = vertices.size()
+		vertices.append(point)
+	return int(indexes[point])
+
+
+func _fine_hand_cell(x: int, y: int) -> bool:
+	return (x >= 12 and x < 76 and y >= 156 and y < 212) or (x >= 180 and x < 244 and y >= 156 and y < 216)
+
+
+func _hand_bone_at(point: Vector2) -> String:
+	var local := point if point.x < 128.0 else Vector2(256.0 - point.x, point.y - 2.0)
+	if not Rect2(13, 160, 62, 49).has_point(local):
+		return ""
+	var inside := Geometry2D.is_point_in_polygon(local, _right_fist_outline)
+	if not inside:
+		# Cover the full triangles sampling an edge texel, while the nearby
+		# separate blue restraint retains its original fixed supports.
+		for index in _right_fist_outline.size():
+			var nearest := Geometry2D.get_closest_point_to_segment(local, _right_fist_outline[index], _right_fist_outline[(index + 1) % _right_fist_outline.size()])
+			if nearest.distance_to(local) <= 1.5:
+				inside = true
+				break
+	return ("fist_right" if point.x < 128.0 else "fist_left") if inside else ""
 
 
 func _near_lower_binding(point: Vector2) -> bool:
@@ -323,7 +398,9 @@ func get_rig_report() -> Dictionary:
 		for bone_index in skin.get_bone_count():
 			total += skin.get_bone_weights(bone_index)[vertex_index]
 		maximum_error = maxf(maximum_error, absf(1.0 - total))
-		if _is_protected(vertices[vertex_index]) or _near_lower_binding(vertices[vertex_index]) or vertices[vertex_index].y >= 204.0:
+		# A thumb next to a restraint belongs to its fist, not the old broad
+		# restraint-support heuristic. Count only genuinely fixed ownership.
+		if _hand_bone_at(vertices[vertex_index]).is_empty() and (_is_protected(vertices[vertex_index]) or _near_lower_binding(vertices[vertex_index]) or vertices[vertex_index].y >= 204.0):
 			protected_vertices += 1
 			maximum_pin_delta = maxf(maximum_pin_delta, vertices[vertex_index].distance_to(deformed[vertex_index]))
 	var hierarchy: Dictionary = {}
@@ -336,6 +413,7 @@ func get_rig_report() -> Dictionary:
 		"bone_count": bones.size(), "bone_names": bones.keys(), "hierarchy": hierarchy,
 		"vertex_count": vertices.size(), "triangle_count": skin.polygons.size(),
 		"mesh_step_native_pixels": MESH_STEP, "maximum_influences_per_vertex": 4,
+		"hand_mesh_step_native_pixels": 1, "closed_fists_have_rigid_skin_weights": true,
 		"maximum_weight_normalization_error": maximum_error,
 		"protected_vertex_count": protected_vertices,
 		"current_maximum_protected_vertex_displacement": maximum_pin_delta,

@@ -11,7 +11,7 @@
     "mode": "godot_skeleton2d_continuous_weighted_mesh",
     "user_preference": "Subtle chest and arm movement using an articulated skeleton",
     "rig_script_repo_relative": "godot_client/scripts/dev_tools/golem_titan_skeleton_rig.gd",
-    "rig_script_sha256": "6ffc2100c1add12b1399e785997da2705c84c337c4852d0ae6ff34ea3ccbc39b",
+    "rig_script_sha256": "daf45b91bc0b1c2a56d1e8d2a90a6832dc44b33348b879a1a862b4f00f4d3bdd",
     "source_texture_repo_relative": "godot_client/Assets/Characters/GolemTitanBoundCandidate/south.png",
     "source_texture_sha256": "5c861122c97ce009979069befa2b3f15fc6f006a41d2da5fe7d813c2137dda5b",
     "source_neutral": "south.png",
@@ -43,10 +43,10 @@
       "wrist_left": "forearm_left",
       "wrist_right": "forearm_right"
     },
-    "vertex_count": 4225,
-    "triangle_count": 8192,
+    "vertex_count": 11490,
+    "triangle_count": 22722,
     "maximum_influences_per_vertex": 4,
-    "weights": "Normalized, locally blended joint influences; one continuous source-textured Polygon2D. Fixed pelvis/leg/restraint controls. No extracted bitmap parts.",
+    "weights": "Normalized local joint weights across one continuous mesh; each closed fist, including its thumb, has one rigid hand-bone influence. The transition blends at the wrist. Fixed leg and magical-binding ownership stays separate.",
     "cycle_seconds": 2.4,
     "frame_count": 48,
     "durations_ms": [
@@ -152,7 +152,20 @@
     "source_bake": "Actual Godot GPU at native256x256 from the live skeleton; separate exact2.4s endpoint verified.",
     "main_preview": "Direct live Skeleton2D rendering against actual map/player at Camera2D zoom4, not enlarged baked animation.",
     "native_pixels": "Source palette and binary alpha preserved; protected lower-body pixels and neutral endpoints exact.",
-    "artwork_approval": "pending"
+    "artwork_approval": "pending",
+    "hand_repair": {
+      "date": "2026-10-31",
+      "reason": "Inner thumbs were assigned to fixed leg/binding controls while the other fingers moved; mixed weights also stretched the closed fists.",
+      "change": "Explicit complete-fist ownership precedes broad static protections; conforming1px hand mesh connects to unchanged4px body mesh. Source bitmap and all pose tracks unchanged.",
+      "previous_source_commit": "fc76965e90195e194a2646bf5d0e47781e04b5a8",
+      "regression_script_repo_relative": "godot_client/scripts/dev_tools/golem_titan_hand_rig_test.gd",
+      "before_max_thumb_finger_distance_error_native_px": 1.42095947,
+      "after_max_thumb_finger_distance_error_native_px": 2.289e-05,
+      "actual_map_comparison": "All48 actual4x frames are pixel-identical to the previous idle outside the two hand neighborhoods.",
+      "binding_pixels_checked": 2045,
+      "binding_pixel_changes": 0,
+      "artwork_approval": "pending user motion review"
+    }
   },
   "slam": {
     "temporal_settings": {

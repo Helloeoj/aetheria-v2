@@ -28,7 +28,8 @@
     ],
     "source_foot_baseline_y": 240,
     "grounded_elements": "Feet planted and magical leg restraints anchored, achieved through whole-body motion instead of pixel strips.",
-    "preserve": "crown, red eyes, gray stone, gold bands, cyan crystals, low top-down view and previous accepted size"
+    "preserve": "crown, red eyes, gray stone, gold bands, cyan crystals, low top-down view and previous accepted size",
+    "hands": "Each entire closed fist, thumb included, follows its hand bone as one rigid volume; independent wrist/elbow motion is retained. Hands are not part of fixed leg/binding masks."
   },
   "generation": {
     "idle": {
@@ -44,9 +45,9 @@
   },
   "status": {
     "generation": "completed: native weighted skeletal idle; approved ground slam retained byte-for-byte",
-    "automatic_checks": "passed48nativebakes, exactsourcepalette/alpha, fixedlowerbody andcycle; source+scenehashes verified; directmapWebP exactRGBA/durations",
-    "visual_review": "all48actual4xlive-skeletonposes independentlyinspected: completefists, distinctelbow/wristmotion, connectedjoints, stableknees/bindings, nogrossarmorwarp",
-    "real_map_player_review": "105actualGPUcaptures, zerofailures; liveSkeleton2D renderedat1x/4x",
+    "automatic_checks": "Passed hand rigidity regression, conforming mesh topology, native palette/alpha and fixed bindings. All48 direct4x map frames unchanged outside hand neighborhoods; WebP frames and timings exact.",
+    "visual_review": "All48 current actual4x hand poses inspected; animated close-up supplied for user motion review. Skeletal idle artwork approval pending.",
+    "real_map_player_review": "105 fresh actual GPU captures with zero failures for the hand repair; actual map/player retained.",
     "godot_4x_review": "directweightedmesh reviewedbesidethe unchanged player",
     "production_installation": "not_performed",
     "artwork_approval": "slam approved; skeletal idle pending user review"
