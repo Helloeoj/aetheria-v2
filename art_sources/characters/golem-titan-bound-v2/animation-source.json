@@ -8,234 +8,137 @@
     "reason": "Use the same complete neutral frame for idle and slam start/recovery; eliminate the mismatched-source loop edge."
   },
   "idle": {
-    "mode": "rigid_stone_chest_core_pulse",
-    "join_image_id": "acfb7114-1af3-4011-8a49-6292fd41266a",
-    "final_image_id": "0f655365-735a-465c-ae0d-0632f697da97",
-    "factors": [
-      1,
-      1.05,
-      1.12,
-      1.22,
-      1.28,
-      1.22,
-      1.12,
-      1.05,
-      1
+    "mode": "waist_and_shoulder_joint_rig",
+    "user_preference": "Subtle chest and arm movement",
+    "drawing_id": "6d4ddb46-ef2e-4fe2-8c40-d8f3b3957584",
+    "recipe": "idle/joint-rig.json",
+    "source_sheet": "idle/rig/full.png",
+    "source_layers": "idle/rig/layers.npz",
+    "common_source": "south.png",
+    "frame_count": 12,
+    "durations_ms": [
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200
     ],
-    "color_operations": [
-      {
-        "operation": "map_colors",
-        "layer": "image",
-        "frames": [
-          2
-        ],
-        "region": [
-          113,
-          103,
-          143,
-          134
-        ],
-        "colors": {
-          "#046194ff": "#04669bff",
-          "#0573acff": "#0579b5ff",
-          "#059bd3ff": "#05a3deff",
-          "#07c0eeff": "#07cafaff",
-          "#088cc4ff": "#0893ceff",
-          "#108dfcff": "#1194ffff",
-          "#15e0faff": "#16ebffff",
-          "#1780e0ff": "#1886ebff",
-          "#2cadfaff": "#2eb6ffff",
-          "#33fafeff": "#36ffffff",
-          "#79f9fcff": "#7fffffff",
-          "#9ad4fcff": "#a2dfffff",
-          "#c1f9fcff": "#cbffffff",
-          "#cde3fdff": "#d7eeffff"
-        },
-        "reason": "Pulse only the existing chest-core cyan colors on one common neutral pose. Keep all geometry, legs, hands, shackles and alpha unchanged; the base pose matches the slam recovery and the loop closes exactly."
-      },
-      {
-        "operation": "map_colors",
-        "layer": "image",
-        "frames": [
-          3
-        ],
-        "region": [
-          113,
-          103,
-          143,
-          134
-        ],
-        "colors": {
-          "#046194ff": "#046da6ff",
-          "#0573acff": "#0681c1ff",
-          "#059bd3ff": "#06aeecff",
-          "#07c0eeff": "#08d7ffff",
-          "#088cc4ff": "#099ddcff",
-          "#108dfcff": "#129effff",
-          "#15e0faff": "#18fbffff",
-          "#1780e0ff": "#1a8ffbff",
-          "#2cadfaff": "#31c2ffff",
-          "#33fafeff": "#39ffffff",
-          "#79f9fcff": "#88ffffff",
-          "#9ad4fcff": "#acedffff",
-          "#c1f9fcff": "#d8ffffff",
-          "#cde3fdff": "#e6feffff"
-        },
-        "reason": "Pulse only the existing chest-core cyan colors on one common neutral pose. Keep all geometry, legs, hands, shackles and alpha unchanged; the base pose matches the slam recovery and the loop closes exactly."
-      },
-      {
-        "operation": "map_colors",
-        "layer": "image",
-        "frames": [
-          4
-        ],
-        "region": [
-          113,
-          103,
-          143,
-          134
-        ],
-        "colors": {
-          "#046194ff": "#0576b5ff",
-          "#0573acff": "#068cd2ff",
-          "#059bd3ff": "#06bdffff",
-          "#07c0eeff": "#09eaffff",
-          "#088cc4ff": "#0aabefff",
-          "#108dfcff": "#14acffff",
-          "#15e0faff": "#1affffff",
-          "#1780e0ff": "#1c9cffff",
-          "#2cadfaff": "#36d3ffff",
-          "#33fafeff": "#3effffff",
-          "#79f9fcff": "#94ffffff",
-          "#9ad4fcff": "#bcffffff",
-          "#c1f9fcff": "#ebffffff",
-          "#cde3fdff": "#faffffff"
-        },
-        "reason": "Pulse only the existing chest-core cyan colors on one common neutral pose. Keep all geometry, legs, hands, shackles and alpha unchanged; the base pose matches the slam recovery and the loop closes exactly."
-      },
-      {
-        "operation": "map_colors",
-        "layer": "image",
-        "frames": [
-          5
-        ],
-        "region": [
-          113,
-          103,
-          143,
-          134
-        ],
-        "colors": {
-          "#046194ff": "#057cbdff",
-          "#0573acff": "#0693dcff",
-          "#059bd3ff": "#06c6ffff",
-          "#07c0eeff": "#09f6ffff",
-          "#088cc4ff": "#0ab3fbff",
-          "#108dfcff": "#14b4ffff",
-          "#15e0faff": "#1bffffff",
-          "#1780e0ff": "#1da4ffff",
-          "#2cadfaff": "#38ddffff",
-          "#33fafeff": "#41ffffff",
-          "#79f9fcff": "#9bffffff",
-          "#9ad4fcff": "#c5ffffff",
-          "#c1f9fcff": "#f7ffffff",
-          "#cde3fdff": "#ffffffff"
-        },
-        "reason": "Pulse only the existing chest-core cyan colors on one common neutral pose. Keep all geometry, legs, hands, shackles and alpha unchanged; the base pose matches the slam recovery and the loop closes exactly."
-      },
-      {
-        "operation": "map_colors",
-        "layer": "image",
-        "frames": [
-          6
-        ],
-        "region": [
-          113,
-          103,
-          143,
-          134
-        ],
-        "colors": {
-          "#046194ff": "#0576b5ff",
-          "#0573acff": "#068cd2ff",
-          "#059bd3ff": "#06bdffff",
-          "#07c0eeff": "#09eaffff",
-          "#088cc4ff": "#0aabefff",
-          "#108dfcff": "#14acffff",
-          "#15e0faff": "#1affffff",
-          "#1780e0ff": "#1c9cffff",
-          "#2cadfaff": "#36d3ffff",
-          "#33fafeff": "#3effffff",
-          "#79f9fcff": "#94ffffff",
-          "#9ad4fcff": "#bcffffff",
-          "#c1f9fcff": "#ebffffff",
-          "#cde3fdff": "#faffffff"
-        },
-        "reason": "Pulse only the existing chest-core cyan colors on one common neutral pose. Keep all geometry, legs, hands, shackles and alpha unchanged; the base pose matches the slam recovery and the loop closes exactly."
-      },
-      {
-        "operation": "map_colors",
-        "layer": "image",
-        "frames": [
-          7
-        ],
-        "region": [
-          113,
-          103,
-          143,
-          134
-        ],
-        "colors": {
-          "#046194ff": "#046da6ff",
-          "#0573acff": "#0681c1ff",
-          "#059bd3ff": "#06aeecff",
-          "#07c0eeff": "#08d7ffff",
-          "#088cc4ff": "#099ddcff",
-          "#108dfcff": "#129effff",
-          "#15e0faff": "#18fbffff",
-          "#1780e0ff": "#1a8ffbff",
-          "#2cadfaff": "#31c2ffff",
-          "#33fafeff": "#39ffffff",
-          "#79f9fcff": "#88ffffff",
-          "#9ad4fcff": "#acedffff",
-          "#c1f9fcff": "#d8ffffff",
-          "#cde3fdff": "#e6feffff"
-        },
-        "reason": "Pulse only the existing chest-core cyan colors on one common neutral pose. Keep all geometry, legs, hands, shackles and alpha unchanged; the base pose matches the slam recovery and the loop closes exactly."
-      },
-      {
-        "operation": "map_colors",
-        "layer": "image",
-        "frames": [
-          8
-        ],
-        "region": [
-          113,
-          103,
-          143,
-          134
-        ],
-        "colors": {
-          "#046194ff": "#04669bff",
-          "#0573acff": "#0579b5ff",
-          "#059bd3ff": "#05a3deff",
-          "#07c0eeff": "#07cafaff",
-          "#088cc4ff": "#0893ceff",
-          "#108dfcff": "#1194ffff",
-          "#15e0faff": "#16ebffff",
-          "#1780e0ff": "#1886ebff",
-          "#2cadfaff": "#2eb6ffff",
-          "#33fafeff": "#36ffffff",
-          "#79f9fcff": "#7fffffff",
-          "#9ad4fcff": "#a2dfffff",
-          "#c1f9fcff": "#cbffffff",
-          "#cde3fdff": "#d7eeffff"
-        },
-        "reason": "Pulse only the existing chest-core cyan colors on one common neutral pose. Keep all geometry, legs, hands, shackles and alpha unchanged; the base pose matches the slam recovery and the loop closes exactly."
-      }
+    "chest_y_offsets": [
+      0,
+      0,
+      -1,
+      -1,
+      -2,
+      -2,
+      -2,
+      -1,
+      -1,
+      0,
+      0,
+      0
     ],
-    "geometry": "All alpha and every pixel outside the chest-core rectangle remain identical across the entire loop.",
-    "preference": "Assistant-prepared rigid-body alternative; user artwork approval pending."
+    "left_shoulder_degrees": [
+      0,
+      0.15,
+      0.3,
+      0.45,
+      0.6,
+      0.7,
+      0.6,
+      0.45,
+      0.3,
+      0.15,
+      0,
+      0
+    ],
+    "right_shoulder_degrees": [
+      0,
+      -0.15,
+      -0.3,
+      -0.45,
+      -0.6,
+      -0.7,
+      -0.6,
+      -0.45,
+      -0.3,
+      -0.15,
+      0,
+      0
+    ],
+    "shoulder_pivots": [
+      [
+        52,
+        114
+      ],
+      [
+        204,
+        114
+      ]
+    ],
+    "source_ownership": "Thorax and complete shoulder-to-knuckle source parts move around anatomical waist and shoulder joints. Blue/white leg-binding pixels and adjacent source shadow pixel [64,196] remain fixed. No split knee bands or hand splices.",
+    "underlap_regions": [
+      [
+        96,
+        140,
+        160,
+        154
+      ],
+      [
+        43,
+        105,
+        74,
+        118
+      ],
+      [
+        181,
+        105,
+        212,
+        118
+      ]
+    ],
+    "underlap_source": "Original source pixels only at waist and shoulders; no underpaint of fists or knees.",
+    "resampling": "nearest; native source palette and binary alpha",
+    "protected_rectangles_half_open": [
+      [
+        80,
+        153,
+        176,
+        242
+      ],
+      [
+        60,
+        217,
+        116,
+        243
+      ],
+      [
+        143,
+        217,
+        199,
+        243
+      ],
+      [
+        25,
+        217,
+        58,
+        243
+      ],
+      [
+        203,
+        217,
+        235,
+        243
+      ]
+    ],
+    "bookends": "Both equal complete south.png and slam neutral; no replacement-pose loop cut.",
+    "artwork_approval": "pending"
   },
   "slam": {
     "temporal_settings": {
@@ -521,5 +424,237 @@
       10
     ],
     "strike_source_15": "Omitted whole frame for visible generated motion specks; no body sections cut or frozen."
+  },
+  "unselected_alternatives": {
+    "rigid_core_pulse": {
+      "mode": "rigid_stone_chest_core_pulse",
+      "join_image_id": "acfb7114-1af3-4011-8a49-6292fd41266a",
+      "final_image_id": "0f655365-735a-465c-ae0d-0632f697da97",
+      "factors": [
+        1,
+        1.05,
+        1.12,
+        1.22,
+        1.28,
+        1.22,
+        1.12,
+        1.05,
+        1
+      ],
+      "color_operations": [
+        {
+          "operation": "map_colors",
+          "layer": "image",
+          "frames": [
+            2
+          ],
+          "region": [
+            113,
+            103,
+            143,
+            134
+          ],
+          "colors": {
+            "#046194ff": "#04669bff",
+            "#0573acff": "#0579b5ff",
+            "#059bd3ff": "#05a3deff",
+            "#07c0eeff": "#07cafaff",
+            "#088cc4ff": "#0893ceff",
+            "#108dfcff": "#1194ffff",
+            "#15e0faff": "#16ebffff",
+            "#1780e0ff": "#1886ebff",
+            "#2cadfaff": "#2eb6ffff",
+            "#33fafeff": "#36ffffff",
+            "#79f9fcff": "#7fffffff",
+            "#9ad4fcff": "#a2dfffff",
+            "#c1f9fcff": "#cbffffff",
+            "#cde3fdff": "#d7eeffff"
+          },
+          "reason": "Pulse only the existing chest-core cyan colors on one common neutral pose. Keep all geometry, legs, hands, shackles and alpha unchanged; the base pose matches the slam recovery and the loop closes exactly."
+        },
+        {
+          "operation": "map_colors",
+          "layer": "image",
+          "frames": [
+            3
+          ],
+          "region": [
+            113,
+            103,
+            143,
+            134
+          ],
+          "colors": {
+            "#046194ff": "#046da6ff",
+            "#0573acff": "#0681c1ff",
+            "#059bd3ff": "#06aeecff",
+            "#07c0eeff": "#08d7ffff",
+            "#088cc4ff": "#099ddcff",
+            "#108dfcff": "#129effff",
+            "#15e0faff": "#18fbffff",
+            "#1780e0ff": "#1a8ffbff",
+            "#2cadfaff": "#31c2ffff",
+            "#33fafeff": "#39ffffff",
+            "#79f9fcff": "#88ffffff",
+            "#9ad4fcff": "#acedffff",
+            "#c1f9fcff": "#d8ffffff",
+            "#cde3fdff": "#e6feffff"
+          },
+          "reason": "Pulse only the existing chest-core cyan colors on one common neutral pose. Keep all geometry, legs, hands, shackles and alpha unchanged; the base pose matches the slam recovery and the loop closes exactly."
+        },
+        {
+          "operation": "map_colors",
+          "layer": "image",
+          "frames": [
+            4
+          ],
+          "region": [
+            113,
+            103,
+            143,
+            134
+          ],
+          "colors": {
+            "#046194ff": "#0576b5ff",
+            "#0573acff": "#068cd2ff",
+            "#059bd3ff": "#06bdffff",
+            "#07c0eeff": "#09eaffff",
+            "#088cc4ff": "#0aabefff",
+            "#108dfcff": "#14acffff",
+            "#15e0faff": "#1affffff",
+            "#1780e0ff": "#1c9cffff",
+            "#2cadfaff": "#36d3ffff",
+            "#33fafeff": "#3effffff",
+            "#79f9fcff": "#94ffffff",
+            "#9ad4fcff": "#bcffffff",
+            "#c1f9fcff": "#ebffffff",
+            "#cde3fdff": "#faffffff"
+          },
+          "reason": "Pulse only the existing chest-core cyan colors on one common neutral pose. Keep all geometry, legs, hands, shackles and alpha unchanged; the base pose matches the slam recovery and the loop closes exactly."
+        },
+        {
+          "operation": "map_colors",
+          "layer": "image",
+          "frames": [
+            5
+          ],
+          "region": [
+            113,
+            103,
+            143,
+            134
+          ],
+          "colors": {
+            "#046194ff": "#057cbdff",
+            "#0573acff": "#0693dcff",
+            "#059bd3ff": "#06c6ffff",
+            "#07c0eeff": "#09f6ffff",
+            "#088cc4ff": "#0ab3fbff",
+            "#108dfcff": "#14b4ffff",
+            "#15e0faff": "#1bffffff",
+            "#1780e0ff": "#1da4ffff",
+            "#2cadfaff": "#38ddffff",
+            "#33fafeff": "#41ffffff",
+            "#79f9fcff": "#9bffffff",
+            "#9ad4fcff": "#c5ffffff",
+            "#c1f9fcff": "#f7ffffff",
+            "#cde3fdff": "#ffffffff"
+          },
+          "reason": "Pulse only the existing chest-core cyan colors on one common neutral pose. Keep all geometry, legs, hands, shackles and alpha unchanged; the base pose matches the slam recovery and the loop closes exactly."
+        },
+        {
+          "operation": "map_colors",
+          "layer": "image",
+          "frames": [
+            6
+          ],
+          "region": [
+            113,
+            103,
+            143,
+            134
+          ],
+          "colors": {
+            "#046194ff": "#0576b5ff",
+            "#0573acff": "#068cd2ff",
+            "#059bd3ff": "#06bdffff",
+            "#07c0eeff": "#09eaffff",
+            "#088cc4ff": "#0aabefff",
+            "#108dfcff": "#14acffff",
+            "#15e0faff": "#1affffff",
+            "#1780e0ff": "#1c9cffff",
+            "#2cadfaff": "#36d3ffff",
+            "#33fafeff": "#3effffff",
+            "#79f9fcff": "#94ffffff",
+            "#9ad4fcff": "#bcffffff",
+            "#c1f9fcff": "#ebffffff",
+            "#cde3fdff": "#faffffff"
+          },
+          "reason": "Pulse only the existing chest-core cyan colors on one common neutral pose. Keep all geometry, legs, hands, shackles and alpha unchanged; the base pose matches the slam recovery and the loop closes exactly."
+        },
+        {
+          "operation": "map_colors",
+          "layer": "image",
+          "frames": [
+            7
+          ],
+          "region": [
+            113,
+            103,
+            143,
+            134
+          ],
+          "colors": {
+            "#046194ff": "#046da6ff",
+            "#0573acff": "#0681c1ff",
+            "#059bd3ff": "#06aeecff",
+            "#07c0eeff": "#08d7ffff",
+            "#088cc4ff": "#099ddcff",
+            "#108dfcff": "#129effff",
+            "#15e0faff": "#18fbffff",
+            "#1780e0ff": "#1a8ffbff",
+            "#2cadfaff": "#31c2ffff",
+            "#33fafeff": "#39ffffff",
+            "#79f9fcff": "#88ffffff",
+            "#9ad4fcff": "#acedffff",
+            "#c1f9fcff": "#d8ffffff",
+            "#cde3fdff": "#e6feffff"
+          },
+          "reason": "Pulse only the existing chest-core cyan colors on one common neutral pose. Keep all geometry, legs, hands, shackles and alpha unchanged; the base pose matches the slam recovery and the loop closes exactly."
+        },
+        {
+          "operation": "map_colors",
+          "layer": "image",
+          "frames": [
+            8
+          ],
+          "region": [
+            113,
+            103,
+            143,
+            134
+          ],
+          "colors": {
+            "#046194ff": "#04669bff",
+            "#0573acff": "#0579b5ff",
+            "#059bd3ff": "#05a3deff",
+            "#07c0eeff": "#07cafaff",
+            "#088cc4ff": "#0893ceff",
+            "#108dfcff": "#1194ffff",
+            "#15e0faff": "#16ebffff",
+            "#1780e0ff": "#1886ebff",
+            "#2cadfaff": "#2eb6ffff",
+            "#33fafeff": "#36ffffff",
+            "#79f9fcff": "#7fffffff",
+            "#9ad4fcff": "#a2dfffff",
+            "#c1f9fcff": "#cbffffff",
+            "#cde3fdff": "#d7eeffff"
+          },
+          "reason": "Pulse only the existing chest-core cyan colors on one common neutral pose. Keep all geometry, legs, hands, shackles and alpha unchanged; the base pose matches the slam recovery and the loop closes exactly."
+        }
+      ],
+      "geometry": "All alpha and every pixel outside the chest-core rectangle remain identical across the entire loop.",
+      "preference": "Assistant-prepared rigid-body alternative; user artwork approval pending."
+    }
   }
 }

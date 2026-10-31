@@ -14,7 +14,7 @@
   "reference": "south.png (shared complete neutral pose from temporal_recovery/raw/08.png)",
   "previous_candidate": "../golem-titan-bound-v1",
   "motion_requirements": {
-    "idle": "Rigid stone body and complete hands; only existing chest-core light pulses, first/last pose identical. This recommended alternative awaits user preference/approval.",
+    "idle": "User-selected subtle chest-plate and complete-arm joint motion. Fixed pelvis, legs, bindings and ground anchors; no full-body scaling or knee-line bands.",
     "slam": "Whole torso hinges forward, head/shoulders descend, elbows and wrists follow; both fists visibly meet the real map ground in front of planted feet.",
     "source_contact_guide": [
       [
@@ -56,20 +56,23 @@
     }
   },
   "status": {
-    "generation": "completed; idle rebuilt as rigid chest-core pulse; full-body temporal slam",
-    "automatic_checks": "passed final source/export checks; rigid idle body invariance and exact shared endpoints verified",
-    "visual_review": "current source/context review recorded; user artwork approval pending",
-    "real_map_player_review": "62 actual GPU captures, no capture failures",
-    "godot_4x_review": "actual 4x map/player frames captured and key contact/hand poses inspected",
+    "generation": "completed: user-selected chest and complete-arm joint idle; retained full-body grounded slam",
+    "automatic_checks": "passed final native source, palette, protected lower-body, shared neutral, sheet round-trip and actual-map source-hash checks",
+    "visual_review": "all 12 selected joint-idle actual4x poses inspected; grounded slam retains prior actual-map inspection; user artwork approval pending",
+    "real_map_player_review": "29 new joint-idle GPU captures with no failures; retained grounded slam from prior 62-capture review",
+    "godot_4x_review": "all selected idle poses and retained slam contact/hand poses inspected against actual map and player",
     "production_installation": "not_performed",
     "artwork_approval": "pending"
   },
   "clips": {
     "idle": {
       "direction": "south",
-      "mode": "rigid_chest_core_pulse",
-      "frame_count": 9,
+      "mode": "waist_and_shoulder_joint_rig",
+      "frame_count": 12,
       "durations_ms": [
+        200,
+        200,
+        200,
         200,
         200,
         200,
@@ -89,13 +92,17 @@
         5,
         6,
         7,
-        8
+        8,
+        9,
+        10,
+        11
       ],
       "contact_frame": 0,
-      "final_image_id": "0f655365-735a-465c-ae0d-0632f697da97",
-      "geometry_changes": false,
+      "drawing_id": "6d4ddb46-ef2e-4fe2-8c40-d8f3b3957584",
+      "rig_recipe": "idle/joint-rig.json",
+      "user_preference": "subtle chest and arm movement",
       "user_approval": "pending",
-      "cycle_ms": 1800
+      "cycle_ms": 2400
     },
     "shockwave_slam": {
       "direction": "south",
