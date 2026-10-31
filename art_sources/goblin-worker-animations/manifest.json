@@ -22,9 +22,9 @@
     "attack": "35eaaaf4-759b-44c6-9696-27a6d82b7e4e"
   },
   "approval": {
-    "date": "2026-10-30",
-    "status": "runtime_test_authorized_visual_approval_pending",
-    "authorization": "User authorized the current generated artwork for local runtime animation and combat testing. Final artwork approval remains separate and pending."
+    "date": "2026-10-31",
+    "status": "finalized_for_game_use",
+    "authorization": "User requested finalizing the current animation set and placing it in the game: lets get these animations finalized and into the game please."
   },
   "frames": [
     {
@@ -1948,7 +1948,7 @@
         "source_collection": "goblin-idle-repair",
         "source_selection_sha256": "c6ff9ce1f0cfa4b08d8c6cc02568efe3d4069342c2357ef639c7426c7c54ee7b",
         "internal_motion_review": "passed_before_installation_authorization",
-        "user_visual_approval": "pending",
+        "user_visual_approval": "finalized_for_game_use_by_user_request",
         "supersedes": {
           "animation_group_id": "ef8e95da-ad6b-4d37-9c48-9285b12f6d70",
           "frames": [

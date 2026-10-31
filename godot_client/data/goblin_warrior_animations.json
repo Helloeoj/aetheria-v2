@@ -1201,13 +1201,13 @@
     "selection_sha256": "31fc7adcb7e353edaa44be6e4031c37ccfc4a334bd8be9e4f019808c222c2020",
     "source_manifest": "art_sources/goblin-warrior-animations/manifest.json",
     "visual_approval": {
-      "date": "2026-10-30",
-      "status": "runtime_test_authorized_visual_approval_pending",
-      "authorization": "User authorized the current generated artwork for local runtime animation and combat testing. Final artwork approval remains separate and pending."
+      "date": "2026-10-31",
+      "status": "finalized_for_game_use",
+      "authorization": "User requested finalizing the current animation set and placing it in the game: lets get these animations finalized and into the game please."
     },
     "frame_count": 224,
     "source_pixels": "Original lossless RGBA PNG bytes at native pixel density, including original transparent padding; no resizing, mirroring, recoloring or alpha repair.",
-    "source_manifest_sha256": "de9e4623228e5a56d0e7dc0304eb1d9db323f3822d813cd701564873dd6d5b52",
+    "source_manifest_sha256": "bc5c78cf4ef605baf59e65763829655f1466d120c92c3800dfbac1a4946ddc06",
     "clip_provenance": {
       "idle": {
         "south": {
@@ -1217,7 +1217,7 @@
           "source_collection": "goblin-idle-repair",
           "source_selection_sha256": "c6ff9ce1f0cfa4b08d8c6cc02568efe3d4069342c2357ef639c7426c7c54ee7b",
           "internal_motion_review": "passed_before_installation_authorization",
-          "user_visual_approval": "pending",
+          "user_visual_approval": "finalized_for_game_use_by_user_request",
           "supersedes": {
             "animation_group_id": "80219d08-fe52-4bd8-a753-9947f8d242ec",
             "frames": [
@@ -1276,7 +1276,7 @@
           "source_collection": "goblin-idle-repair",
           "source_selection_sha256": "c6ff9ce1f0cfa4b08d8c6cc02568efe3d4069342c2357ef639c7426c7c54ee7b",
           "internal_motion_review": "passed_before_installation_authorization",
-          "user_visual_approval": "pending",
+          "user_visual_approval": "finalized_for_game_use_by_user_request",
           "supersedes": {
             "animation_group_id": "80219d08-fe52-4bd8-a753-9947f8d242ec",
             "frames": [
@@ -1335,7 +1335,7 @@
           "source_collection": "goblin-idle-repair",
           "source_selection_sha256": "c6ff9ce1f0cfa4b08d8c6cc02568efe3d4069342c2357ef639c7426c7c54ee7b",
           "internal_motion_review": "passed_before_installation_authorization",
-          "user_visual_approval": "pending",
+          "user_visual_approval": "finalized_for_game_use_by_user_request",
           "supersedes": {
             "animation_group_id": "80219d08-fe52-4bd8-a753-9947f8d242ec",
             "frames": [
@@ -1394,7 +1394,7 @@
           "source_collection": "goblin-idle-repair",
           "source_selection_sha256": "c6ff9ce1f0cfa4b08d8c6cc02568efe3d4069342c2357ef639c7426c7c54ee7b",
           "internal_motion_review": "passed_before_installation_authorization",
-          "user_visual_approval": "pending",
+          "user_visual_approval": "finalized_for_game_use_by_user_request",
           "supersedes": {
             "animation_group_id": "80219d08-fe52-4bd8-a753-9947f8d242ec",
             "frames": [
@@ -1453,7 +1453,7 @@
           "source_collection": "goblin-idle-repair",
           "source_selection_sha256": "c6ff9ce1f0cfa4b08d8c6cc02568efe3d4069342c2357ef639c7426c7c54ee7b",
           "internal_motion_review": "passed_before_installation_authorization",
-          "user_visual_approval": "pending",
+          "user_visual_approval": "finalized_for_game_use_by_user_request",
           "supersedes": {
             "animation_group_id": "80219d08-fe52-4bd8-a753-9947f8d242ec",
             "frames": [
@@ -1512,7 +1512,7 @@
           "source_collection": "goblin-idle-repair",
           "source_selection_sha256": "c6ff9ce1f0cfa4b08d8c6cc02568efe3d4069342c2357ef639c7426c7c54ee7b",
           "internal_motion_review": "passed_before_installation_authorization",
-          "user_visual_approval": "pending",
+          "user_visual_approval": "finalized_for_game_use_by_user_request",
           "supersedes": {
             "animation_group_id": "80219d08-fe52-4bd8-a753-9947f8d242ec",
             "frames": [
@@ -1571,7 +1571,7 @@
           "source_collection": "goblin-idle-repair",
           "source_selection_sha256": "c6ff9ce1f0cfa4b08d8c6cc02568efe3d4069342c2357ef639c7426c7c54ee7b",
           "internal_motion_review": "passed_before_installation_authorization",
-          "user_visual_approval": "pending",
+          "user_visual_approval": "finalized_for_game_use_by_user_request",
           "supersedes": {
             "animation_group_id": "80219d08-fe52-4bd8-a753-9947f8d242ec",
             "frames": [
@@ -1630,7 +1630,7 @@
           "source_collection": "goblin-idle-repair",
           "source_selection_sha256": "c6ff9ce1f0cfa4b08d8c6cc02568efe3d4069342c2357ef639c7426c7c54ee7b",
           "internal_motion_review": "passed_before_installation_authorization",
-          "user_visual_approval": "pending",
+          "user_visual_approval": "finalized_for_game_use_by_user_request",
           "supersedes": {
             "animation_group_id": "80219d08-fe52-4bd8-a753-9947f8d242ec",
             "frames": [

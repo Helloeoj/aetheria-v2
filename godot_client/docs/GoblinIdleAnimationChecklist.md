@@ -1,7 +1,9 @@
 # Goblin idle animation review checklist
 
 Status: source motion, installation and runtime review completed on 2026-10-31.
-Final user artwork approval remains separate and pending.
+The user then requested finalizing these sets for the game; current Worker and
+Warrior packs are `finalized_for_game_use`. This authorization is separate from
+the automatic and internal visual checks below.
 
 The 2026-10-30 review found that different PNG hashes and advancing frame
 indices did not establish readable animation. Worker north was static;

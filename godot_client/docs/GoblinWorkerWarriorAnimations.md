@@ -1,15 +1,15 @@
-# Goblin Worker and Warrior animation runtime test
+# Goblin Worker and Warrior animations
 
-On 2026-10-30 the user authorized installing the current generated Worker and
-Warrior artwork for local runtime animation and combat testing. This
-authorization does not grant final visual artwork approval. Both packs retain the status
-`runtime_test_authorized_visual_approval_pending`; future artwork review remains
-separate from automatic checks and installation.
+On 2026-10-31 the user requested finalizing the current Worker and Warrior
+animation sets and placing them in the game. Both packs now have status
+`finalized_for_game_use`. This records the user's finalization instruction;
+automatic checks and internal visual review remain separate evidence. The packs
+load unconditionally in the normal game, with no developer/test-only enable flag.
 
 The current idle repair replaces all eight Warrior idles and Worker north with
 eight-frame, two-second cycles at 4 FPS. The replacement sources passed internal
 frame, body-motion, held-gear and loop-seam review before installation for runtime
-QA. This source pass does not grant final user artwork approval. The seven other
+QA. Game-use finalization is authorized separately by the user. The seven other
 Worker idles and every walk/attack PNG remain unchanged. Worker now has 203
 animation frames; Warrior has 224. Scout's temporarily accepted set is unchanged.
 
@@ -97,7 +97,7 @@ clipping and actor anchoring. No runtime filtering, canvas-clipping or unintende
 origin-shift defect was observed. A separate source/provenance check confirmed
 that all 400 installed PNGs remain byte-identical RGBA at their native dimensions,
 with matching manifest hashes and lossless imports without mipmaps. Final
-artwork approval remains pending.
+artwork approval was still pending at that historical stage.
 
 Current idle-repair verification: the exact nine-clip selection and bounded
 installation plan were hash-checked, editor import exited 0 without script
@@ -112,8 +112,10 @@ Source and rendered pose transitions, normal-scale views, full cycles and loop
 seams were reviewed beside the player. Worker north and Warrior east retain
 small toe-outline redraws with fixed ground baselines; no foot sliding was
 observed. `GoblinIdleAnimationChecklist.md` records the completed internal
-review. Final user artwork approval remains separate and pending; frame
-advancement or distinct hashes alone never establish readable body motion.
+review. The user subsequently requested finalizing these reviewed sets for game
+use; frame advancement or distinct hashes alone never establish readable body
+motion. Scout retains its previously accepted temporary artwork and future
+no-baked-arrow requirement.
 
 The previously documented broader sprite fixture Window/Node2D type error and
 obsolete Crystalcore importer mapping remain outside this installation. See

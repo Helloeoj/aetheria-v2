@@ -1101,13 +1101,13 @@
     "selection_sha256": "ea54e4a19858a957ffa6cad2851bb891c93571fd43d59ce006aa7e8f1ca10e8a",
     "source_manifest": "art_sources/goblin-worker-animations/manifest.json",
     "visual_approval": {
-      "date": "2026-10-30",
-      "status": "runtime_test_authorized_visual_approval_pending",
-      "authorization": "User authorized the current generated artwork for local runtime animation and combat testing. Final artwork approval remains separate and pending."
+      "date": "2026-10-31",
+      "status": "finalized_for_game_use",
+      "authorization": "User requested finalizing the current animation set and placing it in the game: lets get these animations finalized and into the game please."
     },
     "frame_count": 203,
     "source_pixels": "Original lossless RGBA PNG bytes at native pixel density, including original transparent padding; no resizing, mirroring, recoloring or alpha repair.",
-    "source_manifest_sha256": "1830e9f87259f4048fe68c9bd8c0d6c28da534ed88fb60efdc091e411f3965a1",
+    "source_manifest_sha256": "c50802a3c6bac88cd18ecfc6a8d04304b55fd0c9deac19704bdfa4f191695738",
     "clip_provenance": {
       "idle": {
         "south": {
@@ -1145,7 +1145,7 @@
           "source_collection": "goblin-idle-repair",
           "source_selection_sha256": "c6ff9ce1f0cfa4b08d8c6cc02568efe3d4069342c2357ef639c7426c7c54ee7b",
           "internal_motion_review": "passed_before_installation_authorization",
-          "user_visual_approval": "pending",
+          "user_visual_approval": "finalized_for_game_use_by_user_request",
           "supersedes": {
             "animation_group_id": "ef8e95da-ad6b-4d37-9c48-9285b12f6d70",
             "frames": [
