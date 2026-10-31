@@ -12,10 +12,10 @@
     52
   ],
   "pixel_density": "One source pixel remains one native artwork pixel; larger frame canvases retain their source transparent padding.",
-  "selection_file": "eight-direction-clips.json",
-  "selection_sha256": "b7ad6b1e6eb5c8b3454a030920673c363ad66d7ee3a7d51fa783c473b985c013",
+  "selection_file": "goblin_warrior-current-selection.json",
+  "selection_sha256": "31fc7adcb7e353edaa44be6e4031c37ccfc4a334bd8be9e4f019808c222c2020",
   "source_groups": {
-    "idle": "80219d08-fe52-4bd8-a753-9947f8d242ec",
+    "idle": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
     "walk": "df758fb0-cc2a-49b7-afe8-376fb5199cb8",
     "attack": "58f25205-5a99-435e-8afd-ba8a2cffb78f"
   },
@@ -26,364 +26,1028 @@
   },
   "frames": [
     {
-      "source": "idle/0.png",
+      "source": "candidates/warrior-south/frame_000.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south/frame_000.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "594e42296472d342f96165a476c4faa5d7bdfb5f019553f256a70dc11d7f8f36"
+      "sha256": "49b7213e2f0c243304163a9d6df6069283243cae8cfc33ba78f062e187bbd517",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/a6dd941e-3f64-4a0e-bda4-2dfefe1972a4/south/0.png?t=1793408900384",
+      "source_evidence": "candidates/warrior-south/source-provenance.json",
+      "source_evidence_sha256": "974abedd978d2f881e2285e4086cd653b9ba6a1cffc5d5fdf5471e33f67fbb91",
+      "source_review": "candidates/warrior-south/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "25c6d3297bad4e23b3218dfd850fb1d4ab5bb56efb7e3d0fb11e33375f17a8ed"
     },
     {
-      "source": "idle/1.png",
+      "source": "candidates/warrior-south/frame_001.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south/frame_001.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "53a0d48134eaeaa82fd2f4cbc43a0ed5017979e2f03d0649a2ff295d98adac6f"
+      "sha256": "b7cb1156b3a40e144b92d2d7d25044553fe22d25ee9f171a0adcd59dae81c643",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/a6dd941e-3f64-4a0e-bda4-2dfefe1972a4/south/1.png?t=1793408900384",
+      "source_evidence": "candidates/warrior-south/source-provenance.json",
+      "source_evidence_sha256": "974abedd978d2f881e2285e4086cd653b9ba6a1cffc5d5fdf5471e33f67fbb91",
+      "source_review": "candidates/warrior-south/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "25c6d3297bad4e23b3218dfd850fb1d4ab5bb56efb7e3d0fb11e33375f17a8ed"
     },
     {
-      "source": "idle/2.png",
+      "source": "candidates/warrior-south/frame_002.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south/frame_002.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "107551e5970ebc03ee75e1c84367590916db8b8b85f103319ce699b4922c37af"
+      "sha256": "312d08a2ea3c8bd61d63fc0fb9598977250fc5bc532c95826c192fd5f3416100",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/a6dd941e-3f64-4a0e-bda4-2dfefe1972a4/south/2.png?t=1793408900384",
+      "source_evidence": "candidates/warrior-south/source-provenance.json",
+      "source_evidence_sha256": "974abedd978d2f881e2285e4086cd653b9ba6a1cffc5d5fdf5471e33f67fbb91",
+      "source_review": "candidates/warrior-south/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "25c6d3297bad4e23b3218dfd850fb1d4ab5bb56efb7e3d0fb11e33375f17a8ed"
     },
     {
-      "source": "idle/3.png",
+      "source": "candidates/warrior-south/frame_003.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south/frame_003.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "0c4919870c1161cbb3f3e53b38080744c9c58355dd8e37e93afe19258036679c"
+      "sha256": "e0bde4dc80fda9975211e6b2391812d3074eaa0808b264b2514efde7cd85c9ff",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/a6dd941e-3f64-4a0e-bda4-2dfefe1972a4/south/3.png?t=1793408900384",
+      "source_evidence": "candidates/warrior-south/source-provenance.json",
+      "source_evidence_sha256": "974abedd978d2f881e2285e4086cd653b9ba6a1cffc5d5fdf5471e33f67fbb91",
+      "source_review": "candidates/warrior-south/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "25c6d3297bad4e23b3218dfd850fb1d4ab5bb56efb7e3d0fb11e33375f17a8ed"
     },
     {
-      "source": "idle/4.png",
+      "source": "candidates/warrior-south/frame_004.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south/frame_004.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "dade0a530a9f42a106a0c0aab495e742c282d074a89aa0c213fd16654726d5e4"
+      "sha256": "8d8c1085ba23c04f4946c6895fabaffefcf78b42de57dba6f3a3bea25b7cd4ca",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/a6dd941e-3f64-4a0e-bda4-2dfefe1972a4/south/4.png?t=1793408900384",
+      "source_evidence": "candidates/warrior-south/source-provenance.json",
+      "source_evidence_sha256": "974abedd978d2f881e2285e4086cd653b9ba6a1cffc5d5fdf5471e33f67fbb91",
+      "source_review": "candidates/warrior-south/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "25c6d3297bad4e23b3218dfd850fb1d4ab5bb56efb7e3d0fb11e33375f17a8ed"
     },
     {
-      "source": "eight-direction-frames/idle/south-east/0.png",
+      "source": "candidates/warrior-south/frame_005.png",
+      "source_collection": "goblin-idle-repair",
+      "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south/frame_005.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "adb8a1943432e1c1697f14539c2c70457a727413bfec6bf918ea6e02f85f4065",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/a6dd941e-3f64-4a0e-bda4-2dfefe1972a4/south/5.png?t=1793408900384",
+      "source_evidence": "candidates/warrior-south/source-provenance.json",
+      "source_evidence_sha256": "974abedd978d2f881e2285e4086cd653b9ba6a1cffc5d5fdf5471e33f67fbb91",
+      "source_review": "candidates/warrior-south/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "25c6d3297bad4e23b3218dfd850fb1d4ab5bb56efb7e3d0fb11e33375f17a8ed"
+    },
+    {
+      "source": "candidates/warrior-south/frame_006.png",
+      "source_collection": "goblin-idle-repair",
+      "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south/frame_006.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "9c1c098e558dd3cb9c2b831d67e6df641aeb228384fac2c2752b4a9b525c306c",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/a6dd941e-3f64-4a0e-bda4-2dfefe1972a4/south/6.png?t=1793408900384",
+      "source_evidence": "candidates/warrior-south/source-provenance.json",
+      "source_evidence_sha256": "974abedd978d2f881e2285e4086cd653b9ba6a1cffc5d5fdf5471e33f67fbb91",
+      "source_review": "candidates/warrior-south/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "25c6d3297bad4e23b3218dfd850fb1d4ab5bb56efb7e3d0fb11e33375f17a8ed"
+    },
+    {
+      "source": "candidates/warrior-south/frame_007.png",
+      "source_collection": "goblin-idle-repair",
+      "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south/frame_007.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "12023144bfb52d2e0d25c773b72d119115f6b2d4a6e67b88c29fc4962e1986a4",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/a6dd941e-3f64-4a0e-bda4-2dfefe1972a4/south/7.png?t=1793408900384",
+      "source_evidence": "candidates/warrior-south/source-provenance.json",
+      "source_evidence_sha256": "974abedd978d2f881e2285e4086cd653b9ba6a1cffc5d5fdf5471e33f67fbb91",
+      "source_review": "candidates/warrior-south/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "25c6d3297bad4e23b3218dfd850fb1d4ab5bb56efb7e3d0fb11e33375f17a8ed"
+    },
+    {
+      "source": "candidates/warrior-south-east/frame_000.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south-east/frame_000.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "3b821b84128150c010c967fee87fe812293f9db2e0d3ba0292cfe76a408bd345"
+      "sha256": "6c10f35c9a4eddc3d5270e017edb057c30842177f416ae76c5d377ec8fcbe31d",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/c9eb96ef-0ed9-4678-91bd-59de52e33f53/south-east/0.png?t=1793409175870",
+      "source_evidence": "candidates/warrior-south-east/source-provenance.json",
+      "source_evidence_sha256": "11ee5ccc9f3f115596c21721d38aa7bd7778bf2ee7864e9c6ec8d087516c09a5",
+      "source_review": "candidates/warrior-south-east/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "13844bbc5dc1c6c306c6b9eca0685029721d31a43a75beed400e2e9ed38503e5"
     },
     {
-      "source": "eight-direction-frames/idle/south-east/1.png",
+      "source": "candidates/warrior-south-east/frame_001.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south-east/frame_001.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "5856b4c936c49d9ea2293f07c01296c048fb8f71653d4e2c11002c3f799274e8"
+      "sha256": "367c725ca0ad06a7aae25adab76dc66e2b88adecdc4abbaf2885dac0e4d4123b",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/c9eb96ef-0ed9-4678-91bd-59de52e33f53/south-east/1.png?t=1793409175870",
+      "source_evidence": "candidates/warrior-south-east/source-provenance.json",
+      "source_evidence_sha256": "11ee5ccc9f3f115596c21721d38aa7bd7778bf2ee7864e9c6ec8d087516c09a5",
+      "source_review": "candidates/warrior-south-east/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "13844bbc5dc1c6c306c6b9eca0685029721d31a43a75beed400e2e9ed38503e5"
     },
     {
-      "source": "eight-direction-frames/idle/south-east/2.png",
+      "source": "candidates/warrior-south-east/frame_002.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south-east/frame_002.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "67ff90bcfcb0058bf2ad1880fb41f2f6cc4a2bcaf6da5ce7f856446e0cb0960c"
+      "sha256": "b8b4f605e369d743d6f61d238738891a6db8fc2ce1027a2ac02296c8fd4dc764",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/c9eb96ef-0ed9-4678-91bd-59de52e33f53/south-east/2.png?t=1793409175870",
+      "source_evidence": "candidates/warrior-south-east/source-provenance.json",
+      "source_evidence_sha256": "11ee5ccc9f3f115596c21721d38aa7bd7778bf2ee7864e9c6ec8d087516c09a5",
+      "source_review": "candidates/warrior-south-east/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "13844bbc5dc1c6c306c6b9eca0685029721d31a43a75beed400e2e9ed38503e5"
     },
     {
-      "source": "eight-direction-frames/idle/south-east/3.png",
+      "source": "candidates/warrior-south-east/frame_003.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south-east/frame_003.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "48943ed7fc6650a05c6cb9b392d7634fc418fdd4912dc14e36aa6086e79d7e8f"
+      "sha256": "3cdc763e936abfa0127e9af9f767a36a5530fa9583cc4d3902f6dbb360f62ebf",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/c9eb96ef-0ed9-4678-91bd-59de52e33f53/south-east/3.png?t=1793409175870",
+      "source_evidence": "candidates/warrior-south-east/source-provenance.json",
+      "source_evidence_sha256": "11ee5ccc9f3f115596c21721d38aa7bd7778bf2ee7864e9c6ec8d087516c09a5",
+      "source_review": "candidates/warrior-south-east/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "13844bbc5dc1c6c306c6b9eca0685029721d31a43a75beed400e2e9ed38503e5"
     },
     {
-      "source": "eight-direction-frames/idle/south-east/4.png",
+      "source": "candidates/warrior-south-east/frame_004.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south-east/frame_004.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "8de7f7f17646f0d522e6ad2e119ab0dc0383a7872509ce83fbaf492b0f458bcb"
+      "sha256": "48d29b15d2557f276c107df880bd704897b0c34f8a8587300dead7d6017835d6",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/c9eb96ef-0ed9-4678-91bd-59de52e33f53/south-east/4.png?t=1793409175870",
+      "source_evidence": "candidates/warrior-south-east/source-provenance.json",
+      "source_evidence_sha256": "11ee5ccc9f3f115596c21721d38aa7bd7778bf2ee7864e9c6ec8d087516c09a5",
+      "source_review": "candidates/warrior-south-east/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "13844bbc5dc1c6c306c6b9eca0685029721d31a43a75beed400e2e9ed38503e5"
     },
     {
-      "source": "eight-direction-frames/idle/east/0.png",
+      "source": "candidates/warrior-south-east/frame_005.png",
+      "source_collection": "goblin-idle-repair",
+      "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south-east/frame_005.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "778bcbcd19d7a18f250078996cd421044404a7be23ef313283c0d841ab4ffd8c",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/c9eb96ef-0ed9-4678-91bd-59de52e33f53/south-east/5.png?t=1793409175870",
+      "source_evidence": "candidates/warrior-south-east/source-provenance.json",
+      "source_evidence_sha256": "11ee5ccc9f3f115596c21721d38aa7bd7778bf2ee7864e9c6ec8d087516c09a5",
+      "source_review": "candidates/warrior-south-east/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "13844bbc5dc1c6c306c6b9eca0685029721d31a43a75beed400e2e9ed38503e5"
+    },
+    {
+      "source": "candidates/warrior-south-east/frame_006.png",
+      "source_collection": "goblin-idle-repair",
+      "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south-east/frame_006.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "58a39e28bb7510c227925a3fd0cf40d1d0d1ce94b85be6cd3953cf5c5f5fdc3a",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/c9eb96ef-0ed9-4678-91bd-59de52e33f53/south-east/6.png?t=1793409175870",
+      "source_evidence": "candidates/warrior-south-east/source-provenance.json",
+      "source_evidence_sha256": "11ee5ccc9f3f115596c21721d38aa7bd7778bf2ee7864e9c6ec8d087516c09a5",
+      "source_review": "candidates/warrior-south-east/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "13844bbc5dc1c6c306c6b9eca0685029721d31a43a75beed400e2e9ed38503e5"
+    },
+    {
+      "source": "candidates/warrior-south-east/frame_007.png",
+      "source_collection": "goblin-idle-repair",
+      "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south-east/frame_007.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "b456ed644b4c001f837d544eab8357fb7c3a54e5ba35ae62dd26bad7f815741d",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/c9eb96ef-0ed9-4678-91bd-59de52e33f53/south-east/7.png?t=1793409175870",
+      "source_evidence": "candidates/warrior-south-east/source-provenance.json",
+      "source_evidence_sha256": "11ee5ccc9f3f115596c21721d38aa7bd7778bf2ee7864e9c6ec8d087516c09a5",
+      "source_review": "candidates/warrior-south-east/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "13844bbc5dc1c6c306c6b9eca0685029721d31a43a75beed400e2e9ed38503e5"
+    },
+    {
+      "source": "candidates/warrior-east/frame_000.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/east/frame_000.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "b2a20636de75140758ccef8663ad36a6fe5337a8411505469ebf596ec190ff4e"
+      "sha256": "d80fd0d36f2168386349b25d079668e7f7fddfcb38256fd52abd88d7f6aca894",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/d6e96d69-de91-4b8d-bbc3-d722da034b26/east/0.png?t=1793409164683",
+      "source_evidence": "candidates/warrior-east/source-provenance.json",
+      "source_evidence_sha256": "e9f16a14f6576496e6f834599e4879c4627557cdd2ed572c67efb7bb8e1740dc",
+      "source_review": "candidates/warrior-east/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "b03c9ee9d90aa90728ea942989724634c818e14d31f0408fcecd06fb48a0eac7"
     },
     {
-      "source": "eight-direction-frames/idle/east/1.png",
+      "source": "candidates/warrior-east/frame_001.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/east/frame_001.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "f7c027521b9c58545168c4b0bcb2699d2eed26ea4b1ee07520853e06710e8b8d"
+      "sha256": "8b33b2ec001b9870d17492d97ba217efd525e65b31f0f129946cb9ad4942966c",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/d6e96d69-de91-4b8d-bbc3-d722da034b26/east/1.png?t=1793409164683",
+      "source_evidence": "candidates/warrior-east/source-provenance.json",
+      "source_evidence_sha256": "e9f16a14f6576496e6f834599e4879c4627557cdd2ed572c67efb7bb8e1740dc",
+      "source_review": "candidates/warrior-east/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "b03c9ee9d90aa90728ea942989724634c818e14d31f0408fcecd06fb48a0eac7"
     },
     {
-      "source": "eight-direction-frames/idle/east/2.png",
+      "source": "candidates/warrior-east/frame_002.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/east/frame_002.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "19b3b9cfca626be59878f227920d8b998f90cda64fe043aa8442360c6282e398"
+      "sha256": "74d57fb0bd9c52070f467fd28d68dfe6b6c9f62258a0573bff12b0eb6ad39a66",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/d6e96d69-de91-4b8d-bbc3-d722da034b26/east/2.png?t=1793409164683",
+      "source_evidence": "candidates/warrior-east/source-provenance.json",
+      "source_evidence_sha256": "e9f16a14f6576496e6f834599e4879c4627557cdd2ed572c67efb7bb8e1740dc",
+      "source_review": "candidates/warrior-east/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "b03c9ee9d90aa90728ea942989724634c818e14d31f0408fcecd06fb48a0eac7"
     },
     {
-      "source": "eight-direction-frames/idle/east/3.png",
+      "source": "candidates/warrior-east/frame_003.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/east/frame_003.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "384b1870ad3585d93c38f085e4b400243d5bd683e7197743fff874b6096247b7"
+      "sha256": "267dde3d90be2ddb067815db4d273a2e515bbec0b43936749532f8de4c7661eb",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/d6e96d69-de91-4b8d-bbc3-d722da034b26/east/3.png?t=1793409164683",
+      "source_evidence": "candidates/warrior-east/source-provenance.json",
+      "source_evidence_sha256": "e9f16a14f6576496e6f834599e4879c4627557cdd2ed572c67efb7bb8e1740dc",
+      "source_review": "candidates/warrior-east/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "b03c9ee9d90aa90728ea942989724634c818e14d31f0408fcecd06fb48a0eac7"
     },
     {
-      "source": "eight-direction-frames/idle/east/4.png",
+      "source": "candidates/warrior-east/frame_004.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/east/frame_004.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "4d0c7a6ad003e581c1a4efcd2225325c8bd4eaf117eaa441940e252c1fb5676f"
+      "sha256": "f8b41de29f67b19bf1e1680952b2b399560f21f3ce59432a90297bf20eda9e0c",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/d6e96d69-de91-4b8d-bbc3-d722da034b26/east/4.png?t=1793409164683",
+      "source_evidence": "candidates/warrior-east/source-provenance.json",
+      "source_evidence_sha256": "e9f16a14f6576496e6f834599e4879c4627557cdd2ed572c67efb7bb8e1740dc",
+      "source_review": "candidates/warrior-east/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "b03c9ee9d90aa90728ea942989724634c818e14d31f0408fcecd06fb48a0eac7"
     },
     {
-      "source": "eight-direction-frames/idle/north-east/0.png",
+      "source": "candidates/warrior-east/frame_005.png",
+      "source_collection": "goblin-idle-repair",
+      "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/east/frame_005.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "3df595f3ba58471c080285eaf200cc342beac80c38e9c22a94e606c2b4a3f798",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/d6e96d69-de91-4b8d-bbc3-d722da034b26/east/5.png?t=1793409164683",
+      "source_evidence": "candidates/warrior-east/source-provenance.json",
+      "source_evidence_sha256": "e9f16a14f6576496e6f834599e4879c4627557cdd2ed572c67efb7bb8e1740dc",
+      "source_review": "candidates/warrior-east/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "b03c9ee9d90aa90728ea942989724634c818e14d31f0408fcecd06fb48a0eac7"
+    },
+    {
+      "source": "candidates/warrior-east/frame_006.png",
+      "source_collection": "goblin-idle-repair",
+      "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/east/frame_006.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "78aa71fd6dd6222cba7833a25704141f9afd2ab2228179a9d03648b1e04ca553",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/d6e96d69-de91-4b8d-bbc3-d722da034b26/east/6.png?t=1793409164683",
+      "source_evidence": "candidates/warrior-east/source-provenance.json",
+      "source_evidence_sha256": "e9f16a14f6576496e6f834599e4879c4627557cdd2ed572c67efb7bb8e1740dc",
+      "source_review": "candidates/warrior-east/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "b03c9ee9d90aa90728ea942989724634c818e14d31f0408fcecd06fb48a0eac7"
+    },
+    {
+      "source": "candidates/warrior-east/frame_007.png",
+      "source_collection": "goblin-idle-repair",
+      "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/east/frame_007.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "37b94ee0bd3ee086da3bc091f0dd1dc5c3eb882f520c68a800c8a7e2cc3dd4f3",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/d6e96d69-de91-4b8d-bbc3-d722da034b26/east/7.png?t=1793409164683",
+      "source_evidence": "candidates/warrior-east/source-provenance.json",
+      "source_evidence_sha256": "e9f16a14f6576496e6f834599e4879c4627557cdd2ed572c67efb7bb8e1740dc",
+      "source_review": "candidates/warrior-east/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "b03c9ee9d90aa90728ea942989724634c818e14d31f0408fcecd06fb48a0eac7"
+    },
+    {
+      "source": "candidates/warrior-north-east/frame_000.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north-east/frame_000.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "827140bdbc620c836da56e7d423edff18d90c04a80c83759df062e01e8f1fb5d"
+      "sha256": "6ddb90c73e8250abff141cd4596afc7ebce48f2645934bec312de22d40c0061b",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/973e4490-e04f-48f9-b0d0-17d24d623fd6/north-east/0.png?t=1793409201647",
+      "source_evidence": "candidates/warrior-north-east/source-provenance.json",
+      "source_evidence_sha256": "2181d87f8cf035929fe223d53e73fa5b673299496372b17f1e38d16f4f4b888d",
+      "source_review": "candidates/warrior-north-east/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "5a0a3f3df58ae53f08bd14761865dbaf7f409ae126411829661eaec49ce89fd9"
     },
     {
-      "source": "eight-direction-frames/idle/north-east/1.png",
+      "source": "candidates/warrior-north-east/frame_001.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north-east/frame_001.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "ecc304c2bf1d673cea51907d5b1de03b03e19a0336badf75efdbf30c034f5ce0"
+      "sha256": "e75b426068c7707f24f627e52776e1f943ed84ce5cd0c936141c4e60081fdde2",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/973e4490-e04f-48f9-b0d0-17d24d623fd6/north-east/1.png?t=1793409201647",
+      "source_evidence": "candidates/warrior-north-east/source-provenance.json",
+      "source_evidence_sha256": "2181d87f8cf035929fe223d53e73fa5b673299496372b17f1e38d16f4f4b888d",
+      "source_review": "candidates/warrior-north-east/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "5a0a3f3df58ae53f08bd14761865dbaf7f409ae126411829661eaec49ce89fd9"
     },
     {
-      "source": "eight-direction-frames/idle/north-east/2.png",
+      "source": "candidates/warrior-north-east/frame_002.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north-east/frame_002.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "809351e438d6da767f0a389da287ad9000705837485e4599d7d5c8fefe3da87c"
+      "sha256": "a61998a7f685cca8d9930addcb81ed3bebe8488a5569fbadec02b9ea3d70e4e1",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/973e4490-e04f-48f9-b0d0-17d24d623fd6/north-east/2.png?t=1793409201647",
+      "source_evidence": "candidates/warrior-north-east/source-provenance.json",
+      "source_evidence_sha256": "2181d87f8cf035929fe223d53e73fa5b673299496372b17f1e38d16f4f4b888d",
+      "source_review": "candidates/warrior-north-east/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "5a0a3f3df58ae53f08bd14761865dbaf7f409ae126411829661eaec49ce89fd9"
     },
     {
-      "source": "eight-direction-frames/idle/north-east/3.png",
+      "source": "candidates/warrior-north-east/frame_003.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north-east/frame_003.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "55b0e0fffbe06cb9fca4d35e4f8eec21af121cfda437f1a13da14af52de18d64"
+      "sha256": "88f5d4a1fc5f38d025e811c48b7076fef7ecc47fdd7727527df2969dac275400",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/973e4490-e04f-48f9-b0d0-17d24d623fd6/north-east/3.png?t=1793409201647",
+      "source_evidence": "candidates/warrior-north-east/source-provenance.json",
+      "source_evidence_sha256": "2181d87f8cf035929fe223d53e73fa5b673299496372b17f1e38d16f4f4b888d",
+      "source_review": "candidates/warrior-north-east/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "5a0a3f3df58ae53f08bd14761865dbaf7f409ae126411829661eaec49ce89fd9"
     },
     {
-      "source": "eight-direction-frames/idle/north-east/4.png",
+      "source": "candidates/warrior-north-east/frame_004.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north-east/frame_004.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "6400f4c9fb8b29766dcc4afc95a7336ae69cbd23fe94d0ff69356d11f1774e30"
+      "sha256": "8d6712f93d56a99ef2829417877839a2964b5a391af670ba5d9e4ff58ad168db",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/973e4490-e04f-48f9-b0d0-17d24d623fd6/north-east/4.png?t=1793409201647",
+      "source_evidence": "candidates/warrior-north-east/source-provenance.json",
+      "source_evidence_sha256": "2181d87f8cf035929fe223d53e73fa5b673299496372b17f1e38d16f4f4b888d",
+      "source_review": "candidates/warrior-north-east/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "5a0a3f3df58ae53f08bd14761865dbaf7f409ae126411829661eaec49ce89fd9"
     },
     {
-      "source": "eight-direction-frames/idle/north/0.png",
+      "source": "candidates/warrior-north-east/frame_005.png",
+      "source_collection": "goblin-idle-repair",
+      "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north-east/frame_005.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "0aa2d26105e48ab9c07eaa1177f85946eadd6e6d93b62a630af4f79a76db8646",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/973e4490-e04f-48f9-b0d0-17d24d623fd6/north-east/5.png?t=1793409201647",
+      "source_evidence": "candidates/warrior-north-east/source-provenance.json",
+      "source_evidence_sha256": "2181d87f8cf035929fe223d53e73fa5b673299496372b17f1e38d16f4f4b888d",
+      "source_review": "candidates/warrior-north-east/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "5a0a3f3df58ae53f08bd14761865dbaf7f409ae126411829661eaec49ce89fd9"
+    },
+    {
+      "source": "candidates/warrior-north-east/frame_006.png",
+      "source_collection": "goblin-idle-repair",
+      "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north-east/frame_006.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "4fe048ece54e74446012e3982074488d044f49571a86a4b08d7402310055a705",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/973e4490-e04f-48f9-b0d0-17d24d623fd6/north-east/6.png?t=1793409201647",
+      "source_evidence": "candidates/warrior-north-east/source-provenance.json",
+      "source_evidence_sha256": "2181d87f8cf035929fe223d53e73fa5b673299496372b17f1e38d16f4f4b888d",
+      "source_review": "candidates/warrior-north-east/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "5a0a3f3df58ae53f08bd14761865dbaf7f409ae126411829661eaec49ce89fd9"
+    },
+    {
+      "source": "candidates/warrior-north-east/frame_007.png",
+      "source_collection": "goblin-idle-repair",
+      "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north-east/frame_007.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "9371ff896515de0afa87f32ba4c8f93bca09535dc3acaf57a80a73e6a274fdc6",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/973e4490-e04f-48f9-b0d0-17d24d623fd6/north-east/7.png?t=1793409201647",
+      "source_evidence": "candidates/warrior-north-east/source-provenance.json",
+      "source_evidence_sha256": "2181d87f8cf035929fe223d53e73fa5b673299496372b17f1e38d16f4f4b888d",
+      "source_review": "candidates/warrior-north-east/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "5a0a3f3df58ae53f08bd14761865dbaf7f409ae126411829661eaec49ce89fd9"
+    },
+    {
+      "source": "candidates/warrior-north/frame_000.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north/frame_000.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "1109cfe631306ee88d207edd25dbd56cd0698f3f45dc9056e42b7ce2b4bdec59"
+      "sha256": "d45723dc75affba15f0e80357bea2c6ec472b255c11464249fe67c9e344649b1",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/3c579105-e5ea-4df3-823e-f93915d631b4/north/0.png?t=1793409151676",
+      "source_evidence": "candidates/warrior-north/source-provenance.json",
+      "source_evidence_sha256": "1aeb9fdb65265dd9dfb63cabe0fe267e38485b2c327c1a7f9f3a1a70b48f6412",
+      "source_review": "candidates/warrior-north/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "0fbb7f9500bc2bc1d1939c1b055628ae31a1902c3abe744fa1485fcb9860415f"
     },
     {
-      "source": "eight-direction-frames/idle/north/1.png",
+      "source": "candidates/warrior-north/frame_001.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north/frame_001.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "784872821328267389ac192a86c788afb0059e36401353e34e0a26e3dcbefa96"
+      "sha256": "f20ae43fed59545d698c3d1501baa71120ddd555a433fd97d989565c651a01db",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/3c579105-e5ea-4df3-823e-f93915d631b4/north/1.png?t=1793409151676",
+      "source_evidence": "candidates/warrior-north/source-provenance.json",
+      "source_evidence_sha256": "1aeb9fdb65265dd9dfb63cabe0fe267e38485b2c327c1a7f9f3a1a70b48f6412",
+      "source_review": "candidates/warrior-north/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "0fbb7f9500bc2bc1d1939c1b055628ae31a1902c3abe744fa1485fcb9860415f"
     },
     {
-      "source": "eight-direction-frames/idle/north/2.png",
+      "source": "candidates/warrior-north/frame_002.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north/frame_002.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "642367e95d293234f778561f3cd1d2d1f4ae864ab9041a931ff30866012777cb"
+      "sha256": "1be7bb513aa6c2e7003c84e142b5b96b7c6f06ca9de50b09c3e061e0c88a62a5",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/3c579105-e5ea-4df3-823e-f93915d631b4/north/2.png?t=1793409151676",
+      "source_evidence": "candidates/warrior-north/source-provenance.json",
+      "source_evidence_sha256": "1aeb9fdb65265dd9dfb63cabe0fe267e38485b2c327c1a7f9f3a1a70b48f6412",
+      "source_review": "candidates/warrior-north/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "0fbb7f9500bc2bc1d1939c1b055628ae31a1902c3abe744fa1485fcb9860415f"
     },
     {
-      "source": "eight-direction-frames/idle/north/3.png",
+      "source": "candidates/warrior-north/frame_003.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north/frame_003.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "3febb88adb66eebcdd3f19a23b5e2bb81f1b9ce9d954f3aa030a17756ba14a17"
+      "sha256": "3575af8cdeee695d46e556ec82581b9873e04c02153ebe818ac534dc4454293f",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/3c579105-e5ea-4df3-823e-f93915d631b4/north/3.png?t=1793409151676",
+      "source_evidence": "candidates/warrior-north/source-provenance.json",
+      "source_evidence_sha256": "1aeb9fdb65265dd9dfb63cabe0fe267e38485b2c327c1a7f9f3a1a70b48f6412",
+      "source_review": "candidates/warrior-north/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "0fbb7f9500bc2bc1d1939c1b055628ae31a1902c3abe744fa1485fcb9860415f"
     },
     {
-      "source": "eight-direction-frames/idle/north/4.png",
+      "source": "candidates/warrior-north/frame_004.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north/frame_004.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "217b96d03955412d4002eec3f712398a0793880f9299c83c57b0baee25d2383a"
+      "sha256": "e9741a6a1037beeccff6ea957b37a087959cb0afcca055eca9dd1c64e4dc68cf",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/3c579105-e5ea-4df3-823e-f93915d631b4/north/4.png?t=1793409151676",
+      "source_evidence": "candidates/warrior-north/source-provenance.json",
+      "source_evidence_sha256": "1aeb9fdb65265dd9dfb63cabe0fe267e38485b2c327c1a7f9f3a1a70b48f6412",
+      "source_review": "candidates/warrior-north/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "0fbb7f9500bc2bc1d1939c1b055628ae31a1902c3abe744fa1485fcb9860415f"
     },
     {
-      "source": "eight-direction-frames/idle/north-west/0.png",
+      "source": "candidates/warrior-north/frame_005.png",
+      "source_collection": "goblin-idle-repair",
+      "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north/frame_005.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "a5389d47fc517ac62dc291dee8dccfa3eac6899d0d986a93c471848c3ef008be",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/3c579105-e5ea-4df3-823e-f93915d631b4/north/5.png?t=1793409151676",
+      "source_evidence": "candidates/warrior-north/source-provenance.json",
+      "source_evidence_sha256": "1aeb9fdb65265dd9dfb63cabe0fe267e38485b2c327c1a7f9f3a1a70b48f6412",
+      "source_review": "candidates/warrior-north/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "0fbb7f9500bc2bc1d1939c1b055628ae31a1902c3abe744fa1485fcb9860415f"
+    },
+    {
+      "source": "candidates/warrior-north/frame_006.png",
+      "source_collection": "goblin-idle-repair",
+      "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north/frame_006.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "ddbb7c9b91032443bed43ed3742d484d079a25b1463d019d8f562d529886d86b",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/3c579105-e5ea-4df3-823e-f93915d631b4/north/6.png?t=1793409151676",
+      "source_evidence": "candidates/warrior-north/source-provenance.json",
+      "source_evidence_sha256": "1aeb9fdb65265dd9dfb63cabe0fe267e38485b2c327c1a7f9f3a1a70b48f6412",
+      "source_review": "candidates/warrior-north/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "0fbb7f9500bc2bc1d1939c1b055628ae31a1902c3abe744fa1485fcb9860415f"
+    },
+    {
+      "source": "candidates/warrior-north/frame_007.png",
+      "source_collection": "goblin-idle-repair",
+      "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north/frame_007.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "9e5e6f6d85928ebdf1623c76060eb95b8ac3907b936412b8c557f19e6ee02c6a",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/3c579105-e5ea-4df3-823e-f93915d631b4/north/7.png?t=1793409151676",
+      "source_evidence": "candidates/warrior-north/source-provenance.json",
+      "source_evidence_sha256": "1aeb9fdb65265dd9dfb63cabe0fe267e38485b2c327c1a7f9f3a1a70b48f6412",
+      "source_review": "candidates/warrior-north/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "0fbb7f9500bc2bc1d1939c1b055628ae31a1902c3abe744fa1485fcb9860415f"
+    },
+    {
+      "source": "candidates/warrior-north-west/frame_000.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north-west/frame_000.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "24bb9eadbb1342c0aceaf263321b087e7b52ed7c0d7e077418cce7c07bba38cd"
+      "sha256": "591b7fbf4d6a8c820f7ff67f1bcaab0911fd13aa14bab7d9bb34bdbeea8c49ac",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/4f5778a8-7312-4fe3-96fb-34f1adb11a64/north-west/0.png?t=1793409172131",
+      "source_evidence": "candidates/warrior-north-west/source-provenance.json",
+      "source_evidence_sha256": "d8e828e90f879adcdb3c92ebd33bc78e0135f2ae10da97a361d773f7358a3e7b",
+      "source_review": "candidates/warrior-north-west/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "61def3455640b167d09da51631cdfbf39f9f66c2f6b124b02490354215f1b608"
     },
     {
-      "source": "eight-direction-frames/idle/north-west/1.png",
+      "source": "candidates/warrior-north-west/frame_001.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north-west/frame_001.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "b2cd7f3fb7b8f8189afd6cd29ae4e8cbd3becf4c15aa54371703a007056a9bd3"
+      "sha256": "b638229f31b3c3cfba4024b5066c1cbc76dc0f88265c8d7e9051b9db8c562e32",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/4f5778a8-7312-4fe3-96fb-34f1adb11a64/north-west/1.png?t=1793409172131",
+      "source_evidence": "candidates/warrior-north-west/source-provenance.json",
+      "source_evidence_sha256": "d8e828e90f879adcdb3c92ebd33bc78e0135f2ae10da97a361d773f7358a3e7b",
+      "source_review": "candidates/warrior-north-west/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "61def3455640b167d09da51631cdfbf39f9f66c2f6b124b02490354215f1b608"
     },
     {
-      "source": "eight-direction-frames/idle/north-west/2.png",
+      "source": "candidates/warrior-north-west/frame_002.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north-west/frame_002.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "b0cc0b19d8eaa2a0e077518f2359e3bba6802ef6d6b2876e3969b3db7c4d5655"
+      "sha256": "6be26811e23d0073b3f388eeafc98ca99b74790aff2e985e385202e2482ffd3b",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/4f5778a8-7312-4fe3-96fb-34f1adb11a64/north-west/2.png?t=1793409172131",
+      "source_evidence": "candidates/warrior-north-west/source-provenance.json",
+      "source_evidence_sha256": "d8e828e90f879adcdb3c92ebd33bc78e0135f2ae10da97a361d773f7358a3e7b",
+      "source_review": "candidates/warrior-north-west/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "61def3455640b167d09da51631cdfbf39f9f66c2f6b124b02490354215f1b608"
     },
     {
-      "source": "eight-direction-frames/idle/north-west/3.png",
+      "source": "candidates/warrior-north-west/frame_003.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north-west/frame_003.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "442ff9d55a38e3b422ab944e6e498375e047b7a1a3d2be4b79b035716e91ca39"
+      "sha256": "5f8d65b272446aa910bfc299535d4c5f3e8e50932ccb129b298a5fae8987e842",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/4f5778a8-7312-4fe3-96fb-34f1adb11a64/north-west/3.png?t=1793409172131",
+      "source_evidence": "candidates/warrior-north-west/source-provenance.json",
+      "source_evidence_sha256": "d8e828e90f879adcdb3c92ebd33bc78e0135f2ae10da97a361d773f7358a3e7b",
+      "source_review": "candidates/warrior-north-west/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "61def3455640b167d09da51631cdfbf39f9f66c2f6b124b02490354215f1b608"
     },
     {
-      "source": "eight-direction-frames/idle/north-west/4.png",
+      "source": "candidates/warrior-north-west/frame_004.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north-west/frame_004.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "db8a1626a6d1239f9109ad356be390a11e2f3c71ac0c138df60d947463790e7b"
+      "sha256": "b6ffe4f2cd3c05f74a4b2aed2336685c62ce0615c6aea03e6dca4525827b94de",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/4f5778a8-7312-4fe3-96fb-34f1adb11a64/north-west/4.png?t=1793409172131",
+      "source_evidence": "candidates/warrior-north-west/source-provenance.json",
+      "source_evidence_sha256": "d8e828e90f879adcdb3c92ebd33bc78e0135f2ae10da97a361d773f7358a3e7b",
+      "source_review": "candidates/warrior-north-west/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "61def3455640b167d09da51631cdfbf39f9f66c2f6b124b02490354215f1b608"
     },
     {
-      "source": "eight-direction-frames/idle/west/0.png",
+      "source": "candidates/warrior-north-west/frame_005.png",
+      "source_collection": "goblin-idle-repair",
+      "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north-west/frame_005.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "ee7e695ebe44f04fd27a0deb18dbe350a566bbccbd34fde7d5a84dd911e9e573",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/4f5778a8-7312-4fe3-96fb-34f1adb11a64/north-west/5.png?t=1793409172131",
+      "source_evidence": "candidates/warrior-north-west/source-provenance.json",
+      "source_evidence_sha256": "d8e828e90f879adcdb3c92ebd33bc78e0135f2ae10da97a361d773f7358a3e7b",
+      "source_review": "candidates/warrior-north-west/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "61def3455640b167d09da51631cdfbf39f9f66c2f6b124b02490354215f1b608"
+    },
+    {
+      "source": "candidates/warrior-north-west/frame_006.png",
+      "source_collection": "goblin-idle-repair",
+      "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north-west/frame_006.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "0ea9be4f15dc0b8417dc8f42e169b090710a4263c5b6ecb9ef7be9f9320a81b4",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/4f5778a8-7312-4fe3-96fb-34f1adb11a64/north-west/6.png?t=1793409172131",
+      "source_evidence": "candidates/warrior-north-west/source-provenance.json",
+      "source_evidence_sha256": "d8e828e90f879adcdb3c92ebd33bc78e0135f2ae10da97a361d773f7358a3e7b",
+      "source_review": "candidates/warrior-north-west/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "61def3455640b167d09da51631cdfbf39f9f66c2f6b124b02490354215f1b608"
+    },
+    {
+      "source": "candidates/warrior-north-west/frame_007.png",
+      "source_collection": "goblin-idle-repair",
+      "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north-west/frame_007.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "1e5509a8411c245043df47e357b6819598241dc153a115f94ec81c45487a2fbf",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/4f5778a8-7312-4fe3-96fb-34f1adb11a64/north-west/7.png?t=1793409172131",
+      "source_evidence": "candidates/warrior-north-west/source-provenance.json",
+      "source_evidence_sha256": "d8e828e90f879adcdb3c92ebd33bc78e0135f2ae10da97a361d773f7358a3e7b",
+      "source_review": "candidates/warrior-north-west/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "61def3455640b167d09da51631cdfbf39f9f66c2f6b124b02490354215f1b608"
+    },
+    {
+      "source": "candidates/warrior-west/frame_000.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/west/frame_000.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "1672e49a99564e4ca1e1ec097f41de85b5c3f6e93fb85651ccba21a8aa6b1392"
+      "sha256": "603ea0d3f9a7cf4a30d4ebf7f36b52188bec415469722c789352f5a86623271c",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/c89c6035-381b-4a64-8fd3-d2ad52c81649/west/0.png?t=1793409172472",
+      "source_evidence": "candidates/warrior-west/source-provenance.json",
+      "source_evidence_sha256": "c82f32dd41e5d3537088142e27b2f6486d97ebbd2648517347f45b31e9c984ed",
+      "source_review": "candidates/warrior-west/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "0c96fc1eb43fa6402c0c090e363f3831e8162122b371ba1237d4843b5e0245a6"
     },
     {
-      "source": "eight-direction-frames/idle/west/1.png",
+      "source": "candidates/warrior-west/frame_001.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/west/frame_001.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "207dfc4ee3f39bddd5f1ea0c0b3934190a0080dd32d5d915b996c8abf4c3561e"
+      "sha256": "4647549126380d9efca3a8f995d4c95b2e29a2e2356299f16ccd86256d742a1f",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/c89c6035-381b-4a64-8fd3-d2ad52c81649/west/1.png?t=1793409172472",
+      "source_evidence": "candidates/warrior-west/source-provenance.json",
+      "source_evidence_sha256": "c82f32dd41e5d3537088142e27b2f6486d97ebbd2648517347f45b31e9c984ed",
+      "source_review": "candidates/warrior-west/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "0c96fc1eb43fa6402c0c090e363f3831e8162122b371ba1237d4843b5e0245a6"
     },
     {
-      "source": "eight-direction-frames/idle/west/2.png",
+      "source": "candidates/warrior-west/frame_002.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/west/frame_002.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "0a8ec84c74c5bfae3d2488ea4aa8a4c8b36ee25065a34aff70c2e17f815b1bc5"
+      "sha256": "aede0244fbb14dfdb3f61771cfd68333303abb18317dca7d23544a96223b7cd1",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/c89c6035-381b-4a64-8fd3-d2ad52c81649/west/2.png?t=1793409172472",
+      "source_evidence": "candidates/warrior-west/source-provenance.json",
+      "source_evidence_sha256": "c82f32dd41e5d3537088142e27b2f6486d97ebbd2648517347f45b31e9c984ed",
+      "source_review": "candidates/warrior-west/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "0c96fc1eb43fa6402c0c090e363f3831e8162122b371ba1237d4843b5e0245a6"
     },
     {
-      "source": "eight-direction-frames/idle/west/3.png",
+      "source": "candidates/warrior-west/frame_003.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/west/frame_003.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "265bd15ba49870324eb93ed219b8f6345ceb8d303926fd1010fbf7720d7dca3d"
+      "sha256": "2b7d3111ca56a3371dd90d2c0b97bae14123f7c7cc96caf8e88ea6453e877253",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/c89c6035-381b-4a64-8fd3-d2ad52c81649/west/3.png?t=1793409172472",
+      "source_evidence": "candidates/warrior-west/source-provenance.json",
+      "source_evidence_sha256": "c82f32dd41e5d3537088142e27b2f6486d97ebbd2648517347f45b31e9c984ed",
+      "source_review": "candidates/warrior-west/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "0c96fc1eb43fa6402c0c090e363f3831e8162122b371ba1237d4843b5e0245a6"
     },
     {
-      "source": "eight-direction-frames/idle/west/4.png",
+      "source": "candidates/warrior-west/frame_004.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/west/frame_004.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "3cb5100c55fffcf39086fb0e08f207605048d0fcb79b32ab70ff82256294a53d"
+      "sha256": "a21dd7802ede3a0333fb1050dc2aa1657b291462d3d11d4a5f95cdc7c19d07bb",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/c89c6035-381b-4a64-8fd3-d2ad52c81649/west/4.png?t=1793409172472",
+      "source_evidence": "candidates/warrior-west/source-provenance.json",
+      "source_evidence_sha256": "c82f32dd41e5d3537088142e27b2f6486d97ebbd2648517347f45b31e9c984ed",
+      "source_review": "candidates/warrior-west/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "0c96fc1eb43fa6402c0c090e363f3831e8162122b371ba1237d4843b5e0245a6"
     },
     {
-      "source": "eight-direction-frames/idle/south-west/0.png",
+      "source": "candidates/warrior-west/frame_005.png",
+      "source_collection": "goblin-idle-repair",
+      "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/west/frame_005.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "227d7c1ce8028687d942531d7579f1a0727310d9fa004eda4cd881f51f6c3912",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/c89c6035-381b-4a64-8fd3-d2ad52c81649/west/5.png?t=1793409172472",
+      "source_evidence": "candidates/warrior-west/source-provenance.json",
+      "source_evidence_sha256": "c82f32dd41e5d3537088142e27b2f6486d97ebbd2648517347f45b31e9c984ed",
+      "source_review": "candidates/warrior-west/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "0c96fc1eb43fa6402c0c090e363f3831e8162122b371ba1237d4843b5e0245a6"
+    },
+    {
+      "source": "candidates/warrior-west/frame_006.png",
+      "source_collection": "goblin-idle-repair",
+      "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/west/frame_006.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "9d59c6b52965db9c7ae20f7834cc9fbdf036732dfb65fa1f5c898216e92de1ca",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/c89c6035-381b-4a64-8fd3-d2ad52c81649/west/6.png?t=1793409172472",
+      "source_evidence": "candidates/warrior-west/source-provenance.json",
+      "source_evidence_sha256": "c82f32dd41e5d3537088142e27b2f6486d97ebbd2648517347f45b31e9c984ed",
+      "source_review": "candidates/warrior-west/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "0c96fc1eb43fa6402c0c090e363f3831e8162122b371ba1237d4843b5e0245a6"
+    },
+    {
+      "source": "candidates/warrior-west/frame_007.png",
+      "source_collection": "goblin-idle-repair",
+      "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/west/frame_007.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "87b2c5133de7ccd11db33770b705b016192811c2aeda81eee760d890e9fa310d",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/c89c6035-381b-4a64-8fd3-d2ad52c81649/west/7.png?t=1793409172472",
+      "source_evidence": "candidates/warrior-west/source-provenance.json",
+      "source_evidence_sha256": "c82f32dd41e5d3537088142e27b2f6486d97ebbd2648517347f45b31e9c984ed",
+      "source_review": "candidates/warrior-west/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "0c96fc1eb43fa6402c0c090e363f3831e8162122b371ba1237d4843b5e0245a6"
+    },
+    {
+      "source": "candidates/warrior-south-west/frame_000.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south-west/frame_000.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "84a83aecb179a2723bfd6e13662e35166117bc89cafc2653dc2a33e629d6d897"
+      "sha256": "c85086091831d2ff93eb834bac281c1d0f14b05d9c5511cde20807082d7c0707",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/c133572c-165b-4cbb-8703-179942bfddbc/south-west/0.png?t=1793409197485",
+      "source_evidence": "candidates/warrior-south-west/source-provenance.json",
+      "source_evidence_sha256": "7e61a48d84467569d0df3c40ecd09d1c575424c1d6e7b052be9bdab85e44f104",
+      "source_review": "candidates/warrior-south-west/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "1e37d2d376e07095b678c4b1bbcb91b61e04246d6a4c24e25ad46a8ba18699af"
     },
     {
-      "source": "eight-direction-frames/idle/south-west/1.png",
+      "source": "candidates/warrior-south-west/frame_001.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south-west/frame_001.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "ee1f8fea04cb3f30ce75b0b68b2b486d985bc8f6847125282e1b81c1b3d617b8"
+      "sha256": "59a11f9b16b99e93588c5c330e68211a07c086b6bfacb32b8506e98a6ae6d69a",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/c133572c-165b-4cbb-8703-179942bfddbc/south-west/1.png?t=1793409197485",
+      "source_evidence": "candidates/warrior-south-west/source-provenance.json",
+      "source_evidence_sha256": "7e61a48d84467569d0df3c40ecd09d1c575424c1d6e7b052be9bdab85e44f104",
+      "source_review": "candidates/warrior-south-west/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "1e37d2d376e07095b678c4b1bbcb91b61e04246d6a4c24e25ad46a8ba18699af"
     },
     {
-      "source": "eight-direction-frames/idle/south-west/2.png",
+      "source": "candidates/warrior-south-west/frame_002.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south-west/frame_002.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "0c6e7105ecd563688f2854248056ef16813b71c5714d75a6c5f48a7eacb1133a"
+      "sha256": "a1142be624e96a100cac7c33603a42eb8c98af527f5bce2672769cdfe4105d83",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/c133572c-165b-4cbb-8703-179942bfddbc/south-west/2.png?t=1793409197485",
+      "source_evidence": "candidates/warrior-south-west/source-provenance.json",
+      "source_evidence_sha256": "7e61a48d84467569d0df3c40ecd09d1c575424c1d6e7b052be9bdab85e44f104",
+      "source_review": "candidates/warrior-south-west/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "1e37d2d376e07095b678c4b1bbcb91b61e04246d6a4c24e25ad46a8ba18699af"
     },
     {
-      "source": "eight-direction-frames/idle/south-west/3.png",
+      "source": "candidates/warrior-south-west/frame_003.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south-west/frame_003.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "c1536826fa5a0036a21fa54bbbc15e5d6268a251ede467341d83f63e417967b4"
+      "sha256": "efa685a643a27456318c34f074e3ee5c985dd124cf2ddef15a6c6d21bee614a7",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/c133572c-165b-4cbb-8703-179942bfddbc/south-west/3.png?t=1793409197485",
+      "source_evidence": "candidates/warrior-south-west/source-provenance.json",
+      "source_evidence_sha256": "7e61a48d84467569d0df3c40ecd09d1c575424c1d6e7b052be9bdab85e44f104",
+      "source_review": "candidates/warrior-south-west/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "1e37d2d376e07095b678c4b1bbcb91b61e04246d6a4c24e25ad46a8ba18699af"
     },
     {
-      "source": "eight-direction-frames/idle/south-west/4.png",
+      "source": "candidates/warrior-south-west/frame_004.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south-west/frame_004.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "8784973afcc4a05d156f218e100ace3097adb3084a8449bc479f0b5745f26655"
+      "sha256": "5eae957ebab6bd726c6c766500a1b6d9521845901451d6f7dd608031f6847a9e",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/c133572c-165b-4cbb-8703-179942bfddbc/south-west/4.png?t=1793409197485",
+      "source_evidence": "candidates/warrior-south-west/source-provenance.json",
+      "source_evidence_sha256": "7e61a48d84467569d0df3c40ecd09d1c575424c1d6e7b052be9bdab85e44f104",
+      "source_review": "candidates/warrior-south-west/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "1e37d2d376e07095b678c4b1bbcb91b61e04246d6a4c24e25ad46a8ba18699af"
+    },
+    {
+      "source": "candidates/warrior-south-west/frame_005.png",
+      "source_collection": "goblin-idle-repair",
+      "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south-west/frame_005.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "a74156bff1a8d27644703014e7eb3af0cc0f3f5c28dd162b19f2684324d46a73",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/c133572c-165b-4cbb-8703-179942bfddbc/south-west/5.png?t=1793409197485",
+      "source_evidence": "candidates/warrior-south-west/source-provenance.json",
+      "source_evidence_sha256": "7e61a48d84467569d0df3c40ecd09d1c575424c1d6e7b052be9bdab85e44f104",
+      "source_review": "candidates/warrior-south-west/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "1e37d2d376e07095b678c4b1bbcb91b61e04246d6a4c24e25ad46a8ba18699af"
+    },
+    {
+      "source": "candidates/warrior-south-west/frame_006.png",
+      "source_collection": "goblin-idle-repair",
+      "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south-west/frame_006.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "ee071a33ad8d89cd47ba9412067b73f3871afdeba7edb24ad55304d29e37b593",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/c133572c-165b-4cbb-8703-179942bfddbc/south-west/6.png?t=1793409197485",
+      "source_evidence": "candidates/warrior-south-west/source-provenance.json",
+      "source_evidence_sha256": "7e61a48d84467569d0df3c40ecd09d1c575424c1d6e7b052be9bdab85e44f104",
+      "source_review": "candidates/warrior-south-west/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "1e37d2d376e07095b678c4b1bbcb91b61e04246d6a4c24e25ad46a8ba18699af"
+    },
+    {
+      "source": "candidates/warrior-south-west/frame_007.png",
+      "source_collection": "goblin-idle-repair",
+      "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south-west/frame_007.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "ac0dd5754e4610e6d93c01d91a58351065dd9a6d07271b4d82bc9b71bf4545e6",
+      "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/22405917-2761-4b8f-8c6f-15a071f39a37/animations/c133572c-165b-4cbb-8703-179942bfddbc/south-west/7.png?t=1793409197485",
+      "source_evidence": "candidates/warrior-south-west/source-provenance.json",
+      "source_evidence_sha256": "7e61a48d84467569d0df3c40ecd09d1c575424c1d6e7b052be9bdab85e44f104",
+      "source_review": "candidates/warrior-south-west/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "1e37d2d376e07095b678c4b1bbcb91b61e04246d6a4c24e25ad46a8ba18699af"
     },
     {
       "source": "walk/0.png",
@@ -1825,5 +2489,610 @@
       ],
       "sha256": "8a2d4774208f3b4864dcf95a9cc5f2f034c28c11b8d5ecc30d2bc8517a453ea1"
     }
-  ]
+  ],
+  "clip_provenance": {
+    "idle": {
+      "south": {
+        "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+        "fps": 4,
+        "frame_count": 8,
+        "source_collection": "goblin-idle-repair",
+        "source_selection_sha256": "c6ff9ce1f0cfa4b08d8c6cc02568efe3d4069342c2357ef639c7426c7c54ee7b",
+        "internal_motion_review": "passed_before_installation_authorization",
+        "user_visual_approval": "pending",
+        "supersedes": {
+          "animation_group_id": "80219d08-fe52-4bd8-a753-9947f8d242ec",
+          "frames": [
+            {
+              "source": "idle/0.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south/frame_000.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "594e42296472d342f96165a476c4faa5d7bdfb5f019553f256a70dc11d7f8f36"
+            },
+            {
+              "source": "idle/1.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south/frame_001.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "53a0d48134eaeaa82fd2f4cbc43a0ed5017979e2f03d0649a2ff295d98adac6f"
+            },
+            {
+              "source": "idle/2.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south/frame_002.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "107551e5970ebc03ee75e1c84367590916db8b8b85f103319ce699b4922c37af"
+            },
+            {
+              "source": "idle/3.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south/frame_003.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "0c4919870c1161cbb3f3e53b38080744c9c58355dd8e37e93afe19258036679c"
+            },
+            {
+              "source": "idle/4.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south/frame_004.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "dade0a530a9f42a106a0c0aab495e742c282d074a89aa0c213fd16654726d5e4"
+            }
+          ]
+        }
+      },
+      "south-east": {
+        "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+        "fps": 4,
+        "frame_count": 8,
+        "source_collection": "goblin-idle-repair",
+        "source_selection_sha256": "c6ff9ce1f0cfa4b08d8c6cc02568efe3d4069342c2357ef639c7426c7c54ee7b",
+        "internal_motion_review": "passed_before_installation_authorization",
+        "user_visual_approval": "pending",
+        "supersedes": {
+          "animation_group_id": "80219d08-fe52-4bd8-a753-9947f8d242ec",
+          "frames": [
+            {
+              "source": "eight-direction-frames/idle/south-east/0.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south-east/frame_000.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "3b821b84128150c010c967fee87fe812293f9db2e0d3ba0292cfe76a408bd345"
+            },
+            {
+              "source": "eight-direction-frames/idle/south-east/1.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south-east/frame_001.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "5856b4c936c49d9ea2293f07c01296c048fb8f71653d4e2c11002c3f799274e8"
+            },
+            {
+              "source": "eight-direction-frames/idle/south-east/2.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south-east/frame_002.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "67ff90bcfcb0058bf2ad1880fb41f2f6cc4a2bcaf6da5ce7f856446e0cb0960c"
+            },
+            {
+              "source": "eight-direction-frames/idle/south-east/3.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south-east/frame_003.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "48943ed7fc6650a05c6cb9b392d7634fc418fdd4912dc14e36aa6086e79d7e8f"
+            },
+            {
+              "source": "eight-direction-frames/idle/south-east/4.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south-east/frame_004.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "8de7f7f17646f0d522e6ad2e119ab0dc0383a7872509ce83fbaf492b0f458bcb"
+            }
+          ]
+        }
+      },
+      "east": {
+        "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+        "fps": 4,
+        "frame_count": 8,
+        "source_collection": "goblin-idle-repair",
+        "source_selection_sha256": "c6ff9ce1f0cfa4b08d8c6cc02568efe3d4069342c2357ef639c7426c7c54ee7b",
+        "internal_motion_review": "passed_before_installation_authorization",
+        "user_visual_approval": "pending",
+        "supersedes": {
+          "animation_group_id": "80219d08-fe52-4bd8-a753-9947f8d242ec",
+          "frames": [
+            {
+              "source": "eight-direction-frames/idle/east/0.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/east/frame_000.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "b2a20636de75140758ccef8663ad36a6fe5337a8411505469ebf596ec190ff4e"
+            },
+            {
+              "source": "eight-direction-frames/idle/east/1.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/east/frame_001.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "f7c027521b9c58545168c4b0bcb2699d2eed26ea4b1ee07520853e06710e8b8d"
+            },
+            {
+              "source": "eight-direction-frames/idle/east/2.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/east/frame_002.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "19b3b9cfca626be59878f227920d8b998f90cda64fe043aa8442360c6282e398"
+            },
+            {
+              "source": "eight-direction-frames/idle/east/3.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/east/frame_003.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "384b1870ad3585d93c38f085e4b400243d5bd683e7197743fff874b6096247b7"
+            },
+            {
+              "source": "eight-direction-frames/idle/east/4.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/east/frame_004.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "4d0c7a6ad003e581c1a4efcd2225325c8bd4eaf117eaa441940e252c1fb5676f"
+            }
+          ]
+        }
+      },
+      "north-east": {
+        "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+        "fps": 4,
+        "frame_count": 8,
+        "source_collection": "goblin-idle-repair",
+        "source_selection_sha256": "c6ff9ce1f0cfa4b08d8c6cc02568efe3d4069342c2357ef639c7426c7c54ee7b",
+        "internal_motion_review": "passed_before_installation_authorization",
+        "user_visual_approval": "pending",
+        "supersedes": {
+          "animation_group_id": "80219d08-fe52-4bd8-a753-9947f8d242ec",
+          "frames": [
+            {
+              "source": "eight-direction-frames/idle/north-east/0.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north-east/frame_000.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "827140bdbc620c836da56e7d423edff18d90c04a80c83759df062e01e8f1fb5d"
+            },
+            {
+              "source": "eight-direction-frames/idle/north-east/1.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north-east/frame_001.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "ecc304c2bf1d673cea51907d5b1de03b03e19a0336badf75efdbf30c034f5ce0"
+            },
+            {
+              "source": "eight-direction-frames/idle/north-east/2.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north-east/frame_002.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "809351e438d6da767f0a389da287ad9000705837485e4599d7d5c8fefe3da87c"
+            },
+            {
+              "source": "eight-direction-frames/idle/north-east/3.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north-east/frame_003.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "55b0e0fffbe06cb9fca4d35e4f8eec21af121cfda437f1a13da14af52de18d64"
+            },
+            {
+              "source": "eight-direction-frames/idle/north-east/4.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north-east/frame_004.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "6400f4c9fb8b29766dcc4afc95a7336ae69cbd23fe94d0ff69356d11f1774e30"
+            }
+          ]
+        }
+      },
+      "north": {
+        "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+        "fps": 4,
+        "frame_count": 8,
+        "source_collection": "goblin-idle-repair",
+        "source_selection_sha256": "c6ff9ce1f0cfa4b08d8c6cc02568efe3d4069342c2357ef639c7426c7c54ee7b",
+        "internal_motion_review": "passed_before_installation_authorization",
+        "user_visual_approval": "pending",
+        "supersedes": {
+          "animation_group_id": "80219d08-fe52-4bd8-a753-9947f8d242ec",
+          "frames": [
+            {
+              "source": "eight-direction-frames/idle/north/0.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north/frame_000.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "1109cfe631306ee88d207edd25dbd56cd0698f3f45dc9056e42b7ce2b4bdec59"
+            },
+            {
+              "source": "eight-direction-frames/idle/north/1.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north/frame_001.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "784872821328267389ac192a86c788afb0059e36401353e34e0a26e3dcbefa96"
+            },
+            {
+              "source": "eight-direction-frames/idle/north/2.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north/frame_002.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "642367e95d293234f778561f3cd1d2d1f4ae864ab9041a931ff30866012777cb"
+            },
+            {
+              "source": "eight-direction-frames/idle/north/3.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north/frame_003.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "3febb88adb66eebcdd3f19a23b5e2bb81f1b9ce9d954f3aa030a17756ba14a17"
+            },
+            {
+              "source": "eight-direction-frames/idle/north/4.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north/frame_004.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "217b96d03955412d4002eec3f712398a0793880f9299c83c57b0baee25d2383a"
+            }
+          ]
+        }
+      },
+      "north-west": {
+        "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+        "fps": 4,
+        "frame_count": 8,
+        "source_collection": "goblin-idle-repair",
+        "source_selection_sha256": "c6ff9ce1f0cfa4b08d8c6cc02568efe3d4069342c2357ef639c7426c7c54ee7b",
+        "internal_motion_review": "passed_before_installation_authorization",
+        "user_visual_approval": "pending",
+        "supersedes": {
+          "animation_group_id": "80219d08-fe52-4bd8-a753-9947f8d242ec",
+          "frames": [
+            {
+              "source": "eight-direction-frames/idle/north-west/0.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north-west/frame_000.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "24bb9eadbb1342c0aceaf263321b087e7b52ed7c0d7e077418cce7c07bba38cd"
+            },
+            {
+              "source": "eight-direction-frames/idle/north-west/1.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north-west/frame_001.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "b2cd7f3fb7b8f8189afd6cd29ae4e8cbd3becf4c15aa54371703a007056a9bd3"
+            },
+            {
+              "source": "eight-direction-frames/idle/north-west/2.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north-west/frame_002.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "b0cc0b19d8eaa2a0e077518f2359e3bba6802ef6d6b2876e3969b3db7c4d5655"
+            },
+            {
+              "source": "eight-direction-frames/idle/north-west/3.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north-west/frame_003.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "442ff9d55a38e3b422ab944e6e498375e047b7a1a3d2be4b79b035716e91ca39"
+            },
+            {
+              "source": "eight-direction-frames/idle/north-west/4.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/north-west/frame_004.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "db8a1626a6d1239f9109ad356be390a11e2f3c71ac0c138df60d947463790e7b"
+            }
+          ]
+        }
+      },
+      "west": {
+        "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+        "fps": 4,
+        "frame_count": 8,
+        "source_collection": "goblin-idle-repair",
+        "source_selection_sha256": "c6ff9ce1f0cfa4b08d8c6cc02568efe3d4069342c2357ef639c7426c7c54ee7b",
+        "internal_motion_review": "passed_before_installation_authorization",
+        "user_visual_approval": "pending",
+        "supersedes": {
+          "animation_group_id": "80219d08-fe52-4bd8-a753-9947f8d242ec",
+          "frames": [
+            {
+              "source": "eight-direction-frames/idle/west/0.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/west/frame_000.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "1672e49a99564e4ca1e1ec097f41de85b5c3f6e93fb85651ccba21a8aa6b1392"
+            },
+            {
+              "source": "eight-direction-frames/idle/west/1.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/west/frame_001.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "207dfc4ee3f39bddd5f1ea0c0b3934190a0080dd32d5d915b996c8abf4c3561e"
+            },
+            {
+              "source": "eight-direction-frames/idle/west/2.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/west/frame_002.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "0a8ec84c74c5bfae3d2488ea4aa8a4c8b36ee25065a34aff70c2e17f815b1bc5"
+            },
+            {
+              "source": "eight-direction-frames/idle/west/3.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/west/frame_003.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "265bd15ba49870324eb93ed219b8f6345ceb8d303926fd1010fbf7720d7dca3d"
+            },
+            {
+              "source": "eight-direction-frames/idle/west/4.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/west/frame_004.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "3cb5100c55fffcf39086fb0e08f207605048d0fcb79b32ab70ff82256294a53d"
+            }
+          ]
+        }
+      },
+      "south-west": {
+        "animation_group_id": "614d0222-feb8-4d86-bf4f-f5f8e491d69c",
+        "fps": 4,
+        "frame_count": 8,
+        "source_collection": "goblin-idle-repair",
+        "source_selection_sha256": "c6ff9ce1f0cfa4b08d8c6cc02568efe3d4069342c2357ef639c7426c7c54ee7b",
+        "internal_motion_review": "passed_before_installation_authorization",
+        "user_visual_approval": "pending",
+        "supersedes": {
+          "animation_group_id": "80219d08-fe52-4bd8-a753-9947f8d242ec",
+          "frames": [
+            {
+              "source": "eight-direction-frames/idle/south-west/0.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south-west/frame_000.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "84a83aecb179a2723bfd6e13662e35166117bc89cafc2653dc2a33e629d6d897"
+            },
+            {
+              "source": "eight-direction-frames/idle/south-west/1.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south-west/frame_001.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "ee1f8fea04cb3f30ce75b0b68b2b486d985bc8f6847125282e1b81c1b3d617b8"
+            },
+            {
+              "source": "eight-direction-frames/idle/south-west/2.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south-west/frame_002.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "0c6e7105ecd563688f2854248056ef16813b71c5714d75a6c5f48a7eacb1133a"
+            },
+            {
+              "source": "eight-direction-frames/idle/south-west/3.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south-west/frame_003.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "c1536826fa5a0036a21fa54bbbc15e5d6268a251ede467341d83f63e417967b4"
+            },
+            {
+              "source": "eight-direction-frames/idle/south-west/4.png",
+              "installed": "godot_client/Assets/Characters/goblin_warrior/animations/idle/south-west/frame_004.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "8784973afcc4a05d156f218e100ace3097adb3084a8449bc479f0b5745f26655"
+            }
+          ]
+        }
+      }
+    },
+    "walk": {
+      "south": {
+        "animation_group_id": "df758fb0-cc2a-49b7-afe8-376fb5199cb8",
+        "fps": 9,
+        "frame_count": 8,
+        "source_collection": "goblin-warrior-animation-pilot",
+        "source_selection_sha256": "b7ad6b1e6eb5c8b3454a030920673c363ad66d7ee3a7d51fa783c473b985c013"
+      },
+      "south-east": {
+        "animation_group_id": "df758fb0-cc2a-49b7-afe8-376fb5199cb8",
+        "fps": 9,
+        "frame_count": 8,
+        "source_collection": "goblin-warrior-animation-pilot",
+        "source_selection_sha256": "b7ad6b1e6eb5c8b3454a030920673c363ad66d7ee3a7d51fa783c473b985c013"
+      },
+      "east": {
+        "animation_group_id": "df758fb0-cc2a-49b7-afe8-376fb5199cb8",
+        "fps": 9,
+        "frame_count": 8,
+        "source_collection": "goblin-warrior-animation-pilot",
+        "source_selection_sha256": "b7ad6b1e6eb5c8b3454a030920673c363ad66d7ee3a7d51fa783c473b985c013"
+      },
+      "north-east": {
+        "animation_group_id": "df758fb0-cc2a-49b7-afe8-376fb5199cb8",
+        "fps": 9,
+        "frame_count": 8,
+        "source_collection": "goblin-warrior-animation-pilot",
+        "source_selection_sha256": "b7ad6b1e6eb5c8b3454a030920673c363ad66d7ee3a7d51fa783c473b985c013"
+      },
+      "north": {
+        "animation_group_id": "df758fb0-cc2a-49b7-afe8-376fb5199cb8",
+        "fps": 9,
+        "frame_count": 8,
+        "source_collection": "goblin-warrior-animation-pilot",
+        "source_selection_sha256": "b7ad6b1e6eb5c8b3454a030920673c363ad66d7ee3a7d51fa783c473b985c013"
+      },
+      "north-west": {
+        "animation_group_id": "df758fb0-cc2a-49b7-afe8-376fb5199cb8",
+        "fps": 9,
+        "frame_count": 8,
+        "source_collection": "goblin-warrior-animation-pilot",
+        "source_selection_sha256": "b7ad6b1e6eb5c8b3454a030920673c363ad66d7ee3a7d51fa783c473b985c013"
+      },
+      "west": {
+        "animation_group_id": "df758fb0-cc2a-49b7-afe8-376fb5199cb8",
+        "fps": 9,
+        "frame_count": 8,
+        "source_collection": "goblin-warrior-animation-pilot",
+        "source_selection_sha256": "b7ad6b1e6eb5c8b3454a030920673c363ad66d7ee3a7d51fa783c473b985c013"
+      },
+      "south-west": {
+        "animation_group_id": "df758fb0-cc2a-49b7-afe8-376fb5199cb8",
+        "fps": 9,
+        "frame_count": 8,
+        "source_collection": "goblin-warrior-animation-pilot",
+        "source_selection_sha256": "b7ad6b1e6eb5c8b3454a030920673c363ad66d7ee3a7d51fa783c473b985c013"
+      }
+    },
+    "attack": {
+      "south": {
+        "animation_group_id": "58f25205-5a99-435e-8afd-ba8a2cffb78f",
+        "fps": 10,
+        "frame_count": 12,
+        "source_collection": "goblin-warrior-animation-pilot",
+        "source_selection_sha256": "b7ad6b1e6eb5c8b3454a030920673c363ad66d7ee3a7d51fa783c473b985c013"
+      },
+      "south-east": {
+        "animation_group_id": "58f25205-5a99-435e-8afd-ba8a2cffb78f",
+        "fps": 10,
+        "frame_count": 12,
+        "source_collection": "goblin-warrior-animation-pilot",
+        "source_selection_sha256": "b7ad6b1e6eb5c8b3454a030920673c363ad66d7ee3a7d51fa783c473b985c013"
+      },
+      "east": {
+        "animation_group_id": "58f25205-5a99-435e-8afd-ba8a2cffb78f",
+        "fps": 10,
+        "frame_count": 12,
+        "source_collection": "goblin-warrior-animation-pilot",
+        "source_selection_sha256": "b7ad6b1e6eb5c8b3454a030920673c363ad66d7ee3a7d51fa783c473b985c013"
+      },
+      "north-east": {
+        "animation_group_id": "58f25205-5a99-435e-8afd-ba8a2cffb78f",
+        "fps": 10,
+        "frame_count": 12,
+        "source_collection": "goblin-warrior-animation-pilot",
+        "source_selection_sha256": "b7ad6b1e6eb5c8b3454a030920673c363ad66d7ee3a7d51fa783c473b985c013"
+      },
+      "north": {
+        "animation_group_id": "58f25205-5a99-435e-8afd-ba8a2cffb78f",
+        "fps": 10,
+        "frame_count": 12,
+        "source_collection": "goblin-warrior-animation-pilot",
+        "source_selection_sha256": "b7ad6b1e6eb5c8b3454a030920673c363ad66d7ee3a7d51fa783c473b985c013"
+      },
+      "north-west": {
+        "animation_group_id": "58f25205-5a99-435e-8afd-ba8a2cffb78f",
+        "fps": 10,
+        "frame_count": 12,
+        "source_collection": "goblin-warrior-animation-pilot",
+        "source_selection_sha256": "b7ad6b1e6eb5c8b3454a030920673c363ad66d7ee3a7d51fa783c473b985c013"
+      },
+      "west": {
+        "animation_group_id": "58f25205-5a99-435e-8afd-ba8a2cffb78f",
+        "fps": 10,
+        "frame_count": 12,
+        "source_collection": "goblin-warrior-animation-pilot",
+        "source_selection_sha256": "b7ad6b1e6eb5c8b3454a030920673c363ad66d7ee3a7d51fa783c473b985c013"
+      },
+      "south-west": {
+        "animation_group_id": "58f25205-5a99-435e-8afd-ba8a2cffb78f",
+        "fps": 10,
+        "frame_count": 12,
+        "source_collection": "goblin-warrior-animation-pilot",
+        "source_selection_sha256": "b7ad6b1e6eb5c8b3454a030920673c363ad66d7ee3a7d51fa783c473b985c013"
+      }
+    }
+  },
+  "frame_count": 224,
+  "superseded_selection": {
+    "selection_file": "eight-direction-clips.json",
+    "selection_sha256": "b7ad6b1e6eb5c8b3454a030920673c363ad66d7ee3a7d51fa783c473b985c013",
+    "source_manifest_sha256": "53a912f862f81ec4cf788294af8140d103b99bda80a92e4feccb94dec8fd95ca",
+    "source_groups": {
+      "idle": "80219d08-fe52-4bd8-a753-9947f8d242ec",
+      "walk": "df758fb0-cc2a-49b7-afe8-376fb5199cb8",
+      "attack": "58f25205-5a99-435e-8afd-ba8a2cffb78f"
+    },
+    "frame_count": 200,
+    "retained_evidence": "goblin-idle-repair/installation/superseded/goblin_warrior"
+  }
 }

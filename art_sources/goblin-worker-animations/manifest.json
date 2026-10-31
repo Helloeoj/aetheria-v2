@@ -12,11 +12,11 @@
     53
   ],
   "pixel_density": "One source pixel remains one native artwork pixel; larger frame canvases retain their source transparent padding.",
-  "selection_file": "eight-direction-clips.json",
-  "selection_sha256": "ae6cae86426ef5176ebc3a287a93a42fc377fb2d71462f9b1bb842eff5952a05",
+  "selection_file": "goblin_worker-current-selection.json",
+  "selection_sha256": "ea54e4a19858a957ffa6cad2851bb891c93571fd43d59ce006aa7e8f1ca10e8a",
   "source_groups": {
     "idle": "161f2633-7d46-4e8d-a734-c903e12e1091",
-    "idle_north": "ef8e95da-ad6b-4d37-9c48-9285b12f6d70",
+    "idle_north": "382723a3-b257-4e13-a0fa-765d30e77494",
     "idle_north_west": "2b62fb68-96d7-43b7-830b-be36082589de",
     "walk": "12dc3f31-a2e0-4701-9249-8371b6180873",
     "attack": "35eaaaf4-759b-44c6-9696-27a6d82b7e4e"
@@ -208,49 +208,132 @@
       "sha256": "bd1b6602d7783ef07bd5ccae86174a901309f7609e8a852ca42c3f99390e0a1d"
     },
     {
-      "source": "eight-direction-pose-repair/idle/north/0.png",
+      "source": "candidates/worker-north/frame_000.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/north/frame_000.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "eba09ee13f19db4f90575c100b0b1132a41ea674668d7b4d9db9edd8845a2b77"
+      "sha256": "1442744c24e9984d6a0cce9a74ace30ecd40f8ace3aa2c0bcd5b66adfdc0682b",
+      "animation_group_id": "382723a3-b257-4e13-a0fa-765d30e77494",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/dd308266-39ee-481b-9d23-906d0d964bee/animations/3bca4f99-1c27-4406-b040-6d6b546fec9a/north/0.png?t=1793408910944",
+      "source_evidence": "candidates/worker-north/source-provenance.json",
+      "source_evidence_sha256": "282f3e068c4f556a2a86825a0d7cf156c64a88c899b06c1fe51d9ead76862ff6",
+      "source_review": "candidates/worker-north/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "95acbf57438bc108dc5ac177034fc5f4a4cc8bda485f75cdc2224aa38583d051"
     },
     {
-      "source": "eight-direction-pose-repair/idle/north/1.png",
+      "source": "candidates/worker-north/frame_001.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/north/frame_001.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "82b1000e74897de885a7cda96eacc3880a5e90f5532fff2629f1fd2c424a3e31"
+      "sha256": "12f9dece33d30966e8513b560078c8a2b3a67b1961ebc39a5f3c1b4f855dd9ac",
+      "animation_group_id": "382723a3-b257-4e13-a0fa-765d30e77494",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/dd308266-39ee-481b-9d23-906d0d964bee/animations/3bca4f99-1c27-4406-b040-6d6b546fec9a/north/1.png?t=1793408910944",
+      "source_evidence": "candidates/worker-north/source-provenance.json",
+      "source_evidence_sha256": "282f3e068c4f556a2a86825a0d7cf156c64a88c899b06c1fe51d9ead76862ff6",
+      "source_review": "candidates/worker-north/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "95acbf57438bc108dc5ac177034fc5f4a4cc8bda485f75cdc2224aa38583d051"
     },
     {
-      "source": "eight-direction-pose-repair/idle/north/2.png",
+      "source": "candidates/worker-north/frame_002.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/north/frame_002.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "f5be265198067341c516e965ddae7877e4d1e7ed6d4d3ee2fcd04852e5ad08b9"
+      "sha256": "c438a3bc8bd4d8d023e0ad47f2ccf707fc82e335de5561f83fa7a3462c029d4f",
+      "animation_group_id": "382723a3-b257-4e13-a0fa-765d30e77494",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/dd308266-39ee-481b-9d23-906d0d964bee/animations/3bca4f99-1c27-4406-b040-6d6b546fec9a/north/2.png?t=1793408910944",
+      "source_evidence": "candidates/worker-north/source-provenance.json",
+      "source_evidence_sha256": "282f3e068c4f556a2a86825a0d7cf156c64a88c899b06c1fe51d9ead76862ff6",
+      "source_review": "candidates/worker-north/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "95acbf57438bc108dc5ac177034fc5f4a4cc8bda485f75cdc2224aa38583d051"
     },
     {
-      "source": "eight-direction-pose-repair/idle/north/3.png",
+      "source": "candidates/worker-north/frame_003.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/north/frame_003.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "41ee6754cde607ea2fe59a0c1d2b2d65b0348072c0a5049e1ff917475a15e03e"
+      "sha256": "d27ef235f77713c1e79994a6eaa207d3ce82723d69210f4dbc33de843b0fd2b0",
+      "animation_group_id": "382723a3-b257-4e13-a0fa-765d30e77494",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/dd308266-39ee-481b-9d23-906d0d964bee/animations/3bca4f99-1c27-4406-b040-6d6b546fec9a/north/3.png?t=1793408910944",
+      "source_evidence": "candidates/worker-north/source-provenance.json",
+      "source_evidence_sha256": "282f3e068c4f556a2a86825a0d7cf156c64a88c899b06c1fe51d9ead76862ff6",
+      "source_review": "candidates/worker-north/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "95acbf57438bc108dc5ac177034fc5f4a4cc8bda485f75cdc2224aa38583d051"
     },
     {
-      "source": "eight-direction-pose-repair/idle/north/4.png",
+      "source": "candidates/worker-north/frame_004.png",
+      "source_collection": "goblin-idle-repair",
       "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/north/frame_004.png",
       "native_size": [
         80,
         80
       ],
-      "sha256": "b29901a94a6c1eb61949703041ff79dd5e9eb5342fd56f8731465ff014fe89c4"
+      "sha256": "00eda3cf51b25a30761e2fd272cd75c7781c1eb065ac63ab8088c8329f0c85bb",
+      "animation_group_id": "382723a3-b257-4e13-a0fa-765d30e77494",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/dd308266-39ee-481b-9d23-906d0d964bee/animations/3bca4f99-1c27-4406-b040-6d6b546fec9a/north/4.png?t=1793408910944",
+      "source_evidence": "candidates/worker-north/source-provenance.json",
+      "source_evidence_sha256": "282f3e068c4f556a2a86825a0d7cf156c64a88c899b06c1fe51d9ead76862ff6",
+      "source_review": "candidates/worker-north/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "95acbf57438bc108dc5ac177034fc5f4a4cc8bda485f75cdc2224aa38583d051"
+    },
+    {
+      "source": "candidates/worker-north/frame_005.png",
+      "source_collection": "goblin-idle-repair",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/north/frame_005.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "2b33ac5800922f54727f7a72f0de45028672d8faedc2acb035713ab938c91e05",
+      "animation_group_id": "382723a3-b257-4e13-a0fa-765d30e77494",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/dd308266-39ee-481b-9d23-906d0d964bee/animations/3bca4f99-1c27-4406-b040-6d6b546fec9a/north/5.png?t=1793408910944",
+      "source_evidence": "candidates/worker-north/source-provenance.json",
+      "source_evidence_sha256": "282f3e068c4f556a2a86825a0d7cf156c64a88c899b06c1fe51d9ead76862ff6",
+      "source_review": "candidates/worker-north/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "95acbf57438bc108dc5ac177034fc5f4a4cc8bda485f75cdc2224aa38583d051"
+    },
+    {
+      "source": "candidates/worker-north/frame_006.png",
+      "source_collection": "goblin-idle-repair",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/north/frame_006.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "172d196f026917720d8ac56a1a841880e9abaf222240b271011d4aff70ce1196",
+      "animation_group_id": "382723a3-b257-4e13-a0fa-765d30e77494",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/dd308266-39ee-481b-9d23-906d0d964bee/animations/3bca4f99-1c27-4406-b040-6d6b546fec9a/north/6.png?t=1793408910944",
+      "source_evidence": "candidates/worker-north/source-provenance.json",
+      "source_evidence_sha256": "282f3e068c4f556a2a86825a0d7cf156c64a88c899b06c1fe51d9ead76862ff6",
+      "source_review": "candidates/worker-north/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "95acbf57438bc108dc5ac177034fc5f4a4cc8bda485f75cdc2224aa38583d051"
+    },
+    {
+      "source": "candidates/worker-north/frame_007.png",
+      "source_collection": "goblin-idle-repair",
+      "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/north/frame_007.png",
+      "native_size": [
+        80,
+        80
+      ],
+      "sha256": "6b66459de32872797a6f6b25b19ce80cfae374b4db23827e2c2af81a4b87b9b4",
+      "animation_group_id": "382723a3-b257-4e13-a0fa-765d30e77494",
+      "source_url": "https://backblaze.pixellab.ai/file/pixellab-characters/0ccc10f2-d0c3-47d2-a4e3-736031d8aa10/dd308266-39ee-481b-9d23-906d0d964bee/animations/3bca4f99-1c27-4406-b040-6d6b546fec9a/north/7.png?t=1793408910944",
+      "source_evidence": "candidates/worker-north/source-provenance.json",
+      "source_evidence_sha256": "282f3e068c4f556a2a86825a0d7cf156c64a88c899b06c1fe51d9ead76862ff6",
+      "source_review": "candidates/worker-north/SOURCE-MOTION-REVIEW.json",
+      "source_review_sha256": "95acbf57438bc108dc5ac177034fc5f4a4cc8bda485f75cdc2224aa38583d051"
     },
     {
       "source": "eight-direction-repairs/idle/north-west/0.png",
@@ -1827,5 +1910,248 @@
       ],
       "sha256": "ef19cebd83ad1806a5b3ad3221124b457e23f81904429fdc3fee4ba12ed8e889"
     }
-  ]
+  ],
+  "clip_provenance": {
+    "idle": {
+      "south": {
+        "animation_group_id": "161f2633-7d46-4e8d-a734-c903e12e1091",
+        "fps": 6,
+        "frame_count": 5,
+        "source_collection": "goblin-worker-animation-pilot",
+        "source_selection_sha256": "ae6cae86426ef5176ebc3a287a93a42fc377fb2d71462f9b1bb842eff5952a05"
+      },
+      "south-east": {
+        "animation_group_id": "161f2633-7d46-4e8d-a734-c903e12e1091",
+        "fps": 6,
+        "frame_count": 5,
+        "source_collection": "goblin-worker-animation-pilot",
+        "source_selection_sha256": "ae6cae86426ef5176ebc3a287a93a42fc377fb2d71462f9b1bb842eff5952a05"
+      },
+      "east": {
+        "animation_group_id": "161f2633-7d46-4e8d-a734-c903e12e1091",
+        "fps": 6,
+        "frame_count": 5,
+        "source_collection": "goblin-worker-animation-pilot",
+        "source_selection_sha256": "ae6cae86426ef5176ebc3a287a93a42fc377fb2d71462f9b1bb842eff5952a05"
+      },
+      "north-east": {
+        "animation_group_id": "161f2633-7d46-4e8d-a734-c903e12e1091",
+        "fps": 6,
+        "frame_count": 5,
+        "source_collection": "goblin-worker-animation-pilot",
+        "source_selection_sha256": "ae6cae86426ef5176ebc3a287a93a42fc377fb2d71462f9b1bb842eff5952a05"
+      },
+      "north": {
+        "animation_group_id": "382723a3-b257-4e13-a0fa-765d30e77494",
+        "fps": 4,
+        "frame_count": 8,
+        "source_collection": "goblin-idle-repair",
+        "source_selection_sha256": "c6ff9ce1f0cfa4b08d8c6cc02568efe3d4069342c2357ef639c7426c7c54ee7b",
+        "internal_motion_review": "passed_before_installation_authorization",
+        "user_visual_approval": "pending",
+        "supersedes": {
+          "animation_group_id": "ef8e95da-ad6b-4d37-9c48-9285b12f6d70",
+          "frames": [
+            {
+              "source": "eight-direction-pose-repair/idle/north/0.png",
+              "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/north/frame_000.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "eba09ee13f19db4f90575c100b0b1132a41ea674668d7b4d9db9edd8845a2b77"
+            },
+            {
+              "source": "eight-direction-pose-repair/idle/north/1.png",
+              "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/north/frame_001.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "82b1000e74897de885a7cda96eacc3880a5e90f5532fff2629f1fd2c424a3e31"
+            },
+            {
+              "source": "eight-direction-pose-repair/idle/north/2.png",
+              "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/north/frame_002.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "f5be265198067341c516e965ddae7877e4d1e7ed6d4d3ee2fcd04852e5ad08b9"
+            },
+            {
+              "source": "eight-direction-pose-repair/idle/north/3.png",
+              "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/north/frame_003.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "41ee6754cde607ea2fe59a0c1d2b2d65b0348072c0a5049e1ff917475a15e03e"
+            },
+            {
+              "source": "eight-direction-pose-repair/idle/north/4.png",
+              "installed": "godot_client/Assets/Characters/goblin_worker/animations/idle/north/frame_004.png",
+              "native_size": [
+                80,
+                80
+              ],
+              "sha256": "b29901a94a6c1eb61949703041ff79dd5e9eb5342fd56f8731465ff014fe89c4"
+            }
+          ]
+        }
+      },
+      "north-west": {
+        "animation_group_id": "2b62fb68-96d7-43b7-830b-be36082589de",
+        "fps": 6,
+        "frame_count": 5,
+        "source_collection": "goblin-worker-animation-pilot",
+        "source_selection_sha256": "ae6cae86426ef5176ebc3a287a93a42fc377fb2d71462f9b1bb842eff5952a05"
+      },
+      "west": {
+        "animation_group_id": "161f2633-7d46-4e8d-a734-c903e12e1091",
+        "fps": 6,
+        "frame_count": 5,
+        "source_collection": "goblin-worker-animation-pilot",
+        "source_selection_sha256": "ae6cae86426ef5176ebc3a287a93a42fc377fb2d71462f9b1bb842eff5952a05"
+      },
+      "south-west": {
+        "animation_group_id": "161f2633-7d46-4e8d-a734-c903e12e1091",
+        "fps": 6,
+        "frame_count": 5,
+        "source_collection": "goblin-worker-animation-pilot",
+        "source_selection_sha256": "ae6cae86426ef5176ebc3a287a93a42fc377fb2d71462f9b1bb842eff5952a05"
+      }
+    },
+    "walk": {
+      "south": {
+        "animation_group_id": "12dc3f31-a2e0-4701-9249-8371b6180873",
+        "fps": 9,
+        "frame_count": 8,
+        "source_collection": "goblin-worker-animation-pilot",
+        "source_selection_sha256": "ae6cae86426ef5176ebc3a287a93a42fc377fb2d71462f9b1bb842eff5952a05"
+      },
+      "south-east": {
+        "animation_group_id": "12dc3f31-a2e0-4701-9249-8371b6180873",
+        "fps": 9,
+        "frame_count": 8,
+        "source_collection": "goblin-worker-animation-pilot",
+        "source_selection_sha256": "ae6cae86426ef5176ebc3a287a93a42fc377fb2d71462f9b1bb842eff5952a05"
+      },
+      "east": {
+        "animation_group_id": "12dc3f31-a2e0-4701-9249-8371b6180873",
+        "fps": 9,
+        "frame_count": 8,
+        "source_collection": "goblin-worker-animation-pilot",
+        "source_selection_sha256": "ae6cae86426ef5176ebc3a287a93a42fc377fb2d71462f9b1bb842eff5952a05"
+      },
+      "north-east": {
+        "animation_group_id": "12dc3f31-a2e0-4701-9249-8371b6180873",
+        "fps": 9,
+        "frame_count": 8,
+        "source_collection": "goblin-worker-animation-pilot",
+        "source_selection_sha256": "ae6cae86426ef5176ebc3a287a93a42fc377fb2d71462f9b1bb842eff5952a05"
+      },
+      "north": {
+        "animation_group_id": "12dc3f31-a2e0-4701-9249-8371b6180873",
+        "fps": 9,
+        "frame_count": 8,
+        "source_collection": "goblin-worker-animation-pilot",
+        "source_selection_sha256": "ae6cae86426ef5176ebc3a287a93a42fc377fb2d71462f9b1bb842eff5952a05"
+      },
+      "north-west": {
+        "animation_group_id": "12dc3f31-a2e0-4701-9249-8371b6180873",
+        "fps": 9,
+        "frame_count": 8,
+        "source_collection": "goblin-worker-animation-pilot",
+        "source_selection_sha256": "ae6cae86426ef5176ebc3a287a93a42fc377fb2d71462f9b1bb842eff5952a05"
+      },
+      "west": {
+        "animation_group_id": "12dc3f31-a2e0-4701-9249-8371b6180873",
+        "fps": 9,
+        "frame_count": 8,
+        "source_collection": "goblin-worker-animation-pilot",
+        "source_selection_sha256": "ae6cae86426ef5176ebc3a287a93a42fc377fb2d71462f9b1bb842eff5952a05"
+      },
+      "south-west": {
+        "animation_group_id": "12dc3f31-a2e0-4701-9249-8371b6180873",
+        "fps": 9,
+        "frame_count": 8,
+        "source_collection": "goblin-worker-animation-pilot",
+        "source_selection_sha256": "ae6cae86426ef5176ebc3a287a93a42fc377fb2d71462f9b1bb842eff5952a05"
+      }
+    },
+    "attack": {
+      "south": {
+        "animation_group_id": "35eaaaf4-759b-44c6-9696-27a6d82b7e4e",
+        "fps": 10,
+        "frame_count": 12,
+        "source_collection": "goblin-worker-animation-pilot",
+        "source_selection_sha256": "ae6cae86426ef5176ebc3a287a93a42fc377fb2d71462f9b1bb842eff5952a05"
+      },
+      "south-east": {
+        "animation_group_id": "35eaaaf4-759b-44c6-9696-27a6d82b7e4e",
+        "fps": 10,
+        "frame_count": 12,
+        "source_collection": "goblin-worker-animation-pilot",
+        "source_selection_sha256": "ae6cae86426ef5176ebc3a287a93a42fc377fb2d71462f9b1bb842eff5952a05"
+      },
+      "east": {
+        "animation_group_id": "35eaaaf4-759b-44c6-9696-27a6d82b7e4e",
+        "fps": 10,
+        "frame_count": 12,
+        "source_collection": "goblin-worker-animation-pilot",
+        "source_selection_sha256": "ae6cae86426ef5176ebc3a287a93a42fc377fb2d71462f9b1bb842eff5952a05"
+      },
+      "north-east": {
+        "animation_group_id": "35eaaaf4-759b-44c6-9696-27a6d82b7e4e",
+        "fps": 10,
+        "frame_count": 12,
+        "source_collection": "goblin-worker-animation-pilot",
+        "source_selection_sha256": "ae6cae86426ef5176ebc3a287a93a42fc377fb2d71462f9b1bb842eff5952a05"
+      },
+      "north": {
+        "animation_group_id": "35eaaaf4-759b-44c6-9696-27a6d82b7e4e",
+        "fps": 10,
+        "frame_count": 12,
+        "source_collection": "goblin-worker-animation-pilot",
+        "source_selection_sha256": "ae6cae86426ef5176ebc3a287a93a42fc377fb2d71462f9b1bb842eff5952a05"
+      },
+      "north-west": {
+        "animation_group_id": "35eaaaf4-759b-44c6-9696-27a6d82b7e4e",
+        "fps": 10,
+        "frame_count": 12,
+        "source_collection": "goblin-worker-animation-pilot",
+        "source_selection_sha256": "ae6cae86426ef5176ebc3a287a93a42fc377fb2d71462f9b1bb842eff5952a05"
+      },
+      "west": {
+        "animation_group_id": "35eaaaf4-759b-44c6-9696-27a6d82b7e4e",
+        "fps": 10,
+        "frame_count": 12,
+        "source_collection": "goblin-worker-animation-pilot",
+        "source_selection_sha256": "ae6cae86426ef5176ebc3a287a93a42fc377fb2d71462f9b1bb842eff5952a05"
+      },
+      "south-west": {
+        "animation_group_id": "35eaaaf4-759b-44c6-9696-27a6d82b7e4e",
+        "fps": 10,
+        "frame_count": 12,
+        "source_collection": "goblin-worker-animation-pilot",
+        "source_selection_sha256": "ae6cae86426ef5176ebc3a287a93a42fc377fb2d71462f9b1bb842eff5952a05"
+      }
+    }
+  },
+  "frame_count": 203,
+  "superseded_selection": {
+    "selection_file": "eight-direction-clips.json",
+    "selection_sha256": "ae6cae86426ef5176ebc3a287a93a42fc377fb2d71462f9b1bb842eff5952a05",
+    "source_manifest_sha256": "b090ebf44bd0b265325fa647751b54af905e4768cefca5661f1537765d15d482",
+    "source_groups": {
+      "idle": "161f2633-7d46-4e8d-a734-c903e12e1091",
+      "idle_north": "ef8e95da-ad6b-4d37-9c48-9285b12f6d70",
+      "idle_north_west": "2b62fb68-96d7-43b7-830b-be36082589de",
+      "walk": "12dc3f31-a2e0-4701-9249-8371b6180873",
+      "attack": "35eaaaf4-759b-44c6-9696-27a6d82b7e4e"
+    },
+    "frame_count": 200,
+    "retained_evidence": "goblin-idle-repair/installation/superseded/goblin_worker"
+  }
 }

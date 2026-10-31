@@ -1,6 +1,7 @@
 extends SceneTree
 ## Import first, then run --headless --path godot_client --script res://scripts/dev_tools/goblin_worker_warrior_animation_smoke.gd.
 ## Optional graphical -- --capture-dir=ABS writes real Camera2D zoom 1/4 lab captures.
+## --idle-capture-dir=ABS records two natural-speed idle loops at both zooms.
 ## Catches installed packs being omitted from the live catalog or stuck on rotation fallbacks.
 
 const BASE_CATALOG := "res://data/character_sprites.json"
@@ -10,6 +11,7 @@ const DIRECTIONS: Array[String] = ["south", "south-east", "east", "north-east", 
 const VECTORS: Array[Vector2] = [Vector2(0, 1), Vector2(1, 1), Vector2(1, 0), Vector2(1, -1), Vector2(0, -1), Vector2(-1, -1), Vector2(-1, 0), Vector2(-1, 1)]
 const FRAME_COUNTS := {"idle": 5, "walk": 8, "attack": 12}
 const RATES := {"idle": 6.0, "walk": 9.0, "attack": 10.0}
+const TOTAL_FRAMES := {"goblin_worker": 203, "goblin_warrior": 224}
 const HEIGHTS := {"goblin_worker": 44.0, "goblin_warrior": 46.0}
 const FOOT_Y := {"goblin_worker": 53.0, "goblin_warrior": 52.0}
 const MONSTERS := {"goblin_worker": "Goblin Worker", "goblin_warrior": "Goblin Warrior"}
@@ -40,7 +42,9 @@ const ORIGINAL_ROTATION_SHA256 := {
 var checks := 0
 var failures: Array[String] = []
 var capture_directory := ""
+var idle_capture_directory := ""
 var completions: Dictionary = {}
+var idle_loops: Dictionary = {}
 
 
 func _initialize() -> void:
@@ -52,10 +56,15 @@ func _run() -> void:
 	for argument: String in OS.get_cmdline_user_args():
 		if argument.begins_with("--capture-dir="):
 			capture_directory = argument.trim_prefix("--capture-dir=")
+		elif argument.begins_with("--idle-capture-dir="):
+			idle_capture_directory = argument.trim_prefix("--idle-capture-dir=")
 	var base: Variant = JSON.parse_string(FileAccess.get_file_as_string(BASE_CATALOG))
 	_check(base is Dictionary, "Original base catalog must parse.")
 	if base is Dictionary:
 		_test_preservation(base)
+		# Exercise fixture restoration with an already cached real SpriteFrames.
+		CharacterSpriteLibrary.get_frames("goblin_worker")
+		_test_fps_overrides()
 		var ready_skins: Array[String] = []
 		for skin_id: String in SKINS:
 			var previous_failures := failures.size()
@@ -72,8 +81,14 @@ func _run() -> void:
 		if failures.is_empty():
 			_check(DirAccess.make_dir_recursive_absolute(capture_directory) == OK, "Could not create capture directory.")
 			await _capture_lab()
+	if not idle_capture_directory.is_empty():
+		_check(idle_capture_directory.is_absolute_path(), "Idle capture directory must be absolute.")
+		_check(DisplayServer.get_name() != "headless", "Idle captures require graphical Godot.")
+		if failures.is_empty():
+			_check(DirAccess.make_dir_recursive_absolute(idle_capture_directory) == OK, "Could not create idle capture directory.")
+			await _capture_lab(true)
 	if failures.is_empty():
-		print("[Worker/Warrior animation smoke] PASS: %d checks; each skin 24 clips/200 frames; live frame advancement and EastOutskirts spawn/motion/combat verified." % checks)
+		print("[Worker/Warrior animation smoke] PASS: %d checks; 24 clips each, Worker203/Warrior224 frames; idle cycles and EastOutskirts spawn/motion/combat verified. Motion artwork requires separate visual review." % checks)
 		quit(0)
 	else:
 		printerr("[Worker/Warrior animation smoke] FAIL: %d of %d checks failed." % [failures.size(), checks])
@@ -129,6 +144,50 @@ func _test_preservation(base: Dictionary) -> void:
 	_check(CharacterSpriteLibrary.default_player_skin() == String(base.get("defaults", {}).get("player", "")), "Default player changed.")
 
 
+func _test_fps_overrides() -> void:
+	# Use real imported textures in a temporary in-memory fixture, then restore it.
+	# This catches a loader ignoring overrides independently of the artwork pack.
+	var skin := CharacterSpriteLibrary.get_skin("goblin_worker")
+	var original_idle: Dictionary = skin["animations"]["idle"]
+	var original_idle_snapshot := original_idle.duplicate(true)
+	var original_cache: Dictionary = CharacterSpriteLibrary._frame_cache
+	var original_cache_entries := original_cache.duplicate()
+	CharacterSpriteLibrary._frame_cache = original_cache.duplicate()
+	skin["animations"]["idle"] = original_idle.duplicate(true)
+	var fixture: Dictionary = skin["animations"]["idle"]
+	fixture["fps"] = 6.0
+	fixture.erase("fps_by_direction")
+	CharacterSpriteLibrary._frame_cache.erase("goblin_worker")
+	var default_frames := CharacterSpriteLibrary.get_frames("goblin_worker")
+	for direction: String in DIRECTIONS:
+		_check(is_equal_approx(default_frames.get_animation_speed(StringName("idle_" + direction)), 6.0), "No-override FPS fallback changed: " + direction)
+	fixture["fps_by_direction"] = {"north": 4.0}
+	CharacterSpriteLibrary._frame_cache.erase("goblin_worker")
+	var overridden_frames := CharacterSpriteLibrary.get_frames("goblin_worker")
+	for direction: String in DIRECTIONS:
+		var expected := 4.0 if direction == "north" else 6.0
+		_check(is_equal_approx(overridden_frames.get_animation_speed(StringName("idle_" + direction)), expected), "Explicit/fallback FPS incorrect: " + direction)
+	skin["animations"]["idle"] = original_idle
+	CharacterSpriteLibrary._frame_cache = original_cache
+	_check(is_same(skin["animations"]["idle"], original_idle) and skin["animations"]["idle"] == original_idle_snapshot, "FPS fixture leaked an idle definition or override.")
+	_check(is_same(CharacterSpriteLibrary._frame_cache, original_cache), "FPS fixture did not restore the original cache dictionary.")
+	_check(CharacterSpriteLibrary._frame_cache.size() == original_cache_entries.size(), "FPS fixture changed original frame cache entries.")
+	for cached_skin: String in original_cache_entries:
+		_check(is_same(CharacterSpriteLibrary._frame_cache.get(cached_skin), original_cache_entries[cached_skin]), "FPS fixture replaced cached SpriteFrames: " + cached_skin)
+
+
+func _is_repaired_idle(skin_id: String, role: String, direction: String) -> bool:
+	return role == "idle" and (skin_id == "goblin_warrior" or direction == "north")
+
+
+func _expected_count(skin_id: String, role: String, direction: String) -> int:
+	return 8 if _is_repaired_idle(skin_id, role, direction) else int(FRAME_COUNTS[role])
+
+
+func _expected_fps(skin_id: String, role: String, direction: String) -> float:
+	return 4.0 if _is_repaired_idle(skin_id, role, direction) else float(RATES[role])
+
+
 func _test_clips(skin_id: String) -> void:
 	var skin := CharacterSpriteLibrary.get_skin(skin_id)
 	var definitions: Dictionary = skin.get("animations", {})
@@ -143,20 +202,23 @@ func _test_clips(skin_id: String) -> void:
 		var definition: Dictionary = definitions.get(role, {})
 		var by_direction: Dictionary = definition.get("directions", {})
 		_check(by_direction.size() == 8, skin_id + "/" + role + " must contain eight exact directions.")
-		_check(is_equal_approx(float(definition.get("fps", 0)), float(RATES[role])), skin_id + "/" + role + " catalog FPS incorrect.")
+		var base_fps := 4.0 if skin_id == "goblin_warrior" and role == "idle" else float(RATES[role])
+		var expected_overrides := {"north": 4.0} if skin_id == "goblin_worker" and role == "idle" else {}
+		_check(is_equal_approx(float(definition.get("fps", 0)), base_fps), skin_id + "/" + role + " catalog base FPS incorrect.")
+		_check(definition.get("fps_by_direction", {}) == expected_overrides, skin_id + "/" + role + " direction FPS overrides incorrect.")
 		_check(bool(definition.get("loop", role == "attack")) == (role != "attack"), skin_id + "/" + role + " catalog loop incorrect.")
 		_check(coverage.get(role, []) == DIRECTIONS, skin_id + "/" + role + " coverage must list canonical eight directions.")
 		for direction: String in DIRECTIONS:
 			var paths: Array = by_direction.get(direction, [])
 			var animation := StringName(role + "_" + direction)
 			var label := skin_id + "/" + role + "/" + direction
-			_check(paths.size() == int(FRAME_COUNTS[role]), label + " catalog frame count incorrect.")
+			_check(paths.size() == _expected_count(skin_id, role, direction), label + " catalog frame count incorrect.")
 			_check(CharacterSpriteLibrary.has_authored_animation(skin_id, role, direction), label + " is using a rotation fallback.")
 			_check(frames.has_animation(animation), label + " runtime clip missing.")
 			if not frames.has_animation(animation):
 				continue
-			_check(frames.get_frame_count(animation) == int(FRAME_COUNTS[role]), label + " runtime frame count incorrect.")
-			_check(is_equal_approx(frames.get_animation_speed(animation), float(RATES[role])), label + " runtime FPS incorrect.")
+			_check(frames.get_frame_count(animation) == _expected_count(skin_id, role, direction), label + " runtime frame count incorrect.")
+			_check(is_equal_approx(frames.get_animation_speed(animation), _expected_fps(skin_id, role, direction)), label + " runtime FPS incorrect.")
 			_check(frames.get_animation_loop(animation) == (role != "attack"), label + " runtime loop incorrect.")
 			for index in paths.size():
 				var path := String(paths[index])
@@ -179,7 +241,7 @@ func _test_clips(skin_id: String) -> void:
 				if image != null and not image.is_empty():
 					_check(image.get_format() == Image.FORMAT_RGBA8 and image.detect_alpha() != Image.ALPHA_NONE, "Imported frame must retain RGBA alpha: " + path)
 					_check(not image.has_mipmaps(), "Imported frame contains mipmaps: " + path)
-	_check(total == 200, skin_id + " must reference exactly 200 authored animation frames.")
+	_check(total == int(TOTAL_FRAMES[skin_id]), skin_id + " authored animation frame total incorrect.")
 
 
 func _test_live_actors(ready_skins: Array[String]) -> void:
@@ -193,13 +255,25 @@ func _test_live_actors(ready_skins: Array[String]) -> void:
 			completions[actor.entity_id] = 0
 			actor.attack_finished.connect(_on_attack_finished.bind(actor.entity_id))
 			actors.append(actor)
-	var initial_frames: Dictionary = _frame_snapshot(actors)
-	await _elapsed_frames(0.24)
+	var idle_seen: Dictionary = {}
+	for actor: ActorSprite in actors:
+		idle_seen[actor.entity_id] = {actor.animated_sprite.frame: true}
+		idle_loops[actor.entity_id] = 0
+		actor.animated_sprite.animation_looped.connect(_on_idle_looped.bind(actor.entity_id))
+	var idle_elapsed := 0.0
+	var idle_deadline := Time.get_ticks_msec() + 20000
+	while idle_elapsed < 4.1 and Time.get_ticks_msec() < idle_deadline:
+		await process_frame
+		idle_elapsed += root.get_process_delta_time()
+		for actor: ActorSprite in actors:
+			idle_seen[actor.entity_id][actor.animated_sprite.frame] = true
+	_check(idle_elapsed >= 4.1, "Live idle simulation did not progress before its wall-clock timeout.")
 	for actor: ActorSprite in actors:
 		_check(actor.animated_sprite.animation == StringName("idle_" + actor.facing), actor.entity_id + " idle wiring incorrect.")
-		_check(actor.animated_sprite.frame != initial_frames[actor.entity_id], actor.entity_id + " idle remained static across elapsed process frames.")
+		_check(idle_seen[actor.entity_id].size() == _expected_count(actor.skin_id, "idle", actor.facing), actor.entity_id + " idle did not visit every authored frame.")
+		_check(int(idle_loops[actor.entity_id]) >= 2, actor.entity_id + " idle did not complete two natural engine loops.")
 		actor.update_visual_motion(VECTORS[DIRECTIONS.find(actor.facing)])
-	initial_frames = _frame_snapshot(actors)
+	var initial_frames := _frame_snapshot(actors)
 	var walk_elapsed := 0.0
 	var walk_deadline := Time.get_ticks_msec() + 15000
 	while walk_elapsed < 0.27 and Time.get_ticks_msec() < walk_deadline:
@@ -218,7 +292,7 @@ func _test_live_actors(ready_skins: Array[String]) -> void:
 		_check(not actor._fallback_attack and is_equal_approx(actor._attack_duration, 1.2), actor.entity_id + " attack must use authored 12/10-second clip.")
 	await _elapsed_frames(0.35)
 	for actor: ActorSprite in actors:
-		_check(actor.animated_sprite.animation == StringName("attack_" + actor.facing) and actor.animated_sprite.frame > 0, actor.entity_id + " attack did not visibly advance.")
+		_check(actor.animated_sprite.animation == StringName("attack_" + actor.facing) and actor.animated_sprite.frame > 0, actor.entity_id + " attack frame did not advance.")
 		_check(completions[actor.entity_id] == 0, actor.entity_id + " attack completed too early.")
 		var direction := actor.facing
 		actor.face_direction(-VECTORS[DIRECTIONS.find(direction)])
@@ -253,6 +327,10 @@ func _elapsed_frames(seconds: float) -> void:
 
 func _on_attack_finished(entity_id: String) -> void:
 	completions[entity_id] = int(completions.get(entity_id, 0)) + 1
+
+
+func _on_idle_looped(entity_id: String) -> void:
+	idle_loops[entity_id] = int(idle_loops.get(entity_id, 0)) + 1
 
 
 func _check_actor_geometry(actor: ActorSprite) -> void:
@@ -305,7 +383,7 @@ func _test_game_integration(ready_skins: Array[String]) -> void:
 			continue
 		_check(sprite.animated_sprite.sprite_frames.get_animation_names().size() == 24, skin_id + " actual game spawn did not receive 24 clips.")
 		var idle_frame := sprite.animated_sprite.frame
-		await _elapsed_frames(0.24)
+		await _elapsed_frames(0.34)
 		_check(String(sprite.animated_sprite.animation).begins_with("idle_") and sprite.animated_sprite.frame != idle_frame, skin_id + " actual game idle remains static.")
 		# Feed changed simulation coordinates through the game's real visual-motion bridge.
 		var start_x := actor.x
@@ -360,7 +438,7 @@ func _test_game_integration(ready_skins: Array[String]) -> void:
 	print("[Worker/Warrior animation smoke] Checked actual EastOutskirts public spawns, motion bridge and combat events.")
 
 
-func _capture_lab() -> void:
+func _capture_lab(temporal: bool = false) -> void:
 	var viewport := SubViewport.new()
 	viewport.size = Vector2i(1600, 1000)
 	viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
@@ -382,9 +460,11 @@ func _capture_lab() -> void:
 			var actor := ActorSprite.new().configure(Vector2(32, 32), Color.GREEN, "capture_%d" % index)
 			lab.add_child(actor)
 			actor.position = Vector2(float(index % 3 - 1) * 100.0, (floorf(float(index) / 3.0) - 1.0) * 75.0 + 15.0)
-			actor.set_process(false)
+			actor.set_process(temporal)
 			actor.set_skin("peasant" if index == 0 else skin_id)
 			actor.face_direction(Vector2.DOWN if index == 0 else VECTORS[index - 1])
+			if temporal:
+				actor.animated_sprite.animation_looped.connect(_on_idle_looped.bind(actor.entity_id))
 			var label := Label.new()
 			label.text = "Player" if index == 0 else DIRECTIONS[index - 1]
 			label.position = actor.position + Vector2(-22, 6)
@@ -395,6 +475,9 @@ func _capture_lab() -> void:
 		for zoom_level in [1, 4]:
 			camera.zoom = Vector2.ONE * float(zoom_level)
 			camera.force_update_scroll()
+			if temporal:
+				await _capture_idle_cycles(viewport, actors, skin_id, zoom_level)
+				continue
 			for role: String in FRAME_COUNTS:
 				for sample in range(3):
 					for index in actors.size():
@@ -420,3 +503,61 @@ func _capture_lab() -> void:
 		for label: Label in labels:
 			label.free()
 	viewport.free()
+
+
+func _capture_idle_cycles(viewport: SubViewport, actors: Array[ActorSprite], skin_id: String, zoom_level: int) -> void:
+	# Start once, then let normal engine time advance every frame. No forced poses.
+	var longest_cycle := 0.0
+	var seen: Dictionary = {}
+	for index in actors.size():
+		var actor := actors[index]
+		var animation := StringName("idle_" + ("south" if index == 0 else DIRECTIONS[index - 1]))
+		actor.cancel_action()
+		actor.animated_sprite.stop()
+		actor.animated_sprite.play(animation)
+		idle_loops[actor.entity_id] = 0
+		seen[actor.entity_id] = {}
+		_check(is_equal_approx(actor.animated_sprite.speed_scale, 1.0), "Temporal capture changed actor playback speed.")
+		if index > 0:
+			var frames := actor.animated_sprite.sprite_frames
+			longest_cycle = maxf(longest_cycle, float(frames.get_frame_count(animation)) / frames.get_animation_speed(animation))
+	_check(is_equal_approx(Engine.time_scale, 1.0), "Temporal captures require normal engine time.")
+	var seconds := longest_cycle * 2.0 + 0.1
+	var elapsed := 0.0
+	var next_sample := 0.0
+	var deadline := Time.get_ticks_msec() + 30000
+	var samples: Array[Dictionary] = []
+	while elapsed < seconds and Time.get_ticks_msec() < deadline:
+		await process_frame
+		elapsed += root.get_process_delta_time()
+		if elapsed < next_sample:
+			continue
+		next_sample += 1.0 / 12.0
+		await RenderingServer.frame_post_draw
+		var image := viewport.get_texture().get_image()
+		_check(image != null and not image.is_empty(), "Temporal idle capture empty.")
+		if image == null or image.is_empty():
+			continue
+		var filename := "%s-idle-zoom%d-frame%03d.png" % [skin_id, zoom_level, samples.size()]
+		_check(image.save_png(idle_capture_directory.path_join(filename)) == OK, "Could not save temporal idle capture: " + filename)
+		var snapshot: Dictionary = {}
+		for index in range(1, actors.size()):
+			var actor := actors[index]
+			snapshot[DIRECTIONS[index - 1]] = actor.animated_sprite.frame
+			seen[actor.entity_id][actor.animated_sprite.frame] = true
+		samples.append({"elapsed": elapsed, "png": filename, "frames": snapshot})
+	_check(elapsed >= seconds, "Temporal idle capture did not cover two complete cycles before timeout.")
+	var loops: Dictionary = {}
+	for index in range(1, actors.size()):
+		var actor := actors[index]
+		loops[DIRECTIONS[index - 1]] = int(idle_loops[actor.entity_id])
+		_check(int(idle_loops[actor.entity_id]) >= 2, actor.entity_id + " temporal idle did not loop twice.")
+		_check(seen[actor.entity_id].size() == _expected_count(skin_id, "idle", DIRECTIONS[index - 1]), actor.entity_id + " temporal capture missed authored frames.")
+	var metadata := {"skin": skin_id, "zoom": zoom_level, "engine_time_scale": Engine.time_scale, "seconds": elapsed, "longest_cycle_seconds": longest_cycle, "minimum_cycles": 2, "observed_loops": loops, "samples": samples}
+	var metadata_path := idle_capture_directory.path_join("%s-idle-zoom%d-frames.json" % [skin_id, zoom_level])
+	var file := FileAccess.open(metadata_path, FileAccess.WRITE)
+	_check(file != null, "Could not write temporal idle capture metadata.")
+	if file != null:
+		file.store_string(JSON.stringify(metadata, "  "))
+		file.close()
+	print("[Worker/Warrior animation smoke] Recorded %s idle at zoom%d: %.2f engine seconds, %d frames; observed loops %s. Review body motion visually." % [skin_id, zoom_level, elapsed, samples.size(), JSON.stringify(loops)])

@@ -111,7 +111,9 @@ static func get_frames(skin: String) -> SpriteFrames:
 				paths = [rotation_path]
 			var animation := animation_name(action, direction)
 			frames.add_animation(animation)
-			frames.set_animation_speed(animation, maxf(float(definition.get("fps", 10.0)), 1.0))
+			var fps_by_direction: Dictionary = definition.get("fps_by_direction", {})
+			var fps := float(fps_by_direction.get(direction, definition.get("fps", 10.0)))
+			frames.set_animation_speed(animation, maxf(fps, 1.0))
 			frames.set_animation_loop(animation, action != "attack")
 			for path: Variant in paths:
 				var texture := _get_texture(String(path))
