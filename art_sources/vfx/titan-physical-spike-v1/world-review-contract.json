@@ -357,7 +357,7 @@
     {
       "texture": "res://Assets/Effects/TitanPhysicalSpike/spike-atlas.png",
       "native_size": [
-        672,
+        3408,
         64
       ],
       "anchor": [
@@ -366,7 +366,7 @@
       ],
       "world_pixels_per_source_pixel": 1,
       "min_component_pixels": 1,
-      "components_reason": "Four warning frames, nine impact/retraction frames, one empty frame; six intentional two-pixel impact chips. Atlas requires animated-source support."
+      "components_reason": "Four warning frames, sixty-six eased rise/retraction/cleanup frames, one empty frame; six intentional two-pixel impact chips. Atlas requires animated-source support."
     }
   ],
   "scope": "Exact development review fixture only, never production installation. Current passive-prop validator must reject scripted/region animation; actual GPU review supplies floor/physics/sweep evidence separately."

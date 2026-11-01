@@ -13,5 +13,5 @@ texture = ExtResource("2")
 centered = false
 offset = Vector2(-24, -52)
 region_enabled = true
-region_rect = Rect2(624, 0, 48, 64)
+region_rect = Rect2(3360, 0, 48, 64)
 region_filter_clip_enabled = true

@@ -7,13 +7,30 @@ not replacement map artwork. Run with py -3.13 <this file> after source selectio
 from pathlib import Path
 import hashlib
 import json
+import math
+import re
 from PIL import Image, ImageDraw
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 SIZE = (48, 64)
 ANCHOR = (24, 52)
-HEIGHTS = [6, 24, 51, 34, 16, 4, 0, 0, 0]
+TICK_CONFIG = ROOT/'godot_client/scripts/game_tick_config.gd'
+TICK_SECONDS = float(re.search(r'TICK_DURATION_SECONDS\s*:=\s*([0-9.]+)', TICK_CONFIG.read_text(encoding='utf-8'))[1])
+STEPS_PER_TICK = 30
+FRAME_MS = round(TICK_SECONDS * 1000 / STEPS_PER_TICK)
+assert FRAME_MS * STEPS_PER_TICK == round(TICK_SECONDS * 1000)
+
+def height_at_step(step):
+    if step == STEPS_PER_TICK:
+        return 51
+    if step == 0 or step >= STEPS_PER_TICK*2:
+        return 0
+    progress = (step if step < STEPS_PER_TICK else step-STEPS_PER_TICK)/STEPS_PER_TICK
+    value = 51*0.5*(1-math.cos(math.pi*progress) if step < STEPS_PER_TICK else 1+math.cos(math.pi*progress))
+    return max(1,min(50,math.floor(value+0.500001)))
+
+HEIGHTS = [height_at_step(i) for i in range(STEPS_PER_TICK*2+6)]
 CRACKS = [
     [(24,56),(19,53),(16,54),(11,50)],
     [(24,56),(26,51),(25,47),(29,43)],
@@ -55,7 +72,9 @@ def build():
     max_height = ANCHOR[1]-master.getbbox()[1]+1
     frames = [cracks(stage) for stage in range(4)]
     for index,height in enumerate(HEIGHTS):
-        frame = cracks(3 if index<6 else max(0,8-index),1.0 if index<6 else (9-index)/4)
+        cleanup_start = STEPS_PER_TICK*2
+        fade = 1.0 if index < cleanup_start else (len(HEIGHTS)-index)/7
+        frame = cracks(3,fade)
         if height:
             layer = Image.new('RGBA',SIZE)
             layer.paste(master,(0,max_height-height))
@@ -63,11 +82,12 @@ def build():
             layer.paste((0,0,0,0),(0,ANCHOR[1]+1,SIZE[0],SIZE[1]))
         # Small six-piece debris burst, confined to the same cell. Disappears
         # by cleanup; these are authored impact chips, not orphan source pixels.
-        if 1 <= index <= 6:
+        if 3 <= index <= 20:
             draw=ImageDraw.Draw(frame)
+            chip_step=min(6,index//3)
             for number,(sx,sy) in enumerate([(-8,-3),(9,-4),(-5,2),(7,3),(-12,0),(12,1)]):
-                x=24+sx+(index//3 if sx>0 else -index//3)
-                y=ANCHOR[1]+sy-max(0,4-abs(index-3)*2)
+                x=24+sx+(chip_step//3 if sx>0 else -(chip_step//3))
+                y=ANCHOR[1]+sy-max(0,4-abs(chip_step-3)*2)
                 draw.rectangle((x,y,x+1,y+1),fill=(161,146,120,255) if number%2 else (84,72,58,255))
         if height:
             frame.alpha_composite(layer)
@@ -88,11 +108,16 @@ def build():
         'native_canvas':list(SIZE),'ground_anchor':list(ANCHOR),
         'world_pixels_per_source_pixel':1,'ground_footprint_size':[32,32],
         'warning_color':'red','warning_frames':[0,1,2,3],
-        'warning_duration_control':'combat engine; preview default 1020ms',
-        'strike_frames':list(range(4,13)),'strike_durations_ms':[30]*9,
-        'protrusion_height_px':HEIGHTS,'peak_index':6,'peak_hold_ms':0,
-        'first_retraction_frame':7,'spike_gone_after_contact_ms':180,
-        'complete_after_contact_ms':270,'inactive_frame':13,
+        'revision':'tick-paced-v2','tick_duration_ms':round(TICK_SECONDS*1000),
+        'tick_config':'godot_client/scripts/game_tick_config.gd',
+        'warning_duration_control':'combat engine; default two combat ticks',
+        'default_warning_ms':round(TICK_SECONDS*2000),
+        'motion_samples_per_tick':STEPS_PER_TICK,
+        'strike_frames':list(range(4,4+len(HEIGHTS))),'strike_durations_ms':[FRAME_MS]*len(HEIGHTS),
+        'protrusion_height_px':HEIGHTS,'peak_index':4+STEPS_PER_TICK,'peak_hold_ms':0,
+        'first_retraction_frame':5+STEPS_PER_TICK,'rise_ms':round(TICK_SECONDS*1000),'fall_ms':round(TICK_SECONDS*1000),
+        'spike_gone_after_contact_ms':round(TICK_SECONDS*2000),
+        'complete_after_contact_ms':len(HEIGHTS)*FRAME_MS,'inactive_frame':4+len(HEIGHTS),
         'source_to_master_translation_px':[dx,dy],
         'source_sha256':hashlib.sha256((HERE/'source-selected.png').read_bytes()).hexdigest(),
         'atlas_sha256':hashlib.sha256((HERE/'spike-atlas.png').read_bytes()).hexdigest(),
@@ -106,11 +131,13 @@ def build():
     }
     (HERE/'manifest.json').write_text(json.dumps(metadata,indent=2)+'\n',encoding='utf-8')
     # Pixel-exact sheet and preview for art review, no resampling of source art.
-    sheet=Image.new('RGBA',(48*7,64*2),(38,35,33,255))
+    columns=12
+    rows=math.ceil(len(frames)/columns)
+    sheet=Image.new('RGBA',(48*columns,64*rows),(38,35,33,255))
     for i,frame in enumerate(frames):
-        sheet.alpha_composite(frame,((i%7)*48,(i//7)*64))
-    sheet.resize((1344,512),Image.Resampling.NEAREST).save(HERE/'contact-sheet-4x.png')
-    durations=[255]*4+[30]*9+[720]
+        sheet.alpha_composite(frame,((i%columns)*48,(i//columns)*64))
+    sheet.resize((sheet.width*4,sheet.height*4),Image.Resampling.NEAREST).save(HERE/'contact-sheet-4x.png')
+    durations=[round(TICK_SECONDS*500)]*4+[FRAME_MS]*len(HEIGHTS)+[480]
     previews=[]
     for frame in frames:
         bg=Image.new('RGBA',SIZE,(47,43,39,255)); bg.alpha_composite(frame)

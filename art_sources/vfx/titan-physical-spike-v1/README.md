@@ -1,9 +1,10 @@
-# Golem Titan physical spike - review candidate
+# Golem Titan physical spike - tick-paced review candidate
 
 One pointed gray-stone spike for one 32-world-pixel affected cell. Red cracks
 warn of the physical attack. The whole stone rises through the floor, reaches
 its peak once and immediately retracts. No lingering spike/hazard phase.
-Every tile uses the same atlas and has independent playback state.
+Every tile uses the same atlas and has independent playback state. This revision
+replaces the rejected fast pop with a full combat tick up and a full tick down.
 
 ## Native contract
 
@@ -21,20 +22,31 @@ Every tile uses the same atlas and has independent playback state.
 
 ## Frames and timing
 
-The 672x64 atlas contains fourteen 48x64 frames, left to right:
+The 3408x64 atlas contains seventy-one 48x64 frames, left to right. The actual
+combat tick is read from `scripts/game_tick_config.gd`: currently600ms. Visual
+frames run between those gameplay ticks at20ms intervals (50fps), rather than
+advancing just one picture per tick.
 
 | Frames | Purpose | Duration |
 | --- | --- | --- |
-| 0-3 | Red warning intensifies | Engine-controlled; preview 1020ms total |
-| 4-6 | Eruption: 6px, 24px, 51px above floor | 30ms per frame |
-| 7-9 | Immediate retraction: 34px, 16px, 4px | 30ms per frame |
-| 10-12 | Brief crack/debris cleanup; no stone | 30ms per frame |
-| 13 | Fully transparent inactive/end | Indefinite |
+| 0-3 | Red warning intensifies | Engine-controlled; default two ticks/1200ms |
+| 4-33 | Eased rise from floor to just below peak | One tick/600ms,30 steps |
+| 34 | One exact51px peak frame; no added dwell |20ms |
+| 35-63 | Immediate eased descent |580ms; peak and descent together one tick |
+| 64-69 | Brief crack/debris cleanup; no stone |120ms total |
+| 70 | Fully transparent inactive/end | Indefinite |
 
-There is one 30ms peak frame and no additional peak dwell. The stone is fully
-below the floor 180ms after eruption starts; cleanup is finished after 270ms.
-In the review, eruption starts at the unchanged approved slam's 1020ms fist
-contact; full height is at 1080ms and retraction starts at 1110ms.
+There is one full-height frame and no added peak dwell. Both phases use eased
+integer-pixel travel, with no jump larger than3 native pixels. The last pixel
+returns below the floor exactly two ticks/1200ms after eruption starts; cleanup
+ends120ms later. Source stone and red-crack designs are unchanged.
+
+Review timing: warning begins at0ms; the approved slam begins180ms later so its
+unchanged1020ms fist contact lands at1200ms (two ticks). Spike reaches its peak
+at1800ms (three ticks), then immediately descends; it is below floor at2400ms
+(four ticks), with cleanup complete at2520ms. The approved slam's frames and
+individual durations are untouched; only its start relative to the warning
+changes. Boss damage timing remains the combat engine's responsibility.
 
 ## Godot use
 
@@ -42,7 +54,7 @@ Instantiate `res://scenes/Effects/TitanPhysicalSpike.tscn` once per authoritativ
 affected cell and position its root at that cell's world center. Add it to the
 world's feet-sorted actor/effect container. Call
 `sample_at_seconds(seconds_since_warning_started, warning_duration_seconds)`
-from the encounter's shared clock. Defaults to a 1.020-second warning. It stays
+from the encounter's shared clock. Defaults to two combat ticks/1.2seconds. It stays
 hidden before/after the clip, does not autoplay or loop, and can be freed when
 the returned phase is `complete`. All instances share one imported texture.
 
@@ -59,15 +71,17 @@ warnings, ground width, unchanged whole source at peak, immediate retraction,
 lossless import settings and byte identity of the approved Titan neutral and
 all eighteen slam frames. `res://scripts/dev_tools/titan_spike_test.gd` checks
 timing, independent instances, hidden endpoints, engine-controlled warning
-duration, native anchoring and imported alpha/visible-pixel identity.
+duration, exact tick boundaries, smooth small motion steps, native anchoring and
+imported alpha/visible-pixel identity.
 
 `res://scripts/dev_tools/titan_spike_review.gd` renders the exact authored
 `titan_spike_world_review.tscn` with the unchanged Golem Kingdom and peasant at
 runtime 0.75 scale. Ten unique 32px cells include the captured player cell; full
 cell-floor checks, actual wall/body overlap queries and a 24px body-swept escape
 are recorded outside Git. Artwork-only and cell-guide captures stay separate.
-It captures the complete slam at 2x, a single tile beside the player at 4x and a
-normal 1x view. Preview crops preserve actual GPU pixels and sample durations.
+It samples3seconds at50fps: the complete slam at2x, a single tile beside the
+player at4x and a normal1x view. Preview crops preserve actual GPU pixels and
+sample durations.
 
 The mandatory `worldbuilding.py` was run with `world-review-contract.json`
 against this exact scripted development fixture. Its native-art gate passes;
@@ -85,4 +99,6 @@ untouched.
 Rebuild: `py -3.13 art_sources/vfx/titan-physical-spike-v1/build_effect.py`, then
 reimport the runtime atlas before running tests/review. Evidence and deliverable
 previews live in the supporting workspace under
-`work/character-animation/golem-titan-spike-v1/`.
+`work/character-animation/golem-titan-spike-v1/`. The current evidence and
+deliverables use the `tick-paced` subdirectory; earlier fast previews are
+superseded and retained only as history.

@@ -1,6 +1,11 @@
 extends "res://scripts/dev_tools/golem_titan_animation_review.gd"
 ## Actual-map review only. No production scene, encounter or combat edits.
 const FIXTURE := "res://scenes/dev_tools/titan_spike_world_review.tscn"
+const TICK_MS := int(GameTickConfig.TICK_DURATION_SECONDS * 1000.0)
+const STEP_MS := int(TICK_MS / 30.0)
+const SAMPLE_COUNT := 150
+const WARNING_MS := TICK_MS * 2
+const SLAM_OFFSET_MS := WARNING_MS - 1020
 var spikes: Array[Node2D] = []
 var target_cells: Array[Vector2i] = []
 var escape_position := Vector2.ZERO
@@ -63,15 +68,11 @@ func _capture_clip(clip: String, definition: Dictionary) -> void:
 	visual.sprite_frames = frame_set
 	visual.animation = clip
 	visual.pause()
-	# 30ms samples include exact 1020ms contact and the 1080ms peak.
-	for index in 78:
-		var time_ms := index * 30
-		var cursor := 0
-		for frame in durations.size():
-			cursor += int(durations[frame])
-			if time_ms < cursor or frame == durations.size()-1:
-				visual.frame = frame
-				break
+	# Smooth render sampling between600ms tick events. Delay the unchanged slam
+	#180ms so its1020ms contact lands at the two-tick warning boundary.
+	for index in SAMPLE_COUNT:
+		var time_ms := index * STEP_MS
+		_sample_slam(time_ms,durations)
 		for effect: Node2D in spikes:
 			effect.sample_at_seconds(float(time_ms)/1000.0)
 		player.position = player_position.lerp(escape_position,clampf((float(time_ms)-300.0)/250.0,0.0,1.0))
@@ -84,14 +85,24 @@ func _capture_clip(clip: String, definition: Dictionary) -> void:
 		for effect: Node2D in spikes:
 			effect.sample_at_seconds(float(time_ms)/1000.0)
 	# Ground-cell debug is separate from artwork and uses actual sampled peak.
+	_sample_slam(TICK_MS*3,durations)
 	for effect: Node2D in spikes:
-		effect.sample_at_seconds(1.08)
-	await _spike_capture("normal-zoom",0,1.0,titan_position+Vector2(0,-10),1080)
+		effect.sample_at_seconds(GameTickConfig.TICK_DURATION_SECONDS*3.0)
+	await _spike_capture("normal-zoom",0,1.0,titan_position+Vector2(0,-10),TICK_MS*3)
 	var guide := SpikeGuide.new()
 	guide.cells = target_cells
 	titan.get_parent().add_child(guide)
-	await _spike_capture("tile-guides",0,4.0,player_position+Vector2(0,16),1080)
+	await _spike_capture("tile-guides",0,4.0,player_position+Vector2(0,16),TICK_MS*3)
 	guide.queue_free()
+
+func _sample_slam(time_ms: int,durations: Array) -> void:
+	var slam_time_ms := maxi(0,time_ms-SLAM_OFFSET_MS)
+	var cursor := 0
+	for frame in durations.size():
+		cursor += int(durations[frame])
+		if slam_time_ms < cursor or frame == durations.size()-1:
+			visual.frame = frame
+			return
 
 class SpikeGuide extends Node2D:
 	var cells: Array[Vector2i] = []
@@ -112,7 +123,7 @@ func _spike_capture(kind: String,index: int,zoom: float,center: Vector2,time_ms:
 	var rendered := viewport.get_texture().get_image()
 	if rendered.save_png(path) != OK:
 		_fail("Cannot save actual GPU image: " + path)
-	captures.append({"path":path,"kind":kind,"time_ms":time_ms,"duration_ms":30,"zoom":zoom,"camera_world_xy":[center.x,center.y],"viewport":[viewport.size.x,viewport.size.y]})
+	captures.append({"path":path,"kind":kind,"time_ms":time_ms,"titan_frame":visual.frame,"duration_ms":STEP_MS,"zoom":zoom,"camera_world_xy":[center.x,center.y],"viewport":[viewport.size.x,viewport.size.y]})
 
 func _review_metadata() -> Dictionary:
 	var cells: Array = []
@@ -122,5 +133,7 @@ func _review_metadata() -> Dictionary:
 		"actual_fixture_scene":FIXTURE,"fixture_sha256":FileAccess.get_sha256(FIXTURE),
 		"affected_cell_size":[32,32],"captured_player_cell": [floori(player_position.x/32.0),floori(player_position.y/32.0)],
 		"effect_cells":cells,"route_checks":route_checks,"pattern_scope":"Fixed development fixture only; production engine chooses cells.",
-		"warning_ms":1020,"spike_peak_ms":1080,"retraction_begins_ms":1110,"spike_gone_ms":1200,"cleanup_done_ms":1290,
+		"tick_ms":TICK_MS,"warning_ms":WARNING_MS,"slam_start_offset_ms":SLAM_OFFSET_MS,"slam_contact_ms":WARNING_MS,
+		"spike_peak_ms":TICK_MS*3,"first_lower_frame_ms":TICK_MS*3+STEP_MS,"spike_gone_ms":TICK_MS*4,"cleanup_done_ms":TICK_MS*4+STEP_MS*6,
+		"sample_interval_ms":STEP_MS,"sample_count":SAMPLE_COUNT,"preview_duration_ms":STEP_MS*SAMPLE_COUNT,
 		"passive_worldbuilding_status":"Animated scripted effects outside current validator scope; no world placement changed."}

@@ -17,11 +17,12 @@ def verify():
     manifest=json.loads((HERE/'manifest.json').read_text(encoding='utf-8'))
     atlas=Image.open(HERE/'spike-atlas.png').convert('RGBA')
     runtime=ROOT/'godot_client/Assets/Effects/TitanPhysicalSpike/spike-atlas.png'
-    check(atlas.size==(48*14,64),'14 native 48x64 frames')
+    frame_count=manifest['inactive_frame']+1
+    check(atlas.size==(48*frame_count,64) and frame_count==71,'71 native 48x64 frames')
     check(runtime.read_bytes()==(HERE/'spike-atlas.png').read_bytes(),'runtime atlas exact source bytes')
     check(hashlib.sha256(runtime.read_bytes()).hexdigest()==manifest['atlas_sha256'],'manifest atlas hash')
     frames=[]
-    for i in range(14):
+    for i in range(frame_count):
         im=Image.open(HERE/f'frames/{i:02}.png').convert('RGBA')
         frames.append(im)
         check(im.size==(48,64),f'frame {i} native size')
@@ -35,8 +36,11 @@ def verify():
         check(frames[i].getbbox()[1]>=36,f'warning {i} entirely on ground cell')
     check(frames[-1].getbbox() is None,'final frame fully disappears')
     heights=manifest['protrusion_height_px']
-    check(heights==[6,24,51,34,16,4,0,0,0],'one peak with immediate retraction')
-    check(manifest['peak_hold_ms']==0 and sum(manifest['strike_durations_ms'][:6])==180,'no linger; stone gone within 180ms')
+    check(len(heights)==66 and heights.count(51)==1 and heights[30]==51,'one peak with immediate retraction')
+    check(all(heights[i]<=heights[i+1] for i in range(30)) and all(heights[i]>=heights[i+1] for i in range(30,65)),'rise and fall are monotonic')
+    check(max(abs(b-a) for a,b in zip(heights,heights[1:]))<=3,'small eased native motion steps')
+    check(manifest['peak_hold_ms']==0 and manifest['rise_ms']==manifest['fall_ms']==manifest['tick_duration_ms']==600,'one whole combat tick per phase, no added peak dwell')
+    check(sum(manifest['strike_durations_ms'][:60])==1200 and heights[60]==0,'stone returns below floor after two ticks')
     master=Image.open(HERE/'master-spike.png').convert('RGBA')
     source=Image.open(HERE/'source-selected.png').convert('RGBA')
     dx,dy=manifest['source_to_master_translation_px']
@@ -48,7 +52,18 @@ def verify():
         for x in range(48):
             p=master.getpixel((x,y))
             if p[3]:
-                check(frames[6].getpixel((x,y))==p,'full peak preserves whole master silhouette and stone pixels')
+                check(frames[manifest['peak_index']].getpixel((x,y))==p,'full peak preserves whole master silhouette and stone pixels')
+    for index,height in enumerate(heights):
+        if not height:
+            continue
+        for y in range(64):
+            target_y=y+51-height
+            if target_y>52:
+                continue
+            for x in range(48):
+                pixel=master.getpixel((x,y))
+                if pixel[3]:
+                    check(frames[4+index].getpixel((x,target_y))==pixel,'each in-between frame preserves whole translated source pixels')
     source_rel='art_sources/characters/golem-titan-bound-v2'
     # Authoritative approved revision, independent of whatever branch the shared checkout is on.
     for suffix in ['south.png']+[f'shockwave_slam/frames/{i:02}.png' for i in range(18)]:

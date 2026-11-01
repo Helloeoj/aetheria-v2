@@ -21,20 +21,38 @@ func _run() -> void:
 		check(not effect.visible, "new instance stays hidden until engine samples it")
 		check(effect.sample_at_seconds(-0.1).phase == "inactive", "negative time is inactive")
 		check(effect.sample_at_seconds(0.0).phase == "warning", "warning starts before impact")
-		check(effect.sample_at_seconds(1.019).phase == "warning", "warning remains until fist contact")
-		check(effect.sample_at_seconds(1.020).phase == "eruption", "eruption begins at approved slam contact")
-		var peak: Dictionary = effect.sample_at_seconds(1.080)
-		var retract: Dictionary = effect.sample_at_seconds(1.110)
-		check(int(peak.height_px) > int(retract.height_px), "retraction starts immediately after single peak frame")
-		check(int(effect.sample_at_seconds(1.200).height_px) == 0, "no lingering spike or hazard after 180ms")
-		check(effect.sample_at_seconds(1.291).phase == "complete" and not effect.visible, "effect disappears completely")
+		var tick := GameTickConfig.TICK_DURATION_SECONDS
+		var warning := tick * 2.0
+		check(effect.sample_at_seconds(warning-0.001).phase == "warning", "warning lasts two actual combat ticks")
+		check(effect.sample_at_seconds(warning).phase == "eruption", "rise begins on warning's tick boundary")
+		check(int(effect.sample_at_seconds(warning+tick-0.020).height_px) < 51, "rise takes a complete tick")
+		var peak: Dictionary = effect.sample_at_seconds(warning+tick)
+		var retract: Dictionary = effect.sample_at_seconds(warning+tick+0.020)
+		check(int(peak.height_px) == 51 and int(retract.height_px) < 51, "one full peak then immediate retraction")
+		check(int(effect.sample_at_seconds(warning+tick*2.0-0.100).height_px) > 0, "retraction remains visible over the next tick")
+		check(int(effect.sample_at_seconds(warning+tick*2.0-0.001).height_px) > 0, "last visible pixel retracts at the tick boundary, not before it")
+		check(int(effect.sample_at_seconds(warning+tick*2.0).height_px) == 0, "stone returns below floor exactly two ticks after rise starts")
+		check(effect.sample_at_seconds(warning+tick*2.0+0.121).phase == "complete" and not effect.visible, "cleanup ends without a lingering hazard")
+		var previous := 0
+		var peak_count := 0
+		var smooth := true
+		var monotonic := true
+		for step in 61:
+			var sample: Dictionary = effect.sample_at_seconds(warning+float(step)*tick/30.0)
+			var height := int(sample.height_px)
+			smooth = smooth and absi(height-previous) <= 3
+			monotonic = monotonic and (height >= previous if step <= 30 else height <= previous)
+			if height == 51:
+				peak_count += 1
+			previous = height
+		check(smooth and monotonic and peak_count == 1, "60 small eased motion steps replace the abrupt pop, without added peak dwell")
 		check(effect.sample_at_seconds(0.5, 2.0).phase == "warning", "engine can choose warning duration")
 		check(effect.sample_at_seconds(2.0, 2.0).phase == "eruption", "custom warning changes impact time")
 		check(effect.sample_at_seconds(NAN).phase == "inactive", "invalid sample cannot flash a spike")
 		var other = load(path).instantiate()
 		root.add_child(other)
 		other.sample_at_seconds(0.1)
-		effect.sample_at_seconds(1.08)
+		effect.sample_at_seconds(warning+tick)
 		check(other.current_sample.phase == "warning", "each tile has independent playback state")
 		check(other.get_node("Visual").texture == effect.get_node("Visual").texture, "all instances share one atlas")
 		check(effect.get_node("Visual").offset == Vector2(-24,-52), "sprite uses declared ground anchor")
