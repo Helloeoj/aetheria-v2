@@ -1,5 +1,9 @@
 # Peasant equipment sockets
 
+**2026-10-31:** platebodies and platelegs now own complete animation layers rather
+than stretching static fragments over the original limbs. Equipped torso hand
+tracks drive the sockets. See [Equipment body replacement](EquipmentBodyReplacement.md).
+
 **Update:** the fitted bronze and iron equipment pack is now registered in this
 same game. F7 includes both tiers' weapons/shields, armor presets and individual
 armor choices; F6 equips them through the real inventory. See

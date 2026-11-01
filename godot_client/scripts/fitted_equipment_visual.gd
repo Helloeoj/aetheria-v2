@@ -58,7 +58,9 @@ func set_attachment_pose(context: Dictionary) -> void:
 	if pose.is_empty() or context.get("pose", {}).is_empty():
 		visible = false
 		return
-	set_attachment_facing(context.direction)
+	FittedEquipmentLibrary.initialize()
+	if item_definition.is_empty():
+		item_definition = FittedEquipmentLibrary.item_data.get(item_id, {})
 	var action := "run" if String(context.action) == "walk" else "idle"
 	var frame_index := str(int(context.frame) if action == "run" else 0)
 	var authored: Variant = item_definition.get("poseViews", {}).get(context.direction, {}).get(action, {}).get(frame_index)
@@ -81,6 +83,9 @@ func set_attachment_pose(context: Dictionary) -> void:
 		part_bones[index].position = point - root_point
 		part_bones[index].rest = part_bones[index].transform
 		var angle_delta := 0.0
+		part_sprites[index].texture = FittedEquipmentLibrary.texture(part.file)
+		part_sprites[index].offset = -FittedEquipmentLibrary.point(part.pivot)
+		part_sprites[index].position = FittedEquipmentLibrary.point(part.get("offset", [0, 0]))
 		part_sprites[index].scale = Vector2(float(part.get("widthScale", 1.0)), 1.0)
 		if bool(part.get("segmentFit", false)):
 			# Longitudinal armor pieces span their actual joint pair with a
@@ -95,7 +100,14 @@ func set_attachment_pose(context: Dictionary) -> void:
 			angle_delta = clampf(angle_delta, -float(part.rotationLimit), float(part.rotationLimit))
 		# A bulky weapon may lean outwards while its grip stays exactly on the
 		# hand. This is a rest orientation, not a positional socket workaround.
-		part_sprites[index].rotation = angle_delta + float(part.get("restRotation", 0.0))
+		part_sprites[index].rotation = angle_delta + float(part.get("carryRotation", part.get("restRotation", 0.0)))
+		if String(item_definition.slot) == "weapon":
+			var fitted := FittedEquipmentLibrary.native_part(part.file, FittedEquipmentLibrary.point(part.pivot), part_sprites[index].position, part_sprites[index].rotation, part_sprites[index].scale)
+			part_sprites[index].texture = fitted.texture
+			part_sprites[index].offset = fitted.origin
+			part_sprites[index].position = Vector2.ZERO
+			part_sprites[index].rotation = 0.0
+			part_sprites[index].scale = Vector2.ONE
 	if String(item_definition.slot) == "legs":
 		# Sort complete legs, not every thigh behind every shin. A raised rear
 		# foot must remain behind the planted leg when the stride crosses.

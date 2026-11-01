@@ -7,6 +7,33 @@ static var item_data: Dictionary = {}
 static var textures: Dictionary = {}
 static var bodies: Dictionary = {}
 static var forearms: Dictionary = {}
+static var native_parts: Dictionary = {}
+static var replacement_tracks: Dictionary = {}
+
+## Fit transformed hand items once on their native pixel grid, then display
+## whole pixels like the character. Never resample armor to match bare limbs.
+static func native_part(path: String, pivot: Vector2, offset: Vector2, angle: float, size: Vector2) -> Dictionary:
+	var key := "%s/%s/%s/%s/%s" % [path, pivot, offset, angle, size]
+	if native_parts.has(key):
+		return native_parts[key]
+	var source := texture(path).get_image()
+	source.convert(Image.FORMAT_RGBA8)
+	var transform := Transform2D(angle, size, 0.0, offset)
+	var bounds := Rect2(transform * -pivot, Vector2.ZERO)
+	for corner: Vector2 in [Vector2(source.get_width(), 0), Vector2(0, source.get_height()), Vector2(source.get_size())]:
+		bounds = bounds.expand(transform * (corner - pivot))
+	var origin := bounds.position.floor()
+	var dimensions := Vector2i(bounds.end.ceil() - origin).max(Vector2i.ONE)
+	var result := Image.create(dimensions.x, dimensions.y, false, Image.FORMAT_RGBA8)
+	var inverse := transform.affine_inverse()
+	for y in range(dimensions.y):
+		for x in range(dimensions.x):
+			var sample := Vector2i((inverse * (origin + Vector2(x + 0.5, y + 0.5)) + pivot).floor())
+			if sample.x >= 0 and sample.y >= 0 and sample.x < source.get_width() and sample.y < source.get_height():
+				result.set_pixel(x, y, source.get_pixel(sample.x, sample.y))
+	var fitted := {"texture":ImageTexture.create_from_image(result), "origin":origin}
+	native_parts[key] = fitted
+	return fitted
 
 static func initialize() -> void:
 	if not rig_data.is_empty():
@@ -34,6 +61,17 @@ static func texture(path: String) -> Texture2D:
 
 static func point(value: Array) -> Vector2:
 	return Vector2(float(value[0]), float(value[1]))
+
+static func replacement_pose(item_id: String, context: Dictionary) -> Dictionary:
+	initialize()
+	var track := String(item_data.get(item_id, {}).get("replacementTrack", ""))
+	if track.is_empty():
+		return {}
+	if not replacement_tracks.has(track):
+		replacement_tracks[track] = JSON.parse_string(FileAccess.get_file_as_string(ROOT + track))
+	var action := "run" if String(context.get("action", "idle")) == "walk" else "idle"
+	var index := str(int(context.get("frame", 0)) if action == "run" else 0)
+	return replacement_tracks[track].get(context.get("direction", ""), {}).get(action, {}).get(index, {})
 
 static func frame(context: Dictionary) -> Dictionary:
 	initialize()
@@ -105,6 +143,16 @@ static func forearm_texture(context: Dictionary, side: String) -> Texture2D:
 
 static func hand_texture(context: Dictionary, side: String) -> Texture2D:
 	var pose := frame(context)
+	var replacement: Dictionary = context.get("body_pose", {})
+	if not replacement.is_empty():
+		var replacement_key := String(replacement.source) + side + "_replacement_hand"
+		if not forearms.has(replacement_key):
+			var image := Image.create(80, 80, false, Image.FORMAT_RGBA8)
+			var source := texture(replacement.source).get_image()
+			for pixel: Array in replacement.get("handPixels", {}).get(side, []):
+				image.set_pixel(int(pixel[0]), int(pixel[1]), source.get_pixel(int(pixel[0]), int(pixel[1])))
+			forearms[replacement_key] = ImageTexture.create_from_image(image)
+		return forearms[replacement_key]
 	var key := String(pose.original) + side + "_hand"
 	if not forearms.has(key):
 		var image := Image.create(80, 80, false, Image.FORMAT_RGBA8)
@@ -116,10 +164,14 @@ static func base_texture(pose: Dictionary, flags: Dictionary, context: Dictionar
 	var chest := bool(flags.get("chest", false))
 	var legs := bool(flags.get("legs", false))
 	var head := bool(flags.get("head", false))
-	var key := "%s/%s/%s/%s" % [pose.original, chest, legs, head]
+	var replacement_chest := bool(flags.get("replacement_chest", false))
+	var replacement_legs := bool(flags.get("replacement_legs", false))
+	var key := "%s/%s/%s/%s/%s/%s" % [pose.original, chest, legs, head, replacement_chest, replacement_legs]
 	if bodies.has(key):
 		return bodies[key] as Texture2D
-	var image := texture(pose.body if chest else pose.original).get_image()
+	# CompressedTexture2D may return the same CPU Image to every caller.
+	# Masks must edit a private copy or future loadouts lose source pixels.
+	var image := texture(pose.body if chest and not replacement_chest else pose.original).get_image().duplicate() as Image
 	image.convert(Image.FORMAT_RGBA8)
 	var head_image := texture(pose.head).get_image()
 	head_image.convert(Image.FORMAT_RGBA8)
@@ -130,7 +182,11 @@ static func base_texture(pose: Dictionary, flags: Dictionary, context: Dictionar
 	var torso_half_width := 8.0 if String(pose.direction) in ["east", "west"] else 10.0
 	for y in range(image.get_height()):
 		for x in range(image.get_width()):
-			if legs and y >= int(pelvis.y) - 1:
+			if replacement_chest and y < int(pelvis.y) + 1:
+				# The armor frame owns the entire torso/arms, including empty
+				# space between them. No old robe or procedural limbs remain.
+				image.set_pixel(x, y, Color.TRANSPARENT)
+			elif legs and y >= int(pelvis.y) - 1:
 				image.set_pixel(x, y, Color.TRANSPARENT)
 			elif chest and y >= int(neck.y) and y < int(pelvis.y) + 3 and absf(x - chest_point.x) > torso_half_width:
 				image.set_pixel(x, y, Color.TRANSPARENT)
@@ -138,7 +194,26 @@ static func base_texture(pose: Dictionary, flags: Dictionary, context: Dictionar
 				var color := image.get_pixel(x, y)
 				color.a = maxf(0.0, color.a - head_image.get_pixel(x, y).a)
 				image.set_pixel(x, y, color)
-	if legs:
+	if replacement_chest and not legs:
+		# Old hands may swing below the waist cut. They belong to the old
+		# torso, not to the unequipped legs, and must disappear with it.
+		var source := texture(pose.original).get_image()
+		var old_hands := Image.create(80, 80, false, Image.FORMAT_RGBA8)
+		for side: String in ["left", "right"]:
+			var hand: Array = context.get("source_pose", {}).get(side + "_hand", [])
+			if not hand.is_empty():
+				_hand(old_hands, source, point(hand) + Vector2(context.padding))
+		for y in range(80):
+			for x in range(80):
+				if old_hands.get_pixel(x, y).a == 0.0:
+					continue
+				image.set_pixel(x, y, Color.TRANSPARENT)
+				for yy in range(maxi(0, y - 1), mini(80, y + 2)):
+					for xx in range(maxi(0, x - 1), mini(80, x + 2)):
+						var color := source.get_pixel(xx, yy)
+						if maxf(color.r, maxf(color.g, color.b)) < 0.28:
+							image.set_pixel(xx, yy, Color.TRANSPARENT)
+	if legs and not replacement_legs:
 		_limb(image, point(tracked.hip_left), point(tracked.hip_right), 3.4)
 		for side: String in ["left", "right"]:
 			var hip := point(tracked["hip_" + side])
@@ -146,7 +221,7 @@ static func base_texture(pose: Dictionary, flags: Dictionary, context: Dictionar
 			var foot := point(tracked["foot_" + side])
 			_limb(image, hip, knee, 3.3)
 			_limb(image, knee, foot - Vector2(0, 1), 2.8)
-	if chest:
+	if chest and not replacement_chest:
 		var original := texture(pose.original).get_image()
 		for side: String in ["left", "right"]:
 			var shoulder := point(tracked["shoulder_" + side])

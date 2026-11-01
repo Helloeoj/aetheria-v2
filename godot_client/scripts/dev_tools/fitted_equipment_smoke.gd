@@ -21,6 +21,8 @@ func _run() -> void:
 	actor.set_skin("peasant")
 	var game_data := root.get_node("GameData")
 	var player: Variant = load("res://scripts/player_state.gd").new("Fitted smoke")
+	for skill: String in player.levels:
+		player.set_skill_level(skill, 100)
 	var catalog: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CharacterAttachmentRig.EQUIPMENT_PATH))
 	var poses := 0
 	for item: Dictionary in FittedEquipmentLibrary.item_data.values():
@@ -30,7 +32,7 @@ func _run() -> void:
 		_check(catalog.items.has(name), name + " is absent from the visual registry")
 		player.give_and_equip(name)
 		var inventory_slot := "ring1" if slot == "ring" else slot
-		_check(String(player.equipment[inventory_slot].get("name", "")) == name, name + " could not be equipped through PlayerState")
+		_check(String(player.equipment[inventory_slot].get("name", "")) == game_data.canonical_item_name(name), name + " could not be equipped through PlayerState")
 		player.unequip_slot(inventory_slot)
 		actor.set_equipment({slot:{"name":name}})
 		var node := actor.attachment_rig.get_equipped_visual(slot)
@@ -96,7 +98,5 @@ func _run() -> void:
 		scene.free()
 		await process_frame
 	var report := {"status":"pass" if failures.is_empty() else "fail","checks":checks,"item_pose_checks":poses,"items":FittedEquipmentLibrary.item_data.size(),"errors":failures}
-	var out := FileAccess.open("res://data/fitted_equipment_validation.json", FileAccess.WRITE)
-	out.store_string(JSON.stringify(report,"  "))
 	print("[Fitted equipment smoke] ", JSON.stringify(report))
 	quit(0 if failures.is_empty() else 1)

@@ -107,9 +107,7 @@ func set_equipment(equipment: Dictionary) -> void:
 	for slot: String in _items.keys():
 		if not active_slots.has(slot):
 			_remove_item(slot)
-	_update_item_facings()
-	_update_grip_covers()
-	_update_fitted_body()
+	sync_pose()
 
 
 func _remove_item(slot: String) -> void:
@@ -171,12 +169,19 @@ func sync_pose() -> void:
 		return
 	current_frame_path = texture.resource_path
 	var skin: Dictionary = _pose_catalog.get("skins", {}).get(_skin_id, {})
-	current_pose = skin.get("poses", {}).get(current_frame_path, {})
+	current_pose = skin.get("poses", {}).get(current_frame_path, {}).duplicate(true)
 	if current_pose.is_empty():
 		return
 	_ensure_bones()
 	# Bone coordinates are raw PNG pixels, including that frame's padding.
 	position = _visual.offset - texture.get_size() * 0.5
+	_current_facing = String(_visual.animation).get_slice("_", 1)
+	var context := _fitted_context()
+	# An equipped torso owns its arms/hands too. Its authored hand track
+	# drives held items instead of forcing the new arm back onto the old one.
+	for hand: String in context.get("body_pose", {}).get("hands", {}):
+		var point := FittedEquipmentLibrary.point(context.body_pose.hands[hand]) - Vector2(context.padding)
+		current_pose[hand] = [point.x, point.y]
 	var chest := _pixel_point("chest")
 	for socket_name: String in SOCKET_NAMES:
 		var bone: Bone2D = _bones[socket_name]
@@ -221,13 +226,17 @@ func _fitted_context() -> Dictionary:
 	var texture: Texture2D
 	if _visual != null and _visual.sprite_frames != null and _visual.sprite_frames.has_animation(_visual.animation):
 		texture = _visual.sprite_frames.get_frame_texture(_visual.animation, _visual.frame)
-	return {
+	var context := {
 		"pose": current_pose, "direction": _current_facing,
+		"source_pose": _pose_catalog.get("skins", {}).get(_skin_id, {}).get("poses", {}).get(current_frame_path, {}),
 		"action": String(_visual.animation).get_slice("_", 0) if _visual != null else "idle",
 		"frame": _visual.frame if _visual != null else 0,
 		"padding": (Vector2(80, 80) - texture.get_size()) * 0.5 if texture != null else Vector2.ZERO,
 		"origin": position
 	}
+	var chest := get_equipped_visual("chest") as FittedEquipmentVisual
+	context["body_pose"] = FittedEquipmentLibrary.replacement_pose(chest.item_id, context) if chest != null else {}
+	return context
 
 
 func _update_fitted_body() -> void:
@@ -238,6 +247,8 @@ func _update_fitted_body() -> void:
 			var item_node := get_equipped_visual(slot) as FittedEquipmentVisual
 			if slot == "chest" and item_node != null and item_node.authored_pose:
 				flags["authored_chest"] = true
+			if item_node != null and bool(item_node.item_definition.get("bodyReplacement", false)):
+				flags["replacement_" + slot] = true
 	if not flags.is_empty() and _fitted_body == null:
 		_fitted_body = FittedEquipmentBody.new()
 		_fitted_body.configure(_visual)
@@ -246,13 +257,27 @@ func _update_fitted_body() -> void:
 	# Keep all layers at the actor's existing world Z. Only sibling draw order
 	# changes, so map Y-sorting, tint and attack lunge continue to work.
 	var ordered: Array = []
+	var replacement_body := _fitted_body != null and _fitted_body.base.visible
+	# show_behind_parent only sorts against the parent's own draw. That draw
+	# is transparent with armor, so sort rear gear before the replacement too.
+	for socket_name: String in ["right_hand", "left_hand", "back"]:
+		var socket := get_socket(socket_name)
+		if socket == null:
+			continue
+		var rear := (_current_facing in ["north", "north-east", "north-west", "west"] if socket_name == "right_hand" else _current_facing in ["north", "north-east", "north-west", "east"] if socket_name == "left_hand" else not _current_facing.begins_with("north"))
+		socket.show_behind_parent = rear and not replacement_body
+		if rear:
+			ordered.append(socket)
 	if _fitted_body != null:
 		ordered.append(_fitted_body.base)
 	ordered.append(get_socket("waist"))
 	ordered.append(get_socket("chest"))
 	if _fitted_body != null:
 		ordered.append_array([_fitted_body.head, _fitted_body.arms.left, _fitted_body.arms.right])
-	ordered.append_array([get_socket("back"), get_socket("right_hand"), get_socket("left_hand")])
+	for socket_name: String in ["back", "right_hand", "left_hand"]:
+		var socket := get_socket(socket_name)
+		if socket != null and not ordered.has(socket):
+			ordered.append(socket)
 	ordered.append_array(_grip_covers.values())
 	ordered.append(get_socket("head"))
 	ordered.append(self)

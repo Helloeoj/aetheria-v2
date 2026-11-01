@@ -59,6 +59,8 @@ func _test_inventory_rules() -> void:
 	# Load after autoload initialization: SceneTree --script entrypoints are
 	# parsed before the GameData singleton is available to dependent scripts.
 	var player: Variant = load("res://scripts/player_state.gd").new("Shield smoke")
+	player.set_skill_level("attack", 100)
+	player.set_skill_level("defense", 100)
 	player.give_and_equip("Iron Longsword")
 	player.give_and_equip(106)
 	_check(player.equipment["weapon"].get("name", "") == "Iron Longsword", "Equipping shield removed the one-handed sword.")
@@ -175,6 +177,8 @@ func _test_scene(scene_path: String, is_map: bool) -> void:
 		return
 	actor.set_process(false)
 	actor.animated_sprite.pause()
+	game.player.set_skill_level("attack", 100)
+	game.player.set_skill_level("defense", 100)
 	game.player.give_and_equip("Iron Longsword")
 	game.player.give_and_equip(106)
 	game._refresh_player_actor_from_player()

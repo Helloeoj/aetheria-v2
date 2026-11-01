@@ -45,10 +45,10 @@ func sync(context: Dictionary, flags: Dictionary) -> void:
 	head.texture = FittedEquipmentLibrary.texture(pose.head)
 	head.position = origin
 	head.visible = not bool(flags.get("head", false))
-	if bool(flags.get("chest", false)):
+	if bool(flags.get("chest", false)) or bool(flags.get("legs", false)):
 		for side: String in pose.frontArms:
 			# Authored armor already contains the forearm plate. Only the real
 			# hand belongs above it; a neutral sleeve would cover the new art.
-			arms[side].texture = FittedEquipmentLibrary.hand_texture(context, side) if bool(flags.get("authored_chest", false)) else FittedEquipmentLibrary.forearm_texture(context, side)
+			arms[side].texture = FittedEquipmentLibrary.hand_texture(context, side) if bool(flags.get("authored_chest", false)) or not bool(flags.get("chest", false)) else FittedEquipmentLibrary.forearm_texture(context, side)
 			arms[side].position = origin
 			arms[side].visible = true

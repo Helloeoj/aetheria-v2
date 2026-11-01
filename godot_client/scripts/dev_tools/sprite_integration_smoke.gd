@@ -87,7 +87,8 @@ func _test_catalog() -> void:
 				_check(frames.has_animation(animation), "%s/%s authored clip was not built." % [skin_id, animation])
 				if frames.has_animation(animation):
 					_check(frames.get_frame_count(animation) == paths.size(), "%s/%s lost authored frames." % [skin_id, animation])
-					_check(is_equal_approx(frames.get_animation_speed(animation), float(role_data.get("fps", 10.0))), "%s/%s has the wrong playback rate." % [skin_id, animation])
+					var expected_fps := float(role_data.get("fps_by_direction", {}).get(direction, role_data.get("fps", 10.0)))
+					_check(is_equal_approx(frames.get_animation_speed(animation), expected_fps), "%s/%s has the wrong playback rate." % [skin_id, animation])
 					_check(frames.get_animation_loop(animation) == bool(role_data.get("loop", role != "attack")), "%s/%s has the wrong loop setting." % [skin_id, animation])
 				for path: String in paths:
 					authored_frame_count += 1

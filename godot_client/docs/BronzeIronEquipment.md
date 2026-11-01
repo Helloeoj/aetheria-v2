@@ -1,5 +1,11 @@
 # Bronze and iron in the existing Godot test
 
+**2026-10-31 correction:** bronze/iron/steel chest and leg equipment now supplies
+complete native animation layers that replace the old body regions. The older
+articulated fitting description below is historical for those two slots. See
+[Equipment body replacement](EquipmentBodyReplacement.md) for current behavior,
+hand tracking, source art and verification.
+
 All 34 bronze/iron equippables now use the same `ActorSprite.set_equipment()`
 and `CharacterAttachmentRig` registry as the existing Adamantite Kiteshield.
 No separate test project or gameplay scene is required. Inventory, stats,
