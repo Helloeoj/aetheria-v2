@@ -255,7 +255,10 @@
   "animation_method": "whole rigid stone translated vertically behind floor occlusion; no scaling, warping or cut body parts",
   "debris_reason": "six intentional two-pixel stone chips confined to affected cell during impact/retraction",
   "alpha_reason": "transparent background, source silhouette alpha preserved; warning drawn on native pixel grid",
-  "artwork_approval": "candidate_pending_user_review",
+  "artwork_approval": "approved",
   "production_encounter_installation": "not_performed",
-  "scope": "one reusable effect; no combat damage, balance, target selection or world placement changes"
+  "scope": "one reusable effect; no combat damage, balance, target selection or world placement changes",
+  "source_release": "finalized",
+  "approved_source_revision": "6909c2347adfaace8bec7e90fa74192b6bf0ac63",
+  "approval_record": "approved-release.json"
 }

@@ -72,7 +72,7 @@ def verify():
         check(old==(ROOT/path).read_bytes(),f'approved Titan unchanged: {suffix}')
     settings=runtime.with_suffix('.png.import').read_text(encoding='utf-8')
     check('compress/mode=0' in settings and 'mipmaps/generate=false' in settings,'lossless import without mipmaps')
-    print(json.dumps({'checks':checks,'failures':0,'artwork_status':'candidate_pending_user_review','production_placement':'not_performed'}))
+    print(json.dumps({'checks':checks,'failures':0,'artwork_status':manifest['artwork_approval'],'production_placement':'not_performed'}))
 
 if __name__=='__main__':
     verify()

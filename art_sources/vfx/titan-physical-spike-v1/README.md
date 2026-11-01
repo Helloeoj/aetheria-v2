@@ -1,4 +1,4 @@
-# Golem Titan physical spike - tick-paced review candidate
+# Golem Titan physical spike - approved tick-paced source
 
 One pointed gray-stone spike for one 32-world-pixel affected cell. Red cracks
 warn of the physical attack. The whole stone rises through the floor, reaches
@@ -90,7 +90,9 @@ its passive scene gate rejects the attached animation script as
 placement certificate. No validator was bypassed or unrelated passive prop
 substituted. Production worldbuilding/encounter installation remains pending.
 
-Artwork status: **candidate, pending user visual review**. Reusable effect is
+Artwork status: **visually approved by the user on 2026-11-01**. The tick-paced
+source release is finalized; `approved-release.json` pins the exact accepted
+source files and review media by checksum. Reusable effect is
 installed in the project asset library; no live boss, map placement, collision,
 damage balance, existing interface or actor catalog was changed. Approved
 Titan idle/slam artwork remains unchanged. The old tiny Titan catalog entry is
@@ -102,3 +104,7 @@ previews live in the supporting workspace under
 `work/character-animation/golem-titan-spike-v1/`. The current evidence and
 deliverables use the `tick-paced` subdirectory; earlier fast previews are
 superseded and retained only as history.
+
+Rebuilding emits fresh candidate metadata. The approval record applies to the
+frozen source bytes and timing of this release; it does not automatically approve
+new artwork or timing edits. Production boss integration remains a separate task.
