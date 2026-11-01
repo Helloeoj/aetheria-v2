@@ -79,7 +79,7 @@ func _run() -> void:
 						FittedEquipmentLibrary.hand_texture(context,side).get_image().save_png(prefix.path_join(str(index)+"-grip-"+side+".png"))
 				await process_frame
 				await RenderingServer.frame_post_draw
-				var screenshot := root.get_texture().get_image()
+				var screenshot := actor.get_viewport().get_texture().get_image()
 				var foot := actor.get_global_transform_with_canvas().origin
 				var rect := Rect2i(Vector2i(foot) - Vector2i(115, 160), Vector2i(230, 190))
 				var path := "%s/%s_%s_%d.png" % [destination, mode.to_lower().replace(" ", "-"), direction, index]
@@ -98,7 +98,7 @@ func _capture_actor(actor: ActorSprite, destination: String, label: String, dire
 	actor.attachment_rig.sync_pose()
 	await process_frame
 	await RenderingServer.frame_post_draw
-	var screenshot := root.get_texture().get_image()
+	var screenshot := actor.get_viewport().get_texture().get_image()
 	var foot := actor.get_global_transform_with_canvas().origin
 	var rect := Rect2i(Vector2i(foot) - Vector2i(115, 160), Vector2i(230, 190))
 	screenshot.get_region(rect).save_png("%s/%s_%s_%d.png" % [destination, label, direction, index])

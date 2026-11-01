@@ -28,19 +28,37 @@ var armor_item_picker: OptionButton
 var armor_slots: Array[String] = ["head", "chest", "legs", "cape", "neck", "ring"]
 var preview_armor: Dictionary = {}
 var armor_names: Array[String] = []
+var review_paused := false
+var pause_button: Button
+var frame_label: Label
+var zoom_picker: OptionButton
+var reference_actor: ActorSprite
+var reference_check: CheckButton
+var inspection_status: Label
+var review_caption: Label
+var reference_caption: Label
+var review_equipment: Dictionary = {}
+var review_surface: SubViewportContainer
+var review_viewport: SubViewport
+const REVIEW_ZOOMS := [1, 3, 4]
 
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP
+	var inspection_layer := CanvasLayer.new()
+	inspection_layer.name = "InspectionLayer"
+	inspection_layer.layer = 90 # Above the persistent chat overlay (80).
+	add_child(inspection_layer)
+	visibility_changed.connect(func() -> void: inspection_layer.visible = is_visible_in_tree())
 	var background := ColorRect.new()
 	background.color = Color(0.035, 0.05, 0.075, 0.98)
 	background.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	add_child(background)
+	inspection_layer.add_child(background)
 	var margin := MarginContainer.new()
 	margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	for edge: String in ["left", "right", "top", "bottom"]:
 		margin.add_theme_constant_override("margin_" + edge, 28)
-	add_child(margin)
+	inspection_layer.add_child(margin)
 	var columns := HBoxContainer.new()
 	columns.add_theme_constant_override("separation", 28)
 	margin.add_child(columns)
@@ -148,17 +166,78 @@ func _ready() -> void:
 		preset.pressed.connect(_armor_preset.bind(material))
 		armor_controls.add_child(preset)
 	_change_armor_slot(1)
+	var review_controls := HFlowContainer.new()
+	review_controls.add_theme_constant_override("h_separation", 8)
+	details.add_child(review_controls)
+	pause_button = Button.new()
+	pause_button.text = "Pause"
+	pause_button.toggle_mode = true
+	pause_button.toggled.connect(_set_review_paused)
+	review_controls.add_child(pause_button)
+	for offset: int in [-1, 1]:
+		var step_button := Button.new()
+		step_button.text = "Previous frame" if offset < 0 else "Next frame"
+		step_button.pressed.connect(_step_review_frame.bind(offset))
+		review_controls.add_child(step_button)
+	frame_label = Label.new()
+	frame_label.custom_minimum_size.x = 125
+	review_controls.add_child(frame_label)
+	zoom_picker = OptionButton.new()
+	for zoom: int in REVIEW_ZOOMS:
+		zoom_picker.add_item("%d×" % zoom)
+	zoom_picker.select(1)
+	zoom_picker.item_selected.connect(_change_review_zoom)
+	review_controls.add_child(zoom_picker)
+	reference_check = CheckButton.new()
+	reference_check.text = "Original body beside gear"
+	reference_check.toggled.connect(_set_reference_visible)
+	review_controls.add_child(reference_check)
+	var export_button := Button.new()
+	export_button.text = "Save PNG + pose"
+	export_button.pressed.connect(_export_review_frame)
+	review_controls.add_child(export_button)
+	var review_scroll := ScrollContainer.new()
+	review_scroll.custom_minimum_size.y = 240
+	review_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	details.add_child(review_scroll)
+	review_surface = SubViewportContainer.new()
+	review_surface.stretch = true
+	review_surface.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	review_surface.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	review_surface.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	review_surface.custom_minimum_size = Vector2(240,240)
+	review_scroll.add_child(review_surface)
+	review_viewport = SubViewport.new()
+	review_viewport.size = Vector2i(240,240)
+	review_viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+	review_surface.add_child(review_viewport)
 	preview_area = ColorRect.new()
 	preview_area.color = Color(0.085, 0.115, 0.155)
-	preview_area.custom_minimum_size.y = 240
-	preview_area.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	preview_area.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	details.add_child(preview_area)
+	review_viewport.add_child(preview_area)
+	preview_area.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	actor = ActorSprite.new().configure(Vector2(32, 32), Color(0.15, 0.5, 0.3), "preview")
 	actor.collision_layer = 0
 	actor.collision_mask = 0
 	actor.scale = Vector2(3, 3)
 	preview_area.add_child(actor)
+	reference_actor = ActorSprite.new().configure(Vector2(32, 32), Color.BLUE, "preview_reference")
+	reference_actor.collision_layer = 0
+	reference_actor.collision_mask = 0
+	reference_actor.set_process(false)
+	reference_actor.visible = false
+	preview_area.add_child(reference_actor)
+	review_caption = Label.new()
+	review_caption.position = Vector2(12, 8)
+	review_caption.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	preview_area.add_child(review_caption)
+	reference_caption = Label.new()
+	reference_caption.text = "Original body · same pose"
+	reference_caption.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	reference_caption.visible = false
+	preview_area.add_child(reference_caption)
+	actor.animated_sprite.frame_changed.connect(_refresh_review_frame)
+	actor.animated_sprite.animation_changed.connect(_refresh_review_frame)
 	preview_area.resized.connect(_place_actor)
 	coverage_label = Label.new()
 	coverage_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -168,10 +247,11 @@ func _ready() -> void:
 	spawn_button = Button.new()
 	spawn_button.pressed.connect(_spawn_selected)
 	details.add_child(spawn_button)
-	var note := Label.new()
-	note.text = "3× preview · crisp pixels · original artwork preserved"
-	note.add_theme_color_override("font_color", Color(0.5, 0.62, 0.72))
-	details.add_child(note)
+	inspection_status = Label.new()
+	inspection_status.text = "Nearest pixels · PNG export freezes the current pose · visual approval pending"
+	inspection_status.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+	inspection_status.add_theme_color_override("font_color", Color(0.5, 0.62, 0.72))
+	details.add_child(inspection_status)
 	if not skin_ids.is_empty():
 		skin_list.select(0)
 		_select_skin(0)
@@ -209,10 +289,28 @@ func hide_preview() -> void:
 
 func _place_actor() -> void:
 	if actor != null:
-		actor.position = preview_area.size * Vector2(0.5, 0.78)
+		var compare := reference_actor != null and reference_actor.visible
+		var sprite := actor.animated_sprite
+		var dimensions := Vector2(sprite.sprite_frames.get_frame_texture(sprite.animation, sprite.frame).get_size())
+		var body: Rect2 = sprite.transform * Rect2(sprite.offset - dimensions * 0.5, dimensions)
+		var above := maxf(0.0, -body.position.y * actor.scale.y)
+		var below := maxf(0.0, body.end.y * actor.scale.y)
+		# Keep the entire native frame and foot shadow at the requested zoom.
+		# Large skins scroll; exports read the full canvas, never the visible crop.
+		review_surface.custom_minimum_size = Vector2(ceilf(body.size.x * actor.scale.x + 48) * (2 if compare else 1), maxf(240, ceilf(above + below + 56)))
+		var foot_y := maxf(above + 32, preview_area.size.y - below - 24)
+		actor.position = Vector2(roundf(preview_area.size.x * (0.28 if compare else 0.5)), roundf(foot_y))
+		if reference_actor != null:
+			reference_actor.position = Vector2(roundf(preview_area.size.x * 0.72), roundf(foot_y))
+		if reference_caption != null:
+			reference_caption.position = Vector2(roundf(preview_area.size.x * 0.57), 8)
 
 func _select_skin(index: int) -> void:
+	if index < 0 or index >= skin_ids.size():
+		return
 	actor.set_skin(skin_ids[index])
+	reference_actor.set_skin(skin_ids[index])
+	reference_actor.animated_sprite.pause()
 	var supports_equipment := skin_ids[index] == "peasant"
 	equipment_picker.disabled = not supports_equipment
 	shield_picker.disabled = not supports_equipment
@@ -248,8 +346,10 @@ func _change_equipment(index: int) -> void:
 			equipment["shield"] = {"name": shield_names[shield_picker.selected]}
 		for slot: String in preview_armor:
 			equipment[slot] = {"name": preview_armor[slot]}
+	review_equipment = equipment.duplicate(true)
 	actor.set_equipment(equipment)
 	actor.set_socket_debug(socket_check.button_pressed and actor.skin_id == "peasant")
+	_refresh_review_frame()
 
 func _change_shield(_index: int) -> void:
 	_change_equipment(equipment_picker.selected)
@@ -303,10 +403,18 @@ func _change_action(index: int) -> void:
 		actor.play_attack(VECTORS[direction_picker.selected])
 	elif index == 1:
 		actor.update_visual_motion(VECTORS[direction_picker.selected])
+	if review_paused:
+		actor.animated_sprite.set_frame_and_progress(0, 0.0)
+		actor.animated_sprite.pause()
+	_place_actor()
+	_refresh_review_frame()
 	_update_coverage()
 
 func _process(delta: float) -> void:
 	if not visible or actor == null:
+		return
+	_refresh_review_frame()
+	if review_paused:
 		return
 	if action_picker.selected == 1:
 		actor.update_visual_motion(VECTORS[direction_picker.selected])
@@ -315,6 +423,98 @@ func _process(delta: float) -> void:
 		if attack_elapsed >= 1.8:
 			attack_elapsed = 0.0
 			actor.play_attack(VECTORS[direction_picker.selected])
+
+func _set_review_paused(value: bool) -> void:
+	review_paused = value
+	pause_button.set_pressed_no_signal(value)
+	pause_button.text = "Resume" if value else "Pause"
+	actor.set_process(not value)
+	if value:
+		actor.animated_sprite.pause()
+	else:
+		actor.animated_sprite.play()
+	_refresh_review_frame()
+
+func _step_review_frame(offset: int) -> void:
+	_set_review_paused(true)
+	var sprite := actor.animated_sprite
+	var count := sprite.sprite_frames.get_frame_count(sprite.animation)
+	if count > 0:
+		sprite.set_frame_and_progress(posmod(sprite.frame + offset, count), 0.0)
+	actor.attachment_rig.sync_pose()
+	_refresh_review_frame()
+
+func _change_review_zoom(index: int) -> void:
+	zoom_picker.select(index)
+	actor.scale = Vector2.ONE * REVIEW_ZOOMS[index]
+	reference_actor.scale = actor.scale
+	_place_actor()
+	_refresh_review_frame()
+
+func _set_reference_visible(value: bool) -> void:
+	reference_check.set_pressed_no_signal(value)
+	reference_actor.visible = value
+	reference_caption.visible = value
+	reference_actor.scale = actor.scale
+	_refresh_review_frame()
+	_place_actor()
+
+func _refresh_review_frame() -> void:
+	if actor == null or reference_actor == null or frame_label == null:
+		return
+	var sprite := actor.animated_sprite
+	if sprite.sprite_frames == null or not sprite.sprite_frames.has_animation(sprite.animation):
+		return
+	var count := sprite.sprite_frames.get_frame_count(sprite.animation)
+	var fallback := action_picker.selected == 2 and not String(sprite.animation).begins_with("attack_")
+	frame_label.text = "Frame %d / %d%s" % [sprite.frame + 1, count, " (fallback)" if fallback else ""]
+	review_caption.text = "%s · %s · %d/%d · %d×" % [actor.skin_id.capitalize(), sprite.animation, sprite.frame + 1, count, int(actor.scale.x)]
+	var reference := reference_actor.animated_sprite
+	if reference.sprite_frames != null and reference.sprite_frames.has_animation(sprite.animation):
+		reference.animation = sprite.animation
+		reference.set_frame_and_progress(sprite.frame, sprite.frame_progress)
+		reference.pause()
+		reference.position = sprite.position
+		reference.modulate = sprite.modulate
+
+func _export_review_frame() -> void:
+	var folder := "user://equipment-review"
+	DirAccess.make_dir_recursive_absolute(folder)
+	var filename := "%s-%s-%02d-%d.png" % [actor.skin_id, actor.animated_sprite.animation, actor.animated_sprite.frame, Time.get_ticks_msec()]
+	var result := await capture_review_frame(folder.path_join(filename))
+	inspection_status.text = "Saved PNG + pose: " + ProjectSettings.globalize_path(folder.path_join(filename)) if result == OK else "PNG export failed: " + error_string(result)
+	inspection_status.tooltip_text = inspection_status.text
+
+## Freeze first, then export the actual on-screen pixels and matching pose data.
+func capture_review_frame(destination: String) -> Error:
+	_set_review_paused(true)
+	await get_tree().process_frame
+	await RenderingServer.frame_post_draw
+	var screenshot := review_viewport.get_texture().get_image()
+	var result := screenshot.save_png(destination)
+	if result != OK:
+		return result
+	var record := FileAccess.open(destination.get_basename() + ".json", FileAccess.WRITE)
+	if record == null:
+		return FileAccess.get_open_error()
+	var sprite := actor.animated_sprite
+	var pose := {
+		"skin": actor.skin_id,
+		"animation": String(sprite.animation),
+		"requested_action": action_picker.get_item_text(action_picker.selected),
+		"frame": sprite.frame,
+		"frame_count": sprite.sprite_frames.get_frame_count(sprite.animation),
+		"zoom": actor.scale.x,
+		"original_body_reference": reference_actor.visible,
+		"equipment": review_equipment,
+		"canvas_size": [screenshot.get_width(), screenshot.get_height()],
+		"equipped_anchor": [actor.position.x, actor.position.y],
+		"reference_anchor": [reference_actor.position.x, reference_actor.position.y],
+		"artwork_approval": "pending"
+	}
+	record.store_string(JSON.stringify(pose, "  "))
+	record.close()
+	return OK
 
 func _update_coverage() -> void:
 	if coverage_label == null or actor == null:
