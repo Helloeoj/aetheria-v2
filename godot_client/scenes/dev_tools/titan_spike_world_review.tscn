@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/GolemKingdomContent.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/Effects/TitanPhysicalSpike.tscn" id="2"]
+
+[node name="TitanSpikeWorldReview" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Map" parent="." instance=ExtResource("1")]
+
+[node name="SpikeCells" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Spike00" parent="SpikeCells" instance=ExtResource("2")]
+position = Vector2(2032, 2160)
+
+[node name="Spike01" parent="SpikeCells" instance=ExtResource("2")]
+position = Vector2(1936, 2128)
+
+[node name="Spike02" parent="SpikeCells" instance=ExtResource("2")]
+position = Vector2(2096, 2128)
+
+[node name="Spike03" parent="SpikeCells" instance=ExtResource("2")]
+position = Vector2(2000, 2192)
+
+[node name="Spike04" parent="SpikeCells" instance=ExtResource("2")]
+position = Vector2(2128, 2192)
+
+[node name="Spike05" parent="SpikeCells" instance=ExtResource("2")]
+position = Vector2(1968, 2224)
+
+[node name="Spike06" parent="SpikeCells" instance=ExtResource("2")]
+position = Vector2(2096, 2224)
+
+[node name="Spike07" parent="SpikeCells" instance=ExtResource("2")]
+position = Vector2(1904, 2192)
+
+[node name="Spike08" parent="SpikeCells" instance=ExtResource("2")]
+position = Vector2(2160, 2224)
+
+[node name="Spike09" parent="SpikeCells" instance=ExtResource("2")]
+position = Vector2(1936, 2256)

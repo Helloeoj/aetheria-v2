@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "asset_id": "titan_physical_spike_v1",
+  "native_canvas": [
+    48,
+    64
+  ],
+  "ground_anchor": [
+    24,
+    52
+  ],
+  "world_pixels_per_source_pixel": 1,
+  "ground_footprint_size": [
+    32,
+    32
+  ],
+  "warning_color": "red",
+  "warning_frames": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "warning_duration_control": "combat engine; preview default 1020ms",
+  "strike_frames": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "strike_durations_ms": [
+    30,
+    30,
+    30,
+    30,
+    30,
+    30,
+    30,
+    30,
+    30
+  ],
+  "protrusion_height_px": [
+    6,
+    24,
+    51,
+    34,
+    16,
+    4,
+    0,
+    0,
+    0
+  ],
+  "peak_index": 6,
+  "peak_hold_ms": 0,
+  "first_retraction_frame": 7,
+  "spike_gone_after_contact_ms": 180,
+  "complete_after_contact_ms": 270,
+  "inactive_frame": 13,
+  "source_to_master_translation_px": [
+    1,
+    -5
+  ],
+  "source_sha256": "98290f704bc1eb85154d1facbb66e7ba37c181667d979146f2f99baa6e92c204",
+  "atlas_sha256": "820f5dde2fb0313c6f9261cda089bc9727f32587759adfa9b4d8bc65202d3758",
+  "generation": {
+    "service": "PixelLab",
+    "model": "pro",
+    "job_id": "531dfe1b-6f27-4fb4-ba94-a17313f337ed",
+    "candidate_count": 16,
+    "style_reference": "art_sources/characters/golem-titan-bound-v2/south.png"
+  },
+  "animation_method": "whole rigid stone translated vertically behind floor occlusion; no scaling, warping or cut body parts",
+  "debris_reason": "six intentional two-pixel stone chips confined to affected cell during impact/retraction",
+  "alpha_reason": "transparent background, source silhouette alpha preserved; warning drawn on native pixel grid",
+  "artwork_approval": "candidate_pending_user_review",
+  "production_encounter_installation": "not_performed",
+  "scope": "one reusable effect; no combat damage, balance, target selection or world placement changes"
+}

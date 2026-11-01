@@ -1,0 +1,373 @@
+{
+  "schema_version": 1,
+  "scene": "res://scenes/dev_tools/titan_spike_world_review.tscn",
+  "bounds": [
+    0,
+    0,
+    3762,
+    3762
+  ],
+  "grid_origin": [
+    0,
+    0
+  ],
+  "floor_polygon": [
+    [
+      1869,
+      549
+    ],
+    [
+      2226,
+      468
+    ],
+    [
+      2427,
+      528
+    ],
+    [
+      2562,
+      615
+    ],
+    [
+      2643,
+      705
+    ],
+    [
+      2748,
+      780
+    ],
+    [
+      2895,
+      861
+    ],
+    [
+      2901,
+      945
+    ],
+    [
+      2769,
+      1014
+    ],
+    [
+      2661,
+      1077
+    ],
+    [
+      2682,
+      1170
+    ],
+    [
+      2754,
+      1242
+    ],
+    [
+      2727,
+      1365
+    ],
+    [
+      2661,
+      1446
+    ],
+    [
+      2583,
+      1497
+    ],
+    [
+      2553,
+      1599
+    ],
+    [
+      2697,
+      1722
+    ],
+    [
+      2865,
+      1794
+    ],
+    [
+      2937,
+      1944
+    ],
+    [
+      2904,
+      2052
+    ],
+    [
+      2805,
+      2115
+    ],
+    [
+      2754,
+      2175
+    ],
+    [
+      2697,
+      2244
+    ],
+    [
+      2676,
+      2391
+    ],
+    [
+      2574,
+      2451
+    ],
+    [
+      2427,
+      2547
+    ],
+    [
+      2337,
+      2610
+    ],
+    [
+      2163,
+      2682
+    ],
+    [
+      2040,
+      2727
+    ],
+    [
+      1944,
+      2790
+    ],
+    [
+      1809,
+      2772
+    ],
+    [
+      1698,
+      2775
+    ],
+    [
+      1572,
+      2874
+    ],
+    [
+      1458,
+      2850
+    ],
+    [
+      1437,
+      2760
+    ],
+    [
+      1584,
+      2694
+    ],
+    [
+      1671,
+      2586
+    ],
+    [
+      1716,
+      2478
+    ],
+    [
+      1761,
+      2391
+    ],
+    [
+      1761,
+      2154
+    ],
+    [
+      1695,
+      2079
+    ],
+    [
+      1536,
+      2118
+    ],
+    [
+      1416,
+      2136
+    ],
+    [
+      1281,
+      2178
+    ],
+    [
+      1083,
+      2229
+    ],
+    [
+      936,
+      2322
+    ],
+    [
+      846,
+      2358
+    ],
+    [
+      738,
+      2304
+    ],
+    [
+      639,
+      2256
+    ],
+    [
+      624,
+      2169
+    ],
+    [
+      669,
+      2115
+    ],
+    [
+      945,
+      2055
+    ],
+    [
+      1260,
+      1932
+    ],
+    [
+      1497,
+      1806
+    ],
+    [
+      1662,
+      1704
+    ],
+    [
+      1764,
+      1674
+    ],
+    [
+      1806,
+      1569
+    ],
+    [
+      1809,
+      1392
+    ],
+    [
+      1836,
+      1287
+    ],
+    [
+      1839,
+      1155
+    ],
+    [
+      1860,
+      1020
+    ],
+    [
+      1851,
+      867
+    ],
+    [
+      1884,
+      789
+    ],
+    [
+      1866,
+      672
+    ]
+  ],
+  "props": [
+    {
+      "node": "SpikeCells/Spike00",
+      "blocking": false,
+      "reason": "Transient animated attack presentation; no collision or navigation obstacle. Hidden until sampled by development review."
+    },
+    {
+      "node": "SpikeCells/Spike01",
+      "blocking": false,
+      "reason": "Transient animated attack presentation; no collision or navigation obstacle. Hidden until sampled by development review."
+    },
+    {
+      "node": "SpikeCells/Spike02",
+      "blocking": false,
+      "reason": "Transient animated attack presentation; no collision or navigation obstacle. Hidden until sampled by development review."
+    },
+    {
+      "node": "SpikeCells/Spike03",
+      "blocking": false,
+      "reason": "Transient animated attack presentation; no collision or navigation obstacle. Hidden until sampled by development review."
+    },
+    {
+      "node": "SpikeCells/Spike04",
+      "blocking": false,
+      "reason": "Transient animated attack presentation; no collision or navigation obstacle. Hidden until sampled by development review."
+    },
+    {
+      "node": "SpikeCells/Spike05",
+      "blocking": false,
+      "reason": "Transient animated attack presentation; no collision or navigation obstacle. Hidden until sampled by development review."
+    },
+    {
+      "node": "SpikeCells/Spike06",
+      "blocking": false,
+      "reason": "Transient animated attack presentation; no collision or navigation obstacle. Hidden until sampled by development review."
+    },
+    {
+      "node": "SpikeCells/Spike07",
+      "blocking": false,
+      "reason": "Transient animated attack presentation; no collision or navigation obstacle. Hidden until sampled by development review."
+    },
+    {
+      "node": "SpikeCells/Spike08",
+      "blocking": false,
+      "reason": "Transient animated attack presentation; no collision or navigation obstacle. Hidden until sampled by development review."
+    },
+    {
+      "node": "SpikeCells/Spike09",
+      "blocking": false,
+      "reason": "Transient animated attack presentation; no collision or navigation obstacle. Hidden until sampled by development review."
+    }
+  ],
+  "anchors": [
+    {
+      "id": "captured-player-cell",
+      "point": [
+        2032,
+        2160
+      ]
+    },
+    {
+      "id": "unmarked-escape-cell",
+      "point": [
+        2064,
+        2160
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "id": "player-escape",
+      "points": [
+        [
+          2032,
+          2160
+        ],
+        [
+          2064,
+          2160
+        ]
+      ],
+      "width": 24
+    }
+  ],
+  "assets": [
+    {
+      "texture": "res://Assets/Effects/TitanPhysicalSpike/spike-atlas.png",
+      "native_size": [
+        672,
+        64
+      ],
+      "anchor": [
+        24,
+        52
+      ],
+      "world_pixels_per_source_pixel": 1,
+      "min_component_pixels": 1,
+      "components_reason": "Four warning frames, nine impact/retraction frames, one empty frame; six intentional two-pixel impact chips. Atlas requires animated-source support."
+    }
+  ],
+  "scope": "Exact development review fixture only, never production installation. Current passive-prop validator must reject scripted/region animation; actual GPU review supplies floor/physics/sweep evidence separately."
+}
