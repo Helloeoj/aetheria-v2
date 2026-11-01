@@ -1,12 +1,5 @@
 # Equipment body replacement
 
-**Body-section correction:** the bare character is now three independent native
-layers: head; chest/arms; legs/feet. Per-pose outline masks preserve the complete
-original ears, jaw and chin, and remove the generated head from chest armor.
-The accepted leg/foot images are unchanged. See
-[Equipment section checklist](EquipmentSectionChecklist.md) for the contract,
-failure evidence and visual gates.
-
 Bronze, iron and steel platebodies/platelegs now replace the corresponding body
 part completely. Armor supplies its own animated anatomy; it is never stretched
 over the bare peasant's legs or arms. Each slot has an idle pose and eight walk
