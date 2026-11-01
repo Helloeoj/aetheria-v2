@@ -84,6 +84,8 @@ func set_attachment_pose(context: Dictionary) -> void:
 		part_bones[index].rest = part_bones[index].transform
 		var angle_delta := 0.0
 		part_sprites[index].texture = FittedEquipmentLibrary.texture(part.file)
+		if String(item_definition.slot) == "chest" and bool(item_definition.get("bodyReplacement", false)):
+			part_sprites[index].texture = FittedEquipmentLibrary.chest_texture(context, part.file, String(item_definition.material).to_lower())
 		part_sprites[index].offset = -FittedEquipmentLibrary.point(part.pivot)
 		part_sprites[index].position = FittedEquipmentLibrary.point(part.get("offset", [0, 0]))
 		part_sprites[index].scale = Vector2(float(part.get("widthScale", 1.0)), 1.0)

@@ -270,7 +270,10 @@ func _update_fitted_body() -> void:
 			ordered.append(socket)
 	if _fitted_body != null:
 		ordered.append(_fitted_body.base)
+		ordered.append(_fitted_body.lower)
 	ordered.append(get_socket("waist"))
+	if _fitted_body != null:
+		ordered.append(_fitted_body.upper)
 	ordered.append(get_socket("chest"))
 	if _fitted_body != null:
 		ordered.append_array([_fitted_body.head, _fitted_body.arms.left, _fitted_body.arms.right])

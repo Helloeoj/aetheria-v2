@@ -4,12 +4,16 @@ extends RefCounted
 var visual: AnimatedSprite2D
 var base: Sprite2D
 var head: Sprite2D
+var upper: Sprite2D
+var lower: Sprite2D
 var arms: Dictionary = {}
 
 func configure(source: AnimatedSprite2D) -> void:
 	visual = source
 	base = _sprite("ArmorUnderbody")
 	head = _sprite("ArmorHeadForeground")
+	upper = _sprite("BodyChestArms")
+	lower = _sprite("BodyLegsFeet")
 	for side: String in ["left", "right"]:
 		arms[side] = _sprite("ArmorForearm_" + side)
 	reset()
@@ -27,7 +31,7 @@ func reset() -> void:
 	if visual == null:
 		return
 	visual.self_modulate.a = 1.0
-	for node: Sprite2D in [base, head, arms.left, arms.right]:
+	for node: Sprite2D in [base, head, upper, lower, arms.left, arms.right]:
 		node.visible = false
 
 func sync(context: Dictionary, flags: Dictionary) -> void:
@@ -39,12 +43,19 @@ func sync(context: Dictionary, flags: Dictionary) -> void:
 		return
 	visual.self_modulate.a = 0.0
 	var origin: Vector2 = context.origin - context.padding
-	base.texture = FittedEquipmentLibrary.base_texture(pose, flags, context)
+	var sections := FittedEquipmentLibrary.body_sections(context)
+	base.texture = sections.empty
 	base.position = origin
 	base.visible = true
-	head.texture = FittedEquipmentLibrary.texture(pose.head)
+	head.texture = sections.head
 	head.position = origin
 	head.visible = not bool(flags.get("head", false))
+	upper.texture = sections.upper
+	upper.position = origin
+	upper.visible = not bool(flags.get("chest", false))
+	lower.texture = sections.lower
+	lower.position = origin
+	lower.visible = not bool(flags.get("legs", false))
 	if bool(flags.get("chest", false)) or bool(flags.get("legs", false)):
 		for side: String in pose.frontArms:
 			# Authored armor already contains the forearm plate. Only the real
