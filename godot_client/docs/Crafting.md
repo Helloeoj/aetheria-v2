@@ -1,7 +1,9 @@
 # Equipment crafting
 
-The crafting service exchanges approved backpack ingredients atomically. It does
-not award XP or calculate craft duration; those decisions remain deferred.
+The crafting service validates approved backpack ingredients atomically.
+Furnace/anvil recipes use the guided [Smithing minigames](Smithing.md): material
+reservation, heat control or hammering, and quenching before equipment rewards.
+Other crafting exchanges retain their existing immediate behavior and XP rules.
 Pending recipe rows describe coverage without supplying invented quantities.
 There are 82 available exchanges and 125 pending routes. Starforged manufacturing
 is removed; see [Starforged acquisition](StarforgedAcquisition.md).
@@ -209,7 +211,7 @@ Inspect a plain Magic Orb in inventory to empower it using one corresponding sig
 
 The bait store lists the four purchasable rods and all three bait grades, excluding Demon Rod. The user requested waiting for prices, so purchases remain disabled while those catalog prices are unset. No provisional prices were assigned. Supply eligibility is enforced independently of prices.
 
-Recipe costs, real boss/cultist drop odds, higher armor balance and most production quantities remain explicit pending work. The service does not award crafting XP or use crafting timers.
+Recipe costs outside the approved exchanges, real boss/cultist drop odds and higher armor balance remain pending. Smithing sessions own their minigame clocks and per-ingot XP; other exchanges retain their existing behavior.
 
 Bronze regression: `res://scenes/dev_tools/bronze_recipes_smoke.tscn` checks
 exact costs/batch yields, missing materials, excluded routes and drop-only
@@ -222,6 +224,6 @@ checks all six craftable tiers, exact equipment costs, Steel alloy inputs, repla
 missing-material rejection, server transactions, save serialization, real F6
 keyboard/mouse input, quantities, overflow, online grant rejection, station
 buttons, exclusions and icons. The optional `--capture=<folder>` argument saves
-rendered menu images. This menu/catalog change uses the active immediate crafting
-service; it does not port the separate Smithing minigame implementation or award
-Smithing XP.
+rendered menu images. Furnace/anvil tests now drive the restored Smithing
+sessions instead of expecting instant rewards. Focused Smithing UI/authority
+tests cover inputs, heat, quenching, XP and save recovery.

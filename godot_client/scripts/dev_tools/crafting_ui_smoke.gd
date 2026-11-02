@@ -74,7 +74,9 @@ func _run() -> void:
 		check(button != null, "Approved recipe has a real button")
 		if button != null:
 			button.pressed.emit()
-			check(int(game.player.backpack.get("Bronze Longsword", 0)) == 1, "UI crafts longsword through service")
+			check(game.crafting_panel.smithing.visible and not game.player.backpack.has("Bronze Longsword"), "UI opens hammering and delays the item")
+			preload("res://scripts/dev_tools/smithing_test_driver.gd").finish(game.crafting_panel.smithing.session)
+			check(int(game.player.backpack.get("Bronze Longsword", 0)) == 1, "Guided UI workpiece awards longsword after quench")
 			check(int(game.player.backpack.get("Bronze Ingot", 0)) == 0, "UI spends exactly three ingots")
 		game.crafting_panel.close()
 		game.player.x += 50

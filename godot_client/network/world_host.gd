@@ -3,7 +3,7 @@ const AccountHTTP = preload("res://network/account_http.gd")
 const CharacterCodec = preload("res://network/character_codec.gd")
 const WorldProtocol = preload("res://network/world_protocol.gd")
 const SpatialIndex = preload("res://network/spatial_relevance.gd")
-const MOVEMENT_COMMANDS := ["walk", "target", "attack", "cast", "travel", "mine_start", "fish_start", "cook_start"]
+const MOVEMENT_COMMANDS := ["walk", "target", "attack", "cast", "travel", "mine_start", "fish_start", "cook_start", "smith_start"]
 ## One authoritative world; regions have separate physics spaces and stable IDs.
 var regions: Dictionary = {}
 var _loading_regions: Dictionary = {}
@@ -230,7 +230,7 @@ func _command(peer_id: int, raw: Dictionary) -> void:
 	session.last_sequence = int(serial)
 	# Disposable steering/plan receipts cannot wait behind inventory HTTP saves.
 	# Same reliable RPC and serial check preserve ordering with discrete actions.
-	if command.get("type") == "fish_input" and not command.has("action"):
+	if (command.get("type") == "fish_input" and not command.has("action")) or command.get("type") == "smith_bellows":
 		regions[session.region_id].submit(session.character_id, command)
 		return
 	if session.queue.size() >= 8:
@@ -265,7 +265,7 @@ func _process_commands(session: Dictionary) -> void:
 			session.movement_sequence = maxi(serial, int(session.get("movement_sequence", -1)))
 			session.movement_ack = -1
 			session.erase("movement_at")
-		if result.get("ok", false) and not await _persist(session):
+		if result.get("ok", false) and not result.get("transient", false) and not await _persist(session):
 			break
 		Network.send_control(session.peer, {"type": "result", "sequence":serial, "ok":result.get("ok",false), "code": result.get("code", ""), "message": result.get("message", "")})
 	session.busy = false
@@ -431,7 +431,7 @@ func _departed(peer_id: int) -> void:
 		session.queue.clear()
 		# Direct cancellation also works during a persistence freeze, when submit
 		# intentionally rejects input. The 30-second actor grace is not activity time.
-		regions[session.region_id].activities.close(session.character_id)
+		regions[session.region_id].activities.close(session.character_id, true)
 		regions[session.region_id].submit(session.character_id, {"type": "move", "direction": [0.0, 0.0]})
 
 func _logout(peer_id: int) -> void:
@@ -448,7 +448,7 @@ func _finalize(session: Dictionary) -> void:
 		return
 	session.closing = true
 	var region: AuthoritativeRegion = regions[session.region_id]
-	region.activities.close(session.character_id)
+	region.activities.close(session.character_id, true)
 	region.frozen[session.character_id] = true
 	while session.busy:
 		await get_tree().process_frame
@@ -516,6 +516,9 @@ func _shutdown() -> void:
 
 static func _critical_hash(state: Dictionary) -> String:
 	var important := state.duplicate(true)
+	if important.get("smithing_work") is Dictionary:
+		important.smithing_work.erase("temperature")
+		important.smithing_work.erase("overheated_seconds")
 	for field: String in ["x", "y", "hp", "food_cooldown_seconds", "food_attack_cooldown_seconds", "food_attack_interval_seconds"]:
 		important.erase(field)
 	return JSON.stringify(important).sha256_text()

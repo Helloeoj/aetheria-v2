@@ -19,7 +19,8 @@ const SKILL_EFFECTS := {
 	"magic": "Unlocks spells, raises mana and improves magic combat.",
 	"fishing": "Unlocks poles, bait and fish; improves control without raising combat level.",
 	"cooking": "Cooks raw fish at campfires; higher levels unlock fish and reduce burning.",
-	"mining": "Unlocks ore deposits and pickaxes; higher levels improve extraction success."
+	"mining": "Unlocks ore deposits and pickaxes; higher levels improve extraction success.",
+	"smithing": "Smelts ore and shapes equipment; widens furnace heat ranges and prevents burning at +30."
 }
 const STYLE_NAMES := {"stab": "Stab", "slash": "Slash", "blunt": "Crush", "ranged": "Ranged", "magic": "Magic"}
 const PANEL_SIZE := Vector2(930, 610)

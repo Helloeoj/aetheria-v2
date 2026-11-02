@@ -13,6 +13,10 @@ const SCHEMA := {
 	"attack": ["target_id"], "cast": ["spell_id", "target_id", "x", "y"],
 	"equip": ["item_name"], "unequip": ["slot"], "eat": ["item_name"],
 	"set_quick_food": ["item_name"], "craft": ["station_id", "recipe_id", "quantity"],
+	"smith_start": ["station_id", "recipe_id", "quantity", "start_token"],
+	"smith_bellows": ["encounter_id", "input_id", "bellows"],
+	"smith_strike": ["encounter_id", "action_id", "target_index", "x", "y", "aspect"],
+	"smith_cancel": ["encounter_id", "start_token"],
 	"purchase": ["station_id", "item_name", "quantity"],
 	"pickup": ["drop_id"], "drop": ["item_name", "quantity"],
 	"fish_start": ["station_id", "rod", "bait", "action_id", "start_token"], "fish_stop": [],
@@ -112,7 +116,7 @@ func add_player(character_id: String, player: PlayerState) -> void:
 	dirty[character_id] = true
 
 func remove_player(character_id: String) -> void:
-	activities.close(character_id)
+	activities.close(character_id, true)
 	mining.forget_player(character_id)
 	discard_mutations(character_id)
 	# Region exits end this gameplay generation. Its attacks must not resume or
@@ -160,7 +164,7 @@ func submit(character_id: String, command: Dictionary) -> Dictionary:
 		return _result(false, "dead", "You must be alive.")
 	if kind.begins_with("order_"):
 		return _order_command(character_id,command)
-	if world.grid != null and kind in ["fish_start", "cook_start", "mine_start", "craft", "purchase", "pickup"]:
+	if world.grid != null and kind in ["smith_start", "fish_start", "cook_start", "mine_start", "craft", "purchase", "pickup"]:
 		if not world.at_grid_rest(character_id):
 			return _result(false, "moving", "Finish your step before starting an activity.")
 	if kind in ["move", "walk", "target", "attack", "cast"]:
@@ -817,10 +821,10 @@ func _validate(command: Dictionary) -> Dictionary:
 		if not key is String or (key != "type" and key not in SCHEMA[kind]):
 			return _result(false, "invalid", "Unexpected command field.")
 		var value: Variant = command[key]
-		if key in ["x", "y", "steering", "phase_elapsed"]:
+		if key in ["x", "y", "steering", "phase_elapsed", "aspect"]:
 			if not (value is int or value is float) or not is_finite(float(value)):
 				return _result(false, "invalid", "Expected a finite number.")
-		elif key in ["slot", "quantity", "encounter_id", "input_id", "action_id", "expected_state", "plan_ack", "prompt_id", "deposit_generation", "generation"] and not (kind == "unequip" and key == "slot"):
+		elif key in ["slot", "quantity", "encounter_id", "input_id", "action_id", "expected_state", "plan_ack", "prompt_id", "deposit_generation", "generation", "target_index", "bellows"] and not (kind == "unequip" and key == "slot"):
 			if not (value is int or value is float) or not is_finite(float(value)) or floor(float(value)) != float(value) or float(value) < 0.0 or float(value) > 2147483647.0:
 				return _result(false, "invalid", "Expected a supported integer.")
 		elif key != "direction":

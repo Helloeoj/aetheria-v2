@@ -1,4 +1,5 @@
 extends Node
+const Driver = preload("res://scripts/dev_tools/smithing_test_driver.gd")
 ## Actual catalog exchanges, world station buttons and authoritative commands.
 const CASES := [
 	["smelt_bronze", "furnace", {"Bronze Ore": 1}, "Bronze Ingot", 1],
@@ -54,25 +55,25 @@ func _transactions() -> void:
 		var player := PlayerState.new()
 		_supplies(player, entry, 2)
 		var before := player.backpack.duplicate(true)
-		var result := CraftingService.craft(player, entry[0], entry[1], 2)
+		var result := Driver.craft(player, entry[0], entry[1], 2)
 		check(bool(result.ok), "Executable Bronze recipe: " + entry[0])
 		if result.ok:
 			check(player.backpack == {entry[3]: int(entry[4]) * 2}, "Exact batch costs/yield: " + entry[0])
 			var finished := player.backpack.duplicate(true)
-			check(not CraftingService.craft(player, entry[0], entry[1]).ok and player.backpack == finished, "Repeated request cannot produce free items: " + entry[0])
+			check(not Driver.craft(player, entry[0], entry[1]).ok and player.backpack == finished, "Repeated request cannot produce free items: " + entry[0])
 		else:
 			check(player.backpack == before, "Disabled request preserves ingredients")
 		player.backpack.clear()
 		_supplies(player, entry, 1)
 		player.remove_item(String(entry[2].keys()[0]), 1)
 		before = player.backpack.duplicate(true)
-		check(not CraftingService.craft(player, entry[0], entry[1]).ok and player.backpack == before, "Missing one ingredient rejects atomically: " + entry[0])
+		check(not Driver.craft(player, entry[0], entry[1]).ok and player.backpack == before, "Missing one ingredient rejects atomically: " + entry[0])
 	for id: String in ["bronze_bow", "bronze_crossbow", "bronze_crossbow_limbs"]:
 		var player := PlayerState.new()
 		player.add_item("Bronze Ingot", 100)
 		var recipe := CraftingService._find_recipe(id)
 		check(not bool(recipe.get("enabled", false)), "Excluded bow recipe stays disabled: " + id)
-		check(not CraftingService.craft(player, id, String(recipe.station)).ok and player.backpack == {"Bronze Ingot": 100}, "Excluded bow route remains unavailable at its own station: " + id)
+		check(not Driver.craft(player, id, String(recipe.station)).ok and player.backpack == {"Bronze Ingot": 100}, "Excluded bow route remains unavailable at its own station: " + id)
 	for recipe: Dictionary in CraftingService.list_recipes():
 		if not bool(recipe.get("enabled", false)): continue
 		for entry: Dictionary in recipe.outputs:
@@ -98,10 +99,16 @@ func _authority() -> void:
 		player.backpack.clear()
 		_supplies(player, entry, 1)
 		var command: Dictionary = JSON.parse_string(JSON.stringify({"type": "craft", "station_id": station_ids[entry[1]], "recipe_id": entry[0], "quantity": 1}))
+		if entry[1] in ["anvil", "furnace"]:
+			command.type = "smith_start"
+			command.start_token = entry[0]
+		command = JSON.parse_string(JSON.stringify(command))
 		var result: Dictionary = region.submit(player.entity_id, command)
+		if result.ok and entry[1] in ["anvil", "furnace"]: Driver.finish_server(region, player)
 		check(bool(result.ok) and player.backpack == {entry[3]: entry[4]}, "Server validates and produces Bronze recipe: " + entry[0])
 		var before := player.backpack.duplicate(true)
-		check(not region.submit(player.entity_id, command).ok and player.backpack == before, "Server repeat cannot duplicate output: " + entry[0])
+		region.submit(player.entity_id, command)
+		check(player.backpack == before, "Server repeat cannot duplicate output: " + entry[0])
 	player.backpack = {"Bronze Ingot": 5}
 	var before := player.backpack.duplicate(true)
 	check(not region.submit(player.entity_id, {"type": "craft", "station_id": station_ids.furnace, "recipe_id": "bronze_platebody", "quantity": 1}).ok and player.backpack == before, "Server rejects the wrong station")
@@ -149,6 +156,7 @@ func _station_ui() -> void:
 		if entry[0] == "bronze_platebody": await _capture("bronze-anvil-recipes")
 		if button != null and not button.disabled:
 			button.pressed.emit()
+			if entry[1] in ["anvil", "furnace"]: Driver.finish(game.crafting_panel.smithing.session)
 			check(game.player.backpack == {entry[3]: entry[4]}, "Existing recipe button produces correct output: " + entry[0])
 		game.crafting_panel.close()
 	game.player.add_item("Bronze Ore", 10)

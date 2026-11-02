@@ -74,7 +74,7 @@ func _run() -> void:
 	check(not codec.decode(old, "a", "b").ok, "Migration never defaults missing old skills")
 	p.add_skill_experience("mining", 121)
 	var current: Dictionary = codec.encode(p, "outskirts")
-	check(current.version == 4, "New saves use version 4")
+	check(current.version == 5, "New saves use version 5 with Smithing settlement")
 	var mined: Dictionary = codec.decode(current, "a", "b")
 	check(mined.ok and mined.player.get_skill_experience("mining") == 121, "Mining award survives round trip")
 	current.version = 2

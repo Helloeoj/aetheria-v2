@@ -15,6 +15,10 @@ class AccountApiTests(TestCase):
     password = 'Space rich password 42!'
 
     def setUp(self):
+        # Legacy API fixtures must not inherit this PC's closed-beta policy.
+        self.policy = patch('backend.accounts.views.load_policy', return_value={'enabled': False})
+        self.policy.start()
+        self.addCleanup(self.policy.stop)
         self.key = patch.dict('os.environ', {'AETHERIA_SERVER_KEY': 'unit-test-server-key'})
         self.key.start()
         self.addCleanup(self.key.stop)
@@ -144,6 +148,24 @@ class AccountApiTests(TestCase):
         from backend.accounts.models import Character
         self.assertEqual(Character.objects.get(pk=claim['character_id']).state, body['state'])
 
+    def test_smithing_v5_reservation_is_saved_atomically_and_retried_once(self):
+        self.register()
+        login = self.login()
+        claim = self.claim(login['token'])
+        state = {'version': 5, 'inventory': [], 'skill_experience': {'smithing': 46},
+            'smithing_work': {'recipe_id': 'smelt_steel', 'quantity': 2,
+                'earned': False, 'temperature': 0.9, 'overheated_seconds': 1.4}}
+        body = self.save_body(claim, state)
+        first = self.post('/internal/save', body, internal=True)
+        self.assertEqual(first, {'ok': True, 'revision': 1})
+        self.assertEqual(self.post('/internal/save', body, internal=True), first)
+        from backend.accounts.models import Character, Journal
+        self.assertEqual(Character.objects.get(pk=claim['character_id']).state, state)
+        self.assertEqual(Journal.objects.filter(character_id=claim['character_id']).count(), 1)
+        release = self.save_body({**claim, 'revision': 1}, state)
+        self.assertTrue(self.post('/internal/release', release, internal=True)['ok'])
+        self.assertEqual(self.claim(login['token'])['state'], state)
+
     def test_orders_v3_save_is_atomic_idempotent_and_restored_with_inventory(self):
         self.register()
         login = self.login()
@@ -231,6 +253,9 @@ class AccountApiTests(TestCase):
 
 class PostgreSQLRaceTests(TransactionTestCase):
     def setUp(self):
+        self.policy = patch('backend.accounts.views.load_policy', return_value={'enabled': False})
+        self.policy.start()
+        self.addCleanup(self.policy.stop)
         if connection.vendor != 'postgresql':
             self.skipTest('Requires PostgreSQL row locking; SQLite is development only.')
         self.key = patch.dict('os.environ', {'AETHERIA_SERVER_KEY': 'unit-test-server-key'})

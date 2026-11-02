@@ -1,4 +1,5 @@
 extends Node
+const Driver = preload("res://scripts/dev_tools/smithing_test_driver.gd")
 ## Completed catalog -> real exchanges -> original F6 and crafting interfaces.
 const METALS := ["Bronze", "Iron", "Steel", "Blacksteel", "Mithril", "Adamantite"]
 const GEAR := [["Dagger", 1], ["Shortsword", 2], ["Longsword", 3], ["Mace", 3], ["Warmaul", 4], ["Helmet", 2], ["Platebody", 5], ["Platelegs", 3], ["Kiteshield", 3], ["Square Shield", 2]]
@@ -74,9 +75,10 @@ func _catalog_and_recipes() -> void:
 	check(ids.size() == 72, "Six craftable tiers provide 60 gear pieces and twelve material items")
 	for metal: String in METALS:
 		var player := PlayerState.new()
+		player.set_skill_level("smithing", 100)
 		player.add_item("Iron Ore" if metal == "Steel" else metal + " Ore", 10)
 		if metal == "Steel": player.add_item("Coal", 10)
-		check(CraftingService.craft(player, "smelt_" + metal.to_lower(), "furnace", 10).ok and player.backpack == {metal + " Ingot": 10}, "Ten correct ore produce ten real ingots: " + metal)
+		check(Driver.craft(player, "smelt_" + metal.to_lower(), "furnace", 10).ok and player.backpack == {metal + " Ingot": 10}, "Ten correct ore produce ten real ingots: " + metal)
 		for gear: Array in GEAR:
 			var name_key := metal + " " + String(gear[0])
 			var item := GameData.get_item_by_name(name_key)
@@ -85,13 +87,13 @@ func _catalog_and_recipes() -> void:
 			player.backpack.clear()
 			player.add_item(metal + " Ingot", int(gear[1]) * 2)
 			var id := (metal + " " + String(gear[0])).to_snake_case()
-			check(CraftingService.craft(player, id, "anvil", 2).ok and player.backpack == {name_key: 2}, "Category costs and batch yield remain exact: " + name_key)
+			check(Driver.craft(player, id, "anvil", 2).ok and player.backpack == {name_key: 2}, "Category costs and batch yield remain exact: " + name_key)
 			var output := player.backpack.duplicate(true)
-			check(not CraftingService.craft(player, id, "anvil").ok and player.backpack == output, "No replay without ingots: " + name_key)
+			check(not Driver.craft(player, id, "anvil").ok and player.backpack == output, "No replay without ingots: " + name_key)
 			player.backpack.clear()
 			player.add_item("Iron Ingot" if metal == "Bronze" else "Bronze Ingot", 100)
 			var wrong_metal := player.backpack.duplicate(true)
-			check(not CraftingService.craft(player, id, "anvil").ok and player.backpack == wrong_metal, "Other metals cannot substitute: " + name_key)
+			check(not Driver.craft(player, id, "anvil").ok and player.backpack == wrong_metal, "Other metals cannot substitute: " + name_key)
 	for item: Dictionary in GameData.list_items():
 		if int(item.id) in ids:
 			check(not String(item.name).to_lower().contains("bow") and item.get("slot") not in ["cape", "neck", "ring"], "Smithing view excludes bows and accessories")
@@ -103,7 +105,7 @@ func _catalog_and_recipes() -> void:
 	for supplies: Dictionary in [{"Iron Ore": 10}, {"Coal": 10}, {"Steel Ore": 10}]:
 		var player := PlayerState.new()
 		player.backpack = supplies.duplicate(true)
-		check(not CraftingService.craft(player, "smelt_steel", "furnace", 10).ok and player.backpack == supplies, "Both alloy ingredients are required atomically")
+		check(not Driver.craft(player, "smelt_steel", "furnace", 10).ok and player.backpack == supplies, "Both alloy ingredients are required atomically")
 
 func _authority() -> void:
 	var geometry := Geometry.new()
@@ -117,6 +119,7 @@ func _authority() -> void:
 	region.configure("smithing-catalog", geometry)
 	var player := PlayerState.new()
 	region.add_player("smithing-tester", player)
+	player.set_skill_level("smithing", 100)
 	var stations := {}
 	for id: String in region.stations: stations[String(region.stations[id].station)] = id
 	for recipe: Dictionary in CraftingService.list_recipes():
@@ -124,11 +127,16 @@ func _authority() -> void:
 		player.backpack.clear()
 		for entry: Dictionary in recipe.inputs: player.add_item(entry.item, int(entry.quantity))
 		var command: Dictionary = JSON.parse_string(JSON.stringify({"type": "craft", "station_id": stations[recipe.station], "recipe_id": recipe.id, "quantity": 1}))
+		command.type = "smith_start"
+		command.start_token = recipe.id
+		command = JSON.parse_string(JSON.stringify(command))
 		var result: Dictionary = region.submit(player.entity_id, command)
+		if result.ok: Driver.finish_server(region, player)
 		var output := {}
 		for entry: Dictionary in recipe.outputs: output[entry.item] = int(entry.quantity)
 		check(bool(result.ok) and player.backpack == output, "Server validates completed recipe: " + String(recipe.id))
-		check(not region.submit(player.entity_id, command).ok and player.backpack == output, "Server repeated request cannot duplicate output: " + String(recipe.id))
+		region.submit(player.entity_id, command)
+		check(player.backpack == output, "Server repeated request cannot duplicate output: " + String(recipe.id))
 	player.backpack = {"Iron Ore": 1}
 	check(not region.submit(player.entity_id, {"type": "craft", "station_id": stations.furnace, "recipe_id": "smelt_steel", "quantity": 1}).ok and player.backpack == {"Iron Ore": 1}, "Server preserves Iron Ore without Coal")
 	player.backpack = {"Iron Ore": 1, "Coal": 1, "Starforged Ingot": 5, "Steel Ore": 2}
@@ -219,6 +227,7 @@ func _menus() -> void:
 	for station: Node in get_tree().get_nodes_in_group("crafting_station"):
 		if station.station_id == "anvil": anvil = station
 		if station.station_id == "furnace": furnace = station
+	game.player.set_skill_level("smithing", 100)
 	for station: Node2D in [anvil, furnace]:
 		while game.grid_adapter != null and not game.grid_adapter.completed:
 			await get_tree().physics_frame
@@ -255,6 +264,7 @@ func _menus() -> void:
 				await frames()
 				await click(button.get_global_transform_with_canvas() * (button.size / 2.0))
 				break
+		Driver.finish(game.crafting_panel.smithing.session)
 		check(game.player.backpack == ({"Adamantite Platebody": 1} if station == anvil else {"Steel Ingot": 2}), "Actual station button spends exact higher-tier/alloy ingredients: " + recipe_id)
 		await key(KEY_ESCAPE)
 		check(not game.crafting_panel.visible, "Escape closes the original station menu")

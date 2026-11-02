@@ -1,11 +1,13 @@
 # Skill Progression
 
-Aetheria has eight independent player skills: Health, Attack, Strength, Defense,
-Range, Magic, Fishing, and Cooking. Each skill has its own level and experience total,
-while all eight share the same level 1–100 experience curve. Fishing and Cooking do not
+Aetheria has ten independent player skills: Health, Attack, Strength, Defense,
+Range, Magic, Fishing, Cooking, Mining and Smithing. Each has its own level and
+experience on the shared level 1–100 curve. Noncombat skills do not
 contribute to combat level; see [Fishing.md](Fishing.md) for its minigame,
 rod controls, bait requirements, and cast-distance rules.
 See [Cooking.md](Cooking.md) for fish recipes, burn mastery and campfire integration.
+See [Smithing.md](Smithing.md) for furnace proficiency, guided forging, quenching,
+per-ingot XP and its configurable 60-hour reference progression.
 
 ## Overall combat level
 
@@ -56,6 +58,7 @@ combat-stat questions, and warmaul rewards are recorded in
 | Magic | Spell unlocks, spell accuracy and power, magic resistance, and mana capacity (10 per level). | 3 XP per point of actual magic damage dealt, plus cast XP based on the spell's unlock level. |
 | Fishing | Rod range mastery, resistance to fish pull, a small control-boundary bonus, and bait/fish unlocks. | XP for successfully landing fish, varying by species. |
 | Cooking | Raw fish recipes and declining burn chance, reaching zero at mastery. | XP per successfully cooked fish; burnt food awards none. See [Cooking.md](Cooking.md) for logic and deferred campfire integration. |
+| Smithing | Metal unlocks, wider furnace bands and burn immunity at +30 levels. | XP per successful bar or per ingot consumed in completed forging. |
 
 Damage XP uses HP actually removed from the target, so misses, fully resisted
 hits, and damage beyond the target's remaining HP do not award extra XP. Failed

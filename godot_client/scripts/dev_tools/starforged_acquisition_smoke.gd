@@ -1,6 +1,7 @@
 extends Node
 ## Real catalog/transactions; fixture mutations are restored before each section ends.
 const Rules := preload("res://scripts/acquisition_rules.gd")
+const Driver := preload("res://scripts/dev_tools/smithing_test_driver.gd")
 const RETIRED := [256, 257]
 const RECIPES := ["smelt_starforged", "starforged_dagger", "starforged_shortsword", "starforged_longsword", "starforged_mace", "starforged_warmaul", "starforged_helmet", "starforged_platebody", "starforged_platelegs", "starforged_kiteshield", "starforged_square_shield", "starforged_arrowheads", "starforged_bolts", "starforged_arrows", "starforged_bow", "starforged_crossbow_limbs", "starforged_crossbow"]
 var checks := 0
@@ -69,15 +70,15 @@ func _crafting() -> void:
 	var original_output: Dictionary = GameData.items_by_name["Bronze Dagger"]
 	GameData.items_by_name["Bronze Dagger"] = GameData.get_item(180)
 	player.backpack = {"Bronze Ingot": 1}
-	check(not CraftingService.craft(player, "bronze_dagger", "anvil").ok and player.backpack == {"Bronze Ingot": 1}, "Enabled recipe cannot convert materials into Starforged")
+	check(not Driver.craft(player, "bronze_dagger", "anvil").ok and player.backpack == {"Bronze Ingot": 1}, "Enabled recipe cannot convert materials into Starforged")
 	GameData.items_by_name["Bronze Dagger"] = original_output
 	var original_input: Dictionary = GameData.items_by_name["Bronze Ingot"]
 	GameData.items_by_name["Bronze Ingot"] = GameData.get_item(257)
 	player.backpack = {"Starforged Ingot": 1}
-	check(not CraftingService.craft(player, "bronze_dagger", "anvil").ok and player.backpack == {"Starforged Ingot": 1}, "Legacy ingot cannot feed another conversion")
+	check(not Driver.craft(player, "bronze_dagger", "anvil").ok and player.backpack == {"Starforged Ingot": 1}, "Legacy ingot cannot feed another conversion")
 	GameData.items_by_name["Bronze Ingot"] = original_input
 	player.backpack = {"Bronze Ingot": 1}
-	check(CraftingService.craft(player, "bronze_dagger", "anvil").ok and player.backpack == {"Bronze Dagger": 1}, "Unrelated crafting still works")
+	check(Driver.craft(player, "bronze_dagger", "anvil").ok and player.backpack == {"Bronze Dagger": 1}, "Unrelated guided Smithing still works")
 
 func _sources() -> void:
 	for id: int in RETIRED:

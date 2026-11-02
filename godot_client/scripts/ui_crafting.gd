@@ -9,6 +9,8 @@ var station: Node2D
 var content: VBoxContainer
 var status: Label
 var amount: SpinBox
+var smithing: Control
+var recipe_scroll: ScrollContainer
 
 func configure(owner_game: Node) -> void:
 	game = owner_game
@@ -44,12 +46,17 @@ func configure(owner_game: Node) -> void:
 	status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	box.add_child(status)
 	var scroll := ScrollContainer.new()
+	recipe_scroll = scroll
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	box.add_child(scroll)
 	content = VBoxContainer.new()
 	content.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	content.add_theme_constant_override("separation", 8)
 	scroll.add_child(content)
+	smithing = preload("res://scripts/ui_smithing.gd").new()
+	box.add_child(smithing)
+	smithing.configure(game)
+	smithing.recipes_requested.connect(_show_recipes)
 	hide()
 
 func show_station(target: Node2D) -> void:
@@ -57,10 +64,16 @@ func show_station(target: Node2D) -> void:
 	if not _can_use():
 		return
 	status.text = station.station_name
+	amount.max_value = 10 if station.station_id == "furnace" else (1 if station.station_id == "anvil" else 100)
 	_rebuild()
+	var resume: bool = smithing.session != null and smithing.session.is_active()
+	smithing.visible = resume
+	recipe_scroll.visible = not resume
+	amount.visible = not resume
 	show()
 
 func close() -> void:
+	if smithing != null: smithing.suspend()
 	hide()
 	station = null
 	if game != null:
@@ -110,12 +123,27 @@ func _rebuild() -> void:
 			for entry: Dictionary in recipe.get("inputs", []):
 				ingredients.append("%d %s" % [int(entry.quantity), entry.item])
 			button.text += " — " + ", ".join(ingredients)
+			if station.station_id in ["furnace", "anvil"]:
+				var item := GameData.get_item_by_name(String(outputs[0].item))
+				var required := SmithingRules.required_level(int(item.get("tier", 1)))
+				button.text += " | Smithing %d" % required
+				button.disabled = game.player.get_skill_level("smithing") < required
 		else:
 			button.text += " — recipe quantities not yet set"
 		button.pressed.connect(_craft.bind(String(recipe.id)))
 		content.add_child(button)
 
 func _craft(recipe_id: String) -> void:
+	if not _can_use():
+		close()
+		return
+	if station.station_id in ["furnace", "anvil"]:
+		var error: String = smithing.begin(game.player, station, recipe_id, int(amount.value))
+		status.text = error if not error.is_empty() else station.station_name
+		if error.is_empty():
+			recipe_scroll.hide()
+			amount.hide()
+		return
 	if Network.online():
 		Network.send_action({"type": "craft", "station_id": str(game.get_parent().get_path_to(station)), "recipe_id": recipe_id, "quantity": int(amount.value)})
 		status.text = "Crafting request sent to the server."
@@ -126,6 +154,12 @@ func _craft(recipe_id: String) -> void:
 	var result: Dictionary = Crafting.craft(game.player, recipe_id, station.station_id, int(amount.value))
 	status.text = String(result.message)
 	_rebuild()
+
+func _show_recipes() -> void:
+	smithing.hide()
+	recipe_scroll.show()
+	amount.show()
+	if is_instance_valid(station): _rebuild()
 
 func _purchase(item_name: String) -> void:
 	if Network.online():
