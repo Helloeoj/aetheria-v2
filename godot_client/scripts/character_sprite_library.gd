@@ -7,7 +7,9 @@ const CATALOG_PATH := "res://data/character_sprites.json"
 const ANIMATION_PACK_PATHS := {
 	"goblin_scout": "res://data/goblin_scout_animations.json",
 	"goblin_worker": "res://data/goblin_worker_animations.json",
-	"goblin_warrior": "res://data/goblin_warrior_animations.json"
+	"goblin_warrior": "res://data/goblin_warrior_animations.json",
+	"skeleton_footsoldier": "res://data/skeleton_footsoldier_animations.json",
+	"skeleton_acolyte": "res://data/skeleton_acolyte_animations.json"
 }
 const DIRECTIONS: Array[String] = [
 	"south", "south-east", "east", "north-east",

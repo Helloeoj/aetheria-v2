@@ -4,7 +4,10 @@ extends SceneTree
 
 const BASE_CATALOG := "res://data/character_sprites.json"
 const SKIN := "goblin_scout"
-const ANIMATED_GOBLIN_SKINS := ["goblin_scout", "goblin_worker", "goblin_warrior"]
+const ANIMATED_SKINS := [
+	"goblin_scout", "goblin_worker", "goblin_warrior",
+	"skeleton_footsoldier", "skeleton_knight", "skeleton_acolyte", "skeleton_captain"
+]
 const EXPECTED_SCALE := 44.0 / 60.0
 const DIRECTIONS: Array[String] = [
 	"south", "south-east", "east", "north-east",
@@ -70,7 +73,7 @@ func _test_preservation(base: Dictionary) -> void:
 	var effective_skins: Dictionary = effective.get("skins", {})
 	_check(effective_skins.size() == base_skins.size(), "Overlay added or removed a skin.")
 	for skin_id: String in base_skins:
-		if skin_id not in ANIMATED_GOBLIN_SKINS:
+		if skin_id not in ANIMATED_SKINS:
 			_check(effective_skins.get(skin_id) == base_skins[skin_id], "Overlay changed another skin: " + skin_id)
 			continue
 		var original_skin: Dictionary = base_skins[skin_id]

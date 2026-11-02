@@ -6,7 +6,10 @@ extends SceneTree
 
 const BASE_CATALOG := "res://data/character_sprites.json"
 const SKINS := ["goblin_worker", "goblin_warrior"]
-const ANIMATED_SKINS := ["goblin_scout", "goblin_worker", "goblin_warrior"]
+const ANIMATED_SKINS := [
+	"goblin_scout", "goblin_worker", "goblin_warrior",
+	"skeleton_footsoldier", "skeleton_knight", "skeleton_acolyte", "skeleton_captain"
+]
 const DIRECTIONS: Array[String] = ["south", "south-east", "east", "north-east", "north", "north-west", "west", "south-west"]
 const VECTORS: Array[Vector2] = [Vector2(0, 1), Vector2(1, 1), Vector2(1, 0), Vector2(1, -1), Vector2(0, -1), Vector2(-1, -1), Vector2(-1, 0), Vector2(-1, 1)]
 const FRAME_COUNTS := {"idle": 5, "walk": 8, "attack": 12}

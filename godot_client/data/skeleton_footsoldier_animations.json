@@ -1,0 +1,1774 @@
+{
+  "skin_id": "skeleton_footsoldier",
+  "animations": {
+    "idle": {
+      "fps": 4,
+      "loop": true,
+      "directions": {
+        "south": [
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/south/frame_000.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/south/frame_001.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/south/frame_002.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/south/frame_003.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/south/frame_004.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/south/frame_005.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/south/frame_006.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/south/frame_007.png"
+        ],
+        "south-east": [
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/south-east/frame_000.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/south-east/frame_001.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/south-east/frame_002.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/south-east/frame_003.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/south-east/frame_004.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/south-east/frame_005.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/south-east/frame_006.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/south-east/frame_007.png"
+        ],
+        "east": [
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/east/frame_000.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/east/frame_001.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/east/frame_002.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/east/frame_003.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/east/frame_004.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/east/frame_005.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/east/frame_006.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/east/frame_007.png"
+        ],
+        "north-east": [
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/north-east/frame_000.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/north-east/frame_001.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/north-east/frame_002.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/north-east/frame_003.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/north-east/frame_004.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/north-east/frame_005.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/north-east/frame_006.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/north-east/frame_007.png"
+        ],
+        "north": [
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/north/frame_000.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/north/frame_001.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/north/frame_002.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/north/frame_003.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/north/frame_004.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/north/frame_005.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/north/frame_006.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/north/frame_007.png"
+        ],
+        "north-west": [
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/north-west/frame_000.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/north-west/frame_001.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/north-west/frame_002.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/north-west/frame_003.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/north-west/frame_004.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/north-west/frame_005.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/north-west/frame_006.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/north-west/frame_007.png"
+        ],
+        "west": [
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/west/frame_000.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/west/frame_001.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/west/frame_002.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/west/frame_003.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/west/frame_004.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/west/frame_005.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/west/frame_006.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/west/frame_007.png"
+        ],
+        "south-west": [
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/south-west/frame_000.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/south-west/frame_001.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/south-west/frame_002.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/south-west/frame_003.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/south-west/frame_004.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/south-west/frame_005.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/south-west/frame_006.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/idle/south-west/frame_007.png"
+        ]
+      }
+    },
+    "walk": {
+      "fps": 9,
+      "loop": true,
+      "directions": {
+        "south": [
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/south/frame_000.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/south/frame_001.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/south/frame_002.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/south/frame_003.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/south/frame_004.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/south/frame_005.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/south/frame_006.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/south/frame_007.png"
+        ],
+        "south-east": [
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/south-east/frame_000.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/south-east/frame_001.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/south-east/frame_002.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/south-east/frame_003.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/south-east/frame_004.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/south-east/frame_005.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/south-east/frame_006.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/south-east/frame_007.png"
+        ],
+        "east": [
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/east/frame_000.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/east/frame_001.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/east/frame_002.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/east/frame_003.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/east/frame_004.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/east/frame_005.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/east/frame_006.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/east/frame_007.png"
+        ],
+        "north-east": [
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/north-east/frame_000.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/north-east/frame_001.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/north-east/frame_002.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/north-east/frame_003.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/north-east/frame_004.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/north-east/frame_005.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/north-east/frame_006.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/north-east/frame_007.png"
+        ],
+        "north": [
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/north/frame_000.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/north/frame_001.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/north/frame_002.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/north/frame_003.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/north/frame_004.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/north/frame_005.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/north/frame_006.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/north/frame_007.png"
+        ],
+        "north-west": [
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/north-west/frame_000.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/north-west/frame_001.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/north-west/frame_002.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/north-west/frame_003.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/north-west/frame_004.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/north-west/frame_005.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/north-west/frame_006.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/north-west/frame_007.png"
+        ],
+        "west": [
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/west/frame_000.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/west/frame_001.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/west/frame_002.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/west/frame_003.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/west/frame_004.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/west/frame_005.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/west/frame_006.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/west/frame_007.png"
+        ],
+        "south-west": [
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/south-west/frame_000.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/south-west/frame_001.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/south-west/frame_002.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/south-west/frame_003.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/south-west/frame_004.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/south-west/frame_005.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/south-west/frame_006.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/walk/south-west/frame_007.png"
+        ]
+      }
+    },
+    "attack": {
+      "fps": 10,
+      "loop": false,
+      "directions": {
+        "south": [
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south/frame_000.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south/frame_001.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south/frame_002.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south/frame_003.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south/frame_004.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south/frame_005.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south/frame_006.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south/frame_007.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south/frame_008.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south/frame_009.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south/frame_010.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south/frame_011.png"
+        ],
+        "south-east": [
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-east/frame_000.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-east/frame_001.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-east/frame_002.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-east/frame_003.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-east/frame_004.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-east/frame_005.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-east/frame_006.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-east/frame_007.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-east/frame_008.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-east/frame_009.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-east/frame_010.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-east/frame_011.png"
+        ],
+        "east": [
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/east/frame_000.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/east/frame_001.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/east/frame_002.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/east/frame_003.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/east/frame_004.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/east/frame_005.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/east/frame_006.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/east/frame_007.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/east/frame_008.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/east/frame_009.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/east/frame_010.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/east/frame_011.png"
+        ],
+        "north-east": [
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-east/frame_000.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-east/frame_001.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-east/frame_002.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-east/frame_003.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-east/frame_004.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-east/frame_005.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-east/frame_006.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-east/frame_007.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-east/frame_008.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-east/frame_009.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-east/frame_010.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-east/frame_011.png"
+        ],
+        "north": [
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north/frame_000.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north/frame_001.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north/frame_002.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north/frame_003.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north/frame_004.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north/frame_005.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north/frame_006.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north/frame_007.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north/frame_008.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north/frame_009.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north/frame_010.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north/frame_011.png"
+        ],
+        "north-west": [
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-west/frame_000.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-west/frame_001.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-west/frame_002.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-west/frame_003.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-west/frame_004.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-west/frame_005.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-west/frame_006.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-west/frame_007.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-west/frame_008.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-west/frame_009.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-west/frame_010.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-west/frame_011.png"
+        ],
+        "west": [
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/west/frame_000.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/west/frame_001.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/west/frame_002.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/west/frame_003.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/west/frame_004.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/west/frame_005.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/west/frame_006.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/west/frame_007.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/west/frame_008.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/west/frame_009.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/west/frame_010.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/west/frame_011.png"
+        ],
+        "south-west": [
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-west/frame_000.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-west/frame_001.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-west/frame_002.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-west/frame_003.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-west/frame_004.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-west/frame_005.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-west/frame_006.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-west/frame_007.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-west/frame_008.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-west/frame_009.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-west/frame_010.png",
+          "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-west/frame_011.png"
+        ]
+      }
+    }
+  },
+  "frame_sizes": {
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/south/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/south/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/south/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/south/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/south/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/south/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/south/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/south/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/south-east/frame_000.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/south-east/frame_001.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/south-east/frame_002.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/south-east/frame_003.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/south-east/frame_004.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/south-east/frame_005.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/south-east/frame_006.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/south-east/frame_007.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/east/frame_000.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/east/frame_001.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/east/frame_002.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/east/frame_003.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/east/frame_004.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/east/frame_005.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/east/frame_006.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/east/frame_007.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/north-east/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/north-east/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/north-east/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/north-east/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/north-east/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/north-east/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/north-east/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/north-east/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/north/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/north/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/north/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/north/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/north/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/north/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/north/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/north/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/north-west/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/north-west/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/north-west/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/north-west/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/north-west/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/north-west/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/north-west/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/north-west/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/west/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/west/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/west/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/west/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/west/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/west/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/west/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/west/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/south-west/frame_000.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/south-west/frame_001.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/south-west/frame_002.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/south-west/frame_003.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/south-west/frame_004.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/south-west/frame_005.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/south-west/frame_006.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/idle/south-west/frame_007.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/south/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/south/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/south/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/south/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/south/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/south/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/south/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/south/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/south-east/frame_000.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/south-east/frame_001.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/south-east/frame_002.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/south-east/frame_003.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/south-east/frame_004.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/south-east/frame_005.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/south-east/frame_006.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/south-east/frame_007.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/east/frame_000.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/east/frame_001.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/east/frame_002.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/east/frame_003.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/east/frame_004.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/east/frame_005.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/east/frame_006.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/east/frame_007.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/north-east/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/north-east/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/north-east/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/north-east/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/north-east/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/north-east/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/north-east/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/north-east/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/north/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/north/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/north/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/north/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/north/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/north/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/north/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/north/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/north-west/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/north-west/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/north-west/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/north-west/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/north-west/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/north-west/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/north-west/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/north-west/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/west/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/west/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/west/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/west/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/west/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/west/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/west/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/west/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/south-west/frame_000.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/south-west/frame_001.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/south-west/frame_002.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/south-west/frame_003.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/south-west/frame_004.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/south-west/frame_005.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/south-west/frame_006.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/walk/south-west/frame_007.png": [
+      96,
+      96
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south/frame_000.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south/frame_001.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south/frame_002.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south/frame_003.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south/frame_004.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south/frame_005.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south/frame_006.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south/frame_007.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south/frame_008.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south/frame_009.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south/frame_010.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south/frame_011.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-east/frame_000.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-east/frame_001.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-east/frame_002.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-east/frame_003.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-east/frame_004.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-east/frame_005.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-east/frame_006.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-east/frame_007.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-east/frame_008.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-east/frame_009.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-east/frame_010.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-east/frame_011.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/east/frame_000.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/east/frame_001.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/east/frame_002.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/east/frame_003.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/east/frame_004.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/east/frame_005.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/east/frame_006.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/east/frame_007.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/east/frame_008.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/east/frame_009.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/east/frame_010.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/east/frame_011.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-east/frame_000.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-east/frame_001.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-east/frame_002.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-east/frame_003.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-east/frame_004.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-east/frame_005.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-east/frame_006.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-east/frame_007.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-east/frame_008.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-east/frame_009.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-east/frame_010.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-east/frame_011.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north/frame_000.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north/frame_001.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north/frame_002.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north/frame_003.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north/frame_004.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north/frame_005.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north/frame_006.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north/frame_007.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north/frame_008.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north/frame_009.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north/frame_010.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north/frame_011.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-west/frame_000.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-west/frame_001.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-west/frame_002.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-west/frame_003.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-west/frame_004.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-west/frame_005.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-west/frame_006.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-west/frame_007.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-west/frame_008.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-west/frame_009.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-west/frame_010.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/north-west/frame_011.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/west/frame_000.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/west/frame_001.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/west/frame_002.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/west/frame_003.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/west/frame_004.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/west/frame_005.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/west/frame_006.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/west/frame_007.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/west/frame_008.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/west/frame_009.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/west/frame_010.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/west/frame_011.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-west/frame_000.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-west/frame_001.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-west/frame_002.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-west/frame_003.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-west/frame_004.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-west/frame_005.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-west/frame_006.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-west/frame_007.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-west/frame_008.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-west/frame_009.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-west/frame_010.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_footsoldier/animations/attack/south-west/frame_011.png": [
+      128,
+      128
+    ]
+  },
+  "provenance": {
+    "schema_version": 1,
+    "source_character_id": "5c79ab8e-464d-4597-a7ed-2abf40fcc1dc",
+    "source_groups": {
+      "idle": "0ba265f4-3f52-4b28-b9b0-e26a5b0bd60f",
+      "idle_south_east": "0ba265f4-3f52-4b28-b9b0-e26a5b0bd60f",
+      "idle_east": "9b32740c-3945-45cd-90ff-0ff0b7604335",
+      "idle_north_east": "9b32740c-3945-45cd-90ff-0ff0b7604335",
+      "idle_north": "0ba265f4-3f52-4b28-b9b0-e26a5b0bd60f",
+      "idle_north_west": "0ba265f4-3f52-4b28-b9b0-e26a5b0bd60f",
+      "idle_west": "0ba265f4-3f52-4b28-b9b0-e26a5b0bd60f",
+      "idle_south_west": "0ba265f4-3f52-4b28-b9b0-e26a5b0bd60f",
+      "walk": "9291842b-814f-4925-be56-7a5a4ff81835",
+      "walk_south_east": "9291842b-814f-4925-be56-7a5a4ff81835",
+      "walk_east": "9291842b-814f-4925-be56-7a5a4ff81835",
+      "walk_north_east": "97ce6264-02ea-46a3-916f-443526f838d4",
+      "walk_north": "9291842b-814f-4925-be56-7a5a4ff81835",
+      "walk_north_west": "9291842b-814f-4925-be56-7a5a4ff81835",
+      "walk_west": "9291842b-814f-4925-be56-7a5a4ff81835",
+      "walk_south_west": "9291842b-814f-4925-be56-7a5a4ff81835",
+      "attack": "c067c2f7-8301-4360-9621-1a2c15f8797e",
+      "attack_south_east": "4786f6a0-bb49-4a33-b544-8498a50b0fdd",
+      "attack_east": "6c16f143-ceb1-4612-acb0-deff9c9fd5a7",
+      "attack_north_east": "fa8e8a77-6b33-42a7-baf3-329455f2245e",
+      "attack_north": "f52f0a70-35f3-4b7b-9647-0f0c43a72605",
+      "attack_north_west": "5474c569-5733-4fb2-8626-5c3e67aa451d",
+      "attack_west": "c2c698fb-2bf5-4e57-804c-ffb33028e091",
+      "attack_south_west": "1a4c285d-06a2-4a9e-8e81-d2faab34ef4f"
+    },
+    "clip_provenance": {
+      "idle": {
+        "south": {
+          "animation_group_id": "0ba265f4-3f52-4b28-b9b0-e26a5b0bd60f",
+          "fps": 4,
+          "frame_count": 8,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved"
+        },
+        "south-east": {
+          "animation_group_id": "0ba265f4-3f52-4b28-b9b0-e26a5b0bd60f",
+          "fps": 4,
+          "frame_count": 8,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved"
+        },
+        "east": {
+          "animation_group_id": "9b32740c-3945-45cd-90ff-0ff0b7604335",
+          "fps": 4,
+          "frame_count": 8,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved"
+        },
+        "north-east": {
+          "animation_group_id": "9b32740c-3945-45cd-90ff-0ff0b7604335",
+          "fps": 4,
+          "frame_count": 8,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved"
+        },
+        "north": {
+          "animation_group_id": "0ba265f4-3f52-4b28-b9b0-e26a5b0bd60f",
+          "fps": 4,
+          "frame_count": 8,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved"
+        },
+        "north-west": {
+          "animation_group_id": "0ba265f4-3f52-4b28-b9b0-e26a5b0bd60f",
+          "fps": 4,
+          "frame_count": 8,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved"
+        },
+        "west": {
+          "animation_group_id": "0ba265f4-3f52-4b28-b9b0-e26a5b0bd60f",
+          "fps": 4,
+          "frame_count": 8,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved"
+        },
+        "south-west": {
+          "animation_group_id": "0ba265f4-3f52-4b28-b9b0-e26a5b0bd60f",
+          "fps": 4,
+          "frame_count": 8,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved"
+        }
+      },
+      "walk": {
+        "south": {
+          "animation_group_id": "9291842b-814f-4925-be56-7a5a4ff81835",
+          "fps": 9,
+          "frame_count": 8,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved"
+        },
+        "south-east": {
+          "animation_group_id": "9291842b-814f-4925-be56-7a5a4ff81835",
+          "fps": 9,
+          "frame_count": 8,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved"
+        },
+        "east": {
+          "animation_group_id": "9291842b-814f-4925-be56-7a5a4ff81835",
+          "fps": 9,
+          "frame_count": 8,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved"
+        },
+        "north-east": {
+          "animation_group_id": "97ce6264-02ea-46a3-916f-443526f838d4",
+          "fps": 9,
+          "frame_count": 8,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved"
+        },
+        "north": {
+          "animation_group_id": "9291842b-814f-4925-be56-7a5a4ff81835",
+          "fps": 9,
+          "frame_count": 8,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved"
+        },
+        "north-west": {
+          "animation_group_id": "9291842b-814f-4925-be56-7a5a4ff81835",
+          "fps": 9,
+          "frame_count": 8,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved"
+        },
+        "west": {
+          "animation_group_id": "9291842b-814f-4925-be56-7a5a4ff81835",
+          "fps": 9,
+          "frame_count": 8,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved"
+        },
+        "south-west": {
+          "animation_group_id": "9291842b-814f-4925-be56-7a5a4ff81835",
+          "fps": 9,
+          "frame_count": 8,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved"
+        }
+      },
+      "attack": {
+        "south": {
+          "animation_group_id": "c067c2f7-8301-4360-9621-1a2c15f8797e",
+          "fps": 10,
+          "frame_count": 12,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved",
+          "source_kind": "pixellab_raw_animation_native_padded_reference",
+          "provider_job_id": "c067c2f7-8301-4360-9621-1a2c15f8797e",
+          "input_reference": {
+            "original_resource": "res://Assets/Characters/skeleton_footsoldier/rotations/south.png",
+            "original_sha256": "598c86bcd50245218d89df892c41984c2880d2c6538b2f063df9595c01ba2719",
+            "padded_input_relative_to_task": "native-padded-references/skeleton_footsoldier/south.png",
+            "input_sha256": "8bd9fbc20482a66753cf68d8c310cd6223ed84908bacf10a5fc8c16203aeaf0c",
+            "native_size": [
+              60,
+              60
+            ],
+            "canvas_size": [
+              128,
+              128
+            ],
+            "padding_offset": [
+              34,
+              34
+            ],
+            "no_resizing": true,
+            "no_repainting": true
+          },
+          "sequence_edit": {
+            "method": "whole_native_frame_reuse",
+            "authorization": "Keep the front view of the same overhead sword chop approved in East. Exclude rawslot5 generated slash-effect pose; duplicate only the final exact guard, with all source pixels unchanged.",
+            "original_candidate": "candidates/skeleton_footsoldier/attack-minimax-v2/south",
+            "original_provenance": "candidates/skeleton_footsoldier/attack-minimax-v2/south/source-provenance.json",
+            "original_provenance_sha256": "a729555a4a65b1992f0712549edef6ceb0382962a59bcc273f5eab55aab6eda7",
+            "original_frame_indices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              11
+            ],
+            "original_generated_frame_count": 12,
+            "playback_frame_count": 12,
+            "fps": 10,
+            "duration_ms": 1200,
+            "source_pixels_changed": false,
+            "rejected_original_sources_preserved": true
+          }
+        },
+        "south-east": {
+          "animation_group_id": "4786f6a0-bb49-4a33-b544-8498a50b0fdd",
+          "fps": 10,
+          "frame_count": 12,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved",
+          "source_kind": "pixellab_raw_animation_native_padded_reference",
+          "provider_job_id": "4786f6a0-bb49-4a33-b544-8498a50b0fdd",
+          "input_reference": {
+            "original_resource": "res://Assets/Characters/skeleton_footsoldier/rotations/south-east.png",
+            "original_sha256": "cff28b1bc12fc812b7b6d7be9d9c896fb08a4a1d2e17871043ed7030241fab7e",
+            "padded_input_relative_to_task": "native-padded-references/skeleton_footsoldier/south-east.png",
+            "input_sha256": "c42f284c78f4ecd6291da05e9c5c56cebf20db4f7e3f1b45bce1b994928cd606",
+            "native_size": [
+              60,
+              60
+            ],
+            "canvas_size": [
+              128,
+              128
+            ],
+            "padding_offset": [
+              34,
+              34
+            ],
+            "no_resizing": true,
+            "no_repainting": true
+          },
+          "sequence_edit": {
+            "method": "whole_native_frame_reuse",
+            "authorization": "Exclude originalslot4 slash-effect; exact native frames preserve one overhead cut and recovery.",
+            "original_candidate": "candidates/skeleton_footsoldier/attack-minimax-v1/south-east",
+            "original_provenance": "candidates/skeleton_footsoldier/attack-minimax-v1/south-east/source-provenance.json",
+            "original_provenance_sha256": "a01209ecfc6741e2d1c8004658ec6651ab691265cb503c320b49d08a8254ab4d",
+            "original_frame_indices": [
+              0,
+              1,
+              2,
+              3,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              11
+            ],
+            "original_generated_frame_count": 12,
+            "playback_frame_count": 12,
+            "fps": 10,
+            "duration_ms": 1200,
+            "source_pixels_changed": false,
+            "rejected_original_sources_preserved": true
+          }
+        },
+        "east": {
+          "animation_group_id": "6c16f143-ceb1-4612-acb0-deff9c9fd5a7",
+          "fps": 10,
+          "frame_count": 12,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved",
+          "source_kind": "pixellab_raw_animation_native_padded_reference",
+          "provider_job_id": "6c16f143-ceb1-4612-acb0-deff9c9fd5a7",
+          "input_reference": {
+            "original_resource": "res://Assets/Characters/skeleton_footsoldier/rotations/east.png",
+            "original_sha256": "ef32b34b484a6494411b8c98d99f717f2918998202b98d47744478603d0e9ec0",
+            "padded_input_relative_to_task": "native-padded-references/skeleton_footsoldier/east.png",
+            "input_sha256": "1b7a7ce9866970439c288cb209ae814a019531140d00849ed7ab91a4b5386048",
+            "native_size": [
+              60,
+              60
+            ],
+            "canvas_size": [
+              128,
+              128
+            ],
+            "padding_offset": [
+              34,
+              34
+            ],
+            "no_resizing": true,
+            "no_repainting": true
+          },
+          "sequence_edit": {
+            "method": "whole_native_frame_reuse",
+            "authorization": "Remove the single generated white slash-effect pose at originalslot4; preserve exact clean whole source frames and one sword cut, hold terminal guard for finalslot.",
+            "original_candidate": "candidates/skeleton_footsoldier/attack-minimax-v1/east",
+            "original_provenance": "candidates/skeleton_footsoldier/attack-minimax-v1/east/source-provenance.json",
+            "original_provenance_sha256": "06165e81af2841e2ffd5015f69ddbe3f4de332de0450f4ae1077e0a89c51877b",
+            "original_frame_indices": [
+              0,
+              1,
+              2,
+              3,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              11
+            ],
+            "original_generated_frame_count": 12,
+            "playback_frame_count": 12,
+            "fps": 10,
+            "duration_ms": 1200,
+            "source_pixels_changed": false,
+            "rejected_original_sources_preserved": true
+          }
+        },
+        "north-east": {
+          "animation_group_id": "fa8e8a77-6b33-42a7-baf3-329455f2245e",
+          "fps": 10,
+          "frame_count": 12,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved",
+          "source_kind": "pixellab_raw_animation_native_padded_reference",
+          "provider_job_id": "fa8e8a77-6b33-42a7-baf3-329455f2245e",
+          "input_reference": {
+            "original_resource": "res://Assets/Characters/skeleton_footsoldier/rotations/north-east.png",
+            "original_sha256": "37f20f24ccfb193d84dede4fa0f6bcc4172aa7e29016a4d54e7c369ac8812e1d",
+            "padded_input_relative_to_task": "native-padded-references/skeleton_footsoldier/north-east.png",
+            "input_sha256": "66558810aa27bbb368a45e654902d329cc6c1149869e0a96049ba5e78e00b6c3",
+            "native_size": [
+              60,
+              60
+            ],
+            "canvas_size": [
+              128,
+              128
+            ],
+            "padding_offset": [
+              34,
+              34
+            ],
+            "no_resizing": true,
+            "no_repainting": true
+          }
+        },
+        "north": {
+          "animation_group_id": "f52f0a70-35f3-4b7b-9647-0f0c43a72605",
+          "fps": 10,
+          "frame_count": 12,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved",
+          "source_kind": "pixellab_raw_animation_native_padded_reference",
+          "provider_job_id": "f52f0a70-35f3-4b7b-9647-0f0c43a72605",
+          "input_reference": {
+            "original_resource": "res://Assets/Characters/skeleton_footsoldier/rotations/north.png",
+            "original_sha256": "0ccea68d83e6fa7adf63fe6465a6f87e561e405587ee67a6040ee196792df792",
+            "padded_input_relative_to_task": "native-padded-references/skeleton_footsoldier/north.png",
+            "input_sha256": "8c13caf691c415470943955a66d958f783eae76c27dde2c5808665eb264a8bbd",
+            "native_size": [
+              60,
+              60
+            ],
+            "canvas_size": [
+              128,
+              128
+            ],
+            "padding_offset": [
+              34,
+              34
+            ],
+            "no_resizing": true,
+            "no_repainting": true
+          },
+          "sequence_edit": {
+            "method": "whole_native_frame_reuse",
+            "authorization": "Remove generated slash traces in rawslots1,2,4,5. Preserve complete clean original left-hand overhead windup, forward cut and recovery with exact whole native source frames. Hold clean guard/anticipation for twelve slots.",
+            "original_candidate": "candidates/skeleton_footsoldier/attack-minimax-v2/north",
+            "original_provenance": "candidates/skeleton_footsoldier/attack-minimax-v2/north/source-provenance.json",
+            "original_provenance_sha256": "1f9c3b75f5c5484143c44c42d49323d404041ced0b64b587cd0edda4d7f8d191",
+            "original_frame_indices": [
+              0,
+              0,
+              3,
+              3,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              11,
+              11
+            ],
+            "original_generated_frame_count": 12,
+            "playback_frame_count": 12,
+            "fps": 10,
+            "duration_ms": 1200,
+            "source_pixels_changed": false,
+            "rejected_original_sources_preserved": true
+          }
+        },
+        "north-west": {
+          "animation_group_id": "5474c569-5733-4fb2-8626-5c3e67aa451d",
+          "fps": 10,
+          "frame_count": 12,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved",
+          "source_kind": "pixellab_raw_animation_native_padded_reference",
+          "provider_job_id": "5474c569-5733-4fb2-8626-5c3e67aa451d",
+          "input_reference": {
+            "original_resource": "res://Assets/Characters/skeleton_footsoldier/rotations/north-west.png",
+            "original_sha256": "07e6a69db8a5aeadb6fbcfda4b98f5f0b9afec7bd4ab4e0c87c8e95c9f1320cf",
+            "padded_input_relative_to_task": "native-padded-references/skeleton_footsoldier/north-west.png",
+            "input_sha256": "b931d2d1ea32e4d1e43ebda041464caaeafbedd5bf0f3729bfa841f3e3aad782",
+            "native_size": [
+              60,
+              60
+            ],
+            "canvas_size": [
+              128,
+              128
+            ],
+            "padding_offset": [
+              34,
+              34
+            ],
+            "no_resizing": true,
+            "no_repainting": true
+          },
+          "sequence_edit": {
+            "method": "whole_native_frame_reuse",
+            "authorization": "Exclude originalslot6 slash-effect; exact native frames preserve left-hand overhead cut and recovery.",
+            "original_candidate": "candidates/skeleton_footsoldier/attack-minimax-v1/north-west",
+            "original_provenance": "candidates/skeleton_footsoldier/attack-minimax-v1/north-west/source-provenance.json",
+            "original_provenance_sha256": "cf891bba81c2e7ea9d08b73d5ea3a39da9e80da5c08faedd6764e060c31b7c5e",
+            "original_frame_indices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              7,
+              8,
+              9,
+              10,
+              11,
+              11
+            ],
+            "original_generated_frame_count": 12,
+            "playback_frame_count": 12,
+            "fps": 10,
+            "duration_ms": 1200,
+            "source_pixels_changed": false,
+            "rejected_original_sources_preserved": true
+          }
+        },
+        "west": {
+          "animation_group_id": "c2c698fb-2bf5-4e57-804c-ffb33028e091",
+          "fps": 10,
+          "frame_count": 12,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved",
+          "source_kind": "pixellab_raw_animation_native_padded_reference",
+          "provider_job_id": "c2c698fb-2bf5-4e57-804c-ffb33028e091",
+          "input_reference": {
+            "original_resource": "res://Assets/Characters/skeleton_footsoldier/rotations/west.png",
+            "original_sha256": "8f120201b91d1f9300d0fa621df7a192c5231de6db7600a7859fa0e9849b588c",
+            "padded_input_relative_to_task": "native-padded-references/skeleton_footsoldier/west.png",
+            "input_sha256": "42c970f316580e84dbddc0ac4ec6ebb338a84cf2d8acaac83c74ef029ac8a263",
+            "native_size": [
+              60,
+              60
+            ],
+            "canvas_size": [
+              128,
+              128
+            ],
+            "padding_offset": [
+              34,
+              34
+            ],
+            "no_resizing": true,
+            "no_repainting": true
+          },
+          "sequence_edit": {
+            "method": "whole_native_frame_reuse",
+            "authorization": "Exclude originalslot5 stray slash trace; preserve exact clean overhead sword poses.",
+            "original_candidate": "candidates/skeleton_footsoldier/attack-minimax-v1/west",
+            "original_provenance": "candidates/skeleton_footsoldier/attack-minimax-v1/west/source-provenance.json",
+            "original_provenance_sha256": "a46d85f116cdaa1a302c300ba49c86ea582269c5a544f41ff23701d8f663f785",
+            "original_frame_indices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              11
+            ],
+            "original_generated_frame_count": 12,
+            "playback_frame_count": 12,
+            "fps": 10,
+            "duration_ms": 1200,
+            "source_pixels_changed": false,
+            "rejected_original_sources_preserved": true
+          }
+        },
+        "south-west": {
+          "animation_group_id": "1a4c285d-06a2-4a9e-8e81-d2faab34ef4f",
+          "fps": 10,
+          "frame_count": 12,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved",
+          "source_kind": "pixellab_raw_animation_native_padded_reference",
+          "provider_job_id": "1a4c285d-06a2-4a9e-8e81-d2faab34ef4f",
+          "input_reference": {
+            "original_resource": "res://Assets/Characters/skeleton_footsoldier/rotations/south-west.png",
+            "original_sha256": "81cf2fdae0b7da2fd1dcdc5834cc95e4d433bd0fefa7312738ba84520ec4c875",
+            "padded_input_relative_to_task": "native-padded-references/skeleton_footsoldier/south-west.png",
+            "input_sha256": "72f66fc46c12c52e641879c0ec8d0e05a36167b03c27452f779547f28dbbc95f",
+            "native_size": [
+              60,
+              60
+            ],
+            "canvas_size": [
+              128,
+              128
+            ],
+            "padding_offset": [
+              34,
+              34
+            ],
+            "no_resizing": true,
+            "no_repainting": true
+          },
+          "sequence_edit": {
+            "method": "whole_native_frame_reuse",
+            "authorization": "Exclude originalslot5 slash effect; preserve exact native overhead cut and recovery.",
+            "original_candidate": "candidates/skeleton_footsoldier/attack-minimax-v1/south-west",
+            "original_provenance": "candidates/skeleton_footsoldier/attack-minimax-v1/south-west/source-provenance.json",
+            "original_provenance_sha256": "da3a92eb642345d18bed30c0baaf27281964ea03001f093069657596177dddd7",
+            "original_frame_indices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              11
+            ],
+            "original_generated_frame_count": 12,
+            "playback_frame_count": 12,
+            "fps": 10,
+            "duration_ms": 1200,
+            "source_pixels_changed": false,
+            "rejected_original_sources_preserved": true
+          }
+        }
+      }
+    },
+    "selection_sha256": "69b3ce98e33ce85499c72542e85815c62de7bf772d20a5b682463d62a58ce95a",
+    "source_manifest": "art_sources/skeleton-footsoldier-animations/manifest.json",
+    "source_manifest_sha256": "c8323633b21101706778aca4b62027f3451dc99c4d13852b8f90ccf57a89f4a3",
+    "visual_approval": {
+      "date": "2026-11-01",
+      "status": "user_approved_complete_set",
+      "authorization": "User approved complete Footsoldier8direction set including idle/walk, overhead sword cuts and original-palette edge smoothing."
+    },
+    "frame_count": 224,
+    "source_pixels": "Exact lossless RGBA source PNG bytes at native pixel density, including original padding."
+  }
+}

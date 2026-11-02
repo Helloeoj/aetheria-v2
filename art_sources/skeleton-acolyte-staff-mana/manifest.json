@@ -1,0 +1,374 @@
+{
+  "schema_version": 1,
+  "source": "PixelLab VFX Creator exact recipe renderer",
+  "effect_id": "6eb0a08a-eef7-43ce-99d9-52f7a645a694",
+  "export_image_id": "36744cf5-8b0b-4d83-9c06-79fc12178230",
+  "effect_url": "https://pixellab.ai/create-vfx?effect=6eb0a08a-eef7-43ce-99d9-52f7a645a694",
+  "source_download": "https://api.pixellab.ai/mcp/pixel-tools/36744cf5-8b0b-4d83-9c06-79fc12178230/aetheria-acolyte-dark-purple-staff-mana-game.zip",
+  "source_game_pack_sha256": "e878cf3b275d55c1e59c65bb0fc4e010862e5f2ba6c30211cb0550e27db5e63d",
+  "installed_sheet": "godot_client/Assets/Effects/SkeletonAcolyte/staff_mana.png",
+  "installed_sheet_sha256": "e8d268dc69e3d1937ed62bad67ed1207bfa06c59fec75c010092f91ed9055223",
+  "source_sheet_copied_unchanged": true,
+  "recipe": {
+    "name": "Acolyte dark purple staff mana",
+    "canvas": {
+      "w": 32,
+      "h": 40
+    },
+    "frames": 12,
+    "fps": 10,
+    "loop": false,
+    "origin": [
+      16,
+      29
+    ],
+    "ramps": {
+      "main": [
+        "#1d092c",
+        "#351048",
+        "#52206d",
+        "#79349b",
+        "#a554c4",
+        "#bc78d6"
+      ]
+    },
+    "outline": {
+      "mode": "none"
+    },
+    "dither": 0,
+    "tones": 6,
+    "seed": 92417,
+    "layers": [
+      {
+        "id": "mana_glow",
+        "type": "glow",
+        "z": "back",
+        "plane": "screen",
+        "ramp": "main",
+        "life": [
+          0.09,
+          0.91
+        ],
+        "x": 16,
+        "y": 25,
+        "radius": {
+          "keys": [
+            [
+              0,
+              1
+            ],
+            [
+              0.25,
+              7
+            ],
+            [
+              0.6,
+              8
+            ],
+            [
+              0.8,
+              5
+            ],
+            [
+              1,
+              0
+            ]
+          ]
+        },
+        "squash": 1.15,
+        "shape": "soft",
+        "outline": false,
+        "opacity": 0.38,
+        "intensity": 0.6
+      },
+      {
+        "id": "dark_fire",
+        "type": "flame",
+        "z": "front",
+        "plane": "screen",
+        "ramp": "main",
+        "life": [
+          0.09,
+          0.91
+        ],
+        "x": 16,
+        "y": 29,
+        "width": {
+          "keys": [
+            [
+              0,
+              1
+            ],
+            [
+              0.2,
+              7
+            ],
+            [
+              0.5,
+              9
+            ],
+            [
+              0.78,
+              7
+            ],
+            [
+              1,
+              0
+            ]
+          ]
+        },
+        "height": {
+          "keys": [
+            [
+              0,
+              1
+            ],
+            [
+              0.2,
+              10
+            ],
+            [
+              0.5,
+              16
+            ],
+            [
+              0.78,
+              12
+            ],
+            [
+              1,
+              0
+            ]
+          ]
+        },
+        "tongues": 3,
+        "spread": 0.65,
+        "taper": 0.7,
+        "base": 0.55,
+        "sway": 0.3,
+        "curl": 0.45,
+        "flicker": 0.35,
+        "chips": 0.15,
+        "core": 0.8,
+        "cycles": 2,
+        "angle": 0,
+        "outline": false
+      }
+    ]
+  },
+  "source_export_manifest": {
+    "app": "PixelLab VFX Creator",
+    "name": "Aetheria Acolyte dark purple staff mana",
+    "fps": 10,
+    "frame_ms": 100,
+    "frames": 12,
+    "loop": false,
+    "canvas": {
+      "w": 32,
+      "h": 40
+    },
+    "anchor": {
+      "kind": "origin",
+      "x": 16,
+      "y": 29
+    },
+    "clips": [
+      {
+        "name": "whole",
+        "title": "the whole effect, no sprite",
+        "depth": "both",
+        "loop": false,
+        "start_frame": 1,
+        "frames": 9,
+        "frame": {
+          "w": 14,
+          "h": 16
+        },
+        "sheets": [
+          {
+            "file": "whole.png",
+            "first_frame": 0,
+            "frames": 9,
+            "columns": 3,
+            "rows": 3
+          }
+        ],
+        "offset": {
+          "x": -7,
+          "y": -15
+        }
+      },
+      {
+        "name": "behind",
+        "title": "everything behind the sprite",
+        "depth": "behind",
+        "loop": false,
+        "start_frame": 2,
+        "frames": 8,
+        "frame": {
+          "w": 8,
+          "h": 10
+        },
+        "sheets": [
+          {
+            "file": "behind.png",
+            "first_frame": 0,
+            "frames": 8,
+            "columns": 3,
+            "rows": 3
+          }
+        ],
+        "offset": {
+          "x": -4,
+          "y": -9
+        }
+      },
+      {
+        "name": "front",
+        "title": "everything in front of the sprite",
+        "depth": "front",
+        "loop": false,
+        "start_frame": 1,
+        "frames": 9,
+        "frame": {
+          "w": 14,
+          "h": 16
+        },
+        "sheets": [
+          {
+            "file": "front.png",
+            "first_frame": 0,
+            "frames": 9,
+            "columns": 3,
+            "rows": 3
+          }
+        ],
+        "offset": {
+          "x": -7,
+          "y": -15
+        }
+      }
+    ]
+  },
+  "anchors_all96_source_poses_visually_reviewed": true,
+  "source_attack_sha256": {
+    "south": [
+      "e77b56d5cbf0d3720cff7892f4b070e8090f1b018976e5caea082518658bef53",
+      "d53b38be3c3e05cb3b0b5b7fa90f8cbaa998f9162df6f43a20bf425b23520294",
+      "54cbd1c21533e6dbe223f5b19cdac6d3ed32ec04e4f6ec991ab79bf50238f0f2",
+      "84c86d9245bbceec79c7ef5325ed265493af002ecd9c037df60aed3396631ae5",
+      "7bc4990a67c4b9c0d3176e670c08831a4bca9eb9652190d7df2998755db4dc27",
+      "4ccf716583676ad4e82a41cc35686a180d09fc8fd6905b6b39bb8aac4d483d5b",
+      "631f318200b4fbaa07e60d0c3f8516be652ee5b70f055b5f26646c5cb1ca164b",
+      "c7a47c36859b8d336371c80b0de87773f5eeaf8eb340baa2255ad40a54382642",
+      "e9e8aa7343516e2c13d207fa011d429bd3b8c8f1d3d9223500f8c0059695a8b9",
+      "a50d312d968602d2cbd8064b2c852e354cdb4a40337a9834d667b43544909715",
+      "292f1ad169bc4b7a336bf5b520139e81e98c27ca85b549a2e30c426b3b1ad326",
+      "149578b9748b88db3ae14b0a9152ade41002eeed7e316b834991fe7ed85a9143"
+    ],
+    "south-east": [
+      "01e18dbda80c667a7a7aa047791ef846e0d117bea46d08aee9eded5026651fc4",
+      "08246e4cbe019cbb451f6881769804598c2d6c3d177dc7fba72037e5ce528733",
+      "bdd9607b99c1a528f8b5effd1b6574bf46bfee35158e276cd5a758adcff92800",
+      "e746a9fbe9ebbce3443bd91ebc2538f07611b1d0744eb808f8c59d33b072fa75",
+      "840e8c950bbbfc71908e35e8f7f8986977499ac05ff17345dd01b4279e3c33c4",
+      "ade3826197377b6f6a57e824620f88a555bdaa7f15866348f711a2a26cdcbb44",
+      "f947d92f84cc50317074dae9bad9545f8c502d5b76eb15006f603a11bc8089db",
+      "2bf8bff8ac4a0c8d9ec3c4c9e83f8d2781c70d0fdc2dafe54659f2428165a745",
+      "3c8523a80114b42cdfc352ef2c00d39af31c6247663ec84625255ba9c2d2b5c2",
+      "c928fe4b89faeb74879c0f62dc3dab698da160e632366d08b80af34ff5ac550c",
+      "c399ba49db3f84c06ead0a298dfe98a75705d1c86bc668780939e3cdebf91ac2",
+      "d2c7654e9345bb3614a2d6f32f15c34a27ea636104dcd672ed976a8a32365a26"
+    ],
+    "east": [
+      "31a5a82929693bc7486c30c4787c7227a27a988807a5c30b1a2376d05ee81704",
+      "e51ef1dde37f26f23b7b9e8ca09e1b079d70fc66bb3aa936a21d6597def76b33",
+      "8647b0c2010780f9aa2795e9ea16de4b72aef5e8ede91dde9e0e9332dc57a034",
+      "6f0757d2af790882c5d71be55cf40dac71d4904c7537b07007951dd3c45a2922",
+      "1bb9709a9bf4fb5390d1ea312228faa73d61834fbdb984fae5461b4a6cc78890",
+      "bfd7cc3b6f729977c2720d527f23f4fca53af2a553f3983327a94532575b6f99",
+      "d16088e011a90e678db14376b29bff9dc33696723d0f65d673915e8b82aad1c1",
+      "78f8c3a91c2dc9ae270d31616bba830413eda46d213272271279b7890d95cf8f",
+      "6fcf3aa509612a4600ce3d9e6a56be9bfcd79e87d4620247464e5c1eb59ff2ac",
+      "aa83855e9a34bebd32c1f9334a448a7b9b652fdad8d6540d770474c67ba46da4",
+      "d3b0b7d87d638270d8ead411314612171ac4ded4a8467629ba8f8f30b465484a",
+      "4f89a927e4f8d1743d658b510ba806b398e6ad10c79a2a39ed7cfa1c583f4d3c"
+    ],
+    "north-east": [
+      "4d6c9b37823d56ff4891d40ee9cff4ccd9ecf72310ef7d35f2bf471e398e0ca4",
+      "9f6cfc8039fa1b3e8a0bda2db34c570a7628a91e0667bbc131390eae374c669b",
+      "cd628bcc990a7cc30f78e628c42c4330fce6adf52252567f8495837bccdc6e23",
+      "412b9afce86a6f8b3dcad9f5bc47336b4a926cd308e37e1576293de56c20e459",
+      "610feb63ac39e696991a3027f71c196a4202688bada3ebb82f1aa46ddd3a64a0",
+      "3413074b50110e9cac5df5e83c7416da414ad917067800b127fb2ab548ee24a8",
+      "bf3a00da53c57d267bec62df49e9731425ef0803b533c99a854f4b3c709eb935",
+      "78752e61a6c270f42c312e88c74488ccaf1861449c05b6467f5747e3feefe991",
+      "0f9aefd7cf1c83a8c24c72c7a56d73f3f0d0d3f0309f19186c68bd90fd024cce",
+      "381c8493a29ab9c509c632d37f30f8bd611dbeb0e821413a35f857f562311009",
+      "d00209c37a135fefa7e043e844f920dd0547ecc4663691de0bbdfd6d7c7a8f5f",
+      "92273c633b601c3b9311a07f9ec32842f56228be3ff875d6ed015fabdd2bf71a"
+    ],
+    "north": [
+      "24c65adcb3b3250a46aef27d9d4b7f51a3befdf589d222fb507cc946f6a01074",
+      "d8f0b792fd983df1305ca7540bc6e149ef3dfd2a24680fa9c91a1c514a853344",
+      "004902630f500b9679eb8c858796013ebcd8b5ea918137b27e45622798c4be36",
+      "ecb034825498b688b6eb52abf699e4612a850bcd664a20971334896404b42599",
+      "9a9cbab7ad903021c4c48e3dd45331b288d6e9e14755b5b04bd048b4231dec34",
+      "65f0f3daf37fe4eb8cb9e534ec9985fe9523380e28493d2cd41057af76b9f58b",
+      "afab2a6cfe67f590b5795af9ba1feb3cbd6d64207cb23da0f19601a8c42d11db",
+      "fcf68819b8b2808c7b68768242b632ed29a6ddacada5da87224368079bbbefea",
+      "e1715faf722213f2e0437d99a5282011454e625734061decd64cf3adbd9efec8",
+      "b0e3a039f577e7b715a4c8d37f2b0bf02737ab5287759f3aafb61d4bac2b0aab",
+      "b4761c44a5fc1da342f4d535ee17c9c82e3cc39a3d7806d3dcb737955d9c2d03",
+      "75d8d1de21626ddb7062c75c3d2c2d84266fc9e26b43243294e4ab7cca4b0d7d"
+    ],
+    "north-west": [
+      "38c5a195939e483a5ffa5b91e02d8d2a42ae275d2b349a13df94dede2bb4f44d",
+      "5554f2faf02d7b6f2cd7c6e1fe27c5d10b24792691d86e75c033edff4256a2e0",
+      "5985771fedb0436f37e05ac496021a2e11e934c5642ae9cd2711261c9b1b8ab7",
+      "8e3e063bf966e8e63a7d9b4922e5b38d327c8d07c8035635809f5e18fd047c27",
+      "b70f9ea6994367a6fd37d25869e02fbb491629fb8313d53e331f0b83f4741354",
+      "fa053db3cb847d479b228f9be42f43e8712820d7a57a47e090c1718526491dee",
+      "406b24225f8ffb9f5feac1c46094b6ecb29c0c774fd717c13e0519ac80676730",
+      "a9d76a2e737b6ddbbf967e0f313e1b4349ab654b13010bff69d73f8dc026554e",
+      "fc66f714ace753f2ac31b50981a087139c570c372f6ff700ca7d33a0a19c85d9",
+      "66909685e27ce71c8174de6fac0f69f870b03fc50114cf4fddf0058afa5ff367",
+      "3b3410cabadf4a9289f3f30ae8ef58925a2d27c415094457a814c1302e536a58",
+      "6b925b4a61c2c4f8012b8e6597d0969f47a95ddc4041d14a746de1e0a8ad15b6"
+    ],
+    "west": [
+      "a72788a1cb274203f9b964c7309498895ec0f4ce47e0e0019cb9bbdb9b0aa764",
+      "b2ffdcd3b799f3349d5e358082269e07a25a31abc02c356c7da23ea18e6c2522",
+      "a184e42c255a658b50042569166046615a66cba80f675721a0b3d5e7c623d917",
+      "c5c6dc2e1d645607ff70b04b8e684e06e690ee1c61849f2276e04c2bf3ff7295",
+      "89c5146f255df4c923f78fe326bd88d75ec18baadc993b7ab91195e997e468a0",
+      "7860f414b835e9b0fa934da6cb1faf0f2400f73f7db8dc68209d6d82f3a6cba8",
+      "68ddf66c61326634621911b67580751a13205b9f43fff1c79e3a8f3e2e59e3f4",
+      "66170444dc3be4bc3b62d8c4dddf6a91775ecba24258c6f1c8ce70c122cc0006",
+      "0b365b3b3ef61e18081857cb8af76adb40030bf9dabe61a5ffce02a2ec42b4bc",
+      "e9d7a883cb286a7698d7692f33bbfacbbcc70c3647bab730aafa76b780c39120",
+      "71eb2b29fac932056a396ac8af49339a20db81c134c953cf6f94879300bb38aa",
+      "b0e6cc92c292ea4e1cf2f6e1fb3f175bcbb94de946a957d56ebc49363860fd18"
+    ],
+    "south-west": [
+      "8e37119145fde66b0d65955b476b2cc5ca73c1ab434e48f267fc74422e0e96ca",
+      "6e42cb3bfcdd7395f689dbfb56403ad901e6c785cc6f92ed6ead9a37f729c3b9",
+      "03c4b8f39fd74ed102c2dff60d675da48f72e70ecdba74d16bd3461ec3a2b3ee",
+      "a1bc314b3575bf86ad4181960813672c6f36c47b2fe34fc3436f46ede75a8573",
+      "5fe614e87635710999ccd0b1cdec73e9ea86eca88d958a2dfb549b64abbe5c8d",
+      "ada3705e68103bbd5307f8e714bc34f27ec57eb8af83c01b84174df657a2e978",
+      "9afd6deb61690743e91262cdd3aa546f9bbaec1dbd053e943808adc4fcc17f16",
+      "dccb8a6c39665baa70eefa447b8183ade012a814778b810c3bb175d26826b49f",
+      "5b4d76d7edbfb5d9326e4e8933d4b80c71807eebf041c4bb8dc904999e10be2a",
+      "e3ee7aae8f2f45938c25e0eaa19c171e27f41bb3252112b7d6235a4a199f26ad",
+      "e97d18a1a5af071f28fb55bfadff0d585e78cd9a9a5b5ccc0aad00107a3a8f85",
+      "5b32c07a8a4691e970e44f398ade73f8643553b5b0f203a80748173b23d64276"
+    ]
+  },
+  "status": "user_approved_all8directions_runtime_validated",
+  "approval": {
+    "date": "2026-11-01",
+    "feedback": "Approve the complete Acolyte set",
+    "scope": "Staff-led cast plus approved dark purple fiery mana glow, all8directions; original face retained with edge smoothing only."
+  }
+}

@@ -6,6 +6,9 @@ signal attack_finished
 const WALK_HOLD_SECONDS := 0.22
 const FALLBACK_ATTACK_SECONDS := 0.22
 const HURT_FLASH_SECONDS := 0.16
+const SKELETON_EDGE_MATERIAL := preload("res://shaders/skeleton_edge_refinement.tres")
+const EDGE_SMOOTHED_SKINS := ["skeleton_footsoldier", "skeleton_knight", "skeleton_acolyte", "skeleton_captain"]
+const STAFF_MANA_SCRIPT := preload("res://scripts/skeleton_staff_mana.gd")
 
 var entity_id := ""
 var size := Vector2(32, 32)
@@ -27,6 +30,7 @@ var _fallback_attack := false
 var _hurt_remaining := 0.0
 var _visual_scale := 1.0
 var _has_visual := false
+var _staff_mana: Sprite2D
 
 
 func configure(sprite_size: Vector2, sprite_color: Color, id: String) -> ActorSprite:
@@ -71,6 +75,9 @@ func set_skin(new_skin_id: String) -> void:
 		return
 	_ensure_nodes()
 	skin_id = new_skin_id
+	# Refine corners while retaining the original faces, source pixels and scale.
+	# Clear on skin reuse so player, goblins and equipment keep their own style.
+	animated_sprite.material = SKELETON_EDGE_MATERIAL if skin_id in EDGE_SMOOTHED_SKINS else null
 	_attack_remaining = 0.0
 	_fallback_attack = false
 	animated_sprite.position = Vector2.ZERO
@@ -94,7 +101,20 @@ func set_skin(new_skin_id: String) -> void:
 	else:
 		health_bar_offset = Vector2(0.0, -size.y - 10.0)
 	attachment_rig.set_skin(skin_id)
+	_sync_staff_mana()
 	queue_redraw()
+
+
+func _sync_staff_mana() -> void:
+	if skin_id == "skeleton_acolyte":
+		if _staff_mana == null:
+			_staff_mana = STAFF_MANA_SCRIPT.new()
+			_staff_mana.name = "StaffCastMana"
+			_staff_mana.set("visual", animated_sprite)
+			animated_sprite.add_child(_staff_mana)
+	elif _staff_mana != null:
+		_staff_mana.free()
+		_staff_mana = null
 
 
 ## Equipment visuals are separate scenes; equipping never replaces this skin.

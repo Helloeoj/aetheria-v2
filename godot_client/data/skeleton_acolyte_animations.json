@@ -1,0 +1,1585 @@
+{
+  "skin_id": "skeleton_acolyte",
+  "animations": {
+    "idle": {
+      "fps": 4,
+      "loop": true,
+      "directions": {
+        "south": [
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/south/frame_000.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/south/frame_001.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/south/frame_002.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/south/frame_003.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/south/frame_004.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/south/frame_005.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/south/frame_006.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/south/frame_007.png"
+        ],
+        "south-east": [
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/south-east/frame_000.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/south-east/frame_001.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/south-east/frame_002.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/south-east/frame_003.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/south-east/frame_004.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/south-east/frame_005.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/south-east/frame_006.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/south-east/frame_007.png"
+        ],
+        "east": [
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/east/frame_000.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/east/frame_001.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/east/frame_002.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/east/frame_003.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/east/frame_004.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/east/frame_005.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/east/frame_006.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/east/frame_007.png"
+        ],
+        "north-east": [
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/north-east/frame_000.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/north-east/frame_001.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/north-east/frame_002.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/north-east/frame_003.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/north-east/frame_004.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/north-east/frame_005.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/north-east/frame_006.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/north-east/frame_007.png"
+        ],
+        "north": [
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/north/frame_000.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/north/frame_001.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/north/frame_002.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/north/frame_003.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/north/frame_004.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/north/frame_005.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/north/frame_006.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/north/frame_007.png"
+        ],
+        "north-west": [
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/north-west/frame_000.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/north-west/frame_001.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/north-west/frame_002.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/north-west/frame_003.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/north-west/frame_004.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/north-west/frame_005.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/north-west/frame_006.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/north-west/frame_007.png"
+        ],
+        "west": [
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/west/frame_000.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/west/frame_001.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/west/frame_002.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/west/frame_003.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/west/frame_004.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/west/frame_005.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/west/frame_006.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/west/frame_007.png"
+        ],
+        "south-west": [
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/south-west/frame_000.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/south-west/frame_001.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/south-west/frame_002.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/south-west/frame_003.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/south-west/frame_004.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/south-west/frame_005.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/south-west/frame_006.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/idle/south-west/frame_007.png"
+        ]
+      }
+    },
+    "walk": {
+      "fps": 9,
+      "loop": true,
+      "directions": {
+        "south": [
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/south/frame_000.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/south/frame_001.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/south/frame_002.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/south/frame_003.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/south/frame_004.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/south/frame_005.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/south/frame_006.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/south/frame_007.png"
+        ],
+        "south-east": [
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/south-east/frame_000.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/south-east/frame_001.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/south-east/frame_002.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/south-east/frame_003.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/south-east/frame_004.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/south-east/frame_005.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/south-east/frame_006.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/south-east/frame_007.png"
+        ],
+        "east": [
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/east/frame_000.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/east/frame_001.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/east/frame_002.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/east/frame_003.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/east/frame_004.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/east/frame_005.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/east/frame_006.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/east/frame_007.png"
+        ],
+        "north-east": [
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/north-east/frame_000.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/north-east/frame_001.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/north-east/frame_002.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/north-east/frame_003.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/north-east/frame_004.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/north-east/frame_005.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/north-east/frame_006.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/north-east/frame_007.png"
+        ],
+        "north": [
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/north/frame_000.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/north/frame_001.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/north/frame_002.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/north/frame_003.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/north/frame_004.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/north/frame_005.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/north/frame_006.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/north/frame_007.png"
+        ],
+        "north-west": [
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/north-west/frame_000.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/north-west/frame_001.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/north-west/frame_002.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/north-west/frame_003.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/north-west/frame_004.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/north-west/frame_005.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/north-west/frame_006.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/north-west/frame_007.png"
+        ],
+        "west": [
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/west/frame_000.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/west/frame_001.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/west/frame_002.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/west/frame_003.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/west/frame_004.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/west/frame_005.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/west/frame_006.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/west/frame_007.png"
+        ],
+        "south-west": [
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/south-west/frame_000.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/south-west/frame_001.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/south-west/frame_002.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/south-west/frame_003.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/south-west/frame_004.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/south-west/frame_005.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/south-west/frame_006.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/walk/south-west/frame_007.png"
+        ]
+      }
+    },
+    "attack": {
+      "fps": 10,
+      "loop": false,
+      "directions": {
+        "south": [
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south/frame_000.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south/frame_001.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south/frame_002.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south/frame_003.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south/frame_004.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south/frame_005.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south/frame_006.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south/frame_007.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south/frame_008.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south/frame_009.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south/frame_010.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south/frame_011.png"
+        ],
+        "south-east": [
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south-east/frame_000.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south-east/frame_001.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south-east/frame_002.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south-east/frame_003.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south-east/frame_004.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south-east/frame_005.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south-east/frame_006.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south-east/frame_007.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south-east/frame_008.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south-east/frame_009.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south-east/frame_010.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south-east/frame_011.png"
+        ],
+        "east": [
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/east/frame_000.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/east/frame_001.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/east/frame_002.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/east/frame_003.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/east/frame_004.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/east/frame_005.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/east/frame_006.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/east/frame_007.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/east/frame_008.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/east/frame_009.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/east/frame_010.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/east/frame_011.png"
+        ],
+        "north-east": [
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north-east/frame_000.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north-east/frame_001.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north-east/frame_002.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north-east/frame_003.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north-east/frame_004.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north-east/frame_005.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north-east/frame_006.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north-east/frame_007.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north-east/frame_008.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north-east/frame_009.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north-east/frame_010.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north-east/frame_011.png"
+        ],
+        "north": [
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north/frame_000.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north/frame_001.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north/frame_002.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north/frame_003.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north/frame_004.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north/frame_005.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north/frame_006.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north/frame_007.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north/frame_008.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north/frame_009.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north/frame_010.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north/frame_011.png"
+        ],
+        "north-west": [
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north-west/frame_000.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north-west/frame_001.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north-west/frame_002.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north-west/frame_003.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north-west/frame_004.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north-west/frame_005.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north-west/frame_006.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north-west/frame_007.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north-west/frame_008.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north-west/frame_009.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north-west/frame_010.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/north-west/frame_011.png"
+        ],
+        "west": [
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/west/frame_000.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/west/frame_001.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/west/frame_002.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/west/frame_003.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/west/frame_004.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/west/frame_005.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/west/frame_006.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/west/frame_007.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/west/frame_008.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/west/frame_009.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/west/frame_010.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/west/frame_011.png"
+        ],
+        "south-west": [
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south-west/frame_000.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south-west/frame_001.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south-west/frame_002.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south-west/frame_003.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south-west/frame_004.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south-west/frame_005.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south-west/frame_006.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south-west/frame_007.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south-west/frame_008.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south-west/frame_009.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south-west/frame_010.png",
+          "res://Assets/Characters/skeleton_acolyte/animations/attack/south-west/frame_011.png"
+        ]
+      }
+    }
+  },
+  "frame_sizes": {
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/south/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/south/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/south/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/south/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/south/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/south/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/south/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/south/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/south-east/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/south-east/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/south-east/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/south-east/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/south-east/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/south-east/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/south-east/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/south-east/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/east/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/east/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/east/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/east/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/east/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/east/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/east/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/east/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/north-east/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/north-east/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/north-east/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/north-east/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/north-east/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/north-east/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/north-east/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/north-east/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/north/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/north/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/north/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/north/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/north/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/north/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/north/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/north/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/north-west/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/north-west/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/north-west/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/north-west/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/north-west/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/north-west/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/north-west/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/north-west/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/west/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/west/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/west/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/west/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/west/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/west/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/west/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/west/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/south-west/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/south-west/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/south-west/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/south-west/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/south-west/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/south-west/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/south-west/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/idle/south-west/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/south/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/south/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/south/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/south/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/south/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/south/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/south/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/south/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/south-east/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/south-east/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/south-east/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/south-east/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/south-east/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/south-east/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/south-east/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/south-east/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/east/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/east/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/east/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/east/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/east/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/east/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/east/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/east/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/north-east/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/north-east/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/north-east/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/north-east/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/north-east/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/north-east/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/north-east/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/north-east/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/north/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/north/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/north/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/north/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/north/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/north/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/north/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/north/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/north-west/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/north-west/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/north-west/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/north-west/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/north-west/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/north-west/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/north-west/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/north-west/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/west/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/west/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/west/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/west/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/west/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/west/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/west/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/west/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/south-west/frame_000.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/south-west/frame_001.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/south-west/frame_002.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/south-west/frame_003.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/south-west/frame_004.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/south-west/frame_005.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/south-west/frame_006.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/walk/south-west/frame_007.png": [
+      80,
+      80
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south/frame_000.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south/frame_001.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south/frame_002.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south/frame_003.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south/frame_004.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south/frame_005.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south/frame_006.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south/frame_007.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south/frame_008.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south/frame_009.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south/frame_010.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south/frame_011.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south-east/frame_000.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south-east/frame_001.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south-east/frame_002.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south-east/frame_003.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south-east/frame_004.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south-east/frame_005.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south-east/frame_006.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south-east/frame_007.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south-east/frame_008.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south-east/frame_009.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south-east/frame_010.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south-east/frame_011.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/east/frame_000.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/east/frame_001.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/east/frame_002.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/east/frame_003.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/east/frame_004.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/east/frame_005.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/east/frame_006.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/east/frame_007.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/east/frame_008.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/east/frame_009.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/east/frame_010.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/east/frame_011.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north-east/frame_000.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north-east/frame_001.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north-east/frame_002.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north-east/frame_003.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north-east/frame_004.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north-east/frame_005.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north-east/frame_006.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north-east/frame_007.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north-east/frame_008.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north-east/frame_009.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north-east/frame_010.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north-east/frame_011.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north/frame_000.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north/frame_001.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north/frame_002.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north/frame_003.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north/frame_004.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north/frame_005.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north/frame_006.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north/frame_007.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north/frame_008.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north/frame_009.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north/frame_010.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north/frame_011.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north-west/frame_000.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north-west/frame_001.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north-west/frame_002.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north-west/frame_003.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north-west/frame_004.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north-west/frame_005.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north-west/frame_006.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north-west/frame_007.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north-west/frame_008.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north-west/frame_009.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north-west/frame_010.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/north-west/frame_011.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/west/frame_000.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/west/frame_001.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/west/frame_002.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/west/frame_003.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/west/frame_004.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/west/frame_005.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/west/frame_006.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/west/frame_007.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/west/frame_008.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/west/frame_009.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/west/frame_010.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/west/frame_011.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south-west/frame_000.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south-west/frame_001.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south-west/frame_002.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south-west/frame_003.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south-west/frame_004.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south-west/frame_005.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south-west/frame_006.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south-west/frame_007.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south-west/frame_008.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south-west/frame_009.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south-west/frame_010.png": [
+      128,
+      128
+    ],
+    "res://Assets/Characters/skeleton_acolyte/animations/attack/south-west/frame_011.png": [
+      128,
+      128
+    ]
+  },
+  "provenance": {
+    "schema_version": 1,
+    "source_character_id": "b68ad133-4622-4f87-8b68-59c1ec78ca73",
+    "source_groups": {
+      "idle": "dfd5fad1-6da0-4600-bfd1-cba113c6f118",
+      "idle_south_east": "dfd5fad1-6da0-4600-bfd1-cba113c6f118",
+      "idle_east": "dfd5fad1-6da0-4600-bfd1-cba113c6f118",
+      "idle_north_east": "dfd5fad1-6da0-4600-bfd1-cba113c6f118",
+      "idle_north": "dfd5fad1-6da0-4600-bfd1-cba113c6f118",
+      "idle_north_west": "dfd5fad1-6da0-4600-bfd1-cba113c6f118",
+      "idle_west": "dfd5fad1-6da0-4600-bfd1-cba113c6f118",
+      "idle_south_west": "dfd5fad1-6da0-4600-bfd1-cba113c6f118",
+      "walk": "db01a2c8-93a9-48c8-a261-404a4c6326b0",
+      "walk_south_east": "db01a2c8-93a9-48c8-a261-404a4c6326b0",
+      "walk_east": "db01a2c8-93a9-48c8-a261-404a4c6326b0",
+      "walk_north_east": "db01a2c8-93a9-48c8-a261-404a4c6326b0",
+      "walk_north": "db01a2c8-93a9-48c8-a261-404a4c6326b0",
+      "walk_north_west": "db01a2c8-93a9-48c8-a261-404a4c6326b0",
+      "walk_west": "db01a2c8-93a9-48c8-a261-404a4c6326b0",
+      "walk_south_west": "db01a2c8-93a9-48c8-a261-404a4c6326b0",
+      "attack": "3a7f36bd-8559-4e11-811d-6cb4e17c5d07",
+      "attack_south_east": "2214b679-c60e-4c17-83ed-e4aa73114568",
+      "attack_east": "89bcd6b6-b011-4097-b222-416e95c484e2",
+      "attack_north_east": "f0b45c59-bac2-41c8-b0ea-35cf056eb51e",
+      "attack_north": "2d65ae88-706c-4a6a-9ed8-47be403112e9",
+      "attack_north_west": "0af4de2a-be41-48ac-8bdb-616bb789cceb",
+      "attack_west": "a69ff115-7902-4946-84a0-f30ce5cb0664",
+      "attack_south_west": "086146e6-80be-4f17-98f2-bba17538c336"
+    },
+    "clip_provenance": {
+      "idle": {
+        "south": {
+          "animation_group_id": "dfd5fad1-6da0-4600-bfd1-cba113c6f118",
+          "fps": 4,
+          "frame_count": 8,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved"
+        },
+        "south-east": {
+          "animation_group_id": "dfd5fad1-6da0-4600-bfd1-cba113c6f118",
+          "fps": 4,
+          "frame_count": 8,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved"
+        },
+        "east": {
+          "animation_group_id": "dfd5fad1-6da0-4600-bfd1-cba113c6f118",
+          "fps": 4,
+          "frame_count": 8,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved"
+        },
+        "north-east": {
+          "animation_group_id": "dfd5fad1-6da0-4600-bfd1-cba113c6f118",
+          "fps": 4,
+          "frame_count": 8,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved"
+        },
+        "north": {
+          "animation_group_id": "dfd5fad1-6da0-4600-bfd1-cba113c6f118",
+          "fps": 4,
+          "frame_count": 8,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved"
+        },
+        "north-west": {
+          "animation_group_id": "dfd5fad1-6da0-4600-bfd1-cba113c6f118",
+          "fps": 4,
+          "frame_count": 8,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved"
+        },
+        "west": {
+          "animation_group_id": "dfd5fad1-6da0-4600-bfd1-cba113c6f118",
+          "fps": 4,
+          "frame_count": 8,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved"
+        },
+        "south-west": {
+          "animation_group_id": "dfd5fad1-6da0-4600-bfd1-cba113c6f118",
+          "fps": 4,
+          "frame_count": 8,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved"
+        }
+      },
+      "walk": {
+        "south": {
+          "animation_group_id": "db01a2c8-93a9-48c8-a261-404a4c6326b0",
+          "fps": 9,
+          "frame_count": 8,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved"
+        },
+        "south-east": {
+          "animation_group_id": "db01a2c8-93a9-48c8-a261-404a4c6326b0",
+          "fps": 9,
+          "frame_count": 8,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved"
+        },
+        "east": {
+          "animation_group_id": "db01a2c8-93a9-48c8-a261-404a4c6326b0",
+          "fps": 9,
+          "frame_count": 8,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved"
+        },
+        "north-east": {
+          "animation_group_id": "db01a2c8-93a9-48c8-a261-404a4c6326b0",
+          "fps": 9,
+          "frame_count": 8,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved"
+        },
+        "north": {
+          "animation_group_id": "db01a2c8-93a9-48c8-a261-404a4c6326b0",
+          "fps": 9,
+          "frame_count": 8,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved"
+        },
+        "north-west": {
+          "animation_group_id": "db01a2c8-93a9-48c8-a261-404a4c6326b0",
+          "fps": 9,
+          "frame_count": 8,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved"
+        },
+        "west": {
+          "animation_group_id": "db01a2c8-93a9-48c8-a261-404a4c6326b0",
+          "fps": 9,
+          "frame_count": 8,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved"
+        },
+        "south-west": {
+          "animation_group_id": "db01a2c8-93a9-48c8-a261-404a4c6326b0",
+          "fps": 9,
+          "frame_count": 8,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved"
+        }
+      },
+      "attack": {
+        "south": {
+          "animation_group_id": "3a7f36bd-8559-4e11-811d-6cb4e17c5d07",
+          "fps": 10,
+          "frame_count": 12,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved",
+          "source_kind": "pixellab_raw_animation_native_padded_reference",
+          "provider_job_id": "3a7f36bd-8559-4e11-811d-6cb4e17c5d07",
+          "input_reference": {
+            "original_resource": "res://Assets/Characters/skeleton_acolyte/rotations/south.png",
+            "original_sha256": "39ed755fad115f2c04396f6b59c260be941c837a007ff1ca51a487371a680396",
+            "padded_input_relative_to_task": "native-padded-references/skeleton_acolyte/south.png",
+            "input_sha256": "b6f66114dd62dbd69d591395386053d25f6a065a838870c5ed8ca497cda29f70",
+            "native_size": [
+              56,
+              56
+            ],
+            "canvas_size": [
+              128,
+              128
+            ],
+            "padding_offset": [
+              36,
+              36
+            ],
+            "no_resizing": true,
+            "no_repainting": true
+          }
+        },
+        "south-east": {
+          "animation_group_id": "2214b679-c60e-4c17-83ed-e4aa73114568",
+          "fps": 10,
+          "frame_count": 12,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved",
+          "source_kind": "pixellab_raw_animation_native_padded_reference",
+          "provider_job_id": "2214b679-c60e-4c17-83ed-e4aa73114568",
+          "input_reference": {
+            "original_resource": "res://Assets/Characters/skeleton_acolyte/rotations/south-east.png",
+            "original_sha256": "205d8c1f9f6e4560563705a82442605d2b72e0ed8e44b70157da5f9da4b2ccce",
+            "padded_input_relative_to_task": "native-padded-references/skeleton_acolyte/south-east.png",
+            "input_sha256": "178c28f633c10d7282f64c8f8c3bc32a3ebb0c190bb79bd9249561ea47d2ea72",
+            "native_size": [
+              56,
+              56
+            ],
+            "canvas_size": [
+              128,
+              128
+            ],
+            "padding_offset": [
+              36,
+              36
+            ],
+            "no_resizing": true,
+            "no_repainting": true
+          }
+        },
+        "east": {
+          "animation_group_id": "89bcd6b6-b011-4097-b222-416e95c484e2",
+          "fps": 10,
+          "frame_count": 12,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved",
+          "source_kind": "pixellab_raw_animation_native_padded_reference",
+          "provider_job_id": "89bcd6b6-b011-4097-b222-416e95c484e2",
+          "input_reference": {
+            "original_resource": "res://Assets/Characters/skeleton_acolyte/rotations/east.png",
+            "original_sha256": "4086cc7c27cefa86429e7392f2bb6785af635d54bcd42e45f419395bee0a5cf3",
+            "padded_input_relative_to_task": "native-padded-references/skeleton_acolyte/east.png",
+            "input_sha256": "e66262d9068b9f2d10f9d7b3982323bb9d4f8bd60c27a2dc330667736a3b45be",
+            "native_size": [
+              56,
+              56
+            ],
+            "canvas_size": [
+              128,
+              128
+            ],
+            "padding_offset": [
+              36,
+              36
+            ],
+            "no_resizing": true,
+            "no_repainting": true
+          }
+        },
+        "north-east": {
+          "animation_group_id": "f0b45c59-bac2-41c8-b0ea-35cf056eb51e",
+          "fps": 10,
+          "frame_count": 12,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved",
+          "source_kind": "pixellab_raw_animation_native_padded_reference",
+          "provider_job_id": "f0b45c59-bac2-41c8-b0ea-35cf056eb51e",
+          "input_reference": {
+            "original_resource": "res://Assets/Characters/skeleton_acolyte/rotations/north-east.png",
+            "original_sha256": "f82dd35201a791939544af0a05d8167fa2bcc65cce2152690fa64c32da78dc91",
+            "padded_input_relative_to_task": "native-padded-references/skeleton_acolyte/north-east.png",
+            "input_sha256": "4622d455965a06d12f11771ac58fc4472fff50a3c231793607dc54295d2cb192",
+            "native_size": [
+              56,
+              56
+            ],
+            "canvas_size": [
+              128,
+              128
+            ],
+            "padding_offset": [
+              36,
+              36
+            ],
+            "no_resizing": true,
+            "no_repainting": true
+          }
+        },
+        "north": {
+          "animation_group_id": "2d65ae88-706c-4a6a-9ed8-47be403112e9",
+          "fps": 10,
+          "frame_count": 12,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved",
+          "source_kind": "pixellab_raw_animation_native_padded_reference",
+          "provider_job_id": "2d65ae88-706c-4a6a-9ed8-47be403112e9",
+          "input_reference": {
+            "original_resource": "res://Assets/Characters/skeleton_acolyte/rotations/north.png",
+            "original_sha256": "3b91713d7761761dacb0319c25f7087129fad3fedeef08a0df1f73c8c6b1fadb",
+            "padded_input_relative_to_task": "native-padded-references/skeleton_acolyte/north.png",
+            "input_sha256": "3c6f4817f05555f04888760b5d12b5552ed929027978d8401548d12257bd5ad7",
+            "native_size": [
+              56,
+              56
+            ],
+            "canvas_size": [
+              128,
+              128
+            ],
+            "padding_offset": [
+              36,
+              36
+            ],
+            "no_resizing": true,
+            "no_repainting": true
+          }
+        },
+        "north-west": {
+          "animation_group_id": "0af4de2a-be41-48ac-8bdb-616bb789cceb",
+          "fps": 10,
+          "frame_count": 12,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved",
+          "source_kind": "pixellab_raw_animation_native_padded_reference",
+          "provider_job_id": "0af4de2a-be41-48ac-8bdb-616bb789cceb",
+          "input_reference": {
+            "original_resource": "res://Assets/Characters/skeleton_acolyte/rotations/north-west.png",
+            "original_sha256": "d4ab20732fc18aac815a274dd8035a3a340b0e7cc6bbf4805f600a4c1be02525",
+            "padded_input_relative_to_task": "native-padded-references/skeleton_acolyte/north-west.png",
+            "input_sha256": "e6c295e7863e633f2412ec126d4a1b7e7e6ea670cf5c77cc6d724b3b597f81a4",
+            "native_size": [
+              56,
+              56
+            ],
+            "canvas_size": [
+              128,
+              128
+            ],
+            "padding_offset": [
+              36,
+              36
+            ],
+            "no_resizing": true,
+            "no_repainting": true
+          }
+        },
+        "west": {
+          "animation_group_id": "a69ff115-7902-4946-84a0-f30ce5cb0664",
+          "fps": 10,
+          "frame_count": 12,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved",
+          "source_kind": "pixellab_raw_animation_native_padded_reference",
+          "provider_job_id": "a69ff115-7902-4946-84a0-f30ce5cb0664",
+          "input_reference": {
+            "original_resource": "res://Assets/Characters/skeleton_acolyte/rotations/west.png",
+            "original_sha256": "661a938976bcb8471abc8753e121670c26096519f6d24b448d50605fdfeae8ba",
+            "padded_input_relative_to_task": "native-padded-references/skeleton_acolyte/west.png",
+            "input_sha256": "a9dc0e00f17da482159aeea5d16cfa21c5b9310e9c0219837383845327ae96d4",
+            "native_size": [
+              56,
+              56
+            ],
+            "canvas_size": [
+              128,
+              128
+            ],
+            "padding_offset": [
+              36,
+              36
+            ],
+            "no_resizing": true,
+            "no_repainting": true
+          }
+        },
+        "south-west": {
+          "animation_group_id": "086146e6-80be-4f17-98f2-bba17538c336",
+          "fps": 10,
+          "frame_count": 12,
+          "internal_motion_review": "passed_before_runtime_installation",
+          "user_visual_approval": "user_approved",
+          "source_kind": "pixellab_raw_animation_native_padded_reference",
+          "provider_job_id": "086146e6-80be-4f17-98f2-bba17538c336",
+          "input_reference": {
+            "original_resource": "res://Assets/Characters/skeleton_acolyte/rotations/south-west.png",
+            "original_sha256": "d34d713307d20129d6d25f98e39555ca4c04deaf1a23ff8fb2e4263c44209a1d",
+            "padded_input_relative_to_task": "native-padded-references/skeleton_acolyte/south-west.png",
+            "input_sha256": "fa874035174b863c095d8f720e4eefa866b22d1eaaf7f1697f5c69ac626d255a",
+            "native_size": [
+              56,
+              56
+            ],
+            "canvas_size": [
+              128,
+              128
+            ],
+            "padding_offset": [
+              36,
+              36
+            ],
+            "no_resizing": true,
+            "no_repainting": true
+          }
+        }
+      }
+    },
+    "selection_sha256": "fa7d0b758d11cdb85140de6adb7cd23cdf0378292d5d5aa3ae29a483bf7907cf",
+    "source_manifest": "art_sources/skeleton-acolyte-animations/manifest.json",
+    "source_manifest_sha256": "1604cd365bd0fc819a9e9323088b59fb80d049c792a60ada9f44b9bab17ccfeb",
+    "visual_approval": {
+      "date": "2026-11-01",
+      "status": "user_approved_complete_set",
+      "authorization": "User approved complete Acolyte8direction set including staff casting and purple mana."
+    },
+    "frame_count": 224,
+    "source_pixels": "Exact lossless RGBA source PNG bytes at native pixel density, including original padding."
+  }
+}
