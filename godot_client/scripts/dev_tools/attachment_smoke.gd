@@ -165,7 +165,9 @@ func _test_lifecycle(actor: ActorSprite) -> void:
 	actor._process(ActorSprite.FALLBACK_ATTACK_SECONDS * 0.5)
 	# CharacterVisual.position is in actor coordinates, so compare directly.
 	var displacement := actor.animated_sprite.position
-	_check(displacement.length() > 0.1, "Peasant fallback attack did not lunge.")
+	_check(displacement.is_zero_approx() if CharacterWeaponMotion.enabled() else displacement.length()>0.1, "Weapon-family attack must keep the body anchored; unarmed fallback must lunge.")
+	if CharacterWeaponMotion.enabled():
+		_check(String(actor.animated_sprite.animation).begins_with("attack_") and not actor._fallback_attack,"Equipped sword did not use its shared attack clock")
 	_check(sword.global_position.is_equal_approx(start + displacement), "Sword separated from the hand during the fallback lunge.")
 	actor.cancel_action()
 	_check(actor.animated_sprite.position.is_zero_approx(), "Cancelling attack did not reset the visual displacement.")

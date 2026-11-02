@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scripts/equipment_visual_2d.gd" id="1"]
+[ext_resource type="Texture2D" path="res://Assets/Equipment/Pickaxes/Held/adamantite/south.png" id="2"]
+[ext_resource type="Texture2D" path="res://Assets/Equipment/Pickaxes/Held/adamantite/south-east.png" id="3"]
+[ext_resource type="Texture2D" path="res://Assets/Equipment/Pickaxes/Held/adamantite/east.png" id="4"]
+[ext_resource type="Texture2D" path="res://Assets/Equipment/Pickaxes/Held/adamantite/north-east.png" id="5"]
+[ext_resource type="Texture2D" path="res://Assets/Equipment/Pickaxes/Held/adamantite/north.png" id="6"]
+[ext_resource type="Texture2D" path="res://Assets/Equipment/Pickaxes/Held/adamantite/north-west.png" id="7"]
+[ext_resource type="Texture2D" path="res://Assets/Equipment/Pickaxes/Held/adamantite/west.png" id="8"]
+[ext_resource type="Texture2D" path="res://Assets/Equipment/Pickaxes/Held/adamantite/south-west.png" id="9"]
+
+[node name="AdamantitePickaxe" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1")
+source_scale = 1.0
+keep_upright = true
+weapon_family = "pickaxe"
+metadata/attachment_socket = "right_hand"
+metadata/directional_views = 8
+metadata/mining_swing_animation = false
+directional_textures = {
+"south": ExtResource("2"),
+"south-east": ExtResource("3"),
+"east": ExtResource("4"),
+"north-east": ExtResource("5"),
+"north": ExtResource("6"),
+"north-west": ExtResource("7"),
+"west": ExtResource("8"),
+"south-west": ExtResource("9")
+}
+grip_positions = {
+"south": Vector2(20, 32),
+"south-east": Vector2(22, 31),
+"east": Vector2(22, 31),
+"north-east": Vector2(19, 31),
+"north": Vector2(20, 32),
+"north-west": Vector2(18, 31),
+"west": Vector2(16, 31),
+"south-west": Vector2(18, 31)
+}
+
+support_grip_positions = {
+"south": Vector2(20, 22),
+"south-east": Vector2(20, 22),
+"east": Vector2(20, 22),
+"north-east": Vector2(19, 22),
+"north": Vector2(20, 22),
+"north-west": Vector2(19, 22),
+"west": Vector2(18, 22),
+"south-west": Vector2(19, 22)
+}
+
+[node name="Artwork" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2")
+centered = false
+position = Vector2(-20, -32)

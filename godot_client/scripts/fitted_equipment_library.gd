@@ -10,6 +10,42 @@ static var forearms: Dictionary = {}
 static var native_parts: Dictionary = {}
 static var replacement_tracks: Dictionary = {}
 static var complete_heads: Dictionary = {}
+static var armor_arm_rigs: Dictionary = {}
+
+static func motion_rest_joints(context: Dictionary) -> Dictionary:
+	var direction:=String(context.direction)
+	var idle: Dictionary=rig_data.rigs[direction].frames[0]
+	if not context.get("body_pose",{}).is_empty():
+		if armor_arm_rigs.is_empty():
+			var path:="res://data/bronze_armor_arm_rig.json"
+			if FileAccess.file_exists(path):
+				armor_arm_rigs=JSON.parse_string(FileAccess.get_file_as_string(path))
+		var entry: Dictionary=armor_arm_rigs.get("directions",{}).get(direction,{})
+		if not entry.is_empty():
+			var joints: Dictionary=idle.joints.duplicate(true)
+			joints.merge(entry.joints,true)
+			joints.back=joints.neck
+			return joints
+	var result: Dictionary=idle.joints.duplicate(true)
+	result.back=result.neck
+	return result
+
+static func motion_upper_shift(context: Dictionary) -> Vector2:
+	var pose:=frame(context)
+	var idle: Dictionary=rig_data.rigs[String(context.direction)].frames[0]
+	var current_shift:=point(context.get("body_pose",{}).get("bodyOffset",[0,0]))
+	var idle_context: Dictionary=context.duplicate()
+	idle_context.action="idle"
+	idle_context.frame=0
+	var idle_track:=replacement_pose(String(context.get("chest_item_id","")),idle_context)
+	return point(pose.joints.head)+current_shift-point(idle.joints.head)-point(idle_track.get("bodyOffset",[0,0]))
+
+static func motion_head_offset(context: Dictionary) -> Vector2:
+	var idle_context: Dictionary=context.duplicate()
+	idle_context.action="idle"
+	idle_context.frame=0
+	var idle_track:=replacement_pose(String(context.get("chest_item_id","")),idle_context)
+	return point(idle_track.get("headOffset",[0,0]))
 const HAIR_COLORS := [Color("523d2f"), Color("31231c"), Color("2c201a"), Color("49372c"), Color("281c15"), Color("382c25"), Color("3f3129")]
 
 ## Extend the supplied head cut through its connected face and ink outline.
@@ -201,14 +237,31 @@ static func frame(context: Dictionary) -> Dictionary:
 	return rig_data.rigs[direction].frames[index]
 
 static func joints(context: Dictionary) -> Dictionary:
+	var motion: Dictionary = context.get("weapon_motion",{})
+	if bool(motion.get("active",false)):
+		return motion.joints.duplicate(true)
+	return source_joints(context)
+
+static func source_joints(context: Dictionary) -> Dictionary:
 	var pose := frame(context)
 	if pose.is_empty():
 		return {}
 	var result: Dictionary = pose.joints.duplicate(true)
+	var body: Dictionary = context.get("body_pose",{})
+	var shift := point(body.get("bodyOffset",[0,0]))
+	for name: String in result:
+		var location := point(result[name])+shift
+		result[name]=[location.x,location.y]
+	var head := point(pose.joints.head)+point(body.get("headOffset",[0,0]))
+	result.head=[head.x,head.y]
+	var back := point(context.get("source_pose",{}).get("back",pose.joints.chest))+Vector2(context.get("padding",Vector2.ZERO))+shift
+	result.back=[back.x,back.y]
 	# One hand track for the skin, sleeves AND held items. The old fitted pack
 	# had a second, approximate hand track which pulled elbows away from grips.
 	for side: String in ["right", "left"]:
-		var hand := point(context.pose[side + "_hand"]) + Vector2(context.padding)
+		var hand := point(body.get("hands",{}).get(side+"_hand", context.get("source_pose",context.pose).get(side+"_hand",[0,0])))
+		if not body.get("hands",{}).has(side+"_hand"):
+			hand += Vector2(context.padding)
 		result["hand_" + side] = [hand.x, hand.y]
 		var shoulder := point(result["shoulder_" + side])
 		var elbow := shoulder.lerp(hand, 0.55).round()

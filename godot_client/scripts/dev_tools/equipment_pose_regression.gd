@@ -71,13 +71,15 @@ func _run() -> void:
 				var head_origin := actor.animated_sprite.to_local(head_art.to_global(head_art.offset))
 				var chest_origin := actor.animated_sprite.to_local(chest_art.to_global(chest_art.offset))
 				var head_offset := Vector2i((head_origin-chest_origin).round())
-				check(head_offset.x == 0 and head_offset.y >= 0 and head_offset.y <= 2, "Head anchor exceeds native neck calibration")
+				check(head_offset==Vector2i(FittedEquipmentLibrary.point(context.body_pose.headOffset)), "Head does not follow registered source collar")
+				check(absi(head_offset.x)<=8 and absi(head_offset.y)<=4,"Head registration exceeds native motion envelope")
 				check(_native_neighbors_touch(head_art.texture.get_image(), chest_art.texture.get_image(), head_offset), "Native collar gap leaves the head disconnected: " + material + "/" + direction + "/" + str(frame))
 				for socket_name: String in ["right_hand", "left_hand", "back"]:
 					var socket := rig.get_socket(socket_name)
 					var rear := (socket_name == "right_hand" and direction in ["north", "north-east", "north-west", "west"]) or (socket_name == "left_hand" and direction in ["north", "north-east", "north-west", "east"]) or (socket_name == "back" and not direction.begins_with("north"))
 					check(not socket.show_behind_parent, "Replacement body leaves " + socket_name + " behind the invisible source: " + direction)
 					check((socket.get_index() < body.get_index()) == rear, "Wrong replacement body occlusion: " + direction + "/" + socket_name)
+				check(rig.get_socket("back").get_index()<head_art.get_index(),"Cape draws above the complete character head")
 				for slot: String in ["chest", "legs"]:
 					var item := rig.get_equipped_visual(slot) as FittedEquipmentVisual
 					check(item.authored_pose, "Replacement armor has no authored pose: " + material + "/" + direction + "/" + str(frame) + "/" + slot)

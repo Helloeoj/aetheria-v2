@@ -31,6 +31,7 @@ var _hurt_remaining := 0.0
 var _visual_scale := 1.0
 var _has_visual := false
 var _staff_mana: Sprite2D
+var _weapon_family := ""
 
 
 func configure(sprite_size: Vector2, sprite_color: Color, id: String) -> ActorSprite:
@@ -96,6 +97,8 @@ func set_skin(new_skin_id: String) -> void:
 		animated_sprite.offset = Vector2(width, height) * 0.5 - Vector2(float(foot[0]), float(foot[1]))
 		animated_sprite.scale = Vector2.ONE * _visual_scale
 		animated_sprite.sprite_frames = CharacterSpriteLibrary.get_frames(skin_id)
+		if skin_id=="peasant" and not _weapon_family.is_empty():
+			animated_sprite.sprite_frames=CharacterWeaponMotion.install_attacks(animated_sprite.sprite_frames,_weapon_family)
 		health_bar_offset = Vector2(0.0, -float(foot[1]) * _visual_scale - 10.0)
 		_play_locomotion()
 	else:
@@ -120,7 +123,22 @@ func _sync_staff_mana() -> void:
 ## Equipment visuals are separate scenes; equipping never replaces this skin.
 func set_equipment(equipment: Dictionary) -> void:
 	_ensure_nodes()
+	var family := CharacterWeaponMotion.family_for_name(String(equipment.get("weapon",{}).get("name","")))
+	if family!=_weapon_family:
+		_weapon_family=family
+		if skin_id=="peasant":
+			var previous := animated_sprite.animation
+			var frame := animated_sprite.frame
+			animated_sprite.sprite_frames=CharacterWeaponMotion.install_attacks(CharacterSpriteLibrary.get_frames(skin_id),family)
+			if animated_sprite.sprite_frames.has_animation(previous) and not String(previous).begins_with("attack_"):
+				animated_sprite.play(previous)
+				animated_sprite.frame=mini(frame,animated_sprite.sprite_frames.get_frame_count(previous)-1)
+			else:
+				cancel_action()
 	attachment_rig.set_equipment(equipment)
+
+func weapon_animation_family() -> String:
+	return _weapon_family if skin_id=="peasant" else ""
 
 
 func set_socket_debug(enabled: bool) -> void:

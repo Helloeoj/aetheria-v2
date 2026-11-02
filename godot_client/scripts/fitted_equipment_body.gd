@@ -5,6 +5,7 @@ var visual: AnimatedSprite2D
 var base: Sprite2D
 var head: Sprite2D
 var arms: Dictionary = {}
+var motion_body: PlayerArticulatedBody
 
 func configure(source: AnimatedSprite2D) -> void:
 	visual = source
@@ -12,6 +13,8 @@ func configure(source: AnimatedSprite2D) -> void:
 	head = _sprite("ArmorHeadForeground")
 	for side: String in ["left", "right"]:
 		arms[side] = _sprite("ArmorForearm_" + side)
+	motion_body=PlayerArticulatedBody.new()
+	motion_body.configure(source)
 	reset()
 
 func _sprite(label: String) -> Sprite2D:
@@ -29,6 +32,8 @@ func reset() -> void:
 	visual.self_modulate.a = 1.0
 	for node: Sprite2D in [base, head, arms.left, arms.right]:
 		node.visible = false
+	if motion_body!=null:
+		motion_body.hide()
 
 func sync(context: Dictionary, flags: Dictionary) -> void:
 	reset()
@@ -39,6 +44,18 @@ func sync(context: Dictionary, flags: Dictionary) -> void:
 		return
 	visual.self_modulate.a = 0.0
 	var origin: Vector2 = context.origin - context.padding
+	if bool(flags.get("motion",false)):
+		# Old source draw stays suppressed; complete native head, torso, legs
+		# and moving arm contours are composed from the same clock.
+		base.texture=FittedEquipmentLibrary.base_texture(pose,{"replacement_chest":true,"chest":true,"legs":true,"replacement_legs":true},context)
+		base.position=origin
+		base.visible=true
+		var idle: Dictionary=FittedEquipmentLibrary.rig_data.rigs[String(context.direction)].frames[0]
+		head.texture=FittedEquipmentLibrary.head_texture(idle)
+		head.position=origin+Vector2(context.weapon_motion.head_offset)
+		head.visible=not bool(flags.get("head",false))
+		motion_body.sync(context,flags)
+		return
 	base.texture = FittedEquipmentLibrary.base_texture(pose, flags, context)
 	base.position = origin
 	base.visible = true

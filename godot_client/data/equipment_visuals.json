@@ -356,6 +356,62 @@
       "slot": "ring",
       "visible": false,
       "fitted": true
+    },
+    "Bronze Pickaxe": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/pickaxes/bronze.tscn",
+      "slot": "weapon",
+      "visible": true,
+      "grip_cover": true,
+      "preview_only": true
+    },
+    "Iron Pickaxe": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/pickaxes/iron.tscn",
+      "slot": "weapon",
+      "visible": true,
+      "grip_cover": true,
+      "preview_only": true
+    },
+    "Steel Pickaxe": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/pickaxes/steel.tscn",
+      "slot": "weapon",
+      "visible": true,
+      "grip_cover": true,
+      "preview_only": true
+    },
+    "Blacksteel Pickaxe": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/pickaxes/blacksteel.tscn",
+      "slot": "weapon",
+      "visible": true,
+      "grip_cover": true,
+      "preview_only": true
+    },
+    "Mithril Pickaxe": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/pickaxes/mithril.tscn",
+      "slot": "weapon",
+      "visible": true,
+      "grip_cover": true,
+      "preview_only": true
+    },
+    "Adamantite Pickaxe": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/pickaxes/adamantite.tscn",
+      "slot": "weapon",
+      "visible": true,
+      "grip_cover": true,
+      "preview_only": true
+    },
+    "Runite Pickaxe": {
+      "socket": "right_hand",
+      "scene": "res://scenes/equipment/pickaxes/runite.tscn",
+      "slot": "weapon",
+      "visible": true,
+      "grip_cover": true,
+      "preview_only": true
     }
   }
 }

@@ -346,7 +346,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/south/0.png"
+        "source": "replacement-v1/source/south/0.png",
+        "bodyOffset": [
+          0,
+          2
+        ],
+        "headOffset": [
+          0,
+          2
+        ]
       }
     },
     "run": {
@@ -631,7 +639,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/south/1.png"
+        "source": "replacement-v1/source/south/1.png",
+        "bodyOffset": [
+          2,
+          1
+        ],
+        "headOffset": [
+          2,
+          1
+        ]
       },
       "1": {
         "hands": {
@@ -982,7 +998,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/south/2.png"
+        "source": "replacement-v1/source/south/2.png",
+        "bodyOffset": [
+          1,
+          1
+        ],
+        "headOffset": [
+          1,
+          1
+        ]
       },
       "2": {
         "hands": {
@@ -1293,7 +1317,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/south/3.png"
+        "source": "replacement-v1/source/south/3.png",
+        "bodyOffset": [
+          0,
+          1
+        ],
+        "headOffset": [
+          0,
+          1
+        ]
       },
       "3": {
         "hands": {
@@ -1580,7 +1612,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/south/4.png"
+        "source": "replacement-v1/source/south/4.png",
+        "bodyOffset": [
+          2,
+          1
+        ],
+        "headOffset": [
+          2,
+          1
+        ]
       },
       "4": {
         "hands": {
@@ -1867,7 +1907,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/south/5.png"
+        "source": "replacement-v1/source/south/5.png",
+        "bodyOffset": [
+          1,
+          2
+        ],
+        "headOffset": [
+          1,
+          2
+        ]
       },
       "5": {
         "hands": {
@@ -2202,7 +2250,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/south/6.png"
+        "source": "replacement-v1/source/south/6.png",
+        "bodyOffset": [
+          0,
+          2
+        ],
+        "headOffset": [
+          0,
+          2
+        ]
       },
       "6": {
         "hands": {
@@ -2529,7 +2585,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/south/7.png"
+        "source": "replacement-v1/source/south/7.png",
+        "bodyOffset": [
+          0,
+          0
+        ],
+        "headOffset": [
+          0,
+          0
+        ]
       },
       "7": {
         "hands": {
@@ -2912,7 +2976,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/south/8.png"
+        "source": "replacement-v1/source/south/8.png",
+        "bodyOffset": [
+          1,
+          1
+        ],
+        "headOffset": [
+          1,
+          1
+        ]
       }
     }
   },
@@ -3235,7 +3307,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/south-east/0.png"
+        "source": "replacement-v1/source/south-east/0.png",
+        "bodyOffset": [
+          2,
+          1
+        ],
+        "headOffset": [
+          2,
+          1
+        ]
       }
     },
     "run": {
@@ -3536,7 +3616,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/south-east/1.png"
+        "source": "replacement-v1/source/south-east/1.png",
+        "bodyOffset": [
+          0,
+          2
+        ],
+        "headOffset": [
+          0,
+          2
+        ]
       },
       "1": {
         "hands": {
@@ -3863,7 +3951,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/south-east/2.png"
+        "source": "replacement-v1/source/south-east/2.png",
+        "bodyOffset": [
+          1,
+          1
+        ],
+        "headOffset": [
+          1,
+          1
+        ]
       },
       "2": {
         "hands": {
@@ -4162,7 +4258,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/south-east/3.png"
+        "source": "replacement-v1/source/south-east/3.png",
+        "bodyOffset": [
+          3,
+          0
+        ],
+        "headOffset": [
+          3,
+          0
+        ]
       },
       "3": {
         "hands": {
@@ -4277,7 +4381,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/south-east/4.png"
+        "source": "replacement-v1/source/south-east/4.png",
+        "bodyOffset": [
+          5,
+          1
+        ],
+        "headOffset": [
+          5,
+          1
+        ]
       },
       "4": {
         "hands": {
@@ -4420,7 +4532,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/south-east/5.png"
+        "source": "replacement-v1/source/south-east/5.png",
+        "bodyOffset": [
+          4,
+          2
+        ],
+        "headOffset": [
+          4,
+          2
+        ]
       },
       "5": {
         "hands": {
@@ -4695,7 +4815,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/south-east/6.png"
+        "source": "replacement-v1/source/south-east/6.png",
+        "bodyOffset": [
+          5,
+          1
+        ],
+        "headOffset": [
+          5,
+          1
+        ]
       },
       "6": {
         "hands": {
@@ -4814,7 +4942,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/south-east/7.png"
+        "source": "replacement-v1/source/south-east/7.png",
+        "bodyOffset": [
+          4,
+          0
+        ],
+        "headOffset": [
+          4,
+          0
+        ]
       },
       "7": {
         "hands": {
@@ -5125,7 +5261,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/south-east/8.png"
+        "source": "replacement-v1/source/south-east/8.png",
+        "bodyOffset": [
+          2,
+          1
+        ],
+        "headOffset": [
+          2,
+          1
+        ]
       }
     }
   },
@@ -5348,7 +5492,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/east/0.png"
+        "source": "replacement-v1/source/east/0.png",
+        "bodyOffset": [
+          2,
+          1
+        ],
+        "headOffset": [
+          2,
+          1
+        ]
       }
     },
     "run": {
@@ -5629,7 +5781,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/east/1.png"
+        "source": "replacement-v1/source/east/1.png",
+        "bodyOffset": [
+          1,
+          1
+        ],
+        "headOffset": [
+          1,
+          1
+        ]
       },
       "1": {
         "hands": {
@@ -5688,7 +5848,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/east/2.png"
+        "source": "replacement-v1/source/east/2.png",
+        "bodyOffset": [
+          3,
+          0
+        ],
+        "headOffset": [
+          3,
+          0
+        ]
       },
       "2": {
         "hands": {
@@ -5895,7 +6063,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/east/3.png"
+        "source": "replacement-v1/source/east/3.png",
+        "bodyOffset": [
+          2,
+          0
+        ],
+        "headOffset": [
+          2,
+          0
+        ]
       },
       "3": {
         "hands": {
@@ -6094,7 +6270,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/east/4.png"
+        "source": "replacement-v1/source/east/4.png",
+        "bodyOffset": [
+          1,
+          0
+        ],
+        "headOffset": [
+          1,
+          0
+        ]
       },
       "4": {
         "hands": {
@@ -6313,7 +6497,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/east/5.png"
+        "source": "replacement-v1/source/east/5.png",
+        "bodyOffset": [
+          0,
+          1
+        ],
+        "headOffset": [
+          0,
+          1
+        ]
       },
       "5": {
         "hands": {
@@ -6544,7 +6736,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/east/6.png"
+        "source": "replacement-v1/source/east/6.png",
+        "bodyOffset": [
+          2,
+          0
+        ],
+        "headOffset": [
+          2,
+          0
+        ]
       },
       "6": {
         "hands": {
@@ -6739,7 +6939,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/east/7.png"
+        "source": "replacement-v1/source/east/7.png",
+        "bodyOffset": [
+          3,
+          0
+        ],
+        "headOffset": [
+          3,
+          0
+        ]
       },
       "7": {
         "hands": {
@@ -6794,7 +7002,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/east/8.png"
+        "source": "replacement-v1/source/east/8.png",
+        "bodyOffset": [
+          3,
+          0
+        ],
+        "headOffset": [
+          3,
+          0
+        ]
       }
     }
   },
@@ -7043,8 +7259,12 @@
         },
         "source": "replacement-v1/source/north-east/0.png",
         "headOffset": [
-          0,
-          1
+          2,
+          2
+        ],
+        "bodyOffset": [
+          2,
+          2
         ]
       }
     },
@@ -7240,6 +7460,10 @@
         },
         "source": "replacement-v1/source/north-east/1.png",
         "headOffset": [
+          0,
+          1
+        ],
+        "bodyOffset": [
           0,
           1
         ]
@@ -7475,7 +7699,11 @@
         },
         "source": "replacement-v1/source/north-east/2.png",
         "headOffset": [
-          0,
+          1,
+          1
+        ],
+        "bodyOffset": [
+          1,
           1
         ]
       },
@@ -7666,8 +7894,12 @@
         },
         "source": "replacement-v1/source/north-east/3.png",
         "headOffset": [
-          0,
+          2,
           1
+        ],
+        "bodyOffset": [
+          2,
+          0
         ]
       },
       "3": {
@@ -7835,7 +8067,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/north-east/4.png"
+        "source": "replacement-v1/source/north-east/4.png",
+        "bodyOffset": [
+          3,
+          1
+        ],
+        "headOffset": [
+          3,
+          1
+        ]
       },
       "4": {
         "hands": {
@@ -7980,7 +8220,11 @@
         },
         "source": "replacement-v1/source/north-east/5.png",
         "headOffset": [
-          0,
+          5,
+          1
+        ],
+        "bodyOffset": [
+          5,
           1
         ]
       },
@@ -8143,7 +8387,11 @@
         },
         "source": "replacement-v1/source/north-east/6.png",
         "headOffset": [
-          0,
+          5,
+          1
+        ],
+        "bodyOffset": [
+          5,
           1
         ]
       },
@@ -8356,7 +8604,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/north-east/7.png"
+        "source": "replacement-v1/source/north-east/7.png",
+        "bodyOffset": [
+          3,
+          1
+        ],
+        "headOffset": [
+          3,
+          1
+        ]
       },
       "7": {
         "hands": {
@@ -8569,8 +8825,12 @@
         },
         "source": "replacement-v1/source/north-east/8.png",
         "headOffset": [
-          0,
+          2,
           1
+        ],
+        "bodyOffset": [
+          2,
+          0
         ]
       }
     }
@@ -8674,7 +8934,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/north/0.png"
+        "source": "replacement-v1/source/north/0.png",
+        "bodyOffset": [
+          0,
+          2
+        ],
+        "headOffset": [
+          0,
+          2
+        ]
       }
     },
     "run": {
@@ -8743,7 +9011,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/north/1.png"
+        "source": "replacement-v1/source/north/1.png",
+        "bodyOffset": [
+          1,
+          0
+        ],
+        "headOffset": [
+          1,
+          0
+        ]
       },
       "1": {
         "hands": {
@@ -8838,7 +9114,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/north/2.png"
+        "source": "replacement-v1/source/north/2.png",
+        "bodyOffset": [
+          1,
+          0
+        ],
+        "headOffset": [
+          1,
+          0
+        ]
       },
       "2": {
         "hands": {
@@ -8941,7 +9225,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/north/3.png"
+        "source": "replacement-v1/source/north/3.png",
+        "bodyOffset": [
+          1,
+          1
+        ],
+        "headOffset": [
+          1,
+          1
+        ]
       },
       "3": {
         "hands": {
@@ -9084,7 +9376,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/north/4.png"
+        "source": "replacement-v1/source/north/4.png",
+        "bodyOffset": [
+          1,
+          1
+        ],
+        "headOffset": [
+          1,
+          1
+        ]
       },
       "4": {
         "hands": {
@@ -9211,7 +9511,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/north/5.png"
+        "source": "replacement-v1/source/north/5.png",
+        "bodyOffset": [
+          1,
+          1
+        ],
+        "headOffset": [
+          1,
+          1
+        ]
       },
       "5": {
         "hands": {
@@ -9314,7 +9622,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/north/6.png"
+        "source": "replacement-v1/source/north/6.png",
+        "bodyOffset": [
+          1,
+          0
+        ],
+        "headOffset": [
+          1,
+          0
+        ]
       },
       "6": {
         "hands": {
@@ -9429,7 +9745,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/north/7.png"
+        "source": "replacement-v1/source/north/7.png",
+        "bodyOffset": [
+          1,
+          1
+        ],
+        "headOffset": [
+          1,
+          1
+        ]
       },
       "7": {
         "hands": {
@@ -9604,7 +9928,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/north/8.png"
+        "source": "replacement-v1/source/north/8.png",
+        "bodyOffset": [
+          0,
+          1
+        ],
+        "headOffset": [
+          0,
+          1
+        ]
       }
     }
   },
@@ -9761,7 +10093,11 @@
         },
         "source": "replacement-v1/source/north-west/0.png",
         "headOffset": [
-          0,
+          4,
+          3
+        ],
+        "bodyOffset": [
+          4,
           2
         ]
       }
@@ -9995,6 +10331,10 @@
         "source": "replacement-v1/source/north-west/1.png",
         "headOffset": [
           0,
+          2
+        ],
+        "bodyOffset": [
+          0,
           1
         ]
       },
@@ -10161,7 +10501,11 @@
         },
         "source": "replacement-v1/source/north-west/2.png",
         "headOffset": [
-          0,
+          1,
+          2
+        ],
+        "bodyOffset": [
+          1,
           1
         ]
       },
@@ -10332,8 +10676,12 @@
         },
         "source": "replacement-v1/source/north-west/3.png",
         "headOffset": [
-          0,
+          4,
           1
+        ],
+        "bodyOffset": [
+          4,
+          0
         ]
       },
       "3": {
@@ -10479,7 +10827,11 @@
         },
         "source": "replacement-v1/source/north-west/4.png",
         "headOffset": [
-          0,
+          5,
+          1
+        ],
+        "bodyOffset": [
+          5,
           1
         ]
       },
@@ -10586,7 +10938,11 @@
         },
         "source": "replacement-v1/source/north-west/5.png",
         "headOffset": [
-          0,
+          4,
+          1
+        ],
+        "bodyOffset": [
+          4,
           1
         ]
       },
@@ -10733,7 +11089,11 @@
         },
         "source": "replacement-v1/source/north-west/6.png",
         "headOffset": [
-          0,
+          4,
+          1
+        ],
+        "bodyOffset": [
+          4,
           1
         ]
       },
@@ -10898,7 +11258,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/north-west/7.png"
+        "source": "replacement-v1/source/north-west/7.png",
+        "bodyOffset": [
+          4,
+          1
+        ],
+        "headOffset": [
+          4,
+          1
+        ]
       },
       "7": {
         "hands": {
@@ -11031,8 +11399,12 @@
         },
         "source": "replacement-v1/source/north-west/8.png",
         "headOffset": [
-          0,
+          2,
           1
+        ],
+        "bodyOffset": [
+          2,
+          0
         ]
       }
     }
@@ -11272,7 +11644,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/west/0.png"
+        "source": "replacement-v1/source/west/0.png",
+        "bodyOffset": [
+          2,
+          1
+        ],
+        "headOffset": [
+          2,
+          1
+        ]
       }
     },
     "run": {
@@ -11561,7 +11941,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/west/1.png"
+        "source": "replacement-v1/source/west/1.png",
+        "bodyOffset": [
+          0,
+          1
+        ],
+        "headOffset": [
+          0,
+          1
+        ]
       },
       "1": {
         "hands": {
@@ -11768,7 +12156,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/west/2.png"
+        "source": "replacement-v1/source/west/2.png",
+        "bodyOffset": [
+          0,
+          0
+        ],
+        "headOffset": [
+          0,
+          0
+        ]
       },
       "2": {
         "hands": {
@@ -11975,7 +12371,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/west/3.png"
+        "source": "replacement-v1/source/west/3.png",
+        "bodyOffset": [
+          0,
+          0
+        ],
+        "headOffset": [
+          0,
+          0
+        ]
       },
       "3": {
         "hands": {
@@ -12178,7 +12582,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/west/4.png"
+        "source": "replacement-v1/source/west/4.png",
+        "bodyOffset": [
+          0,
+          0
+        ],
+        "headOffset": [
+          0,
+          0
+        ]
       },
       "4": {
         "hands": {
@@ -12409,7 +12821,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/west/5.png"
+        "source": "replacement-v1/source/west/5.png",
+        "bodyOffset": [
+          0,
+          1
+        ],
+        "headOffset": [
+          0,
+          1
+        ]
       },
       "5": {
         "hands": {
@@ -12612,7 +13032,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/west/6.png"
+        "source": "replacement-v1/source/west/6.png",
+        "bodyOffset": [
+          0,
+          0
+        ],
+        "headOffset": [
+          0,
+          0
+        ]
       },
       "6": {
         "hands": {
@@ -12727,7 +13155,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/west/7.png"
+        "source": "replacement-v1/source/west/7.png",
+        "bodyOffset": [
+          0,
+          0
+        ],
+        "headOffset": [
+          0,
+          0
+        ]
       },
       "7": {
         "hands": {
@@ -12966,7 +13402,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/west/8.png"
+        "source": "replacement-v1/source/west/8.png",
+        "bodyOffset": [
+          0,
+          0
+        ],
+        "headOffset": [
+          0,
+          0
+        ]
       }
     }
   },
@@ -13141,7 +13585,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/south-west/0.png"
+        "source": "replacement-v1/source/south-west/0.png",
+        "bodyOffset": [
+          4,
+          1
+        ],
+        "headOffset": [
+          4,
+          1
+        ]
       }
     },
     "run": {
@@ -13390,7 +13842,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/south-west/1.png"
+        "source": "replacement-v1/source/south-west/1.png",
+        "bodyOffset": [
+          0,
+          2
+        ],
+        "headOffset": [
+          0,
+          2
+        ]
       },
       "1": {
         "hands": {
@@ -13725,7 +14185,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/south-west/2.png"
+        "source": "replacement-v1/source/south-west/2.png",
+        "bodyOffset": [
+          1,
+          1
+        ],
+        "headOffset": [
+          1,
+          1
+        ]
       },
       "2": {
         "hands": {
@@ -14036,7 +14504,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/south-west/3.png"
+        "source": "replacement-v1/source/south-west/3.png",
+        "bodyOffset": [
+          3,
+          0
+        ],
+        "headOffset": [
+          3,
+          0
+        ]
       },
       "3": {
         "hands": {
@@ -14215,7 +14691,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/south-west/4.png"
+        "source": "replacement-v1/source/south-west/4.png",
+        "bodyOffset": [
+          4,
+          1
+        ],
+        "headOffset": [
+          4,
+          1
+        ]
       },
       "4": {
         "hands": {
@@ -14398,7 +14882,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/south-west/5.png"
+        "source": "replacement-v1/source/south-west/5.png",
+        "bodyOffset": [
+          4,
+          2
+        ],
+        "headOffset": [
+          4,
+          2
+        ]
       },
       "5": {
         "hands": {
@@ -14685,7 +15177,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/south-west/6.png"
+        "source": "replacement-v1/source/south-west/6.png",
+        "bodyOffset": [
+          3,
+          1
+        ],
+        "headOffset": [
+          3,
+          1
+        ]
       },
       "6": {
         "hands": {
@@ -15020,7 +15520,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/south-west/7.png"
+        "source": "replacement-v1/source/south-west/7.png",
+        "bodyOffset": [
+          3,
+          0
+        ],
+        "headOffset": [
+          3,
+          0
+        ]
       },
       "7": {
         "hands": {
@@ -15331,7 +15839,15 @@
             ]
           ]
         },
-        "source": "replacement-v1/source/south-west/8.png"
+        "source": "replacement-v1/source/south-west/8.png",
+        "bodyOffset": [
+          1,
+          1
+        ],
+        "headOffset": [
+          1,
+          1
+        ]
       }
     }
   }

@@ -30,6 +30,11 @@ var _sockets: Dictionary = {}
 var _items: Dictionary = {}
 var _grip_covers: Dictionary = {}
 var _fitted_body: FittedEquipmentBody
+var _weapon_motion: Dictionary = {}
+var _weapon_profile: Dictionary = {}
+
+func get_weapon_motion() -> Dictionary:
+	return _weapon_motion.duplicate(true)
 
 
 static func _load_catalogs() -> void:
@@ -150,6 +155,8 @@ func _ensure_bones() -> void:
 
 
 func sync_pose() -> void:
+	_weapon_motion={}
+	_weapon_profile={}
 	if _fitted_body != null:
 		_fitted_body.reset()
 	current_pose = {}
@@ -177,11 +184,17 @@ func sync_pose() -> void:
 	position = _visual.offset - texture.get_size() * 0.5
 	_current_facing = String(_visual.animation).get_slice("_", 1)
 	var context := _fitted_context()
-	# An equipped torso owns its arms/hands too. Its authored hand track
-	# drives held items instead of forcing the new arm back onto the old one.
-	for hand: String in context.get("body_pose", {}).get("hands", {}):
-		var point := FittedEquipmentLibrary.point(context.body_pose.hands[hand]) - Vector2(context.padding)
-		current_pose[hand] = [point.x, point.y]
+	var weapon := get_equipped_visual("weapon")
+	if weapon!=null and weapon.has_method("get_weapon_profile"):
+		_weapon_profile=weapon.call("get_weapon_profile",_current_facing)
+	_weapon_motion=CharacterWeaponMotion.sample(context,_weapon_profile,get_equipped_visual("shield")!=null)
+	context["weapon_motion"]=_weapon_motion
+	var resolved := FittedEquipmentLibrary.joints(context)
+	for socket_name: String in SOCKET_NAMES:
+		var joint := "hand_right" if socket_name=="right_hand" else "hand_left" if socket_name=="left_hand" else "pelvis" if socket_name=="waist" else socket_name
+		if resolved.has(joint):
+			var point := FittedEquipmentLibrary.point(resolved[joint])-Vector2(context.padding)
+			current_pose[socket_name]=[point.x,point.y]
 	var chest := _pixel_point("chest")
 	for socket_name: String in SOCKET_NAMES:
 		var bone: Bone2D = _bones[socket_name]
@@ -196,6 +209,9 @@ func sync_pose() -> void:
 	var left_hand := get_socket("left_hand")
 	right_hand.rotation_degrees = float(RIGHT_HAND_ANGLES.get(direction, 0.0))
 	left_hand.rotation_degrees = -right_hand.rotation_degrees
+	if bool(_weapon_motion.get("active",false)):
+		right_hand.rotation=0.0
+		left_hand.rotation=0.0
 	right_hand.show_behind_parent = direction in ["north", "north-east", "north-west", "west"]
 	left_hand.show_behind_parent = direction in ["north", "north-east", "north-west", "east"]
 	get_socket("back").show_behind_parent = not direction.begins_with("north")
@@ -235,12 +251,19 @@ func _fitted_context() -> Dictionary:
 		"origin": position
 	}
 	var chest := get_equipped_visual("chest") as FittedEquipmentVisual
+	context["chest_item_id"]=chest.item_id if chest!=null else ""
 	context["body_pose"] = FittedEquipmentLibrary.replacement_pose(chest.item_id, context) if chest != null else {}
+	if chest!=null and not chest.parts.is_empty():
+		context["chest_source"]=String(chest.parts[0].file)
+	context["weapon_motion"]=_weapon_motion
+	context["weapon_profile"]=_weapon_profile
 	return context
 
 
 func _update_fitted_body() -> void:
 	var flags: Dictionary = {}
+	if bool(_weapon_motion.get("active",false)):
+		flags["motion"]=true
 	for slot: String in ["head", "chest", "legs"]:
 		if bool(_items.get(slot, {}).get("fitted", false)):
 			flags[slot] = true
@@ -268,18 +291,37 @@ func _update_fitted_body() -> void:
 		socket.show_behind_parent = rear and not replacement_body
 		if rear:
 			ordered.append(socket)
+	if _fitted_body!=null and bool(_weapon_motion.get("active",false)):
+		ordered.append_array(_fitted_body.motion_body.ordered_arms(false))
 	if _fitted_body != null:
 		ordered.append(_fitted_body.base)
 	ordered.append(get_socket("waist"))
+	if _fitted_body!=null and bool(_weapon_motion.get("active",false)):
+		ordered.append_array([_fitted_body.motion_body.lower,_fitted_body.motion_body.torso])
 	ordered.append(get_socket("chest"))
+	# A rear cape covers the backplate but stays below the complete head and
+	# foreground arms. Every attachment uses the same resolved body pose.
+	for socket_name: String in ["back"]:
+		var socket := get_socket(socket_name)
+		if socket!=null and not ordered.has(socket):
+			ordered.append(socket)
 	if _fitted_body != null:
 		ordered.append_array([_fitted_body.head, _fitted_body.arms.left, _fitted_body.arms.right])
-	for socket_name: String in ["back", "right_hand", "left_hand"]:
+		ordered.append(get_socket("head"))
+		if bool(_weapon_motion.get("active",false)):
+			ordered.append_array(_fitted_body.motion_body.ordered_arms(true,false))
+	for socket_name: String in ["right_hand", "left_hand"]:
 		var socket := get_socket(socket_name)
 		if socket != null and not ordered.has(socket):
 			ordered.append(socket)
 	ordered.append_array(_grip_covers.values())
-	ordered.append(get_socket("head"))
+	if _fitted_body!=null and bool(_weapon_motion.get("active",false)):
+		ordered.append_array(_fitted_body.motion_body.ordered_hands(true))
+		if bool(_weapon_motion.get("weapon_behind_head",false)):
+			ordered.append(_fitted_body.head)
+			ordered.append(get_socket("head"))
+	if _fitted_body==null:
+		ordered.append(get_socket("head"))
 	ordered.append(self)
 	for node: Variant in ordered:
 		if is_instance_valid(node) and node.get_parent() == _visual:
@@ -294,6 +336,8 @@ func _update_grip_covers() -> void:
 	for hand: String in _grip_covers:
 		var cover: Sprite2D = _grip_covers[hand]
 		cover.visible = false
+		if bool(_weapon_motion.get("active",false)):
+			continue # Both real hands are supplied by the articulated arm layers.
 		if current_pose.is_empty() or get_socket(hand).show_behind_parent:
 			continue
 		for entry: Dictionary in _items.values():

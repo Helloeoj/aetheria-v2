@@ -58,7 +58,9 @@ func _run() -> void:
 					if slot in ["weapon", "shield"]:
 						var socket_name := "right_hand" if slot == "weapon" else "left_hand"
 						_check(actor.attachment_rig.get_socket(socket_name).is_ancestor_of(node), name + " attached to the wrong hand")
-						_check(node.part_bones[0].global_position.distance_to(node.global_position) < 0.01, name + " grip moved away from its live hand socket")
+						var motion:=actor.attachment_rig.get_weapon_motion()
+						var grip_socket:=actor.attachment_rig.get_socket("left_hand" if slot=="weapon" and motion.get("active",false) and motion.get("family","")=="bow" else socket_name)
+						_check(node.part_bones[0].global_position.distance_to(grip_socket.global_position) < 0.01, name + " grip moved away from its physical palm")
 					if slot in ["head", "chest", "legs"]:
 						_check(actor.animated_sprite.self_modulate.a == 0.0, name + " left the robe/hair source visible")
 	actor.set_equipment({})

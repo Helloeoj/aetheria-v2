@@ -129,6 +129,13 @@ func _ready() -> void:
 		if String(item.slot) == "weapon" and String(item.name) != "Iron Longsword":
 			equipment_names.append(item.name)
 			equipment_picker.add_item(item.name)
+	# Artwork-only tools can use the real rig before catalog/mining rules exist.
+	var visual_catalog: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/equipment_visuals.json"))
+	for item_name: String in visual_catalog.get("items", {}):
+		var definition: Dictionary = visual_catalog.items[item_name]
+		if bool(definition.get("preview_only", false)) and definition.get("slot", "") == "weapon" and not equipment_names.has(item_name):
+			equipment_names.append(item_name)
+			equipment_picker.add_item(item_name)
 	equipment_picker.item_selected.connect(_change_equipment)
 	equipment_controls.add_child(equipment_picker)
 	var shield_label := Label.new()
@@ -293,6 +300,8 @@ func _place_actor() -> void:
 		var sprite := actor.animated_sprite
 		var dimensions := Vector2(sprite.sprite_frames.get_frame_texture(sprite.animation, sprite.frame).get_size())
 		var body: Rect2 = sprite.transform * Rect2(sprite.offset - dimensions * 0.5, dimensions)
+		if not actor.weapon_animation_family().is_empty():
+			body=body.grow(24.0 * sprite.scale.x)
 		var above := maxf(0.0, -body.position.y * actor.scale.y)
 		var below := maxf(0.0, body.end.y * actor.scale.y)
 		# Keep the entire native frame and foot shadow at the requested zoom.
@@ -349,7 +358,7 @@ func _change_equipment(index: int) -> void:
 	review_equipment = equipment.duplicate(true)
 	actor.set_equipment(equipment)
 	actor.set_socket_debug(socket_check.button_pressed and actor.skin_id == "peasant")
-	_refresh_review_frame()
+	_change_action(action_picker.selected)
 
 func _change_shield(_index: int) -> void:
 	_change_equipment(equipment_picker.selected)
@@ -470,9 +479,12 @@ func _refresh_review_frame() -> void:
 	frame_label.text = "Frame %d / %d%s" % [sprite.frame + 1, count, " (fallback)" if fallback else ""]
 	review_caption.text = "%s · %s · %d/%d · %d×" % [actor.skin_id.capitalize(), sprite.animation, sprite.frame + 1, count, int(actor.scale.x)]
 	var reference := reference_actor.animated_sprite
-	if reference.sprite_frames != null and reference.sprite_frames.has_animation(sprite.animation):
-		reference.animation = sprite.animation
-		reference.set_frame_and_progress(sprite.frame, sprite.frame_progress)
+	var reference_clip:=sprite.animation
+	if reference.sprite_frames!=null and not reference.sprite_frames.has_animation(reference_clip):
+		reference_clip=CharacterSpriteLibrary.animation_name("idle",String(sprite.animation).get_slice("_",1))
+	if reference.sprite_frames != null and reference.sprite_frames.has_animation(reference_clip):
+		reference.animation = reference_clip
+		reference.set_frame_and_progress(mini(sprite.frame,reference.sprite_frames.get_frame_count(reference_clip)-1), sprite.frame_progress)
 		reference.pause()
 		reference.position = sprite.position
 		reference.modulate = sprite.modulate
@@ -527,6 +539,10 @@ func _update_coverage() -> void:
 	var clip: Dictionary = clips.get(role, {})
 	var directions: Dictionary = clip.get("directions", {})
 	var direction: String = DIRECTIONS[direction_picker.selected]
+	if role=="attack" and CharacterWeaponMotion.enabled() and not actor.weapon_animation_family().is_empty():
+		var family:=actor.weapon_animation_family()
+		coverage_label.text="Attack / %s: 8 shared %s poses, authored on Bronze and reused across tiers." % [direction,family.replace("-"," ")]
+		return
 	var frames: Array = directions.get(direction, [])
 	if frames.is_empty():
 		var feedback := " Attack uses a brief movement cue." if role == "attack" else ""

@@ -1,0 +1,433 @@
+{
+  "version": 1,
+  "canvas": [
+    80,
+    80
+  ],
+  "coordinate_space": "raw generated replacement idle source pixels; do not add bodyOffset again",
+  "method": "Native visual authoring from complete Bronze idle armor pauldrons, arm hinges, torso and actual visible glove/palm centers; head/neck share source registration. Occluded shoulder/elbow/hand endpoints are explicitly tagged estimates.",
+  "directions": {
+    "south": {
+      "source": "res://Assets/Equipment/fitted_bronze_iron/replacement-v1/bronze/chest/south/0.png",
+      "source_actor": "res://Assets/Equipment/fitted_bronze_iron/replacement-v1/source/south/0.png",
+      "joints": {
+        "chest": [
+          40,
+          46
+        ],
+        "pelvis": [
+          40,
+          54
+        ],
+        "shoulder_right": [
+          29,
+          39
+        ],
+        "shoulder_left": [
+          52,
+          39
+        ],
+        "elbow_right": [
+          26,
+          45
+        ],
+        "elbow_left": [
+          54,
+          45
+        ],
+        "head": [
+          40,
+          28
+        ],
+        "neck": [
+          40,
+          39
+        ],
+        "hand_right": [
+          25,
+          53
+        ],
+        "hand_left": [
+          54,
+          53
+        ]
+      },
+      "near_sides": [
+        "right",
+        "left"
+      ],
+      "hidden": [],
+      "estimated_joints": []
+    },
+    "south-east": {
+      "source": "res://Assets/Equipment/fitted_bronze_iron/replacement-v1/bronze/chest/south-east/0.png",
+      "source_actor": "res://Assets/Equipment/fitted_bronze_iron/replacement-v1/source/south-east/0.png",
+      "joints": {
+        "chest": [
+          43,
+          46
+        ],
+        "pelvis": [
+          42,
+          53
+        ],
+        "shoulder_right": [
+          33,
+          40
+        ],
+        "shoulder_left": [
+          53,
+          39
+        ],
+        "elbow_right": [
+          29,
+          47
+        ],
+        "elbow_left": [
+          54,
+          46
+        ],
+        "head": [
+          43,
+          27
+        ],
+        "neck": [
+          45,
+          38
+        ],
+        "hand_right": [
+          29,
+          55
+        ],
+        "hand_left": [
+          55,
+          50
+        ]
+      },
+      "near_sides": [
+        "right"
+      ],
+      "hidden": [],
+      "estimated_joints": []
+    },
+    "east": {
+      "source": "res://Assets/Equipment/fitted_bronze_iron/replacement-v1/bronze/chest/east/0.png",
+      "source_actor": "res://Assets/Equipment/fitted_bronze_iron/replacement-v1/source/east/0.png",
+      "joints": {
+        "chest": [
+          42,
+          46
+        ],
+        "pelvis": [
+          42,
+          54
+        ],
+        "shoulder_right": [
+          44,
+          40
+        ],
+        "shoulder_left": [
+          38,
+          40
+        ],
+        "elbow_right": [
+          44,
+          47
+        ],
+        "elbow_left": [
+          38,
+          45
+        ],
+        "head": [
+          44,
+          27
+        ],
+        "neck": [
+          46,
+          38
+        ],
+        "hand_right": [
+          45,
+          55
+        ],
+        "hand_left": [
+          40,
+          51
+        ]
+      },
+      "near_sides": [
+        "right"
+      ],
+      "hidden": [
+        "left"
+      ],
+      "estimated_joints": [
+        "shoulder_left",
+        "elbow_left",
+        "hand_left"
+      ]
+    },
+    "north-east": {
+      "source": "res://Assets/Equipment/fitted_bronze_iron/replacement-v1/bronze/chest/north-east/0.png",
+      "source_actor": "res://Assets/Equipment/fitted_bronze_iron/replacement-v1/source/north-east/0.png",
+      "joints": {
+        "chest": [
+          42,
+          45
+        ],
+        "pelvis": [
+          42,
+          52
+        ],
+        "shoulder_right": [
+          52,
+          39
+        ],
+        "shoulder_left": [
+          33,
+          40
+        ],
+        "elbow_right": [
+          52,
+          46
+        ],
+        "elbow_left": [
+          32,
+          44
+        ],
+        "head": [
+          43,
+          28
+        ],
+        "neck": [
+          45,
+          39
+        ],
+        "hand_right": [
+          55,
+          53
+        ],
+        "hand_left": [
+          30,
+          47
+        ]
+      },
+      "near_sides": [
+        "right"
+      ],
+      "hidden": [],
+      "estimated_joints": []
+    },
+    "north": {
+      "source": "res://Assets/Equipment/fitted_bronze_iron/replacement-v1/bronze/chest/north/0.png",
+      "source_actor": "res://Assets/Equipment/fitted_bronze_iron/replacement-v1/source/north/0.png",
+      "joints": {
+        "chest": [
+          40,
+          44
+        ],
+        "pelvis": [
+          40,
+          52
+        ],
+        "shoulder_right": [
+          53,
+          37
+        ],
+        "shoulder_left": [
+          29,
+          37
+        ],
+        "elbow_right": [
+          55,
+          44
+        ],
+        "elbow_left": [
+          26,
+          44
+        ],
+        "head": [
+          40,
+          28
+        ],
+        "neck": [
+          40,
+          39
+        ],
+        "hand_right": [
+          56,
+          52
+        ],
+        "hand_left": [
+          25,
+          52
+        ]
+      },
+      "near_sides": [
+        "right",
+        "left"
+      ],
+      "hidden": [],
+      "estimated_joints": []
+    },
+    "north-west": {
+      "source": "res://Assets/Equipment/fitted_bronze_iron/replacement-v1/bronze/chest/north-west/0.png",
+      "source_actor": "res://Assets/Equipment/fitted_bronze_iron/replacement-v1/source/north-west/0.png",
+      "joints": {
+        "chest": [
+          43,
+          43
+        ],
+        "pelvis": [
+          43,
+          52
+        ],
+        "shoulder_right": [
+          51,
+          34
+        ],
+        "shoulder_left": [
+          35,
+          39
+        ],
+        "elbow_right": [
+          53,
+          42
+        ],
+        "elbow_left": [
+          34,
+          47
+        ],
+        "head": [
+          43,
+          28
+        ],
+        "neck": [
+          41,
+          39
+        ],
+        "hand_right": [
+          56,
+          47
+        ],
+        "hand_left": [
+          32,
+          54
+        ]
+      },
+      "near_sides": [
+        "left"
+      ],
+      "hidden": [],
+      "estimated_joints": []
+    },
+    "west": {
+      "source": "res://Assets/Equipment/fitted_bronze_iron/replacement-v1/bronze/chest/west/0.png",
+      "source_actor": "res://Assets/Equipment/fitted_bronze_iron/replacement-v1/source/west/0.png",
+      "joints": {
+        "chest": [
+          41,
+          46
+        ],
+        "pelvis": [
+          42,
+          54
+        ],
+        "shoulder_right": [
+          38,
+          40
+        ],
+        "shoulder_left": [
+          44,
+          40
+        ],
+        "elbow_right": [
+          37,
+          46
+        ],
+        "elbow_left": [
+          45,
+          47
+        ],
+        "head": [
+          40,
+          27
+        ],
+        "neck": [
+          38,
+          38
+        ],
+        "hand_right": [
+          37,
+          51
+        ],
+        "hand_left": [
+          44,
+          55
+        ]
+      },
+      "near_sides": [
+        "left"
+      ],
+      "hidden": [
+        "right"
+      ],
+      "estimated_joints": [
+        "shoulder_right",
+        "elbow_right",
+        "hand_right"
+      ]
+    },
+    "south-west": {
+      "source": "res://Assets/Equipment/fitted_bronze_iron/replacement-v1/bronze/chest/south-west/0.png",
+      "source_actor": "res://Assets/Equipment/fitted_bronze_iron/replacement-v1/source/south-west/0.png",
+      "joints": {
+        "chest": [
+          44,
+          46
+        ],
+        "pelvis": [
+          44,
+          54
+        ],
+        "shoulder_right": [
+          34,
+          39
+        ],
+        "shoulder_left": [
+          54,
+          39
+        ],
+        "elbow_right": [
+          32,
+          44
+        ],
+        "elbow_left": [
+          54,
+          47
+        ],
+        "head": [
+          43,
+          27
+        ],
+        "neck": [
+          41,
+          38
+        ],
+        "hand_right": [
+          32,
+          50
+        ],
+        "hand_left": [
+          56,
+          55
+        ]
+      },
+      "near_sides": [
+        "left"
+      ],
+      "hidden": [],
+      "estimated_joints": []
+    }
+  }
+}
