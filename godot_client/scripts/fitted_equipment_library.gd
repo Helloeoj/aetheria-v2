@@ -9,6 +9,101 @@ static var bodies: Dictionary = {}
 static var forearms: Dictionary = {}
 static var native_parts: Dictionary = {}
 static var replacement_tracks: Dictionary = {}
+static var complete_heads: Dictionary = {}
+const HAIR_COLORS := [Color("523d2f"), Color("31231c"), Color("2c201a"), Color("49372c"), Color("281c15"), Color("382c25"), Color("3f3129")]
+
+## Extend the supplied head cut through its connected face and ink outline.
+## Copy source RGBA only: armor cannot recolor or reshape the character's jaw.
+static func head_texture(pose: Dictionary) -> Texture2D:
+	var key := String(pose.original)
+	if complete_heads.has(key):
+		return complete_heads[key]
+	var source := texture(pose.original).get_image()
+	var supplied := texture(pose.head).get_image()
+	var image := Image.create(source.get_width(), source.get_height(), false, Image.FORMAT_RGBA8)
+	var selected := {}
+	var pending: Array[Vector2i] = []
+	var hair: Array[Vector2i] = []
+	for y in range(image.get_height()):
+		for x in range(image.get_width()):
+			var pixel := Vector2i(x,y)
+			if supplied.get_pixelv(pixel).a == 0.0:
+				continue
+			var color := source.get_pixelv(pixel)
+			if color in HAIR_COLORS:
+				hair.append(pixel)
+			if _is_skin(color):
+				selected[pixel] = true
+				pending.append(pixel)
+	# Robe shadows can share a dark hair color. Keep only hair clusters that
+	# reach the crown; disconnected shoulder/robe clusters are not head art.
+	var remaining_hair := {}
+	for pixel: Vector2i in hair:
+		remaining_hair[pixel] = true
+	hair.clear()
+	var crown_limit := source.get_used_rect().position.y + 10
+	while not remaining_hair.is_empty():
+		var cluster: Array[Vector2i] = [remaining_hair.keys()[0]]
+		remaining_hair.erase(cluster[0])
+		var first_row := cluster[0].y
+		var index := 0
+		while index < cluster.size():
+			var pixel := cluster[index]
+			index += 1
+			first_row = mini(first_row,pixel.y)
+			for dy in range(-1,2):
+				for dx in range(-1,2):
+					var next := pixel + Vector2i(dx,dy)
+					if remaining_hair.has(next):
+						remaining_hair.erase(next)
+						cluster.append(next)
+		if first_row < crown_limit:
+			hair.append_array(cluster)
+	var cursor := 0
+	while cursor < pending.size():
+		var pixel := pending[cursor]
+		cursor += 1
+		for dy in range(-1,2):
+			for dx in range(-1,2):
+				var next := pixel + Vector2i(dx,dy)
+				if next.x < 0 or next.y < 0 or next.x >= source.get_width() or next.y >= source.get_height() or selected.has(next):
+					continue
+				if _is_skin(source.get_pixelv(next)):
+					selected[next] = true
+					pending.append(next)
+	# Trace only hair/face/ears, excluding robe triangles in the supplied cut.
+	# Face shadows, eyes, mouth and jaw ink remain inside this native contour.
+	var silhouette: Array[Vector2i] = pending.duplicate()
+	silhouette.append_array(hair)
+	for y in range(image.get_height()):
+		var left := image.get_width()
+		var right := -1
+		for pixel: Vector2i in silhouette:
+			if pixel.y == y:
+				left = mini(left, pixel.x)
+				right = maxi(right, pixel.x)
+		for x in range(left, right + 1):
+			image.set_pixel(x,y,source.get_pixel(x,y))
+	for pixel: Vector2i in silhouette:
+		for dy in range(-2,3):
+			for dx in range(-2,3):
+				var next := pixel + Vector2i(dx,dy)
+				if next.x < 0 or next.y < 0 or next.x >= source.get_width() or next.y >= source.get_height():
+					continue
+				var color := source.get_pixelv(next)
+				if color.a > 0.0 and maxf(color.r, maxf(color.g,color.b)) < 0.28:
+					image.set_pixelv(next,color)
+	# The crown contains only the original head. Preserve even isolated ink
+	# tips/highlights there; lower rows use the traced contour to reject robe.
+	for y in range(int(pose.joints.head[1])):
+		for x in range(source.get_width()):
+			image.set_pixel(x,y,source.get_pixel(x,y))
+	var result := ImageTexture.create_from_image(image)
+	complete_heads[key] = result
+	return result
+
+static func _is_skin(color: Color) -> bool:
+	return color.a > 0.0 and color.r > 0.42 and color.r > color.g * 1.2 and color.g > color.b * 1.05
 
 ## Fit transformed hand items once on their native pixel grid, then display
 ## whole pixels like the character. Never resample armor to match bare limbs.
@@ -31,9 +126,31 @@ static func native_part(path: String, pivot: Vector2, offset: Vector2, angle: fl
 			var sample := Vector2i((inverse * (origin + Vector2(x + 0.5, y + 0.5)) + pivot).floor())
 			if sample.x >= 0 and sample.y >= 0 and sample.x < source.get_width() and sample.y < source.get_height():
 				result.set_pixel(x, y, source.get_pixel(sample.x, sample.y))
+	# Nearest inverse sampling can drop a one-pixel bowstring or disconnect a
+	# thin limb. Conservatively carry connected source centers onto the same
+	# grid, filling only transparent gaps with original palette colors.
+	for y in range(source.get_height()):
+		for x in range(source.get_width()):
+			var color := source.get_pixel(x,y)
+			if color.a == 0.0:
+				continue
+			var first := (transform * (Vector2(x+0.5,y+0.5) - pivot) - origin - Vector2.ONE * 0.5).round()
+			_native_sample(result,Vector2i(first),color)
+			for neighbor: Vector2i in [Vector2i(1,0),Vector2i(0,1),Vector2i(1,1),Vector2i(-1,1)]:
+				var other := Vector2i(x,y) + neighbor
+				if other.x < 0 or other.y < 0 or other.x >= source.get_width() or other.y >= source.get_height() or source.get_pixelv(other).a == 0.0:
+					continue
+				var last := (transform * (Vector2(other) + Vector2.ONE * 0.5 - pivot) - origin - Vector2.ONE * 0.5).round()
+				var steps := maxi(1,int(maxf(absf(last.x-first.x),absf(last.y-first.y))))
+				for step in range(1,steps):
+					_native_sample(result,Vector2i(first.lerp(last,float(step)/steps).round()),color)
 	var fitted := {"texture":ImageTexture.create_from_image(result), "origin":origin}
 	native_parts[key] = fitted
 	return fitted
+
+static func _native_sample(image: Image, pixel: Vector2i, color: Color) -> void:
+	if pixel.x >= 0 and pixel.y >= 0 and pixel.x < image.get_width() and pixel.y < image.get_height() and image.get_pixelv(pixel).a == 0.0:
+		image.set_pixelv(pixel,color)
 
 static func initialize() -> void:
 	if not rig_data.is_empty():

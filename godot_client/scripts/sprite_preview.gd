@@ -489,7 +489,9 @@ func _export_review_frame() -> void:
 func capture_review_frame(destination: String) -> Error:
 	_set_review_paused(true)
 	await get_tree().process_frame
-	await RenderingServer.frame_post_draw
+	# A minimized review window has no normal frame_post_draw signal.
+	# Draw the actual SubViewport explicitly so batch evidence cannot stall.
+	RenderingServer.force_draw(false)
 	var screenshot := review_viewport.get_texture().get_image()
 	var result := screenshot.save_png(destination)
 	if result != OK:

@@ -110,6 +110,8 @@ func _run() -> void:
 			destination = arg.trim_prefix("--inspection-output=")
 	if not destination.is_empty():
 		DirAccess.make_dir_recursive_absolute(destination)
+		if "--inspection-minimized" in OS.get_cmdline_user_args():
+			root.mode = Window.MODE_MINIMIZED
 		await _capture_review(destination)
 	print("[Equipment inspection] ", failures, " failures")
 	preview.free()
@@ -139,6 +141,11 @@ func _capture_review(destination: String) -> void:
 				var exported := Image.load_from_file(path)
 				check(exported.get_size() == Vector2i(int(record.canvas_size[0]), int(record.canvas_size[1])), "PNG exports the full review canvas")
 				preview._step_review_frame(1)
+	preview.action_picker.select(0)
+	for direction_index in range(8):
+		preview.direction_picker.select(direction_index)
+		preview._change_direction(direction_index)
+		check(await preview.capture_review_frame(destination.path_join("4x-%s-idle.png" % preview.DIRECTIONS[direction_index])) == OK, "idle collar export")
 	preview._select_skin(preview.skin_ids.find("golem_titan"))
 	preview._change_review_zoom(2)
 	check(await preview.capture_review_frame(destination.path_join("titan-4x.png")) == OK, "large skin exports without cropping")

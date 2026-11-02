@@ -5523,7 +5523,7 @@
               26
             ],
             "gripValidated": true,
-            "carryRotation": -0.610865
+            "carryRotation": -0.9599310885968813
           }
         ],
         "west": [
@@ -5667,7 +5667,7 @@
               26
             ],
             "gripValidated": true,
-            "carryRotation": -0.610865
+            "carryRotation": -0.9599310885968813
           }
         ]
       },
@@ -5731,7 +5731,7 @@
             "gripValidated": true,
             "restRotation": -0.38,
             "restOrientationReason": "Lean the bulky head away from the face, retaining exact right-hand grip.",
-            "carryRotation": -0.785398
+            "carryRotation": -1.1344640137963142
           }
         ],
         "west": [
@@ -5861,7 +5861,7 @@
             "gripValidated": true,
             "restRotation": 0.38,
             "restOrientationReason": "Lean the bulky head away from the face, retaining exact right-hand grip.",
-            "carryRotation": 0.785398
+            "carryRotation": 1.2217304763960306
           }
         ],
         "south-east": [
@@ -5945,7 +5945,8 @@
               26,
               37
             ],
-            "gripValidated": true
+            "gripValidated": true,
+            "carryRotation": -0.4363323129985824
           }
         ],
         "west": [
@@ -6060,7 +6061,8 @@
               13,
               37
             ],
-            "gripValidated": true
+            "gripValidated": true,
+            "carryRotation": -0.2617993877991494
           }
         ],
         "south-east": [
@@ -6083,7 +6085,8 @@
               26,
               37
             ],
-            "gripValidated": true
+            "gripValidated": true,
+            "carryRotation": -0.7853981633974483
           }
         ]
       },
@@ -6119,7 +6122,7 @@
               29
             ],
             "gripValidated": true,
-            "carryRotation": 1.5707963267948966
+            "carryRotation": 0.0
           }
         ],
         "south-west": [
@@ -6143,7 +6146,7 @@
               29
             ],
             "gripValidated": true,
-            "carryRotation": 1.5707963267948966
+            "carryRotation": 0.7853981633974483
           }
         ],
         "west": [
@@ -6287,7 +6290,7 @@
               29
             ],
             "gripValidated": true,
-            "carryRotation": -1.5707963267948966
+            "carryRotation": 0.0
           }
         ]
       },
@@ -6347,7 +6350,7 @@
               42
             ],
             "gripValidated": true,
-            "carryRotation": -0.436332
+            "carryRotation": -0.6981317007977318
           }
         ],
         "west": [
@@ -12281,7 +12284,7 @@
               26
             ],
             "gripValidated": true,
-            "carryRotation": -0.610865
+            "carryRotation": -0.9599310885968813
           }
         ],
         "west": [
@@ -12425,7 +12428,7 @@
               26
             ],
             "gripValidated": true,
-            "carryRotation": -0.610865
+            "carryRotation": -0.9599310885968813
           }
         ]
       },
@@ -12493,7 +12496,7 @@
             "gripValidated": true,
             "restRotation": -0.38,
             "restOrientationReason": "Lean the bulky head away from the face, retaining exact right-hand grip.",
-            "carryRotation": -0.785398
+            "carryRotation": -1.1344640137963142
           }
         ],
         "west": [
@@ -12623,7 +12626,7 @@
             "gripValidated": true,
             "restRotation": 0.38,
             "restOrientationReason": "Lean the bulky head away from the face, retaining exact right-hand grip.",
-            "carryRotation": 0.785398
+            "carryRotation": 1.2217304763960306
           }
         ],
         "south-east": [
@@ -12711,7 +12714,8 @@
               26,
               37
             ],
-            "gripValidated": true
+            "gripValidated": true,
+            "carryRotation": -0.4363323129985824
           }
         ],
         "west": [
@@ -12826,7 +12830,8 @@
               13,
               37
             ],
-            "gripValidated": true
+            "gripValidated": true,
+            "carryRotation": -0.2617993877991494
           }
         ],
         "south-east": [
@@ -12849,7 +12854,8 @@
               26,
               37
             ],
-            "gripValidated": true
+            "gripValidated": true,
+            "carryRotation": -0.7853981633974483
           }
         ]
       },
@@ -12889,7 +12895,7 @@
               29
             ],
             "gripValidated": true,
-            "carryRotation": 1.5707963267948966
+            "carryRotation": 0.0
           }
         ],
         "south-west": [
@@ -12913,7 +12919,7 @@
               29
             ],
             "gripValidated": true,
-            "carryRotation": 1.5707963267948966
+            "carryRotation": 0.7853981633974483
           }
         ],
         "west": [
@@ -13057,7 +13063,7 @@
               29
             ],
             "gripValidated": true,
-            "carryRotation": -1.5707963267948966
+            "carryRotation": 0.0
           }
         ]
       },
@@ -13121,7 +13127,7 @@
               42
             ],
             "gripValidated": true,
-            "carryRotation": -0.436332
+            "carryRotation": -0.6981317007977318
           }
         ],
         "west": [
@@ -19078,7 +19084,7 @@
               26
             ],
             "gripValidated": true,
-            "carryRotation": -0.610865
+            "carryRotation": -0.9599310885968813
           }
         ],
         "west": [
@@ -19222,7 +19228,7 @@
               26
             ],
             "gripValidated": true,
-            "carryRotation": -0.610865
+            "carryRotation": -0.9599310885968813
           }
         ]
       },
@@ -19291,7 +19297,7 @@
             "gripValidated": true,
             "restRotation": -0.38,
             "restOrientationReason": "Lean the bulky head away from the face, retaining exact right-hand grip.",
-            "carryRotation": -0.785398
+            "carryRotation": -1.1344640137963142
           }
         ],
         "west": [
@@ -19421,7 +19427,7 @@
             "gripValidated": true,
             "restRotation": 0.38,
             "restOrientationReason": "Lean the bulky head away from the face, retaining exact right-hand grip.",
-            "carryRotation": 0.785398
+            "carryRotation": 1.2217304763960306
           }
         ],
         "south-east": [
@@ -19510,7 +19516,8 @@
               26,
               37
             ],
-            "gripValidated": true
+            "gripValidated": true,
+            "carryRotation": -0.4363323129985824
           }
         ],
         "west": [
@@ -19625,7 +19632,8 @@
               13,
               37
             ],
-            "gripValidated": true
+            "gripValidated": true,
+            "carryRotation": -0.2617993877991494
           }
         ],
         "south-east": [
@@ -19648,7 +19656,8 @@
               26,
               37
             ],
-            "gripValidated": true
+            "gripValidated": true,
+            "carryRotation": -0.7853981633974483
           }
         ]
       },
@@ -19689,7 +19698,7 @@
               29
             ],
             "gripValidated": true,
-            "carryRotation": 1.5707963267948966
+            "carryRotation": 0.0
           }
         ],
         "south-west": [
@@ -19713,7 +19722,7 @@
               29
             ],
             "gripValidated": true,
-            "carryRotation": 1.5707963267948966
+            "carryRotation": 0.7853981633974483
           }
         ],
         "west": [
@@ -19857,7 +19866,7 @@
               29
             ],
             "gripValidated": true,
-            "carryRotation": -1.5707963267948966
+            "carryRotation": 0.0
           }
         ]
       },
@@ -19922,7 +19931,7 @@
               42
             ],
             "gripValidated": true,
-            "carryRotation": -0.436332
+            "carryRotation": -0.6981317007977318
           }
         ],
         "west": [

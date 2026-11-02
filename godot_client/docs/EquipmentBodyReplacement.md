@@ -92,3 +92,38 @@ Godot --path godot_client --script res://scripts/dev_tools/equipment_inspection_
 
 The second command exercises pointer controls and exports all eight Iron walk
 frames in all eight directions at both zooms, plus the large-sprite export case.
+
+## Native head and weapon repair — 2026-11-01
+
+The subsequent repair keeps the original complete head as its own section. It
+copies original RGBA pixels through the jaw and hair outline, excludes original
+robe fragments from the head cut, and uses explicit whole-pixel neck anchors for
+the rear diagonals. Those offsets are in replacement-v1/poses.json and apply only
+with an authored torso. Torso/arms and legs/feet remain complete independent
+replacement frames; no armor PNG or leg silhouette is regenerated or stretched.
+
+Carry angles were corrected for crossbows, maces, warmauls, bows and the affected
+staff facing in Bronze, Iron and Steel. Grip pivots and hand tracks stay fixed.
+Native rotation now retains connected thin source features such as bowstrings,
+using original palette colors only. There is no interpolated color or filtering.
+
+The capture runner covers all 27 registered weapon visuals (nine families across
+three materials), each at idle and all eight walk frames in eight directions,
+both bare and with chest/legs/cape. Cape-only captures also cover all three
+materials, bare and armored. No demonstrated cape detachment/layering defect
+was found in the reviewed samples, so cape art and its existing neck-following
+motion are preserved. New cloth animation is not claimed.
+
+```text
+Godot --headless --path godot_client --script res://scripts/dev_tools/equipment_identity_regression.gd -- --social-no-auto
+Godot --path godot_client --script res://scripts/dev_tools/equipment_outfit_review.gd -- --social-no-auto --outfit-minimized --outfit-kind=weapons --review-material=all --outfit-output=<absolute evidence directory>
+Godot --path godot_client --script res://scripts/dev_tools/equipment_outfit_review.gd -- --social-no-auto --outfit-minimized --outfit-kind=capes --review-material=all --outfit-output=<absolute evidence directory>
+```
+
+The identity regression compares original face/hair colors, rejects retained
+robe pixels, checks connected rotated crossbow art and its palette, and tests
+face clearance for every registered weapon through all front-visible poses.
+The pose regression checks head/collar contact at the real transformed anchors.
+The inspector explicitly renders its SubViewport even when minimized, avoiding
+an indefinite wait for an on-screen frame. These are technical checks; source
+artwork/user approval remains distinct from installation and reviewer findings.

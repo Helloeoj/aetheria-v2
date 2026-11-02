@@ -42,8 +42,12 @@ func sync(context: Dictionary, flags: Dictionary) -> void:
 	base.texture = FittedEquipmentLibrary.base_texture(pose, flags, context)
 	base.position = origin
 	base.visible = true
-	head.texture = FittedEquipmentLibrary.texture(pose.head)
+	head.texture = FittedEquipmentLibrary.head_texture(pose)
 	head.position = origin
+	if bool(flags.get("authored_chest", false)):
+		# The head is a complete independent section; align its native neck
+		# anchor to this armor pose rather than stretching either section.
+		head.position += FittedEquipmentLibrary.point(context.body_pose.get("headOffset",[0,0]))
 	head.visible = not bool(flags.get("head", false))
 	if bool(flags.get("chest", false)) or bool(flags.get("legs", false)):
 		for side: String in pose.frontArms:

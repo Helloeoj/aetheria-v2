@@ -34,13 +34,13 @@ func _staff_gem_overlaps_helmet(first: Sprite2D, second: Sprite2D) -> bool:
 				return true
 	return false
 
-func _native_neighbors_touch(first: Image, second: Image) -> bool:
+func _native_neighbors_touch(first: Image, second: Image, first_offset := Vector2i.ZERO) -> bool:
 	for y in range(first.get_height()):
 		for x in range(first.get_width()):
 			if first.get_pixel(x, y).a == 0.0:
 				continue
-			for yy in range(maxi(0, y - 1), mini(second.get_height(), y + 2)):
-				for xx in range(maxi(0, x - 1), mini(second.get_width(), x + 2)):
+			for yy in range(maxi(0, y + first_offset.y - 1), mini(second.get_height(), y + first_offset.y + 2)):
+				for xx in range(maxi(0, x + first_offset.x - 1), mini(second.get_width(), x + first_offset.x + 2)):
 					if second.get_pixel(xx, yy).a > 0.0:
 						return true
 	return false
@@ -68,7 +68,11 @@ func _run() -> void:
 				check(body.texture.get_image().get_used_rect().size == Vector2i.ZERO, "Old torso/legs or procedural limb filler remains underneath replacement armor")
 				var head_art := actor.animated_sprite.get_node("ArmorHeadForeground") as Sprite2D
 				var chest_art := (rig.get_equipped_visual("chest") as FittedEquipmentVisual).part_sprites[0]
-				check(_native_neighbors_touch(head_art.texture.get_image(), chest_art.texture.get_image()), "Native collar gap leaves the head disconnected: " + material + "/" + direction + "/" + str(frame))
+				var head_origin := actor.animated_sprite.to_local(head_art.to_global(head_art.offset))
+				var chest_origin := actor.animated_sprite.to_local(chest_art.to_global(chest_art.offset))
+				var head_offset := Vector2i((head_origin-chest_origin).round())
+				check(head_offset.x == 0 and head_offset.y >= 0 and head_offset.y <= 2, "Head anchor exceeds native neck calibration")
+				check(_native_neighbors_touch(head_art.texture.get_image(), chest_art.texture.get_image(), head_offset), "Native collar gap leaves the head disconnected: " + material + "/" + direction + "/" + str(frame))
 				for socket_name: String in ["right_hand", "left_hand", "back"]:
 					var socket := rig.get_socket(socket_name)
 					var rear := (socket_name == "right_hand" and direction in ["north", "north-east", "north-west", "west"]) or (socket_name == "left_hand" and direction in ["north", "north-east", "north-west", "east"]) or (socket_name == "back" and not direction.begins_with("north"))
