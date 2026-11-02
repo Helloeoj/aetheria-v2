@@ -9,7 +9,7 @@ const TARGET_HOURS_TO_MAX := 80.0
 const MAX_EXPERIENCE := 19_450_000
 const LEVEL_CURVE_RATE := 0.06920900746073569
 
-const SKILL_IDS := ["health", "attack", "strength", "defense", "range", "magic", "fishing", "cooking", "mining"]
+const SKILL_IDS := ["health", "attack", "strength", "defense", "range", "magic", "fishing", "cooking", "mining", "smithing"]
 const COMBAT_SKILL_IDS := ["attack", "strength", "defense", "range", "magic"]
 const MIN_COMBAT_LEVEL := 1
 const MAX_COMBAT_LEVEL := 150
@@ -22,7 +22,8 @@ const SKILL_NAMES := {
 	"magic": "Magic",
 	"fishing": "Fishing",
 	"cooking": "Cooking",
-	"mining": "Mining"
+	"mining": "Mining",
+	"smithing": "Smithing"
 }
 
 # Approved baseline rewards. All runtime damage awards and UI rate labels use
@@ -95,6 +96,8 @@ static func experience_source_text(skill: String) -> String:
 	var skill_id := normalize_skill(skill)
 	var rate := int(XP_PER_DAMAGE.get(skill_id, 0))
 	match skill_id:
+		"smithing":
+			return "XP per smelted bar or ingot used in completed forging"
 		"mining":
 			return "XP for extracting ore; failed attempts award no XP"
 		"cooking":

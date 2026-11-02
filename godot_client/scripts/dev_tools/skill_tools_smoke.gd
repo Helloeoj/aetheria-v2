@@ -148,7 +148,10 @@ func exercise_skill_overflow() -> void:
 	check(not skills.visible, "The fixed close button remains reachable after scrolling")
 	await key(KEY_K)
 	# Restore focus so the following input-suppression checks exercise editing.
+	skills.skill_scroll.ensure_control_visible(skills.skill_editors[last_skill])
+	await frames()
 	await click((skills.skill_editors[last_skill] as SpinBox).get_line_edit())
+	check(skills.is_editing(), "Reopened last skill editor has focus before input-suppression checks")
 
 
 func _run() -> void:

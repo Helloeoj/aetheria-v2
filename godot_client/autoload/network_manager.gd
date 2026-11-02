@@ -183,7 +183,7 @@ func open_developer_sandbox() -> bool:
 func send_action(command: Dictionary) -> bool:
 	if not online() or not authenticated:
 		return false
-	if command.get("type") in ["walk", "attack", "travel", "mine_start", "fish_start", "cook_start"]:
+	if command.get("type") in ["walk", "attack", "travel", "mine_start", "fish_start", "cook_start", "smith_start"]:
 		replace_keyboard_intent()
 	sequence += 1
 	var data := command.duplicate(true)

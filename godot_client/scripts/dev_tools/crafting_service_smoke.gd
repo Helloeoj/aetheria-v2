@@ -6,6 +6,7 @@ var failures: Array[String] = []
 var service: Script
 var data: Node
 var player_script: Script
+var smithing_driver: Script
 
 func _initialize() -> void:
 	call_deferred("_run")
@@ -24,6 +25,7 @@ func _run() -> void:
 	service = load("res://scripts/crafting_service.gd")
 	data = root.get_node("GameData")
 	player_script = load("res://scripts/player_state.gd")
+	smithing_driver = load("res://scripts/dev_tools/smithing_test_driver.gd")
 	check_catalog()
 	check_starter_transactions()
 	check_rejections()
@@ -73,10 +75,11 @@ func check_starter_transactions() -> void:
 		check(bool(service.craft(player, recipe_id, "leatherworking").ok), "Approved leather armor crafts: " + recipe_id)
 	check(not player.backpack.has("Tanned Leather") and player.backpack.get("Tanned Leather Coif", 0) == 1 and player.backpack.get("Tanned Leather Tunic", 0) == 1 and player.backpack.get("Tanned Leather Chaps", 0) == 1, "Coif, tunic and chaps consume exactly ten leather total")
 	player.add_item("Bronze Ingot", 5)
-	check(bool(service.craft(player, "bronze_dagger", "anvil", 2).ok), "Two daggers cost two bronze ingots")
-	check(bool(service.craft(player, "bronze_longsword", "anvil").ok), "Longsword uses remaining three bronze ingots")
+	check(player.skill_experience == xp, "Non-Smithing exchanges do not invent skill XP")
+	check(bool(smithing_driver.craft(player, "bronze_dagger", "anvil", 2).ok), "Two guided workpieces cost two bronze ingots")
+	check(bool(smithing_driver.craft(player, "bronze_longsword", "anvil").ok), "Guided longsword uses remaining three bronze ingots")
 	check(not player.backpack.has("Bronze Ingot") and player.backpack.get("Bronze Dagger", 0) == 2 and player.backpack.get("Bronze Longsword", 0) == 1, "Approved bronze costs and batch yields are exact")
-	check(player.skill_experience == xp, "Crafting does not invent skill XP")
+	check(player.get_skill_experience("smithing") == 5 * load("res://scripts/smithing_rules.gd").xp_per_bar(1), "Completed Smithing awards approved per-ingot XP")
 
 func check_rejections() -> void:
 	var player: RefCounted = player_script.new()

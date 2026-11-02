@@ -1,7 +1,8 @@
 class_name CharacterCodec
 extends RefCounted
 ## Versioned server saves contain approved item IDs, never client item statistics.
-const VERSION := 4
+const VERSION := 5
+const SmithingSettlement := preload("res://scripts/smithing_settlement.gd")
 const OrderBook := preload("res://scripts/orders/order_book.gd")
 const MAX_COUNT := 2147483647
 const MAX_INVENTORY_ENTRIES := 4096
@@ -39,6 +40,7 @@ static func encode(p: PlayerState, region_id: String) -> Dictionary:
 		"quick_food_id": int(GameData.get_item_by_name(p.quick_food_name).get("id", 0)),
 		"attack_style": p.attack_style, "selected_spell_id": p.selected_spell_id,
 		"dead_man_orders": p.dead_man_orders.duplicate(true),
+		"smithing_work": SmithingSettlement.record(p),
 	}
 	for timer: String in TIMERS:
 		state[timer] = p.get(timer)
@@ -51,7 +53,7 @@ static func _decode(state: Dictionary, username: String, character_id: String, p
 	if state.has("public_projection") or state.has("orders_view"):
 		return _bad("save_projection")
 	var version := _integer(state.get("version", -1), VERSION)
-	if version not in [1, 2, 3, VERSION]:
+	if version not in [1, 2, 3, 4, VERSION]:
 		return _bad("save_version")
 	var book: Variant = state.get("dead_man_orders", OrderBook.empty_book() if version < 3 else null)
 	var legacy_orders: bool = version < 4 and book is Dictionary and book.get("version") == 1
@@ -73,7 +75,7 @@ static func _decode(state: Dictionary, username: String, character_id: String, p
 		return _bad("save_skills")
 	for skill: String in SkillProgression.SKILL_IDS:
 		# Only the new, absent field migrates. Never repair corrupt old fields.
-		var fallback := 0 if version == 1 and skill == "mining" else -1
+		var fallback := 0 if (version == 1 and skill == "mining") or (version < 5 and skill == "smithing") else -1
 		var amount := _integer(experience.get(skill, fallback), SkillProgression.MAX_EXPERIENCE)
 		if amount < 0:
 			return _bad("save_skills")
@@ -166,11 +168,17 @@ static func _decode(state: Dictionary, username: String, character_id: String, p
 		if not _finite(state.get(timer)) or float(state[timer]) < 0.0 or float(state[timer]) > 3600.0:
 			return _bad("save_timer")
 		p.set(timer, float(state[timer]))
+	var work: Variant = state.get("smithing_work", {})
+	if not SmithingSettlement.validate(work): return _bad("save_smithing")
+	if not projection:
+		p.pending_smithing_record = work.duplicate(true)
+		SmithingSettlement.retry(p)
 	return {"ok": true, "player": p, "region_id": String(state.region_id)}
 
 static func public_state(full_saved: Dictionary) -> Dictionary:
 	var projected := full_saved.duplicate(true)
 	projected.erase("dead_man_orders")
+	projected.erase("smithing_work")
 	projected["public_projection"] = true
 	projected["orders_view"] = OrderBook.public_book(full_saved.get("dead_man_orders", OrderBook.empty_book()))
 	return projected
@@ -201,6 +209,7 @@ static func apply_to(p: PlayerState, saved: Dictionary) -> bool:
 		p.orders_view = other.orders_view.duplicate(true)
 	else:
 		p.dead_man_orders = other.dead_man_orders.duplicate(true)
+		p.pending_smithing_record = other.pending_smithing_record.duplicate(true)
 	return true
 
 static func _item(value: Variant) -> Dictionary:

@@ -6,6 +6,7 @@ var region: RefCounted:
 		return _region.get_ref()
 var fishing: Dictionary = {}
 var cooking: Dictionary = {}
+var smithing: RefCounted = preload("res://network/region_smithing.gd").new()
 var station_ids: Dictionary = {}
 var steering: Dictionary = {}
 var _fish_meta: Dictionary = {}
@@ -17,14 +18,16 @@ var _cook_sample_id := 0
 
 func configure(owner_region: RefCounted) -> void:
 	_region = weakref(owner_region)
+	smithing.configure(owner_region)
 
 func active(id: String) -> bool:
-	return region.mining.active(id) or fishing.has(id) or (cooking.has(id) and cooking[id].is_active())
+	return smithing.active(id) or region.mining.active(id) or fishing.has(id) or (cooking.has(id) and cooking[id].is_active())
 
-func close(id: String) -> void:
+func close(id: String, departing: bool = false) -> void:
 	if active(id):
 		region.dirty[id] = true
 	region.mining.stop(id, "cancelled")
+	smithing.close(id, departing)
 	if fishing.has(id):
 		fishing[id].close()
 		fishing.erase(id)
@@ -39,6 +42,8 @@ func close(id: String) -> void:
 func submit(id: String, command: Dictionary) -> Dictionary:
 	var player: PlayerState = region.players[id]
 	var kind := String(command.type)
+	if kind.begins_with("smith_"):
+		return smithing.submit(id, command)
 	if kind in ["fish_start", "cook_start"]:
 		region.mining.stop(id, "new_activity")
 	match kind:
@@ -155,6 +160,7 @@ func submit(id: String, command: Dictionary) -> Dictionary:
 
 func advance(id: String, delta: float) -> void:
 	var player: PlayerState = region.players[id]
+	smithing.advance(id, delta)
 	if fishing.has(id):
 		var session: FishingSession = fishing[id]
 		if _busy(player) or region.station_for(player, String(station_ids.get(id, "")), "fish").is_empty() or player.get_position().distance_to(session.start_position) > 0.1 or player.current_hp < session.start_hp:
@@ -221,7 +227,9 @@ func snapshot(id: String) -> Dictionary:
 			"flip_elapsed":session.flip_elapsed,"flip_window":session.flip_window if is_finite(session.flip_window) else -1.0,
 			"cooked_count":session.cooked_count,"burnt_count":session.burnt_count,"reward_xp":session.reward_xp,
 			"feedback_elapsed":session.feedback_elapsed,"last_result":session.last_result.duplicate(true)}
-	return region.mining.snapshot(id)
+	var smith: Dictionary = smithing.snapshot(id)
+	var mine: Dictionary = region.mining.snapshot(id)
+	return mine if region.mining.active(id) or smith.is_empty() else smith
 
 func _stop_movement(id: String) -> void:
 	region._inputs.erase(id)

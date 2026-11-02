@@ -24,6 +24,15 @@ static func list_recipes(station: String = "") -> Array[Dictionary]:
 	return result
 
 static func craft(player: PlayerState, recipe_id: String, station: String, quantity: int = 1) -> Dictionary:
+	if station in ["furnace", "anvil"]:
+		return _failure("Use the Smithing minigame at this station.")
+	var exchange := prepare_exchange(player, recipe_id, station, quantity)
+	if not bool(exchange.ok): return exchange
+	player.backpack = exchange.next_backpack
+	exchange.erase("next_backpack")
+	return exchange
+
+static func prepare_exchange(player: PlayerState, recipe_id: String, station: String, quantity: int = 1) -> Dictionary:
 	if player == null:
 		return _failure("There is no crafter.")
 	if player.current_hp <= 0:
@@ -32,6 +41,8 @@ static func craft(player: PlayerState, recipe_id: String, station: String, quant
 		return _failure("You cannot craft during combat.")
 	if player.active_cooking_session != null and player.active_cooking_session.get_ref() != null:
 		return _failure("Finish cooking before crafting another item.")
+	if (player.active_smithing_session != null and player.active_smithing_session.get_ref() != null) or not player.pending_smithing_record.is_empty():
+		return _failure("Finish Smithing before crafting another item.")
 	if quantity <= 0 or quantity > MAX_BATCH:
 		return _failure("Choose a positive, supported batch quantity.")
 	var recipe := _find_recipe(recipe_id)
@@ -65,9 +76,8 @@ static func craft(player: PlayerState, recipe_id: String, station: String, quant
 		if current < 0 or current > MAX_COUNT - amount:
 			return _failure("That output would exceed a supported inventory quantity.")
 		next_backpack[item_name] = int(next_backpack.get(item_name, 0)) + amount
-	player.backpack = next_backpack
 	return {"ok": true, "message": "Created %s." % String(recipe.get("name", recipe_id)),
-		"outputs": outputs.items.duplicate(true), "quantity": quantity}
+		"inputs": inputs.items.duplicate(true), "outputs": outputs.items.duplicate(true), "next_backpack": next_backpack, "quantity": quantity}
 
 static func empower_orb(player: PlayerState, element: String) -> Dictionary:
 	var normalized := element.strip_edges().to_lower()
