@@ -1,23 +1,29 @@
 # Golem Titan combat
 
-Spawn the approved Titan in the developer sandbox with **F5 → 1029 → Enter**.
+Spawn the approved Titan in the developer sandbox with **F5 â†’ 1029 â†’ Enter**.
 The existing combat stats are retained. Its legs are bound: roaming, chasing,
 ordinary movement and displacement cannot move the actor.
 
 The shared combat engine chooses main attacks from shuffled bags containing
 physical slam, dark bolt and shadow eruption. Consecutive main attacks cannot
-be identical, including across bags. Start intervals vary from 8–12 game ticks.
+be identical, including across bags. Start intervals vary from 8â€“12 game ticks.
 Haymakers fill available three-tick gaps only when the target is within the
 existing two-tile melee reach and visible. Range and sight are checked again
 at contact; stepping away makes the punch miss. Remaining in melee never
-suppresses or postpones the main attacks.
+suppresses or postpones the main attacks. When the target stays outside punch
+reach, an available gap immediately selects a main attack instead of waiting
+for a punch opportunity: one main attack every four ticks (2.4 seconds), with
+no out-of-range haymaker.
 
 Both tile attacks capture ten unique, scattered, clear cells, including the
 target's occupied cell when the warning begins. In very small spaces only
 available clear cells are selected. Each cell runs its own approved animation:
-red physical warnings/spikes or purple magic warnings/eruptions. Two ticks
-warn, one tick rises, one tick retracts; damage resolves once at the peak on
-tick three against current occupancy. Leaving a warned cell avoids that hit.
+red physical warnings/spikes or purple magic warnings/eruptions. The body
+winds up for two ticks before revealing or locking the cells. The coloured
+floor cue remains visible during the existing one-tick rise; damage resolves
+once at its peak on tick three, giving 0.6 seconds from floor cue to damage.
+Retraction keeps its approved speed. Moving during the body windup changes
+which player tile is selected; leaving it after the cue avoids that hit.
 
 The dark bolt has no ground warning. The approved roar and purple crystals
 announce casting; release occurs after two ticks. The existing orb art follows
@@ -36,12 +42,15 @@ Validation with Godot 4.5.1 from `godot_client`:
 
 ```text
 --headless --path . res://scripts/dev_tools/titan_combat_smoke.tscn
+--headless --path . res://scripts/dev_tools/titan_combat_feedback_smoke.tscn
 --headless --path . res://scenes/dev_tools/orb_combat_smoke.tscn
 --headless --path . res://scenes/dev_tools/region_freeze_smoke.tscn
 --path . --script res://scripts/dev_tools/titan_combat_review.gd -- --output=<absolute evidence directory>
 ```
 
+Use `--ranged` after `--` for the out-of-melee regression and delayed warning captures.
+
 The graphical review spawns the actual Titan and player in Golem Kingdom,
-drives the real combat engine, captures all attacks at 4× zoom, and checks the
+drives the real combat engine, captures all attacks at 4Ã— zoom, and checks the
 Titan's position after the fight. It uses an isolated development character
 and does not save it.

@@ -33,6 +33,16 @@ func tick(engine: Variant, world: Variant) -> Array[Dictionary]:
 			encounters[boss.entity_id] = {"rng": rng, "pattern": pattern, "bag": [], "last": "", "next": engine.current_tick, "busy": 0, "action": {}}
 		var state: Dictionary = encounters[boss.entity_id]
 		var action: Dictionary = state.action
+		# Reveal and lock cells at the slam/cast release, not the windup's start.
+		if not action.is_empty() and action.kind in ["slam", "eruption"] and not action.warned and engine.current_tick >= action.warning_tick:
+			var warning_target: CombatActor = engine.actors.get(action.target_id)
+			if warning_target == null or not warning_target.is_alive: warning_target = target
+			action.cells = _cells(world, boss, warning_target, state.pattern)
+			action.warned = true
+			var warning := action.duplicate(true)
+			warning.type = "titan_area_warned"
+			warning.tick = engine.current_tick
+			events.append(warning)
 		if not action.is_empty() and not action.resolved and engine.current_tick >= action.hit_tick:
 			action.resolved = true
 			events.append_array(_resolve(engine, world, boss, action))
@@ -40,17 +50,19 @@ func tick(engine: Variant, world: Variant) -> Array[Dictionary]:
 		state.action = {}
 		if not engine._has_attack_line_of_sight(world, boss, target): continue
 		var kind := ""
-		if engine.current_tick >= int(state.next):
+		var can_punch: bool = engine._distance(boss, target) <= boss.attack_range
+		# A ranged player must not wait through slots that only a punch could fill.
+		if engine.current_tick >= int(state.next) or not can_punch:
 			kind = _next_kind(state)
 			state.next = engine.current_tick + state.rng.randi_range(8, 12)
-		elif int(state.next) - engine.current_tick >= 3 and engine._distance(boss, target) <= boss.attack_range:
+		elif int(state.next) - engine.current_tick >= 3 and can_punch:
 			kind = "haymaker"
 		if kind.is_empty(): continue
 		serial += 1
 		var cells: Array[Vector2i] = []
-		if kind in ["slam", "eruption"]: cells = _cells(world, boss, target, state.pattern)
 		action = {"attack_id": "titan_%d" % serial, "kind": kind, "caster_id": boss.entity_id,
 			"target_id": target.entity_id, "cells": cells, "age": 0.0, "resolved": false,
+			"warned": false, "warning_tick": engine.current_tick + 2,
 			"tick": engine.current_tick, "hit_tick": engine.current_tick + (3 if kind in ["slam", "eruption"] else 2)}
 		state.action = action
 		state.busy = engine.current_tick + (3 if kind == "haymaker" else 4)

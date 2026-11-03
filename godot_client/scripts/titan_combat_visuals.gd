@@ -91,8 +91,24 @@ func _process(delta: float) -> void:
 				var center: Vector2 = game.world.cell_grid.center(Vector2i(int(cell[0]), int(cell[1])))
 				node.position = game._screen_position(center.x, center.y)
 				game.add_child(node)
+				# These live cells first appear at release and rise over one tick.
+				# Keep their colour cue visible underneath the rising geometry.
+				var marker := Sprite2D.new()
+				marker.name = "LiveWarning"
+				marker.centered = false
+				marker.offset = Vector2(-24, -52)
+				marker.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+				if action.kind == "slam":
+					marker.texture = node.get_node("Visual").texture
+					marker.region_enabled = true
+					marker.region_rect = Rect2(144, 0, 48, 64)
+				else:
+					marker.texture = preload("res://Assets/Effects/TitanDarkMagic/warning-3.png")
+				node.add_child(marker)
+				node.move_child(marker, 0)
 				tiles[key] = node
 			tiles[key].sample_at_seconds(age)
+			tiles[key].get_node("LiveWarning").visible = age < 1.8
 	for id: String in bodies.keys():
 		if active_bodies.has(id): continue
 		var entry: Dictionary = bodies[id]
