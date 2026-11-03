@@ -1,6 +1,7 @@
 class_name MonsterState
 extends RefCounted
 
+var stationary := false
 var monster_id := -1
 var entity_id := ""
 var name := ""
@@ -31,6 +32,7 @@ var hybrid_secondary_style := "magic"
 
 func _init(template: Dictionary = {}, start_x: float = 0.0, start_y: float = 0.0) -> void:
 	monster_id = int(template.get("id", -1))
+	stationary = monster_id == 1029
 	name = String(template.get("name", "Monster"))
 	tier = int(template.get("tier", 1))
 	level = int(template.get("level", 1))
@@ -69,6 +71,7 @@ func get_position() -> Vector2:
 	return Vector2(x, y)
 
 func move_to(new_x: float, new_y: float) -> void:
+	if stationary: return
 	x = new_x
 	y = new_y
 

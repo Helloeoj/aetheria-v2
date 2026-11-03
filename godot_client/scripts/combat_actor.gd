@@ -37,6 +37,8 @@ var attack_range := 2.0
 var projectile_speed := 0.0
 var requires_line_of_sight := true
 var next_attack_tick := 0.0
+var stationary := false
+var boss_profile := ""
 var is_monster := false
 var monster_attack_type := ""
 var hybrid_melee_style := "slash"
@@ -75,6 +77,8 @@ func configure(data: Dictionary) -> CombatActor:
 	resistances = data.get("resistances", {}).duplicate(true)
 	damage_reductions = data.get("damage_reductions", {}).duplicate(true)
 	uses_armour_rating = bool(data.get("uses_armour_rating", false))
+	stationary = bool(data.get("stationary", false))
+	boss_profile = String(data.get("boss_profile", ""))
 	is_monster = bool(data.get("is_monster", false))
 	attack_speed = GameTickConfig.MONSTER_ATTACK_INTERVAL_TICKS if is_monster else 1
 	attack_interval_seconds = maxf(0.1, float(data.get(
@@ -109,7 +113,7 @@ func configure(data: Dictionary) -> CombatActor:
 	return self
 
 func can_move() -> bool:
-	return is_alive and not active_orb_effects.has("lightning")
+	return not stationary and is_alive and not active_orb_effects.has("lightning")
 
 func can_attack() -> bool:
 	return is_alive and not active_orb_effects.has("lightning")
@@ -145,6 +149,7 @@ func to_dictionary() -> Dictionary:
 		"projectile_speed": projectile_speed,
 		"requires_line_of_sight": requires_line_of_sight,
 		"next_attack_tick": next_attack_tick,
+		"stationary": stationary, "boss_profile": boss_profile,
 		"is_monster": is_monster, "monster_attack_type": monster_attack_type,
 		"hybrid_melee_style": hybrid_melee_style,
 		"hybrid_secondary_style": hybrid_secondary_style,
