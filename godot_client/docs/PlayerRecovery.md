@@ -1,0 +1,10 @@
+# Downed players and respawn
+Lethal damage leaves a player downed at zero HP for 30 simulation seconds. Existing dead visuals remain; a HUD shows the revival window. Movement, combat, food and normal area travel cannot revive or bypass this state. On expiry the player automatically returns to the existing outskirts initial spawn outside Valtheris, with full HP. Inventory, equipment, gold, skills and mana persist; no death penalty is added.
+
+`player_recovery.gd` shares the rules between offline play and authoritative regions. `AuthoritativeRegion.revive_player(character_id, health)` is the trusted future resurrection entry point. Offline controller `revive(health)` uses the same rule. Revival must occur before expiry, restores caller-selected positive HP in place and cancels the timer. No resurrection spell, client revive command or early respawn button is added.
+
+`PlayerState.downed_elapsed` is saved by CharacterCodec, defaults to zero for older saves, and is replicated from authoritative actor snapshots. The server clock owns online expiry. Normal disconnect/reconnect resumes from the server simulation/save; downtime without simulation does not tick the timer. Existing persistence cadence can roll back up to its save interval after an abrupt host crash.
+
+Offline recovery reuses SceneTravel loading/failure handling. Online recovery uses host region transfer, collision-safe arrival and existing persistence fencing. Failed destinations leave a recoverable downed character rather than silently replacing saves.
+
+Validation: `res://scripts/dev_tools/player_recovery_smoke.tscn` tests rules, save/load and region timing. `player_recovery_game_smoke.tscn` exercises real scenes, revival, dungeon and same-area recovery, host region transfer (account persistence stubbed), and 4x screenshots under the OS temporary directory.

@@ -408,6 +408,11 @@ func _ready() -> void:
 			var spawn_point := to_local(initial_spawn.global_position)
 			player.x = (spawn_point.x - map_origin.x) / TILE_SIZE
 			player.y = (map_origin.y + map_height - spawn_point.y) / TILE_SIZE
+	if player.has_meta("recovery_arrival"):
+		player.remove_meta("recovery_arrival")
+		var recovery_point := preload("res://scripts/player_recovery.gd").spawn_position(self)
+		player.x = recovery_point.x
+		player.y = recovery_point.y
 	if max_skills_for_testing and not resuming_character:
 		for skill: String in SkillProgression.SKILL_IDS:
 			player.set_skill_level(skill, SkillProgression.MAX_LEVEL)
@@ -575,6 +580,10 @@ func _ready() -> void:
 		offline_mining = preload("res://scripts/offline_mining_controller.gd").new()
 		add_child(offline_mining)
 		offline_mining.configure(self)
+	if not has_meta("online_server_geometry"):
+		var recovery_ui: Node = preload("res://scripts/player_recovery_controller.gd").new()
+		add_child(recovery_ui)
+		recovery_ui.configure(self)
 	queue_redraw()
 	if Network.online():
 		online_view = preload("res://network/online_world_view.gd").new()

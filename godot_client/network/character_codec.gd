@@ -34,6 +34,7 @@ static func encode(p: PlayerState, region_id: String) -> Dictionary:
 	var state := {
 		"version": VERSION, "region_id": region_id, "x": p.x, "y": p.y,
 		"skill_experience": p.skill_experience.duplicate(true), "hp": p.current_hp,
+		"downed_elapsed": p.downed_elapsed,
 		"mana": p.current_mana, "gold": p.gold, "inventory": inventory,
 		"equipment": equipment, "fishing_pale": pale,
 		"quiver_item_id": int(p.quiver_item.get("id", 0)), "quiver_amount": p.quiver_amount,
@@ -88,6 +89,10 @@ static func _decode(state: Dictionary, username: String, character_id: String, p
 	p.current_mana = _integer(state.get("mana", -1), p.get_max_mana())
 	if p.gold < 0 or p.current_hp < 0 or p.current_mana < 0:
 		return _bad("save_vitals")
+	var downed: Variant = state.get("downed_elapsed", 0.0)
+	if not _finite(downed) or float(downed) < 0.0 or float(downed) > 30.0:
+		return _bad("save_downed")
+	p.downed_elapsed = float(downed) if p.current_hp == 0 else 0.0
 	var inventory: Variant = state.get("inventory")
 	if not inventory is Array or inventory.size() > MAX_INVENTORY_ENTRIES:
 		return _bad("save_inventory")

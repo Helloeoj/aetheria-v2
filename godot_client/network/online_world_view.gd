@@ -133,6 +133,7 @@ func apply(snapshot: Dictionary) -> void:
 			game.player.x = actor.x
 			game.player.y = actor.y
 			game.player.current_hp = actor.hp
+			game.player.downed_elapsed = float(data.get("downed_elapsed", 0.0))
 			game.player.current_target = actor.current_target_id
 			game.player.in_combat = bool(snapshot.get("in_combat", false))
 			var point := Vector2(actor.x, actor.y)

@@ -15,6 +15,7 @@ var skill_experience: Dictionary = {
 	"defense": 0, "range": 0, "magic": 0, "fishing": 0, "cooking": 0, "mining": 0
 }
 var current_hp := 200
+var downed_elapsed := 0.0 # Saved simulation seconds since lethal damage.
 var food_cooldown_seconds := 0.0
 var food_attack_cooldown_seconds := 0.0
 var food_attack_interval_seconds := 0.0

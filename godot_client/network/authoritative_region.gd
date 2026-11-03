@@ -384,6 +384,12 @@ func advance(delta: float) -> void:
 				player.x = actor.x
 				player.y = actor.y
 				player.in_combat = _in_combat(id)
+			if actor != null and actor.hp <= 0:
+				_inputs.erase(id)
+				cancel_walk(id)
+				_attacking.erase(id)
+				activities.close(id, true)
+			preload("res://scripts/player_recovery.gd").advance(world, player, step)
 			activities.advance(id, step)
 		mining.advance(step)
 		for id: String in _pending_refresh:
@@ -403,6 +409,7 @@ func snapshot(character_id: String) -> Dictionary:
 			continue
 		var entry := {"entity_id": actor.entity_id, "name": actor.name, "x": actor.x, "y": actor.y,
 			"hp": actor.hp, "max_hp": actor.max_hp, "is_alive": actor.is_alive,
+			"downed_elapsed": players[actor.entity_id].downed_elapsed if players.has(actor.entity_id) else 0.0,
 			"is_monster": actor.is_monster, "attack_style": actor.attack_style,
 			"target_id": actor.current_target_id, "gathering": mining.actor_activity(actor.entity_id),
 			"equipment": players[actor.entity_id].get_equipped_names() if players.has(actor.entity_id) else {}}
@@ -920,3 +927,11 @@ func _record_order_defeat(id: String, monster: MonsterState) -> void:
 		if orders.on_event(players[id],"combat",monster.name,context):
 			dirty[id] = true
 			return
+
+func revive_player(id: String, health: int) -> bool:
+	if not players.has(id) or frozen.has(id):
+		return false
+	if not preload("res://scripts/player_recovery.gd").revive(world,players[id],health):
+		return false
+	dirty[id] = true
+	return true

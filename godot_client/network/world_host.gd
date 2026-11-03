@@ -299,7 +299,10 @@ func _service_sessions() -> void:
 		indexes[id] = index
 	for session: Dictionary in sessions.values():
 		var region: AuthoritativeRegion = regions[session.region_id]
-		if not session.closing and not session.saving and session.pending.is_empty():
+		if session.player.current_hp <= 0 and session.player.downed_elapsed + 0.0000001 >= 30.0:
+			if not session.busy and not session.saving and session.pending.is_empty() and not session.closing and not session.get("respawning", false):
+				_respawn.call_deferred(session)
+		if not session.closing and not session.saving and session.pending.is_empty() and not session.get("respawning", false):
 			var state := CharacterCodec.encode(session.player, session.region_id)
 			if state != session.state and (_critical_hash(state) != session.hash or now - int(session.last_save) >= 5000):
 				_persist(session)
@@ -458,6 +461,8 @@ func _finalize(session: Dictionary) -> void:
 		return
 
 func _travel(session: Dictionary, portal_id: String) -> Dictionary:
+	if session.player.current_hp <= 0:
+		return {"ok": false, "message": "You must be alive."}
 	var region: AuthoritativeRegion = regions[session.region_id]
 	if not region.world.at_grid_rest(session.character_id):
 		return {"ok": false, "message": "Finish your step before entering."}
@@ -516,9 +521,43 @@ func _shutdown() -> void:
 
 static func _critical_hash(state: Dictionary) -> String:
 	var important := state.duplicate(true)
+	important["downed"] = int(state.get("hp", 1)) <= 0
 	if important.get("smithing_work") is Dictionary:
 		important.smithing_work.erase("temperature")
 		important.smithing_work.erase("overheated_seconds")
-	for field: String in ["x", "y", "hp", "food_cooldown_seconds", "food_attack_cooldown_seconds", "food_attack_interval_seconds"]:
+	for field: String in ["x", "y", "hp", "food_cooldown_seconds", "food_attack_cooldown_seconds", "food_attack_interval_seconds", "downed_elapsed"]:
 		important.erase(field)
 	return JSON.stringify(important).sha256_text()
+
+func _respawn(session: Dictionary) -> void:
+	if session.busy or session.saving or not session.pending.is_empty() or session.closing or session.get("retired", false) or session.get("ownership_paused", false):
+		return
+	session.respawning = true
+	session.busy = true
+	var source: AuthoritativeRegion = regions[session.region_id]
+	source.frozen[session.character_id] = true
+	var destination := await _get_region("outskirts")
+	if destination == null or session.closing or session.get("retired",false) or sessions.get(session.peer,{}).get("lease_token") != session.lease_token:
+		source.frozen.erase(session.character_id)
+		session.respawning = false
+		session.busy = false
+		return
+	var point := preload("res://scripts/player_recovery.gd").spawn_position(destination.geometry_game)
+	point = destination._safe_position(point)
+	if not point.is_finite():
+		source.frozen.erase(session.character_id)
+		session.respawning = false
+		session.busy = false
+		return
+	source.remove_player(session.character_id)
+	preload("res://scripts/player_recovery.gd").restore(session.player)
+	session.player.x = point.x
+	session.player.y = point.y
+	session.region_id = "outskirts"
+	session.queue.clear()
+	session.movement_ack = -1
+	session.erase("movement_at")
+	destination.add_player(session.character_id,session.player)
+	await _persist(session)
+	session.respawning = false
+	session.busy = false

@@ -83,7 +83,7 @@ func is_transitioning() -> bool:
 	return _transitioning
 
 
-func request_travel(game: Node, destination_scene: String, spawn_id: String) -> bool:
+func request_travel(game: Node, destination_scene: String, spawn_id: String, recovery: bool = false) -> bool:
 	if Network.online():
 		for portal: Node in get_tree().get_nodes_in_group("cave_portal"):
 			if game.get_parent().is_ancestor_of(portal) and portal.destination_scene == destination_scene and portal.destination_spawn_id == spawn_id:
@@ -102,7 +102,7 @@ func request_travel(game: Node, destination_scene: String, spawn_id: String) -> 
 	if fishing_panel != null and fishing_panel.visible:
 		_notice(game, "Finish fishing before entering another area.")
 		return false
-	if spawn_id.is_empty() or not ResourceLoader.exists(destination_scene, "PackedScene"):
+	if (spawn_id.is_empty() and not recovery) or not ResourceLoader.exists(destination_scene, "PackedScene"):
 		_fail_request(game, "The destination area is unavailable.")
 		return false
 	var cooking: Node = game.get("cooking_controller")
@@ -118,6 +118,8 @@ func request_travel(game: Node, destination_scene: String, spawn_id: String) -> 
 	_transitioning = true
 	_previous_spawn_id = pending_spawn_id
 	pending_spawn_id = spawn_id
+	if recovery:
+		player.set_meta("recovery_arrival", true)
 	_source_scene = get_tree().current_scene
 	if _source_scene == null:
 		_source_scene = game.get_parent()
