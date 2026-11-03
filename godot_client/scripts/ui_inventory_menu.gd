@@ -543,6 +543,8 @@ func _build_battle_stats(column: VBoxContainer, player: PlayerState) -> void:
 	var accuracy_text := "Accuracy: %.1f%%" % (float(stats.get("accuracy", 0.0)) * 100.0)
 	if float(stats.get("melee_attack_roll", -1.0)) >= 0.0:
 		accuracy_text = "Melee strength: %+d\nAttack roll: %.0f\nHit chance depends on target defense." % [int(stats.melee_strength_bonus), float(stats.melee_attack_roll)]
+	elif String(stats.style) in ["ranged", "magic"]:
+		accuracy_text = "Attack roll: %.0f\nHit chance depends on target defense." % float(stats.get(String(stats.style) + "_attack_roll", 0.0))
 	column.add_child(_label("Style: %s\nDamage: %d–%d\n%s\nAttack interval: %.2f sec\nAttack range: %.1f tiles" % [String(STYLE_NAMES.get(String(stats.get("style", "blunt")), "Crush")), int(stats.get("min_damage", 1)), int(stats.get("max_damage", 1)), accuracy_text, float(stats.get("attack_interval_seconds", 0.0)), float(stats.get("attack_range", 0.0))], 14, FantasyUI.IVORY, true))
 	var weapon: Dictionary = player.equipment.get("weapon", {})
 	column.add_child(_label("Weapon\n" + String(weapon.get("name", "Unarmed")), 13, FantasyUI.MUTED, true))
@@ -938,12 +940,14 @@ func _item_bonus_text(item: Dictionary) -> String:
 	var lines: Array[String] = []
 	if item.has("melee_strength_bonus"):
 		lines.append("Melee strength: %+d" % int(item.melee_strength_bonus))
+	if item.has("magic_damage_bonus"):
+		lines.append("Magic damage: %+.1f%%" % (float(item.magic_damage_bonus) * 100.0))
 	# Crafting items and food deliberately have a null slot, which String() cannot accept.
 	if item.get("slot", null) == "weapon":
 		for style: String in PlayerStats.valid_styles_for_weapon(item):
 			var profile := PlayerStats.base_attack_profile(item, style)
 			if not profile.is_empty():
-				lines.append("%s base: %d–%d damage, %.0f%% accuracy" % [String(STYLE_NAMES[style]), int(profile.min_damage), int(profile.max_damage), float(profile.accuracy) * 100.0])
+				lines.append("%s base: %d–%d damage; accuracy uses skill and target defense" % [String(STYLE_NAMES[style]), int(profile.min_damage), int(profile.max_damage)])
 			lines.append("%s reach: %.0f tiles" % [String(STYLE_NAMES[style]), PlayerStats.get_attack_range(style, item)])
 		lines.append("Attack interval: %.2f sec" % PlayerStats.weapon_attack_interval_seconds(item))
 	var attack: Dictionary = item.get("attack_bonuses", {})

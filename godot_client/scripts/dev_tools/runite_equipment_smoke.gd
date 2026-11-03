@@ -231,7 +231,7 @@ func _check_armour_rating_and_skills() -> void:
 	player.set_skill_level("defense", 100)
 	var defense_only := player.get_combat_stats()
 	_check(float(defense_only.resistances.slash) > float(initial.resistances.slash), "Defense skill adds physical protection")
-	_check(is_equal_approx(defense_only.resistances.magic, initial.resistances.magic), "Defense skill does not add magic protection")
+	_check(float(defense_only.resistances.magic) > float(initial.resistances.magic), "Defense skill supplies its 30 percent magic protection contribution")
 	player.set_skill_level("magic", 100)
 	var both := player.get_combat_stats()
 	_check(float(both.resistances.magic) > 0.0, "Magic skill offsets armor vulnerability before conversion")

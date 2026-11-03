@@ -118,6 +118,9 @@ func register_item(item_name: String, item_type: String, material: String, tier:
 	}
 	if definition.has("combat_profiles"):
 		item["combat_profiles"] = definition["combat_profiles"].duplicate(true)
+	for key: String in ["combat_role", "magic_damage_bonus"]:
+		if definition.has(key):
+			item[key] = definition[key]
 	if definition.has("melee_strength_bonus"):
 		item["melee_strength_bonus"] = int(definition["melee_strength_bonus"])
 	if definition.has("two_handed"):

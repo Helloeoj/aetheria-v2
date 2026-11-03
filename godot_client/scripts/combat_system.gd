@@ -254,7 +254,7 @@ func _resolve_spell_cast(world: Variant, cast_data: Dictionary) -> Array[Diction
 				1 if spell_max_damage > 0 else 0, spell_max_damage, caster.magic_level
 			)
 			var outcome := calculate_hit_outcome(caster, candidate,
-				spell_damage, caster.magic_accuracy, String(spell.get("school", "arcane")),
+				spell_damage, null, String(spell.get("school", "arcane")),
 				spell_max_damage)
 			var state := apply_hit_to_target(candidate, outcome)
 			hit_ids.append(candidate.entity_id)
@@ -335,6 +335,7 @@ func _spawn_spell_projectile(caster: CombatActor, target: CombatActor,
 		"damage": _roll_damage_for_level(spell_min_damage, spell_max_damage, caster.magic_level),
 		"max_damage": spell_max_damage,
 		"accuracy": caster.magic_accuracy,
+		"attack_roll": caster.magic_attack_roll,
 		"damage_type": String(spell.get("school", "arcane")),
 		"crit_chance": caster.crit_chance,
 		"crit_multiplier": caster.crit_multiplier,
@@ -395,7 +396,7 @@ func _process_projectiles(world: Variant, delta: float, paused_actor_ids: Dictio
 			# later decide whether that actor may take damage without letting the
 			# projectile pass through them.
 			var outcome := calculate_hit_outcome(
-				projectile, target, projectile.damage, projectile.accuracy, projectile.damage_type
+				projectile, target, projectile.damage, null, projectile.damage_type
 			)
 			var state := apply_hit_to_target(target, outcome)
 			events.append({
@@ -775,6 +776,7 @@ func _spawn_projectile(attacker: CombatActor, target: CombatActor,
 		"damage": _roll_damage_for_attacker(attacker, minimum, maximum),
 		"max_damage": maximum if not attacker.is_monster else -1,
 		"accuracy": clampf(attacker.accuracy, 0.0, 1.0),
+		"attack_roll": attacker.magic_attack_roll if attacker.attack_style == "magic" else attacker.ranged_attack_roll,
 		"damage_type": attacker.attack_style,
 		"orb_element": attacker.orb_element if attacker.attack_style == "magic" else "",
 		"crit_chance": attacker.crit_chance,
@@ -819,6 +821,24 @@ func calculate_hit_chance(attacker: Variant, target: Variant,
 			# replacing only its level contribution. Base stats are never mutated.
 			defence_roll *= float(target.effective_defence_level() + 8) / float(target.defence_level + 8)
 		return PlayerStats.melee_hit_chance(melee_roll, defence_roll)
+	# Player ranged/magic and their projectiles use the same opposed-roll rule
+	# as melee. An explicit forced_accuracy deliberately retains the old API.
+	var style_roll := float(_get_stat(attacker, resistance_style + "_attack_roll", -1.0))
+	if attacker is CombatProjectile:
+		style_roll = attacker.attack_roll
+	if forced_accuracy == null and resistance_style in ["ranged", "magic"] and style_roll >= 0.0:
+		var defence_level := int(_get_stat(target, "defence_level", 1))
+		var magic_level := int(_get_stat(target, "magic_level", 1))
+		var defence_roll := float(_get_stat(target, resistance_style + "_defence_roll", -1.0))
+		if defence_roll < 0.0:
+			defence_roll = PlayerStats.magic_defence_roll(magic_level, defence_level, resistance,
+				bool(_get_stat(target, "is_monster", false))) if resistance_style == "magic" else PlayerStats.melee_defence_roll(defence_level, resistance)
+		if target is CombatActor and target.active_orb_effects.has("hurricane"):
+			if resistance_style == "magic" and not target.is_monster:
+				defence_roll *= (0.7 * magic_level + 0.3 * target.effective_defence_level() + 8.0) / (0.7 * magic_level + 0.3 * defence_level + 8.0)
+			elif resistance_style == "ranged":
+				defence_roll *= float(target.effective_defence_level() + 8) / float(defence_level + 8)
+		return PlayerStats.melee_hit_chance(style_roll, defence_roll)
 	# Player equipment uses a bounded fractional reduction in incoming hit chance.
 	# Authored monster resistances retain their existing accuracy-offset behavior.
 	var adjusted_accuracy := accuracy - resistance
@@ -906,7 +926,7 @@ func _get_spell_max_damage(caster: CombatActor, spell: Dictionary) -> int:
 		/ float(SkillProgression.MAX_LEVEL)
 	)
 	var damage_scale := lerpf(0.5, 1.0, magic_progress)
-	return maxi(1, roundi(float(base_damage) * damage_scale))
+	return maxi(1, floori(float(roundi(float(base_damage) * damage_scale)) * maxf(0.0, 1.0 + caster.magic_damage_bonus)))
 
 func _resistance_style_for_damage_type(damage_type: String) -> String:
 	if damage_type in ["magic", "fire", "water", "earth", "air", "arcane"]:

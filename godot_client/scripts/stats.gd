@@ -46,6 +46,26 @@ static func melee_attack_roll(attack_level: int, style_bonus: int, accuracy_bonu
 static func melee_defence_roll(defence_level: int, resistance: float) -> float:
 	return float((maxi(1, defence_level) + 8) * 64) / (1.0 - clampf(resistance, MIN_ARMOUR_RESISTANCE, MAX_ARMOUR_RESISTANCE))
 
+static func magic_defence_roll(magic_level: int, defence_level: int, resistance: float,
+		is_monster: bool = false) -> float:
+	var effective_level := float(maxi(1, magic_level)) if is_monster else 0.7 * maxi(1, magic_level) + 0.3 * maxi(1, defence_level)
+	return (effective_level + 8.0) * 64.0 / (1.0 - clampf(resistance, MIN_ARMOUR_RESISTANCE, MAX_ARMOUR_RESISTANCE))
+
+static func total_magic_damage_bonus(items: Array[Dictionary]) -> float:
+	var total := 0.0
+	for item: Dictionary in items:
+		total += float(item.get("magic_damage_bonus", 0.0))
+	return maxf(-1.0, total)
+
+static func damage_attack_bonus(items: Array[Dictionary], style: String) -> int:
+	# Body armour grants accuracy, not implicit ranged strength or spell power.
+	# Preserve the existing weapon and accessory damage contributions.
+	var total := 0
+	for item: Dictionary in items:
+		if not item.has("combat_role"):
+			total += int(item.get("attack_bonuses", {}).get(style, 0))
+	return total
+
 static func melee_hit_chance(attack_roll: float, defence_roll: float) -> float:
 	var chance := 0.0
 	if attack_roll > defence_roll:

@@ -15,6 +15,7 @@ var travelled := 0.0
 var damage := 0
 var max_damage := -1
 var accuracy := 0.0
+var attack_roll := -1.0 # Offensive snapshot; defender is evaluated on impact.
 var damage_type := "ranged"
 var requires_line_of_sight := true
 var crit_chance := 0.0
@@ -37,6 +38,7 @@ func configure(data: Dictionary) -> CombatProjectile:
 	damage = int(data.get("damage", 0))
 	max_damage = int(data.get("max_damage", -1))
 	accuracy = float(data.get("accuracy", 0.0))
+	attack_roll = float(data.get("attack_roll", -1.0))
 	damage_type = String(data.get("damage_type", "ranged"))
 	orb_element = String(data.get("orb_element", "")).to_lower()
 	requires_line_of_sight = bool(data.get("requires_line_of_sight", true))

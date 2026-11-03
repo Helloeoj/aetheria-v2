@@ -246,7 +246,10 @@
     "material": "Bronze",
     "tier": 1,
     "slot": "head",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -6,
+      "ranged": -2
+    },
     "defence_bonuses": {
       "slash": 0.07,
       "stab": 0.05,
@@ -258,7 +261,8 @@
     "speed": null,
     "rarity": "common",
     "set_name": null,
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 11,
@@ -267,7 +271,10 @@
     "material": "Bronze",
     "tier": 1,
     "slot": "chest",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -30,
+      "ranged": -15
+    },
     "defence_bonuses": {
       "slash": 0.1,
       "stab": 0.07,
@@ -279,7 +286,8 @@
     "speed": null,
     "rarity": "common",
     "set_name": null,
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 12,
@@ -288,7 +296,10 @@
     "material": "Bronze",
     "tier": 1,
     "slot": "legs",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -21,
+      "ranged": -11
+    },
     "defence_bonuses": {
       "slash": 0.08,
       "stab": 0.06,
@@ -300,7 +311,8 @@
     "speed": null,
     "rarity": "common",
     "set_name": null,
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 13,
@@ -309,7 +321,10 @@
     "material": "Bronze",
     "tier": 1,
     "slot": "shield",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -10,
+      "ranged": -5
+    },
     "defence_bonuses": {
       "slash": 0.1,
       "stab": 0.08,
@@ -321,7 +336,8 @@
     "speed": null,
     "rarity": "common",
     "set_name": null,
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 14,
@@ -330,7 +346,10 @@
     "material": "Bronze",
     "tier": 1,
     "slot": "shield",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -10,
+      "ranged": -5
+    },
     "defence_bonuses": {
       "slash": 0.09,
       "stab": 0.07,
@@ -342,7 +361,8 @@
     "speed": null,
     "rarity": "common",
     "set_name": null,
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 15,
@@ -683,7 +703,10 @@
     "material": "Iron",
     "tier": 2,
     "slot": "head",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -6,
+      "ranged": -2
+    },
     "defence_bonuses": {
       "slash": 0.13,
       "stab": 0.11,
@@ -695,7 +718,8 @@
     "speed": null,
     "rarity": "common",
     "set_name": null,
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 33,
@@ -704,7 +728,10 @@
     "material": "Iron",
     "tier": 2,
     "slot": "chest",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -30,
+      "ranged": -15
+    },
     "defence_bonuses": {
       "slash": 0.17,
       "stab": 0.14,
@@ -716,7 +743,8 @@
     "speed": null,
     "rarity": "common",
     "set_name": null,
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 34,
@@ -725,7 +753,10 @@
     "material": "Iron",
     "tier": 2,
     "slot": "legs",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -21,
+      "ranged": -11
+    },
     "defence_bonuses": {
       "slash": 0.145,
       "stab": 0.125,
@@ -737,7 +768,8 @@
     "speed": null,
     "rarity": "common",
     "set_name": null,
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 35,
@@ -746,7 +778,10 @@
     "material": "Iron",
     "tier": 2,
     "slot": "shield",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -10,
+      "ranged": -5
+    },
     "defence_bonuses": {
       "slash": 0.17,
       "stab": 0.15,
@@ -758,7 +793,8 @@
     "speed": null,
     "rarity": "common",
     "set_name": null,
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 36,
@@ -767,7 +803,10 @@
     "material": "Iron",
     "tier": 2,
     "slot": "shield",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -10,
+      "ranged": -5
+    },
     "defence_bonuses": {
       "slash": 0.16,
       "stab": 0.14,
@@ -779,7 +818,8 @@
     "speed": null,
     "rarity": "common",
     "set_name": null,
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 37,
@@ -1316,7 +1356,10 @@
     "material": "Blacksteel",
     "tier": 4,
     "slot": "head",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -6,
+      "ranged": -2
+    },
     "defence_bonuses": {
       "slash": 0.19,
       "stab": 0.17,
@@ -1328,7 +1371,8 @@
     "speed": null,
     "rarity": "common",
     "set_name": null,
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 63,
@@ -1337,7 +1381,10 @@
     "material": "Blacksteel",
     "tier": 4,
     "slot": "chest",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -30,
+      "ranged": -15
+    },
     "defence_bonuses": {
       "slash": 0.24,
       "stab": 0.2,
@@ -1349,7 +1396,8 @@
     "speed": null,
     "rarity": "common",
     "set_name": null,
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 64,
@@ -1358,7 +1406,10 @@
     "material": "Blacksteel",
     "tier": 4,
     "slot": "legs",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -21,
+      "ranged": -11
+    },
     "defence_bonuses": {
       "slash": 0.205,
       "stab": 0.18,
@@ -1370,7 +1421,8 @@
     "speed": null,
     "rarity": "common",
     "set_name": null,
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 65,
@@ -1379,7 +1431,10 @@
     "material": "Blacksteel",
     "tier": 4,
     "slot": "shield",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -10,
+      "ranged": -5
+    },
     "defence_bonuses": {
       "slash": 0.24,
       "stab": 0.21,
@@ -1391,7 +1446,8 @@
     "speed": null,
     "rarity": "common",
     "set_name": null,
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 66,
@@ -1400,7 +1456,10 @@
     "material": "Blacksteel",
     "tier": 4,
     "slot": "shield",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -10,
+      "ranged": -5
+    },
     "defence_bonuses": {
       "slash": 0.22,
       "stab": 0.2,
@@ -1412,7 +1471,8 @@
     "speed": null,
     "rarity": "common",
     "set_name": null,
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 67,
@@ -1738,7 +1798,10 @@
     "material": "Mithril",
     "tier": 5,
     "slot": "head",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -6,
+      "ranged": -2
+    },
     "defence_bonuses": {
       "slash": 0.25,
       "stab": 0.22,
@@ -1750,7 +1813,8 @@
     "speed": null,
     "rarity": "common",
     "set_name": null,
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 83,
@@ -1759,7 +1823,10 @@
     "material": "Mithril",
     "tier": 5,
     "slot": "chest",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -30,
+      "ranged": -15
+    },
     "defence_bonuses": {
       "slash": 0.31,
       "stab": 0.27,
@@ -1771,7 +1838,8 @@
     "speed": null,
     "rarity": "common",
     "set_name": null,
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 84,
@@ -1780,7 +1848,10 @@
     "material": "Mithril",
     "tier": 5,
     "slot": "legs",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -21,
+      "ranged": -11
+    },
     "defence_bonuses": {
       "slash": 0.265,
       "stab": 0.235,
@@ -1792,7 +1863,8 @@
     "speed": null,
     "rarity": "common",
     "set_name": null,
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 85,
@@ -1801,7 +1873,10 @@
     "material": "Mithril",
     "tier": 5,
     "slot": "shield",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -10,
+      "ranged": -5
+    },
     "defence_bonuses": {
       "slash": 0.32,
       "stab": 0.29,
@@ -1813,7 +1888,8 @@
     "speed": null,
     "rarity": "common",
     "set_name": null,
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 86,
@@ -1822,7 +1898,10 @@
     "material": "Mithril",
     "tier": 5,
     "slot": "shield",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -10,
+      "ranged": -5
+    },
     "defence_bonuses": {
       "slash": 0.3,
       "stab": 0.27,
@@ -1834,7 +1913,8 @@
     "speed": null,
     "rarity": "common",
     "set_name": null,
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 87,
@@ -2159,7 +2239,10 @@
     "material": "Adamantite",
     "tier": 6,
     "slot": "head",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -6,
+      "ranged": -2
+    },
     "defence_bonuses": {
       "slash": 0.33,
       "stab": 0.3,
@@ -2171,7 +2254,8 @@
     "speed": null,
     "rarity": "common",
     "set_name": null,
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 104,
@@ -2180,7 +2264,10 @@
     "material": "Adamantite",
     "tier": 6,
     "slot": "chest",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -30,
+      "ranged": -15
+    },
     "defence_bonuses": {
       "slash": 0.4,
       "stab": 0.35,
@@ -2192,7 +2279,8 @@
     "speed": null,
     "rarity": "common",
     "set_name": null,
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 105,
@@ -2201,7 +2289,10 @@
     "material": "Adamantite",
     "tier": 6,
     "slot": "legs",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -21,
+      "ranged": -11
+    },
     "defence_bonuses": {
       "slash": 0.355,
       "stab": 0.32,
@@ -2213,7 +2304,8 @@
     "speed": null,
     "rarity": "common",
     "set_name": null,
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 106,
@@ -2222,7 +2314,10 @@
     "material": "Adamantite",
     "tier": 6,
     "slot": "shield",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -10,
+      "ranged": -5
+    },
     "defence_bonuses": {
       "slash": 0.41,
       "stab": 0.37,
@@ -2234,7 +2329,8 @@
     "speed": null,
     "rarity": "common",
     "set_name": null,
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 107,
@@ -2243,7 +2339,10 @@
     "material": "Adamantite",
     "tier": 6,
     "slot": "shield",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -10,
+      "ranged": -5
+    },
     "defence_bonuses": {
       "slash": 0.38,
       "stab": 0.35,
@@ -2255,7 +2354,8 @@
     "speed": null,
     "rarity": "common",
     "set_name": null,
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 111,
@@ -2630,19 +2730,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "head",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": 8
+    },
     "defence_bonuses": {
-      "slash": 0.42,
-      "stab": 0.36,
-      "blunt": 0.38,
+      "slash": 0.034,
+      "stab": 0.029,
+      "blunt": 0.03,
       "magic": 0.18,
-      "ranged": 0.33
+      "ranged": 0.0
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Starlight Shroud",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "magic",
+    "magic_damage_bonus": 0.04
   },
   {
     "id": 128,
@@ -2651,19 +2755,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "chest",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": 30
+    },
     "defence_bonuses": {
-      "slash": 0.42,
-      "stab": 0.36,
-      "blunt": 0.38,
+      "slash": 0.034,
+      "stab": 0.029,
+      "blunt": 0.03,
       "magic": 0.18,
-      "ranged": 0.33
+      "ranged": 0.0
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Starlight Shroud",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "magic",
+    "magic_damage_bonus": 0.1
   },
   {
     "id": 129,
@@ -2672,19 +2780,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "legs",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": 22
+    },
     "defence_bonuses": {
-      "slash": 0.42,
-      "stab": 0.36,
-      "blunt": 0.38,
+      "slash": 0.034,
+      "stab": 0.029,
+      "blunt": 0.03,
       "magic": 0.18,
-      "ranged": 0.33
+      "ranged": 0.0
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Starlight Shroud",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "magic",
+    "magic_damage_bonus": 0.06
   },
   {
     "id": 130,
@@ -2693,19 +2805,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "head",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": 8
+    },
     "defence_bonuses": {
-      "slash": 0.4,
-      "stab": 0.34,
-      "blunt": 0.36,
+      "slash": 0.032,
+      "stab": 0.027,
+      "blunt": 0.029,
       "magic": 0.22,
-      "ranged": 0.3
+      "ranged": 0.0
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Ashweaver Raiment",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "magic",
+    "magic_damage_bonus": 0.04
   },
   {
     "id": 131,
@@ -2714,19 +2830,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "chest",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": 30
+    },
     "defence_bonuses": {
-      "slash": 0.4,
-      "stab": 0.34,
-      "blunt": 0.36,
+      "slash": 0.032,
+      "stab": 0.027,
+      "blunt": 0.029,
       "magic": 0.22,
-      "ranged": 0.3
+      "ranged": 0.0
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Ashweaver Raiment",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "magic",
+    "magic_damage_bonus": 0.1
   },
   {
     "id": 132,
@@ -2735,19 +2855,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "legs",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": 22
+    },
     "defence_bonuses": {
-      "slash": 0.4,
-      "stab": 0.34,
-      "blunt": 0.36,
+      "slash": 0.032,
+      "stab": 0.027,
+      "blunt": 0.029,
       "magic": 0.22,
-      "ranged": 0.3
+      "ranged": 0.0
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Ashweaver Raiment",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "magic",
+    "magic_damage_bonus": 0.06
   },
   {
     "id": 133,
@@ -2756,19 +2880,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "head",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": 8
+    },
     "defence_bonuses": {
-      "slash": 0.46,
-      "stab": 0.39,
-      "blunt": 0.41,
+      "slash": 0.037,
+      "stab": 0.031,
+      "blunt": 0.033,
       "magic": 0.27,
-      "ranged": 0.36
+      "ranged": 0.0
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Runeshell Mantle",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "magic",
+    "magic_damage_bonus": 0.04
   },
   {
     "id": 134,
@@ -2777,19 +2905,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "chest",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": 30
+    },
     "defence_bonuses": {
-      "slash": 0.46,
-      "stab": 0.39,
-      "blunt": 0.41,
+      "slash": 0.037,
+      "stab": 0.031,
+      "blunt": 0.033,
       "magic": 0.27,
-      "ranged": 0.36
+      "ranged": 0.0
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Runeshell Mantle",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "magic",
+    "magic_damage_bonus": 0.1
   },
   {
     "id": 135,
@@ -2798,19 +2930,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "legs",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": 22
+    },
     "defence_bonuses": {
-      "slash": 0.46,
-      "stab": 0.39,
-      "blunt": 0.41,
+      "slash": 0.037,
+      "stab": 0.031,
+      "blunt": 0.033,
       "magic": 0.27,
-      "ranged": 0.36
+      "ranged": 0.0
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Runeshell Mantle",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "magic",
+    "magic_damage_bonus": 0.06
   },
   {
     "id": 136,
@@ -2819,19 +2955,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "head",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": 8
+    },
     "defence_bonuses": {
-      "slash": 0.44,
-      "stab": 0.37,
-      "blunt": 0.39,
+      "slash": 0.035,
+      "stab": 0.03,
+      "blunt": 0.031,
       "magic": 0.2,
-      "ranged": 0.34
+      "ranged": 0.0
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Frostveil Regalia",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "magic",
+    "magic_damage_bonus": 0.04
   },
   {
     "id": 137,
@@ -2840,19 +2980,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "chest",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": 30
+    },
     "defence_bonuses": {
-      "slash": 0.44,
-      "stab": 0.37,
-      "blunt": 0.39,
+      "slash": 0.035,
+      "stab": 0.03,
+      "blunt": 0.031,
       "magic": 0.2,
-      "ranged": 0.34
+      "ranged": 0.0
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Frostveil Regalia",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "magic",
+    "magic_damage_bonus": 0.1
   },
   {
     "id": 138,
@@ -2861,19 +3005,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "legs",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": 22
+    },
     "defence_bonuses": {
-      "slash": 0.44,
-      "stab": 0.37,
-      "blunt": 0.39,
+      "slash": 0.035,
+      "stab": 0.03,
+      "blunt": 0.031,
       "magic": 0.2,
-      "ranged": 0.34
+      "ranged": 0.0
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Frostveil Regalia",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "magic",
+    "magic_damage_bonus": 0.06
   },
   {
     "id": 139,
@@ -2882,19 +3030,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "head",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": 8
+    },
     "defence_bonuses": {
-      "slash": 0.39,
-      "stab": 0.33,
-      "blunt": 0.35,
+      "slash": 0.031,
+      "stab": 0.026,
+      "blunt": 0.028,
       "magic": 0.29,
-      "ranged": 0.31
+      "ranged": 0.0
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Whispersoul Robes",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "magic",
+    "magic_damage_bonus": 0.04
   },
   {
     "id": 140,
@@ -2903,19 +3055,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "chest",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": 30
+    },
     "defence_bonuses": {
-      "slash": 0.39,
-      "stab": 0.33,
-      "blunt": 0.35,
+      "slash": 0.031,
+      "stab": 0.026,
+      "blunt": 0.028,
       "magic": 0.29,
-      "ranged": 0.31
+      "ranged": 0.0
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Whispersoul Robes",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "magic",
+    "magic_damage_bonus": 0.1
   },
   {
     "id": 141,
@@ -2924,19 +3080,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "legs",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": 22
+    },
     "defence_bonuses": {
-      "slash": 0.39,
-      "stab": 0.33,
-      "blunt": 0.35,
+      "slash": 0.031,
+      "stab": 0.026,
+      "blunt": 0.028,
       "magic": 0.29,
-      "ranged": 0.31
+      "ranged": 0.0
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Whispersoul Robes",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "magic",
+    "magic_damage_bonus": 0.06
   },
   {
     "id": 142,
@@ -2945,19 +3105,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "head",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -6,
+      "ranged": -2
+    },
     "defence_bonuses": {
       "slash": 0.5,
       "stab": 0.44,
       "blunt": 0.48,
-      "magic": 0.12,
+      "magic": -0.03,
       "ranged": 0.42
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Titanbound Plate",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 143,
@@ -2966,19 +3130,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "chest",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -30,
+      "ranged": -15
+    },
     "defence_bonuses": {
       "slash": 0.5,
       "stab": 0.44,
       "blunt": 0.48,
-      "magic": 0.12,
+      "magic": -0.08,
       "ranged": 0.42
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Titanbound Plate",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 144,
@@ -2987,19 +3155,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "legs",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -21,
+      "ranged": -11
+    },
     "defence_bonuses": {
       "slash": 0.5,
       "stab": 0.44,
       "blunt": 0.48,
-      "magic": 0.12,
+      "magic": -0.06,
       "ranged": 0.42
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Titanbound Plate",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 145,
@@ -3008,19 +3180,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "head",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -6,
+      "ranged": -2
+    },
     "defence_bonuses": {
       "slash": 0.52,
       "stab": 0.45,
       "blunt": 0.49,
-      "magic": 0.1,
+      "magic": -0.03,
       "ranged": 0.4
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Skullrender Armor",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 146,
@@ -3029,19 +3205,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "chest",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -30,
+      "ranged": -15
+    },
     "defence_bonuses": {
       "slash": 0.52,
       "stab": 0.45,
       "blunt": 0.49,
-      "magic": 0.1,
+      "magic": -0.08,
       "ranged": 0.4
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Skullrender Armor",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 147,
@@ -3050,19 +3230,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "legs",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -21,
+      "ranged": -11
+    },
     "defence_bonuses": {
       "slash": 0.52,
       "stab": 0.45,
       "blunt": 0.49,
-      "magic": 0.1,
+      "magic": -0.06,
       "ranged": 0.4
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Skullrender Armor",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 148,
@@ -3071,19 +3255,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "head",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -6,
+      "ranged": -2
+    },
     "defence_bonuses": {
       "slash": 0.55,
       "stab": 0.47,
       "blunt": 0.51,
-      "magic": 0.14,
+      "magic": -0.03,
       "ranged": 0.38
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Drakehide Wrathset",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 149,
@@ -3092,19 +3280,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "chest",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -30,
+      "ranged": -15
+    },
     "defence_bonuses": {
       "slash": 0.55,
       "stab": 0.47,
       "blunt": 0.51,
-      "magic": 0.14,
+      "magic": -0.08,
       "ranged": 0.38
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Drakehide Wrathset",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 150,
@@ -3113,19 +3305,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "legs",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -21,
+      "ranged": -11
+    },
     "defence_bonuses": {
       "slash": 0.55,
       "stab": 0.47,
       "blunt": 0.51,
-      "magic": 0.14,
+      "magic": -0.06,
       "ranged": 0.38
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Drakehide Wrathset",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 151,
@@ -3134,19 +3330,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "head",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -6,
+      "ranged": -2
+    },
     "defence_bonuses": {
       "slash": 0.58,
       "stab": 0.5,
       "blunt": 0.53,
-      "magic": 0.09,
+      "magic": -0.03,
       "ranged": 0.36
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Blackiron Enclave",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 152,
@@ -3155,19 +3355,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "chest",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -30,
+      "ranged": -15
+    },
     "defence_bonuses": {
       "slash": 0.58,
       "stab": 0.5,
       "blunt": 0.53,
-      "magic": 0.09,
+      "magic": -0.08,
       "ranged": 0.36
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Blackiron Enclave",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 153,
@@ -3176,19 +3380,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "legs",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -21,
+      "ranged": -11
+    },
     "defence_bonuses": {
       "slash": 0.58,
       "stab": 0.5,
       "blunt": 0.53,
-      "magic": 0.09,
+      "magic": -0.06,
       "ranged": 0.36
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Blackiron Enclave",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 154,
@@ -3197,19 +3405,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "head",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -6,
+      "ranged": -2
+    },
     "defence_bonuses": {
       "slash": 0.54,
       "stab": 0.46,
       "blunt": 0.5,
-      "magic": 0.11,
+      "magic": -0.03,
       "ranged": 0.39
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Wardensteel Vesture",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 155,
@@ -3218,19 +3430,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "chest",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -30,
+      "ranged": -15
+    },
     "defence_bonuses": {
       "slash": 0.54,
       "stab": 0.46,
       "blunt": 0.5,
-      "magic": 0.11,
+      "magic": -0.08,
       "ranged": 0.39
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Wardensteel Vesture",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 156,
@@ -3239,19 +3455,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "legs",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -21,
+      "ranged": -11
+    },
     "defence_bonuses": {
       "slash": 0.54,
       "stab": 0.46,
       "blunt": 0.5,
-      "magic": 0.11,
+      "magic": -0.06,
       "ranged": 0.39
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Wardensteel Vesture",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 157,
@@ -3260,19 +3480,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "head",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "ranged": 8,
+      "magic": -2
+    },
     "defence_bonuses": {
-      "slash": 0.38,
-      "stab": 0.34,
-      "blunt": 0.36,
-      "magic": 0.16,
-      "ranged": 0.44
+      "slash": 0.209,
+      "stab": 0.187,
+      "blunt": 0.198,
+      "magic": 0.41,
+      "ranged": 0.286
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Galehunter’s Garb",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "ranged"
   },
   {
     "id": 158,
@@ -3281,19 +3505,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "chest",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "ranged": 30,
+      "magic": -15
+    },
     "defence_bonuses": {
-      "slash": 0.38,
-      "stab": 0.34,
-      "blunt": 0.36,
-      "magic": 0.16,
-      "ranged": 0.44
+      "slash": 0.209,
+      "stab": 0.187,
+      "blunt": 0.198,
+      "magic": 0.41,
+      "ranged": 0.286
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Galehunter’s Garb",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "ranged"
   },
   {
     "id": 159,
@@ -3302,19 +3530,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "legs",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "ranged": 17,
+      "magic": -10
+    },
     "defence_bonuses": {
-      "slash": 0.38,
-      "stab": 0.34,
-      "blunt": 0.36,
-      "magic": 0.16,
-      "ranged": 0.44
+      "slash": 0.209,
+      "stab": 0.187,
+      "blunt": 0.198,
+      "magic": 0.41,
+      "ranged": 0.286
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Galehunter’s Garb",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "ranged"
   },
   {
     "id": 160,
@@ -3323,19 +3555,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "head",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "ranged": 8,
+      "magic": -2
+    },
     "defence_bonuses": {
-      "slash": 0.41,
-      "stab": 0.36,
-      "blunt": 0.37,
-      "magic": 0.18,
-      "ranged": 0.46
+      "slash": 0.226,
+      "stab": 0.198,
+      "blunt": 0.204,
+      "magic": 0.43,
+      "ranged": 0.299
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Hollowbark Suit",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "ranged"
   },
   {
     "id": 161,
@@ -3344,19 +3580,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "chest",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "ranged": 30,
+      "magic": -15
+    },
     "defence_bonuses": {
-      "slash": 0.41,
-      "stab": 0.36,
-      "blunt": 0.37,
-      "magic": 0.18,
-      "ranged": 0.46
+      "slash": 0.226,
+      "stab": 0.198,
+      "blunt": 0.204,
+      "magic": 0.43,
+      "ranged": 0.299
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Hollowbark Suit",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "ranged"
   },
   {
     "id": 162,
@@ -3365,19 +3605,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "legs",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "ranged": 17,
+      "magic": -10
+    },
     "defence_bonuses": {
-      "slash": 0.41,
-      "stab": 0.36,
-      "blunt": 0.37,
-      "magic": 0.18,
-      "ranged": 0.46
+      "slash": 0.226,
+      "stab": 0.198,
+      "blunt": 0.204,
+      "magic": 0.43,
+      "ranged": 0.299
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Hollowbark Suit",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "ranged"
   },
   {
     "id": 163,
@@ -3386,19 +3630,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "head",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "ranged": 8,
+      "magic": -2
+    },
     "defence_bonuses": {
-      "slash": 0.39,
-      "stab": 0.35,
-      "blunt": 0.36,
-      "magic": 0.17,
-      "ranged": 0.49
+      "slash": 0.215,
+      "stab": 0.193,
+      "blunt": 0.198,
+      "magic": 0.42,
+      "ranged": 0.319
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Emberstring Wraps",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "ranged"
   },
   {
     "id": 164,
@@ -3407,19 +3655,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "chest",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "ranged": 30,
+      "magic": -15
+    },
     "defence_bonuses": {
-      "slash": 0.39,
-      "stab": 0.35,
-      "blunt": 0.36,
-      "magic": 0.17,
-      "ranged": 0.49
+      "slash": 0.215,
+      "stab": 0.193,
+      "blunt": 0.198,
+      "magic": 0.42,
+      "ranged": 0.319
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Emberstring Wraps",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "ranged"
   },
   {
     "id": 165,
@@ -3428,19 +3680,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "legs",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "ranged": 17,
+      "magic": -10
+    },
     "defence_bonuses": {
-      "slash": 0.39,
-      "stab": 0.35,
-      "blunt": 0.36,
-      "magic": 0.17,
-      "ranged": 0.49
+      "slash": 0.215,
+      "stab": 0.193,
+      "blunt": 0.198,
+      "magic": 0.42,
+      "ranged": 0.319
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Emberstring Wraps",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "ranged"
   },
   {
     "id": 166,
@@ -3449,19 +3705,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "head",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "ranged": 8,
+      "magic": -2
+    },
     "defence_bonuses": {
-      "slash": 0.43,
-      "stab": 0.38,
-      "blunt": 0.4,
-      "magic": 0.14,
-      "ranged": 0.45
+      "slash": 0.237,
+      "stab": 0.209,
+      "blunt": 0.22,
+      "magic": 0.39,
+      "ranged": 0.293
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Snareweave Cuirass",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "ranged"
   },
   {
     "id": 167,
@@ -3470,19 +3730,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "chest",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "ranged": 30,
+      "magic": -15
+    },
     "defence_bonuses": {
-      "slash": 0.43,
-      "stab": 0.38,
-      "blunt": 0.4,
-      "magic": 0.14,
-      "ranged": 0.45
+      "slash": 0.237,
+      "stab": 0.209,
+      "blunt": 0.22,
+      "magic": 0.39,
+      "ranged": 0.293
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Snareweave Cuirass",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "ranged"
   },
   {
     "id": 168,
@@ -3491,19 +3755,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "legs",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "ranged": 17,
+      "magic": -10
+    },
     "defence_bonuses": {
-      "slash": 0.43,
-      "stab": 0.38,
-      "blunt": 0.4,
-      "magic": 0.14,
-      "ranged": 0.45
+      "slash": 0.237,
+      "stab": 0.209,
+      "blunt": 0.22,
+      "magic": 0.39,
+      "ranged": 0.293
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Snareweave Cuirass",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "ranged"
   },
   {
     "id": 169,
@@ -3512,19 +3780,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "head",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "ranged": 8,
+      "magic": -2
+    },
     "defence_bonuses": {
-      "slash": 0.4,
-      "stab": 0.34,
-      "blunt": 0.35,
-      "magic": 0.15,
-      "ranged": 0.48
+      "slash": 0.22,
+      "stab": 0.187,
+      "blunt": 0.193,
+      "magic": 0.4,
+      "ranged": 0.312
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Mirrorshade Mail",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "ranged"
   },
   {
     "id": 170,
@@ -3533,19 +3805,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "chest",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "ranged": 30,
+      "magic": -15
+    },
     "defence_bonuses": {
-      "slash": 0.4,
-      "stab": 0.34,
-      "blunt": 0.35,
-      "magic": 0.15,
-      "ranged": 0.48
+      "slash": 0.22,
+      "stab": 0.187,
+      "blunt": 0.193,
+      "magic": 0.4,
+      "ranged": 0.312
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Mirrorshade Mail",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "ranged"
   },
   {
     "id": 171,
@@ -3554,19 +3830,23 @@
     "material": "Artifact",
     "tier": 10,
     "slot": "legs",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "ranged": 17,
+      "magic": -10
+    },
     "defence_bonuses": {
-      "slash": 0.4,
-      "stab": 0.34,
-      "blunt": 0.35,
-      "magic": 0.15,
-      "ranged": 0.48
+      "slash": 0.22,
+      "stab": 0.187,
+      "blunt": 0.193,
+      "magic": 0.4,
+      "ranged": 0.312
     },
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
     "set_name": "Mirrorshade Mail",
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "ranged"
   },
   {
     "id": 172,
@@ -3575,7 +3855,10 @@
     "material": "Steel",
     "tier": 3,
     "slot": "head",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -6,
+      "ranged": -2
+    },
     "defence_bonuses": {
       "slash": 0.16,
       "stab": 0.14,
@@ -3587,7 +3870,8 @@
     "speed": null,
     "rarity": "common",
     "set_name": null,
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 173,
@@ -3596,7 +3880,10 @@
     "material": "Steel",
     "tier": 3,
     "slot": "chest",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -30,
+      "ranged": -15
+    },
     "defence_bonuses": {
       "slash": 0.205,
       "stab": 0.17,
@@ -3608,7 +3895,8 @@
     "speed": null,
     "rarity": "common",
     "set_name": null,
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 174,
@@ -3617,7 +3905,10 @@
     "material": "Steel",
     "tier": 3,
     "slot": "legs",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -21,
+      "ranged": -11
+    },
     "defence_bonuses": {
       "slash": 0.175,
       "stab": 0.1525,
@@ -3629,7 +3920,8 @@
     "speed": null,
     "rarity": "common",
     "set_name": null,
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 175,
@@ -3638,7 +3930,10 @@
     "material": "Steel",
     "tier": 3,
     "slot": "shield",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -10,
+      "ranged": -5
+    },
     "defence_bonuses": {
       "slash": 0.205,
       "stab": 0.18,
@@ -3650,7 +3945,8 @@
     "speed": null,
     "rarity": "common",
     "set_name": null,
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 176,
@@ -3659,7 +3955,10 @@
     "material": "Steel",
     "tier": 3,
     "slot": "shield",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -10,
+      "ranged": -5
+    },
     "defence_bonuses": {
       "slash": 0.19,
       "stab": 0.17,
@@ -3671,7 +3970,8 @@
     "speed": null,
     "rarity": "common",
     "set_name": null,
-    "special_effect": null
+    "special_effect": null,
+    "combat_role": "melee"
   },
   {
     "id": 177,
@@ -4002,7 +4302,10 @@
     "material": "Starforged",
     "tier": 7,
     "slot": "head",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -6,
+      "ranged": -2
+    },
     "defence_bonuses": {
       "slash": 0.41,
       "stab": 0.38,
@@ -4019,7 +4322,8 @@
       "Runite Helmet"
     ],
     "craftable": false,
-    "drop_only": true
+    "drop_only": true,
+    "combat_role": "melee"
   },
   {
     "id": 190,
@@ -4028,7 +4332,10 @@
     "material": "Starforged",
     "tier": 7,
     "slot": "chest",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -30,
+      "ranged": -15
+    },
     "defence_bonuses": {
       "slash": 0.49,
       "stab": 0.43,
@@ -4045,7 +4352,8 @@
       "Runite Platebody"
     ],
     "craftable": false,
-    "drop_only": true
+    "drop_only": true,
+    "combat_role": "melee"
   },
   {
     "id": 191,
@@ -4054,7 +4362,10 @@
     "material": "Starforged",
     "tier": 7,
     "slot": "legs",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -21,
+      "ranged": -11
+    },
     "defence_bonuses": {
       "slash": 0.445,
       "stab": 0.405,
@@ -4071,7 +4382,8 @@
       "Runite Platelegs"
     ],
     "craftable": false,
-    "drop_only": true
+    "drop_only": true,
+    "combat_role": "melee"
   },
   {
     "id": 192,
@@ -4080,7 +4392,10 @@
     "material": "Starforged",
     "tier": 7,
     "slot": "shield",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -10,
+      "ranged": -5
+    },
     "defence_bonuses": {
       "slash": 0.5,
       "stab": 0.45,
@@ -4097,7 +4412,8 @@
       "Runite Kiteshield"
     ],
     "craftable": false,
-    "drop_only": true
+    "drop_only": true,
+    "combat_role": "melee"
   },
   {
     "id": 193,
@@ -4106,7 +4422,10 @@
     "material": "Starforged",
     "tier": 7,
     "slot": "shield",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "magic": -10,
+      "ranged": -5
+    },
     "defence_bonuses": {
       "slash": 0.46,
       "stab": 0.43,
@@ -4123,7 +4442,8 @@
       "Runite Square Shield"
     ],
     "craftable": false,
-    "drop_only": true
+    "drop_only": true,
+    "combat_role": "melee"
   },
   {
     "id": 194,
@@ -5670,13 +5990,16 @@
     "material": "Tanned Leather",
     "tier": 1,
     "slot": "head",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "ranged": 2,
+      "magic": -2
+    },
     "defence_bonuses": {
-      "slash": 0.07,
-      "stab": 0.05,
-      "blunt": 0.06,
-      "magic": -0.05,
-      "ranged": 0.04
+      "slash": 0.042,
+      "stab": 0.03,
+      "blunt": 0.036,
+      "magic": 0.08,
+      "ranged": 0.028
     },
     "accuracy_bonus": 0.0,
     "speed": null,
@@ -5686,7 +6009,8 @@
     "crafting_skill": "leatherworking",
     "craftable": true,
     "generic_loot": true,
-    "balance_note": "Provisional existing Bronze counterpart defensive values; no existing item stats changed."
+    "balance_note": "Provisional existing Bronze counterpart defensive values; no existing item stats changed.",
+    "combat_role": "ranged"
   },
   {
     "id": 292,
@@ -5695,13 +6019,16 @@
     "material": "Tanned Leather",
     "tier": 1,
     "slot": "chest",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "ranged": 10,
+      "magic": -15
+    },
     "defence_bonuses": {
-      "slash": 0.1,
-      "stab": 0.07,
-      "blunt": 0.09,
-      "magic": -0.08,
-      "ranged": 0.06
+      "slash": 0.06,
+      "stab": 0.042,
+      "blunt": 0.054,
+      "magic": 0.14,
+      "ranged": 0.042
     },
     "accuracy_bonus": 0.0,
     "speed": null,
@@ -5711,7 +6038,8 @@
     "crafting_skill": "leatherworking",
     "craftable": true,
     "generic_loot": true,
-    "balance_note": "Provisional existing Bronze counterpart defensive values; no existing item stats changed."
+    "balance_note": "Provisional existing Bronze counterpart defensive values; no existing item stats changed.",
+    "combat_role": "ranged"
   },
   {
     "id": 293,
@@ -5720,13 +6048,16 @@
     "material": "Tanned Leather",
     "tier": 1,
     "slot": "legs",
-    "attack_bonuses": {},
+    "attack_bonuses": {
+      "ranged": 6,
+      "magic": -10
+    },
     "defence_bonuses": {
-      "slash": 0.08,
-      "stab": 0.06,
-      "blunt": 0.07,
-      "magic": -0.06,
-      "ranged": 0.05
+      "slash": 0.048,
+      "stab": 0.036,
+      "blunt": 0.042,
+      "magic": 0.1,
+      "ranged": 0.035
     },
     "accuracy_bonus": 0.0,
     "speed": null,
@@ -5736,7 +6067,8 @@
     "crafting_skill": "leatherworking",
     "craftable": true,
     "generic_loot": true,
-    "balance_note": "Provisional existing Bronze counterpart defensive values; no existing item stats changed."
+    "balance_note": "Provisional existing Bronze counterpart defensive values; no existing item stats changed.",
+    "combat_role": "ranged"
   },
   {
     "id": 294,

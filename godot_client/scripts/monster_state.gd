@@ -78,6 +78,8 @@ func distance_to(other: Variant) -> float:
 func get_combat_stats() -> Dictionary:
 	return {
 		"defence_level": int(skills.get("defense", level)),
+		"magic_level": int(skills.get("magic", level)),
+		"magic_defence_roll": PlayerStats.magic_defence_roll(int(skills.get("magic", level)), int(skills.get("defense", level)), float(resistances.get("magic", 0.0)), true),
 		"melee_attack_roll": PlayerStats.melee_attack_roll(int(skills.attack), 0) if skills.has("attack") else -1.0,
 		"melee_strength_bonus": 0,
 		"melee_max_damage": PlayerStats.melee_max_hit(int(skills.strength), 0) if skills.has("strength") else -1,

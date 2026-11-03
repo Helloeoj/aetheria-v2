@@ -351,8 +351,8 @@ func get_combat_stats() -> Dictionary:
 	var attack_roll := (skill_level + 8) * (int(attack_bonuses.get(style, 0)) + 64)
 	var accuracy := 0.05 if attack_roll <= 0 else float(attack_roll) / float(attack_roll + 2000)
 	accuracy = clampf(accuracy + PlayerStats.total_accuracy_bonus(equipped_items), 0.05, 0.99)
-	var magic_attack_roll := (get_magic_level() + 8) * (int(attack_bonuses.get("magic", 0)) + 64)
-	var magic_accuracy := 0.05 if magic_attack_roll <= 0 else float(magic_attack_roll) / float(magic_attack_roll + 2000)
+	var magic_reference_roll := (get_magic_level() + 8) * (int(attack_bonuses.get("magic", 0)) + 64)
+	var magic_accuracy := 0.05 if magic_reference_roll <= 0 else float(magic_reference_roll) / float(magic_reference_roll + 2000)
 	magic_accuracy = clampf(
 		magic_accuracy + PlayerStats.total_accuracy_bonus(equipped_items), 0.05, 0.99
 	)
@@ -366,9 +366,13 @@ func get_combat_stats() -> Dictionary:
 		var magic_weapon_accuracy := magic_weapon_roll / (magic_weapon_roll + 2000.0)
 		var magic_trained_accuracy := magic_trained_roll / (magic_trained_roll + 2000.0)
 		magic_accuracy = clampf(lerpf(float(magic_profile.accuracy), magic_trained_accuracy, magic_progress) + magic_accuracy - magic_weapon_accuracy, 0.05, 0.99)
+	var ranged_attack_roll := PlayerStats.melee_attack_roll(get_skill_level("range"), int(attack_bonuses.ranged), PlayerStats.total_accuracy_bonus(equipped_items))
+	var magic_attack_roll := PlayerStats.melee_attack_roll(get_magic_level(), int(attack_bonuses.magic), PlayerStats.total_accuracy_bonus(equipped_items))
+	var magic_damage_bonus := PlayerStats.total_magic_damage_bonus(equipped_items)
+	var damage_bonus := PlayerStats.damage_attack_bonus(equipped_items, style)
 	# Compress high-level damage so level 100 does not produce triple-digit unarmed hits.
 	var max_hit := maxi(1, int(
-		float((power_level + 8) * (int(attack_bonuses.get(style, 0)) + 64))
+		float((power_level + 8) * (damage_bonus + 64))
 		/ MAX_HIT_DAMAGE_DIVISOR
 	))
 	var min_hit := 1
@@ -384,10 +388,9 @@ func get_combat_stats() -> Dictionary:
 	var base_profile := PlayerStats.base_attack_profile(weapon, style)
 	if not base_profile.is_empty():
 		var progress := float(power_level - 1) / float(SkillProgression.MAX_LEVEL - 1)
-		var rating := int(attack_bonuses.get(style, 0))
 		var weapon_bonuses: Dictionary = weapon.get("attack_bonuses", {})
 		var weapon_rating := int(weapon_bonuses.get(style, 0))
-		var equipment_damage := float((power_level + 8) * (rating - weapon_rating)) / MAX_HIT_DAMAGE_DIVISOR
+		var equipment_damage := float((power_level + 8) * (damage_bonus - weapon_rating)) / MAX_HIT_DAMAGE_DIVISOR
 		var trained_max := float((SkillProgression.MAX_LEVEL + 8) * (weapon_rating + 64)) / MAX_HIT_DAMAGE_DIVISOR
 		max_hit = maxi(1, floori(lerpf(float(base_profile.max_damage), trained_max, progress) + equipment_damage))
 		min_hit = mini(max_hit, maxi(int(base_profile.min_damage), min_hit))
@@ -397,6 +400,9 @@ func get_combat_stats() -> Dictionary:
 		var trained_accuracy := trained_roll / (trained_roll + 2000.0)
 		var accuracy_progress := float(skill_level - 1) / float(SkillProgression.MAX_LEVEL - 1)
 		accuracy = clampf(lerpf(float(base_profile.accuracy), trained_accuracy, accuracy_progress) + accuracy - weapon_accuracy, 0.05, 0.99)
+	if style == "magic":
+		max_hit = maxi(1, floori(float(max_hit) * (1.0 + magic_damage_bonus)))
+		min_hit = mini(max_hit, maxi(1, floori(float(min_hit) * (1.0 + magic_damage_bonus))))
 	var melee_roll := -1.0
 	var melee_strength := PlayerStats.aggregate_melee_strength(equipped_items)
 	var melee_defence_rolls := {}
@@ -405,6 +411,8 @@ func get_combat_stats() -> Dictionary:
 		melee_defence_rolls[melee_style] = PlayerStats.melee_defence_roll(
 			get_skill_level("defense"), PlayerStats.armour_resistance_from_rating(float(armour_ratings[melee_style]))
 		)
+	var ranged_defence_roll := PlayerStats.melee_defence_roll(get_skill_level("defense"), PlayerStats.armour_resistance_from_rating(float(armour_ratings.ranged)))
+	var magic_defence_roll := PlayerStats.magic_defence_roll(get_magic_level(), get_skill_level("defense"), PlayerStats.armour_resistance_from_rating(float(armour_ratings.magic)))
 	var uses_melee_bonuses := style in PlayerStats.MELEE_STYLES and PlayerStats.uses_melee_bonuses(weapon)
 	if uses_melee_bonuses:
 		max_hit = PlayerStats.melee_max_hit(power_level, melee_strength)
@@ -423,6 +431,11 @@ func get_combat_stats() -> Dictionary:
 		"min_damage": min_hit,
 		"max_damage": max_hit,
 		"accuracy": snappedf(accuracy, 0.001),
+		"ranged_attack_roll": ranged_attack_roll,
+		"magic_attack_roll": magic_attack_roll,
+		"ranged_defence_roll": ranged_defence_roll,
+		"magic_defence_roll": magic_defence_roll,
+		"magic_damage_bonus": magic_damage_bonus,
 		"magic_level": get_magic_level(),
 		"magic_accuracy": snappedf(magic_accuracy, 0.001),
 		"crit_chance": 0.05,
@@ -442,7 +455,7 @@ func get_combat_stats() -> Dictionary:
 func _get_combat_defence_bonuses(items: Array[Dictionary]) -> Dictionary:
 	var bonuses := PlayerStats.aggregate_defence_bonuses(items)
 	var physical_bonus := _skill_defence_bonus(get_skill_level("defense"))
-	var magic_bonus := _skill_defence_bonus(get_magic_level())
+	var magic_bonus := 0.7 * _skill_defence_bonus(get_magic_level()) + 0.3 * _skill_defence_bonus(get_skill_level("defense"))
 	for style: String in ["stab", "slash", "blunt", "ranged"]:
 		bonuses[style] = PlayerStats.armour_resistance_from_rating(float(bonuses.get(style, 0.0)) + physical_bonus)
 	bonuses["magic"] = PlayerStats.armour_resistance_from_rating(float(bonuses.get("magic", 0.0)) + magic_bonus)

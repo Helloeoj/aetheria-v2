@@ -18,6 +18,11 @@ var attack_style := "slash"
 var damage_roll_level := 0
 var magic_level := 1
 var magic_accuracy := 0.5
+var ranged_attack_roll := -1.0
+var magic_attack_roll := -1.0
+var ranged_defence_roll := -1.0
+var magic_defence_roll := -1.0
+var magic_damage_bonus := 0.0
 var min_damage := 0
 var max_damage := 1
 var accuracy := 0.5
@@ -61,8 +66,13 @@ func configure(data: Dictionary) -> CombatActor:
 	hp = clampi(int(data.get("hp", max_hp)), 0, max_hp)
 	attack_style = String(data.get("attack_style", "slash"))
 	damage_roll_level = maxi(0, int(data.get("damage_roll_level", 0)))
-	magic_level = clampi(int(data.get("magic_level", 1)), 1, SkillProgression.MAX_LEVEL)
+	magic_level = maxi(1, int(data.get("magic_level", 1))) if bool(data.get("is_monster", false)) else clampi(int(data.get("magic_level", 1)), 1, SkillProgression.MAX_LEVEL)
 	magic_accuracy = clampf(float(data.get("magic_accuracy", 0.5)), 0.0, 1.0)
+	ranged_attack_roll = float(data.get("ranged_attack_roll", -1.0))
+	magic_attack_roll = float(data.get("magic_attack_roll", -1.0))
+	ranged_defence_roll = float(data.get("ranged_defence_roll", -1.0))
+	magic_defence_roll = float(data.get("magic_defence_roll", -1.0))
+	magic_damage_bonus = float(data.get("magic_damage_bonus", 0.0))
 	min_damage = maxi(0, int(data.get("min_damage", 0)))
 	max_damage = maxi(min_damage, int(data.get("max_damage", 1)))
 	accuracy = float(data.get("accuracy", 0.5))
@@ -129,6 +139,11 @@ func to_dictionary() -> Dictionary:
 		"damage_roll_level": damage_roll_level,
 		"magic_level": magic_level,
 		"magic_accuracy": magic_accuracy,
+		"ranged_attack_roll": ranged_attack_roll,
+		"magic_attack_roll": magic_attack_roll,
+		"ranged_defence_roll": ranged_defence_roll,
+		"magic_defence_roll": magic_defence_roll,
+		"magic_damage_bonus": magic_damage_bonus,
 		"min_damage": min_damage, "max_damage": max_damage,
 		"accuracy": accuracy, "crit_chance": crit_chance,
 		"melee_attack_roll": melee_attack_roll,

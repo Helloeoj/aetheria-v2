@@ -877,6 +877,11 @@ func _create_actor_from_stats(entity_id: String, actor_name: String, x_pos: floa
 		"damage_roll_level": int(stats.get("damage_roll_level", 0)),
 		"magic_level": int(stats.get("magic_level", 1)),
 		"magic_accuracy": float(stats.get("magic_accuracy", 0.5)),
+		"ranged_attack_roll": float(stats.get("ranged_attack_roll", -1.0)),
+		"magic_attack_roll": float(stats.get("magic_attack_roll", -1.0)),
+		"ranged_defence_roll": float(stats.get("ranged_defence_roll", -1.0)),
+		"magic_defence_roll": float(stats.get("magic_defence_roll", -1.0)),
+		"magic_damage_bonus": float(stats.get("magic_damage_bonus", 0.0)),
 		"min_damage": int(stats.get("min_damage", 0)),
 		"max_damage": int(stats.get("max_damage", 1)),
 		"accuracy": float(stats.get("accuracy", 0.5)),
@@ -1414,6 +1419,11 @@ func _refresh_player_actor_from_player() -> void:
 	actor.damage_roll_level = int(stats.get("damage_roll_level", 0))
 	actor.magic_level = int(stats.get("magic_level", 1))
 	actor.magic_accuracy = float(stats.get("magic_accuracy", 0.5))
+	actor.ranged_attack_roll = float(stats.get("ranged_attack_roll", -1.0))
+	actor.magic_attack_roll = float(stats.get("magic_attack_roll", -1.0))
+	actor.ranged_defence_roll = float(stats.get("ranged_defence_roll", -1.0))
+	actor.magic_defence_roll = float(stats.get("magic_defence_roll", -1.0))
+	actor.magic_damage_bonus = float(stats.get("magic_damage_bonus", 0.0))
 	actor.min_damage = int(stats.get("min_damage", 0))
 	actor.max_damage = int(stats.get("max_damage", 1))
 	actor.accuracy = float(stats.get("accuracy", 0.5))
