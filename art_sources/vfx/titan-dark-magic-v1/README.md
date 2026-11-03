@@ -17,6 +17,10 @@ outside this artwork task.
   retain their source colors. Source PNG bytes are unchanged. Runtime transparency
   removes only the large connected flat brown floor oval from generated frames;
   small stone shading regions with the same palette color are preserved.
+  The flat grey-green and neutral-grey background mattes beneath the waist
+  armor are also keyed out. Transparent tongue holes in source frames3,11,18 use only missing
+  interior mouth pixels from intact adjacent poses2,10,17. Opaque artwork is
+  preserved; the chosen motion and purple crystal shader are unchanged.
 
 ## Timing and native scale
 

@@ -50,5 +50,24 @@
     "031.png": "0f0fa0a9a65c620caf86a0851bca2509198d669d3ece1cdce005c578d5e13cf0",
     "032.png": "da38b1defc29abe7446054ffdc74c1bf9ab7afc78b84e6103c2baac0aba18f7f"
   },
-  "runtime_transparency": "remove only large connected flat brown floor-matte components below y190; preserve source PNGs and small stone shading components"
+  "runtime_transparency": "remove large connected brown floor matte and two exact lower-body background matte colors [134,141,105] and [130,130,125]; preserve source PNGs and stone shading",
+  "runtime_tongue_repair": {
+    "source_frames": [
+      3,
+      11,
+      18
+    ],
+    "intact_neighbors": [
+      2,
+      10,
+      17
+    ],
+    "bounds": [
+      115,
+      49,
+      139,
+      73
+    ],
+    "operation": "restore only transparent interior mouth pixels; preserve opaque artwork"
+  }
 }

@@ -45,7 +45,7 @@
     ]
   },
   "runtime_validation": {
-    "tests": 14,
+    "tests": 19,
     "failures": 0,
     "selected_source_frames_byte_exact": 33,
     "projectile_texture": "unchanged",
@@ -119,5 +119,29 @@
     "4x_casting": true,
     "automatic_failures": 0,
     "artwork_approval": "user selected source; revised presentation available for review"
+  },
+  "alpha_repair_review": {
+    "actual_game_captures": 34,
+    "source_frames_checked": 33,
+    "tongue_holes_restored": [
+      3,
+      11,
+      18
+    ],
+    "background_matte_colors_removed": [
+      [
+        134,
+        141,
+        105
+      ],
+      [
+        130,
+        130,
+        125
+      ]
+    ],
+    "failures": 0,
+    "4x_casting": true,
+    "motion_and_purple_crystals": "preserved"
   }
 }

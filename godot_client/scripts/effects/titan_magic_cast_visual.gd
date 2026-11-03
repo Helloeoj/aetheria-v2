@@ -9,7 +9,7 @@ var current_sample: Dictionary={"phase":"inactive","frame":0}
 func _ready() -> void:
 	texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST
 	if frames.is_empty():
-		for i in 33: frames.append(_without_floor_matte(load("res://Assets/Characters/GolemTitanMagicCast/frames/%03d.png" % i)))
+		for i in 33: frames.append(_without_floor_matte(load("res://Assets/Characters/GolemTitanMagicCast/frames/%03d.png" % i),i))
 	visual=Sprite2D.new()
 	visual.offset=Vector2(0,-112)
 	visual.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST
@@ -37,7 +37,7 @@ func sample_at_seconds(time: float) -> Dictionary:
 	queue_redraw()
 	return current_sample.duplicate()
 
-func _without_floor_matte(texture: Texture2D) -> Texture2D:
+func _without_floor_matte(texture: Texture2D, frame: int) -> Texture2D:
 	# Some source frames contain a single flat brown ground oval. Key only its
 	# large connected component; similarly colored stone shading stays intact.
 	var image := texture.get_image()
@@ -64,4 +64,18 @@ func _without_floor_matte(texture: Texture2D) -> Texture2D:
 						pending.append(index)
 			if component.size()>512:
 				for cell: int in component: image.set_pixel(cell%256,cell/256,Color.TRANSPARENT)
+	# The generated alpha also contains two additional flat background mattes between
+	# the legs. These exact colors are absent from the gold/stone armor palette.
+	var gap_mattes := [Color8(134,141,105),Color8(130,130,125)]
+	for y in range(150,256):
+		for x in 256:
+			if image.get_pixel(x,y) in gap_mattes: image.set_pixel(x,y,Color.TRANSPARENT)
+	# Three source frames accidentally keyed the tongue out. Fill only their
+	# interior mouth holes from the adjacent intact pose; keep opaque pixels.
+	var intact_frame := {3:2,11:10,18:17}
+	if intact_frame.has(frame):
+		var intact: Image=load("res://Assets/Characters/GolemTitanMagicCast/frames/%03d.png" % intact_frame[frame]).get_image()
+		for y in range(49,73):
+			for x in range(115,139):
+				if image.get_pixel(x,y).a<0.5: image.set_pixel(x,y,intact.get_pixel(x,y))
 	return ImageTexture.create_from_image(image)
