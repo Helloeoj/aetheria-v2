@@ -31,6 +31,8 @@ var _last_serial:=0
 var _snapshot_age:=0.0
 func configure(owner_game: Node) -> void:
 	game=owner_game
+	# Follow the rendered caster after online actor interpolation has run.
+	process_priority=100
 func _process(delta: float) -> void:
 	advance(delta)
 func clear() -> void:
@@ -107,6 +109,10 @@ func advance(delta: float) -> void:
 	if not is_instance_valid(game) or game.combat==null: return
 	_snapshot_age+=delta
 	for node: Visual in effects.duplicate():
+		if node.mode=="cast":
+			var caster_sprite: Node2D=game.actor_sprites.get(node.owner_id)
+			if is_instance_valid(caster_sprite):
+				node.position=game.to_local(caster_sprite.global_position)
 		node.age+=delta
 		if node.age>=node.duration:
 			effects.erase(node)
