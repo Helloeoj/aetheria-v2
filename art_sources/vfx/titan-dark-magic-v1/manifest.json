@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "status": "candidate_pending_user_visual_review",
+  "tick_ms": 600,
+  "warning_ms": 1200,
+  "warning_policy": "same physical-warning silhouettes and locked warning-start tile capture; purple palette",
+  "cast": {
+    "scene": "res://scenes/Effects/TitanMagicCast.tscn",
+    "bones": 17,
+    "frames": 120,
+    "frame_ms": 20,
+    "native_canvas": [
+      336,
+      288
+    ],
+    "foot_anchor": [
+      168,
+      256
+    ],
+    "windup_ms": 1200,
+    "recovery_ms": 1200,
+    "source_image_unchanged": true,
+    "fixed_lower_body_verified": true
+  },
+  "single_target": {
+    "name": "Void Bolt",
+    "scene": "res://scenes/Effects/TitanDarkBolt.tscn",
+    "affected_cells": 1,
+    "release_ms": 1200,
+    "flight_ms": 600,
+    "impact_ms": 1800,
+    "target_policy": "captured warning tile; no homing after dodge"
+  },
+  "aoe": {
+    "name": "Shadow Eruption",
+    "scene": "res://scenes/Effects/TitanShadowEruption.tscn",
+    "demo_cells": 10,
+    "independent_instance_per_cell": true,
+    "release_ms": 1200,
+    "rise_ms": 600,
+    "fall_ms": 600,
+    "affected_cell_pixels": [
+      32,
+      32
+    ]
+  },
+  "runtime_validation": {
+    "tests": 40,
+    "failures": 0,
+    "native_bake_frames": 120,
+    "fixed_lower_body_and_endpoint": "passed",
+    "original_combat_stats": "unchanged"
+  },
+  "production_combat_rotation": "not_installed; presentation components and native source only",
+  "textures": [
+    {
+      "file": "res://Assets/Effects/TitanDarkMagic/void-eruption.png",
+      "native_size": [
+        48,
+        72
+      ],
+      "sha256": "214769e9d3f4958b6bb1d62bba2d312ec843ac61985888d623ca0feeeb69f826",
+      "binary_alpha": true
+    },
+    {
+      "file": "res://Assets/Effects/TitanDarkMagic/void-orb.png",
+      "native_size": [
+        48,
+        48
+      ],
+      "sha256": "c7da438189df0a5867aec6f15f4db95a09e77e844b569f6aecb72cd241764486",
+      "binary_alpha": true
+    },
+    {
+      "file": "res://Assets/Effects/TitanDarkMagic/warning-0.png",
+      "native_size": [
+        48,
+        64
+      ],
+      "sha256": "fd02a567bc694724a9652881ead339fdaf3c2697e8b68b71ebc08f22cd14b914",
+      "binary_alpha": true
+    },
+    {
+      "file": "res://Assets/Effects/TitanDarkMagic/warning-1.png",
+      "native_size": [
+        48,
+        64
+      ],
+      "sha256": "b1780242a7367e09c83c50a81e7b277bb77741ddfd0c87d2e109be4d91ffd299",
+      "binary_alpha": true
+    },
+    {
+      "file": "res://Assets/Effects/TitanDarkMagic/warning-2.png",
+      "native_size": [
+        48,
+        64
+      ],
+      "sha256": "d2c860ed5c1b7868b1304828b7b4c66091671109702254e503655ef19138b362",
+      "binary_alpha": true
+    },
+    {
+      "file": "res://Assets/Effects/TitanDarkMagic/warning-3.png",
+      "native_size": [
+        48,
+        64
+      ],
+      "sha256": "531f9e2ada0053840942b2f790608ac8606a3d1b4b837348e4ae201eb5a7ce7c",
+      "binary_alpha": true
+    }
+  ],
+  "actual_game_review": {
+    "captures": 301,
+    "maps": [
+      "Golem Kingdom"
+    ],
+    "single_cells": 1,
+    "aoe_cells": 10,
+    "4x_casting": true,
+    "automatic_failures": 0,
+    "artwork_approval": "pending"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "orb": {
+    "status": "fulfilled",
+    "value": {
+      "content": [
+        {
+          "type": "text",
+          "text": "id: 637bc8f4-327c-4723-9c77-bbfd6530cfb0\njob_id: 637bc8f4-327c-4723-9c77-bbfd6530cfb0\nmodel: pixen\ndescription: Single dark magic projectile sprite for a low top-down detailed fantasy pixel RPG: one compact spherical void orb, opaque nearly black plum core, bright saturated purple/violet rim, a few sharp violet electric wisps licking outward. Evil dark sorcery, not blue arcane light, no fire, no eyeball, no face, no objects or characters. Core about18 pixels across, complete aura about34 pixels across centered in48x48 canvas, ample fully transparent margin. Crisp tiny hand-drawn pixel clusters, selective dark outline, high contrast purple energy, no smooth blurry airbrush glow, no floor or background. Matches detailed stone golem boss magic.\nsize: 48x48px\ntransparent: True\nasset_id: 575ab405-90da-52ea-9467-d69810db4907\nasset_status: pending (saved when generation completes)\nseed: 681203\ncost: 1 generation\nstatus: processing (~10-40s)\n\nhint: get_image(job_id=\"637bc8f4-327c-4723-9c77-bbfd6530cfb0\")\nwithout get_image: GET https://api.pixellab.ai/mcp/images/637bc8f4-327c-4723-9c77-bbfd6530cfb0/download (423 + Retry-After until ready; ?index=N for the Nth of several images)"
+        }
+      ],
+      "isError": false
+    }
+  },
+  "eruption_source": {
+    "status": "fulfilled",
+    "value": {
+      "content": [
+        {
+          "type": "text",
+          "text": "id: 361f2a46-636e-4aec-8b89-68fb4d2ace81\njob_id: 361f2a46-636e-4aec-8b89-68fb4d2ace81\nmodel: pixen\ndescription: One narrow vertical eruption of dark magical energy bursting up from a single ground tile, pixel-art VFX sprite for detailed low top-down fantasy RPG. ONE jagged ethereal black-purple flame/void pillar, narrow footprint no wider than28 pixels, roughly50 pixels tall, violet glowing edges surrounding an opaque almost-black plum center. Thin purple tendrils and torn smoky edges, supernatural dark sorcery rather than physical rock, no crystals, no orange or red flames. Complete compact oval ground root centered near(24,60) in48x72 canvas; leave transparent margins above/below/all sides. No floor tile, no environment, no character, no bundle of pillars. Sharp native pixel clusters, selective dark outline, high contrast violet, no blurred gradients.\nsize: 48x72px\ntransparent: True\nasset_id: 26f906d4-4caf-5d50-ac2f-f86609fb72db\nasset_status: pending (saved when generation completes)\nseed: 681204\ncost: 1 generation\nstatus: processing (~10-40s)\n\nhint: get_image(job_id=\"361f2a46-636e-4aec-8b89-68fb4d2ace81\")\nwithout get_image: GET https://api.pixellab.ai/mcp/images/361f2a46-636e-4aec-8b89-68fb4d2ace81/download (423 + Retry-After until ready; ?index=N for the Nth of several images)"
+        }
+      ],
+      "isError": false
+    }
+  },
+  "eruption_repair": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 969892f2-4fad-4f85-9087-d03a02dc15e1\njob_id: 969892f2-4fad-4f85-9087-d03a02dc15e1\nmodel: pixen\nedit: Remove the entire physical brown stone/paving pedestal at the bottom. Replace those stone pixels with fully transparent background. Preserve the upper dark-purple magical flame and violet wisps exactly; let the flame taper to a narrow violet energy root without any solid platform, dirt, rocks or floor texture. This is an isolated airborne/ground-emerging magic VFX sprite, not scenery. Preserve48x72 canvas, pixel density, color and perspective.\nsource: 48x72px\nsize: 48x72px\ntransparent: True\nseed: 681206\nasset_id: 8225e3c3-f14e-51ae-9330-c5211f668942\nasset_status: pending (saved when generation completes)\ncost: 1 generation\nstatus: processing (~10-40s)\n\nhint: get_image(job_id=\"969892f2-4fad-4f85-9087-d03a02dc15e1\")\nwithout get_image: GET https://api.pixellab.ai/mcp/images/969892f2-4fad-4f85-9087-d03a02dc15e1/download (423 + Retry-After until ready; ?index=N for the Nth of several images)"
+      }
+    ],
+    "isError": false
+  },
+  "casting_source": "original approved sprite, dedicated17Bone2D skeleton; rejected temporal cast excluded",
+  "approved_body_source": "beccdcb20c0c3b015f1e14ce6017d61564ded9c5"
+}
