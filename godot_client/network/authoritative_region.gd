@@ -34,6 +34,7 @@ var frozen: Dictionary = {}
 var dirty: Dictionary = {}
 var world: WorldState
 var geometry_game: Node
+var spell_presentation = preload("res://scripts/spell_visual_events.gd").new()
 var stations: Dictionary = {}
 var drops: Dictionary = {} # Published ground items only; hidden mutations never enter snapshots.
 var _ground_mutations: Dictionary = {} # character_id -> ordered unpublished/reserved mutations
@@ -418,6 +419,7 @@ func snapshot(character_id: String) -> Dictionary:
 		public_stations.append(entry)
 	var result := {"region_id": region_id, "actors": actors, "drops": public_drops,
 		"activity": activities.snapshot(character_id), "stations": public_stations, "deposits": mining.deposit_snapshots(), "area_cast": area_cast(character_id)}
+	result.merge(spell_presentation.snapshot(world.combat,frozen,_clock))
 	if world.grid != null:
 		result["grid"] = {"origin": [world.grid.origin.x, world.grid.origin.y], "cell_pixels": 32}
 	return result
@@ -596,6 +598,7 @@ func _refresh_actor(id: String) -> void:
 
 func _handle_events(events: Array) -> void:
 	for event: Dictionary in events:
+		spell_presentation.record(event,world.combat,_clock)
 		if int(event.get("damage", 0)) > 0:
 			mining.stop(String(event.get("target_id", "")), "damage")
 		if event.get("type", "") == "entity_died":

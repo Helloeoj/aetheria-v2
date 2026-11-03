@@ -42,6 +42,7 @@ var auto_chase_target := false
 var tick_elapsed := 0.0
 var next_monster_number := 1
 var spell_cast_requested := false
+var spell_visuals: Node
 var map_scene_mode := false
 var skill_debug_panel: SkillDebugPanel
 var character_menu_button: Button
@@ -74,6 +75,8 @@ func grid_adoption_report() -> Dictionary:
 
 func prepare_area_exit() -> void:
 	_reset_held_movement()
+	if is_instance_valid(spell_visuals):
+		spell_visuals.clear()
 	auto_chase_target = false
 	spell_cast_requested = false
 	if is_instance_valid(interactions):
@@ -432,6 +435,10 @@ func _ready() -> void:
 			Callable(self, "_query_map_terrain_collision")
 		)
 	combat = world.combat
+	if not has_meta("online_server_geometry"):
+		spell_visuals = preload("res://scripts/spell_visuals.gd").new()
+		add_child(spell_visuals)
+		spell_visuals.configure(self)
 	combat.player_auto_attack_enabled = false
 	movement_controller = MovementController.new()
 	var player_sprite := ActorSprite.new().configure(Vector2(TILE_SIZE, TILE_SIZE), PLAYER_COLOR, player.entity_id)
@@ -1483,6 +1490,8 @@ func _draw_health_bars() -> void:
 
 func _draw_projectiles() -> void:
 	for projectile: CombatProjectile in combat.projectiles.values():
+		if spell_visuals != null and spell_visuals.library.spells.has(projectile.spell_id):
+			continue
 		var point := _screen_position(projectile.x, projectile.y)
 		draw_string(ThemeDB.fallback_font, point, "➤", HORIZONTAL_ALIGNMENT_CENTER, -1, 22, PROJECTILE_COLOR)
 
@@ -1493,6 +1502,8 @@ func _reset_held_movement() -> void:
 		movement_controller.holding[direction] = false
 
 func _show_combat_sprite_event(event: Dictionary) -> void:
+	if is_instance_valid(spell_visuals):
+		spell_visuals.handle_event(event)
 	var event_type := String(event.get("type", ""))
 	if event_type in ["entity_hit", "projectile_spawned", "spell_cast_started"]:
 		var attacker_id := String(event.get("attacker_id", event.get("caster_id", "")))

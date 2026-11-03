@@ -179,6 +179,8 @@ func apply(snapshot: Dictionary) -> void:
 				_drops[id].queue_free()
 			_drops.erase(id)
 	game.inventory_menu.queue_redraw()
+	if is_instance_valid(game.spell_visuals):
+		game.spell_visuals.apply_snapshot(snapshot)
 	for state: Dictionary in snapshot.get("deposits", []):
 		for node: Node in game.get_tree().get_nodes_in_group("mining_deposit"):
 			if game.get_parent().is_ancestor_of(node) and node.deposit_id == String(state.deposit_id):

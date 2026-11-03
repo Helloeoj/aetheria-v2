@@ -117,7 +117,7 @@
   },
   {
     "id": "water_crashing_tide",
-    "name": "Crashing Tide",
+    "name": "Ice Spear",
     "school": "water",
     "tier": 3,
     "kind": "projectile",
@@ -201,7 +201,7 @@
   },
   {
     "id": "earth_falling_monolith",
-    "name": "Falling Monolith",
+    "name": "Upheaval",
     "school": "earth",
     "tier": 3,
     "kind": "projectile",

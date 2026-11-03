@@ -1,0 +1,4584 @@
+{
+  "version": 1,
+  "filter": "nearest",
+  "native_scale": 1,
+  "spells": {
+    "air_razorwind": {
+      "id": "air_razorwind",
+      "name": "Razorwind",
+      "fps": 20,
+      "cast": {
+        "clips": [
+          {
+            "name": "part-cast",
+            "frame_size": [
+              9,
+              16
+            ],
+            "frames": 6,
+            "start_frame": 1,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/air_razorwind/cast/part-cast.png",
+                "first_frame": 0,
+                "frames": 6,
+                "columns": 3,
+                "rows": 2,
+                "sha256": "207baa7c1a48d46c200d28a10a190b0d569235a56ec025daac9b760348e99925"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              0,
+              -31
+            ]
+          }
+        ]
+      },
+      "impact": {
+        "clips": [
+          {
+            "name": "part-impact",
+            "frame_size": [
+              22,
+              33
+            ],
+            "frames": 8,
+            "start_frame": 0,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/air_razorwind/impact/part-impact.png",
+                "first_frame": 0,
+                "frames": 8,
+                "columns": 3,
+                "rows": 3,
+                "sha256": "6acda2201a2b276c1a1582aa94d22328c20230d2b88010e4819422fa5b099342"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -2,
+              -40
+            ]
+          }
+        ],
+        "loop": false,
+        "trigger": "collision",
+        "scale": 1
+      },
+      "projectile": {
+        "loop": true,
+        "scale": 0.631578947368421,
+        "original_body_frame": [
+          23,
+          19
+        ],
+        "compact_body_frame": [
+          15,
+          12
+        ],
+        "directions": {
+          "east": {
+            "file": "res://Assets/Effects/Spells/components/air_razorwind/projectile-east.png",
+            "frame_size": [
+              34,
+              15
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -25,
+              -6
+            ],
+            "sha256": "fa03458bfd9c7c3754c31ae7e6816e1d2a5aef08d2409a8d980057e8df56626a"
+          },
+          "south-east": {
+            "file": "res://Assets/Effects/Spells/components/air_razorwind/projectile-south-east.png",
+            "frame_size": [
+              27,
+              26
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -18,
+              -18
+            ],
+            "sha256": "c63f872595e7425332ffcdb315c092660bd694ba97b813aa923dae261a56e8c1"
+          },
+          "south": {
+            "file": "res://Assets/Effects/Spells/components/air_razorwind/projectile-south.png",
+            "frame_size": [
+              15,
+              34
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -8,
+              -25
+            ],
+            "sha256": "b2c00a31e1cdf4dd572c3a08a90ccdab68cabbd7c8ebc20df244ec82beb32e6d"
+          },
+          "south-west": {
+            "file": "res://Assets/Effects/Spells/components/air_razorwind/projectile-south-west.png",
+            "frame_size": [
+              26,
+              27
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -7,
+              -18
+            ],
+            "sha256": "661d2c5b83cf65e02219a643408d22981b730faa635fabeb4467bd6c63da5848"
+          },
+          "west": {
+            "file": "res://Assets/Effects/Spells/components/air_razorwind/projectile-west.png",
+            "frame_size": [
+              34,
+              15
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -8,
+              -8
+            ],
+            "sha256": "32570f26522c48c778eef2145a4fa2507d2429fad6cbb5722ff425b45375c7b8"
+          },
+          "north-west": {
+            "file": "res://Assets/Effects/Spells/components/air_razorwind/projectile-north-west.png",
+            "frame_size": [
+              27,
+              26
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -8,
+              -7
+            ],
+            "sha256": "9c07b36d4d782b074fb482a70d1ac7f7fdc950c3d283de8d855426e6f5116ec0"
+          },
+          "north": {
+            "file": "res://Assets/Effects/Spells/components/air_razorwind/projectile-north.png",
+            "frame_size": [
+              15,
+              34
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -6,
+              -8
+            ],
+            "sha256": "99b3b1ad38adc1968879d8374c089c93cc5beb722a5d133ff8752e39c990f90a"
+          },
+          "north-east": {
+            "file": "res://Assets/Effects/Spells/components/air_razorwind/projectile-north-east.png",
+            "frame_size": [
+              26,
+              27
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -18,
+              -8
+            ],
+            "sha256": "f04002fe19d507a4e2767e5133b4209b07207a713103c5f79149591e0ae2ad40"
+          }
+        },
+        "position_baked": false,
+        "contains_impact": false,
+        "frames": 11
+      },
+      "kind": "projectile",
+      "duration_seconds": 0
+    },
+    "water_undertow": {
+      "id": "water_undertow",
+      "name": "Undertow",
+      "fps": 20,
+      "cast": {
+        "clips": [
+          {
+            "name": "part-cast",
+            "frame_size": [
+              29,
+              23
+            ],
+            "frames": 6,
+            "start_frame": 2,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/water_undertow/cast/part-cast.png",
+                "first_frame": 0,
+                "frames": 6,
+                "columns": 3,
+                "rows": 2,
+                "sha256": "d4503c0478837cf673e03f8fa1230b244a4c86bf5584038d4f8aeb90541794c4"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -14,
+              -37
+            ]
+          }
+        ]
+      },
+      "impact": {
+        "clips": [
+          {
+            "name": "part-impact",
+            "frame_size": [
+              37,
+              47
+            ],
+            "frames": 9,
+            "start_frame": 0,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/water_undertow/impact/part-impact.png",
+                "first_frame": 0,
+                "frames": 9,
+                "columns": 3,
+                "rows": 3,
+                "sha256": "889bcc0d0f8b2f402699910be502285af5ada946094a4db1a3b4807e7fa3fc70"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -18,
+              -41
+            ]
+          }
+        ],
+        "loop": false,
+        "trigger": "collision",
+        "scale": 1
+      },
+      "projectile": {
+        "loop": true,
+        "scale": 0.4,
+        "original_body_frame": [
+          30,
+          30
+        ],
+        "compact_body_frame": [
+          12,
+          12
+        ],
+        "directions": {
+          "east": {
+            "file": "res://Assets/Effects/Spells/components/water_undertow/projectile-east.png",
+            "frame_size": [
+              28,
+              14
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -21,
+              -7
+            ],
+            "sha256": "d10a2a405b770207344567867a60e1584c3e4c6ef906f3263ed69dcdbb048bb6"
+          },
+          "south-east": {
+            "file": "res://Assets/Effects/Spells/components/water_undertow/projectile-south-east.png",
+            "frame_size": [
+              23,
+              23
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -15,
+              -16
+            ],
+            "sha256": "b09bca83a5506f52b1accce3128392a7dfb89e94b93a866cb295341037f8b073"
+          },
+          "south": {
+            "file": "res://Assets/Effects/Spells/components/water_undertow/projectile-south.png",
+            "frame_size": [
+              14,
+              28
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -6,
+              -21
+            ],
+            "sha256": "4d7ebedb18e9b711281e178ff33ad6eb47569f7b41cbcf49c7f70317312d1a63"
+          },
+          "south-west": {
+            "file": "res://Assets/Effects/Spells/components/water_undertow/projectile-south-west.png",
+            "frame_size": [
+              23,
+              23
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -6,
+              -15
+            ],
+            "sha256": "2874350ca81e63cffc03c8fcfb2a7b2d2cb1151ca46629af1d4eb6c4a9e0b218"
+          },
+          "west": {
+            "file": "res://Assets/Effects/Spells/components/water_undertow/projectile-west.png",
+            "frame_size": [
+              28,
+              14
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -6,
+              -6
+            ],
+            "sha256": "ed576436bb30a1dafe64896fa7b1d9248364ef56a5b7b0e889a84d81115978ec"
+          },
+          "north-west": {
+            "file": "res://Assets/Effects/Spells/components/water_undertow/projectile-north-west.png",
+            "frame_size": [
+              23,
+              23
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -7,
+              -6
+            ],
+            "sha256": "9e5edb56821c468377c837c8e892db7ce62eb424e2624c171406480c11c0b901"
+          },
+          "north": {
+            "file": "res://Assets/Effects/Spells/components/water_undertow/projectile-north.png",
+            "frame_size": [
+              14,
+              28
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -7,
+              -6
+            ],
+            "sha256": "1896d10ebdccd3ec8b5f6fb673bb439332bc4a2d32c176cc273726f09bd75689"
+          },
+          "north-east": {
+            "file": "res://Assets/Effects/Spells/components/water_undertow/projectile-north-east.png",
+            "frame_size": [
+              23,
+              23
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -16,
+              -7
+            ],
+            "sha256": "7e23a46990e09af48b6b2ec61ddc2641ebf1f0a91b6e86c9b0abcde8a4638b1e"
+          }
+        },
+        "position_baked": false,
+        "contains_impact": false,
+        "frames": 11
+      },
+      "kind": "projectile",
+      "duration_seconds": 0
+    },
+    "earth_stonebite": {
+      "id": "earth_stonebite",
+      "name": "Stonebite",
+      "fps": 20,
+      "cast": {
+        "clips": [
+          {
+            "name": "part-cast",
+            "frame_size": [
+              21,
+              25
+            ],
+            "frames": 5,
+            "start_frame": 1,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/earth_stonebite/cast/part-cast.png",
+                "first_frame": 0,
+                "frames": 5,
+                "columns": 3,
+                "rows": 2,
+                "sha256": "99635304e4b394b57280f25aeeb8bffb0719788d11b25fe59c5e6cfa10b3d8fc"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -9,
+              -32
+            ]
+          }
+        ]
+      },
+      "impact": {
+        "clips": [
+          {
+            "name": "part-impact",
+            "frame_size": [
+              42,
+              38
+            ],
+            "frames": 7,
+            "start_frame": 0,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/earth_stonebite/impact/part-impact.png",
+                "first_frame": 0,
+                "frames": 7,
+                "columns": 3,
+                "rows": 3,
+                "sha256": "929e50dfca18ead31208617327519d3eaa94493572c10b29682f70c9bc23e035"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -17,
+              -33
+            ]
+          }
+        ],
+        "loop": false,
+        "trigger": "collision",
+        "scale": 1
+      },
+      "projectile": {
+        "loop": true,
+        "scale": 0.5714285714285714,
+        "original_body_frame": [
+          21,
+          21
+        ],
+        "compact_body_frame": [
+          12,
+          12
+        ],
+        "directions": {
+          "east": {
+            "file": "res://Assets/Effects/Spells/components/earth_stonebite/projectile-east.png",
+            "frame_size": [
+              15,
+              14
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -8,
+              -7
+            ],
+            "sha256": "a441d97f3919da94ea6e51b0ceaeeeeafc65ecbc0f6550e3df744ff8d4db68a1"
+          },
+          "south-east": {
+            "file": "res://Assets/Effects/Spells/components/earth_stonebite/projectile-south-east.png",
+            "frame_size": [
+              14,
+              14
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -7,
+              -7
+            ],
+            "sha256": "4a58a48c0633e72e28cdec0cb7dbd5ffee12ccbbe0def63e2a22b8eabfb35a4c"
+          },
+          "south": {
+            "file": "res://Assets/Effects/Spells/components/earth_stonebite/projectile-south.png",
+            "frame_size": [
+              14,
+              15
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -6,
+              -8
+            ],
+            "sha256": "1eafaddca2d8c510204b2bd54131d8d4bd2bd013b74ec3abb6a5d0560f138421"
+          },
+          "south-west": {
+            "file": "res://Assets/Effects/Spells/components/earth_stonebite/projectile-south-west.png",
+            "frame_size": [
+              14,
+              14
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -6,
+              -7
+            ],
+            "sha256": "7ada771648167eb64646773d283f92949305ffc402b38f5eb091f58c492f2f47"
+          },
+          "west": {
+            "file": "res://Assets/Effects/Spells/components/earth_stonebite/projectile-west.png",
+            "frame_size": [
+              15,
+              14
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -6,
+              -6
+            ],
+            "sha256": "6c43fcb82148b6231ece7a0760df131c2268d72560bdff9cc233a9a3f8a7133f"
+          },
+          "north-west": {
+            "file": "res://Assets/Effects/Spells/components/earth_stonebite/projectile-north-west.png",
+            "frame_size": [
+              14,
+              14
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -6,
+              -6
+            ],
+            "sha256": "db1c2fe5be288ee2b05d1e7b29e6748d494f3be06ad4b6ebf9eb1f74882102d3"
+          },
+          "north": {
+            "file": "res://Assets/Effects/Spells/components/earth_stonebite/projectile-north.png",
+            "frame_size": [
+              14,
+              15
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -7,
+              -6
+            ],
+            "sha256": "f2ce8a377c06b60499af4aca532239461c5ae5abdc37d9019c9b738c0f21c60e"
+          },
+          "north-east": {
+            "file": "res://Assets/Effects/Spells/components/earth_stonebite/projectile-north-east.png",
+            "frame_size": [
+              14,
+              14
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -7,
+              -6
+            ],
+            "sha256": "27ad636e04e67d8e7792c7265a5a836f3f31a151bd58387d1081d42e09433c3a"
+          }
+        },
+        "position_baked": false,
+        "contains_impact": false,
+        "frames": 11
+      },
+      "kind": "projectile",
+      "duration_seconds": 0
+    },
+    "fire_scorch": {
+      "id": "fire_scorch",
+      "name": "Scorch",
+      "fps": 20,
+      "cast": {
+        "clips": [
+          {
+            "name": "part-cast",
+            "frame_size": [
+              9,
+              6
+            ],
+            "frames": 5,
+            "start_frame": 1,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/fire_scorch/cast/part-cast.png",
+                "first_frame": 0,
+                "frames": 5,
+                "columns": 3,
+                "rows": 2,
+                "sha256": "444ab4fefdb34007791a868a03891c304f9ffa38545e7d0ad969be4410b3d23b"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -5,
+              -22
+            ]
+          }
+        ]
+      },
+      "impact": {
+        "clips": [
+          {
+            "name": "part-impact",
+            "frame_size": [
+              32,
+              30
+            ],
+            "frames": 8,
+            "start_frame": 0,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/fire_scorch/impact/part-impact.png",
+                "first_frame": 0,
+                "frames": 8,
+                "columns": 3,
+                "rows": 3,
+                "sha256": "ae897e19a6f1059cbcccabf6d60717bbff79800819f965cf9aee6c8f2b2a19ae"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -16,
+              -37
+            ]
+          }
+        ],
+        "loop": false,
+        "trigger": "collision",
+        "scale": 1
+      },
+      "projectile": {
+        "loop": true,
+        "scale": 0.631578947368421,
+        "original_body_frame": [
+          34,
+          19
+        ],
+        "compact_body_frame": [
+          21,
+          12
+        ],
+        "directions": {
+          "east": {
+            "file": "res://Assets/Effects/Spells/components/fire_scorch/projectile-east.png",
+            "frame_size": [
+              47,
+              14
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -32,
+              -7
+            ],
+            "sha256": "13eba7676cc3eea1d3eb0881325dc242185f7271d55765aa50408cce5e345d59"
+          },
+          "south-east": {
+            "file": "res://Assets/Effects/Spells/components/fire_scorch/projectile-south-east.png",
+            "frame_size": [
+              39,
+              34
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -24,
+              -22
+            ],
+            "sha256": "10ac62e96a58190752354dc53c1f1c38396a8cc6eab0e188de86deb0334656f3"
+          },
+          "south": {
+            "file": "res://Assets/Effects/Spells/components/fire_scorch/projectile-south.png",
+            "frame_size": [
+              14,
+              47
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -6,
+              -32
+            ],
+            "sha256": "822541357475f9b04c166d5c9cafaf9fac3c9a6c2222cb58565640007180e20b"
+          },
+          "south-west": {
+            "file": "res://Assets/Effects/Spells/components/fire_scorch/projectile-south-west.png",
+            "frame_size": [
+              34,
+              39
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -11,
+              -24
+            ],
+            "sha256": "5c8c56b81230d3549a82867c142971531d847f1ae82d6e86d5ae1ddebcbc270d"
+          },
+          "west": {
+            "file": "res://Assets/Effects/Spells/components/fire_scorch/projectile-west.png",
+            "frame_size": [
+              47,
+              14
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -14,
+              -6
+            ],
+            "sha256": "f9be6dcd1d5edccb59a3727808ce327f3b6bc0bf4393c6105e61612f2aa0bd98"
+          },
+          "north-west": {
+            "file": "res://Assets/Effects/Spells/components/fire_scorch/projectile-north-west.png",
+            "frame_size": [
+              39,
+              34
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -14,
+              -11
+            ],
+            "sha256": "ac572c2fadf1f50bb3e2860c9c0196c56bc208de2659b19283851def3b49e4c2"
+          },
+          "north": {
+            "file": "res://Assets/Effects/Spells/components/fire_scorch/projectile-north.png",
+            "frame_size": [
+              14,
+              47
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -7,
+              -14
+            ],
+            "sha256": "6e107199436816cc8b3283a583a2e7cf4f5c1ccadd58ebe79e6e83cfdeebf8a6"
+          },
+          "north-east": {
+            "file": "res://Assets/Effects/Spells/components/fire_scorch/projectile-north-east.png",
+            "frame_size": [
+              34,
+              39
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -22,
+              -14
+            ],
+            "sha256": "65748bc80df57f9ce9f5239550a15ca83eb577bf9eef38e1562026e33141b6e5"
+          }
+        },
+        "position_baked": false,
+        "contains_impact": false,
+        "frames": 11
+      },
+      "kind": "projectile",
+      "duration_seconds": 0
+    },
+    "arcane_glimmer": {
+      "id": "arcane_glimmer",
+      "name": "Glimmer",
+      "fps": 20,
+      "cast": {
+        "clips": [
+          {
+            "name": "part-cast",
+            "frame_size": [
+              27,
+              23
+            ],
+            "frames": 7,
+            "start_frame": 1,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/arcane_glimmer/cast/part-cast.png",
+                "first_frame": 0,
+                "frames": 7,
+                "columns": 3,
+                "rows": 3,
+                "sha256": "790101e4a448d4f0c75a29a5b52d86016fbba34c8fbf3a5d9ec6f5d4205c346a"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -13,
+              -36
+            ]
+          }
+        ]
+      },
+      "impact": {
+        "clips": [
+          {
+            "name": "part-impact",
+            "frame_size": [
+              48,
+              35
+            ],
+            "frames": 8,
+            "start_frame": 0,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/arcane_glimmer/impact/part-impact.png",
+                "first_frame": 0,
+                "frames": 8,
+                "columns": 3,
+                "rows": 3,
+                "sha256": "05bcae48adca79c59281f010ab955ec7c51e17ce8f20099bd125490f1fbb6827"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -23,
+              -40
+            ]
+          }
+        ],
+        "loop": false,
+        "trigger": "collision",
+        "scale": 1
+      },
+      "projectile": {
+        "loop": true,
+        "scale": 0.5,
+        "original_body_frame": [
+          31,
+          24
+        ],
+        "compact_body_frame": [
+          16,
+          12
+        ],
+        "directions": {
+          "east": {
+            "file": "res://Assets/Effects/Spells/components/arcane_glimmer/projectile-east.png",
+            "frame_size": [
+              50,
+              14
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -44,
+              -6
+            ],
+            "sha256": "457cc1e0a6fdcfb143077137558860edf86906f09926956fe8182a1aadb3168f"
+          },
+          "south-east": {
+            "file": "res://Assets/Effects/Spells/components/arcane_glimmer/projectile-south-east.png",
+            "frame_size": [
+              37,
+              36
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -30,
+              -30
+            ],
+            "sha256": "23db1782ef2be0e65324d729bc021ef9b4d3bbeb0d98ba4125393a35393d18a6"
+          },
+          "south": {
+            "file": "res://Assets/Effects/Spells/components/arcane_glimmer/projectile-south.png",
+            "frame_size": [
+              14,
+              50
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -7,
+              -44
+            ],
+            "sha256": "e72accca58bd6d5652cffecf35a3655f9f093d9c53c851032e55db3b71517c7b"
+          },
+          "south-west": {
+            "file": "res://Assets/Effects/Spells/components/arcane_glimmer/projectile-south-west.png",
+            "frame_size": [
+              36,
+              37
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -5,
+              -30
+            ],
+            "sha256": "b0325617f68f17e4a32146cb8f738aacd494749ed51044b83ff9dd8c89732ba3"
+          },
+          "west": {
+            "file": "res://Assets/Effects/Spells/components/arcane_glimmer/projectile-west.png",
+            "frame_size": [
+              50,
+              14
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -5,
+              -7
+            ],
+            "sha256": "cfd523f9b65e9c958e9e9cd81fd659c90d81a1615ceb902e4bfc7576745df3b0"
+          },
+          "north-west": {
+            "file": "res://Assets/Effects/Spells/components/arcane_glimmer/projectile-north-west.png",
+            "frame_size": [
+              37,
+              36
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -6,
+              -5
+            ],
+            "sha256": "101aabf93458845df73bcfff5949d292fc592dfa794dc1a487c372d6870f5eba"
+          },
+          "north": {
+            "file": "res://Assets/Effects/Spells/components/arcane_glimmer/projectile-north.png",
+            "frame_size": [
+              14,
+              50
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -6,
+              -5
+            ],
+            "sha256": "8ef23cc9eb47bea59ef64b8d97187fbb4bd89b70a79a714086135313a69576cc"
+          },
+          "north-east": {
+            "file": "res://Assets/Effects/Spells/components/arcane_glimmer/projectile-north-east.png",
+            "frame_size": [
+              36,
+              37
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -30,
+              -6
+            ],
+            "sha256": "a6a94c5380c2a91159e02187d11cb7bb9160c990a4ae3f31f947d8e76adaff06"
+          }
+        },
+        "position_baked": false,
+        "contains_impact": false,
+        "frames": 11
+      },
+      "kind": "projectile",
+      "duration_seconds": 0
+    },
+    "air_cutting_wind": {
+      "id": "air_cutting_wind",
+      "name": "Cutting Wind",
+      "fps": 18,
+      "cast": {
+        "clips": [
+          {
+            "name": "part-cast",
+            "frame_size": [
+              29,
+              23
+            ],
+            "frames": 6,
+            "start_frame": 2,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/air_cutting_wind/cast/part-cast.png",
+                "first_frame": 0,
+                "frames": 6,
+                "columns": 3,
+                "rows": 2,
+                "sha256": "399cab17b003eab23368516d551b916297c9513bec427539281fd6936d2d37f1"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -14,
+              -34
+            ]
+          }
+        ]
+      },
+      "impact": {
+        "clips": [
+          {
+            "name": "part-impact",
+            "frame_size": [
+              43,
+              44
+            ],
+            "frames": 8,
+            "start_frame": 0,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/air_cutting_wind/impact/part-impact.png",
+                "first_frame": 0,
+                "frames": 8,
+                "columns": 3,
+                "rows": 3,
+                "sha256": "9ee28eb3f3da91c9abc639e7a7451f850e3600d9f3d53e435b8d62044dfe33f9"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -19,
+              -48
+            ]
+          }
+        ],
+        "loop": false,
+        "trigger": "collision",
+        "scale": 1
+      },
+      "projectile": {
+        "loop": true,
+        "scale": 0.4,
+        "original_body_frame": [
+          47,
+          30
+        ],
+        "compact_body_frame": [
+          19,
+          12
+        ],
+        "directions": {
+          "east": {
+            "file": "res://Assets/Effects/Spells/components/air_cutting_wind/projectile-east.png",
+            "frame_size": [
+              31,
+              14
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -21,
+              -7
+            ],
+            "sha256": "1f29c34eb6512e09e39f9bd1e1a681acfaf5e9e61e6caf902a32e3a51df0d7a0"
+          },
+          "south-east": {
+            "file": "res://Assets/Effects/Spells/components/air_cutting_wind/projectile-south-east.png",
+            "frame_size": [
+              25,
+              26
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -15,
+              -16
+            ],
+            "sha256": "1835e7d7df06a3cd22e0f69439b5102d70f8101bf452f7927039d311150921e0"
+          },
+          "south": {
+            "file": "res://Assets/Effects/Spells/components/air_cutting_wind/projectile-south.png",
+            "frame_size": [
+              14,
+              31
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -6,
+              -21
+            ],
+            "sha256": "524e2edd5b55d382bce948a298db7d1a415f031777b3c47b80222e98c39b8cb1"
+          },
+          "south-west": {
+            "file": "res://Assets/Effects/Spells/components/air_cutting_wind/projectile-south-west.png",
+            "frame_size": [
+              26,
+              25
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -9,
+              -15
+            ],
+            "sha256": "d649a0f959a8b5b34c13e9cdf575fc8122c066a184247a1901b56e838a045de1"
+          },
+          "west": {
+            "file": "res://Assets/Effects/Spells/components/air_cutting_wind/projectile-west.png",
+            "frame_size": [
+              31,
+              14
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -9,
+              -6
+            ],
+            "sha256": "3cebb8e90539b8c6972ecd0017def65e4872dd6883219501c179d2654f8b2442"
+          },
+          "north-west": {
+            "file": "res://Assets/Effects/Spells/components/air_cutting_wind/projectile-north-west.png",
+            "frame_size": [
+              25,
+              26
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -9,
+              -9
+            ],
+            "sha256": "f84052013f1dff303d6305dc59b43b804b8a0a6649e4e542ae57b802b781796b"
+          },
+          "north": {
+            "file": "res://Assets/Effects/Spells/components/air_cutting_wind/projectile-north.png",
+            "frame_size": [
+              14,
+              31
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -7,
+              -9
+            ],
+            "sha256": "801b4ebd4772678d4dff1e69da741cc880ced3a6e854f8bc1a76186c8fae7622"
+          },
+          "north-east": {
+            "file": "res://Assets/Effects/Spells/components/air_cutting_wind/projectile-north-east.png",
+            "frame_size": [
+              26,
+              25
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -16,
+              -9
+            ],
+            "sha256": "d1be2c818741cb7f7731151af223edff948f73fae083220cac9dc5df49b40499"
+          }
+        },
+        "position_baked": false,
+        "contains_impact": false,
+        "frames": 11
+      },
+      "kind": "projectile",
+      "duration_seconds": 0
+    },
+    "water_rushing_current": {
+      "id": "water_rushing_current",
+      "name": "Rushing Current",
+      "fps": 18,
+      "cast": {
+        "clips": [
+          {
+            "name": "part-cast",
+            "frame_size": [
+              20,
+              29
+            ],
+            "frames": 7,
+            "start_frame": 1,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/water_rushing_current/cast/part-cast.png",
+                "first_frame": 0,
+                "frames": 7,
+                "columns": 3,
+                "rows": 3,
+                "sha256": "8ab13ff0de61ece7f5a49b38ebed0a6bf89f4324432a03951db5e9a65151b83c"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -12,
+              -38
+            ]
+          }
+        ]
+      },
+      "impact": {
+        "clips": [
+          {
+            "name": "part-impact",
+            "frame_size": [
+              55,
+              42
+            ],
+            "frames": 7,
+            "start_frame": 0,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/water_rushing_current/impact/part-impact.png",
+                "first_frame": 0,
+                "frames": 7,
+                "columns": 3,
+                "rows": 3,
+                "sha256": "5714d8228279fc8e801f930f46566b76bee91f4e50f7997ea033e39b161e41b8"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -18,
+              -46
+            ]
+          }
+        ],
+        "loop": false,
+        "trigger": "collision",
+        "scale": 1
+      },
+      "projectile": {
+        "loop": true,
+        "scale": 0.3728813559322034,
+        "original_body_frame": [
+          59,
+          22
+        ],
+        "compact_body_frame": [
+          22,
+          8
+        ],
+        "directions": {
+          "east": {
+            "file": "res://Assets/Effects/Spells/components/water_rushing_current/projectile-east.png",
+            "frame_size": [
+              23,
+              10
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -15,
+              -5
+            ],
+            "sha256": "6e6093d7127b3ca6f29998e49769852084664dd4a5158c7207006b1decc0ffd7"
+          },
+          "south-east": {
+            "file": "res://Assets/Effects/Spells/components/water_rushing_current/projectile-south-east.png",
+            "frame_size": [
+              20,
+              20
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -13,
+              -14
+            ],
+            "sha256": "fe75dbb37e984804dee08a095926af1e2784e96606e3e418e0e3cef291c45724"
+          },
+          "south": {
+            "file": "res://Assets/Effects/Spells/components/water_rushing_current/projectile-south.png",
+            "frame_size": [
+              10,
+              23
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -4,
+              -15
+            ],
+            "sha256": "4c4e37d80e48044964b98bd8a9acb18b1c88fb36b486151ddfb397c7a713864b"
+          },
+          "south-west": {
+            "file": "res://Assets/Effects/Spells/components/water_rushing_current/projectile-south-west.png",
+            "frame_size": [
+              20,
+              20
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -5,
+              -13
+            ],
+            "sha256": "fbba0dcd4c9d3db624dd6ab7cf7fbdd5ee61150313706e64739b78aaca2f8520"
+          },
+          "west": {
+            "file": "res://Assets/Effects/Spells/components/water_rushing_current/projectile-west.png",
+            "frame_size": [
+              23,
+              10
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -7,
+              -4
+            ],
+            "sha256": "fd2549bd84fc90a68877934694b9a549da0ba4da096dbe123aaa95e14c93c5bc"
+          },
+          "north-west": {
+            "file": "res://Assets/Effects/Spells/components/water_rushing_current/projectile-north-west.png",
+            "frame_size": [
+              20,
+              20
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -6,
+              -5
+            ],
+            "sha256": "aa57847a7c4d386c980bb06f39c2f064f2d8d7addbb52cbb5e56e59a852fb55b"
+          },
+          "north": {
+            "file": "res://Assets/Effects/Spells/components/water_rushing_current/projectile-north.png",
+            "frame_size": [
+              10,
+              23
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -5,
+              -7
+            ],
+            "sha256": "431385c7298aba9d7cb2114217a9d5dc8e0b64c54bbb6646f7aeee208706a702"
+          },
+          "north-east": {
+            "file": "res://Assets/Effects/Spells/components/water_rushing_current/projectile-north-east.png",
+            "frame_size": [
+              20,
+              20
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -14,
+              -6
+            ],
+            "sha256": "401764bc873bd141788ea4b064c3910abb67f046e0e3eb91f303511731981b5d"
+          }
+        },
+        "position_baked": false,
+        "contains_impact": false,
+        "frames": 11
+      },
+      "kind": "projectile",
+      "duration_seconds": 0
+    },
+    "earth_hewn_stone": {
+      "id": "earth_hewn_stone",
+      "name": "Hewn Stone",
+      "fps": 18,
+      "cast": {
+        "clips": [
+          {
+            "name": "part-cast",
+            "frame_size": [
+              32,
+              19
+            ],
+            "frames": 7,
+            "start_frame": 1,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/earth_hewn_stone/cast/part-cast.png",
+                "first_frame": 0,
+                "frames": 7,
+                "columns": 3,
+                "rows": 3,
+                "sha256": "b6dfa9efca524e8b580bb8bd3c74531c2d573034f006d4ba08da5ac9f383a32b"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -16,
+              -31
+            ]
+          }
+        ]
+      },
+      "impact": {
+        "clips": [
+          {
+            "name": "part-impact",
+            "frame_size": [
+              61,
+              54
+            ],
+            "frames": 8,
+            "start_frame": 0,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/earth_hewn_stone/impact/part-impact.png",
+                "first_frame": 0,
+                "frames": 8,
+                "columns": 3,
+                "rows": 3,
+                "sha256": "1cb5b32aa046d9ad82dcd58ad2f6406e3c8cfed303965242168d56bd7c078aed"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -27,
+              -41
+            ]
+          }
+        ],
+        "loop": false,
+        "trigger": "collision",
+        "scale": 1
+      },
+      "projectile": {
+        "loop": true,
+        "scale": 0.41379310344827586,
+        "original_body_frame": [
+          50,
+          29
+        ],
+        "compact_body_frame": [
+          21,
+          12
+        ],
+        "directions": {
+          "east": {
+            "file": "res://Assets/Effects/Spells/components/earth_hewn_stone/projectile-east.png",
+            "frame_size": [
+              22,
+              14
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -11,
+              -7
+            ],
+            "sha256": "fd439d864d467be073ab58ab1e18d314b776952efb4264259abebd74bc03044a"
+          },
+          "south-east": {
+            "file": "res://Assets/Effects/Spells/components/earth_hewn_stone/projectile-south-east.png",
+            "frame_size": [
+              17,
+              20
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -9,
+              -11
+            ],
+            "sha256": "baa38fd1603304d143286425c4d894fb4c619e07ddd170be0fc14f727ba55fac"
+          },
+          "south": {
+            "file": "res://Assets/Effects/Spells/components/earth_hewn_stone/projectile-south.png",
+            "frame_size": [
+              14,
+              22
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -6,
+              -11
+            ],
+            "sha256": "4c9641efc376ce3ba93306d5b0bb2950312ed1b232f59b3c291180bc4c83ac62"
+          },
+          "south-west": {
+            "file": "res://Assets/Effects/Spells/components/earth_hewn_stone/projectile-south-west.png",
+            "frame_size": [
+              20,
+              17
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -8,
+              -9
+            ],
+            "sha256": "e371a6f330c998b9941eb9386545a4660717908043ed4d2442a087f06d64dc30"
+          },
+          "west": {
+            "file": "res://Assets/Effects/Spells/components/earth_hewn_stone/projectile-west.png",
+            "frame_size": [
+              22,
+              14
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -10,
+              -6
+            ],
+            "sha256": "a71adc102d1184735ca98bb3aec9b8efb14c55356758d3d6746dd939da0e89a0"
+          },
+          "north-west": {
+            "file": "res://Assets/Effects/Spells/components/earth_hewn_stone/projectile-north-west.png",
+            "frame_size": [
+              17,
+              20
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -7,
+              -8
+            ],
+            "sha256": "1714431f19803ccbaaec1c2c6596c78444168d4486292d0d0c626750b5917560"
+          },
+          "north": {
+            "file": "res://Assets/Effects/Spells/components/earth_hewn_stone/projectile-north.png",
+            "frame_size": [
+              14,
+              22
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -7,
+              -10
+            ],
+            "sha256": "d0fcaa2e15432082cd09e31340d1b3742fbd9a1a51204c5a07ee2b36003d0f89"
+          },
+          "north-east": {
+            "file": "res://Assets/Effects/Spells/components/earth_hewn_stone/projectile-north-east.png",
+            "frame_size": [
+              20,
+              17
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -11,
+              -7
+            ],
+            "sha256": "8fd9c3a9fe31353df065e5edacb3952d925dea0c38083eec88cdedbe6b58d572"
+          }
+        },
+        "position_baked": false,
+        "contains_impact": false,
+        "frames": 11
+      },
+      "kind": "projectile",
+      "duration_seconds": 0
+    },
+    "fire_searing_brand": {
+      "id": "fire_searing_brand",
+      "name": "Searing Brand",
+      "fps": 18,
+      "cast": {
+        "clips": [
+          {
+            "name": "part-cast",
+            "frame_size": [
+              24,
+              24
+            ],
+            "frames": 7,
+            "start_frame": 1,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/fire_searing_brand/cast/part-cast.png",
+                "first_frame": 0,
+                "frames": 7,
+                "columns": 3,
+                "rows": 3,
+                "sha256": "b1bdabce7244ed4b4067b9e4c306af72fd5c3e5b72c2b46474aef0a7d6404856"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -12,
+              -36
+            ]
+          }
+        ]
+      },
+      "impact": {
+        "clips": [
+          {
+            "name": "part-impact",
+            "frame_size": [
+              59,
+              54
+            ],
+            "frames": 10,
+            "start_frame": 0,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/fire_searing_brand/impact/part-impact.png",
+                "first_frame": 0,
+                "frames": 10,
+                "columns": 4,
+                "rows": 3,
+                "sha256": "8d9aab73850efa1c59abdb049113e8d7e7b16c38d6ec8c392bcea47862262063"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -29,
+              -51
+            ]
+          }
+        ],
+        "loop": false,
+        "trigger": "collision",
+        "scale": 1
+      },
+      "projectile": {
+        "loop": true,
+        "scale": 0.3,
+        "original_body_frame": [
+          36,
+          40
+        ],
+        "compact_body_frame": [
+          11,
+          12
+        ],
+        "directions": {
+          "east": {
+            "file": "res://Assets/Effects/Spells/components/fire_searing_brand/projectile-east.png",
+            "frame_size": [
+              12,
+              13
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -6,
+              -7
+            ],
+            "sha256": "beb30f00a72b02264fb7be6463f9bf463667c91300eadae610b743b3fe5d8a63"
+          },
+          "south-east": {
+            "file": "res://Assets/Effects/Spells/components/fire_searing_brand/projectile-south-east.png",
+            "frame_size": [
+              14,
+              13
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -6,
+              -7
+            ],
+            "sha256": "55156bf018f3e32805106a7da75d7e850dca3d36f088c775176119b10b4614c6"
+          },
+          "south": {
+            "file": "res://Assets/Effects/Spells/components/fire_searing_brand/projectile-south.png",
+            "frame_size": [
+              13,
+              12
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -5,
+              -6
+            ],
+            "sha256": "bf5d4d016834207cb15447ec62eb381a0bda82ebd606af0da5a02a09c98cb78c"
+          },
+          "south-west": {
+            "file": "res://Assets/Effects/Spells/components/fire_searing_brand/projectile-south-west.png",
+            "frame_size": [
+              13,
+              14
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -5,
+              -6
+            ],
+            "sha256": "3779449678b9268845c6637f651e1b20b21ad91679a169ca55d61bf2120409b6"
+          },
+          "west": {
+            "file": "res://Assets/Effects/Spells/components/fire_searing_brand/projectile-west.png",
+            "frame_size": [
+              12,
+              13
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -5,
+              -5
+            ],
+            "sha256": "9266e3a49c762fd4a110c424ecfec55ce26b34ca6284f97ab418d0b2bfee823f"
+          },
+          "north-west": {
+            "file": "res://Assets/Effects/Spells/components/fire_searing_brand/projectile-north-west.png",
+            "frame_size": [
+              14,
+              13
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -7,
+              -5
+            ],
+            "sha256": "7a36d5da963760a396dc37d0e1d63e576c241382226321bb98b496a995687f76"
+          },
+          "north": {
+            "file": "res://Assets/Effects/Spells/components/fire_searing_brand/projectile-north.png",
+            "frame_size": [
+              13,
+              12
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -7,
+              -5
+            ],
+            "sha256": "09970056e13efecdafcf4b031b680829a87953f6c4e655c17b6361b91837e8dc"
+          },
+          "north-east": {
+            "file": "res://Assets/Effects/Spells/components/fire_searing_brand/projectile-north-east.png",
+            "frame_size": [
+              13,
+              14
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -7,
+              -7
+            ],
+            "sha256": "f9aae7c65475f86cbcf88012ffe89cee3d93cb9e689000030375017b1a34d8e1"
+          }
+        },
+        "position_baked": false,
+        "contains_impact": false,
+        "frames": 11
+      },
+      "kind": "projectile",
+      "duration_seconds": 0
+    },
+    "arcane_runic_force": {
+      "id": "arcane_runic_force",
+      "name": "Runic Force",
+      "fps": 18,
+      "cast": {
+        "clips": [
+          {
+            "name": "part-cast",
+            "frame_size": [
+              26,
+              26
+            ],
+            "frames": 7,
+            "start_frame": 1,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/arcane_runic_force/cast/part-cast.png",
+                "first_frame": 0,
+                "frames": 7,
+                "columns": 3,
+                "rows": 3,
+                "sha256": "4d915e2434a1b915bb0247752c5c4b422ceb3aeed4997990881332bec7ba6581"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -13,
+              -37
+            ]
+          }
+        ]
+      },
+      "impact": {
+        "clips": [
+          {
+            "name": "part-impact",
+            "frame_size": [
+              72,
+              77
+            ],
+            "frames": 10,
+            "start_frame": 0,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/arcane_runic_force/impact/part-impact.png",
+                "first_frame": 0,
+                "frames": 10,
+                "columns": 4,
+                "rows": 3,
+                "sha256": "3fc9306382dc02f4811525696f0be0ff9844f6396de3fae0fb16f1320bfd4ab2"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -37,
+              -64
+            ]
+          }
+        ],
+        "loop": false,
+        "trigger": "collision",
+        "scale": 1
+      },
+      "projectile": {
+        "loop": true,
+        "scale": 0.23529411764705882,
+        "original_body_frame": [
+          50,
+          51
+        ],
+        "compact_body_frame": [
+          12,
+          12
+        ],
+        "directions": {
+          "east": {
+            "file": "res://Assets/Effects/Spells/components/arcane_runic_force/projectile-east.png",
+            "frame_size": [
+              14,
+              15
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -7,
+              -7
+            ],
+            "sha256": "caa9165a8be622527f3e47490e10ad5d9d59c65a07cd9bea18f80d66e6f63e5b"
+          },
+          "south-east": {
+            "file": "res://Assets/Effects/Spells/components/arcane_runic_force/projectile-south-east.png",
+            "frame_size": [
+              14,
+              14
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -7,
+              -7
+            ],
+            "sha256": "5d0fce5368281a65c36233e608c734593ff2e4b0e57b62fb11f4c3edcc0aa3c3"
+          },
+          "south": {
+            "file": "res://Assets/Effects/Spells/components/arcane_runic_force/projectile-south.png",
+            "frame_size": [
+              15,
+              14
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -7,
+              -7
+            ],
+            "sha256": "7cbc3643f4edab738846a108e69ec0f936d9284095285fc5f443d90149588f0d"
+          },
+          "south-west": {
+            "file": "res://Assets/Effects/Spells/components/arcane_runic_force/projectile-south-west.png",
+            "frame_size": [
+              14,
+              14
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -6,
+              -7
+            ],
+            "sha256": "a22a9c8843ab4a8bc2df8603141bcac6a61fb5636618c0f7b4f83243caeeff8d"
+          },
+          "west": {
+            "file": "res://Assets/Effects/Spells/components/arcane_runic_force/projectile-west.png",
+            "frame_size": [
+              14,
+              15
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -6,
+              -7
+            ],
+            "sha256": "eb67d61ebc3c7ac3ff3050640dcc1394e2b8dca943ab8c8be1bdbb527c07b4b0"
+          },
+          "north-west": {
+            "file": "res://Assets/Effects/Spells/components/arcane_runic_force/projectile-north-west.png",
+            "frame_size": [
+              14,
+              14
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -6,
+              -6
+            ],
+            "sha256": "2a2533d3f6d0317ee20c290fc83aed0b2447020f8b8780e7b0113e70178f7f7b"
+          },
+          "north": {
+            "file": "res://Assets/Effects/Spells/components/arcane_runic_force/projectile-north.png",
+            "frame_size": [
+              15,
+              14
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -7,
+              -6
+            ],
+            "sha256": "522d0400f25a4b636f76d5cb0b751c598ab38c09a2357d3654a84bc452467567"
+          },
+          "north-east": {
+            "file": "res://Assets/Effects/Spells/components/arcane_runic_force/projectile-north-east.png",
+            "frame_size": [
+              14,
+              14
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -7,
+              -6
+            ],
+            "sha256": "251c53b046735f2393c18fd6ea676d5b73b39c6ed0f897bd8f26ecf36bca43ab"
+          }
+        },
+        "position_baked": false,
+        "contains_impact": false,
+        "frames": 11
+      },
+      "kind": "projectile",
+      "duration_seconds": 0
+    },
+    "air_rending_gale": {
+      "id": "air_rending_gale",
+      "name": "Rending Gale",
+      "fps": 16,
+      "cast": {
+        "clips": [
+          {
+            "name": "part-cast",
+            "frame_size": [
+              32,
+              31
+            ],
+            "frames": 7,
+            "start_frame": 1,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/air_rending_gale/cast/part-cast.png",
+                "first_frame": 0,
+                "frames": 7,
+                "columns": 3,
+                "rows": 3,
+                "sha256": "7e57ffa7c1cef927ae3c8537b4b0b50d01dae9764d49aed9c902d5f2d8541ee5"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -15,
+              -39
+            ]
+          }
+        ]
+      },
+      "impact": {
+        "clips": [
+          {
+            "name": "part-impact",
+            "frame_size": [
+              75,
+              62
+            ],
+            "frames": 10,
+            "start_frame": 0,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/air_rending_gale/impact/part-impact.png",
+                "first_frame": 0,
+                "frames": 10,
+                "columns": 4,
+                "rows": 3,
+                "sha256": "9c8615cb0d6694033f836344893e94eb694e6f76b15399a9a34bb33ce2a56ddf"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -34,
+              -57
+            ]
+          }
+        ],
+        "loop": false,
+        "trigger": "collision",
+        "scale": 1
+      },
+      "projectile": {
+        "loop": true,
+        "scale": 0.3235294117647059,
+        "original_body_frame": [
+          68,
+          32
+        ],
+        "compact_body_frame": [
+          22,
+          10
+        ],
+        "directions": {
+          "east": {
+            "file": "res://Assets/Effects/Spells/components/air_rending_gale/projectile-east.png",
+            "frame_size": [
+              37,
+              12
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -29,
+              -6
+            ],
+            "sha256": "033e0dd40de0e4e6c7de823b72c6bc5876a4822639b1c9d602aaab74efca64d0"
+          },
+          "south-east": {
+            "file": "res://Assets/Effects/Spells/components/air_rending_gale/projectile-south-east.png",
+            "frame_size": [
+              32,
+              29
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -24,
+              -22
+            ],
+            "sha256": "18d35159eb6c2a59c32eee222d6879e67b1c66f4f80a26708466401bd9354a92"
+          },
+          "south": {
+            "file": "res://Assets/Effects/Spells/components/air_rending_gale/projectile-south.png",
+            "frame_size": [
+              12,
+              37
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -5,
+              -29
+            ],
+            "sha256": "e61c01fd2244aab1f3f57ae6711cbba5ba9d7ba303683ecc527236966d5e3c40"
+          },
+          "south-west": {
+            "file": "res://Assets/Effects/Spells/components/air_rending_gale/projectile-south-west.png",
+            "frame_size": [
+              29,
+              32
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -6,
+              -24
+            ],
+            "sha256": "688299562b55a59c02f718627741ec64c322110358ab8ae39b4fe86cd8f01d35"
+          },
+          "west": {
+            "file": "res://Assets/Effects/Spells/components/air_rending_gale/projectile-west.png",
+            "frame_size": [
+              37,
+              12
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -7,
+              -5
+            ],
+            "sha256": "4488ff5f5c37d64a54b1a3db67aebfa72498386a3257d8f7a17044b4a7fa00ef"
+          },
+          "north-west": {
+            "file": "res://Assets/Effects/Spells/components/air_rending_gale/projectile-north-west.png",
+            "frame_size": [
+              32,
+              29
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -7,
+              -6
+            ],
+            "sha256": "260f5ea842dac60da8bc4938715e5f3626ae87bca7ac5427ba69324e401a2143"
+          },
+          "north": {
+            "file": "res://Assets/Effects/Spells/components/air_rending_gale/projectile-north.png",
+            "frame_size": [
+              12,
+              37
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -6,
+              -7
+            ],
+            "sha256": "c0b611a3345643b0337f46e0f0a747a990c2fddd71e423d4d86afea6ab0fcf87"
+          },
+          "north-east": {
+            "file": "res://Assets/Effects/Spells/components/air_rending_gale/projectile-north-east.png",
+            "frame_size": [
+              29,
+              32
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -22,
+              -7
+            ],
+            "sha256": "9cf86ee5f19423570ad4d7481b64fc349a5442303719791efa25f0e2b56b745d"
+          }
+        },
+        "position_baked": false,
+        "contains_impact": false,
+        "frames": 11
+      },
+      "kind": "projectile",
+      "duration_seconds": 0
+    },
+    "water_crashing_tide": {
+      "id": "water_crashing_tide",
+      "name": "Ice Spear",
+      "fps": 16,
+      "cast": {
+        "clips": [
+          {
+            "name": "part-cast",
+            "frame_size": [
+              48,
+              50
+            ],
+            "frames": 7,
+            "start_frame": 1,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/water_crashing_tide/cast/part-cast.png",
+                "first_frame": 0,
+                "frames": 7,
+                "columns": 3,
+                "rows": 3,
+                "sha256": "c12a4cb9e965a2ea26b4e3c6f54fdc386649fc80ac415ece46fce3c6e624cbcc"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -25,
+              -50
+            ]
+          }
+        ]
+      },
+      "impact": {
+        "clips": [
+          {
+            "name": "part-impact",
+            "frame_size": [
+              82,
+              82
+            ],
+            "frames": 12,
+            "start_frame": 0,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/water_crashing_tide/impact/part-impact.png",
+                "first_frame": 0,
+                "frames": 12,
+                "columns": 4,
+                "rows": 3,
+                "sha256": "45ea3d30cfc9dfa625784ccf8e7d4dcb67ef9cfc4980edba2dbdc7e6f2a36283"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -41,
+              -56
+            ]
+          }
+        ],
+        "loop": false,
+        "trigger": "collision",
+        "scale": 1
+      },
+      "projectile": {
+        "loop": true,
+        "scale": 0.2619047619047619,
+        "original_body_frame": [
+          84,
+          20
+        ],
+        "compact_body_frame": [
+          22,
+          5
+        ],
+        "directions": {
+          "east": {
+            "file": "res://Assets/Effects/Spells/components/water_crashing_tide/projectile-east.png",
+            "frame_size": [
+              29,
+              7
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -18,
+              -4
+            ],
+            "sha256": "1642d5751d3336e13de225ab1047aa164a71413c391764db82f870b433654f16"
+          },
+          "south-east": {
+            "file": "res://Assets/Effects/Spells/components/water_crashing_tide/projectile-south-east.png",
+            "frame_size": [
+              21,
+              22
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -12,
+              -14
+            ],
+            "sha256": "daedfe44643a98a3051e3999407baa9d80959fc9adfedcd3f803db8ba589bff5"
+          },
+          "south": {
+            "file": "res://Assets/Effects/Spells/components/water_crashing_tide/projectile-south.png",
+            "frame_size": [
+              7,
+              29
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -2,
+              -18
+            ],
+            "sha256": "5f7cff8cfb4f1fbff3c15ab94533f5dbe5845cd667db8fa304dd7ee85556d252"
+          },
+          "south-west": {
+            "file": "res://Assets/Effects/Spells/components/water_crashing_tide/projectile-south-west.png",
+            "frame_size": [
+              22,
+              21
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -7,
+              -12
+            ],
+            "sha256": "5c76d343607b8ede1d73a69a172c4b73fb7223f43eaa3e9df4645fa139f55f00"
+          },
+          "west": {
+            "file": "res://Assets/Effects/Spells/components/water_crashing_tide/projectile-west.png",
+            "frame_size": [
+              29,
+              7
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -10,
+              -2
+            ],
+            "sha256": "c2c212a3765fce21f1b578571b89ad55cc9f7f4c6df363f745021a3651c4c72e"
+          },
+          "north-west": {
+            "file": "res://Assets/Effects/Spells/components/water_crashing_tide/projectile-north-west.png",
+            "frame_size": [
+              21,
+              22
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -8,
+              -7
+            ],
+            "sha256": "7898f8a3def85c88c21efbf7ee16da3324356dc9492669d5f0328ba2b7f2623a"
+          },
+          "north": {
+            "file": "res://Assets/Effects/Spells/components/water_crashing_tide/projectile-north.png",
+            "frame_size": [
+              7,
+              29
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -4,
+              -10
+            ],
+            "sha256": "24443e7811664d86b0ee5d966d894726c7a74a3362e9fb0a8d89ee643339576f"
+          },
+          "north-east": {
+            "file": "res://Assets/Effects/Spells/components/water_crashing_tide/projectile-north-east.png",
+            "frame_size": [
+              22,
+              21
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -14,
+              -8
+            ],
+            "sha256": "e08c6033e98139ac52545d62af574842a2f98d7d3ded5499df77943cd10893bc"
+          }
+        },
+        "position_baked": false,
+        "contains_impact": false,
+        "frames": 11
+      },
+      "kind": "projectile",
+      "duration_seconds": 0
+    },
+    "earth_falling_monolith": {
+      "id": "earth_falling_monolith",
+      "name": "Upheaval",
+      "fps": 16,
+      "cast": {
+        "clips": [
+          {
+            "name": "part-cast",
+            "frame_size": [
+              57,
+              92
+            ],
+            "frames": 12,
+            "start_frame": 1,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/earth_falling_monolith/cast/part-cast.png",
+                "first_frame": 0,
+                "frames": 12,
+                "columns": 4,
+                "rows": 3,
+                "sha256": "f4887e1b30b21283bbb8ce441178d261f4483c3c4c0fcd9dbe794100506423d4"
+              }
+            ],
+            "anchor_forward": 34,
+            "offset": [
+              -29,
+              -70
+            ]
+          }
+        ]
+      },
+      "impact": {
+        "clips": [
+          {
+            "name": "part-impact",
+            "frame_size": [
+              90,
+              65
+            ],
+            "frames": 9,
+            "start_frame": 0,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/earth_falling_monolith/impact/part-impact.png",
+                "first_frame": 0,
+                "frames": 9,
+                "columns": 3,
+                "rows": 3,
+                "sha256": "40052aba395567acde9173ee3e44c5a8cd8dd6ac4fe3559d9607d79fb5a5e62d"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -46,
+              -38
+            ]
+          }
+        ],
+        "loop": false,
+        "trigger": "collision",
+        "scale": 1
+      },
+      "projectile": {
+        "loop": true,
+        "scale": 0.20689655172413793,
+        "original_body_frame": [
+          58,
+          58
+        ],
+        "compact_body_frame": [
+          12,
+          12
+        ],
+        "directions": {
+          "east": {
+            "file": "res://Assets/Effects/Spells/components/earth_falling_monolith/projectile-east.png",
+            "frame_size": [
+              14,
+              13
+            ],
+            "columns": 4,
+            "frames": 10,
+            "offset_from_object": [
+              -8,
+              -7
+            ],
+            "sha256": "db4eda6d5727b9fa08845b041c17dc53ef62576625caed25b523c53132d01b00"
+          },
+          "south-east": {
+            "file": "res://Assets/Effects/Spells/components/earth_falling_monolith/projectile-south-east.png",
+            "frame_size": [
+              14,
+              13
+            ],
+            "columns": 4,
+            "frames": 10,
+            "offset_from_object": [
+              -8,
+              -7
+            ],
+            "sha256": "db4eda6d5727b9fa08845b041c17dc53ef62576625caed25b523c53132d01b00"
+          },
+          "south": {
+            "file": "res://Assets/Effects/Spells/components/earth_falling_monolith/projectile-south.png",
+            "frame_size": [
+              14,
+              13
+            ],
+            "columns": 4,
+            "frames": 10,
+            "offset_from_object": [
+              -8,
+              -7
+            ],
+            "sha256": "db4eda6d5727b9fa08845b041c17dc53ef62576625caed25b523c53132d01b00"
+          },
+          "south-west": {
+            "file": "res://Assets/Effects/Spells/components/earth_falling_monolith/projectile-south-west.png",
+            "frame_size": [
+              14,
+              13
+            ],
+            "columns": 4,
+            "frames": 10,
+            "offset_from_object": [
+              -8,
+              -7
+            ],
+            "sha256": "db4eda6d5727b9fa08845b041c17dc53ef62576625caed25b523c53132d01b00"
+          },
+          "west": {
+            "file": "res://Assets/Effects/Spells/components/earth_falling_monolith/projectile-west.png",
+            "frame_size": [
+              14,
+              13
+            ],
+            "columns": 4,
+            "frames": 10,
+            "offset_from_object": [
+              -8,
+              -7
+            ],
+            "sha256": "db4eda6d5727b9fa08845b041c17dc53ef62576625caed25b523c53132d01b00"
+          },
+          "north-west": {
+            "file": "res://Assets/Effects/Spells/components/earth_falling_monolith/projectile-north-west.png",
+            "frame_size": [
+              14,
+              13
+            ],
+            "columns": 4,
+            "frames": 10,
+            "offset_from_object": [
+              -8,
+              -7
+            ],
+            "sha256": "db4eda6d5727b9fa08845b041c17dc53ef62576625caed25b523c53132d01b00"
+          },
+          "north": {
+            "file": "res://Assets/Effects/Spells/components/earth_falling_monolith/projectile-north.png",
+            "frame_size": [
+              14,
+              13
+            ],
+            "columns": 4,
+            "frames": 10,
+            "offset_from_object": [
+              -8,
+              -7
+            ],
+            "sha256": "db4eda6d5727b9fa08845b041c17dc53ef62576625caed25b523c53132d01b00"
+          },
+          "north-east": {
+            "file": "res://Assets/Effects/Spells/components/earth_falling_monolith/projectile-north-east.png",
+            "frame_size": [
+              14,
+              13
+            ],
+            "columns": 4,
+            "frames": 10,
+            "offset_from_object": [
+              -8,
+              -7
+            ],
+            "sha256": "db4eda6d5727b9fa08845b041c17dc53ef62576625caed25b523c53132d01b00"
+          }
+        },
+        "position_baked": false,
+        "contains_impact": false,
+        "frames": 10
+      },
+      "kind": "projectile",
+      "duration_seconds": 0
+    },
+    "fire_blazing_comet": {
+      "id": "fire_blazing_comet",
+      "name": "Blazing Comet",
+      "fps": 16,
+      "cast": {
+        "clips": [
+          {
+            "name": "part-cast",
+            "frame_size": [
+              32,
+              32
+            ],
+            "frames": 7,
+            "start_frame": 1,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/fire_blazing_comet/cast/part-cast.png",
+                "first_frame": 0,
+                "frames": 7,
+                "columns": 3,
+                "rows": 3,
+                "sha256": "fe535235f4c7f50811bc987eba71c5dbf9d2f22ac3ab2da814a537e48b38fba1"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -14,
+              -41
+            ]
+          }
+        ]
+      },
+      "impact": {
+        "clips": [
+          {
+            "name": "part-impact",
+            "frame_size": [
+              73,
+              79
+            ],
+            "frames": 11,
+            "start_frame": 0,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/fire_blazing_comet/impact/part-impact.png",
+                "first_frame": 0,
+                "frames": 11,
+                "columns": 4,
+                "rows": 3,
+                "sha256": "a04ec8014245204a03735792501f6e751e4b395aab5a9db4adef6da2d063c60b"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -36,
+              -57
+            ]
+          },
+          {
+            "name": "part-linger",
+            "frame_size": [
+              34,
+              31
+            ],
+            "frames": 5,
+            "start_frame": 5,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/fire_blazing_comet/impact/part-linger.png",
+                "first_frame": 0,
+                "frames": 5,
+                "columns": 3,
+                "rows": 2,
+                "sha256": "994a7510f069b1c3316e1217e611f08b201c25d4773ba00d742f151b49401549"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -16,
+              -49
+            ]
+          }
+        ],
+        "loop": false,
+        "trigger": "collision",
+        "scale": 1
+      },
+      "projectile": {
+        "loop": true,
+        "scale": 0.35294117647058826,
+        "original_body_frame": [
+          59,
+          34
+        ],
+        "compact_body_frame": [
+          21,
+          12
+        ],
+        "directions": {
+          "east": {
+            "file": "res://Assets/Effects/Spells/components/fire_blazing_comet/projectile-east.png",
+            "frame_size": [
+              43,
+              14
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -36,
+              -7
+            ],
+            "sha256": "b25089e5aac1dff097265f6526ec38600db226894f0f8c50fc5080d1aacb4e40"
+          },
+          "south-east": {
+            "file": "res://Assets/Effects/Spells/components/fire_blazing_comet/projectile-south-east.png",
+            "frame_size": [
+              34,
+              34
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -26,
+              -26
+            ],
+            "sha256": "fe8cd8fc873eb972d5a72e5535f77b93ba3b28dcb5e109331327c9d0ac8e01c9"
+          },
+          "south": {
+            "file": "res://Assets/Effects/Spells/components/fire_blazing_comet/projectile-south.png",
+            "frame_size": [
+              14,
+              43
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -6,
+              -36
+            ],
+            "sha256": "31f30a985e29a189445b9484c36acf7c67bae66621fe3ac957bf1b20f8ccf47a"
+          },
+          "south-west": {
+            "file": "res://Assets/Effects/Spells/components/fire_blazing_comet/projectile-south-west.png",
+            "frame_size": [
+              34,
+              34
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -7,
+              -26
+            ],
+            "sha256": "605b75e537ef183dc2c7afe33b9cd0db2c8ae30a206532369f42b6d3693f7cf9"
+          },
+          "west": {
+            "file": "res://Assets/Effects/Spells/components/fire_blazing_comet/projectile-west.png",
+            "frame_size": [
+              43,
+              14
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -6,
+              -6
+            ],
+            "sha256": "9e7af399ac1d79573fecea12a048d072cc6077a2bc3408428849decdaee4213b"
+          },
+          "north-west": {
+            "file": "res://Assets/Effects/Spells/components/fire_blazing_comet/projectile-north-west.png",
+            "frame_size": [
+              34,
+              34
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -7,
+              -7
+            ],
+            "sha256": "3992ec8639e2b0a063ee5a0b417b47dab7f4b0951223c7167fc59759b4972b1a"
+          },
+          "north": {
+            "file": "res://Assets/Effects/Spells/components/fire_blazing_comet/projectile-north.png",
+            "frame_size": [
+              14,
+              43
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -7,
+              -6
+            ],
+            "sha256": "8e8ae97f20787b0eb34bdcba66f783ce5411e2593745c15459b780a2acf71ae3"
+          },
+          "north-east": {
+            "file": "res://Assets/Effects/Spells/components/fire_blazing_comet/projectile-north-east.png",
+            "frame_size": [
+              34,
+              34
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -26,
+              -7
+            ],
+            "sha256": "89a92ae3052f772fe4cb52d2731beb1c67b4c648aa0cf804922f7fe9b3c6f2e3"
+          }
+        },
+        "position_baked": false,
+        "contains_impact": false,
+        "frames": 11
+      },
+      "kind": "projectile",
+      "duration_seconds": 0
+    },
+    "arcane_mending_light": {
+      "id": "arcane_mending_light",
+      "name": "Mending Light",
+      "fps": 16,
+      "cast": {
+        "clips": [
+          {
+            "name": "part-cast",
+            "frame_size": [
+              34,
+              30
+            ],
+            "frames": 6,
+            "start_frame": 2,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/arcane_mending_light/cast/part-cast.png",
+                "first_frame": 0,
+                "frames": 6,
+                "columns": 3,
+                "rows": 2,
+                "sha256": "3b98b3284354965a6a60c521f61c33b995a86cb48ba996e29538ef09072c8814"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -16,
+              -39
+            ]
+          }
+        ]
+      },
+      "impact": {
+        "clips": [
+          {
+            "name": "part-impact",
+            "frame_size": [
+              52,
+              80
+            ],
+            "frames": 12,
+            "start_frame": 0,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/arcane_mending_light/impact/part-impact.png",
+                "first_frame": 0,
+                "frames": 12,
+                "columns": 4,
+                "rows": 3,
+                "sha256": "d13b5d29d18a86868b44203bb0effe7d3aa8db380d84df4602e378983434d47c"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -26,
+              -64
+            ]
+          },
+          {
+            "name": "part-linger",
+            "frame_size": [
+              41,
+              53
+            ],
+            "frames": 9,
+            "start_frame": 2,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/arcane_mending_light/impact/part-linger.png",
+                "first_frame": 0,
+                "frames": 9,
+                "columns": 3,
+                "rows": 3,
+                "sha256": "2a58a32b8fb5ccf32387259a27dae28f2a91f7e60c2ed973bf213be16c14d55b"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -19,
+              -47
+            ]
+          }
+        ],
+        "loop": false,
+        "trigger": "collision",
+        "scale": 1
+      },
+      "projectile": {
+        "loop": true,
+        "scale": 1,
+        "original_body_frame": [
+          10,
+          10
+        ],
+        "compact_body_frame": [
+          10,
+          10
+        ],
+        "directions": {
+          "east": {
+            "file": "res://Assets/Effects/Spells/components/arcane_mending_light/projectile-east.png",
+            "frame_size": [
+              28,
+              12
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -22,
+              -6
+            ],
+            "sha256": "4fc92dac3cfc5237161717f5cd41e54b198941155d3559c7ad07b33dbadd02e7"
+          },
+          "south-east": {
+            "file": "res://Assets/Effects/Spells/components/arcane_mending_light/projectile-south-east.png",
+            "frame_size": [
+              23,
+              23
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -16,
+              -17
+            ],
+            "sha256": "163fd7534304b04877f4c4be28e9884fa9e4f9b9025ec47f258b152eb0ecb0d3"
+          },
+          "south": {
+            "file": "res://Assets/Effects/Spells/components/arcane_mending_light/projectile-south.png",
+            "frame_size": [
+              12,
+              28
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -5,
+              -22
+            ],
+            "sha256": "cb633bb6658becfd966eaff9e1d34c311d2f17832299ec72347289be345f9768"
+          },
+          "south-west": {
+            "file": "res://Assets/Effects/Spells/components/arcane_mending_light/projectile-south-west.png",
+            "frame_size": [
+              23,
+              23
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -5,
+              -16
+            ],
+            "sha256": "6c7e7c14445c00d0b4f71a0ccd49486f4b4e96240a7dd1bbfe9c105d28e1e648"
+          },
+          "west": {
+            "file": "res://Assets/Effects/Spells/components/arcane_mending_light/projectile-west.png",
+            "frame_size": [
+              28,
+              12
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -5,
+              -5
+            ],
+            "sha256": "22e11ec245b38fb5c5fbcbb94c79948e9157489a65a8843db334cec095effdf7"
+          },
+          "north-west": {
+            "file": "res://Assets/Effects/Spells/components/arcane_mending_light/projectile-north-west.png",
+            "frame_size": [
+              23,
+              23
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -6,
+              -5
+            ],
+            "sha256": "e726a535c683c25054d209ec6be1ec2b8a8bb203121ae9ad1cc1faa73bb27e46"
+          },
+          "north": {
+            "file": "res://Assets/Effects/Spells/components/arcane_mending_light/projectile-north.png",
+            "frame_size": [
+              12,
+              28
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -6,
+              -5
+            ],
+            "sha256": "4bf1f6779984b7df0c32844ef1c42acb7c24ba64ed722d68809ff3456d99a5f3"
+          },
+          "north-east": {
+            "file": "res://Assets/Effects/Spells/components/arcane_mending_light/projectile-north-east.png",
+            "frame_size": [
+              23,
+              23
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -17,
+              -6
+            ],
+            "sha256": "877e981f347f911ee7255e349ce89cc5b886131c8432afd74fefdcf034d15358"
+          }
+        },
+        "position_baked": false,
+        "contains_impact": false,
+        "frames": 11
+      },
+      "kind": "heal",
+      "duration_seconds": 0
+    },
+    "air_tempest_crown": {
+      "id": "air_tempest_crown",
+      "name": "Tempest Crown",
+      "fps": 14,
+      "cast": {
+        "clips": [
+          {
+            "name": "part-cast",
+            "frame_size": [
+              40,
+              38
+            ],
+            "frames": 7,
+            "start_frame": 1,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/air_tempest_crown/cast/part-cast.png",
+                "first_frame": 0,
+                "frames": 7,
+                "columns": 3,
+                "rows": 3,
+                "sha256": "f44356f1b54d075fd0346d4831978cec9fb95457bd98358982c1ed6eb84c8d90"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -20,
+              -41
+            ]
+          }
+        ]
+      },
+      "impact": {
+        "clips": [
+          {
+            "name": "part-impact",
+            "frame_size": [
+              101,
+              112
+            ],
+            "frames": 11,
+            "start_frame": 0,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/air_tempest_crown/impact/part-impact.png",
+                "first_frame": 0,
+                "frames": 11,
+                "columns": 4,
+                "rows": 3,
+                "sha256": "41fe9f890a8622234b96b0823fa513eeb7394fc95e8b164f26492889e383f3dd"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -50,
+              -88
+            ]
+          }
+        ],
+        "loop": false,
+        "trigger": "collision",
+        "scale": 1
+      },
+      "projectile": {
+        "loop": true,
+        "scale": 0.3333333333333333,
+        "original_body_frame": [
+          57,
+          36
+        ],
+        "compact_body_frame": [
+          19,
+          12
+        ],
+        "directions": {
+          "east": {
+            "file": "res://Assets/Effects/Spells/components/air_tempest_crown/projectile-east.png",
+            "frame_size": [
+              20,
+              13
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -10,
+              -8
+            ],
+            "sha256": "7bed7a346990867e541a918b52f74002e0dc5f4ce8a06135fd3fffceed3318f6"
+          },
+          "south-east": {
+            "file": "res://Assets/Effects/Spells/components/air_tempest_crown/projectile-south-east.png",
+            "frame_size": [
+              19,
+              18
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -8,
+              -10
+            ],
+            "sha256": "b8d0b2ab96c69e14f95fb2af0e49abcec19c7f7dc4b19006c33df6a3ce87e0dc"
+          },
+          "south": {
+            "file": "res://Assets/Effects/Spells/components/air_tempest_crown/projectile-south.png",
+            "frame_size": [
+              13,
+              20
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -4,
+              -10
+            ],
+            "sha256": "46d6e1023244539e391e24d7552c9b7162f574e3c2fd29a30a10cac24468b76f"
+          },
+          "south-west": {
+            "file": "res://Assets/Effects/Spells/components/air_tempest_crown/projectile-south-west.png",
+            "frame_size": [
+              18,
+              19
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -7,
+              -8
+            ],
+            "sha256": "f9e090b249b55f1f9236ac6668d7d7ae610afadf360202d26ee3b7336b96204a"
+          },
+          "west": {
+            "file": "res://Assets/Effects/Spells/components/air_tempest_crown/projectile-west.png",
+            "frame_size": [
+              20,
+              13
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -9,
+              -4
+            ],
+            "sha256": "e15cb557d648834ca90e681c93ad6b09ac38c395f2f7f7dcde2808907d058dc3"
+          },
+          "north-west": {
+            "file": "res://Assets/Effects/Spells/components/air_tempest_crown/projectile-north-west.png",
+            "frame_size": [
+              19,
+              18
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -10,
+              -7
+            ],
+            "sha256": "973bfd17cf519e6f95fe1019a44513e931371458849c128d8172555d3eb9dc4a"
+          },
+          "north": {
+            "file": "res://Assets/Effects/Spells/components/air_tempest_crown/projectile-north.png",
+            "frame_size": [
+              13,
+              20
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -8,
+              -9
+            ],
+            "sha256": "359dfffb8371006e2acadf7a08af938280bfc53e1656628fe509ddfa4deba409"
+          },
+          "north-east": {
+            "file": "res://Assets/Effects/Spells/components/air_tempest_crown/projectile-north-east.png",
+            "frame_size": [
+              18,
+              19
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -10,
+              -10
+            ],
+            "sha256": "a4cfe8fa343c4074849669e4c7b3ed68c3da44cf0e3d0de6cb193b6fc42f9d6d"
+          }
+        },
+        "position_baked": false,
+        "contains_impact": false,
+        "frames": 11
+      },
+      "kind": "projectile",
+      "duration_seconds": 0
+    },
+    "water_leviathans_surge": {
+      "id": "water_leviathans_surge",
+      "name": "Leviathan's Surge",
+      "fps": 14,
+      "cast": {
+        "clips": [
+          {
+            "name": "part-cast",
+            "frame_size": [
+              36,
+              40
+            ],
+            "frames": 7,
+            "start_frame": 1,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/water_leviathans_surge/cast/part-cast.png",
+                "first_frame": 0,
+                "frames": 7,
+                "columns": 3,
+                "rows": 3,
+                "sha256": "3281a11581b47a95d61ab5c11c6362bd70b66ceb8294eb60cf1b4bb64dd63913"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -20,
+              -44
+            ]
+          }
+        ]
+      },
+      "impact": {
+        "clips": [
+          {
+            "name": "part-impact",
+            "frame_size": [
+              106,
+              137
+            ],
+            "frames": 12,
+            "start_frame": 0,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/water_leviathans_surge/impact/part-impact.png",
+                "first_frame": 0,
+                "frames": 12,
+                "columns": 4,
+                "rows": 3,
+                "sha256": "feff8ff9f6147180f631b139803c6a332fc48b22d15640edd3c630f61b9f9f56"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -53,
+              -108
+            ]
+          }
+        ],
+        "loop": false,
+        "trigger": "collision",
+        "scale": 1
+      },
+      "projectile": {
+        "loop": true,
+        "scale": 0.3076923076923077,
+        "original_body_frame": [
+          44,
+          39
+        ],
+        "compact_body_frame": [
+          14,
+          12
+        ],
+        "directions": {
+          "east": {
+            "file": "res://Assets/Effects/Spells/components/water_leviathans_surge/projectile-east.png",
+            "frame_size": [
+              15,
+              13
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -7,
+              -6
+            ],
+            "sha256": "c4a4075874289a845e7be5dc55503a4dcaf19573126a20b593ec78fadf39b9ce"
+          },
+          "south-east": {
+            "file": "res://Assets/Effects/Spells/components/water_leviathans_surge/projectile-south-east.png",
+            "frame_size": [
+              17,
+              17
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -8,
+              -8
+            ],
+            "sha256": "980cdcd0899c60960b8f6bd63f05acbf68aa17786eb5e041f706656b5bec711c"
+          },
+          "south": {
+            "file": "res://Assets/Effects/Spells/components/water_leviathans_surge/projectile-south.png",
+            "frame_size": [
+              13,
+              15
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -6,
+              -7
+            ],
+            "sha256": "86f54cb2b0411e1f89dbba02a7060f492398483855b3c60010e5ce218c78665a"
+          },
+          "south-west": {
+            "file": "res://Assets/Effects/Spells/components/water_leviathans_surge/projectile-south-west.png",
+            "frame_size": [
+              17,
+              17
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -8,
+              -8
+            ],
+            "sha256": "5a4ec6249cf643b805ebac3b76b584689adcec82d3bad45ca9173e81b530e42d"
+          },
+          "west": {
+            "file": "res://Assets/Effects/Spells/components/water_leviathans_surge/projectile-west.png",
+            "frame_size": [
+              15,
+              13
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -7,
+              -6
+            ],
+            "sha256": "ee91aae42fce3694d3f0a0aee3766b9d45b459f528cca5b6fbf22433955a46ae"
+          },
+          "north-west": {
+            "file": "res://Assets/Effects/Spells/components/water_leviathans_surge/projectile-north-west.png",
+            "frame_size": [
+              17,
+              17
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -8,
+              -8
+            ],
+            "sha256": "b07e06ee324716e291a7560885700443b0d2409ea23428072e2350b5486312c8"
+          },
+          "north": {
+            "file": "res://Assets/Effects/Spells/components/water_leviathans_surge/projectile-north.png",
+            "frame_size": [
+              13,
+              15
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -6,
+              -7
+            ],
+            "sha256": "324924aa7f3b0b988c1e64a033455bb9e089f41431ea5c9bac9897269ff3569d"
+          },
+          "north-east": {
+            "file": "res://Assets/Effects/Spells/components/water_leviathans_surge/projectile-north-east.png",
+            "frame_size": [
+              17,
+              17
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -8,
+              -8
+            ],
+            "sha256": "6479b82a23c507d595eaae84c417fee301d8feaa8117ccc8446582958e89796b"
+          }
+        },
+        "position_baked": false,
+        "contains_impact": false,
+        "frames": 11
+      },
+      "kind": "projectile",
+      "duration_seconds": 0
+    },
+    "earth_mountains_wrath": {
+      "id": "earth_mountains_wrath",
+      "name": "Mountain's Wrath",
+      "fps": 14,
+      "cast": {
+        "clips": [
+          {
+            "name": "part-cast",
+            "frame_size": [
+              40,
+              38
+            ],
+            "frames": 6,
+            "start_frame": 2,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/earth_mountains_wrath/cast/part-cast.png",
+                "first_frame": 0,
+                "frames": 6,
+                "columns": 3,
+                "rows": 2,
+                "sha256": "dcad9b7e6672d509511d3578af6443b53fb98e330c61123ab89f27b1ca518cef"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -20,
+              -43
+            ]
+          }
+        ]
+      },
+      "impact": {
+        "clips": [
+          {
+            "name": "part-impact",
+            "frame_size": [
+              96,
+              121
+            ],
+            "frames": 11,
+            "start_frame": 0,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/earth_mountains_wrath/impact/part-impact.png",
+                "first_frame": 0,
+                "frames": 11,
+                "columns": 4,
+                "rows": 3,
+                "sha256": "eb1a3f40a342e3545891d31cc29cad5787d6ff5a3e0c332517e7667c41912833"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -47,
+              -86
+            ]
+          }
+        ],
+        "loop": false,
+        "trigger": "collision",
+        "scale": 1
+      },
+      "projectile": {
+        "loop": true,
+        "scale": 0.25,
+        "original_body_frame": [
+          74,
+          48
+        ],
+        "compact_body_frame": [
+          18,
+          12
+        ],
+        "directions": {
+          "east": {
+            "file": "res://Assets/Effects/Spells/components/earth_mountains_wrath/projectile-east.png",
+            "frame_size": [
+              20,
+              13
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -10,
+              -6
+            ],
+            "sha256": "82e7bc712ac5cb4c999e140d8c366d14c4896600e301b5e6646b9fa0cbd8e401"
+          },
+          "south-east": {
+            "file": "res://Assets/Effects/Spells/components/earth_mountains_wrath/projectile-south-east.png",
+            "frame_size": [
+              20,
+              13
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -10,
+              -6
+            ],
+            "sha256": "82e7bc712ac5cb4c999e140d8c366d14c4896600e301b5e6646b9fa0cbd8e401"
+          },
+          "south": {
+            "file": "res://Assets/Effects/Spells/components/earth_mountains_wrath/projectile-south.png",
+            "frame_size": [
+              20,
+              13
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -10,
+              -6
+            ],
+            "sha256": "82e7bc712ac5cb4c999e140d8c366d14c4896600e301b5e6646b9fa0cbd8e401"
+          },
+          "south-west": {
+            "file": "res://Assets/Effects/Spells/components/earth_mountains_wrath/projectile-south-west.png",
+            "frame_size": [
+              20,
+              13
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -10,
+              -6
+            ],
+            "sha256": "82e7bc712ac5cb4c999e140d8c366d14c4896600e301b5e6646b9fa0cbd8e401"
+          },
+          "west": {
+            "file": "res://Assets/Effects/Spells/components/earth_mountains_wrath/projectile-west.png",
+            "frame_size": [
+              20,
+              13
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -10,
+              -6
+            ],
+            "sha256": "82e7bc712ac5cb4c999e140d8c366d14c4896600e301b5e6646b9fa0cbd8e401"
+          },
+          "north-west": {
+            "file": "res://Assets/Effects/Spells/components/earth_mountains_wrath/projectile-north-west.png",
+            "frame_size": [
+              20,
+              13
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -10,
+              -6
+            ],
+            "sha256": "82e7bc712ac5cb4c999e140d8c366d14c4896600e301b5e6646b9fa0cbd8e401"
+          },
+          "north": {
+            "file": "res://Assets/Effects/Spells/components/earth_mountains_wrath/projectile-north.png",
+            "frame_size": [
+              20,
+              13
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -10,
+              -6
+            ],
+            "sha256": "82e7bc712ac5cb4c999e140d8c366d14c4896600e301b5e6646b9fa0cbd8e401"
+          },
+          "north-east": {
+            "file": "res://Assets/Effects/Spells/components/earth_mountains_wrath/projectile-north-east.png",
+            "frame_size": [
+              20,
+              13
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -10,
+              -6
+            ],
+            "sha256": "82e7bc712ac5cb4c999e140d8c366d14c4896600e301b5e6646b9fa0cbd8e401"
+          }
+        },
+        "position_baked": false,
+        "contains_impact": false,
+        "frames": 11
+      },
+      "kind": "projectile",
+      "duration_seconds": 0
+    },
+    "fire_sunfire": {
+      "id": "fire_sunfire",
+      "name": "Sunfire",
+      "fps": 14,
+      "cast": {
+        "clips": [
+          {
+            "name": "part-cast",
+            "frame_size": [
+              38,
+              38
+            ],
+            "frames": 7,
+            "start_frame": 1,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/fire_sunfire/cast/part-cast.png",
+                "first_frame": 0,
+                "frames": 7,
+                "columns": 3,
+                "rows": 3,
+                "sha256": "ad8721ec9ab6f2de812dc465a1302d6856044c751372a26dbf18d543fe7a07a8"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -19,
+              -42
+            ]
+          }
+        ]
+      },
+      "impact": {
+        "clips": [
+          {
+            "name": "part-impact",
+            "frame_size": [
+              88,
+              126
+            ],
+            "frames": 12,
+            "start_frame": 0,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/fire_sunfire/impact/part-impact.png",
+                "first_frame": 0,
+                "frames": 12,
+                "columns": 4,
+                "rows": 3,
+                "sha256": "c475ce340f1e0b9194e60ab5df6c8f0b837cce785887ae22b7520f6dae71f7e0"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -44,
+              -106
+            ]
+          }
+        ],
+        "loop": false,
+        "trigger": "collision",
+        "scale": 1
+      },
+      "projectile": {
+        "loop": true,
+        "scale": 0.1875,
+        "original_body_frame": [
+          60,
+          64
+        ],
+        "compact_body_frame": [
+          11,
+          12
+        ],
+        "directions": {
+          "east": {
+            "file": "res://Assets/Effects/Spells/components/fire_sunfire/projectile-east.png",
+            "frame_size": [
+              13,
+              13
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -6,
+              -7
+            ],
+            "sha256": "d5e6c2d4e3ff7fa0bf61edd21dc7f70fc77002cb53a809f89f6e21547c1a2164"
+          },
+          "south-east": {
+            "file": "res://Assets/Effects/Spells/components/fire_sunfire/projectile-south-east.png",
+            "frame_size": [
+              12,
+              13
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -5,
+              -7
+            ],
+            "sha256": "ac57505cc60ecfe90f3e5911b78a87c60cc5ecee78119f8f571586a681d56bf8"
+          },
+          "south": {
+            "file": "res://Assets/Effects/Spells/components/fire_sunfire/projectile-south.png",
+            "frame_size": [
+              13,
+              13
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -5,
+              -6
+            ],
+            "sha256": "4f70db981f25b8a0be9b22cf63913f1d99c031390fa1675d6d2f68cd0a6aaedb"
+          },
+          "south-west": {
+            "file": "res://Assets/Effects/Spells/components/fire_sunfire/projectile-south-west.png",
+            "frame_size": [
+              13,
+              12
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -5,
+              -5
+            ],
+            "sha256": "43769505c24a2d264710c2c89735885a945eeffff1ac141d1b83ab4e3fdbcec8"
+          },
+          "west": {
+            "file": "res://Assets/Effects/Spells/components/fire_sunfire/projectile-west.png",
+            "frame_size": [
+              13,
+              13
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -6,
+              -5
+            ],
+            "sha256": "96fac5b71db61ff96eee592a2cfffcd82c2de30efe4e9d6bed6913b4588b75d3"
+          },
+          "north-west": {
+            "file": "res://Assets/Effects/Spells/components/fire_sunfire/projectile-north-west.png",
+            "frame_size": [
+              12,
+              13
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -6,
+              -5
+            ],
+            "sha256": "4383b397a5f86c6d0ed4e4812dd286f87dd0ac56da03ec815451f94ef0eed098"
+          },
+          "north": {
+            "file": "res://Assets/Effects/Spells/components/fire_sunfire/projectile-north.png",
+            "frame_size": [
+              13,
+              13
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -7,
+              -6
+            ],
+            "sha256": "8489428482c94db0bec0eba1a16e0eb152d00da875147c3e43d095123f209c50"
+          },
+          "north-east": {
+            "file": "res://Assets/Effects/Spells/components/fire_sunfire/projectile-north-east.png",
+            "frame_size": [
+              13,
+              12
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -7,
+              -6
+            ],
+            "sha256": "658dc7de2203d3b8288b003a50239eda7856c021d7140674bde284368abb566a"
+          }
+        },
+        "position_baked": false,
+        "contains_impact": false,
+        "frames": 11
+      },
+      "kind": "projectile",
+      "duration_seconds": 0
+    },
+    "air_repelling_gust": {
+      "id": "air_repelling_gust",
+      "name": "Repelling Gust",
+      "fps": 20,
+      "cast": {
+        "clips": [
+          {
+            "name": "part-cast",
+            "frame_size": [
+              48,
+              34
+            ],
+            "frames": 9,
+            "start_frame": 1,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/air_repelling_gust/cast/part-cast.png",
+                "first_frame": 0,
+                "frames": 9,
+                "columns": 3,
+                "rows": 3,
+                "sha256": "0d4f3a78d8b428ebaf4dd10d6fdd1cc1a5f1f98ddcc75782064bfbf1ee0ed8be"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -14,
+              -41
+            ]
+          }
+        ]
+      },
+      "impact": {
+        "clips": [
+          {
+            "name": "part-impact",
+            "frame_size": [
+              50,
+              63
+            ],
+            "frames": 10,
+            "start_frame": 0,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/air_repelling_gust/impact/part-impact.png",
+                "first_frame": 0,
+                "frames": 10,
+                "columns": 4,
+                "rows": 3,
+                "sha256": "540e07a2881862c4fa35096eeaa692e0b51cc1864d95856c175d80f79bb87f46"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -10,
+              -46
+            ]
+          }
+        ],
+        "loop": false,
+        "trigger": "collision",
+        "scale": 1
+      },
+      "projectile": {
+        "loop": true,
+        "scale": 0.13580246913580246,
+        "original_body_frame": [
+          162,
+          63
+        ],
+        "compact_body_frame": [
+          22,
+          9
+        ],
+        "directions": {
+          "east": {
+            "file": "res://Assets/Effects/Spells/components/air_repelling_gust/projectile-east.png",
+            "frame_size": [
+              16,
+              10
+            ],
+            "columns": 4,
+            "frames": 9,
+            "offset_from_object": [
+              -10,
+              -4
+            ],
+            "sha256": "477c9a14cf4f5462f9d5bec2e52dee391e4a86f149de665c6e9748a62722b8f2"
+          },
+          "south-east": {
+            "file": "res://Assets/Effects/Spells/components/air_repelling_gust/projectile-south-east.png",
+            "frame_size": [
+              14,
+              13
+            ],
+            "columns": 4,
+            "frames": 9,
+            "offset_from_object": [
+              -8,
+              -7
+            ],
+            "sha256": "56bf7799b2fa0a862db777488eb37422653b29d8c495f4d6ada7f3e5721f4aa1"
+          },
+          "south": {
+            "file": "res://Assets/Effects/Spells/components/air_repelling_gust/projectile-south.png",
+            "frame_size": [
+              10,
+              16
+            ],
+            "columns": 4,
+            "frames": 9,
+            "offset_from_object": [
+              -5,
+              -10
+            ],
+            "sha256": "4c89c4ea06286bc86624d1a859f6ac35a1d0847a9874b0358a0771fb45e9a711"
+          },
+          "south-west": {
+            "file": "res://Assets/Effects/Spells/components/air_repelling_gust/projectile-south-west.png",
+            "frame_size": [
+              13,
+              14
+            ],
+            "columns": 4,
+            "frames": 9,
+            "offset_from_object": [
+              -5,
+              -8
+            ],
+            "sha256": "f2cdafaa126e564ccaf4d30cded5f418dc2017bad3944cdfca4bf08a2b589436"
+          },
+          "west": {
+            "file": "res://Assets/Effects/Spells/components/air_repelling_gust/projectile-west.png",
+            "frame_size": [
+              16,
+              10
+            ],
+            "columns": 4,
+            "frames": 9,
+            "offset_from_object": [
+              -5,
+              -5
+            ],
+            "sha256": "40b61a074b3716f4e77b1b282736c73285a19d3c1d62c281a3118df677577597"
+          },
+          "north-west": {
+            "file": "res://Assets/Effects/Spells/components/air_repelling_gust/projectile-north-west.png",
+            "frame_size": [
+              14,
+              13
+            ],
+            "columns": 4,
+            "frames": 9,
+            "offset_from_object": [
+              -5,
+              -5
+            ],
+            "sha256": "508ea93d81fa181df21fe7a6ada27d295435b55942afae0bcfee7e7c42ae859d"
+          },
+          "north": {
+            "file": "res://Assets/Effects/Spells/components/air_repelling_gust/projectile-north.png",
+            "frame_size": [
+              10,
+              16
+            ],
+            "columns": 4,
+            "frames": 9,
+            "offset_from_object": [
+              -4,
+              -5
+            ],
+            "sha256": "10dbddf708e4d49e17de379fbb6bc945c11e189cec9deab4b564546f031973b5"
+          },
+          "north-east": {
+            "file": "res://Assets/Effects/Spells/components/air_repelling_gust/projectile-north-east.png",
+            "frame_size": [
+              13,
+              14
+            ],
+            "columns": 4,
+            "frames": 9,
+            "offset_from_object": [
+              -7,
+              -5
+            ],
+            "sha256": "b8ffe22fa4ba5537c9843c2caac4b8100477349c386b06f602f4018a928d0e0c"
+          }
+        },
+        "position_baked": false,
+        "contains_impact": false,
+        "frames": 9
+      },
+      "kind": "knockback",
+      "duration_seconds": 0
+    },
+    "arcane_astral_lance": {
+      "id": "arcane_astral_lance",
+      "name": "Astral Lance",
+      "fps": 12,
+      "cast": {
+        "clips": [
+          {
+            "name": "part-cast",
+            "frame_size": [
+              83,
+              55
+            ],
+            "frames": 14,
+            "start_frame": 1,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/arcane_astral_lance/cast/part-cast.png",
+                "first_frame": 0,
+                "frames": 14,
+                "columns": 4,
+                "rows": 4,
+                "sha256": "ed3fd1a9b588c98ada0f6a557622d6fee89a8cde6f17c0deea643cc8604b88fa"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -27,
+              -51
+            ]
+          }
+        ]
+      },
+      "impact": {
+        "clips": [
+          {
+            "name": "part-impact",
+            "frame_size": [
+              92,
+              112
+            ],
+            "frames": 12,
+            "start_frame": 0,
+            "depth": "behind",
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/components/arcane_astral_lance/impact/part-impact.png",
+                "first_frame": 0,
+                "frames": 12,
+                "columns": 4,
+                "rows": 3,
+                "sha256": "7b3764bfde67c942878a61bf3b08af4268681cc31062b6e3349d768c5b14047f"
+              }
+            ],
+            "anchor_forward": 0,
+            "offset": [
+              -46,
+              -80
+            ]
+          }
+        ],
+        "loop": false,
+        "trigger": "collision",
+        "scale": 1
+      },
+      "projectile": {
+        "loop": true,
+        "scale": 0.2894736842105263,
+        "original_body_frame": [
+          76,
+          16
+        ],
+        "compact_body_frame": [
+          22,
+          5
+        ],
+        "directions": {
+          "east": {
+            "file": "res://Assets/Effects/Spells/components/arcane_astral_lance/projectile-east.png",
+            "frame_size": [
+              38,
+              6
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -26,
+              -3
+            ],
+            "sha256": "4207954e775809a33382233eac7b49366656e43c86ce4111ac50265aad46504d"
+          },
+          "south-east": {
+            "file": "res://Assets/Effects/Spells/components/arcane_astral_lance/projectile-south-east.png",
+            "frame_size": [
+              29,
+              28
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -19,
+              -19
+            ],
+            "sha256": "5e7301b3acb3c5552ddc74b31ccc37dc79fa963a5e395dd367baee8c15c780fd"
+          },
+          "south": {
+            "file": "res://Assets/Effects/Spells/components/arcane_astral_lance/projectile-south.png",
+            "frame_size": [
+              6,
+              38
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -2,
+              -26
+            ],
+            "sha256": "572e0a9e113514a9f70a30d2dc5baad4171a75a271177ebfdc3c54444da8d668"
+          },
+          "south-west": {
+            "file": "res://Assets/Effects/Spells/components/arcane_astral_lance/projectile-south-west.png",
+            "frame_size": [
+              28,
+              29
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -8,
+              -19
+            ],
+            "sha256": "562a4b2520f495249d89ce702e9b8ffc05d76bc57b8353782169138aebbbd4fd"
+          },
+          "west": {
+            "file": "res://Assets/Effects/Spells/components/arcane_astral_lance/projectile-west.png",
+            "frame_size": [
+              38,
+              6
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -11,
+              -2
+            ],
+            "sha256": "c65ada10e9c286980f512cba0055256721002728491212a2cdd201c804394ebf"
+          },
+          "north-west": {
+            "file": "res://Assets/Effects/Spells/components/arcane_astral_lance/projectile-north-west.png",
+            "frame_size": [
+              29,
+              28
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -9,
+              -8
+            ],
+            "sha256": "9fd4525627f908a760f1ea54073c5481cc2083346ec356664cafb6df11bae405"
+          },
+          "north": {
+            "file": "res://Assets/Effects/Spells/components/arcane_astral_lance/projectile-north.png",
+            "frame_size": [
+              6,
+              38
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -3,
+              -11
+            ],
+            "sha256": "5021fc5d6a4f402910ac7602d43da6c008f0a7ef0bd5c28c50c87bc996a13aa0"
+          },
+          "north-east": {
+            "file": "res://Assets/Effects/Spells/components/arcane_astral_lance/projectile-north-east.png",
+            "frame_size": [
+              28,
+              29
+            ],
+            "columns": 4,
+            "frames": 11,
+            "offset_from_object": [
+              -19,
+              -9
+            ],
+            "sha256": "9e715bea2ff082e1f7ecce0f340442b4f3951f1a56f872aeb7937e446be66d4d"
+          }
+        },
+        "position_baked": false,
+        "contains_impact": false,
+        "frames": 11
+      },
+      "kind": "projectile",
+      "duration_seconds": 0
+    },
+    "air_stormring": {
+      "id": "air_stormring",
+      "name": "Stormring",
+      "fps": 20,
+      "cast": {
+        "clips": [
+          {
+            "name": "cast",
+            "frame_size": [
+              24,
+              27
+            ],
+            "frames": 32,
+            "start_frame": 0,
+            "depth": "behind",
+            "anchor_forward": 0,
+            "offset": [
+              -12,
+              -36
+            ],
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/air_stormring/cast.png",
+                "first_frame": 0,
+                "frames": 32,
+                "columns": 8,
+                "sha256": "8d9f2ce0d987181f5817967bcbe7cc0cfa2187bc18008fb3d794659c3369ec57"
+              }
+            ]
+          }
+        ]
+      },
+      "impact": {
+        "clips": [
+          {
+            "name": "impact",
+            "frame_size": [
+              80,
+              48
+            ],
+            "frames": 32,
+            "start_frame": 0,
+            "depth": "behind",
+            "anchor_forward": 0,
+            "offset": [
+              -40,
+              -24
+            ],
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/air_stormring/impact.png",
+                "first_frame": 0,
+                "frames": 32,
+                "columns": 8,
+                "sha256": "d1b1c343ee8eee04f7eb60f423a5f87128121067e6f9aed434835892c7a6c738"
+              }
+            ]
+          }
+        ],
+        "loop": false,
+        "scale": 1
+      },
+      "kind": "area",
+      "duration_seconds": 0
+    },
+    "earth_stoneward": {
+      "id": "earth_stoneward",
+      "name": "Stoneward",
+      "fps": 12,
+      "cast": {
+        "clips": [
+          {
+            "name": "cast",
+            "frame_size": [
+              24,
+              29
+            ],
+            "frames": 32,
+            "start_frame": 0,
+            "depth": "behind",
+            "anchor_forward": 0,
+            "offset": [
+              -9,
+              -38
+            ],
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/earth_stoneward/cast.png",
+                "first_frame": 0,
+                "frames": 32,
+                "columns": 8,
+                "sha256": "743b48caf2fb61496aa216b4736243c0d800c2c2dcd499d788e053b8ff1d0a7f"
+              }
+            ]
+          }
+        ]
+      },
+      "impact": {
+        "clips": [
+          {
+            "name": "impact",
+            "frame_size": [
+              121,
+              76
+            ],
+            "frames": 32,
+            "start_frame": 0,
+            "depth": "behind",
+            "anchor_forward": 0,
+            "offset": [
+              -63,
+              -56
+            ],
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/earth_stoneward/impact.png",
+                "first_frame": 0,
+                "frames": 32,
+                "columns": 8,
+                "sha256": "2d166aa693ee10b2183bd8e962c4be697556f1a4572761e8d6a6c8ce397c8396"
+              }
+            ]
+          }
+        ],
+        "loop": false,
+        "scale": 1
+      },
+      "kind": "wall",
+      "duration_seconds": 6.0
+    },
+    "water_tideburst": {
+      "id": "water_tideburst",
+      "name": "Tideburst",
+      "fps": 18,
+      "cast": {
+        "clips": [
+          {
+            "name": "cast",
+            "frame_size": [
+              18,
+              27
+            ],
+            "frames": 32,
+            "start_frame": 0,
+            "depth": "behind",
+            "anchor_forward": 0,
+            "offset": [
+              -3,
+              -37
+            ],
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/water_tideburst/cast.png",
+                "first_frame": 0,
+                "frames": 32,
+                "columns": 8,
+                "sha256": "39c2f1ef6be461f8475118f1b9eec9941ab65d7ea670d0352595fa8d6f3a49b0"
+              }
+            ]
+          }
+        ]
+      },
+      "impact": {
+        "clips": [
+          {
+            "name": "impact",
+            "frame_size": [
+              104,
+              82
+            ],
+            "frames": 32,
+            "start_frame": 0,
+            "depth": "behind",
+            "anchor_forward": 0,
+            "offset": [
+              -52,
+              -51
+            ],
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/water_tideburst/impact.png",
+                "first_frame": 0,
+                "frames": 32,
+                "columns": 8,
+                "sha256": "20b76ece3b105e1a6ef27c72d23736332ce34d8f311f8d96ec9999eb738d4aee"
+              }
+            ]
+          }
+        ],
+        "loop": false,
+        "scale": 1
+      },
+      "kind": "area",
+      "duration_seconds": 0
+    },
+    "earth_shatterground": {
+      "id": "earth_shatterground",
+      "name": "Shatterground",
+      "fps": 16,
+      "cast": {
+        "clips": [
+          {
+            "name": "cast",
+            "frame_size": [
+              35,
+              31
+            ],
+            "frames": 32,
+            "start_frame": 0,
+            "depth": "behind",
+            "anchor_forward": 0,
+            "offset": [
+              -17,
+              -39
+            ],
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/earth_shatterground/cast.png",
+                "first_frame": 0,
+                "frames": 32,
+                "columns": 8,
+                "sha256": "51f68d993c045ee2820ce123b9d15ef31c84dc662ac4f2f85e3858bd84c95af3"
+              }
+            ]
+          }
+        ]
+      },
+      "impact": {
+        "clips": [
+          {
+            "name": "impact",
+            "frame_size": [
+              91,
+              95
+            ],
+            "frames": 32,
+            "start_frame": 0,
+            "depth": "behind",
+            "anchor_forward": 0,
+            "offset": [
+              -44,
+              -53
+            ],
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/earth_shatterground/impact.png",
+                "first_frame": 0,
+                "frames": 32,
+                "columns": 8,
+                "sha256": "f6778fb296928911b2289151d917d11dbd592a085fbf353ebb59feb69d99ef40"
+              }
+            ]
+          }
+        ],
+        "loop": false,
+        "scale": 1
+      },
+      "kind": "area",
+      "duration_seconds": 0
+    },
+    "fire_cinderfall": {
+      "id": "fire_cinderfall",
+      "name": "Cinderfall",
+      "fps": 14,
+      "cast": {
+        "clips": [
+          {
+            "name": "cast",
+            "frame_size": [
+              40,
+              27
+            ],
+            "frames": 32,
+            "start_frame": 0,
+            "depth": "behind",
+            "anchor_forward": 0,
+            "offset": [
+              -19,
+              -44
+            ],
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/fire_cinderfall/cast.png",
+                "first_frame": 0,
+                "frames": 32,
+                "columns": 8,
+                "sha256": "00ace5c6d5d0b0c4b97d806718cc6482f24df89204f2fd48172d253eb805f8fd"
+              }
+            ]
+          }
+        ]
+      },
+      "impact": {
+        "clips": [
+          {
+            "name": "impact",
+            "frame_size": [
+              143,
+              156
+            ],
+            "frames": 32,
+            "start_frame": 0,
+            "depth": "behind",
+            "anchor_forward": 0,
+            "offset": [
+              -76,
+              -118
+            ],
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/fire_cinderfall/impact.png",
+                "first_frame": 0,
+                "frames": 32,
+                "columns": 8,
+                "sha256": "12b1c9273d096e422e9ee8640ad501ec5ff89b71e9162fcaf889889b889138f8"
+              }
+            ]
+          }
+        ],
+        "loop": false,
+        "scale": 1
+      },
+      "kind": "area",
+      "duration_seconds": 0
+    },
+    "arcane_starfall": {
+      "id": "arcane_starfall",
+      "name": "Starfall",
+      "fps": 12,
+      "cast": {
+        "clips": [
+          {
+            "name": "cast",
+            "frame_size": [
+              35,
+              40
+            ],
+            "frames": 32,
+            "start_frame": 0,
+            "depth": "behind",
+            "anchor_forward": 0,
+            "offset": [
+              -14,
+              -44
+            ],
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/arcane_starfall/cast.png",
+                "first_frame": 0,
+                "frames": 32,
+                "columns": 8,
+                "sha256": "02512e73dedbba18e5f71b001062eee19c2a285d539fbd4f0b63cd9206bc301c"
+              }
+            ]
+          }
+        ]
+      },
+      "impact": {
+        "clips": [
+          {
+            "name": "impact",
+            "frame_size": [
+              118,
+              191
+            ],
+            "frames": 32,
+            "start_frame": 0,
+            "depth": "behind",
+            "anchor_forward": 0,
+            "offset": [
+              -59,
+              -139
+            ],
+            "sheets": [
+              {
+                "file": "res://Assets/Effects/Spells/arcane_starfall/impact.png",
+                "first_frame": 0,
+                "frames": 32,
+                "columns": 8,
+                "sha256": "984b504c5b7b2ed8b49ace6ec4b662e465c22dc01937cb0b15c4477fb6fe9a46"
+              }
+            ]
+          }
+        ],
+        "loop": false,
+        "scale": 1
+      },
+      "kind": "area",
+      "duration_seconds": 0
+    }
+  }
+}
