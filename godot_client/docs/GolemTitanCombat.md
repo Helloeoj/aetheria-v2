@@ -66,3 +66,19 @@ The graphical review spawns the actual Titan and player in Golem Kingdom,
 drives the real combat engine, captures all attacks at 4Ãƒâ€” zoom, and checks the
 Titan's position after the fight. It uses an isolated development character
 and does not save it.
+
+## Idle playback
+
+The approved 48 idle PNGs remain intact and the loop stays 2.4 seconds long.
+Identical poses around the loop boundary share a single visible-pose duration,
+removing the previous 250ms freeze. On return from a combat body animation,
+idle starts from neutral instead of revealing its hidden mid-cycle frame.
+
+Real-map pacing and handoff check:
+
+```text
+--path . --script res://scripts/dev_tools/titan_idle_pacing_review.gd -- --output=<absolute evidence directory>
+```
+
+This measures actual rendered pose holds after warm-up, captures the Titan
+beside the player at 4x, and checks a combat-animation handoff to idle frame 0.

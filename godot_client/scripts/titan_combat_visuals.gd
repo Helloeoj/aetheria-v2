@@ -112,7 +112,12 @@ func _process(delta: float) -> void:
 	for id: String in bodies.keys():
 		if active_bodies.has(id): continue
 		var entry: Dictionary = bodies[id]
-		if is_instance_valid(entry.actor) and not active_actors.has(entry.actor): entry.actor.animated_sprite.show()
+		if is_instance_valid(entry.actor) and not active_actors.has(entry.actor):
+			# The approved attacks finish in neutral. Do not reveal an idle that
+			# advanced invisibly to a different pose during the attack.
+			entry.actor.cancel_action()
+			entry.actor.animated_sprite.set_frame_and_progress(0, 0.0)
+			entry.actor.animated_sprite.show()
 		if is_instance_valid(entry.node): entry.node.queue_free()
 		bodies.erase(id)
 	for id: String in tiles.keys():
