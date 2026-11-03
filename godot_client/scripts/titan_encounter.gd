@@ -129,6 +129,8 @@ func _resolve(engine: Variant, world: Variant, boss: CombatActor, action: Dictio
 		elif not action.cells.has(world.occupied_cell(victim.entity_id)): continue
 		var style := "magic" if action.kind == "eruption" else "blunt"
 		var outcome: HitOutcome = engine.calculate_hit_outcome(boss, victim, null, null, style)
+		# Dodgeable floor hits deal twice the normal mitigated hit, including crits.
+		if action.kind in ["slam", "eruption"]: outcome.damage *= 2
 		var result: Dictionary = engine.apply_hit_to_target(victim, outcome)
 		events.append({"type": "entity_hit", "attacker_id": boss.entity_id, "target_id": victim.entity_id,
 			"titan_attack_id": action.attack_id, "kind": action.kind, "damage": outcome.damage,

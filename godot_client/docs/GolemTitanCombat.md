@@ -1,12 +1,22 @@
 # Golem Titan combat
 
-Spawn the approved Titan in the developer sandbox with **F5 â†’ 1029 â†’ Enter**.
+Spawn the approved Titan in the developer sandbox with **F5 Ã¢â€ â€™ 1029 Ã¢â€ â€™ Enter**.
 The existing combat stats are retained. Its legs are bound: roaming, chasing,
 ordinary movement and displacement cannot move the actor.
 
+Both dodgeable ground AoEs (slam spikes and shadow eruption) deal **2×** the
+normal hit damage. The multiplier applies after the existing accuracy,
+critical-hit and damage-reduction calculation; bolt and haymaker damage stay
+at 1×. A miss still deals no damage.
+
+Once engaged, all monsters retain aggression when a player stops attacking or
+clears their target. They drop dead/missing targets and targets outside their
+existing boundary. Returning after a boundary reset does not re-engage them
+without a new attack.
+
 The shared combat engine chooses main attacks from shuffled bags containing
 physical slam, dark bolt and shadow eruption. Consecutive main attacks cannot
-be identical, including across bags. Start intervals vary from 8â€“12 game ticks.
+be identical, including across bags. Start intervals vary from 8Ã¢â‚¬â€œ12 game ticks.
 Haymakers fill available three-tick gaps only when the target is within the
 existing two-tile melee reach and visible. Range and sight are checked again
 at contact; stepping away makes the punch miss. Remaining in melee never
@@ -43,14 +53,16 @@ Validation with Godot 4.5.1 from `godot_client`:
 ```text
 --headless --path . res://scripts/dev_tools/titan_combat_smoke.tscn
 --headless --path . res://scripts/dev_tools/titan_combat_feedback_smoke.tscn
+--headless --path . res://scripts/dev_tools/titan_damage_aggro_smoke.tscn
 --headless --path . res://scenes/dev_tools/orb_combat_smoke.tscn
 --headless --path . res://scenes/dev_tools/region_freeze_smoke.tscn
 --path . --script res://scripts/dev_tools/titan_combat_review.gd -- --output=<absolute evidence directory>
 ```
 
 Use `--ranged` after `--` for the out-of-melee regression and delayed warning captures.
+Add `--stop-attacking` to clear the player target after engagement and verify retaliation.
 
 The graphical review spawns the actual Titan and player in Golem Kingdom,
-drives the real combat engine, captures all attacks at 4Ã— zoom, and checks the
+drives the real combat engine, captures all attacks at 4Ãƒâ€” zoom, and checks the
 Titan's position after the fight. It uses an isolated development character
 and does not save it.

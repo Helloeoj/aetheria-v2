@@ -678,15 +678,13 @@ func _refresh_monster_target(world: Variant, monster: CombatActor) -> CombatActo
 		var attacker: CombatActor = actors.get(attacker_id)
 		if attacker == null or attacker.is_monster or not attacker.is_alive:
 			continue
-		if not _is_actor_attacking_monster(world, attacker, monster):
-			continue
 		if spawn_position.distance_to(Vector2(attacker.x, attacker.y)) > chase_area_radius:
 			continue
 		valid_attackers.append(attacker_id)
 	monster.aggro_attacker_ids = valid_attackers
 
-	# Prefer the most recent attacker who is still alive, in the chase area,
-	# and actively targeting this monster.
+	# Retaliation persists after the player stops attacking or clears their target.
+	# Prefer the most recent living attacker still inside the existing chase area.
 	for index in range(valid_attackers.size() - 1, -1, -1):
 		var target: CombatActor = actors.get(valid_attackers[index])
 		if target != null:

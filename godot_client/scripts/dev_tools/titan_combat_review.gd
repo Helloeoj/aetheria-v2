@@ -2,11 +2,13 @@ extends SceneTree
 ## Real-map integration exercise. Never saves the isolated development character.
 var output := ""
 var ranged := false
+var stop_attacking := false
 func _initialize() -> void: run.call_deferred()
 func run() -> void:
 	for arg: String in OS.get_cmdline_user_args():
 		if arg.begins_with("--output="): output = arg.trim_prefix("--output=")
 		if arg == "--ranged": ranged = true
+		if arg == "--stop-attacking": stop_attacking = true
 	create_timer(90).timeout.connect(func() -> void: quit(1))
 	root.size = Vector2i(1800, 1200)
 	root.position = Vector2i(-10000, -10000)
@@ -65,6 +67,7 @@ func run() -> void:
 	var failed := false
 	var captures := {}
 	for tick in 70:
+		if stop_attacking and tick == 1: game._clear_target()
 		var tick_events: Array[Dictionary] = game.world.tick()
 		for event: Dictionary in tick_events:
 			if event.type == "titan_attack_started" and event.kind != "haymaker":
@@ -108,5 +111,5 @@ func run() -> void:
 				captures.homing = true
 		if captures.size() >= (6 if ranged else 7) and tick>=20: break
 	var rooted := Vector2(boss.x, boss.y) == anchor
-	print("[Titan live] ", captures.keys(), " rooted=", rooted, " largest_main_gap=",largest_gap," failed=",failed)
-	quit(0 if captures.size() >= (6 if ranged else 7) and rooted and not failed and (not ranged or largest_gap<=4) else 1)
+	print("[Titan live] ", captures.keys(), " rooted=", rooted, " largest_main_gap=",largest_gap," failed=",failed," retained_after_stop=",not stop_attacking or boss.current_target_id==target.entity_id)
+	quit(0 if captures.size() >= (6 if ranged else 7) and rooted and not failed and (not ranged or largest_gap<=4) and (not stop_attacking or boss.current_target_id==target.entity_id) else 1)
