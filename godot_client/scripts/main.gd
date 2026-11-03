@@ -974,7 +974,14 @@ func spawn_monster_by_id(monster_id: int) -> bool:
 			occupied.append(Vector2(actor.x, actor.y))
 	var player_actor: CombatActor = combat.actors.get(player.entity_id)
 	var start := Vector2(player_actor.x, player_actor.y) if player_actor != null else player.get_position()
-	var point := preload("res://scripts/monster_spawn_placement.gd").nearby(world.cell_grid, start, 3.0, monster_spawn_allowed, occupied)
+	var spawn_destination := Callable()
+	if monster_id == 1029:
+		# The approved giant's front view must not cover the testing player.
+		# Keep the normal body, stats and three-tile reachable spawn boundary.
+		spawn_destination = func(candidate: Vector2) -> bool:
+			var offset := _screen_position(candidate.x, candidate.y) - _screen_position(start.x, start.y)
+			return offset.y <= -TILE_SIZE * 2.0
+	var point := preload("res://scripts/monster_spawn_placement.gd").nearby(world.cell_grid, start, 3.0, monster_spawn_allowed, occupied, spawn_destination)
 	if not point.is_finite():
 		show_fishing_notice("No free walkable tile within 3 tiles. Move to a clearer spot.")
 		return false
