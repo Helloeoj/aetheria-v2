@@ -1,0 +1,467 @@
+{
+  "revision_date": "2026-11-03",
+  "request": "Center Astral Lance's ground star under caster feet",
+  "source_effect_id": "7abaee53-af25-4cab-a4c5-413c85fd4449",
+  "edit_url": "https://pixellab.ai/create-vfx?effect=7abaee53-af25-4cab-a4c5-413c85fd4449",
+  "change": {
+    "layer": "star_aperture",
+    "from": [
+      73,
+      120
+    ],
+    "to": [
+      44,
+      144
+    ],
+    "caster_foot": [
+      44,
+      144
+    ]
+  },
+  "recipe": {
+    "name": "Astral Lance - centered caster ground symbol",
+    "canvas": {
+      "w": 288,
+      "h": 208
+    },
+    "frames": 32,
+    "fps": 12,
+    "loop": false,
+    "origin": [
+      144,
+      144
+    ],
+    "camera": {
+      "tilt": 0.6,
+      "lean": 0,
+      "height": 1
+    },
+    "ramps": {
+      "main": [
+        "#24264f",
+        "#454780",
+        "#6b7ec4",
+        "#95bbef",
+        "#bfe8ff",
+        "#f4ffff"
+      ]
+    },
+    "outline": {
+      "mode": "selective"
+    },
+    "tones": 6,
+    "detail": 0.35,
+    "dither": 0,
+    "seed": 3565,
+    "paths": {
+      "flight": {
+        "x": {
+          "keys": [
+            [
+              0,
+              44
+            ],
+            [
+              0.23,
+              44
+            ],
+            [
+              0.61,
+              216
+            ],
+            [
+              1,
+              216
+            ]
+          ]
+        },
+        "y": 120
+      }
+    },
+    "layers": [
+      {
+        "id": "lance_constellation",
+        "type": "shape",
+        "x": 44,
+        "y": 120,
+        "points": [
+          [
+            -21,
+            8
+          ],
+          [
+            -12,
+            -16
+          ],
+          [
+            6,
+            -26
+          ],
+          [
+            24,
+            -13
+          ],
+          [
+            15,
+            13
+          ],
+          [
+            -3,
+            24
+          ],
+          [
+            -21,
+            8
+          ]
+        ],
+        "closed": false,
+        "width": 1,
+        "fill": "edge",
+        "reveal": {
+          "from": 0,
+          "to": 1,
+          "ease": "linear"
+        },
+        "life": [
+          0.02,
+          0.33
+        ],
+        "dissolve": {
+          "keys": [
+            [
+              0,
+              0
+            ],
+            [
+              0.75,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        },
+        "group": "cast"
+      },
+      {
+        "id": "lance_stars",
+        "type": "particles",
+        "x": 44,
+        "y": 120,
+        "mode": "orbit",
+        "count": 6,
+        "radius": 24,
+        "speed": 0,
+        "shape": "sparkle",
+        "size": [
+          2,
+          3
+        ],
+        "spacing": "even",
+        "cycles": 1,
+        "life": [
+          0.02,
+          0.33
+        ],
+        "group": "cast"
+      },
+      {
+        "id": "star_aperture",
+        "type": "star",
+        "x": 44,
+        "y": 144,
+        "radius": 25,
+        "points": 8,
+        "step": 3,
+        "rotation": {
+          "from": -45,
+          "to": 0,
+          "ease": "linear"
+        },
+        "width": 1,
+        "soft": 0,
+        "squash": 0.5,
+        "life": [
+          0.2,
+          0.47
+        ],
+        "dissolve": {
+          "from": 0,
+          "to": 1,
+          "ease": "linear"
+        },
+        "group": "cast"
+      },
+      {
+        "id": "astral_spear",
+        "type": "shape",
+        "x": 216,
+        "y": 120,
+        "points": [
+          [
+            -38,
+            0
+          ],
+          [
+            -14,
+            -3
+          ],
+          [
+            -8,
+            -7
+          ],
+          [
+            27,
+            -3
+          ],
+          [
+            43,
+            0
+          ],
+          [
+            27,
+            3
+          ],
+          [
+            -8,
+            7
+          ],
+          [
+            -14,
+            3
+          ]
+        ],
+        "fill": "edge",
+        "bevel": 2,
+        "outline": true,
+        "along": "flight",
+        "life": [
+          0.23,
+          0.61
+        ],
+        "group": "projectile"
+      },
+      {
+        "id": "lance_filament",
+        "type": "ribbon",
+        "along": "flight",
+        "life": [
+          0.23,
+          0.61
+        ],
+        "group": "projectile",
+        "length": 0.15,
+        "width": 4,
+        "taper": 1,
+        "outline": false
+      },
+      {
+        "id": "lance_stardust",
+        "type": "particles",
+        "along": "flight",
+        "life": [
+          0.23,
+          0.61
+        ],
+        "group": "projectile",
+        "mode": "travel",
+        "direction": 180,
+        "spread": 14,
+        "count": 25,
+        "radius": 4,
+        "speed": 43,
+        "size": [
+          1,
+          3
+        ],
+        "shape": "sparkle",
+        "emit": "trail",
+        "lifespan": 0.55
+      },
+      {
+        "id": "astral_pierce",
+        "type": "shape",
+        "x": 216,
+        "y": 120,
+        "points": [
+          [
+            -4,
+            -61
+          ],
+          [
+            1,
+            -14
+          ],
+          [
+            8,
+            -4
+          ],
+          [
+            43,
+            0
+          ],
+          [
+            8,
+            4
+          ],
+          [
+            1,
+            14
+          ],
+          [
+            -4,
+            61
+          ],
+          [
+            -7,
+            14
+          ],
+          [
+            -14,
+            4
+          ],
+          [
+            -41,
+            0
+          ],
+          [
+            -14,
+            -4
+          ],
+          [
+            -7,
+            -14
+          ]
+        ],
+        "fill": "edge",
+        "bevel": 3,
+        "scale": {
+          "keys": [
+            [
+              0,
+              0.1
+            ],
+            [
+              0.17,
+              1
+            ],
+            [
+              0.5,
+              0.85
+            ],
+            [
+              1,
+              0
+            ]
+          ]
+        },
+        "life": [
+          0.61,
+          0.91
+        ],
+        "outline": false,
+        "group": "impact"
+      },
+      {
+        "id": "astral_orbit",
+        "type": "ring",
+        "x": 216,
+        "y": 120,
+        "radius": {
+          "from": 4,
+          "to": 42,
+          "ease": "linear"
+        },
+        "width": 2,
+        "soft": 0,
+        "squash": 0.45,
+        "life": [
+          0.63,
+          0.97
+        ],
+        "dissolve": {
+          "from": 0,
+          "to": 1,
+          "ease": "linear"
+        },
+        "outline": false,
+        "group": "impact"
+      },
+      {
+        "id": "astral_fragments",
+        "type": "particles",
+        "x": 216,
+        "y": 120,
+        "mode": "burst",
+        "count": 34,
+        "radius": 3,
+        "speed": 48,
+        "direction": -70,
+        "spread": 360,
+        "gravity": 0,
+        "floor": 52,
+        "bounce": 0.12,
+        "size": [
+          1,
+          4
+        ],
+        "shape": "sparkle",
+        "together": true,
+        "shrink": 0.6,
+        "life": [
+          0.61,
+          0.99
+        ],
+        "group": "impact",
+        "blink": 2
+      }
+    ],
+    "notes": "UNAPPROVED review candidate; no runtime installation. single_target; damage. Native 288x208; 1 authored pixel per source pixel. Effect origin [144,144]. Caster feet [44,144], target feet [216,144]; chest [216,120]. Preview timing is illustrative and does not change cast time.",
+    "controls": [
+      {
+        "id": "palette",
+        "label": "Primary palette",
+        "type": "ramp",
+        "value": [
+          "#24264f",
+          "#454780",
+          "#6b7ec4",
+          "#95bbef",
+          "#bfe8ff",
+          "#f4ffff"
+        ],
+        "binds": [
+          "ramps.main"
+        ],
+        "options": [
+          [
+            "#24264f",
+            "#454780",
+            "#6b7ec4",
+            "#95bbef",
+            "#bfe8ff",
+            "#f4ffff"
+          ],
+          "arcane",
+          "water",
+          "fire",
+          "frost",
+          "holy"
+        ]
+      },
+      {
+        "id": "shades",
+        "label": "Palette shades",
+        "type": "slider",
+        "value": 6,
+        "min": 3,
+        "max": 8,
+        "step": 1,
+        "binds": [
+          "tones"
+        ]
+      }
+    ]
+  }
+}

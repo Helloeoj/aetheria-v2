@@ -4002,8 +4002,8 @@
           {
             "name": "part-cast",
             "frame_size": [
-              83,
-              55
+              55,
+              65
             ],
             "frames": 14,
             "start_frame": 1,
@@ -4015,7 +4015,7 @@
                 "frames": 14,
                 "columns": 4,
                 "rows": 4,
-                "sha256": "ed3fd1a9b588c98ada0f6a557622d6fee89a8cde6f17c0deea643cc8604b88fa"
+                "sha256": "09e5dd95b60c32b03d436b6588c6f8f54e5bbbbddd08230aad7494a37ee2b9b7"
               }
             ],
             "anchor_forward": 0,
