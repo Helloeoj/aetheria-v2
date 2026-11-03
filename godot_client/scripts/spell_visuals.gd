@@ -85,10 +85,13 @@ func handle_event(event: Dictionary) -> void:
 	var cast: Dictionary=game.combat.active_spell_casts.get(caster,{})
 	if target.is_empty(): target=String(cast.get("target_id",""))
 	var source:=point(event.get("caster_point"),actor_point(caster))
-	var destination:=point(event.get("target_point"),actor_point(target))
+	var destination:=point(event.get("target_point",cast.get("target_point")),actor_point(target))
 	var age:=float(event.get("age",0.0))
 	if kind=="spell_cast_started":
 		var direction:=screen(destination)-screen(source)
+		var caster_sprite: ActorSprite=game.actor_sprites.get(caster)
+		if caster_sprite!=null:
+			caster_sprite.play_attack(direction)
 		spawn(id,"cast",source,caster,float(event.get("cast_time_seconds",1.8)),direction,age)
 	elif kind in ["spell_cast_completed","spell_cast_failed"]:
 		for node: Visual in effects.duplicate():

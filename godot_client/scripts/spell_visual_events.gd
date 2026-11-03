@@ -14,6 +14,9 @@ func record(event: Dictionary, combat: CombatEngine, clock: float) -> void:
 	for pair: Array in [["caster_point",caster],["target_point",target]]:
 		var actor: CombatActor=combat.actors.get(String(pair[1]))
 		if actor!=null: data[String(pair[0])]=[actor.x,actor.y]
+	if String(event.type)=="spell_cast_started":
+		var aim: Variant=combat.active_spell_casts.get(caster,{}).get("target_point")
+		if aim is Vector2: data["target_point"]=[aim.x,aim.y]
 	for key: String in ["point","center","from"]:
 		if event.get(key) is Vector2:
 			var p: Vector2=event[key]
