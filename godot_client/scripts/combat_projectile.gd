@@ -10,6 +10,8 @@ var y := 0.0
 var dx := 0.0
 var dy := 0.0
 var speed := 0.0
+var homing_turn_rate := 0.0
+var initial_distance := 1.0
 var max_range := 20
 var travelled := 0.0
 var damage := 0
@@ -32,6 +34,8 @@ func configure(data: Dictionary) -> CombatProjectile:
 	dx = float(data.get("dx", 0.0))
 	dy = float(data.get("dy", 0.0))
 	speed = float(data.get("speed", 0.0))
+	homing_turn_rate = maxf(0.0, float(data.get("homing_turn_rate", 0.0)))
+	initial_distance = maxf(0.01, float(data.get("initial_distance", 1.0)))
 	max_range = int(data.get("max_range", 20))
 	travelled = float(data.get("travelled", 0.0))
 	damage = int(data.get("damage", 0))

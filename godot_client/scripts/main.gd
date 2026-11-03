@@ -43,6 +43,7 @@ var tick_elapsed := 0.0
 var next_monster_number := 1
 var spell_cast_requested := false
 var spell_visuals: Node
+var titan_visuals: Node
 var map_scene_mode := false
 var skill_debug_panel: SkillDebugPanel
 var character_menu_button: Button
@@ -74,6 +75,7 @@ func grid_adoption_report() -> Dictionary:
 	return grid_adapter.report if grid_adapter != null else {"enabled": false, "reason": "not a map scene"}
 
 func prepare_area_exit() -> void:
+	if is_instance_valid(titan_visuals): titan_visuals.clear()
 	_reset_held_movement()
 	if is_instance_valid(spell_visuals):
 		spell_visuals.clear()
@@ -436,6 +438,9 @@ func _ready() -> void:
 		)
 	combat = world.combat
 	if not has_meta("online_server_geometry"):
+		titan_visuals = preload("res://scripts/titan_combat_visuals.gd").new()
+		add_child(titan_visuals)
+		titan_visuals.configure(self)
 		spell_visuals = preload("res://scripts/spell_visuals.gd").new()
 		add_child(spell_visuals)
 		spell_visuals.configure(self)
@@ -981,7 +986,14 @@ func spawn_monster_by_id(monster_id: int) -> bool:
 			occupied.append(Vector2(actor.x, actor.y))
 	var player_actor: CombatActor = combat.actors.get(player.entity_id)
 	var start := Vector2(player_actor.x, player_actor.y) if player_actor != null else player.get_position()
-	var point := preload("res://scripts/monster_spawn_placement.gd").nearby(world.cell_grid, start, 3.0, monster_spawn_allowed, occupied)
+	var spawn_destination := Callable()
+	if monster_id == 1029:
+		# The approved giant's front view must not cover the testing player.
+		# Keep the normal body, stats and three-tile reachable spawn boundary.
+		spawn_destination = func(candidate: Vector2) -> bool:
+			var offset := _screen_position(candidate.x, candidate.y) - _screen_position(start.x, start.y)
+			return offset.y <= -TILE_SIZE * 2.0
+	var point := preload("res://scripts/monster_spawn_placement.gd").nearby(world.cell_grid, start, 3.0, monster_spawn_allowed, occupied, spawn_destination)
 	if not point.is_finite():
 		show_fishing_notice("No free walkable tile within 3 tiles. Move to a clearer spot.")
 		return false
@@ -1490,6 +1502,7 @@ func _draw_health_bars() -> void:
 
 func _draw_projectiles() -> void:
 	for projectile: CombatProjectile in combat.projectiles.values():
+		if projectile.spell_id == "titan_dark_bolt": continue
 		if spell_visuals != null and spell_visuals.library.spells.has(projectile.spell_id):
 			continue
 		var point := _screen_position(projectile.x, projectile.y)
@@ -1502,10 +1515,11 @@ func _reset_held_movement() -> void:
 		movement_controller.holding[direction] = false
 
 func _show_combat_sprite_event(event: Dictionary) -> void:
+	if is_instance_valid(titan_visuals): titan_visuals.handle_event(event)
 	if is_instance_valid(spell_visuals):
 		spell_visuals.handle_event(event)
 	var event_type := String(event.get("type", ""))
-	if event_type in ["entity_hit", "projectile_spawned", "spell_cast_started"]:
+	if event_type in ["entity_hit", "projectile_spawned", "spell_cast_started"] and not event.has("titan_attack_id"):
 		var attacker_id := String(event.get("attacker_id", event.get("caster_id", "")))
 		var attacker: ActorSprite = actor_sprites.get(attacker_id)
 		var target_id := String(event.get("target_id", ""))

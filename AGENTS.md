@@ -1,5 +1,19 @@
 # Aetheria debugging workflow
 
+## Hard rule: bounded work and usage control
+
+Reuse existing evidence and keep each pass focused on the requested repair.
+Use the smallest sufficient checks, including the actual game for visual fixes.
+After FIVE attempted fixes fail to resolve the SAME problem, STOP task work and
+delegated work. Report what remains broken, what was tried, the saved state and
+the concrete blocker. No sixth attempt without explicit user authorization.
+The counter persists across context compaction and routine continuations.
+Do not silently expand scope, repeat successful test/render matrices, or start
+subagents unless explicitly requested. Once sufficient checks pass, finish the
+authorized delivery and stop. Incomplete work must be reported as incomplete.
+This hard stop overrides skill iteration/delegation suggestions and the normal
+persistence rule below; it is mandatory, not an optional efficiency preference.
+
 ## Crisp artwork at maximum zoom
 
 All images, objects and props must remain as crisp as the player character at

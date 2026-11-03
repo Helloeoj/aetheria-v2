@@ -12,7 +12,19 @@ shortcut. Repeated spawns use other free tiles rather than stack bodies.
 
 When no valid tile exists, the menu displays a message and creates no monster,
 actor, sprite or consumed spawn ID. Move to clearer ground and try again.
-The existing menus, templates, sprites, combat and online permissions remain.
+The existing menus, templates, combat and online permissions remain.
+
+Golem Titan uses the approved giant crowned/bound artwork: press **F5**, enter
+**1029**, then **Enter** (or use its F7 spawn button). The existing monster
+template and every combat stat are retained. Native256px canvas, scale1 and
+foot anchor(128,240) preserve its approved size. Its48-frame skeletal idle and
+18-frame grounded slam keep their exact source pixels and timings. Until other
+views are approved, all facing states consistently use the approved front view;
+turning never switches back to the old small sprite. Movement uses the idle
+pose while translating; this adds no new walking art or spike-AoE mechanics.
+Titan spawns also need two tiles of clear separation in front of the player,
+within the same three-tile reachable search, so the giant does not appear on
+top of the player. Move to open ground if those nearby cells are unavailable.
 
 The real map world and authoritative regions also validate terrain when
 `WorldState.register_monster_actor()` is called. Its boolean result must be
