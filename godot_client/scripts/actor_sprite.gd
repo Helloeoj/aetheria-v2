@@ -188,7 +188,9 @@ func play_attack(screen_direction: Vector2 = Vector2.ZERO) -> void:
 		_play_animation(CharacterSpriteLibrary.animation_name("idle", facing), true)
 	else:
 		var frames := animated_sprite.sprite_frames
-		_attack_duration = float(frames.get_frame_count(animation)) / frames.get_animation_speed(animation)
+		_attack_duration = 0.0
+		for frame in frames.get_frame_count(animation):
+			_attack_duration += frames.get_frame_duration(animation, frame) / frames.get_animation_speed(animation)
 		_play_animation(animation, true)
 	_attack_remaining = maxf(_attack_duration, 0.05)
 	queue_redraw()
