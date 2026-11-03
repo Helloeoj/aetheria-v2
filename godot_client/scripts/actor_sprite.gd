@@ -7,7 +7,7 @@ const WALK_HOLD_SECONDS := 0.22
 const FALLBACK_ATTACK_SECONDS := 0.22
 const HURT_FLASH_SECONDS := 0.16
 const SKELETON_EDGE_MATERIAL := preload("res://shaders/skeleton_edge_refinement.tres")
-const EDGE_SMOOTHED_SKINS := ["skeleton_footsoldier", "skeleton_knight", "skeleton_acolyte", "skeleton_captain"]
+const EDGE_SMOOTHED_SKINS := ["skeleton_footsoldier", "skeleton_acolyte", "skeleton_captain"]
 const STAFF_MANA_SCRIPT := preload("res://scripts/skeleton_staff_mana.gd")
 
 var entity_id := ""

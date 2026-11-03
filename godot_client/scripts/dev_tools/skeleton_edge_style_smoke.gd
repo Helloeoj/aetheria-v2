@@ -18,7 +18,10 @@ func _run() -> void:
 		var dimensions: Array = data["size"]
 		var foot: Array = data["foot_position"]
 		var expected_scale := float(data["display_height"]) / float(dimensions[1])
-		_check(actor.animated_sprite.material is ShaderMaterial, skin + " must use approved edge smoothing")
+		if skin == "skeleton_knight":
+			_check(actor.animated_sprite.material == null, "Knight must retain crisp native pixel edges")
+		else:
+			_check(actor.animated_sprite.material is ShaderMaterial, skin + " must use approved edge smoothing")
 		if actor.animated_sprite.material is ShaderMaterial:
 			var material := actor.animated_sprite.material as ShaderMaterial
 			_check(material.shader != null, skin + " needs the edge shader")
@@ -31,11 +34,12 @@ func _run() -> void:
 		_check((actor.get_node("BodyCollision") as CollisionShape2D).shape == shape_before, "Smoothing must not change collision")
 		var frames := actor.animated_sprite.sprite_frames
 		_check(frames == CharacterSpriteLibrary.get_frames(skin), "Smoothing must retain authored frame resources")
+		var expected_material: Material = actor.animated_sprite.material if skin != "skeleton_knight" else null
 		for next_skin: String in [CharacterSpriteLibrary.default_player_skin(), "goblin_scout", "goblin_worker", "goblin_warrior", "missing_skin"]:
 			actor.set_skin(next_skin)
 			_check(actor.animated_sprite.material == null, "Skeleton material leaked to " + next_skin)
 			actor.set_skin(skin)
-			_check(actor.animated_sprite.material == shared_material and shared_material != null, "Skeleton material not restored after skin reuse")
+			_check(actor.animated_sprite.material == expected_material, skin + " material not restored after skin reuse")
 	actor.free()
 	for failure in failures:
 		printerr("[Skeleton edge style] FAIL: " + failure)
