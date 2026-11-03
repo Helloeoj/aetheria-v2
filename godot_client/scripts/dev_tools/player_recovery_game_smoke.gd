@@ -50,6 +50,10 @@ func run() -> void:
  check(not game.fishing_panel.visible,"death closes fishing so respawn cannot be blocked")
  check(controller != null and controller.panel.visible,"actual downed HUD is visible")
  check(controller.label.text.contains("30s"),"actual countdown begins at 30")
+ check(controller.get("respawn_button") != null,"downed HUD offers immediate respawn")
+ if controller.get("respawn_button") == null:
+  get_tree().quit(1)
+  return
  scene.get_node("MapCamera").zoom=Vector2(4,4)
  await capture("downed")
  check(controller.revive(40),"actual game can revive before deadline")
@@ -58,12 +62,22 @@ func run() -> void:
  p.current_hp=0
  actor.hp=0
  actor.is_alive=false
- p.downed_elapsed=29.8
+ p.downed_elapsed=0.0
+ await get_tree().process_frame
+ var click := InputEventMouseButton.new()
+ click.button_index=MOUSE_BUTTON_LEFT
+ click.position=controller.respawn_button.get_global_rect().get_center()
+ click.pressed=true
+ get_viewport().push_input(click)
+ var release := click.duplicate() as InputEventMouseButton
+ release.pressed=false
+ get_viewport().push_input(release)
  var travel: Node=get_node("/root/SceneTravel")
+ check(travel.is_transitioning(),"mouse click starts respawn immediately without waiting for expiry")
  await travel.transition_finished
  var outskirts := get_tree().current_scene
  game=await settle(outskirts)
- check(outskirts.scene_file_path==Recovery.SCENE,"expiry loads actual outskirts scene")
+ check(outskirts.scene_file_path==Recovery.SCENE,"immediate respawn button loads actual outskirts scene")
  check(game.player==p and p.gold==321 and p.backpack==inventory and p.skill_experience==skills,"respawn retains character and progression")
  check(p.get_position().distance_to(Recovery.spawn_position(game))<1.0,"respawn actor occupies outskirts spawn rather than dungeon coordinates")
  check(p.current_hp==p.get_max_hp(),"actual respawn has full health")
@@ -89,14 +103,17 @@ func run() -> void:
  online.x=source.geometry_game.player.x
  online.y=source.geometry_game.player.y
  online.current_hp=0
- online.downed_elapsed=30.0
+ online.downed_elapsed=0.2
  source.add_player(online.entity_id,online)
  check(source.players.has(online.entity_id),"server fixture admitted on real dungeon floor")
  var session: Dictionary={"peer":99,"character_id":online.entity_id,"lease_token":"test","region_id":"golem","player":online,"closing":false,"busy":false,"queue":[],"pending":{},"saving":false}
  host.sessions[99]=session
+ check(source.submit(online.entity_id,{"type":"respawn"}).ok,"server accepts immediate respawn while downed")
+ check(online.downed_elapsed==30.0,"request gives up remaining revival window")
  await host._respawn(session)
  check(session.region_id=="outskirts" and not source.players.has(online.entity_id) and target.players.get(online.entity_id)==online,"host transfers downed player to real outskirts")
  check(online.current_hp==online.get_max_hp() and target.world.combat.actors[online.entity_id].is_alive,"host respawn restores health and actor")
  check(session.state.region_id=="outskirts" and session.state.hp>0,"host persists respawn location and health")
+ check(not target.submit(online.entity_id,{"type":"respawn"}).ok,"server rejects respawn while alive")
  print("Recovery game smoke: ",failures," failures; captures: ",output)
  get_tree().quit(0 if failures==0 else 1)

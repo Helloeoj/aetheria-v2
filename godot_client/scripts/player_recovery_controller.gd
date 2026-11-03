@@ -3,6 +3,7 @@ const Recovery = preload("res://scripts/player_recovery.gd")
 var game: Node
 var panel: PanelContainer
 var label: Label
+var respawn_button: Button
 var _leaving := false
 
 func configure(owner_game: Node) -> void:
@@ -11,14 +12,23 @@ func configure(owner_game: Node) -> void:
  panel = PanelContainer.new()
  panel.name = "DownedCountdown"
  panel.position = Vector2(370,110)
- panel.custom_minimum_size = Vector2(540,92)
+ panel.custom_minimum_size = Vector2(540,132)
  panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
  game.ui_root.add_child(panel)
+ var layout := VBoxContainer.new()
+ layout.mouse_filter = Control.MOUSE_FILTER_IGNORE
+ panel.add_child(layout)
  label = Label.new()
  label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
  label.add_theme_font_size_override("font_size",22)
  label.mouse_filter = Control.MOUSE_FILTER_IGNORE
- panel.add_child(label)
+ layout.add_child(label)
+ respawn_button = Button.new()
+ respawn_button.name = "RespawnNowButton"
+ respawn_button.text = "Respawn now"
+ respawn_button.custom_minimum_size.y = 38
+ respawn_button.pressed.connect(_request_respawn)
+ layout.add_child(respawn_button)
  panel.hide()
 
 func _process(_delta: float) -> void:
@@ -26,6 +36,7 @@ func _process(_delta: float) -> void:
   return
  var downed: bool = game.player.current_hp <= 0
  panel.visible = downed
+ respawn_button.disabled = not downed or _leaving or game.player.downed_elapsed >= Recovery.WINDOW
  if downed:
   label.text = "DOWNED - awaiting revival\nRespawn at Valtheris outskirts in %ds" % ceili(maxf(0.0,Recovery.WINDOW-game.player.downed_elapsed))
 
@@ -56,7 +67,17 @@ func revive(health: int) -> bool:
   return false
  return Recovery.revive(game.world,game.player,health)
 
+func _request_respawn() -> void:
+ if game.player.current_hp > 0 or _leaving:
+  return
+ if Network.online():
+  Network.send_action({"type":"respawn"})
+ else:
+  respawn()
+
 func respawn() -> void:
+ if Network.online() or _leaving or game.player.current_hp > 0:
+  return
  var travel := get_node_or_null("/root/SceneTravel")
  if travel == null or travel.is_transitioning():
   return

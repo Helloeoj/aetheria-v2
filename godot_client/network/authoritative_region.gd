@@ -20,7 +20,7 @@ const SCHEMA := {
 	"purchase": ["station_id", "item_name", "quantity"],
 	"pickup": ["drop_id"], "drop": ["item_name", "quantity"],
 	"fish_start": ["station_id", "rod", "bait", "action_id", "start_token"], "fish_stop": [],
-	"mine_start": ["deposit_id", "deposit_generation"], "mine_stop": [],
+	"mine_start": ["deposit_id", "deposit_generation"], "mine_stop": [], "respawn": [],
 	"fish_input": ["action", "steering", "encounter_id", "input_id", "action_id", "expected_state", "phase_elapsed", "plan_ack"], "pale_move": ["slot"], "pale_drop": ["slot"],
 	"cook_start": ["station_id", "item_name", "quantity", "start_token", "action_id"], "cook_flip": ["encounter_id", "prompt_id", "action_id"], "cook_cancel": [],
 	"attack_style": ["style"], "select_spell": ["spell_id"],
@@ -161,6 +161,12 @@ func submit(character_id: String, command: Dictionary) -> Dictionary:
 	var kind: String = command.type
 	var player: PlayerState = players[character_id]
 	var actor: CombatActor = world.combat.actors.get(character_id)
+	if kind == "respawn":
+		if actor == null or actor.is_alive or actor.hp > 0:
+			return _result(false, "alive", "You can only respawn while downed.")
+		player.downed_elapsed = preload("res://scripts/player_recovery.gd").WINDOW
+		dirty[character_id] = true
+		return _result(true)
 	if actor == null or not actor.is_alive:
 		return _result(false, "dead", "You must be alive.")
 	if kind.begins_with("order_"):
