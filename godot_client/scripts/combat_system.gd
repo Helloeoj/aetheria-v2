@@ -13,6 +13,7 @@ const PROJECTILE_HIT_RADIUS := 0.5
 const MONSTER_MOVE_SPEED_TILES_PER_SECOND := 2.5
 const HYBRID_MELEE_ATTACKS_BEFORE_SECONDARY := 3
 
+var titan_encounters = preload("res://scripts/titan_encounter.gd").new()
 var actors: Dictionary = {} # entity_id -> CombatActor
 var projectiles: Dictionary = {} # projectile_id -> CombatProjectile
 var active_spell_casts: Dictionary = {} # caster_id -> cast data
@@ -41,6 +42,7 @@ func remove_actor(entity_id: String) -> void:
 	var actor: CombatActor = actors.get(entity_id)
 	if actor != null:
 		actor.active_orb_effects.clear()
+	titan_encounters.forget(entity_id)
 	actors.erase(entity_id)
 	_orb_blocked_seconds.erase(entity_id)
 	_orb_ice_seconds.erase(entity_id)
@@ -50,13 +52,15 @@ func remove_actor(entity_id: String) -> void:
 
 func process_tick(world: Variant) -> Array[Dictionary]:
 	## Monster attack rolls and hits happen on the fixed combat cadence.
-	var events := _process_attacks(world)
+	var events: Array[Dictionary] = titan_encounters.tick(self, world)
+	events.append_array(_process_attacks(world))
 	current_tick += 1
 	return events
 
 ## Movement and projectile travel are real-time. Player attacks use the equipped
 ## weapon's interval; monsters attack on the shared 0.6-second combat tick.
 func process_realtime(world: Variant, delta: float, paused_actor_ids: Dictionary = {}) -> Array[Dictionary]:
+	titan_encounters.advance(self, maxf(0.0, delta), paused_actor_ids)
 	var events := _process_orb_effects(world, maxf(0.0, delta), paused_actor_ids)
 	for player: Variant in _players(world):
 		_set_stat(player, "food_cooldown_seconds", maxf(0.0,
@@ -358,19 +362,40 @@ func _process_projectiles(world: Variant, delta: float, paused_actor_ids: Dictio
 		var projectile: CombatProjectile = projectiles[projectile_id]
 		if paused_actor_ids.has(projectile.attacker_id) or paused_actor_ids.has(projectile.target_id):
 			continue
+		if projectile.homing_turn_rate > 0.0:
+			var homing_target: CombatActor = actors.get(projectile.target_id)
+			if homing_target == null or not homing_target.is_alive:
+				to_delete.append(projectile_id)
+				continue
 		var remaining_range := maxf(0.0, float(projectile.max_range) - projectile.travelled)
 		if remaining_range <= 0.0:
 			to_delete.append(projectile_id)
 			continue
 
 		var start := Vector2(projectile.x, projectile.y)
-		var step_distance := minf(maxf(0.0, projectile.speed * delta), remaining_range)
-		var finish := start + Vector2(projectile.dx, projectile.dy) * step_distance
+		var finish := start
+		var collision: Dictionary = {}
+		var remaining_time := delta
+		while remaining_time > 0.000001 and remaining_range > 0.0:
+			var dt := minf(remaining_time, 1.0 / 60.0) if projectile.homing_turn_rate > 0.0 else remaining_time
+			if projectile.homing_turn_rate > 0.0:
+				var target: CombatActor = actors.get(projectile.target_id)
+				var direction := Vector2(projectile.dx, projectile.dy)
+				var desired := Vector2(target.x, target.y) - finish
+				direction = direction.rotated(clampf(direction.angle_to(desired), -projectile.homing_turn_rate * dt, projectile.homing_turn_rate * dt)).normalized()
+				projectile.dx = direction.x
+				projectile.dy = direction.y
+			start = finish
+			var distance := minf(maxf(0.0, projectile.speed * dt), remaining_range)
+			finish = start + Vector2(projectile.dx, projectile.dy) * distance
+			projectile.travelled += distance
+			remaining_range -= distance
+			remaining_time -= dt
+			collision = _find_projectile_collision(world, projectile, start, finish)
+			if not collision.is_empty(): break
 		projectile.x = finish.x
 		projectile.y = finish.y
-		projectile.travelled += step_distance
 
-		var collision := _find_projectile_collision(world, projectile, start, finish)
 		if not collision.is_empty():
 			var target: CombatActor = collision.get("actor") as CombatActor
 			if target == null:
@@ -571,7 +596,7 @@ func _process_monster_movement(world: Variant, delta: float) -> Array[Dictionary
 func _process_attacks(world: Variant) -> Array[Dictionary]:
 	var events: Array[Dictionary] = []
 	for actor: CombatActor in actors.values():
-		if not actor.is_monster or not actor.can_attack() or float(current_tick) + 0.000001 < actor.next_attack_tick:
+		if actor.boss_profile == "golem_titan" or not actor.is_monster or not actor.can_attack() or float(current_tick) + 0.000001 < actor.next_attack_tick:
 			continue
 		var target := _refresh_monster_target(world, actor)
 		if target == null or target == actor or not target.is_alive:
@@ -647,21 +672,19 @@ func _refresh_monster_target(world: Variant, monster: CombatActor) -> CombatActo
 	var chase_attack_range := _attack_range(monster)
 	if monster.monster_attack_type == "hybrid":
 		chase_attack_range = _attack_range_for_style(monster, monster.hybrid_secondary_style)
-	var chase_area_radius := GameTickConfig.MONSTER_CHASE_LEASH_TILES + chase_attack_range
+	var chase_area_radius := 20.0 if monster.boss_profile == "golem_titan" else GameTickConfig.MONSTER_CHASE_LEASH_TILES + chase_attack_range
 	var valid_attackers: Array[String] = []
 	for attacker_id: String in monster.aggro_attacker_ids:
 		var attacker: CombatActor = actors.get(attacker_id)
 		if attacker == null or attacker.is_monster or not attacker.is_alive:
-			continue
-		if not _is_actor_attacking_monster(world, attacker, monster):
 			continue
 		if spawn_position.distance_to(Vector2(attacker.x, attacker.y)) > chase_area_radius:
 			continue
 		valid_attackers.append(attacker_id)
 	monster.aggro_attacker_ids = valid_attackers
 
-	# Prefer the most recent attacker who is still alive, in the chase area,
-	# and actively targeting this monster.
+	# Retaliation persists after the player stops attacking or clears their target.
+	# Prefer the most recent living attacker still inside the existing chase area.
 	for index in range(valid_attackers.size() - 1, -1, -1):
 		var target: CombatActor = actors.get(valid_attackers[index])
 		if target != null:

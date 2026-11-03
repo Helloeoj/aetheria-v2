@@ -143,6 +143,9 @@ func register_monster_actor(monster: MonsterState, actor: CombatActor) -> bool:
 		return false
 	if grid != null and (not grid.is_center(point) or not grid.clear_point(point)):
 		return false
+	if monster.monster_id == 1029:
+		actor.stationary = true
+		actor.boss_profile = "golem_titan"
 	monster.entity_id = actor.entity_id
 	monster.x = actor.x
 	monster.y = actor.y

@@ -102,6 +102,8 @@ func apply(snapshot: Dictionary) -> void:
 		actor.max_hp = int(data.max_hp)
 		actor.is_alive = bool(data.is_alive)
 		actor.is_monster = monster
+		actor.stationary = bool(data.get("stationary", false))
+		actor.boss_profile = String(data.get("boss_profile", ""))
 		actor.current_target_id = String(data.get("target_id", ""))
 		var travel_state: Dictionary = data.get("grid_travel", {})
 		var occupied: Array = travel_state.get("cell", [])
@@ -182,6 +184,8 @@ func apply(snapshot: Dictionary) -> void:
 	game.inventory_menu.queue_redraw()
 	if is_instance_valid(game.spell_visuals):
 		game.spell_visuals.apply_snapshot(snapshot)
+	if is_instance_valid(game.titan_visuals):
+		game.titan_visuals.apply_snapshot(snapshot)
 	for state: Dictionary in snapshot.get("deposits", []):
 		for node: Node in game.get_tree().get_nodes_in_group("mining_deposit"):
 			if game.get_parent().is_ancestor_of(node) and node.deposit_id == String(state.deposit_id):

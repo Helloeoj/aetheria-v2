@@ -1,0 +1,73 @@
+{
+  "status": "user_selected_cast_source; updated_preview_pending_review",
+  "source_job": "5475c253-5959-4b0f-85e1-a39452d7ea28",
+  "native_canvas": [
+    256,
+    256
+  ],
+  "foot_anchor": [
+    128,
+    240
+  ],
+  "world_pixels_per_source_pixel": 1,
+  "frame_count": 33,
+  "duration_ms": 2400,
+  "sampling": "33 source frames in original order, uniform duration 2400/33 ms",
+  "release_ms": 1200,
+  "source_pixels": "exact original PNG files selected by user; no articulated warping or added fist arcs",
+  "frame_sha256": {
+    "000.png": "6a23348070285acdc82f58c23d5f72b052f4400e6c08c6a2b36f85e042832c9f",
+    "001.png": "3f2473c40f430795a36a70611b9dca7e38564a17b7e5b8ae6d62e64b9eaa7458",
+    "002.png": "2843656d4a34cf58ddb2e6efec8c010e1e237971d95d5e2f267368b5d1a791b7",
+    "003.png": "81cb4ce09b607111248f9484941dd56bcfdf91506f82ab173b5a2ed79cd486d5",
+    "004.png": "c6b72e0ffdc6cc74222fffebbf55da3161e972375c321569c5e8491c7d4e0d67",
+    "005.png": "917b0b366f215daf923e625acdd1306dae7be8f00e30657f937458808cd23a15",
+    "006.png": "90277e01455a9922d8919b515e1a370a9dfdd43790960c55ff09c08429cf7013",
+    "007.png": "c355206a5eb764ae400eba9a3f49c03cc61d9533d4d0bfd80f66781f552c8f3a",
+    "008.png": "41a49d3e4018117b20a5757e0b833475e8e0712bb38c9402099f61015fa4d77f",
+    "009.png": "f0f2a5c51f5c8b8a7dfecbec963151416feee801897e8b607e756b09d3e58219",
+    "010.png": "481339a742346010cbdd4fa1a8dd3ea87ee5be984885ae204eae046dff74493b",
+    "011.png": "dacd72cbf02a2d9f5d12503aeaf2e5edd57db0aecaea1590053b0daf6af9e5be",
+    "012.png": "b6df758e20a3c03d9855a43145e319d0836dd081a1caaaa7c9fd605c168d0c51",
+    "013.png": "b419a85db8ec074e3f862d6d30640ea4d6976010bca22931a831127f3e5ebe16",
+    "014.png": "2c61a35d3717b99ab217447122cb5eb07d0c1fcf688ac23ee977ce3a0f28da0e",
+    "015.png": "9b8a6ea629f0bedc44e6697b399d4ecf3c10268b60c1de71aa35a736b69ec7e7",
+    "016.png": "2197228ce80f7c8632eda8bca64a868b09d84f2e599dceb20cea52f148c5978d",
+    "017.png": "947818986ac02a1169ab9e30bd1b5f6a07c28b3d52495a412ebec4dc6e87b2a3",
+    "018.png": "cb0dc71ae77644cd61b5150005a59060d2de30b2c2abc657cfb8e5e3fc22e511",
+    "019.png": "e076357073db329e149e8d27c0838f31bd485dc47c3b0a3f76df79fd05ef60ca",
+    "020.png": "073d8a23e415f4860679507fe16b015ff38322e592e472b5cfab03a445b4ba06",
+    "021.png": "1cf4e699d7d1a98b7ea6b33bb6d8dcb6ab8bbda035fbba144a702d1747afa1b8",
+    "022.png": "d785ef44e608fa92fe33c15712fc54f4ffbc2cf4a49cb9ed87f14e896d063f0d",
+    "023.png": "a5c154b329c8bbdbaaadf9af31f07fc0a19f1022e60239bfb1a3e2e0c121e29c",
+    "024.png": "9a85358bc6e7315d63da2aae7c714feda44c907dea7b3bd63adf9331b8366daa",
+    "025.png": "af59c75d5140fababac21826f7c23c0956651287381854a397a464792fc61add",
+    "026.png": "136c78eab551d373f82e40a7a2f9fc6d8e210e779985c32706e5255477a6de14",
+    "027.png": "a3891e55035387718bfab3ac6a4b2ff4227671bf699199b31935262bf6b8c93f",
+    "028.png": "5014d533495622896cb2e91d5b8f329ed00e9be82a5b13687fcb9c96ae3dbb2f",
+    "029.png": "1bba7b216e7df1aa94f331cd6cfc38f7faa099daa6a3510482a4ddc013920798",
+    "030.png": "18a5acbd236df0caa9476ec89ad52b1babb330615ab68f88fa891ea71cb46e8d",
+    "031.png": "0f0fa0a9a65c620caf86a0851bca2509198d669d3ece1cdce005c578d5e13cf0",
+    "032.png": "da38b1defc29abe7446054ffdc74c1bf9ab7afc78b84e6103c2baac0aba18f7f"
+  },
+  "runtime_transparency": "remove large connected brown floor matte and two exact lower-body background matte colors [134,141,105] and [130,130,125]; preserve source PNGs and stone shading",
+  "runtime_tongue_repair": {
+    "source_frames": [
+      3,
+      11,
+      18
+    ],
+    "intact_neighbors": [
+      2,
+      10,
+      17
+    ],
+    "bounds": [
+      115,
+      49,
+      139,
+      73
+    ],
+    "operation": "restore only transparent interior mouth pixels; preserve opaque artwork"
+  }
+}

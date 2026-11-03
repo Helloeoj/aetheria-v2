@@ -417,6 +417,7 @@ func snapshot(character_id: String) -> Dictionary:
 			"hp": actor.hp, "max_hp": actor.max_hp, "is_alive": actor.is_alive,
 			"downed_elapsed": players[actor.entity_id].downed_elapsed if players.has(actor.entity_id) else 0.0,
 			"is_monster": actor.is_monster, "attack_style": actor.attack_style,
+			"stationary": actor.stationary, "boss_profile": actor.boss_profile,
 			"target_id": actor.current_target_id, "gathering": mining.actor_activity(actor.entity_id),
 			"equipment": players[actor.entity_id].get_equipped_names() if players.has(actor.entity_id) else {}}
 		if world.grid != null:
@@ -433,6 +434,7 @@ func snapshot(character_id: String) -> Dictionary:
 	var result := {"region_id": region_id, "actors": actors, "drops": public_drops,
 		"activity": activities.snapshot(character_id), "stations": public_stations, "deposits": mining.deposit_snapshots(), "area_cast": area_cast(character_id)}
 	result.merge(spell_presentation.snapshot(world.combat,frozen,_clock))
+	result.merge(world.combat.titan_encounters.snapshot(world.combat, frozen))
 	if world.grid != null:
 		result["grid"] = {"origin": [world.grid.origin.x, world.grid.origin.y], "cell_pixels": 32}
 	return result

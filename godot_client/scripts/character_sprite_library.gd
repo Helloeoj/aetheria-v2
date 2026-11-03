@@ -5,6 +5,7 @@ extends RefCounted
 ## Missing directional actions use their own facing's rotation image.
 const CATALOG_PATH := "res://data/character_sprites.json"
 const ANIMATION_PACK_PATHS := {
+	"golem_titan": "res://data/golem_titan_approved_animations.json",
 	"goblin_scout": "res://data/goblin_scout_animations.json",
 	"goblin_worker": "res://data/goblin_worker_animations.json",
 	"goblin_warrior": "res://data/goblin_warrior_animations.json",
@@ -45,6 +46,10 @@ static func _apply_animation_pack(skin_id: String, pack_path: String) -> void:
 	var skin: Dictionary = _catalog.get("skins", {}).get(skin_id, {})
 	if skin.is_empty():
 		return
+	# Some approved packs replace the native canvas and anchor as well as clips.
+	for field: String in ["size", "display_height", "foot_position", "rotations", "single_facing"]:
+		if pack.has(field):
+			skin[field] = pack[field]
 	var animations: Dictionary = pack.get("animations", {})
 	skin["animations"] = animations
 	var frame_sizes: Dictionary = skin.get("frame_sizes", {})
@@ -99,15 +104,18 @@ static func get_frames(skin: String) -> SpriteFrames:
 	frames.remove_animation(&"default")
 	var rotations: Dictionary = data.get("rotations", {})
 	var animations: Dictionary = data.get("animations", {})
+	var single_facing := String(data.get("single_facing", ""))
 	for direction: String in DIRECTIONS:
 		for action: String in ["idle", "walk", "attack"]:
 			var definition: Dictionary = animations.get(action, {})
 			var paths: Array = definition.get("directions", {}).get(direction, [])
+			if paths.is_empty() and not single_facing.is_empty():
+				paths = definition.get("directions", {}).get(single_facing, [])
 			# Missing attacks get a short lunge. Idle and walk still need a pose.
 			if paths.is_empty():
 				if action == "attack":
 					continue
-				var rotation_path := String(rotations.get(direction, ""))
+				var rotation_path := String(rotations.get(direction, rotations.get(single_facing, "")))
 				if rotation_path.is_empty():
 					continue
 				paths = [rotation_path]
@@ -117,10 +125,12 @@ static func get_frames(skin: String) -> SpriteFrames:
 			var fps := float(fps_by_direction.get(direction, definition.get("fps", 10.0)))
 			frames.set_animation_speed(animation, maxf(fps, 1.0))
 			frames.set_animation_loop(animation, action != "attack")
-			for path: Variant in paths:
-				var texture := _get_texture(String(path))
+			var durations_ms: Array = definition.get("durations_ms", [])
+			for index in paths.size():
+				var texture := _get_texture(String(paths[index]))
 				if texture != null:
-					frames.add_frame(animation, texture)
+					var duration := float(durations_ms[index]) * fps / 1000.0 if index < durations_ms.size() else 1.0
+					frames.add_frame(animation, texture, maxf(duration, 0.001))
 			if frames.get_frame_count(animation) == 0:
 				frames.remove_animation(animation)
 	_frame_cache[skin] = frames

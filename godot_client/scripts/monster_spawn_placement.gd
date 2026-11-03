@@ -1,6 +1,6 @@
 extends RefCounted
 ## Nearby means actual tile distance, connected by legal player-sized steps.
-static func nearby(grid: HiddenGrid, player: Vector2, radius: float = 3.0, allowed: Callable = Callable(), occupied: Array = []) -> Vector2:
+static func nearby(grid: HiddenGrid, player: Vector2, radius: float = 3.0, allowed: Callable = Callable(), occupied: Array = [], destination_allowed: Callable = Callable()) -> Vector2:
 	var unavailable := Vector2(INF, INF)
 	if grid == null or not player.is_finite() or not is_finite(radius) or radius <= 0.0 or radius > 3.0:
 		return unavailable
@@ -15,7 +15,8 @@ static func nearby(grid: HiddenGrid, player: Vector2, radius: float = 3.0, allow
 		var cell := queue[index]
 		index += 1
 		var point := grid.center(cell)
-		if cell != recovered and point.distance_to(player) <= radius + 0.00001 and _unoccupied(point, player, occupied):
+		if cell != recovered and point.distance_to(player) <= radius + 0.00001 and _unoccupied(point, player, occupied) \
+				and (not destination_allowed.is_valid() or bool(destination_allowed.call(point))):
 			return point
 		for direction: Vector2i in HiddenGrid.DIRECTIONS:
 			var next := cell + direction

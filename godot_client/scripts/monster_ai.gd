@@ -28,7 +28,7 @@ func _init(monster_sprite: Variant, shared_world: WorldState = null) -> void:
 ## Called by the world simulation once per game tick.
 func tick(current_game_tick: int) -> void:
 	var monster: MonsterState = sprite.get("monster")
-	if monster == null or not monster.is_alive or monster.in_combat:
+	if monster == null or monster.stationary or not monster.is_alive or monster.in_combat:
 		_scheduled = false
 		return
 	if current_game_tick - last_move_tick < next_move_delay_ticks:
@@ -87,7 +87,7 @@ func _move_toward_target() -> void:
 ## Grid consumers advance every frame; ticks retain the existing roam pauses.
 func advance(delta: float) -> void:
 	var monster: MonsterState = sprite.get("monster")
-	if world == null or world.grid == null or not _scheduled or monster == null or not monster.is_alive or monster.in_combat:
+	if world == null or world.grid == null or not _scheduled or monster == null or monster.stationary or not monster.is_alive or monster.in_combat:
 		return
 	world.move_grid_toward(monster.entity_id, _step_goal, delta,
 		CombatEngine.MONSTER_MOVE_SPEED_TILES_PER_SECOND, 0.0, _inside_roam)

@@ -1,0 +1,87 @@
+{
+  "status": "candidate_pending_user_visual_review",
+  "name": "Golem Titan physical haymaker",
+  "native_canvas": [
+    256,
+    256
+  ],
+  "foot_anchor": [
+    128,
+    216
+  ],
+  "original_foot_anchor": [
+    128,
+    240
+  ],
+  "source_translation": [
+    0,
+    -24
+  ],
+  "world_pixels_per_source_pixel": 1,
+  "frame_count": 14,
+  "duration_ms": 1800,
+  "durations_ms": [
+    120,
+    120,
+    140,
+    160,
+    180,
+    220,
+    260,
+    60,
+    60,
+    80,
+    80,
+    100,
+    100,
+    120
+  ],
+  "tick_ms": 600,
+  "windup_ticks": 2,
+  "recovery_ticks": 1,
+  "contact_frame": 7,
+  "contact_ms": 1200,
+  "contact_point": [
+    192,
+    201
+  ],
+  "attack_range_cells": 2,
+  "source_job": "5b059b6c-4412-4096-a033-02eb5bcfef2e",
+  "source_asset": "dc1bad89-1ab9-5204-99fe-3e629b3e0554",
+  "source_frames": "exact downloaded native PNGs; no geometric warping or cutout animation",
+  "rig": "18-joint skeleton;6 lower-body joints identical in all14 poses; head/neck identical in poses3-10",
+  "binary_alpha": true,
+  "frame_sha256": {
+    "000.png": "8db9ba22743e69bbad64477cf06cc03c097c27fe44bebf7b0faf7c187b20a9d9",
+    "001.png": "50d70d4363def87889615a0fdb622752f0a1ed6211dfdf66326c7df46d229ac7",
+    "002.png": "a2625ffc1aece84182f726515bda23ed7cab9cd3ba9bc496feae23e94cb7395a",
+    "003.png": "d5e5dffba218a5d5bfd490dc2f1c45c6c95d66d91ece6bc098f1f07e0159eae3",
+    "004.png": "fc927866fb36ceeffd8272e2c8d9141636cd25cecb1679a1f2d3ff1a5aedd997",
+    "005.png": "5bd61cc7163b703311ff9ea30ea608716e707b438a8c0393e62f24e8df34241e",
+    "006.png": "40ed61013be6ef2f9dcb8df08a0b2795873bd0fd19477bedf7522ab99669f016",
+    "007.png": "ce3e6dbc40d8ffbc41dfbced557df17b33f2755eb995f854e92f392040f2ba4c",
+    "008.png": "4553fd2b08bddc215dbc3108883f4764938c7d255e3f73f8cd4bfa693105d66a",
+    "009.png": "0a8f035ccd649e75ce8e8862d281878496dfbf5516b2d316dd5a43c6181b3796",
+    "010.png": "bb40565e62823f24d4ecf761659562d9b612bad79b7351dd70fb013266a7694a",
+    "011.png": "cc003fc2066b19b356fa4cac9987f33a35610d0de9c4d745d8fd312d11714fcd",
+    "012.png": "ee65f8aac27f75b262078eedbaf2d6fe32fded72400776c4f1307bfe1a116f4d",
+    "013.png": "0cbdbb492465f2ea6111fd614e13e2c0ea6fd913004d3f1fdb2dadf9297928e4"
+  },
+  "combat_rotation": "not_installed; externally sampled presentation asset only",
+  "player_review_offset": [
+    60,
+    4
+  ],
+  "player_review_note": "Visible player along a normal diagonal grid step; default depth sorting preserved.",
+  "actual_game_review": {
+    "captures": 17,
+    "failures": 0,
+    "contact_below_head": true,
+    "contact_zoom": 4,
+    "player_reference": [
+      60,
+      4
+    ],
+    "normal_depth_sorting": true
+  }
+}
