@@ -32,6 +32,18 @@
     ],
     "isError": false
   },
-  "casting_source": "original approved sprite, dedicated17Bone2D skeleton; rejected temporal cast excluded",
-  "approved_body_source": "beccdcb20c0c3b015f1e14ce6017d61564ded9c5"
+  "casting_source": "User-selected PixelLab raised-fist open-mouth cast, 33 exact native PNGs",
+  "approved_body_source": "beccdcb20c0c3b015f1e14ce6017d61564ded9c5",
+  "casting_receipt": {
+    "content": [
+      {
+        "type": "text",
+        "text": "status: completed\nid: 5475c253-5959-4b0f-85e1-a39452d7ea28\njob_id: 5475c253-5959-4b0f-85e1-a39452d7ea28\nframes: 33\ntransparent: yes\nasset_id: ecb8b67f-38a5-5ab5-b78c-dff949abaa1a\nasset_type: image\nasset_status: saved\ngallery: saved to your PixelLab gallery (pixellab.ai/create)\ncharged: 5 generations\ndownload: https://api.pixellab.ai/mcp/images/5475c253-5959-4b0f-85e1-a39452d7ea28/download?index=0 ... ?index=32"
+      },
+      {
+        "type": "text",
+        "text": "(29 more frames not shown \u00e2\u20ac\u201d fetch them from the download URLs above)"
+      }
+    ]
+  }
 }

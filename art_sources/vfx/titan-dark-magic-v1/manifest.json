@@ -3,24 +3,23 @@
   "status": "candidate_pending_user_visual_review",
   "tick_ms": 600,
   "warning_ms": 1200,
-  "warning_policy": "same physical-warning silhouettes and locked warning-start tile capture; purple palette",
+  "warning_policy": "AoE only: physical-warning silhouettes and locked tiles, purple palette; single target has no ground warning",
   "cast": {
     "scene": "res://scenes/Effects/TitanMagicCast.tscn",
-    "bones": 17,
-    "frames": 120,
-    "frame_ms": 20,
+    "frames": 33,
+    "duration_ms": 2400,
     "native_canvas": [
-      336,
-      288
-    ],
-    "foot_anchor": [
-      168,
+      256,
       256
     ],
-    "windup_ms": 1200,
-    "recovery_ms": 1200,
-    "source_image_unchanged": true,
-    "fixed_lower_body_verified": true
+    "foot_anchor": [
+      128,
+      240
+    ],
+    "release_ms": 1200,
+    "source_job": "5475c253-5959-4b0f-85e1-a39452d7ea28",
+    "source_pngs_byte_exact": true,
+    "selection": "user-selected raised-fist roar"
   },
   "single_target": {
     "name": "Void Bolt",
@@ -29,7 +28,8 @@
     "release_ms": 1200,
     "flight_ms": 600,
     "impact_ms": 1800,
-    "target_policy": "captured warning tile; no homing after dodge"
+    "target_policy": "preview endpoint only; future homing combat behavior deferred by user",
+    "ground_indicator": false
   },
   "aoe": {
     "name": "Shadow Eruption",
@@ -45,10 +45,11 @@
     ]
   },
   "runtime_validation": {
-    "tests": 40,
+    "tests": 14,
     "failures": 0,
-    "native_bake_frames": 120,
-    "fixed_lower_body_and_endpoint": "passed",
+    "selected_source_frames_byte_exact": 33,
+    "projectile_texture": "unchanged",
+    "eruption_texture": "unchanged",
     "original_combat_stats": "unchanged"
   },
   "production_combat_rotation": "not_installed; presentation components and native source only",
@@ -113,10 +114,10 @@
     "maps": [
       "Golem Kingdom"
     ],
-    "single_cells": 1,
+    "single_ground_indicator": false,
     "aoe_cells": 10,
     "4x_casting": true,
     "automatic_failures": 0,
-    "artwork_approval": "pending"
+    "artwork_approval": "user selected source; revised presentation available for review"
   }
 }

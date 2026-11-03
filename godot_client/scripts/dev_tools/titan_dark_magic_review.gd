@@ -85,7 +85,7 @@ func _run() -> void:
 	await process_frame
 	await RenderingServer.frame_post_draw
 	root.get_texture().get_image().save_png(out.path_join("casting-4x.png"))
-	var report := {"captures":301,"captures_this_run":captures+1,"unchanged_prefix_frames_preserved":first_frame*2,"frame_ms":20,"warning_ms":1200,"native_world_density":1,"caster_bones":17,"caster_xy":[actor.global_position.x,actor.global_position.y],"captured_target_xy":[captured.x,captured.y],"player_escape_xy":[escape.x,escape.y],"single_target_instances":1,"aoe_instances":10,"selection":"warning-start snapshot, no retargeting","stats":"existing monster template unchanged","scene":"res://scenes/GolemKingdom.tscn","failures":failures,"scope":"actual game candidate preview; no damage or AI rotation installed"}
+	var report := {"captures":301,"captures_this_run":captures+1,"unchanged_prefix_frames_preserved":first_frame*2,"frame_ms":20,"warning_ms":1200,"native_world_density":1,"caster_frames":33,"caster_xy":[actor.global_position.x,actor.global_position.y],"captured_target_xy":[captured.x,captured.y],"player_escape_xy":[escape.x,escape.y],"single_target_instances":1,"aoe_instances":10,"selection":"AoE snapshots tiles; bolt preview uses a supplied endpoint without a ground marker","stats":"existing monster template unchanged","scene":"res://scenes/GolemKingdom.tscn","failures":failures,"scope":"actual game candidate preview; no damage or AI rotation installed"}
 	FileAccess.open(out.path_join("review.json"),FileAccess.WRITE).store_string(JSON.stringify(report,"  "))
 	print("[Dark magic] ",captures+1," actual game captures; ",failures.size()," failures")
 	quit(0 if failures.is_empty() else 1)

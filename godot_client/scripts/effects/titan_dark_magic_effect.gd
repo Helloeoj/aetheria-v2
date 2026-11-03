@@ -1,5 +1,5 @@
 extends Node2D
-## One target tile, externally sampled. Selection/damage belong to combat.
+## Externally sampled spell visuals. AoE warns its tile; single bolt has no ground marker.
 const TICK := GameTickConfig.TICK_DURATION_SECONDS
 const WARNINGS := [preload("res://Assets/Effects/TitanDarkMagic/warning-0.png"),preload("res://Assets/Effects/TitanDarkMagic/warning-1.png"),preload("res://Assets/Effects/TitanDarkMagic/warning-2.png"),preload("res://Assets/Effects/TitanDarkMagic/warning-3.png")]
 const ORB := preload("res://Assets/Effects/TitanDarkMagic/void-orb.png")
@@ -21,7 +21,7 @@ func _draw() -> void:
 	if age<0.0 or not is_finite(age): return
 	var release := 2.0*TICK
 	var impact := release+TICK if mode=="single" else release
-	if age<impact:
+	if mode=="aoe" and age<impact:
 		var warning := mini(3,int(clampf(age/release,0,0.999)*4.0))
 		draw_texture(WARNINGS[warning],Vector2(-24,-52))
 	if mode=="single":
