@@ -29,12 +29,9 @@ func _run() -> void:
 		for roll in 80:
 			var result: Dictionary = game.loot_system.roll_monster_loot(game._find_monster_by_entity_id(slot.entity))
 			item_seen = item_seen or result.get("item") is Dictionary or not result.get("items",[]).is_empty()
-		if String(actor.name).begins_with("Skeleton"):
-			assert(not item_seen,"skeleton loot remains disabled pending separate design")
-			var skeleton_loot: Dictionary=game.loot_system.roll_monster_loot(game._find_monster_by_entity_id(slot.entity))
-			assert(skeleton_loot.gold==0,"skeleton gold also disabled")
-		else:
-			assert(item_seen,"existing goblin loot produces actual catalog items")
+		assert(item_seen,"every dungeon mob produces actual catalog items")
+		var monster_loot: Dictionary=game.loot_system.roll_monster_loot(game._find_monster_by_entity_id(slot.entity))
+		assert(monster_loot.gold>0,"every dungeon mob awards tier gold")
 	# Remove one enemy exactly as the offline death handler does; clock starts at death.
 	var first: Dictionary = population.slots[0]
 	var old_id: String = first.entity
@@ -98,6 +95,9 @@ func _run() -> void:
 	region.configure("valtherian_mines",game)
 	region.advance(0.1)
 	assert(region.world.monsters.size()==18,"server populates the same authored roster")
+	for monster: MonsterState in region.world.monsters:
+		assert(monster.get_meta("dungeon_loot_table", "") == "valtherian_mines", "server uses dungeon loot profile")
+		assert(game.loot_system.roll_monster_loot(monster).gold > 0, "server skeleton and goblin gold enabled")
 	var published: Dictionary=region.snapshot("fixture")
 	assert(published.actors.size()==18,"server publishes every monster")
 	var server_slot: Dictionary=region.mine_population.slots[0]

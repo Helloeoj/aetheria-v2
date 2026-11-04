@@ -58,8 +58,6 @@ func advance(game: Node, world: WorldState, delta: float, server: bool = false) 
 func _spawn(game: Node, world: WorldState, slot: Dictionary, server: bool) -> void:
 	var template: Dictionary = game._active_monster_database().get(int(slot.template),{})
 	if template.is_empty(): return
-	var pending_skeleton := String(template.get("family","")) == "skeletons"
-	if not pending_skeleton and not has_loot(template): return
 	var home: Vector2 = slot.home
 	if not game.monster_spawn_allowed(home): return
 	for other: CombatActor in world.combat.actors.values():
@@ -67,7 +65,7 @@ func _spawn(game: Node, world: WorldState, slot: Dictionary, server: bool) -> vo
 	serial+=1
 	var monster:=MonsterState.new(template,home.x,home.y)
 	monster.entity_id="mine_%d"%serial
-	monster.set_meta("suppress_loot",pending_skeleton)
+	monster.set_meta("dungeon_loot_table","valtherian_mines")
 	var actor: CombatActor=game._create_actor_from_stats(monster.entity_id,monster.name,home.x,home.y,monster.get_combat_stats(),true,monster.damage_type)
 	actor.set_meta("mine_roaming",true)
 	if not world.register_monster_actor(monster,actor): return

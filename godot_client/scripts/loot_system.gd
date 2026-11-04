@@ -52,6 +52,22 @@ func get_family_loot_table(family: String) -> Dictionary:
 	return families.get(family.strip_edges().to_lower(), {})
 
 func _get_monster_loot_table(monster: Variant) -> Dictionary:
+	# Dungeon spawners opt in; the same template elsewhere keeps its own loot.
+	if monster is Object:
+		var profile := String(monster.get_meta("dungeon_loot_table", ""))
+		var dungeon_table: Dictionary = GameData.loot_data.get("dungeons", {}).get(profile, {})
+		if dungeon_table.has("common") and dungeon_table.has("rare"):
+			var capped := dungeon_table.duplicate(true)
+			var maximum := int(dungeon_table.get("max_tier_by_monster", {}).get(String(monster.name), 0))
+			# Ineligible tier weights become nothing, preserving per-kill odds
+			# instead of making low-tier equipment more common through normalization.
+			for entry: Dictionary in capped.common.outcomes:
+				if entry.get("item") == null:
+					continue
+				var item := GameData.get_item_by_name(String(entry.item))
+				if int(item.get("tier", 99)) > maximum:
+					entry.item = null
+			return capped
 	var monster_name := String(monster.name) if monster is Object else String(monster.get("name", ""))
 	if monster_name.is_empty():
 		return {}

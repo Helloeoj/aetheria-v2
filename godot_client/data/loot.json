@@ -824,5 +824,370 @@
         ]
       }
     }
+  },
+  "dungeons": {
+    "valtherian_mines": {
+      "guaranteed": [],
+      "common": {
+        "attempts": 1,
+        "outcomes": [
+          {
+            "item": null,
+            "item_rarity": null,
+            "type": "nothing",
+            "chance": 36.0,
+            "quantity": [
+              0,
+              0
+            ]
+          },
+          {
+            "item": "Bronze Helmet",
+            "item_rarity": "common",
+            "type": "Armor",
+            "armor_tier": "Bronze",
+            "chance": 3.0,
+            "quantity": [
+              1,
+              1
+            ]
+          },
+          {
+            "item": "Bronze Platebody",
+            "item_rarity": "common",
+            "type": "Armor",
+            "armor_tier": "Bronze",
+            "chance": 3.0,
+            "quantity": [
+              1,
+              1
+            ]
+          },
+          {
+            "item": "Bronze Platelegs",
+            "item_rarity": "common",
+            "type": "Armor",
+            "armor_tier": "Bronze",
+            "chance": 3.0,
+            "quantity": [
+              1,
+              1
+            ]
+          },
+          {
+            "item": "Bronze Square Shield",
+            "item_rarity": "common",
+            "type": "Armor",
+            "armor_tier": "Bronze",
+            "chance": 3.0,
+            "quantity": [
+              1,
+              1
+            ]
+          },
+          {
+            "item": "Homespun Cape",
+            "item_rarity": "common",
+            "type": "Armor",
+            "armor_tier": "Bronze",
+            "chance": 3.0,
+            "quantity": [
+              1,
+              1
+            ]
+          },
+          {
+            "item": "Iron Helmet",
+            "item_rarity": "common",
+            "type": "Armor",
+            "armor_tier": "Iron",
+            "chance": 2.4,
+            "quantity": [
+              1,
+              1
+            ]
+          },
+          {
+            "item": "Iron Platebody",
+            "item_rarity": "common",
+            "type": "Armor",
+            "armor_tier": "Iron",
+            "chance": 2.4,
+            "quantity": [
+              1,
+              1
+            ]
+          },
+          {
+            "item": "Iron Platelegs",
+            "item_rarity": "common",
+            "type": "Armor",
+            "armor_tier": "Iron",
+            "chance": 2.4,
+            "quantity": [
+              1,
+              1
+            ]
+          },
+          {
+            "item": "Iron Square Shield",
+            "item_rarity": "common",
+            "type": "Armor",
+            "armor_tier": "Iron",
+            "chance": 2.4,
+            "quantity": [
+              1,
+              1
+            ]
+          },
+          {
+            "item": "Woven Cape",
+            "item_rarity": "common",
+            "type": "Armor",
+            "armor_tier": "Iron",
+            "chance": 2.4,
+            "quantity": [
+              1,
+              1
+            ]
+          },
+          {
+            "item": "Steel Helmet",
+            "item_rarity": "common",
+            "type": "Armor",
+            "armor_tier": "Steel",
+            "chance": 2.4,
+            "quantity": [
+              1,
+              1
+            ]
+          },
+          {
+            "item": "Steel Platebody",
+            "item_rarity": "common",
+            "type": "Armor",
+            "armor_tier": "Steel",
+            "chance": 2.4,
+            "quantity": [
+              1,
+              1
+            ]
+          },
+          {
+            "item": "Steel Platelegs",
+            "item_rarity": "common",
+            "type": "Armor",
+            "armor_tier": "Steel",
+            "chance": 2.4,
+            "quantity": [
+              1,
+              1
+            ]
+          },
+          {
+            "item": "Steel Square Shield",
+            "item_rarity": "common",
+            "type": "Armor",
+            "armor_tier": "Steel",
+            "chance": 2.4,
+            "quantity": [
+              1,
+              1
+            ]
+          },
+          {
+            "item": "Runic Cape",
+            "item_rarity": "common",
+            "type": "Armor",
+            "armor_tier": "Steel",
+            "chance": 2.4,
+            "quantity": [
+              1,
+              1
+            ]
+          },
+          {
+            "item": "Blacksteel Helmet",
+            "item_rarity": "common",
+            "type": "Armor",
+            "armor_tier": "Blacksteel",
+            "chance": 1.6,
+            "quantity": [
+              1,
+              1
+            ]
+          },
+          {
+            "item": "Blacksteel Platebody",
+            "item_rarity": "common",
+            "type": "Armor",
+            "armor_tier": "Blacksteel",
+            "chance": 1.6,
+            "quantity": [
+              1,
+              1
+            ]
+          },
+          {
+            "item": "Blacksteel Platelegs",
+            "item_rarity": "common",
+            "type": "Armor",
+            "armor_tier": "Blacksteel",
+            "chance": 1.6,
+            "quantity": [
+              1,
+              1
+            ]
+          },
+          {
+            "item": "Blacksteel Square Shield",
+            "item_rarity": "common",
+            "type": "Armor",
+            "armor_tier": "Blacksteel",
+            "chance": 1.6,
+            "quantity": [
+              1,
+              1
+            ]
+          },
+          {
+            "item": "Enchanted Cape",
+            "item_rarity": "common",
+            "type": "Armor",
+            "armor_tier": "Blacksteel",
+            "chance": 1.6,
+            "quantity": [
+              1,
+              1
+            ]
+          },
+          {
+            "item": "Mithril Helmet",
+            "item_rarity": "common",
+            "type": "Armor",
+            "armor_tier": "Mithril",
+            "chance": 2.0,
+            "quantity": [
+              1,
+              1
+            ]
+          },
+          {
+            "item": "Mithril Platebody",
+            "item_rarity": "common",
+            "type": "Armor",
+            "armor_tier": "Mithril",
+            "chance": 2.0,
+            "quantity": [
+              1,
+              1
+            ]
+          },
+          {
+            "item": "Mithril Platelegs",
+            "item_rarity": "common",
+            "type": "Armor",
+            "armor_tier": "Mithril",
+            "chance": 2.0,
+            "quantity": [
+              1,
+              1
+            ]
+          },
+          {
+            "item": "Mithril Square Shield",
+            "item_rarity": "common",
+            "type": "Armor",
+            "armor_tier": "Mithril",
+            "chance": 2.0,
+            "quantity": [
+              1,
+              1
+            ]
+          },
+          {
+            "item": "Astral Cape",
+            "item_rarity": "common",
+            "type": "Armor",
+            "armor_tier": "Mithril",
+            "chance": 2.0,
+            "quantity": [
+              1,
+              1
+            ]
+          },
+          {
+            "item": "Adamantite Helmet",
+            "item_rarity": "common",
+            "type": "Armor",
+            "armor_tier": "Adamantite",
+            "chance": 1.4,
+            "quantity": [
+              1,
+              1
+            ]
+          },
+          {
+            "item": "Adamantite Platebody",
+            "item_rarity": "common",
+            "type": "Armor",
+            "armor_tier": "Adamantite",
+            "chance": 1.4,
+            "quantity": [
+              1,
+              1
+            ]
+          },
+          {
+            "item": "Adamantite Platelegs",
+            "item_rarity": "common",
+            "type": "Armor",
+            "armor_tier": "Adamantite",
+            "chance": 1.4,
+            "quantity": [
+              1,
+              1
+            ]
+          },
+          {
+            "item": "Adamantite Square Shield",
+            "item_rarity": "common",
+            "type": "Armor",
+            "armor_tier": "Adamantite",
+            "chance": 1.4,
+            "quantity": [
+              1,
+              1
+            ]
+          },
+          {
+            "item": "Empyrean Cape",
+            "item_rarity": "common",
+            "type": "Armor",
+            "armor_tier": "Adamantite",
+            "chance": 1.4,
+            "quantity": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      "rare": {
+        "table_chance": 0,
+        "outcomes": []
+      },
+      "max_tier_by_monster": {
+        "Goblin Scout": 1,
+        "Goblin Worker": 2,
+        "Goblin Warrior": 3,
+        "Goblin Shaman": 5,
+        "Goblin Chieftain": 6,
+        "Skeleton Footsoldier": 2,
+        "Skeleton Knight": 3,
+        "Skeleton Acolyte": 5,
+        "Skeleton Captain": 6
+      }
+    }
   }
 }
