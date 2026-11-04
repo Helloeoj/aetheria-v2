@@ -1,7 +1,8 @@
 # Longsword and warmaul combat reference
 
 Research guide, 2026-11-04. Mechanics verified against indexed OSRS Wiki text;
-direct page/media access was blocked. Animation directions below are proposed
+direct wiki page/media access was blocked. The user-supplied scimitar GIF was
+downloaded and inspected frame by frame. Animation directions below are proposed
 Aetheria adaptations, not claims that RuneScape gives each option a unique clip.
 This document does not mean the gameplay changes have been implemented.
 
@@ -12,6 +13,27 @@ This document does not mean the gameplay changes have been implemented.
 - [Slash weapons, slash swords](https://oldschool.runescape.wiki/w/Slash_weapons):
   Chop / Slash / Lunge / Block options for standard longswords.
 - [Granite maul](https://oldschool.runescape.wiki/w/Granite_maul): three crush options.
+- [Animation category](https://oldschool.runescape.wiki/w/Category:Animations):
+  the user's general reference index; direct access currently blocked.
+- [Special attack animations](https://oldschool.runescape.wiki/w/Category:Special_attack_animations):
+  reference for weight and follow-through, not permission to add special mechanics.
+- [User-supplied scimitar attack GIF](https://user-images.githubusercontent.com/38588890/224814530-f68efe02-85b3-4936-a975-4e665d2e4dce.gif):
+  inspected directly, 100 frames / 5 seconds. It contains combat and recovery,
+  so the whole recording is not one attack's animation duration.
+
+### Observations from the scimitar GIF
+
+During its first attack the character starts in guard (0.0-0.2 s), raises the
+blade above/across the shoulder (roughly 0.4-0.6 s), extends the weapon arm
+through the cut (roughly 0.8 s), and returns to guard (roughly 1.0-1.4 s).
+These are observed recording timestamps, not Aetheria timing settings.
+
+Use the readable windup -> fast cutting arc -> recovery as the sword motion
+reference. The body remains recognizable throughout: articulate the weapon arm
+and allow a modest body turn rather than replacing or distorting the chest.
+Keep feet grounded unless a specifically authored lunge calls for a step.
+Adapt the phases to the existing attack interval. Do not copy special-attack
+damage modifiers, extra hits, energy costs or effects into the ordinary styles.
 
 ## Mechanics mapping
 
