@@ -68,6 +68,7 @@ var offline_mining: Node
 var aoe_preview: Node2D
 var orders_controller: Node
 var tile_commands: Node2D
+var mine_population = preload("res://scripts/valtherian_population.gd").new()
 var monster_floor_support := preload("res://scripts/floor_support.gd").new()
 
 func grid_adoption_report() -> Dictionary:
@@ -752,6 +753,8 @@ func _physics_process(delta: float) -> void:
 			interactions.update_walk(delta)
 		else:
 			_update_auto_chase(delta)
+	if area_name == "Valtherian Mines":
+		mine_population.advance(self, world, delta)
 	var realtime_events := combat.process_realtime(world, delta)
 	_handle_combat_events(realtime_events)
 	_sync_actor_states()

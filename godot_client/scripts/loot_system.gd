@@ -14,6 +14,8 @@ func _init() -> void:
 	random.randomize()
 
 func roll_monster_loot(monster: Variant) -> Dictionary:
+	if monster is Object and bool(monster.get_meta("suppress_loot", false)):
+		return {"gold": 0, "items": []}
 	var tier := int(monster.tier) if monster is Object else int(monster.get("tier", 1))
 	var gold_range: Array = GOLD_TABLE.get(tier, GOLD_TABLE[7])
 	var gold := random.randi_range(int(gold_range[0]), int(gold_range[1]))

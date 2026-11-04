@@ -54,6 +54,7 @@ var _pending_refresh: Dictionary = {}
 var _clock := 0.0
 var _tick_elapsed := 0.0
 var _loot := LootSystem.new()
+var mine_population = preload("res://scripts/valtherian_population.gd").new()
 
 func configure(id: String, game: Node) -> void:
 	region_id = id
@@ -370,6 +371,11 @@ func advance(delta: float) -> void:
 			if frozen.has(id):
 				continue
 			_advance_movement(id, step)
+		if region_id == "valtherian_mines":
+			_adopt_grid()
+			mine_population.advance(geometry_game, world, step, true)
+			for monster: MonsterState in world.monsters:
+				if not _bodies.has(monster.entity_id): _add_body(monster.entity_id)
 		_clock += step
 		# Missing actors normally cancel casts. Persistence pauses instead retain
 		# their paid casts, incoming/outgoing shots and source-owned effect timers.

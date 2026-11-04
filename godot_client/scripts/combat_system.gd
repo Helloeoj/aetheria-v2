@@ -516,9 +516,11 @@ func _process_monster_movement(world: Variant, delta: float) -> Array[Dictionary
 		monster.target = target
 		monster.in_combat = target != null
 		_select_monster_attack_style(actor, target)
+		if target == null and actor.get_meta("mine_roaming", false):
+			continue
 
 		# Let monsters pursue far enough to use their attack range, but cap their
-		# own travel at 20 tiles from spawn. This gives ranged monsters room to chase.
+		# own travel at the configured leash from spawn. This gives ranged monsters room to chase.
 		var attack_range := _attack_range(actor)
 		var has_target := target != null
 		var target_position := Vector2(target.x, target.y) if has_target else spawn_position
@@ -649,6 +651,7 @@ func _refresh_monster_target(world: Variant, monster: CombatActor) -> CombatActo
 	if monster.monster_attack_type == "hybrid":
 		chase_attack_range = _attack_range_for_style(monster, monster.hybrid_secondary_style)
 	var chase_area_radius := GameTickConfig.MONSTER_CHASE_LEASH_TILES + chase_attack_range
+	if monster.get_meta("mine_roaming", false): chase_area_radius = GameTickConfig.MONSTER_CHASE_LEASH_TILES
 	var valid_attackers: Array[String] = []
 	for attacker_id: String in monster.aggro_attacker_ids:
 		var attacker: CombatActor = actors.get(attacker_id)
