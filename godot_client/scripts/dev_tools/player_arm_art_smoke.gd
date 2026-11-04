@@ -57,8 +57,32 @@ func _run() -> void:
 			var split: Dictionary = helper.call("split", source, joints, armored, null if armored else head, hand_masks, hidden)
 			var label := ("bronze" if armored else "bare") + "-" + direction
 			_check(before == source.get_data(), label + " input untouched")
+			if direction in ["east","west"]:
+				var chest:=FittedEquipmentLibrary.point(joints.chest)
+				var expected:=0
+				var retained:=0
+				for y in range(int(chest.y)-1,int(joints.pelvis[1])-2):
+					for x in range(int(chest.x)-6,int(chest.x)+7):
+						var pixel:=Vector2i(x,y)
+						var palm:=false
+						for side: String in ["left","right"]:
+							if side not in hidden:
+								var mask: Dictionary=hand_masks.get(side,helper.call("_hand_pixels",source,FittedEquipmentLibrary.point(joints["hand_"+side])))
+								palm=palm or mask.has(pixel)
+						if source.get_pixelv(pixel).a>0.0 and not palm:
+							expected+=1
+							if split.torso.get_pixelv(pixel)==source.get_pixelv(pixel): retained+=1
+				_check(expected>0 and retained>=expected*0.95,label+" keeps complete side torso when arms move (%d/%d)" % [retained,expected])
 			if armored:
 				_check(_component_count(split.torso) == 1, label + " fixed torso has no detached old arm contours")
+				var missing_cap:=0
+				for side: String in ["left","right"]:
+					var shoulder:=FittedEquipmentLibrary.point(joints["shoulder_"+side])
+					for y in range(int(shoulder.y)-5,int(shoulder.y)+6):
+						for x in range(int(shoulder.x)-5,int(shoulder.x)+6):
+							var pixel:=Vector2i(x,y)
+							if Vector2(pixel).distance_to(shoulder)<=5 and source.get_pixelv(pixel).a>0 and split.torso.get_pixelv(pixel)!=source.get_pixelv(pixel): missing_cap+=1
+				_check(missing_cap==0,label+" retains original shoulder-plate outline")
 			var masks: Array[Image] = [split.torso, split.lower]
 			for side: String in ["left", "right"]:
 				var arm: Dictionary = split.arms[side]
@@ -162,6 +186,19 @@ func _run() -> void:
 	_check(cleaned.get_pixel(31, 63) == lower_fixture.get_pixel(31, 63), "lower-body cleanup retains original right foot")
 	_check(cleaned.get_pixel(49, 63) == lower_fixture.get_pixel(49, 63), "lower-body cleanup retains original left foot")
 	_check(_pixel_count(cleaned) == 112 and _component_count(cleaned) == 2, "lower-body cleanup retains both complete native legs only")
+	var actor:=ActorSprite.new().configure(Vector2(32,32),Color.BLUE,"body_layer_regression")
+	root.add_child(actor)
+	actor.set_skin("peasant")
+	actor.set_process(false)
+	actor.set_equipment({"weapon":{"name":"Bronze Warmaul"},"chest":{"name":"Bronze Platebody"}})
+	for direction: String in ["south","east","west"]:
+		actor.face_direction(Vector2.DOWN.rotated(-CharacterSpriteLibrary.DIRECTIONS.find(direction)*PI/4))
+		actor.attachment_rig.sync_pose()
+		var body: PlayerArticulatedBody=actor.attachment_rig._fitted_body.motion_body
+		for side: String in ["right","left"]:
+			_check(body.torso.get_index()>body.arm_sprites[side].upper.get_index(),direction+" chest covers upper-arm hinge")
+			_check(body.shoulders.get_index()>body.arm_sprites[side].forearm.get_index(),direction+" complete shoulders stay above moving arm fragments")
+	actor.free()
 	_finish()
 
 

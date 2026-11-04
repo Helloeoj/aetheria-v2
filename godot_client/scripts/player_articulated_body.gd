@@ -6,6 +6,7 @@ static var sources: Dictionary = {}
 static var image_keys: Dictionary = {}
 var visual: AnimatedSprite2D
 var torso: Sprite2D
+var shoulders: Sprite2D
 var lower: Sprite2D
 var arm_sprites: Dictionary = {}
 var near_sides: Array[String] = []
@@ -14,6 +15,7 @@ var hand_targets: Dictionary = {}
 func configure(parent: AnimatedSprite2D) -> void:
 	visual=parent
 	torso=make_sprite("ArmorMotionTorso")
+	shoulders=make_sprite("ArmorMotionShoulders")
 	lower=make_sprite("ArmorMotionLowerBody")
 	for side: String in ["right","left"]:
 		arm_sprites[side]={}
@@ -31,6 +33,7 @@ func make_sprite(label: String) -> Sprite2D:
 
 func hide() -> void:
 	torso.visible=false
+	shoulders.visible=false
 	lower.visible=false
 	for side: String in arm_sprites:
 		for part: Sprite2D in arm_sprites[side].values():
@@ -50,6 +53,13 @@ func ordered_hands(near: bool) -> Array:
 	for side: String in ["left","right"]:
 		if near_sides.has(side)==near:
 			result.append(arm_sprites[side].hand)
+	return result
+
+func ordered_arm_part(near: bool, part: String) -> Array:
+	var result: Array=[]
+	for side: String in ["left","right"]:
+		if near_sides.has(side)==near:
+			result.append(arm_sprites[side][part])
 	return result
 
 static func source_parts(context: Dictionary) -> Dictionary:
@@ -100,6 +110,7 @@ func sync(context: Dictionary, flags: Dictionary) -> void:
 	var origin: Vector2=context.origin-context.padding
 	var shift: Vector2=Vector2(motion.torso_shift)+Vector2(motion.upper_shift)
 	pose_image(torso,parts.torso,cache_key+"/torso",Vector2.ZERO,origin+shift,0.0)
+	pose_image(shoulders,parts.shoulders,cache_key+"/shoulders",Vector2.ZERO,origin+shift,0.0)
 	if not bool(flags.get("legs",false)):
 		var lower_key:="moving_lower/"+String(pose.original)
 		if not sources.has(lower_key):

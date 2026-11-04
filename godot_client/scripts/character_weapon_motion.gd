@@ -64,11 +64,19 @@ static func sample(context: Dictionary, profile: Dictionary, shield: bool) -> Di
 	var grip_axis := (lateral+forward*0.35).normalized()
 	if family=="magic-staff" and direction in ["east","west"]:
 		grip_axis=forward.normalized()
+	if family=="warmaul" and not attack:
+		# Carry the heavy head outside the body at waist height. The old
+		# lateral axis pointed it into the face in profile and into the feet.
+		var outward: float=signf(raw_forward.x) if absf(raw_forward.x)>0.1 else (-1.0 if direction=="north" else 1.0)
+		grip_axis=Vector2(outward,-0.2).normalized()
 	var chest := FittedEquipmentLibrary.point(joints.chest)
 	var primary := FittedEquipmentLibrary.point(joints.hand_right)
 	var left := FittedEquipmentLibrary.point(joints.hand_left)
 	var pivot: Vector2 = profile.get("pivot",Vector2.ZERO)
 	var support: Vector2 = profile.get("support_grip",pivot+Vector2(0,-9))
+	if family=="warmaul" and not attack:
+		support=pivot+Vector2(0,-13) # Shaft just below the head, with room for both hands.
+	result["support_grip"]=support
 	var support_delta := (support-pivot)*float(profile.get("source_scale",1.0))
 	var angle := float(profile.get("carry_rotation",0.0))
 	if attack and family=="dagger":
@@ -86,7 +94,8 @@ static func sample(context: Dictionary, profile: Dictionary, shield: bool) -> Di
 				draw_axis=-forward
 			angle=support_delta.angle_to(draw_axis)
 		elif family!="crossbow":
-			primary = chest-grip_axis*4.0+Vector2(0,6)
+			var carry_maul:=family=="warmaul" and not attack
+			primary = chest-grip_axis*(6.5 if carry_maul else 4.0)+Vector2(0,8 if carry_maul else 6)
 			angle = support_delta.angle_to(grip_axis)
 	if attack:
 		primary += forward*float(control[2])+Vector2(0,float(control[1]))

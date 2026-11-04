@@ -297,6 +297,7 @@ func _update_fitted_body() -> void:
 		ordered.append(_fitted_body.base)
 	ordered.append(get_socket("waist"))
 	if _fitted_body!=null and bool(_weapon_motion.get("active",false)):
+		ordered.append_array(_fitted_body.motion_body.ordered_arm_part(true,"upper"))
 		ordered.append_array([_fitted_body.motion_body.lower,_fitted_body.motion_body.torso])
 	ordered.append(get_socket("chest"))
 	# A rear cape covers the backplate but stays below the complete head and
@@ -309,7 +310,8 @@ func _update_fitted_body() -> void:
 		ordered.append_array([_fitted_body.head, _fitted_body.arms.left, _fitted_body.arms.right])
 		ordered.append(get_socket("head"))
 		if bool(_weapon_motion.get("active",false)):
-			ordered.append_array(_fitted_body.motion_body.ordered_arms(true,false))
+			ordered.append_array(_fitted_body.motion_body.ordered_arm_part(true,"forearm"))
+			ordered.append(_fitted_body.motion_body.shoulders)
 	for socket_name: String in ["right_hand", "left_hand"]:
 		var socket := get_socket(socket_name)
 		if socket != null and not ordered.has(socket):

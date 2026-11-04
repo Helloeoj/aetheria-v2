@@ -111,6 +111,8 @@ func configure_equipment(family: String, loadout: String) -> Dictionary:
 	var player: Variant=game.get("player")
 	for slot: String in player.equipment.keys(): player.unequip_slot(slot)
 	var names: Array[String]=[]
+	if "--world-motion-helmet" in OS.get_cmdline_user_args(): names.append(tier+" Helmet")
+	if family=="longsword" and "--world-motion-shield" in OS.get_cmdline_user_args(): names.append(tier+" Kiteshield")
 	if loadout in ["armor","chest-only","mixed"]: names.append(tier+" Platebody")
 	if loadout in ["armor","legs-only","mixed"]:
 		var leg_tier: String=("Iron" if tier=="Bronze" else "Bronze") if loadout=="mixed" else tier
@@ -216,5 +218,19 @@ func review_case(family: String, loadout: String, direction: String) -> void:
 				var torso:=actor.animated_sprite.get_node_or_null("ArmorMotionTorso") as Sprite2D
 				check(torso!=null and torso.is_visible_in_tree() and torso.texture!=null,"active world motion has visible torso")
 			count+=1
+	if "--world-motion-reference" in OS.get_cmdline_user_args():
+		# Compare the same world actor and loadout with just the held item off.
+		var reference_gear:=gear.duplicate(true)
+		reference_gear.erase("weapon")
+		actor.set_equipment(reference_gear)
+		actor.cancel_action()
+		actor.face_direction(direction_vector(direction))
+		actor.animated_sprite.pause()
+		await process_frame
+		RenderingServer.force_draw(false)
+		var reference:=root.get_texture().get_image()
+		var foot:=actor.get_global_transform_with_canvas().origin
+		var area:=Rect2i(Vector2i(foot)-Vector2i(240,280),Vector2i(480,340)).intersection(Rect2i(Vector2i.ZERO,reference.get_size()))
+		reference.get_region(area).save_png(folder.path_join("player-"+direction+"-without-weapon.png"))
 	cases.append({"family":family,"loadout":loadout,"direction":direction,"equipment_route":"actor_art_fixture_after_real_main_refresh" if family=="pickaxe" else "PlayerState.give_and_equip -> Main._refresh_player_actor_from_player","movement_route":"Main._unhandled_input -> Main._physics_process -> ActorSprite.update_visual_motion","movement_displacement":[displacement.x,displacement.y],"walk_clip":walking_clip,"observed_movement_clips":observed_clips,"combat_route":"Main._handle_combat_events -> Main._show_combat_sprite_event -> ActorSprite.play_attack","combat_event":event_type,"capture_pairs":count,"folder":folder})
 	print("[World motion case] ",current_case," captured ",count," frame pairs")

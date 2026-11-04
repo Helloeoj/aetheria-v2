@@ -10,12 +10,15 @@ static func split(source: Image, joints: Dictionary, armored: bool, head_mask: I
 	if image.is_compressed():
 		image.decompress()
 	image.convert(Image.FORMAT_RGBA8)
-	var result := {"torso": _blank(), "lower": _blank(), "arms": {}, "raw_arms": {}}
+	var result := {"torso": _blank(), "shoulders": _blank(), "lower": _blank(), "arms": {}, "raw_arms": {}}
 	var chest := _point(joints.get("chest", [40, 43]))
 	var pelvis := _point(joints.get("pelvis", [40, 52]))
 	var neck := _point(joints.get("neck", [40, 37]))
 	var shoulder_span := absf(_point(joints.get("shoulder_left", [51, 39])).x - _point(joints.get("shoulder_right", [29, 39])).x)
-	var torso_core := clampf(shoulder_span * 0.325, 4.0, 8.0)
+	# Side-view shoulders overlap in projection; their separation is not
+	# the body's width. Preserve the native torso beneath the moving arms,
+	# including the unarmored robe, rather than leaving a narrow center strip.
+	var torso_core := clampf(shoulder_span * 0.325, 8.0, 10.0)
 	var hands := {}
 	for side: String in SIDES:
 		var shoulder := _point(joints.get("shoulder_" + side, [40, 39]))
@@ -42,7 +45,15 @@ static func split(source: Image, joints: Dictionary, armored: bool, head_mask: I
 				var arm: Dictionary = result.arms[side]
 				var distance := minf(_distance(location, arm.shoulder, arm.elbow), _distance(location, arm.elbow, arm.wrist))
 				var actual_hand: bool = hands[side].has(pixel)
-				is_palm = is_palm or actual_hand
+				if location.distance_to(arm.shoulder)<=6.25 and (head_mask==null or head_mask.get_pixelv(pixel).a==0.0):
+					# Fixed shoulder caps/sleeves cover the upper-arm hinge.
+					# Keeping these only on the torso lets a rotated arm repaint them.
+					result.shoulders.set_pixelv(pixel,color)
+				is_palm = is_palm or (actual_hand and side not in hidden_sides)
+				if armored and location.distance_to(arm.shoulder)<=6.25:
+					# The complete native pauldron stays with the chest. The
+					# moving-arm cut must not turn its round plate into fragments.
+					result.torso.set_pixelv(pixel,color)
 				# Shoulder caps stay fixed on the breastplate; lower contours move.
 				var cap: bool = armored and location.distance_to(arm.shoulder) <= 4.0 and y <= arm.shoulder.y + 2.0
 				if cap and y >= arm.shoulder.y and location.distance_to(arm.shoulder) <= 2.25:
@@ -58,7 +69,7 @@ static func split(source: Image, joints: Dictionary, armored: bool, head_mask: I
 					if score < nearest:
 						nearest = score
 						selected = side
-			if armored and not is_palm and y >= neck.y and y < pelvis.y and _distance(location, chest, pelvis) <= torso_core:
+			if not is_palm and y >= neck.y and y < pelvis.y and _distance(location, chest, pelvis) <= torso_core:
 				# A side-view arm may occlude the breastplate in the source.
 				# Keep its actual central contour too, rather than turning the
 				# torso into a thin strip when those native arm pixels move.

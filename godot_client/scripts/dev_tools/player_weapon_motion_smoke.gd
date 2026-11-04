@@ -23,7 +23,7 @@ func run() -> void:
 		check(Vector2(pose.secondary).distance_to(Vector2(pose.left_hand)) < 0.01,"support hand follows actual shaft grip")
 		var weapon: Node=actor.attachment_rig.get_equipped_visual("weapon")
 		var profile: Dictionary=weapon.get_weapon_profile("south")
-		var support: Vector2=Vector2(pose.primary)+(Vector2(profile.support_grip)-Vector2(profile.pivot)).rotated(float(pose.rotation))*float(profile.source_scale)
+		var support: Vector2=Vector2(pose.primary)+(Vector2(pose.get("support_grip",profile.support_grip))-Vector2(profile.pivot)).rotated(float(pose.rotation))*float(profile.source_scale)
 		check(support.distance_to(Vector2(pose.left_hand))<0.01,"rendered weapon rotation puts its real second grip in the support hand")
 		actor.play_attack(Vector2.DOWN)
 		actor.animated_sprite.pause()
