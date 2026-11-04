@@ -1,0 +1,11 @@
+{
+  "object_id": "01ab845a-05df-4bad-865c-977345a7ccf7",
+  "background_job_id": "1c47ec8a-53c6-41b0-a4ac-92e423d72f2e",
+  "operation": "create_object_pro_flash existing first_frame",
+  "first_frame": "references/material-south/iron.png",
+  "first_direction": "south",
+  "n_directions": 8,
+  "estimated_generations": 1,
+  "first_direction_generated": false,
+  "user_approval": "User likes designs; requires eight directional sprites attached to actual character skeleton."
+}

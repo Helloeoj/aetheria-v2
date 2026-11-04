@@ -1,0 +1,1444 @@
+{
+  "source": "pixellab-iron/iron-sheet.png",
+  "source_sha256": "04342d93c3e89369c39b97c632ffb30c1247f78b1c1826d0f55bf4e1d835b011",
+  "directions": [
+    "south",
+    "south-east",
+    "east",
+    "north-east",
+    "north",
+    "north-west",
+    "west",
+    "south-west"
+  ],
+  "operations": {
+    "bronze": [
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          0,
+          0,
+          39,
+          20
+        ],
+        "colors": {
+          "#292d33": "#371f14",
+          "#878d98": "#d07c46",
+          "#9aa2ac": "#d78550",
+          "#6e737e": "#94522f",
+          "#787e88": "#c07040",
+          "#c1c6cf": "#f8b87b",
+          "#4a4f57": "#6f3e22",
+          "#3c3f49": "#66381f",
+          "#636871": "#82482b",
+          "#555a63": "#754025",
+          "#444850": "#66381f",
+          "#e1ddd9": "#fadeaf"
+        },
+        "reason": "Reuse the approved bronze metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          40,
+          0,
+          79,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#d78550",
+          "#292d33": "#371f14",
+          "#9aa2ac": "#d78550",
+          "#6e737e": "#94522f",
+          "#787e88": "#c07040",
+          "#c1c6cf": "#f8b87b",
+          "#4a4f57": "#6f3e22",
+          "#3c3f49": "#66381f",
+          "#636871": "#82482b",
+          "#b6bcc4": "#f8b87b",
+          "#555a63": "#754025",
+          "#444850": "#66381f",
+          "#e1ddd9": "#fadeaf"
+        },
+        "reason": "Reuse the approved bronze metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          80,
+          0,
+          119,
+          20
+        ],
+        "colors": {
+          "#292d33": "#371f14",
+          "#878d98": "#d07c46",
+          "#9aa2ac": "#d78550",
+          "#787e88": "#c07040",
+          "#4a4f57": "#6f3e22",
+          "#3c3f49": "#66381f",
+          "#636871": "#82482b",
+          "#b6bcc4": "#f8b87b",
+          "#555a63": "#754025",
+          "#444850": "#66381f",
+          "#cdd1d7": "#f8b87b"
+        },
+        "reason": "Reuse the approved bronze metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          120,
+          0,
+          159,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#d78550",
+          "#292d33": "#371f14",
+          "#9aa2ac": "#d78550",
+          "#6e737e": "#94522f",
+          "#c1c6cf": "#f8b87b",
+          "#787e88": "#c07040",
+          "#222326": "#371f14",
+          "#4a4f57": "#6f3e22",
+          "#3c3f49": "#66381f",
+          "#636871": "#82482b",
+          "#b6bcc4": "#f8b87b",
+          "#555a63": "#754025",
+          "#444850": "#66381f",
+          "#cdd1d7": "#f8b87b",
+          "#e1ddd9": "#fadeaf"
+        },
+        "reason": "Reuse the approved bronze metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          160,
+          0,
+          199,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#d78550",
+          "#292d33": "#371f14",
+          "#878d98": "#d07c46",
+          "#9aa2ac": "#d78550",
+          "#6e737e": "#94522f",
+          "#787e88": "#c07040",
+          "#c1c6cf": "#f8b87b",
+          "#4a4f57": "#6f3e22",
+          "#3c3f49": "#66381f",
+          "#636871": "#82482b",
+          "#b6bcc4": "#f8b87b",
+          "#555a63": "#754025",
+          "#cdd1d7": "#f8b87b",
+          "#4e4343": "#66381f",
+          "#e1ddd9": "#fadeaf"
+        },
+        "reason": "Reuse the approved bronze metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          200,
+          0,
+          239,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#d78550",
+          "#292d33": "#371f14",
+          "#878d98": "#d07c46",
+          "#9aa2ac": "#d78550",
+          "#6e737e": "#94522f",
+          "#c1c6cf": "#f8b87b",
+          "#787e88": "#c07040",
+          "#222326": "#371f14",
+          "#4a4f57": "#6f3e22",
+          "#3c3f49": "#66381f",
+          "#382b26": "#371f14",
+          "#636871": "#82482b",
+          "#555a63": "#754025",
+          "#444850": "#66381f",
+          "#cdd1d7": "#f8b87b",
+          "#e1ddd9": "#fadeaf"
+        },
+        "reason": "Reuse the approved bronze metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          240,
+          0,
+          279,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#d78550",
+          "#878d98": "#d07c46",
+          "#9aa2ac": "#d78550",
+          "#c1c6cf": "#f8b87b",
+          "#787e88": "#c07040",
+          "#3c3f49": "#66381f",
+          "#636871": "#82482b",
+          "#b6bcc4": "#f8b87b",
+          "#555a63": "#754025",
+          "#444850": "#66381f",
+          "#cdd1d7": "#f8b87b",
+          "#e1ddd9": "#fadeaf"
+        },
+        "reason": "Reuse the approved bronze metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          280,
+          0,
+          319,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#d78550",
+          "#292d33": "#371f14",
+          "#878d98": "#d07c46",
+          "#9aa2ac": "#d78550",
+          "#6e737e": "#94522f",
+          "#c1c6cf": "#f8b87b",
+          "#787e88": "#c07040",
+          "#3c3f49": "#66381f",
+          "#636871": "#82482b",
+          "#b6bcc4": "#f8b87b",
+          "#555a63": "#754025",
+          "#444850": "#66381f",
+          "#cdd1d7": "#f8b87b",
+          "#e1ddd9": "#fadeaf"
+        },
+        "reason": "Reuse the approved bronze metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      }
+    ],
+    "steel": [
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          0,
+          0,
+          39,
+          20
+        ],
+        "colors": {
+          "#292d33": "#43454a",
+          "#878d98": "#dadbde",
+          "#9aa2ac": "#d3d5d9",
+          "#6e737e": "#a2a5aa",
+          "#787e88": "#cbcdd1",
+          "#c1c6cf": "#e1e3e6",
+          "#4a4f57": "#787b83",
+          "#3c3f49": "#67696f",
+          "#636871": "#909297",
+          "#555a63": "#8a8d93",
+          "#444850": "#67696f",
+          "#e1ddd9": "#fbfafb"
+        },
+        "reason": "Reuse the approved steel metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          40,
+          0,
+          79,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#d3d5d9",
+          "#292d33": "#43454a",
+          "#9aa2ac": "#d3d5d9",
+          "#6e737e": "#a2a5aa",
+          "#787e88": "#cbcdd1",
+          "#c1c6cf": "#e1e3e6",
+          "#4a4f57": "#787b83",
+          "#3c3f49": "#67696f",
+          "#636871": "#909297",
+          "#b6bcc4": "#e1e3e6",
+          "#555a63": "#8a8d93",
+          "#444850": "#67696f",
+          "#e1ddd9": "#fbfafb"
+        },
+        "reason": "Reuse the approved steel metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          80,
+          0,
+          119,
+          20
+        ],
+        "colors": {
+          "#292d33": "#43454a",
+          "#878d98": "#dadbde",
+          "#9aa2ac": "#d3d5d9",
+          "#787e88": "#cbcdd1",
+          "#4a4f57": "#787b83",
+          "#3c3f49": "#67696f",
+          "#636871": "#909297",
+          "#b6bcc4": "#e1e3e6",
+          "#555a63": "#8a8d93",
+          "#444850": "#67696f",
+          "#cdd1d7": "#e1e3e6"
+        },
+        "reason": "Reuse the approved steel metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          120,
+          0,
+          159,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#d3d5d9",
+          "#292d33": "#43454a",
+          "#9aa2ac": "#d3d5d9",
+          "#6e737e": "#a2a5aa",
+          "#c1c6cf": "#e1e3e6",
+          "#787e88": "#cbcdd1",
+          "#222326": "#43454a",
+          "#4a4f57": "#787b83",
+          "#3c3f49": "#67696f",
+          "#636871": "#909297",
+          "#b6bcc4": "#e1e3e6",
+          "#555a63": "#8a8d93",
+          "#444850": "#67696f",
+          "#cdd1d7": "#e1e3e6",
+          "#e1ddd9": "#fbfafb"
+        },
+        "reason": "Reuse the approved steel metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          160,
+          0,
+          199,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#d3d5d9",
+          "#292d33": "#43454a",
+          "#878d98": "#dadbde",
+          "#9aa2ac": "#d3d5d9",
+          "#6e737e": "#a2a5aa",
+          "#787e88": "#cbcdd1",
+          "#c1c6cf": "#e1e3e6",
+          "#4a4f57": "#787b83",
+          "#3c3f49": "#67696f",
+          "#636871": "#909297",
+          "#b6bcc4": "#e1e3e6",
+          "#555a63": "#8a8d93",
+          "#cdd1d7": "#e1e3e6",
+          "#4e4343": "#67696f",
+          "#e1ddd9": "#fbfafb"
+        },
+        "reason": "Reuse the approved steel metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          200,
+          0,
+          239,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#d3d5d9",
+          "#292d33": "#43454a",
+          "#878d98": "#dadbde",
+          "#9aa2ac": "#d3d5d9",
+          "#6e737e": "#a2a5aa",
+          "#c1c6cf": "#e1e3e6",
+          "#787e88": "#cbcdd1",
+          "#222326": "#43454a",
+          "#4a4f57": "#787b83",
+          "#3c3f49": "#67696f",
+          "#382b26": "#43454a",
+          "#636871": "#909297",
+          "#555a63": "#8a8d93",
+          "#444850": "#67696f",
+          "#cdd1d7": "#e1e3e6",
+          "#e1ddd9": "#fbfafb"
+        },
+        "reason": "Reuse the approved steel metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          240,
+          0,
+          279,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#d3d5d9",
+          "#878d98": "#dadbde",
+          "#9aa2ac": "#d3d5d9",
+          "#c1c6cf": "#e1e3e6",
+          "#787e88": "#cbcdd1",
+          "#3c3f49": "#67696f",
+          "#636871": "#909297",
+          "#b6bcc4": "#e1e3e6",
+          "#555a63": "#8a8d93",
+          "#444850": "#67696f",
+          "#cdd1d7": "#e1e3e6",
+          "#e1ddd9": "#fbfafb"
+        },
+        "reason": "Reuse the approved steel metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          280,
+          0,
+          319,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#d3d5d9",
+          "#292d33": "#43454a",
+          "#878d98": "#dadbde",
+          "#9aa2ac": "#d3d5d9",
+          "#6e737e": "#a2a5aa",
+          "#c1c6cf": "#e1e3e6",
+          "#787e88": "#cbcdd1",
+          "#3c3f49": "#67696f",
+          "#636871": "#909297",
+          "#b6bcc4": "#e1e3e6",
+          "#555a63": "#8a8d93",
+          "#444850": "#67696f",
+          "#cdd1d7": "#e1e3e6",
+          "#e1ddd9": "#fbfafb"
+        },
+        "reason": "Reuse the approved steel metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      }
+    ],
+    "blacksteel": [
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          0,
+          0,
+          39,
+          20
+        ],
+        "colors": {
+          "#292d33": "#0f111c",
+          "#878d98": "#3a3f59",
+          "#9aa2ac": "#646989",
+          "#6e737e": "#373a51",
+          "#787e88": "#373a51",
+          "#c1c6cf": "#7c82a2",
+          "#4a4f57": "#1e202f",
+          "#3c3f49": "#151824",
+          "#636871": "#3a3f59",
+          "#555a63": "#202333",
+          "#444850": "#202333",
+          "#e1ddd9": "#c6c9d3"
+        },
+        "reason": "Reuse the approved blacksteel metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          40,
+          0,
+          79,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#646989",
+          "#292d33": "#0f111c",
+          "#9aa2ac": "#646989",
+          "#6e737e": "#373a51",
+          "#787e88": "#373a51",
+          "#c1c6cf": "#7c82a2",
+          "#4a4f57": "#1e202f",
+          "#3c3f49": "#151824",
+          "#636871": "#3a3f59",
+          "#b6bcc4": "#7c82a2",
+          "#555a63": "#202333",
+          "#444850": "#202333",
+          "#e1ddd9": "#c6c9d3"
+        },
+        "reason": "Reuse the approved blacksteel metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          80,
+          0,
+          119,
+          20
+        ],
+        "colors": {
+          "#292d33": "#0f111c",
+          "#878d98": "#3a3f59",
+          "#9aa2ac": "#646989",
+          "#787e88": "#373a51",
+          "#4a4f57": "#1e202f",
+          "#3c3f49": "#151824",
+          "#636871": "#3a3f59",
+          "#b6bcc4": "#7c82a2",
+          "#555a63": "#202333",
+          "#444850": "#202333",
+          "#cdd1d7": "#7c82a2"
+        },
+        "reason": "Reuse the approved blacksteel metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          120,
+          0,
+          159,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#646989",
+          "#292d33": "#0f111c",
+          "#9aa2ac": "#646989",
+          "#6e737e": "#373a51",
+          "#c1c6cf": "#7c82a2",
+          "#787e88": "#373a51",
+          "#222326": "#0f111c",
+          "#4a4f57": "#1e202f",
+          "#3c3f49": "#151824",
+          "#636871": "#3a3f59",
+          "#b6bcc4": "#7c82a2",
+          "#555a63": "#202333",
+          "#444850": "#202333",
+          "#cdd1d7": "#7c82a2",
+          "#e1ddd9": "#c6c9d3"
+        },
+        "reason": "Reuse the approved blacksteel metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          160,
+          0,
+          199,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#646989",
+          "#292d33": "#0f111c",
+          "#878d98": "#3a3f59",
+          "#9aa2ac": "#646989",
+          "#6e737e": "#373a51",
+          "#787e88": "#373a51",
+          "#c1c6cf": "#7c82a2",
+          "#4a4f57": "#1e202f",
+          "#3c3f49": "#151824",
+          "#636871": "#3a3f59",
+          "#b6bcc4": "#7c82a2",
+          "#555a63": "#202333",
+          "#cdd1d7": "#7c82a2",
+          "#4e4343": "#202333",
+          "#e1ddd9": "#c6c9d3"
+        },
+        "reason": "Reuse the approved blacksteel metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          200,
+          0,
+          239,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#646989",
+          "#292d33": "#0f111c",
+          "#878d98": "#3a3f59",
+          "#9aa2ac": "#646989",
+          "#6e737e": "#373a51",
+          "#c1c6cf": "#7c82a2",
+          "#787e88": "#373a51",
+          "#222326": "#0f111c",
+          "#4a4f57": "#1e202f",
+          "#3c3f49": "#151824",
+          "#382b26": "#0f111c",
+          "#636871": "#3a3f59",
+          "#555a63": "#202333",
+          "#444850": "#202333",
+          "#cdd1d7": "#7c82a2",
+          "#e1ddd9": "#c6c9d3"
+        },
+        "reason": "Reuse the approved blacksteel metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          240,
+          0,
+          279,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#646989",
+          "#878d98": "#3a3f59",
+          "#9aa2ac": "#646989",
+          "#c1c6cf": "#7c82a2",
+          "#787e88": "#373a51",
+          "#3c3f49": "#151824",
+          "#636871": "#3a3f59",
+          "#b6bcc4": "#7c82a2",
+          "#555a63": "#202333",
+          "#444850": "#202333",
+          "#cdd1d7": "#7c82a2",
+          "#e1ddd9": "#c6c9d3"
+        },
+        "reason": "Reuse the approved blacksteel metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          280,
+          0,
+          319,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#646989",
+          "#292d33": "#0f111c",
+          "#878d98": "#3a3f59",
+          "#9aa2ac": "#646989",
+          "#6e737e": "#373a51",
+          "#c1c6cf": "#7c82a2",
+          "#787e88": "#373a51",
+          "#3c3f49": "#151824",
+          "#636871": "#3a3f59",
+          "#b6bcc4": "#7c82a2",
+          "#555a63": "#202333",
+          "#444850": "#202333",
+          "#cdd1d7": "#7c82a2",
+          "#e1ddd9": "#c6c9d3"
+        },
+        "reason": "Reuse the approved blacksteel metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      }
+    ],
+    "mithril": [
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          0,
+          0,
+          39,
+          20
+        ],
+        "colors": {
+          "#292d33": "#1f255d",
+          "#878d98": "#7a7dea",
+          "#9aa2ac": "#8387ef",
+          "#6e737e": "#5d63c1",
+          "#787e88": "#7a7dea",
+          "#c1c6cf": "#bdc0fc",
+          "#4a4f57": "#3c418b",
+          "#3c3f49": "#313676",
+          "#636871": "#545bb7",
+          "#555a63": "#464ca0",
+          "#444850": "#393f8a",
+          "#e1ddd9": "#dcddf9"
+        },
+        "reason": "Reuse the approved mithril metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          40,
+          0,
+          79,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#8387ef",
+          "#292d33": "#1f255d",
+          "#9aa2ac": "#8387ef",
+          "#6e737e": "#5d63c1",
+          "#787e88": "#7a7dea",
+          "#c1c6cf": "#bdc0fc",
+          "#4a4f57": "#3c418b",
+          "#3c3f49": "#313676",
+          "#636871": "#545bb7",
+          "#b6bcc4": "#bdc0fc",
+          "#555a63": "#464ca0",
+          "#444850": "#393f8a",
+          "#e1ddd9": "#dcddf9"
+        },
+        "reason": "Reuse the approved mithril metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          80,
+          0,
+          119,
+          20
+        ],
+        "colors": {
+          "#292d33": "#1f255d",
+          "#878d98": "#7a7dea",
+          "#9aa2ac": "#8387ef",
+          "#787e88": "#7a7dea",
+          "#4a4f57": "#3c418b",
+          "#3c3f49": "#313676",
+          "#636871": "#545bb7",
+          "#b6bcc4": "#bdc0fc",
+          "#555a63": "#464ca0",
+          "#444850": "#393f8a",
+          "#cdd1d7": "#bdc0fc"
+        },
+        "reason": "Reuse the approved mithril metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          120,
+          0,
+          159,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#8387ef",
+          "#292d33": "#1f255d",
+          "#9aa2ac": "#8387ef",
+          "#6e737e": "#5d63c1",
+          "#c1c6cf": "#bdc0fc",
+          "#787e88": "#7a7dea",
+          "#222326": "#1f255d",
+          "#4a4f57": "#3c418b",
+          "#3c3f49": "#313676",
+          "#636871": "#545bb7",
+          "#b6bcc4": "#bdc0fc",
+          "#555a63": "#464ca0",
+          "#444850": "#393f8a",
+          "#cdd1d7": "#bdc0fc",
+          "#e1ddd9": "#dcddf9"
+        },
+        "reason": "Reuse the approved mithril metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          160,
+          0,
+          199,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#8387ef",
+          "#292d33": "#1f255d",
+          "#878d98": "#7a7dea",
+          "#9aa2ac": "#8387ef",
+          "#6e737e": "#5d63c1",
+          "#787e88": "#7a7dea",
+          "#c1c6cf": "#bdc0fc",
+          "#4a4f57": "#3c418b",
+          "#3c3f49": "#313676",
+          "#636871": "#545bb7",
+          "#b6bcc4": "#bdc0fc",
+          "#555a63": "#464ca0",
+          "#cdd1d7": "#bdc0fc",
+          "#4e4343": "#393f8a",
+          "#e1ddd9": "#dcddf9"
+        },
+        "reason": "Reuse the approved mithril metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          200,
+          0,
+          239,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#8387ef",
+          "#292d33": "#1f255d",
+          "#878d98": "#7a7dea",
+          "#9aa2ac": "#8387ef",
+          "#6e737e": "#5d63c1",
+          "#c1c6cf": "#bdc0fc",
+          "#787e88": "#7a7dea",
+          "#222326": "#1f255d",
+          "#4a4f57": "#3c418b",
+          "#3c3f49": "#313676",
+          "#382b26": "#1f255d",
+          "#636871": "#545bb7",
+          "#555a63": "#464ca0",
+          "#444850": "#393f8a",
+          "#cdd1d7": "#bdc0fc",
+          "#e1ddd9": "#dcddf9"
+        },
+        "reason": "Reuse the approved mithril metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          240,
+          0,
+          279,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#8387ef",
+          "#878d98": "#7a7dea",
+          "#9aa2ac": "#8387ef",
+          "#c1c6cf": "#bdc0fc",
+          "#787e88": "#7a7dea",
+          "#3c3f49": "#313676",
+          "#636871": "#545bb7",
+          "#b6bcc4": "#bdc0fc",
+          "#555a63": "#464ca0",
+          "#444850": "#393f8a",
+          "#cdd1d7": "#bdc0fc",
+          "#e1ddd9": "#dcddf9"
+        },
+        "reason": "Reuse the approved mithril metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          280,
+          0,
+          319,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#8387ef",
+          "#292d33": "#1f255d",
+          "#878d98": "#7a7dea",
+          "#9aa2ac": "#8387ef",
+          "#6e737e": "#5d63c1",
+          "#c1c6cf": "#bdc0fc",
+          "#787e88": "#7a7dea",
+          "#3c3f49": "#313676",
+          "#636871": "#545bb7",
+          "#b6bcc4": "#bdc0fc",
+          "#555a63": "#464ca0",
+          "#444850": "#393f8a",
+          "#cdd1d7": "#bdc0fc",
+          "#e1ddd9": "#dcddf9"
+        },
+        "reason": "Reuse the approved mithril metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      }
+    ],
+    "adamantite": [
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          0,
+          0,
+          39,
+          20
+        ],
+        "colors": {
+          "#292d33": "#182820",
+          "#878d98": "#669072",
+          "#9aa2ac": "#7aa385",
+          "#6e737e": "#44654f",
+          "#787e88": "#5a8064",
+          "#c1c6cf": "#aad4b1",
+          "#4a4f57": "#31493b",
+          "#3c3f49": "#2b4034",
+          "#636871": "#44654f",
+          "#555a63": "#385141",
+          "#444850": "#2b4034",
+          "#e1ddd9": "#c9e6cd"
+        },
+        "reason": "Reuse the approved adamantite metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          40,
+          0,
+          79,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#7aa385",
+          "#292d33": "#182820",
+          "#9aa2ac": "#7aa385",
+          "#6e737e": "#44654f",
+          "#787e88": "#5a8064",
+          "#c1c6cf": "#aad4b1",
+          "#4a4f57": "#31493b",
+          "#3c3f49": "#2b4034",
+          "#636871": "#44654f",
+          "#b6bcc4": "#aad4b1",
+          "#555a63": "#385141",
+          "#444850": "#2b4034",
+          "#e1ddd9": "#c9e6cd"
+        },
+        "reason": "Reuse the approved adamantite metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          80,
+          0,
+          119,
+          20
+        ],
+        "colors": {
+          "#292d33": "#182820",
+          "#878d98": "#669072",
+          "#9aa2ac": "#7aa385",
+          "#787e88": "#5a8064",
+          "#4a4f57": "#31493b",
+          "#3c3f49": "#2b4034",
+          "#636871": "#44654f",
+          "#b6bcc4": "#aad4b1",
+          "#555a63": "#385141",
+          "#444850": "#2b4034",
+          "#cdd1d7": "#aad4b1"
+        },
+        "reason": "Reuse the approved adamantite metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          120,
+          0,
+          159,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#7aa385",
+          "#292d33": "#182820",
+          "#9aa2ac": "#7aa385",
+          "#6e737e": "#44654f",
+          "#c1c6cf": "#aad4b1",
+          "#787e88": "#5a8064",
+          "#222326": "#182820",
+          "#4a4f57": "#31493b",
+          "#3c3f49": "#2b4034",
+          "#636871": "#44654f",
+          "#b6bcc4": "#aad4b1",
+          "#555a63": "#385141",
+          "#444850": "#2b4034",
+          "#cdd1d7": "#aad4b1",
+          "#e1ddd9": "#c9e6cd"
+        },
+        "reason": "Reuse the approved adamantite metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          160,
+          0,
+          199,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#7aa385",
+          "#292d33": "#182820",
+          "#878d98": "#669072",
+          "#9aa2ac": "#7aa385",
+          "#6e737e": "#44654f",
+          "#787e88": "#5a8064",
+          "#c1c6cf": "#aad4b1",
+          "#4a4f57": "#31493b",
+          "#3c3f49": "#2b4034",
+          "#636871": "#44654f",
+          "#b6bcc4": "#aad4b1",
+          "#555a63": "#385141",
+          "#cdd1d7": "#aad4b1",
+          "#4e4343": "#2b4034",
+          "#e1ddd9": "#c9e6cd"
+        },
+        "reason": "Reuse the approved adamantite metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          200,
+          0,
+          239,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#7aa385",
+          "#292d33": "#182820",
+          "#878d98": "#669072",
+          "#9aa2ac": "#7aa385",
+          "#6e737e": "#44654f",
+          "#c1c6cf": "#aad4b1",
+          "#787e88": "#5a8064",
+          "#222326": "#182820",
+          "#4a4f57": "#31493b",
+          "#3c3f49": "#2b4034",
+          "#382b26": "#182820",
+          "#636871": "#44654f",
+          "#555a63": "#385141",
+          "#444850": "#2b4034",
+          "#cdd1d7": "#aad4b1",
+          "#e1ddd9": "#c9e6cd"
+        },
+        "reason": "Reuse the approved adamantite metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          240,
+          0,
+          279,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#7aa385",
+          "#878d98": "#669072",
+          "#9aa2ac": "#7aa385",
+          "#c1c6cf": "#aad4b1",
+          "#787e88": "#5a8064",
+          "#3c3f49": "#2b4034",
+          "#636871": "#44654f",
+          "#b6bcc4": "#aad4b1",
+          "#555a63": "#385141",
+          "#444850": "#2b4034",
+          "#cdd1d7": "#aad4b1",
+          "#e1ddd9": "#c9e6cd"
+        },
+        "reason": "Reuse the approved adamantite metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          280,
+          0,
+          319,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#7aa385",
+          "#292d33": "#182820",
+          "#878d98": "#669072",
+          "#9aa2ac": "#7aa385",
+          "#6e737e": "#44654f",
+          "#c1c6cf": "#aad4b1",
+          "#787e88": "#5a8064",
+          "#3c3f49": "#2b4034",
+          "#636871": "#44654f",
+          "#b6bcc4": "#aad4b1",
+          "#555a63": "#385141",
+          "#444850": "#2b4034",
+          "#cdd1d7": "#aad4b1",
+          "#e1ddd9": "#c9e6cd"
+        },
+        "reason": "Reuse the approved adamantite metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      }
+    ],
+    "runite": [
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          0,
+          0,
+          39,
+          20
+        ],
+        "colors": {
+          "#292d33": "#0a3147",
+          "#878d98": "#3499b2",
+          "#9aa2ac": "#52b4cb",
+          "#6e737e": "#217d99",
+          "#787e88": "#3499b2",
+          "#c1c6cf": "#7bdff1",
+          "#4a4f57": "#11546d",
+          "#3c3f49": "#0d425a",
+          "#636871": "#18718e",
+          "#555a63": "#145d78",
+          "#444850": "#0f4a62",
+          "#e1ddd9": "#a2e9f2"
+        },
+        "reason": "Reuse the approved runite metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          40,
+          0,
+          79,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#52b4cb",
+          "#292d33": "#0a3147",
+          "#9aa2ac": "#52b4cb",
+          "#6e737e": "#217d99",
+          "#787e88": "#3499b2",
+          "#c1c6cf": "#7bdff1",
+          "#4a4f57": "#11546d",
+          "#3c3f49": "#0d425a",
+          "#636871": "#18718e",
+          "#b6bcc4": "#7bdff1",
+          "#555a63": "#145d78",
+          "#444850": "#0f4a62",
+          "#e1ddd9": "#a2e9f2"
+        },
+        "reason": "Reuse the approved runite metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          80,
+          0,
+          119,
+          20
+        ],
+        "colors": {
+          "#292d33": "#0a3147",
+          "#878d98": "#3499b2",
+          "#9aa2ac": "#52b4cb",
+          "#787e88": "#3499b2",
+          "#4a4f57": "#11546d",
+          "#3c3f49": "#0d425a",
+          "#636871": "#18718e",
+          "#b6bcc4": "#7bdff1",
+          "#555a63": "#145d78",
+          "#444850": "#0f4a62",
+          "#cdd1d7": "#7bdff1"
+        },
+        "reason": "Reuse the approved runite metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          120,
+          0,
+          159,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#52b4cb",
+          "#292d33": "#0a3147",
+          "#9aa2ac": "#52b4cb",
+          "#6e737e": "#217d99",
+          "#c1c6cf": "#7bdff1",
+          "#787e88": "#3499b2",
+          "#222326": "#0a3147",
+          "#4a4f57": "#11546d",
+          "#3c3f49": "#0d425a",
+          "#636871": "#18718e",
+          "#b6bcc4": "#7bdff1",
+          "#555a63": "#145d78",
+          "#444850": "#0f4a62",
+          "#cdd1d7": "#7bdff1",
+          "#e1ddd9": "#a2e9f2"
+        },
+        "reason": "Reuse the approved runite metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          160,
+          0,
+          199,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#52b4cb",
+          "#292d33": "#0a3147",
+          "#878d98": "#3499b2",
+          "#9aa2ac": "#52b4cb",
+          "#6e737e": "#217d99",
+          "#787e88": "#3499b2",
+          "#c1c6cf": "#7bdff1",
+          "#4a4f57": "#11546d",
+          "#3c3f49": "#0d425a",
+          "#636871": "#18718e",
+          "#b6bcc4": "#7bdff1",
+          "#555a63": "#145d78",
+          "#cdd1d7": "#7bdff1",
+          "#4e4343": "#0f4a62",
+          "#e1ddd9": "#a2e9f2"
+        },
+        "reason": "Reuse the approved runite metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          200,
+          0,
+          239,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#52b4cb",
+          "#292d33": "#0a3147",
+          "#878d98": "#3499b2",
+          "#9aa2ac": "#52b4cb",
+          "#6e737e": "#217d99",
+          "#c1c6cf": "#7bdff1",
+          "#787e88": "#3499b2",
+          "#222326": "#0a3147",
+          "#4a4f57": "#11546d",
+          "#3c3f49": "#0d425a",
+          "#382b26": "#0a3147",
+          "#636871": "#18718e",
+          "#555a63": "#145d78",
+          "#444850": "#0f4a62",
+          "#cdd1d7": "#7bdff1",
+          "#e1ddd9": "#a2e9f2"
+        },
+        "reason": "Reuse the approved runite metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          240,
+          0,
+          279,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#52b4cb",
+          "#878d98": "#3499b2",
+          "#9aa2ac": "#52b4cb",
+          "#c1c6cf": "#7bdff1",
+          "#787e88": "#3499b2",
+          "#3c3f49": "#0d425a",
+          "#636871": "#18718e",
+          "#b6bcc4": "#7bdff1",
+          "#555a63": "#145d78",
+          "#444850": "#0f4a62",
+          "#cdd1d7": "#7bdff1",
+          "#e1ddd9": "#a2e9f2"
+        },
+        "reason": "Reuse the approved runite metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      },
+      {
+        "operation": "map_colors",
+        "layer": "image",
+        "frames": [
+          1
+        ],
+        "region": [
+          280,
+          0,
+          319,
+          20
+        ],
+        "colors": {
+          "#a9b0b7": "#52b4cb",
+          "#292d33": "#0a3147",
+          "#878d98": "#3499b2",
+          "#9aa2ac": "#52b4cb",
+          "#6e737e": "#217d99",
+          "#c1c6cf": "#7bdff1",
+          "#787e88": "#3499b2",
+          "#3c3f49": "#0d425a",
+          "#636871": "#18718e",
+          "#b6bcc4": "#7bdff1",
+          "#555a63": "#145d78",
+          "#444850": "#0f4a62",
+          "#cdd1d7": "#7bdff1",
+          "#e1ddd9": "#a2e9f2"
+        },
+        "reason": "Reuse the approved runite metal ramp on this directional head/collar; keep source alpha, shaft, leather and grip unchanged."
+      }
+    ]
+  }
+}

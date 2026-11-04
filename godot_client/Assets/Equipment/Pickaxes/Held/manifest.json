@@ -1,0 +1,537 @@
+{
+  "schema_version": 2,
+  "status": "installed directional art; final user review separate",
+  "native_size": [
+    40,
+    40
+  ],
+  "directions": [
+    "south",
+    "south-east",
+    "east",
+    "north-east",
+    "north",
+    "north-west",
+    "west",
+    "south-west"
+  ],
+  "entries": [
+    {
+      "id": "bronze",
+      "name": "Bronze Pickaxe",
+      "scene": "res://scenes/equipment/pickaxes/bronze.tscn",
+      "source_sheet_sha256": "104444675fabde339788c2c083def91b87465742b34d0eab09b0a8d4e5ed26b4",
+      "views": {
+        "south": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/bronze/south.png",
+          "grip": [
+            20,
+            32
+          ],
+          "sha256": "d2a6bf7b30178bb39315d688acd77d96b9b6d483b54511f91f7d659782de7e5b"
+        },
+        "south-east": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/bronze/south-east.png",
+          "grip": [
+            22,
+            31
+          ],
+          "sha256": "e4b906c3a7f860587e3085bc5e08af8b3beb9bd9715b162223afeed4c13e72c0"
+        },
+        "east": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/bronze/east.png",
+          "grip": [
+            22,
+            31
+          ],
+          "sha256": "ad5de9e84bb5d05eeed4d1970c5fac17e11a7294b61e26688c236382a87962a4"
+        },
+        "north-east": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/bronze/north-east.png",
+          "grip": [
+            19,
+            31
+          ],
+          "sha256": "f791c97b83db98c7a657678de012aee0ccfe2893a203e140fbfd07f4def3a915"
+        },
+        "north": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/bronze/north.png",
+          "grip": [
+            20,
+            32
+          ],
+          "sha256": "7e1c43e8517b27d7c494a300687dc589e03b7f43a2dd6275930a81a74d58ecb1"
+        },
+        "north-west": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/bronze/north-west.png",
+          "grip": [
+            18,
+            31
+          ],
+          "sha256": "662e4c7c2201f780ce0dd2f790bc07e0565b259744c7c530453e11efda3c11f7"
+        },
+        "west": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/bronze/west.png",
+          "grip": [
+            16,
+            31
+          ],
+          "sha256": "89ade9d4efbdeca5784491722a84897fdcb4c22d1f3285126be283236a8ffecb"
+        },
+        "south-west": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/bronze/south-west.png",
+          "grip": [
+            18,
+            31
+          ],
+          "sha256": "9a778f6d91bb76d73cb8fa6cc042bd3535778acc2b5f7473e49ea7ec3bc1fd28"
+        }
+      }
+    },
+    {
+      "id": "iron",
+      "name": "Iron Pickaxe",
+      "scene": "res://scenes/equipment/pickaxes/iron.tscn",
+      "source_sheet_sha256": "04342d93c3e89369c39b97c632ffb30c1247f78b1c1826d0f55bf4e1d835b011",
+      "views": {
+        "south": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/iron/south.png",
+          "grip": [
+            20,
+            32
+          ],
+          "sha256": "9bf26758c4b434fa684931b4d5f943a4e4091f385af6ab5d6c64ca8ad472075b"
+        },
+        "south-east": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/iron/south-east.png",
+          "grip": [
+            22,
+            31
+          ],
+          "sha256": "1a3fa65c7663207d1ab216ee614e34b4ec76ad216a4223de6e4b68118e336822"
+        },
+        "east": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/iron/east.png",
+          "grip": [
+            22,
+            31
+          ],
+          "sha256": "709f6aab7410eab861b4f72d1dcedc3b982b989cdf51488e1a531566b85704aa"
+        },
+        "north-east": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/iron/north-east.png",
+          "grip": [
+            19,
+            31
+          ],
+          "sha256": "d33dceeee23755e919ebe8f2bbc163d5ba7eeb824232c1bc0b80accc3a2826a4"
+        },
+        "north": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/iron/north.png",
+          "grip": [
+            20,
+            32
+          ],
+          "sha256": "dcb92cca179b4ae156e447f689f166703938bd8043565fc422353163b21d9487"
+        },
+        "north-west": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/iron/north-west.png",
+          "grip": [
+            18,
+            31
+          ],
+          "sha256": "ac8995807dbba1d3e0af674028e08ad9f9ecd6fcdc6f61b0e75ba48d41dd83cf"
+        },
+        "west": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/iron/west.png",
+          "grip": [
+            16,
+            31
+          ],
+          "sha256": "ab62afea047f347effcc5fa214f8b263dc0f5ba2eed1101b01e21eab1e4e4922"
+        },
+        "south-west": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/iron/south-west.png",
+          "grip": [
+            18,
+            31
+          ],
+          "sha256": "f50a380872be670342361cb485967baeab441c2f009ee76cc58cbd91d89b5adc"
+        }
+      }
+    },
+    {
+      "id": "steel",
+      "name": "Steel Pickaxe",
+      "scene": "res://scenes/equipment/pickaxes/steel.tscn",
+      "source_sheet_sha256": "9cfe8086b75413929a23cac35ba91c0aea8a363676cf44524d0423af3c475dbe",
+      "views": {
+        "south": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/steel/south.png",
+          "grip": [
+            20,
+            32
+          ],
+          "sha256": "dfaf17f4aae63c041058a3803085438f7da71bad52c14440d69bc4c8ac3a32ba"
+        },
+        "south-east": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/steel/south-east.png",
+          "grip": [
+            22,
+            31
+          ],
+          "sha256": "58008203810e7e94b85aa8cf3f11d567ddb521b0dacf51ed87239fabfccebc7b"
+        },
+        "east": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/steel/east.png",
+          "grip": [
+            22,
+            31
+          ],
+          "sha256": "246377bbc49d283d997617d1f6aed802e2dd4a960c1c0d4a46c72fd689c7ca65"
+        },
+        "north-east": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/steel/north-east.png",
+          "grip": [
+            19,
+            31
+          ],
+          "sha256": "217450ae88fd1e857a3f9810f88a0d1b9586c8fc52f8dfe43fb7e6c1ec8e69dd"
+        },
+        "north": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/steel/north.png",
+          "grip": [
+            20,
+            32
+          ],
+          "sha256": "9e056355f0119dcab8e56c97d4f52f86f9686777cda535e8564414b9fac243fb"
+        },
+        "north-west": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/steel/north-west.png",
+          "grip": [
+            18,
+            31
+          ],
+          "sha256": "c8efe102f15f3d76dcb4c214af01b79620155f04929c06025e40df6a8ce578d7"
+        },
+        "west": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/steel/west.png",
+          "grip": [
+            16,
+            31
+          ],
+          "sha256": "2ce62d1b3fa08cb22c161a0b2a57a99cb4a8e7a1e4ea37a2484eeb3328f0368c"
+        },
+        "south-west": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/steel/south-west.png",
+          "grip": [
+            18,
+            31
+          ],
+          "sha256": "4edced156200434a30f855ff15659dc2b7b87e4b29f2345abab0f7450e726903"
+        }
+      }
+    },
+    {
+      "id": "blacksteel",
+      "name": "Blacksteel Pickaxe",
+      "scene": "res://scenes/equipment/pickaxes/blacksteel.tscn",
+      "source_sheet_sha256": "c134ec3acdc2621e84661d4fb3a2d80c6897850415cbc69ae8a682e0a7da6e08",
+      "views": {
+        "south": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/blacksteel/south.png",
+          "grip": [
+            20,
+            32
+          ],
+          "sha256": "b6bfb44bfad059fe4673c61dfcfbbc1b05d2491c595c722314347fbb75fd10f2"
+        },
+        "south-east": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/blacksteel/south-east.png",
+          "grip": [
+            22,
+            31
+          ],
+          "sha256": "8e035031915118b8fef6c945ba9a280cf1dca93ddaf57abe1ef0e34afc792b22"
+        },
+        "east": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/blacksteel/east.png",
+          "grip": [
+            22,
+            31
+          ],
+          "sha256": "6e254d1ea498eefd4b6e2c5fb4a0655ad38d8449acae528c246d4a493dc719bd"
+        },
+        "north-east": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/blacksteel/north-east.png",
+          "grip": [
+            19,
+            31
+          ],
+          "sha256": "6edac3631a92d2e64bf60917a75d754d611f32e102ec90a049a88adb4c761dcf"
+        },
+        "north": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/blacksteel/north.png",
+          "grip": [
+            20,
+            32
+          ],
+          "sha256": "480f430246ae6ffc1cdb49923e845f2fbba0b4bc65282cd4264519ad4b1f0aa3"
+        },
+        "north-west": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/blacksteel/north-west.png",
+          "grip": [
+            18,
+            31
+          ],
+          "sha256": "b129342efdcde0b2b706cbce8737629c09f6eaf807ac14a04cd9c0c006ae9901"
+        },
+        "west": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/blacksteel/west.png",
+          "grip": [
+            16,
+            31
+          ],
+          "sha256": "4b3f30dcf115b19b2a2b0f022eaaf9813c044badc3b29eb23534e494b1432757"
+        },
+        "south-west": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/blacksteel/south-west.png",
+          "grip": [
+            18,
+            31
+          ],
+          "sha256": "a6de25e84427e3cfc4f8f286e4394a54b944b857839dd26776620716c7e8b5b1"
+        }
+      }
+    },
+    {
+      "id": "mithril",
+      "name": "Mithril Pickaxe",
+      "scene": "res://scenes/equipment/pickaxes/mithril.tscn",
+      "source_sheet_sha256": "8ed8bac3e5b49ca1bf6aae0c508450255b0945db6526a2094205e7145d67b172",
+      "views": {
+        "south": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/mithril/south.png",
+          "grip": [
+            20,
+            32
+          ],
+          "sha256": "dd78c44b3f543b230758452da357011829d617a46a721f4c05b4db7862b98319"
+        },
+        "south-east": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/mithril/south-east.png",
+          "grip": [
+            22,
+            31
+          ],
+          "sha256": "1fe8335160b8514bf474a6ddb18ca46d0c3bf1e9da79e19a71b8e6005439e58f"
+        },
+        "east": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/mithril/east.png",
+          "grip": [
+            22,
+            31
+          ],
+          "sha256": "a0f62e09828f26fb9f2702e3eb77808011c6a8cada04d0f60e651640ac6b673e"
+        },
+        "north-east": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/mithril/north-east.png",
+          "grip": [
+            19,
+            31
+          ],
+          "sha256": "13827714005cfb68030fffdfecfd88bc7c8c75824bb686c5d68bfcd6f9d1bffc"
+        },
+        "north": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/mithril/north.png",
+          "grip": [
+            20,
+            32
+          ],
+          "sha256": "44909be6e7081c450b331d8665d305e87e34d7400b566d4ed816b6d6f9d522d1"
+        },
+        "north-west": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/mithril/north-west.png",
+          "grip": [
+            18,
+            31
+          ],
+          "sha256": "651247c109c51cdf9bc77166a02288c156c251496fe4300ccd0ce4f74e9924a3"
+        },
+        "west": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/mithril/west.png",
+          "grip": [
+            16,
+            31
+          ],
+          "sha256": "321819a3997d700e47a3d0bfb19cb3e6d750046c365505c1581a65940c66f9e7"
+        },
+        "south-west": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/mithril/south-west.png",
+          "grip": [
+            18,
+            31
+          ],
+          "sha256": "a3f454da8c4d65a2b73c6231997d23257344f7e8cddf4078920373029d016f5c"
+        }
+      }
+    },
+    {
+      "id": "adamantite",
+      "name": "Adamantite Pickaxe",
+      "scene": "res://scenes/equipment/pickaxes/adamantite.tscn",
+      "source_sheet_sha256": "974b8b31b4d24c380c2e6a0c2eaed31dd9b85c2eef32115b7241a95bfd75e625",
+      "views": {
+        "south": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/adamantite/south.png",
+          "grip": [
+            20,
+            32
+          ],
+          "sha256": "f8609b13181bfe8823b02ea45eb5e9abfbe6a8e957c04516531427d9dc0a6410"
+        },
+        "south-east": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/adamantite/south-east.png",
+          "grip": [
+            22,
+            31
+          ],
+          "sha256": "b82a5b66058365b8a0716eaa104927f437ab05c1104f037c8c8b99a64bbc4617"
+        },
+        "east": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/adamantite/east.png",
+          "grip": [
+            22,
+            31
+          ],
+          "sha256": "7a191173db0de756d9eb996fea28982c3eed5d1edd7d29af07f0e803a994ea36"
+        },
+        "north-east": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/adamantite/north-east.png",
+          "grip": [
+            19,
+            31
+          ],
+          "sha256": "402d32e34603290b27c98a1afebe2a58b086fa65f32e1e485c2415bd14005546"
+        },
+        "north": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/adamantite/north.png",
+          "grip": [
+            20,
+            32
+          ],
+          "sha256": "1c36e019aa087601d9090f39c65b1262d5069117cc239b460c45c1871b4d9c68"
+        },
+        "north-west": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/adamantite/north-west.png",
+          "grip": [
+            18,
+            31
+          ],
+          "sha256": "aa5b85f20ecc11c3cbd5c99d73338e4d8cc14b22380a488de5979843ae27ad86"
+        },
+        "west": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/adamantite/west.png",
+          "grip": [
+            16,
+            31
+          ],
+          "sha256": "2b6152b5f4dd996f20d3ecb9f4d3413eac86a7e5b68229c46cf7c13e156ba6ac"
+        },
+        "south-west": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/adamantite/south-west.png",
+          "grip": [
+            18,
+            31
+          ],
+          "sha256": "fb6639d07753ef88f96797ddbd67d023403560aab9a2987f86f0e131142bf347"
+        }
+      }
+    },
+    {
+      "id": "runite",
+      "name": "Runite Pickaxe",
+      "scene": "res://scenes/equipment/pickaxes/runite.tscn",
+      "source_sheet_sha256": "7c1f230e30224326601ca2fff53093ef4af3dbdde6c3e6ad14735ce549a4a815",
+      "views": {
+        "south": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/runite/south.png",
+          "grip": [
+            20,
+            32
+          ],
+          "sha256": "a8a7aa2fc4d7da673379c95833da9efccf62dcedf2a054e1214c1442a6214a83"
+        },
+        "south-east": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/runite/south-east.png",
+          "grip": [
+            22,
+            31
+          ],
+          "sha256": "b33374e396f2d2c849f85a446c7869a1677932c367baad764d611c45d124252a"
+        },
+        "east": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/runite/east.png",
+          "grip": [
+            22,
+            31
+          ],
+          "sha256": "6ba3d6fb0952eff4cace9e31d215d554dd4ea2163583a4839b837ac2c404286f"
+        },
+        "north-east": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/runite/north-east.png",
+          "grip": [
+            19,
+            31
+          ],
+          "sha256": "a7871cea3969794f7ae4adcbcc5d767c4b3afbac649d201e99df4f98d468da0d"
+        },
+        "north": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/runite/north.png",
+          "grip": [
+            20,
+            32
+          ],
+          "sha256": "e361e288a834d76f77233ca13e7fcef55fe0749a3ed796cdcbad9a4da1ab27cc"
+        },
+        "north-west": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/runite/north-west.png",
+          "grip": [
+            18,
+            31
+          ],
+          "sha256": "3ebbf90b654247d8b5b5b801a6bdcb6bc925d8ecb4d214d4a7999ed874950cda"
+        },
+        "west": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/runite/west.png",
+          "grip": [
+            16,
+            31
+          ],
+          "sha256": "54b64a0450e1b5007792fbef1794fd41e709880487f035247c35e567164e9a4c"
+        },
+        "south-west": {
+          "texture": "res://Assets/Equipment/Pickaxes/Held/runite/south-west.png",
+          "grip": [
+            18,
+            31
+          ],
+          "sha256": "6627d11387cb05d7f614b2e76ad2a09f7c1c1a743eabecb01b80a61699970bff"
+        }
+      }
+    }
+  ],
+  "socket": "right_hand",
+  "component": "EquipmentVisual2D",
+  "source_scale": 1,
+  "world_pixels_per_source_pixel": 0.75,
+  "density_note": "Inherited from character; never apply scale twice.",
+  "source_provider": "Built-in imagegen design; PixelLab eight-view object and free palette edits",
+  "pixellab_object_id": "01ab845a-05df-4bad-865c-977345a7ccf7",
+  "pixellab_rotation_generation_quote": 1,
+  "material_variants": "Free exact palette edits; shared alpha/wood/grip",
+  "inventory_icons": false,
+  "mining_swing_animation": false,
+  "catalog_items_added": false,
+  "approval": "User likes designs; directional artwork and rig review remain separate from automatic checks."
+}

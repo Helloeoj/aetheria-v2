@@ -1,0 +1,51 @@
+{
+  "native_size": [
+    40,
+    40
+  ],
+  "grips": {
+    "south": [
+      20,
+      32
+    ],
+    "south-east": [
+      22,
+      31
+    ],
+    "east": [
+      22,
+      31
+    ],
+    "north-east": [
+      19,
+      31
+    ],
+    "north": [
+      20,
+      32
+    ],
+    "north-west": [
+      18,
+      31
+    ],
+    "west": [
+      16,
+      31
+    ],
+    "south-west": [
+      18,
+      31
+    ]
+  },
+  "support_grips": {
+    "south": [20, 22],
+    "south-east": [20, 22],
+    "east": [20, 22],
+    "north-east": [19, 22],
+    "north": [20, 22],
+    "north-west": [19, 22],
+    "west": [18, 22],
+    "south-west": [19, 22]
+  },
+  "basis": "Primary grip on lower leather; support grips retain the installed character-motion registration. User visual approval remains separate."
+}
