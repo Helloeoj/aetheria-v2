@@ -30,7 +30,7 @@ func _run() -> void:
 		actor.set_equipment({"weapon":{"name":name}})
 		var held := actor.attachment_rig.get_equipped_visual("weapon")
 		check(held is EquipmentVisual2D,name+" is a registered directional attachment")
-		check(game_data.get_item_by_name(name).is_empty(),name+" artwork does not invent catalog items")
+		check(game_data.get_item_by_name(name).is_empty() == (material != "Bronze"),name+" matches activated catalog scope")
 		if not held is EquipmentVisual2D:
 			continue
 		check(held.get_parent()==actor.attachment_rig.get_socket("right_hand"),name+" uses the actual right-hand socket")

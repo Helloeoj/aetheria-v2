@@ -4,14 +4,19 @@ extends RefCounted
 const Grid = preload("res://scripts/hidden_grid.gd")
 const CELL := 32.0
 const ACTOR := 24.0
+const RESERVED_LANE_INSET := 0.1
 var _result: Dictionary
 var _map: Node2D
 var _bounds: Rect2
 var _floor := PackedVector2Array()
 var _grid: HiddenGrid
+var _texture_pixel_cache: Dictionary = {}
 
 func audit(map: Node2D, spec: Dictionary) -> Dictionary:
-	_result = {"passed":false, "checks":0, "issues":[], "prop_textures":[], "conservative_footprints":[], "rendering_verified":false}
+	_result = {"passed":false, "checks":0, "issues":[], "prop_textures":[], "conservative_footprints":[], "rendering_verified":false, "texture_comparisons":0, "reserved_lane_query_inset_per_side_world_pixels":RESERVED_LANE_INSET, "reserved_lane_query_width_reduction_world_pixels":RESERVED_LANE_INSET * 2.0}
+	# A new run must reload source pixels, including after edits/reimports.
+	# Only the expensive pixel comparison is cached, never an instance's audit.
+	_texture_pixel_cache.clear()
 	_map = map
 	_floor = PackedVector2Array()
 	if not _check(_valid_contract(spec), "invalid_contract", "", "Contract v1 requires a real res:// .tscn, finite positive bounds/grid origin, at least one prop, two distinct anchors and one protected route (width >= 24); nonblocking props require reason."):
@@ -60,7 +65,7 @@ func audit(map: Node2D, spec: Dictionary) -> Dictionary:
 		for index in range(1, route.points.size()):
 			var start := _v(route.points[index - 1])
 			var finish := _v(route.points[index])
-			_check(_actor_sweep(start, finish, width), "reserved_lane_blocked", str(route.id), "Reserved %spx lane segment %d overlaps a solid or leaves authored bounds/floor." % [width, index])
+			_check(_reserved_lane_sweep(start, finish, width), "reserved_lane_blocked", str(route.id), "Reserved %spx lane segment %d overlaps a solid or leaves authored bounds/floor." % [width, index])
 			_check(_reachable(start, finish), "route_unreachable", str(route.id), "Protected route segment %d cannot connect its exact endpoints with shared-grid actor sweeps." % index)
 	_result.passed = _result.issues.is_empty()
 	# The grid owns callbacks to this RefCounted audit object; release the
@@ -85,8 +90,12 @@ func _audit_visuals(prop: Node, label: String) -> void:
 			if sprite.flip_v:
 				anchor.y = texture.get_height() - anchor.y
 			_result.prop_textures.append({"node":path, "texture":texture.resource_path, "native_size":[texture.get_width(), texture.get_height()], "anchor":[anchor.x, anchor.y], "world_scale":[sprite.global_transform.x.length(), sprite.global_transform.y.length()]})
-			var source: Image = Image.load_from_file(ProjectSettings.globalize_path(texture.resource_path)) if FileAccess.file_exists(texture.resource_path) else null
-			_check(images_match(texture.get_image(), source), "imported_texture_mismatch", path, "Loaded/imported texture differs from current source PNG dimensions, alpha or visible RGB; reimport before accepting this prop.")
+			var cache_key:String = str(texture.get_instance_id()) + ":" + texture.resource_path
+			if not _texture_pixel_cache.has(cache_key):
+				var source: Image = Image.load_from_file(ProjectSettings.globalize_path(texture.resource_path)) if FileAccess.file_exists(texture.resource_path) else null
+				_texture_pixel_cache[cache_key] = images_match(texture.get_image(), source)
+				_result.texture_comparisons += 1
+			_check(bool(_texture_pixel_cache[cache_key]), "imported_texture_mismatch", path, "Loaded/imported texture differs from current source PNG dimensions, alpha or visible RGB; reimport before accepting this prop.")
 		_check(_nearest_filter(sprite), "visual_filter", path, "Effective inherited texture filter must be nearest without mipmaps.")
 		_check(sprite.is_visible_in_tree(), "missing_visual", path, "Prop Sprite2D is hidden in the installed scene.")
 
@@ -248,6 +257,26 @@ func _actor_sweep(start: Vector2, finish: Vector2, width: float) -> bool:
 	var query := _actor_query(start, width)
 	query.motion = finish - start
 	var fractions := _map.get_world_2d().direct_space_state.cast_motion(query)
+	return fractions.size() == 2 and fractions[0] >= 0.99999
+
+func _reserved_lane_sweep(start: Vector2, finish: Vector2, width: float) -> bool:
+	# Authoritative geometry retains the full declared width. Only the physics
+	# contact test uses a0.1px interior to distinguish touching boundaries from
+	# positive overlap; ordinary24px actor queries keep their original margin.
+	var exact_polygon := _actor_polygon(start, finish, width)
+	if not _inside_bounds(exact_polygon) or not _inside_floor(exact_polygon):
+		return false
+	var query := _actor_query(start, width - RESERVED_LANE_INSET * 2.0)
+	query.margin = 0.0
+	var space := _map.get_world_2d().direct_space_state
+	if not space.intersect_shape(query, 1).is_empty():
+		return false
+	query.transform = Transform2D(0.0, finish)
+	if not space.intersect_shape(query, 1).is_empty():
+		return false
+	query.transform = Transform2D(0.0, start)
+	query.motion = finish - start
+	var fractions := space.cast_motion(query)
 	return fractions.size() == 2 and fractions[0] >= 0.99999
 
 func _reachable(start: Vector2, finish: Vector2) -> bool:

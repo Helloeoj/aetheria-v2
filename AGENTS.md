@@ -1,5 +1,24 @@
 # Aetheria debugging workflow
 
+## Hard rule: bounded work and usage control
+
+Reuse existing evidence and keep each pass focused on the requested repair.
+Use the smallest sufficient checks, including the actual game for visual fixes.
+There is no fixed attempt-count stop rule. Continue authorized work using
+evidence-driven fixes; report concrete blockers and incomplete work honestly.
+Do not silently expand scope, repeat successful test/render matrices, or start
+subagents unless explicitly requested. Once sufficient checks pass, finish the
+authorized delivery and stop. Incomplete work must be reported as incomplete.
+
+## Preserve the existing game
+
+Never redesign, replace, simplify or remove existing interfaces, minigames,
+artwork, controls or gameplay without explicit user permission. Moving gameplay
+server-side means preserving the existing game and changing its authority/data
+flow, not substituting new panels or an offline sandbox. Keep login and durable
+character progression. Routine implementation authorization is not redesign
+authorization. Reuse the original fishing and cooking interfaces and their art.
+
 ## Crisp artwork at maximum zoom
 
 All images, objects and props must remain as crisp as the player character at
@@ -17,7 +36,10 @@ Use 96px/three-cell centers for compact clusters and 128px/four-cell centers
 beside walking routes; keep the 32px placement grid and native artwork scale.
 Place ore nodes against room boundaries, never in room centers or across
 walking routes. Keep the main paths clear and each node accessible from the
-room. Verify physical bases and shared-grid routes after moving nodes.
+room. User-marked positions and colors take priority over default spacing and
+prop snapping; move only conflicted nodes minimally. Check the entire visible
+sprite against walls/other props as well as its physical bases and reachable
+shared-grid approaches. Small base colliders alone do not prove visual clearance.
 Sprite requests authorize artwork only. Do not infer permission to implement
 mining skills, progression, drops, item definitions, crafting/smelting recipes
 or world placement from art or material-naming discussions. Wait for explicit
@@ -123,3 +145,16 @@ Record a real Godot 4x render alongside the player and inspect visual wall
 cut-ins, ground contact and depth sorting. Automatic checks do not grant
 visual approval. Missing/failed evidence keeps the work pending; never
 auto-reposition objects or change existing gameplay to hide a failing check.
+
+## Map generation clarification â€” 2026-10-29
+
+The user clarified that the PixelLab-only restriction was a misunderstanding.
+Built-in imagegen is permitted for map/environment artwork using the approved
+style and Golem Kingdom whole-image workflow. The rejected Valtherian modular
+rebuild failed because of crude blockiness, gaps, seams and jank. Preserve the
+visible design of approved artwork; do not substitute procedural art or a generic
+wall/floor kit or redesign geometry to fit a 32px grid. Keep environment art free
+of actors/creatures and retain other generation holds. Candidate artwork, user
+visual approval and local installation are separate statuses. Installation still
+requires the actual placement contract, worldbuilding checks and real Godot 4Ã—
+review with the player; technical checks never substitute for visual approval.

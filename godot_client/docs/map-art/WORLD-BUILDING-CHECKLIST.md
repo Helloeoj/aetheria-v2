@@ -146,3 +146,12 @@ Task record minimum: request/profile; reused/generated sources and native
 size/density/anchor; changed nodes/world rectangle; floor/collision/route
 contract; automatic results; 1x/background and real 4x visual evidence; review
 and installation statuses; remaining defects/holds; next action.
+
+## Reviewed interaction-child exception
+
+The actual mine content scenes may contain the shared MiningDeposit Node2D
+child. The gate checks its exact script path and reviewed source fingerprint
+before loading, then permits it only on a child Node2D. Its presentation-only
+texture swaps retain the prop's static shapes. Other script dependencies and
+scripted Resource constructors remain rejected. Mining activation integration
+tests and actual full/depleted 4x review are still required.

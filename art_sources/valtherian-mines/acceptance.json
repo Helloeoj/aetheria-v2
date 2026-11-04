@@ -1,0 +1,78 @@
+{
+  "schema": 2,
+  "date": "2026-10-28",
+  "status": "Exact user-approved image restored locally; automatic and placement/depth checks passed",
+  "user_direction": "Use the exact map painted with dots. Reject modular reconstruction. No generation or PixelLab spending for this correction.",
+  "actual_scene": "res://scenes/ValtherianMinesContent.tscn",
+  "scene_sha256": "4c32d5d670babf13da46586c54c23e4417850af2c3e5970cd0caccc61930359a",
+  "layout_sha256": "5305e2044444cd16ee4ddd8f79290c84d8d2853de8a6da94039345b896a8b03b",
+  "source_sha256": "8ddfeb0018110c36f3937592a09b378f61b9122d1d2f761eb4f6931dffedea90",
+  "source_native_size": [
+    1703,
+    924
+  ],
+  "world_size": [
+    6144,
+    3328
+  ],
+  "gameplay_grid_world_pixels": 32,
+  "actor_body_world_pixels": [
+    24,
+    24
+  ],
+  "automatic": {
+    "passed": true,
+    "source_native_gpu_rgb_differences": 0,
+    "worldbuilding_checks": 821,
+    "canonical_asset_types": 5,
+    "actual_physics_checks": 2077,
+    "metrics": {
+      "authored_floor_cells": 3571,
+      "body_clear_floor_cells": 3470,
+      "exact_ore_approaches": 29,
+      "ore_occupied_floor_centers": 101,
+      "ore_roster": {
+        "adamantite": 2,
+        "blackstone": 12,
+        "coal": 7,
+        "iron": 4,
+        "mithril": 4
+      },
+      "outside_centers_tested": 16397,
+      "outside_escape_centers": [],
+      "progression_checks": 8,
+      "reachable_clear_centers": 3470,
+      "rejected_diagonal_corners": 758,
+      "reserved_lane_checks": 273,
+      "reserved_lane_numeric_inset_pixels": 0.2,
+      "safe_diagonals": 10384,
+      "separate_warm_supports": 0,
+      "unexplained_blocked_centers": [],
+      "unsafe_swept_edges": 0
+    },
+    "travel_checks": 154,
+    "runtime_navigation_probes": 67,
+    "ore_nodes": 29,
+    "ore_moves": 0,
+    "image_generation_calls": 0,
+    "pixellab_service_calls": 0
+  },
+  "visual_review": {
+    "original_artwork_preserved": true,
+    "background_redrawn": false,
+    "new_wall_or_lantern_art_used": false,
+    "actual_captures": 38,
+    "coverage": "Complete original with29nodes, all29ore/player4xviews,6actualcollisionoverlays,arrival1x",
+    "foreground": "Exact-source RGBA wall bands over unchanged complete source, foot-sorted; no hidden floor synthesis",
+    "observations": "Reviewed exact-map and ore/collision views: whole canonical nodes remain clear of painted walls and each other, exact approaches admit the original player.",
+    "resolution_limit": "Original1703x924 image retains its existing detail at the registered world size.4x is visibly coarser than the character; no new resolution or character-parity claim. The user explicitly prioritized restoring this exact image without further generation.",
+    "subpixel_note": "Foreground copies preserve native RGB exactly; fractional4x nearest sampling has minor edge-sample differences in some camera positions, without visible seams."
+  },
+  "installation": {
+    "local": true,
+    "existing_east_facing_entrance_retained": true,
+    "live_server_deployed": false,
+    "skill_combat_recipe_or_reward_rules_changed": false
+  },
+  "evidence": "Supporting task approved-restoration/ holds generated reports/renders outsideGit. Rejected modular checks remain historical in rejected-native-acceptance.json."
+}

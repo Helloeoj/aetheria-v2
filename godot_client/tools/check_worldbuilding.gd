@@ -2,6 +2,10 @@ extends SceneTree
 ## --headless --path godot_client --script res://tools/check_worldbuilding.gd
 ## -- --manifest <absolute JSON> --report <absolute JSON outside project>
 const Audit = preload("res://tools/worldbuilding_audit.gd")
+# Reviewed presentation-only interaction child: no constructor/physics changes.
+# Any change to this script requires an explicit review and updated fingerprint.
+const MINING_SCRIPT := "res://scripts/mining_deposit.gd"
+const MINING_SCRIPT_SHA256 := "0a196765edd9fbdd8cf06399a74d08ac8b545fba9c3dc17a2d726cffee90ba65"
 var _report_path := ""
 
 func _initialize() -> void:
@@ -70,6 +74,8 @@ func _passive_dependencies(path: String, visited: Dictionary) -> String:
 		return "Dependency cannot be inspected as local project source: " + path
 	var extension := path.get_extension().to_lower()
 	if extension in ["gd", "gdc", "cs"]:
+		if path == MINING_SCRIPT and FileAccess.get_file_as_string(path).replace("\r\n", "\n").sha256_text() == MINING_SCRIPT_SHA256:
+			return ""
 		return "Executable script dependency is forbidden in passive content: " + path
 	if extension not in ["tscn", "tres"]:
 		# Only known raw media/shader leaves are exempt from scene/resource text
@@ -82,7 +88,17 @@ func _passive_dependencies(path: String, visited: Dictionary) -> String:
 		return "Scene/resource is not inspectable Godot text: " + path
 	var executable := RegEx.new()
 	executable.compile('(?m)^\\s*(?:script(?:/source)?\\s*=|\\[(?:sub_resource|ext_resource)\\s+[^\\r\\n\\]]*type\\s*=\\s*"(?:GDScript|CSharpScript|Script)")')
-	if executable.search(source) != null:
+	var inspected_source := source
+	var mining_declaration := RegEx.new()
+	mining_declaration.compile('(?m)^\\[ext_resource type="Script" path="res://scripts/mining_deposit\\.gd" id="([A-Za-z0-9_]+)"\\]\\r?$')
+	for declaration: RegExMatch in mining_declaration.search_all(source):
+		inspected_source = inspected_source.replace(declaration.get_string(), "")
+		var assignment := 'script = ExtResource("%s")' % declaration.get_string(1)
+		var retained_lines: PackedStringArray = []
+		for line: String in inspected_source.split("\n"):
+			if line.strip_edges() != assignment: retained_lines.append(line)
+		inspected_source = "\n".join(retained_lines)
+	if executable.search(inspected_source) != null:
 		return "Embedded or attached script is forbidden in passive content: " + path
 	for dependency: String in ResourceLoader.get_dependencies(path):
 		var resolved := ""
@@ -109,7 +125,9 @@ func _editable_state(state: SceneState, visited: Dictionary) -> bool:
 	for index in range(state.get_node_count()):
 		for property in range(state.get_node_property_count(index)):
 			if state.get_node_property_name(index, property) == &"script" and state.get_node_property_value(index, property) != null:
-				return false
+				var script: Variant = state.get_node_property_value(index, property)
+				if index == 0 or state.get_node_type(index) != &"Node2D" or not script is Script or script.resource_path != MINING_SCRIPT:
+					return false
 		var instance: PackedScene = state.get_node_instance(index)
 		if instance != null and not _editable_state(instance.get_state(), visited):
 			return false

@@ -1,0 +1,23 @@
+Use case: precise-object-edit / structural mine-map revision.
+Primary task: Enlarge the rooms of the liked Valtherian Mines layout while obeying the user's fixed32-world-pixel tile rule and retaining its long east-to-west progression with five side branches. KEEP THE DARK BACKGROUND: the user explicitly canceled an accidental remove-background action. Output opaque artwork, not transparent.
+
+IMAGE1 is the NEW BINDING FLOOR GEOMETRY GUIDE, authored in real32px world cells, world6144x3328 pixels (192x104 cells), fixed origin(0,0). Tan is walking floor; black/dark is solid rock/void. All clear-room rectangles and corridor edges are defined on that32px lattice. It deliberately spreads junctions apart and gives the chambers much more clear floor.
+IMAGE2 is the LIKED ARTWORK / FLOW / CAMERA reference. Preserve its stone/tan/amber/teal materials, camera angle, crisp pixel style, long east-to-west main tunnel and five branch order. Its rooms are TOO SMALL; do NOT preserve its old room sizes or scale the entire old image uniformly. The geometry of image1 replaces their extents. Do not borrow the earlier rejected portrait blob of rooms.
+
+The revised chamber sizes are CLEAR FLOOR before walls/props:
+- Far-west terminal room24x20 cells (768x640 world px).
+- Three primary side combat chambers20x16 through22x18 cells (640x512 through704x576px).
+- Two peripheral mining galleries18x14 cells (576x448px).
+- Two main-route combat widenings22x16 and24x16 cells.
+- Main corridor6cells/192px clear, side passages4cells/128px clear. Maintain open entrances and junctions. Each room should visibly feel at least three times the main passage's clear width, with broad uncluttered centers.
+These numbers describe the future native tiled world; an overview can be downsampled for viewing, but it will never be used as an enlarged low-resolution runtime background. Actual game terrain/props must remain at native pixel scale. Make the relative room expansion unmistakable in this preview.
+
+Preserve topology:
+ONE sole entrance on the FAR RIGHT / EAST boundary, lower part around62%height, leading left/west. The player's route then visibly travels across nearly the whole dungeon to the far western terminal. Keep long corridor runs between distinct junctions and doglegs. FIVE singly attached sidelines alternate north/south and each leads to a separate large chamber. NO loops, no crosslinks, no new entrances, no room merges, no short circuits between early and late sections. Solid rock separation stays between unrelated paths and rooms; never inflate rooms until they touch neighboring corridors. Room silhouettes may have natural chipped/mined edges, but keep the guide's generous interior rectangles and corridors. The added one-cell perimeter around each clear room can accommodate irregular stone walls while preserving the usable floor.
+
+Art:
+Established Aetheria LOW TOP-DOWN2D fantasy pixel-art camera, not isometric. Clean deliberate hard pixel clusters, faceted taupe/gray rock, compacted warm tan-earth floor, upper-left light, occasional wall-attached timber bracing and amber lanterns, sparse restrained teal mineral wall flecks. Larger chamber floors mean MORE SPACE for the same character/ore scale; do not make rocks, lanterns or props gigantic. Floor boundary remains clearly visible and ordinary passages open. ALL floor is ONE flat elevation; no stairs, bridges, painted crossing paths or cliff tiers.
+No oversized boulders intruding into rooms. Keep big empty centers with ample perimeter space for canonical ore props later. Do not paint harvestable ore nodes or random rock clusters into the floor.
+
+Environment ONLY: no people, heroes, NPCs, monsters, golems, animals, enemies, skeleton-creatures or character sprites. No loose props/carts/crates/barrels/tools/rails/furniture/floor crystals or obstacles. Characters and existing approved ore scenes will be placed separately after layout approval. No text, tile grid, arrows, dimensions, legend, UI, logos, watermarks, fog, bloom, blur, antialiasing or smooth gradient texture.
+Output ONE wide complete map artwork candidate, matching image1's overall6144:3328aspect ratio at the largest available canvas. Keep the near-black opaque void/rock background and the complete outer wall silhouette inside the frame except the sole east entry. This remains an unapproved artwork overview; image appearance does not certify final physics or4x runtime quality.

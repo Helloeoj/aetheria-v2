@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4]
+[gd_scene load_steps=7 format=4]
 
 [ext_resource type="TileSet" path="res://Assets/Tilesets/World00_Grass.tres" id="1_muemc"]
 [ext_resource type="TileSet" path="res://Assets/Tilesets/World01_PathsAndQuays.tres" id="2_ivh2c"]
 [ext_resource type="TileSet" path="res://Assets/Tilesets/World02_Water.tres" id="3_6im5p"]
 [ext_resource type="TileSet" path="res://Assets/Tilesets/World03_GroundDetails.tres" id="4_3yspm"]
 [ext_resource type="TileSet" path="res://Assets/Tilesets/WorldMapObjects.tres" id="5_f50mh"]
+[ext_resource type="PackedScene" path="res://scenes/ValtherianMinesEntranceProp.tscn" id="6_valtherian_entrance"]
 
 [node name="ValtheirisWorldContent" type="Node2D"]
 y_sort_enabled = true
@@ -106,3 +107,6 @@ texture_filter = 1
 tile_map_data = PackedByteArray("AADR/+z/AQAAAAAAlgDS/+7/AQAAAAAAvgDT/+7/AQAAAAAAvwDk/+7/AQAAAAAA0ADU/+//AQAAAAAA0QDV/+//AQAAAAAA0gDj/+//AQAAAAAA4ADW//D/AQAAAAAA4QDX//D/AQAAAAAA4gDi//D/AQAAAAAA7QDY//H/AQAAAAAA7gDZ//H/AQAAAAAA7wDa//L/AQAAAAAA+ADb//L/AQAAAAAA+QDh//L/AQAAAAAA/wDc//P/AQAAAAAAAAHd//P/AQAAAAAAAQHg//P/AQAAAAAABAHe//T/AQAAAAAABQHf//T/AQAAAAAABgE=")
 tile_set = ExtResource("5_f50mh")
 navigation_enabled = false
+
+[node name="ValtherianMinesEntranceProp" parent="." instance=ExtResource("6_valtherian_entrance")]
+position = Vector2(320, -1)

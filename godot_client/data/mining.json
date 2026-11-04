@@ -2,7 +2,7 @@
   "schema_version": 1,
   "ores": [
     {
-      "item_id": 235,
+      "item_id": 330,
       "required_level": 1,
       "xp_reward": 121,
       "success": {
@@ -13,8 +13,126 @@
       },
       "respawn_seconds": 4.0,
       "node_scene": "res://scenes/gathering/mining_deposit.tscn",
-      "visual": {"available": "", "depleted": ""}
+      "visual": {
+        "available": "res://Assets/MapTiles/OreNodes/Detail128/copper-ore-full-south.png",
+        "depleted": "res://Assets/MapTiles/OreNodes/Detail128/copper-ore-depleted-south.png"
+      },
+      "prop_id": "copper"
+    },
+    {
+      "item_id": 331,
+      "required_level": 1,
+      "xp_reward": 121,
+      "success": {
+        "p_at_unlock": 0.28,
+        "p_at_mastery": 0.78,
+        "mastery_levels": 26,
+        "curve_exponent": 1.15
+      },
+      "respawn_seconds": 4.0,
+      "node_scene": "res://scenes/gathering/mining_deposit.tscn",
+      "visual": {
+        "available": "res://Assets/MapTiles/OreNodes/Detail128/tin-ore-full-south.png",
+        "depleted": "res://Assets/MapTiles/OreNodes/Detail128/tin-ore-depleted-south.png"
+      },
+      "prop_id": "tin"
+    },
+    {
+      "item_id": 239,
+      "required_level": 12,
+      "xp_reward": 230,
+      "success": {
+        "p_at_unlock": 0.25,
+        "p_at_mastery": 0.74,
+        "mastery_levels": 30,
+        "curve_exponent": 1.2
+      },
+      "respawn_seconds": 5.0,
+      "node_scene": "res://scenes/gathering/mining_deposit.tscn",
+      "visual": {
+        "available": "res://Assets/MapTiles/OreNodes/Detail128/iron-ore-full-south.png",
+        "depleted": "res://Assets/MapTiles/OreNodes/Detail128/iron-ore-depleted-south.png"
+      },
+      "prop_id": "iron"
+    },
+    {
+      "item_id": 329,
+      "required_level": 27,
+      "xp_reward": 400,
+      "success": {
+        "p_at_unlock": 0.24,
+        "p_at_mastery": 0.72,
+        "mastery_levels": 32,
+        "curve_exponent": 1.3
+      },
+      "respawn_seconds": 6.0,
+      "node_scene": "res://scenes/gathering/mining_deposit.tscn",
+      "visual": {
+        "available": "res://Assets/MapTiles/OreNodes/Detail128/coal-full-south.png",
+        "depleted": "res://Assets/MapTiles/OreNodes/Detail128/coal-depleted-south.png"
+      },
+      "prop_id": "coal"
+    },
+    {
+      "item_id": 332,
+      "required_level": 42,
+      "xp_reward": 654,
+      "success": {
+        "p_at_unlock": 0.23,
+        "p_at_mastery": 0.7,
+        "mastery_levels": 34,
+        "curve_exponent": 1.2
+      },
+      "respawn_seconds": 8.0,
+      "node_scene": "res://scenes/gathering/mining_deposit.tscn",
+      "visual": {
+        "available": "res://Assets/MapTiles/OreNodes/Detail128/blackstone-full-south.png",
+        "depleted": "res://Assets/MapTiles/OreNodes/Detail128/blackstone-depleted-south.png"
+      },
+      "prop_id": "blackstone"
+    },
+    {
+      "item_id": 249,
+      "required_level": 60,
+      "xp_reward": 1054,
+      "success": {
+        "p_at_unlock": 0.22,
+        "p_at_mastery": 0.68,
+        "mastery_levels": 35,
+        "curve_exponent": 1.25
+      },
+      "respawn_seconds": 10.0,
+      "node_scene": "res://scenes/gathering/mining_deposit.tscn",
+      "visual": {
+        "available": "res://Assets/MapTiles/OreNodes/Detail128/mithril-ore-full-south.png",
+        "depleted": "res://Assets/MapTiles/OreNodes/Detail128/mithril-ore-depleted-south.png"
+      },
+      "prop_id": "mithril"
+    },
+    {
+      "item_id": 252,
+      "required_level": 79,
+      "xp_reward": 1757,
+      "success": {
+        "p_at_unlock": 0.25,
+        "p_at_mastery": 0.66,
+        "mastery_levels": 28,
+        "curve_exponent": 1.15
+      },
+      "respawn_seconds": 12.0,
+      "node_scene": "res://scenes/gathering/mining_deposit.tscn",
+      "visual": {
+        "available": "res://Assets/MapTiles/OreNodes/Detail128/adamantite-ore-full-south.png",
+        "depleted": "res://Assets/MapTiles/OreNodes/Detail128/adamantite-ore-depleted-south.png"
+      },
+      "prop_id": "adamantite"
     }
   ],
-  "pickaxes": []
+  "pickaxes": [
+    {
+      "item_id": 333,
+      "required_level": 1,
+      "attempt_interval_seconds": 3.0
+    }
+  ]
 }

@@ -50,6 +50,11 @@ func _run() -> void:
 		var entry: Dictionary = entries[index]
 		check(entry.get("id") == ORDER[index], "Material order remains discoverable and stable")
 		var expected_anchor: Array = entry.get("anchor", [])
+		var world_anchor: Array = entry.get("world_anchor", expected_anchor)
+		var native_size: Array = entry.get("native_canvas_size", data.get("native_canvas_size", [96, 96]))
+		var expected_scale: Array = entry.get("visual_scale", data.get("visual_scale", [1, 1]))
+		var density := Vector2(float(expected_scale[0]), float(expected_scale[1]))
+		var native_canvas := Vector2(float(native_size[0]), float(native_size[1]))
 		var pair: Array[Node2D] = []
 		for state: String in ["full", "depleted"]:
 			var variant: Dictionary = entry.get(state, {})
@@ -71,20 +76,31 @@ func _run() -> void:
 			check(foot != null and visual != null, "The whole prop includes artwork and a physical base")
 			if foot == null or visual == null:
 				continue
-			check(foot.position == Vector2.ZERO and foot.collision_layer == 1 and foot.collision_mask == 0 and foot.is_in_group("world_solid"), "Base follows existing static-world collision conventions")
+			check(foot.position == Vector2.ZERO and foot.scale == Vector2.ONE and foot.collision_layer == 1 and foot.collision_mask == 0 and foot.is_in_group("world_solid"), "Base follows existing static-world collision conventions")
 			check(visual.texture_filter == CanvasItem.TEXTURE_FILTER_NEAREST and node.texture_filter == CanvasItem.TEXTURE_FILTER_NEAREST, "Both prop and imported visual explicitly keep nearest filtering")
-			check(not visual.centered and visual.position == -Vector2(float(expected_anchor[0]), float(expected_anchor[1])), "Authored foot anchor is retained")
-			check(visual.texture != null and visual.texture.get_size() == Vector2(96, 96) and visual.texture.resource_path == variant.get("texture"), "The imported native96px texture is used without resizing")
+			check(not visual.centered and visual.position == -Vector2(float(world_anchor[0]), float(world_anchor[1])) and visual.scale == density, "Authored world foot anchor and visual density are retained")
+			check(visual.position + Vector2(float(expected_anchor[0]), float(expected_anchor[1])) * visual.scale == Vector2.ZERO and native_canvas * visual.scale == Vector2(96, 96), "Native image maps to the unchanged world anchor and96px canvas")
+			check(visual.texture != null and visual.texture.get_size() == native_canvas and visual.texture.resource_path == variant.get("texture"), "The imported texture retains its declared native pixel canvas")
 			var texture_path: String = variant.get("texture", "")
-			var original := repository.path_join("art_sources/ore-nodes").path_join(texture_path.get_file())
+			var source_directory: String = data.get("source_art_directory", "art_sources/ore-nodes")
+			var original := repository.path_join(source_directory).path_join(texture_path.get_file())
 			check(FileAccess.get_sha256(texture_path) == FileAccess.get_sha256(original), "Installed texture is byte-identical to the approved source PNG")
 			check(variant.get("source_sha256", "") == FileAccess.get_sha256(texture_path), "Manifest checksum matches the current source artwork")
 			var settings := ConfigFile.new()
 			check(settings.load(texture_path + ".import") == OK and settings.get_value("params", "compress/mode", -1) == 0 and not settings.get_value("params", "mipmaps/generate", true), "Texture import is lossless without mipmaps")
 			var polygons := foot.find_children("*", "CollisionPolygon2D", true, false)
 			check(polygons.size() == 2, "Main rock and companion rock each have a base collider")
-			for polygon: CollisionPolygon2D in polygons:
+			var expected_polygons: Array = entry.get("collision_polygons", [])
+			check(expected_polygons.size() == polygons.size(), "Manifest records both unchanged physical bases")
+			for polygon_index in polygons.size():
+				var polygon: CollisionPolygon2D = polygons[polygon_index]
 				check(not polygon.disabled and polygon.polygon.size() >= 3, "Physical bases have valid authored polygons")
+				if polygon_index < expected_polygons.size():
+					var expected_polygon: Array = expected_polygons[polygon_index]
+					check(polygon.polygon.size() == expected_polygon.size() and polygon.position == Vector2.ZERO and polygon.scale == Vector2.ONE, "Physical base geometry and transform are preserved")
+					for point_index in mini(polygon.polygon.size(), expected_polygon.size()):
+						var expected_point: Array = expected_polygon[point_index]
+						check(polygon.polygon[point_index].is_equal_approx(Vector2(float(expected_point[0]), float(expected_point[1]))), "Physical base point matches the recorded original polygon")
 				for point: Vector2 in polygon.polygon:
 					check(absf(point.x) < 48 and absf(point.y) < 40, "Collision covers only the base, not the transparent96px canvas")
 		if pair.size() == 2:

@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/Maps/ValtherianMines/Props/TimberLantern.png" id="1"]
+
+[node name="TimberLantern" type="Node2D"]
+y_sort_enabled = false
+texture_filter = 1
+metadata/native_canvas = Vector2i(1254, 1254)
+metadata/source_anchor = Vector2i(864, 1200)
+metadata/world_pixels_per_source_pixel = 0.0625
+metadata/boundary_cladding = true
+
+[node name="Visual" type="Sprite2D" parent="."]
+position = Vector2(-54, -75)
+scale = Vector2(0.0625, 0.0625)
+texture_filter = 1
+texture = ExtResource("1")
+centered = false

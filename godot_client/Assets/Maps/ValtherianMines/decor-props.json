@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "units": [
+    {
+      "id": "TimberLantern",
+      "scene": "res://scenes/MapProps/ValtherianMines/TimberLantern.tscn",
+      "texture": "res://Assets/Maps/ValtherianMines/Props/TimberLantern.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        864,
+        1200
+      ],
+      "world_pixels_per_source_pixel": 0.0625,
+      "visible_source_bounds": [
+        289,
+        104,
+        974,
+        1191
+      ],
+      "sha256": "53346afedebbe8884b554d575a9947cc384dc67753c37247521da3e86721ebec",
+      "alpha_reason": "Whole opaque wood/metal retains source near-opaque alpha252-253 plus narrow edge coverage128-251. PixelLab removed observed alpha1-127 matte; one connected intact silhouette, no glow or stray components. Light/dark/ground and real4x reviews recorded separately.",
+      "physics": "Wall-mounted visual; actual continuous CaveBoundary owns the support foot."
+    }
+  ]
+}

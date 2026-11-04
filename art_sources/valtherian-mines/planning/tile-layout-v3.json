@@ -1,0 +1,332 @@
+{
+  "schema": 1,
+  "status": "tile-authored layout proposal; no installed scene or physical certification",
+  "gameplay_cell_pixels": 32,
+  "gameplay_grid_origin": [
+    0,
+    0
+  ],
+  "actor_body_pixels": [
+    24,
+    24
+  ],
+  "world_size_cells": [
+    192,
+    104
+  ],
+  "world_size_pixels": [
+    6144,
+    3328
+  ],
+  "main_width_cells": 6,
+  "side_width_cells": 4,
+  "minimum_planned_choke_cells": 4,
+  "main_route_cells": [
+    [
+      192,
+      64
+    ],
+    [
+      172,
+      64
+    ],
+    [
+      156,
+      64
+    ],
+    [
+      156,
+      48
+    ],
+    [
+      140,
+      48
+    ],
+    [
+      116,
+      48
+    ],
+    [
+      104,
+      48
+    ],
+    [
+      104,
+      68
+    ],
+    [
+      84,
+      68
+    ],
+    [
+      64,
+      68
+    ],
+    [
+      64,
+      40
+    ],
+    [
+      48,
+      40
+    ],
+    [
+      36,
+      40
+    ],
+    [
+      36,
+      24
+    ],
+    [
+      16,
+      24
+    ]
+  ],
+  "branches": [
+    {
+      "id": "east_upper_branch",
+      "points": [
+        [
+          172,
+          64
+        ],
+        [
+          172,
+          38
+        ],
+        [
+          178,
+          38
+        ],
+        [
+          178,
+          16
+        ]
+      ]
+    },
+    {
+      "id": "upper_east_branch",
+      "points": [
+        [
+          140,
+          48
+        ],
+        [
+          140,
+          32
+        ],
+        [
+          124,
+          32
+        ],
+        [
+          124,
+          14
+        ]
+      ]
+    },
+    {
+      "id": "lower_east_branch",
+      "points": [
+        [
+          116,
+          48
+        ],
+        [
+          116,
+          74
+        ],
+        [
+          132,
+          74
+        ],
+        [
+          132,
+          90
+        ]
+      ]
+    },
+    {
+      "id": "upper_west_branch",
+      "points": [
+        [
+          84,
+          68
+        ],
+        [
+          84,
+          30
+        ],
+        [
+          98,
+          30
+        ],
+        [
+          98,
+          12
+        ]
+      ]
+    },
+    {
+      "id": "lower_west_branch",
+      "points": [
+        [
+          48,
+          40
+        ],
+        [
+          48,
+          74
+        ],
+        [
+          32,
+          74
+        ],
+        [
+          32,
+          90
+        ]
+      ]
+    }
+  ],
+  "rooms": [
+    {
+      "id": "far_west_chamber",
+      "role_proposal": "destination/combat",
+      "clear_rect_cells": [
+        4,
+        14,
+        24,
+        20
+      ],
+      "clear_rect_world_pixels": [
+        128,
+        448,
+        768,
+        640
+      ]
+    },
+    {
+      "id": "east_upper_chamber",
+      "role_proposal": "combat",
+      "clear_rect_cells": [
+        168,
+        8,
+        20,
+        16
+      ],
+      "clear_rect_world_pixels": [
+        5376,
+        256,
+        640,
+        512
+      ]
+    },
+    {
+      "id": "upper_east_chamber",
+      "role_proposal": "combat",
+      "clear_rect_cells": [
+        113,
+        5,
+        22,
+        18
+      ],
+      "clear_rect_world_pixels": [
+        3616,
+        160,
+        704,
+        576
+      ]
+    },
+    {
+      "id": "lower_east_chamber",
+      "role_proposal": "combat",
+      "clear_rect_cells": [
+        121,
+        81,
+        22,
+        18
+      ],
+      "clear_rect_world_pixels": [
+        3872,
+        2592,
+        704,
+        576
+      ]
+    },
+    {
+      "id": "upper_west_gallery",
+      "role_proposal": "mining",
+      "clear_rect_cells": [
+        89,
+        5,
+        18,
+        14
+      ],
+      "clear_rect_world_pixels": [
+        2848,
+        160,
+        576,
+        448
+      ]
+    },
+    {
+      "id": "lower_west_gallery",
+      "role_proposal": "mining",
+      "clear_rect_cells": [
+        23,
+        83,
+        18,
+        14
+      ],
+      "clear_rect_world_pixels": [
+        736,
+        2656,
+        576,
+        448
+      ]
+    },
+    {
+      "id": "east_combat_hall",
+      "role_proposal": "combat",
+      "clear_rect_cells": [
+        122,
+        40,
+        24,
+        16
+      ],
+      "clear_rect_world_pixels": [
+        3904,
+        1280,
+        768,
+        512
+      ]
+    },
+    {
+      "id": "west_combat_hall",
+      "role_proposal": "combat",
+      "clear_rect_cells": [
+        76,
+        60,
+        22,
+        16
+      ],
+      "clear_rect_world_pixels": [
+        2432,
+        1920,
+        704,
+        512
+      ]
+    }
+  ],
+  "planning_checks": {
+    "floor_cells": 5498,
+    "cardinal_reachable_cells": 5498,
+    "declared_clear_room_rectangles_present": true,
+    "progression_cut_gates": 3
+  },
+  "preview_policy": "Generated overview may be downscaled for viewing. It is not a runtime texture to upscale; actual terrain and props require native art and the actual-scene worldbuilding gate after image approval.",
+  "native_wall_review_note": "West combat hall and adjacent main leg leave a two-cell/64px rock band at x99-100,y60-64. Native wall silhouettes must be checked here; no universal96px rock-separation pass is claimed.",
+  "background": "Keep existing dark rock/void; accidental background-removal request was canceled."
+}

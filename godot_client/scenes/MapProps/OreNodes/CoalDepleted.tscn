@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3]
 
-[ext_resource type="Texture2D" path="res://Assets/MapTiles/OreNodes/coal-depleted-south.png" id="1_texture"]
+[ext_resource type="Texture2D" path="res://Assets/MapTiles/OreNodes/Detail128/coal-depleted-south.png" id="1_texture"]
 
 [node name="CoalDepleted" type="Node2D"]
 y_sort_enabled = true
@@ -14,6 +14,8 @@ collision_mask = 0
 
 [node name="Visual" type="Sprite2D" parent="Footprint"]
 position = Vector2(-48, -72)
+scale = Vector2(0.75, 0.75)
+metadata/native_image_anchor = Vector2(64, 96)
 texture_filter = 1
 texture = ExtResource("1_texture")
 centered = false

@@ -1,12 +1,12 @@
 {
-  "version": 1,
+  "version": 2,
   "tile_size": [
     32,
     32
   ],
   "native_canvas_size": [
-    96,
-    96
+    128,
+    128
   ],
   "native_scale": 1,
   "world_source_id": 2,
@@ -18,24 +18,24 @@
     "default": 96,
     "wide": 128
   },
-  "spacing_guide": "Place node roots three 32px cells apart for compact clusters and four cells apart along busy routes. Preserve 96px source canvases at native scale.",
+  "spacing_guide": "Unchanged root spacing: 96 world pixels compact; 128 beside routes. Native128 artwork occupies the original96-world-pixel canvas.",
   "collision_coordinate_space": "footprint_local",
   "collision_note": "Two convex 8-point physical-base polygons per prop. Footprint and root origins coincide. Full/depleted states share identical anchors and collision.",
-  "anchor_note": "Anchor is the image-space foot/sort origin; Visual position is its negative. Native image pixels are not resized to the 32px map grid.",
+  "anchor_note": "Native image foot anchor (64,96) maps through Visual.scale .75 to world foot anchor (48,72). Visual.position remains (-48,-72); root scale remains 1.",
   "texture_import": {
     "compression": "lossless",
     "mipmaps": false,
     "filter": "nearest"
   },
-  "source_art_directory": "art_sources/ore-nodes",
-  "source_status": "Canonical user-selected prop family, installed for reusable map placement. Tin revised to the same shared shape at the user request. No existing world nodes placed or changed.",
+  "source_art_directory": "art_sources/ore-nodes/detail-v1",
+  "source_status": "Native128 clarity artwork installed; automatic integrity checks do not confer artwork approval or Godot4x visual acceptance.",
   "entries": [
     {
       "id": "copper",
       "name": "Copper",
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
       "collision_polygons": [
         [
@@ -109,23 +109,35 @@
       ],
       "full": {
         "scene": "res://scenes/MapProps/OreNodes/CopperOreFull.tscn",
-        "texture": "res://Assets/MapTiles/OreNodes/copper-ore-full-south.png",
+        "texture": "res://Assets/MapTiles/OreNodes/Detail128/copper-ore-full-south.png",
         "tile_id": 0,
-        "source_sha256": "7b49208acb93d41a5fcc1a57c4f8c2a2d8ce6eef6ac968608e4e7346074e145e"
+        "source_sha256": "d76fde7dd4012123d168946d9faefb65d28195f697f232ba2db55f39f847ca91"
       },
       "depleted": {
         "scene": "res://scenes/MapProps/OreNodes/CopperOreDepleted.tscn",
-        "texture": "res://Assets/MapTiles/OreNodes/copper-ore-depleted-south.png",
+        "texture": "res://Assets/MapTiles/OreNodes/Detail128/copper-ore-depleted-south.png",
         "tile_id": 1,
-        "source_sha256": "5297617356958530cf04bddd5186174aa629063e142ad080832bbaad215f0e08"
-      }
+        "source_sha256": "786e5dd8740de55a5d3cd5550669a8921d79c7e02a3c28e901cba82365e3c9d6"
+      },
+      "world_anchor": [
+        48,
+        72
+      ],
+      "native_canvas_size": [
+        128,
+        128
+      ],
+      "visual_scale": [
+        0.75,
+        0.75
+      ]
     },
     {
       "id": "tin",
       "name": "Tin",
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
       "collision_polygons": [
         [
@@ -199,23 +211,35 @@
       ],
       "full": {
         "scene": "res://scenes/MapProps/OreNodes/TinOreFull.tscn",
-        "texture": "res://Assets/MapTiles/OreNodes/tin-ore-full-south.png",
+        "texture": "res://Assets/MapTiles/OreNodes/Detail128/tin-ore-full-south.png",
         "tile_id": 2,
-        "source_sha256": "baa502b73c899a67c9d82a8f999b7bcd9a9a84cea635b8020ff4e623b8812f2b"
+        "source_sha256": "5df2bdffc9a66f2fd8d0a88778c51ddbb549a4db1e3f33724a4340370e3a6c89"
       },
       "depleted": {
         "scene": "res://scenes/MapProps/OreNodes/TinOreDepleted.tscn",
-        "texture": "res://Assets/MapTiles/OreNodes/tin-ore-depleted-south.png",
+        "texture": "res://Assets/MapTiles/OreNodes/Detail128/tin-ore-depleted-south.png",
         "tile_id": 3,
-        "source_sha256": "5297617356958530cf04bddd5186174aa629063e142ad080832bbaad215f0e08"
-      }
+        "source_sha256": "786e5dd8740de55a5d3cd5550669a8921d79c7e02a3c28e901cba82365e3c9d6"
+      },
+      "world_anchor": [
+        48,
+        72
+      ],
+      "native_canvas_size": [
+        128,
+        128
+      ],
+      "visual_scale": [
+        0.75,
+        0.75
+      ]
     },
     {
       "id": "iron",
       "name": "Iron",
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
       "collision_polygons": [
         [
@@ -289,23 +313,35 @@
       ],
       "full": {
         "scene": "res://scenes/MapProps/OreNodes/IronOreFull.tscn",
-        "texture": "res://Assets/MapTiles/OreNodes/iron-ore-full-south.png",
+        "texture": "res://Assets/MapTiles/OreNodes/Detail128/iron-ore-full-south.png",
         "tile_id": 4,
-        "source_sha256": "4c40db0026991852ec232f9504caccfdc2292ea7bdb028583793120400e2c1b1"
+        "source_sha256": "d2f9159ee563fdd36a52dcf719ec7d53c06c21090f3a0353eca3b19e2c464871"
       },
       "depleted": {
         "scene": "res://scenes/MapProps/OreNodes/IronOreDepleted.tscn",
-        "texture": "res://Assets/MapTiles/OreNodes/iron-ore-depleted-south.png",
+        "texture": "res://Assets/MapTiles/OreNodes/Detail128/iron-ore-depleted-south.png",
         "tile_id": 5,
-        "source_sha256": "5297617356958530cf04bddd5186174aa629063e142ad080832bbaad215f0e08"
-      }
+        "source_sha256": "786e5dd8740de55a5d3cd5550669a8921d79c7e02a3c28e901cba82365e3c9d6"
+      },
+      "world_anchor": [
+        48,
+        72
+      ],
+      "native_canvas_size": [
+        128,
+        128
+      ],
+      "visual_scale": [
+        0.75,
+        0.75
+      ]
     },
     {
       "id": "coal",
       "name": "Coal",
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
       "collision_polygons": [
         [
@@ -379,23 +415,35 @@
       ],
       "full": {
         "scene": "res://scenes/MapProps/OreNodes/CoalFull.tscn",
-        "texture": "res://Assets/MapTiles/OreNodes/coal-full-south.png",
+        "texture": "res://Assets/MapTiles/OreNodes/Detail128/coal-full-south.png",
         "tile_id": 6,
-        "source_sha256": "d2c81bae1e25f75e7c26da785a5cc7d734efa2d314d01c37d7a671fa0ff18396"
+        "source_sha256": "b10fe5bb65b2a50c2d3de232873919019e01143da0c1b55b7b4df3d56fdd315f"
       },
       "depleted": {
         "scene": "res://scenes/MapProps/OreNodes/CoalDepleted.tscn",
-        "texture": "res://Assets/MapTiles/OreNodes/coal-depleted-south.png",
+        "texture": "res://Assets/MapTiles/OreNodes/Detail128/coal-depleted-south.png",
         "tile_id": 7,
-        "source_sha256": "5297617356958530cf04bddd5186174aa629063e142ad080832bbaad215f0e08"
-      }
+        "source_sha256": "786e5dd8740de55a5d3cd5550669a8921d79c7e02a3c28e901cba82365e3c9d6"
+      },
+      "world_anchor": [
+        48,
+        72
+      ],
+      "native_canvas_size": [
+        128,
+        128
+      ],
+      "visual_scale": [
+        0.75,
+        0.75
+      ]
     },
     {
       "id": "silver",
       "name": "Silver",
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
       "collision_polygons": [
         [
@@ -469,23 +517,35 @@
       ],
       "full": {
         "scene": "res://scenes/MapProps/OreNodes/SilverOreFull.tscn",
-        "texture": "res://Assets/MapTiles/OreNodes/silver-ore-full-south.png",
+        "texture": "res://Assets/MapTiles/OreNodes/Detail128/silver-ore-full-south.png",
         "tile_id": 8,
-        "source_sha256": "a9fe99fa94d229abcf4d4e51f591e9cf1adefc3d3f0b59a7f0a8e3197b0c0d79"
+        "source_sha256": "a796fbfeaf769cd47b39fbda9394aa0cea720b17fe7c70a4d754e49772cad2d5"
       },
       "depleted": {
         "scene": "res://scenes/MapProps/OreNodes/SilverOreDepleted.tscn",
-        "texture": "res://Assets/MapTiles/OreNodes/silver-ore-depleted-south.png",
+        "texture": "res://Assets/MapTiles/OreNodes/Detail128/silver-ore-depleted-south.png",
         "tile_id": 9,
-        "source_sha256": "5297617356958530cf04bddd5186174aa629063e142ad080832bbaad215f0e08"
-      }
+        "source_sha256": "786e5dd8740de55a5d3cd5550669a8921d79c7e02a3c28e901cba82365e3c9d6"
+      },
+      "world_anchor": [
+        48,
+        72
+      ],
+      "native_canvas_size": [
+        128,
+        128
+      ],
+      "visual_scale": [
+        0.75,
+        0.75
+      ]
     },
     {
       "id": "gold",
       "name": "Gold",
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
       "collision_polygons": [
         [
@@ -559,23 +619,35 @@
       ],
       "full": {
         "scene": "res://scenes/MapProps/OreNodes/GoldOreFull.tscn",
-        "texture": "res://Assets/MapTiles/OreNodes/gold-ore-full-south.png",
+        "texture": "res://Assets/MapTiles/OreNodes/Detail128/gold-ore-full-south.png",
         "tile_id": 10,
-        "source_sha256": "39f0b27dd545aeb7274d19abcc1211e54f299fa3d69d2dce4338d7d20d1a921d"
+        "source_sha256": "0a1ca34e4f40a0633106ad17be239a4fb20d998644e51eed914936384755b57d"
       },
       "depleted": {
         "scene": "res://scenes/MapProps/OreNodes/GoldOreDepleted.tscn",
-        "texture": "res://Assets/MapTiles/OreNodes/gold-ore-depleted-south.png",
+        "texture": "res://Assets/MapTiles/OreNodes/Detail128/gold-ore-depleted-south.png",
         "tile_id": 11,
-        "source_sha256": "5297617356958530cf04bddd5186174aa629063e142ad080832bbaad215f0e08"
-      }
+        "source_sha256": "786e5dd8740de55a5d3cd5550669a8921d79c7e02a3c28e901cba82365e3c9d6"
+      },
+      "world_anchor": [
+        48,
+        72
+      ],
+      "native_canvas_size": [
+        128,
+        128
+      ],
+      "visual_scale": [
+        0.75,
+        0.75
+      ]
     },
     {
       "id": "mithril",
       "name": "Mithril",
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
       "collision_polygons": [
         [
@@ -649,23 +721,35 @@
       ],
       "full": {
         "scene": "res://scenes/MapProps/OreNodes/MithrilOreFull.tscn",
-        "texture": "res://Assets/MapTiles/OreNodes/mithril-ore-full-south.png",
+        "texture": "res://Assets/MapTiles/OreNodes/Detail128/mithril-ore-full-south.png",
         "tile_id": 12,
-        "source_sha256": "7bc3ecd1aaf1ab6875b2e84958b9b13ca485ddfb8de2a63b27916f37b8abb995"
+        "source_sha256": "241b4c8c9ff02afa3f947efbd8d7ea2b10f110f252687b422904c17af90d8f8d"
       },
       "depleted": {
         "scene": "res://scenes/MapProps/OreNodes/MithrilOreDepleted.tscn",
-        "texture": "res://Assets/MapTiles/OreNodes/mithril-ore-depleted-south.png",
+        "texture": "res://Assets/MapTiles/OreNodes/Detail128/mithril-ore-depleted-south.png",
         "tile_id": 13,
-        "source_sha256": "5297617356958530cf04bddd5186174aa629063e142ad080832bbaad215f0e08"
-      }
+        "source_sha256": "786e5dd8740de55a5d3cd5550669a8921d79c7e02a3c28e901cba82365e3c9d6"
+      },
+      "world_anchor": [
+        48,
+        72
+      ],
+      "native_canvas_size": [
+        128,
+        128
+      ],
+      "visual_scale": [
+        0.75,
+        0.75
+      ]
     },
     {
       "id": "adamantite",
       "name": "Adamantite",
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
       "collision_polygons": [
         [
@@ -739,23 +823,35 @@
       ],
       "full": {
         "scene": "res://scenes/MapProps/OreNodes/AdamantiteOreFull.tscn",
-        "texture": "res://Assets/MapTiles/OreNodes/adamantite-ore-full-south.png",
+        "texture": "res://Assets/MapTiles/OreNodes/Detail128/adamantite-ore-full-south.png",
         "tile_id": 14,
-        "source_sha256": "73d6004696943bd654d9b5c50b3b22b954a9312dd95746c3899dc68f77af93fb"
+        "source_sha256": "3f4a3af9e19f39ebe454f206620c9352bd976da8d8a0fc22e8dfef84d1de1d5c"
       },
       "depleted": {
         "scene": "res://scenes/MapProps/OreNodes/AdamantiteOreDepleted.tscn",
-        "texture": "res://Assets/MapTiles/OreNodes/adamantite-ore-depleted-south.png",
+        "texture": "res://Assets/MapTiles/OreNodes/Detail128/adamantite-ore-depleted-south.png",
         "tile_id": 15,
-        "source_sha256": "5297617356958530cf04bddd5186174aa629063e142ad080832bbaad215f0e08"
-      }
+        "source_sha256": "786e5dd8740de55a5d3cd5550669a8921d79c7e02a3c28e901cba82365e3c9d6"
+      },
+      "world_anchor": [
+        48,
+        72
+      ],
+      "native_canvas_size": [
+        128,
+        128
+      ],
+      "visual_scale": [
+        0.75,
+        0.75
+      ]
     },
     {
       "id": "runite",
       "name": "Runite",
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
       "collision_polygons": [
         [
@@ -829,23 +925,35 @@
       ],
       "full": {
         "scene": "res://scenes/MapProps/OreNodes/RuniteOreFull.tscn",
-        "texture": "res://Assets/MapTiles/OreNodes/runite-ore-full-south.png",
+        "texture": "res://Assets/MapTiles/OreNodes/Detail128/runite-ore-full-south.png",
         "tile_id": 16,
-        "source_sha256": "d7c7a44cad2431df4ea8e365312d5c9e96465ec63f3cc2cf8b4df7589776f4fa"
+        "source_sha256": "d4f2fc3d35f20f0cdebf2e1d23eab29886ab2c5d928d6804081b8ff26e766cb1"
       },
       "depleted": {
         "scene": "res://scenes/MapProps/OreNodes/RuniteOreDepleted.tscn",
-        "texture": "res://Assets/MapTiles/OreNodes/runite-ore-depleted-south.png",
+        "texture": "res://Assets/MapTiles/OreNodes/Detail128/runite-ore-depleted-south.png",
         "tile_id": 17,
-        "source_sha256": "5297617356958530cf04bddd5186174aa629063e142ad080832bbaad215f0e08"
-      }
+        "source_sha256": "786e5dd8740de55a5d3cd5550669a8921d79c7e02a3c28e901cba82365e3c9d6"
+      },
+      "world_anchor": [
+        48,
+        72
+      ],
+      "native_canvas_size": [
+        128,
+        128
+      ],
+      "visual_scale": [
+        0.75,
+        0.75
+      ]
     },
     {
       "id": "blackstone",
       "name": "Blackstone",
       "anchor": [
-        48,
-        72
+        64,
+        96
       ],
       "collision_polygons": [
         [
@@ -919,20 +1027,41 @@
       ],
       "full": {
         "scene": "res://scenes/MapProps/OreNodes/BlackstoneFull.tscn",
-        "texture": "res://Assets/MapTiles/OreNodes/blackstone-full-south.png",
+        "texture": "res://Assets/MapTiles/OreNodes/Detail128/blackstone-full-south.png",
         "tile_id": 18,
-        "source_sha256": "1521785a19c4f25ac610399a444d5bd635da9b5ea083d3c5bc32ac971639df80"
+        "source_sha256": "f4667db63da9eb10e6424b8e0e20187badab5e404fd99f71e088374fa295006a"
       },
       "depleted": {
         "scene": "res://scenes/MapProps/OreNodes/BlackstoneDepleted.tscn",
-        "texture": "res://Assets/MapTiles/OreNodes/blackstone-depleted-south.png",
+        "texture": "res://Assets/MapTiles/OreNodes/Detail128/blackstone-depleted-south.png",
         "tile_id": 19,
-        "source_sha256": "5297617356958530cf04bddd5186174aa629063e142ad080832bbaad215f0e08"
-      }
+        "source_sha256": "786e5dd8740de55a5d3cd5550669a8921d79c7e02a3c28e901cba82365e3c9d6"
+      },
+      "world_anchor": [
+        48,
+        72
+      ],
+      "native_canvas_size": [
+        128,
+        128
+      ],
+      "visual_scale": [
+        0.75,
+        0.75
+      ]
     }
   ],
   "shared_shape": "All ten ores use the same approved host rock and depleted sprite. Only mineral streak colors differ.",
   "future_reuse_policy": "Whenever an ore node is requested, reuse this family and its named scene. Do not paint random substitute rock clusters or regenerate the design without an explicit request.",
   "placement_guide": "res://docs/OreNodes.md",
-  "gameplay_scope": "Static visual props and physical bases only. No mining rules, drops, progression, interactions, item definitions or recipes."
+  "gameplay_scope": "Static visual props and physical bases only. No mining rules, drops, progression, interactions, item definitions or recipes.",
+  "world_canvas_size": [
+    96,
+    96
+  ],
+  "visual_scale": [
+    0.75,
+    0.75
+  ],
+  "world_pixels_per_source_pixel": 0.75
 }

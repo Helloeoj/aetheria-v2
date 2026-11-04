@@ -1,0 +1,115 @@
+{
+  "schema": 1,
+  "date": "2026-10-28",
+  "area": "Valtherian Mines",
+  "user_source_approval": "V3 larger-room layout and native material proof approved; user requested native props and29 marked ores; grey clarified as Coal",
+  "scope": "Environment, canonical ore placement and normal scene travel only",
+  "actual_scene": "res://scenes/ValtherianMinesContent.tscn",
+  "scene_sha256": "3d50ec0db9530358635ca435acd4d239b1f9686dc1c01c31f578183a3c98f4e7",
+  "layout_sha256": "9c83d74f57cbbc4062269eedcf4c3c1adf6fc8bae2830112760b7cfc7a0d5b6e",
+  "worldbuilding_manifest_sha256": "f84253c95de8d84029ead59b9873edfc2f3279ed16357d7b6cd322ba318ccc7f",
+  "automatic": {
+    "passed": true,
+    "native_asset_types": 12,
+    "worldbuilding_checks": 14337,
+    "actual_texture_comparisons": 11,
+    "actual_physics_checks": 6319,
+    "metrics": {
+      "authored_floor_cells": 5498,
+      "body_clear_floor_cells": 5395,
+      "exact_ore_approaches": 29,
+      "ore_occupied_floor_centers": 103,
+      "ore_roster": {
+        "adamantite": 2,
+        "blackstone": 12,
+        "coal": 7,
+        "iron": 4,
+        "mithril": 4
+      },
+      "outside_centers_tested": 14470,
+      "outside_escape_centers": [],
+      "progression_checks": 8,
+      "reachable_clear_centers": 5395,
+      "rejected_diagonal_corners": 434,
+      "reserved_lane_checks": 64,
+      "reserved_lane_numeric_inset_pixels": 0.2,
+      "safe_diagonals": 18104,
+      "separate_warm_supports": 8,
+      "unexplained_blocked_centers": [],
+      "unsafe_swept_edges": 0
+    },
+    "python_geometry_tests": 8,
+    "floor_seam_checks": 330,
+    "validator_focused_checks": 61,
+    "validator_selftest_groups": 4,
+    "travel_checks": 154,
+    "actual_grid_probes": 67,
+    "existing_bracken_travel_checks": 58,
+    "exterior_worldbuilding_checks": 35,
+    "marked_ores": 29,
+    "ore_nudges": 0,
+    "ore_peer_pairs_clear": 406,
+    "min_semantic_wall_decor_distance_world_pixels": 20,
+    "reserved_lane_query_inset_per_side_world_pixels": 0.1,
+    "lane_geometry_widths_world_pixels": [
+      192,
+      128
+    ],
+    "ordinary_actor_body_world_pixels": [
+      24,
+      24
+    ],
+    "scope_note": "Historical modular scene only. These results do not validate the approved-image restoration."
+  },
+  "visual_review": {
+    "status": "REJECTED2026-10-28. Restore exact dotted-map source; no new image generation.",
+    "actual_gpu_renders": 66,
+    "actual_zoom_levels": [
+      1,
+      4
+    ],
+    "coverage": [
+      "29canonical ores at4x beside unchanged peasant",
+      "8room back walls at4x",
+      "8foreground-wall/depth views at4x",
+      "8whole timber/lantern supports at4x",
+      "8normal1x gameplay views",
+      "7whole props on white/dark/actualground at4x",
+      "complete1xoverview",
+      "east-facing exterior entrance1x/4x withphysicaloverlay"
+    ],
+    "observations": "Native clusters and outlines remain resolved; no visible ore/wall/peer cut-ins or foreground floor gaps in reviewed captures. Timber/lantern supports restore warm mine detail. No source overview enlargement.",
+    "limits": [
+      "Native material is grainier than the character and large spans reveal modular repetition",
+      "Derived full scene follows rectilinear approved tile contract; it is not pixel-identical to the overview",
+      "Existing user-approved canonical ore PNGs retain softer internal shading than the unchanged character and new wall kit. Nearest filtering preserves their original texels; this placement task does not redraw the approved ore library."
+    ],
+    "independent_code_review": "No Important/Critical findings; final hashes and representative4x captures verified",
+    "physical_overlay_renders": 7,
+    "physical_overlay_scope": "Actual enabled transformed82boundary rectangles,58ore base polygons and real actor BodyCollision; six populated rooms and last legal south-floor row."
+  },
+  "installation": {
+    "local_game_installed": true,
+    "east_facing_entrance_installed": true,
+    "canonical_ore_art_unchanged": true,
+    "new_skill_or_monster_mechanics": false,
+    "online_region_registry_added": true,
+    "live_server_deployed": false,
+    "live_account_persistence_tested": false,
+    "integration_test_note": "Actual offline/WorldHost map travel and character state preservation use isolated mocked account HTTP; no live account or server deployment was performed"
+  },
+  "evidence_policy": "Full generated reports/screenshots remain outside Git in supporting work/map-planning/tasks/2026-10-27-valtherian-mines; this file records portable acceptance metadata only",
+  "evidence_files": [
+    "valtherian-worldbuilding-report.json",
+    "valtherian-mine-geometry-report.json",
+    "valtherian-mine-render-report.json",
+    "marked-ore-independent-audit-2026-10-28.json",
+    "native-map-validator-selftests-2026-10-28.json",
+    "final-travel.log",
+    "entrance-v1-installed.worldbuilding-report.json",
+    "entrance-v1-installed-alpha-review.json",
+    "valtherian-mine-overlay-report.json",
+    "valtherian-final-visual-audit.json"
+  ],
+  "status": "REJECTED by user: modular reconstruction. Historical technical checks do not grant art approval."
+}

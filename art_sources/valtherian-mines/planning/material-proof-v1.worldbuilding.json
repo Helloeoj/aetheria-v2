@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "scene": "res://scenes/dev_tools/valtherian_material_proof_v1.tscn",
+  "bounds": [0, 0, 384, 256],
+  "grid_origin": [0, 0],
+  "floor_polygon": [[0, 80], [384, 80], [384, 256], [0, 256]],
+  "props": [
+    {"node": "Terrain", "blocking": false, "reason": "Continuous material quality-proof plane; separate NorthWall owns the solid boundary. Not a standalone wall prop or a production dungeon."},
+    {"node": "Copper", "blocking": true}
+  ],
+  "anchors": [
+    {"id": "arrival", "point": [48, 208]},
+    {"id": "exit", "point": [336, 208]},
+    {"id": "ore-front", "point": [112, 176]},
+    {"id": "north-floor", "point": [304, 112]}
+  ],
+  "routes": [
+    {"id": "reserved-sample-lane", "points": [[48, 208], [336, 208]], "width": 48}
+  ],
+  "assets": [
+    {
+      "texture": "res://Assets/Maps/ValtherianMines/Proofs/material-section-v1.png",
+      "native_size": [1536, 1024],
+      "anchor": [0, 0],
+      "world_pixels_per_source_pixel": 0.25,
+      "edge_reason": "Intentionally opaque continuous material plane: rock backing and floor reach the canvas edges. No cutout or reusable standalone prop is claimed."
+    },
+    {
+      "texture": "res://Assets/MapTiles/OreNodes/copper-ore-full-south.png",
+      "native_size": [96, 96],
+      "anchor": [48, 72],
+      "world_pixels_per_source_pixel": 1
+    }
+  ]
+}

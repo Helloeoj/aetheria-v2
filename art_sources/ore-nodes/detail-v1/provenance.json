@@ -1,0 +1,374 @@
+{
+  "status": "installed local restoration; approved clarity direction; final artwork review recorded separately",
+  "provider": "built-in imagegen + exact canonical registration/palette variants",
+  "native_size": [
+    128,
+    128
+  ],
+  "world_canvas": [
+    96,
+    96
+  ],
+  "world_pixels_per_source_pixel": 0.75,
+  "image_anchor": [
+    64,
+    96
+  ],
+  "world_anchor": [
+    48,
+    72
+  ],
+  "mineral_pixels": 509,
+  "shared_host_outside_veins": true,
+  "shared_full_depleted_alpha": true,
+  "alpha_recipe": "original96 depleted alpha resized128 PILBILINEAR then>=128, binary",
+  "host_registration": {
+    "native_size": [
+      128,
+      128
+    ],
+    "world_canvas": [
+      96,
+      96
+    ],
+    "visual_scale": 0.75,
+    "native_anchor": [
+      64,
+      96
+    ],
+    "world_anchor": [
+      48,
+      72
+    ],
+    "source": "generated-depleted-host.png",
+    "registration": "Each complete boulder registered separately to original silhouettes; no root/collider movement",
+    "parts": [
+      {
+        "part": 1,
+        "source_bbox": [
+          328,
+          353,
+          833,
+          926
+        ],
+        "target_bbox": [
+          25,
+          27,
+          85,
+          93
+        ],
+        "target_pixels": 2716,
+        "reconstructed_edge_pixels": 39,
+        "edge_fraction": 0.014359351988217967
+      },
+      {
+        "part": 2,
+        "source_bbox": [
+          710,
+          715,
+          999,
+          979
+        ],
+        "target_bbox": [
+          69,
+          69,
+          103,
+          101
+        ],
+        "target_pixels": 730,
+        "reconstructed_edge_pixels": 20,
+        "edge_fraction": 0.0273972602739726
+      }
+    ],
+    "high_resolution_parts": [
+      {
+        "part": 1,
+        "source_bbox": [
+          328,
+          353,
+          833,
+          926
+        ],
+        "target_bbox": [
+          203,
+          213,
+          683,
+          747
+        ],
+        "target_pixels": 173711,
+        "reconstructed_edge_pixels": 2629,
+        "edge_fraction": 0.015134332310561795
+      },
+      {
+        "part": 2,
+        "source_bbox": [
+          710,
+          715,
+          999,
+          979
+        ],
+        "target_bbox": [
+          555,
+          555,
+          821,
+          811
+        ],
+        "target_pixels": 46746,
+        "reconstructed_edge_pixels": 1246,
+        "edge_fraction": 0.026654687032045522
+      }
+    ],
+    "alpha_values": [
+      0,
+      255
+    ]
+  },
+  "vein_registration": [
+    {
+      "part": 1,
+      "source_bbox": [
+        251,
+        265,
+        833,
+        906
+      ],
+      "target_bbox": [
+        25,
+        27,
+        85,
+        93
+      ],
+      "target_pixels": 2716,
+      "reconstructed_edge_pixels": 56,
+      "edge_fraction": 0.020618556701030927
+    },
+    {
+      "part": 2,
+      "source_bbox": [
+        677,
+        681,
+        1004,
+        989
+      ],
+      "target_bbox": [
+        69,
+        69,
+        103,
+        101
+      ],
+      "target_pixels": 730,
+      "reconstructed_edge_pixels": 18,
+      "edge_fraction": 0.024657534246575342
+    }
+  ],
+  "pixel_policy": "nearest reduction and finite host/mineral palettes, no dither or resampled blur",
+  "builtin_generations": 2,
+  "pixellab_generations": 0,
+  "files": [
+    {
+      "ore": "copper",
+      "state": "full",
+      "file": "copper-ore-full-south.png",
+      "sha256": "d76fde7dd4012123d168946d9faefb65d28195f697f232ba2db55f39f847ca91",
+      "native_size": [
+        128,
+        128
+      ]
+    },
+    {
+      "ore": "copper",
+      "state": "depleted",
+      "file": "copper-ore-depleted-south.png",
+      "sha256": "786e5dd8740de55a5d3cd5550669a8921d79c7e02a3c28e901cba82365e3c9d6",
+      "native_size": [
+        128,
+        128
+      ]
+    },
+    {
+      "ore": "tin",
+      "state": "full",
+      "file": "tin-ore-full-south.png",
+      "sha256": "5df2bdffc9a66f2fd8d0a88778c51ddbb549a4db1e3f33724a4340370e3a6c89",
+      "native_size": [
+        128,
+        128
+      ]
+    },
+    {
+      "ore": "tin",
+      "state": "depleted",
+      "file": "tin-ore-depleted-south.png",
+      "sha256": "786e5dd8740de55a5d3cd5550669a8921d79c7e02a3c28e901cba82365e3c9d6",
+      "native_size": [
+        128,
+        128
+      ]
+    },
+    {
+      "ore": "iron",
+      "state": "full",
+      "file": "iron-ore-full-south.png",
+      "sha256": "d2f9159ee563fdd36a52dcf719ec7d53c06c21090f3a0353eca3b19e2c464871",
+      "native_size": [
+        128,
+        128
+      ]
+    },
+    {
+      "ore": "iron",
+      "state": "depleted",
+      "file": "iron-ore-depleted-south.png",
+      "sha256": "786e5dd8740de55a5d3cd5550669a8921d79c7e02a3c28e901cba82365e3c9d6",
+      "native_size": [
+        128,
+        128
+      ]
+    },
+    {
+      "ore": "coal",
+      "state": "full",
+      "file": "coal-full-south.png",
+      "sha256": "b10fe5bb65b2a50c2d3de232873919019e01143da0c1b55b7b4df3d56fdd315f",
+      "native_size": [
+        128,
+        128
+      ]
+    },
+    {
+      "ore": "coal",
+      "state": "depleted",
+      "file": "coal-depleted-south.png",
+      "sha256": "786e5dd8740de55a5d3cd5550669a8921d79c7e02a3c28e901cba82365e3c9d6",
+      "native_size": [
+        128,
+        128
+      ]
+    },
+    {
+      "ore": "silver",
+      "state": "full",
+      "file": "silver-ore-full-south.png",
+      "sha256": "a796fbfeaf769cd47b39fbda9394aa0cea720b17fe7c70a4d754e49772cad2d5",
+      "native_size": [
+        128,
+        128
+      ]
+    },
+    {
+      "ore": "silver",
+      "state": "depleted",
+      "file": "silver-ore-depleted-south.png",
+      "sha256": "786e5dd8740de55a5d3cd5550669a8921d79c7e02a3c28e901cba82365e3c9d6",
+      "native_size": [
+        128,
+        128
+      ]
+    },
+    {
+      "ore": "gold",
+      "state": "full",
+      "file": "gold-ore-full-south.png",
+      "sha256": "0a1ca34e4f40a0633106ad17be239a4fb20d998644e51eed914936384755b57d",
+      "native_size": [
+        128,
+        128
+      ]
+    },
+    {
+      "ore": "gold",
+      "state": "depleted",
+      "file": "gold-ore-depleted-south.png",
+      "sha256": "786e5dd8740de55a5d3cd5550669a8921d79c7e02a3c28e901cba82365e3c9d6",
+      "native_size": [
+        128,
+        128
+      ]
+    },
+    {
+      "ore": "mithril",
+      "state": "full",
+      "file": "mithril-ore-full-south.png",
+      "sha256": "241b4c8c9ff02afa3f947efbd8d7ea2b10f110f252687b422904c17af90d8f8d",
+      "native_size": [
+        128,
+        128
+      ]
+    },
+    {
+      "ore": "mithril",
+      "state": "depleted",
+      "file": "mithril-ore-depleted-south.png",
+      "sha256": "786e5dd8740de55a5d3cd5550669a8921d79c7e02a3c28e901cba82365e3c9d6",
+      "native_size": [
+        128,
+        128
+      ]
+    },
+    {
+      "ore": "adamantite",
+      "state": "full",
+      "file": "adamantite-ore-full-south.png",
+      "sha256": "3f4a3af9e19f39ebe454f206620c9352bd976da8d8a0fc22e8dfef84d1de1d5c",
+      "native_size": [
+        128,
+        128
+      ]
+    },
+    {
+      "ore": "adamantite",
+      "state": "depleted",
+      "file": "adamantite-ore-depleted-south.png",
+      "sha256": "786e5dd8740de55a5d3cd5550669a8921d79c7e02a3c28e901cba82365e3c9d6",
+      "native_size": [
+        128,
+        128
+      ]
+    },
+    {
+      "ore": "runite",
+      "state": "full",
+      "file": "runite-ore-full-south.png",
+      "sha256": "d4f2fc3d35f20f0cdebf2e1d23eab29886ab2c5d928d6804081b8ff26e766cb1",
+      "native_size": [
+        128,
+        128
+      ]
+    },
+    {
+      "ore": "runite",
+      "state": "depleted",
+      "file": "runite-ore-depleted-south.png",
+      "sha256": "786e5dd8740de55a5d3cd5550669a8921d79c7e02a3c28e901cba82365e3c9d6",
+      "native_size": [
+        128,
+        128
+      ]
+    },
+    {
+      "ore": "blackstone",
+      "state": "full",
+      "file": "blackstone-full-south.png",
+      "sha256": "f4667db63da9eb10e6424b8e0e20187badab5e404fd99f71e088374fa295006a",
+      "native_size": [
+        128,
+        128
+      ]
+    },
+    {
+      "ore": "blackstone",
+      "state": "depleted",
+      "file": "blackstone-depleted-south.png",
+      "sha256": "786e5dd8740de55a5d3cd5550669a8921d79c7e02a3c28e901cba82365e3c9d6",
+      "native_size": [
+        128,
+        128
+      ]
+    }
+  ],
+  "approval": {
+    "user": "Approved environment clarity style and requested matching ore restoration",
+    "automatic": "Native/alpha/shared-host/scene checks; not human artwork approval",
+    "installation": "20 canonical full/depleted scenes use Detail128 textures; original96 sources retained"
+  }
+}

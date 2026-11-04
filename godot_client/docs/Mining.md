@@ -1,14 +1,14 @@
 # Mining core
 
-Implemented: shared server-side extraction, existing Mining XP (1–100), save migration, and one Bronze Ore (235) definition. **Not yet playable:** the item catalog has no pickaxes. Production `pickaxes` remains empty; no items, IDs, substitutes, map placements or artwork were added.
+Implemented: shared server-side extraction, existing Mining XP (1â€“100), save migration, and one Bronze Ore (235) definition. **Not yet playable:** the item catalog has no pickaxes. Production `pickaxes` remains empty; no items, IDs, substitutes, map placements or artwork were added.
 
 ## Ownership and entry points
 
-- `scripts/mining_definitions.gd`: validated metadata in `data/mining.json`, joined to GameData. Independent ore requirements/probability curves; fastest owned eligible pickaxe, then lowest ID. Bronze uses the simulator's 121 XP, 0.28→0.78 over 26 levels, exponent 1.15 and 4-second respawn.
-- `scripts/mining_service.gd`: one service per `network/authoritative_region.gd`. Repeated full-interval attempts; atomic generation claim → one `PlayerState.add_item()` → existing Mining XP → post-grant notification. One winner per deposit generation; no client RNG/reward fields.
-- `scripts/mining_deposit.gd` and `scenes/gathering/mining_deposit.tscn`: authored stable ID, existing ore ID, approach point and radius. Region discovery rejects duplicate IDs. Blank visual paths explicitly mean unbound content; nonempty paths must resolve. This core node stores presentation state but does not render art.
+- `scripts/mining_definitions.gd`: validated metadata in `data/mining.json`, joined to GameData. Independent ore requirements/probability curves; fastest owned eligible pickaxe, then lowest ID. Bronze uses the simulator's 121 XP, 0.28â†’0.78 over 26 levels, exponent 1.15 and 4-second respawn.
+- `scripts/mining_service.gd`: one service per `network/authoritative_region.gd`. Repeated full-interval attempts; atomic generation claim â†’ one `PlayerState.add_item()` â†’ existing Mining XP â†’ post-grant notification. One winner per deposit generation; no client RNG/reward fields.
+- `scripts/mining_deposit.gd` and `scenes/gathering/mining_deposit.tscn`: authored stable ID, existing ore ID, approach point and radius. Region discovery rejects duplicate IDs. Blank visual paths explicitly mean unbound content; nonempty paths must resolve. Placed children bind the existing full/depleted Texture2D resources to the parent prop's Footprint/Visual; root transforms and collision remain fixed.
 - Existing `network/region_activities.gd` routes `mine_start {deposit_id, deposit_generation}` and `mine_stop {}`. Movement/attack/cast, hand-equipment changes, damage, death, another activity, loss of the locked tool, range/line-of-sight failure and inventory capacity cancel. Host travel/logout/ownership loss close activities; disconnect cancels even during a freeze.
-- Snapshots expose public deposits/actor gathering and private activity/deadline/stop reason. Client interaction, offline controller, animation and committed XP-rate presentation are later plan tasks, not implemented here.
+- Snapshots expose public deposits/actor gathering and private activity/deadline/stop reason. Client click routing and the offline controller use the same service. Dedicated mining animations and committed XP-rate presentation remain separate work.
 
 ## Persistence and limits
 
@@ -34,4 +34,4 @@ Mining tests use real PlayerState, inventory, XP, region, codec and host/save qu
 
 Validated 2026-10-24: 120 Mining checks; 118 migration/freeze/host/original-online checks; 122 inventory checks; all 12 Fishing/Cooking suites; 1,064 acquisition checks; 7 balance tests; 26 account/PostgreSQL tests with isolated temporary beta-policy configuration. Editor import and headless startup passed. Initial regression runs exposed the now-fixed journal description and finished-Cooking handoff gaps; live beta configuration and one timing-sensitive account throttle run were isolated/rerun successfully. No live-account or two-client Mining playtest was performed.
 
-Next activation prerequisites: authorize actual catalog pickaxes and acquisition, bind approved visuals/placements, then implement plan tasks 5–7 and verify two real clients. The simulator's 65-hour route remains a multi-ore proposal, not a production rate claim for this Bronze-only core.
+Next activation prerequisites: authorize actual catalog pickaxes and acquisition, bind approved visuals/placements, then implement plan tasks 5â€“7 and verify two real clients. The simulator's 65-hour route remains a multi-ore proposal, not a production rate claim for this Bronze-only core.

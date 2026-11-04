@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/dev_tools/valtherian_material_section_v1.tscn" id="1_terrain"]
+[ext_resource type="PackedScene" path="res://scenes/MapProps/OreNodes/CopperOreFull.tscn" id="2_copper"]
+
+[sub_resource type="RectangleShape2D" id="NorthWallShape"]
+size = Vector2(384, 80)
+
+[node name="ValtherianMaterialProofV1" type="Node2D"]
+texture_filter = 1
+metadata/purpose = "Native material quality proof only; not the dungeon or a final reusable wall kit"
+metadata/gameplay_grid_origin = Vector2(0, 0)
+
+[node name="Terrain" parent="." instance=ExtResource("1_terrain")]
+
+[node name="NorthWall" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Base" type="CollisionShape2D" parent="NorthWall"]
+position = Vector2(192, 40)
+shape = SubResource("NorthWallShape")
+
+[node name="Copper" parent="." instance=ExtResource("2_copper")]
+position = Vector2(96, 144)

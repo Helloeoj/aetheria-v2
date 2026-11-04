@@ -29,7 +29,7 @@ func _run() -> void:
 	var defs = load("res://scripts/mining_definitions.gd").new()
 	check(defs.load_data().ok, "Production metadata validates without invented tools")
 	check(defs.best_pickaxe(PlayerState.new()).is_empty(), "Missing catalog pickaxes fail closed")
-	var bronze: Dictionary = defs.ore(235)
+	var bronze: Dictionary = defs.ore(330)
 	check(not bronze.is_empty(), "Bronze uses existing catalog ID")
 	check(is_equal_approx(defs.success_probability(1, bronze), 0.28), "Unlock chance matches simulator")
 	check(is_equal_approx(defs.success_probability(27, bronze), 0.78), "Mastered chance matches simulator")
@@ -37,15 +37,15 @@ func _run() -> void:
 	var source: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/mining.json"))
 	var valid := source.duplicate(true)
 	var coal := bronze.duplicate(true)
-	coal.item_id = 329
+	coal.item_id = 246
 	coal.required_level = 100
 	valid.ores.append(coal)
 	check(defs.load_records(valid).ok, "Second ore requires data only")
-	check(defs.success_probability(99, defs.ore(329)) == 0.0 and is_equal_approx(defs.success_probability(100, defs.ore(329)), 0.28), "Independent level 100 unlock is safe")
+	check(defs.success_probability(99, defs.ore(246)) == 0.0 and is_equal_approx(defs.success_probability(100, defs.ore(246)), 0.28), "Independent level 100 unlock is safe")
 	for invalid_id in [242, 256, 999999]:
 		var invalid := source.duplicate(true)
 		invalid.ores[0].item_id = invalid_id
-		check(not defs.load_records(invalid).ok and defs.ore(235).is_empty(), "Restricted/unknown ore fails closed: %d" % invalid_id)
+		check(not defs.load_records(invalid).ok and defs.ore(330).is_empty(), "Restricted/unknown ore fails closed: %d" % invalid_id)
 	for field in ["required_level", "xp_reward", "respawn_seconds", "node_scene"]:
 		var invalid := source.duplicate(true)
 		invalid.ores[0][field] = -1

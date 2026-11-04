@@ -1,0 +1,142 @@
+{
+  "generator": "built-in imagegen",
+  "generation_count": 24,
+  "initial_cap": 28,
+  "status": "Retained installed candidate sources; approved style, whole-map visual/combined gates separate",
+  "style_reference": "approved-style-reference.png",
+  "prompt_file": "restoration.prompt.txt",
+  "regions": [
+    {
+      "id": "r0c0",
+      "edge_constraint": false,
+      "generated_file": "exec-d6a2166e-a055-4af6-8cfc-3f0f228d643f.png"
+    },
+    {
+      "id": "r0c1",
+      "edge_constraint": false,
+      "generated_file": "exec-7e260875-270c-47a9-84d0-9c2f36b4db90.png"
+    },
+    {
+      "id": "r0c3",
+      "edge_constraint": false,
+      "generated_file": "exec-62a4a25c-57ac-4797-a337-f327ee55f4cd.png"
+    },
+    {
+      "id": "r0c4",
+      "edge_constraint": false,
+      "generated_file": "exec-774c4552-5a25-43d7-b197-8062053e1e89.png"
+    },
+    {
+      "id": "r0c5",
+      "edge_constraint": false,
+      "generated_file": "exec-51e55b55-4004-495d-bdf0-d67d9769776d.png"
+    },
+    {
+      "id": "r0c6",
+      "edge_constraint": false,
+      "generated_file": "exec-45278057-533d-46a9-afb7-2672de494e6d.png"
+    },
+    {
+      "id": "r1c0",
+      "edge_constraint": true,
+      "generated_file": "exec-31876043-ab13-4c90-a861-ecba6e31a419.png"
+    },
+    {
+      "id": "r1c1",
+      "edge_constraint": true,
+      "generated_file": "exec-9c749611-343b-43de-924e-a709378ecad7.png"
+    },
+    {
+      "id": "r1c2",
+      "edge_constraint": true,
+      "generated_file": "exec-add7e7f1-4388-49d2-ba71-8292c95e71c9.png"
+    },
+    {
+      "id": "r1c3",
+      "edge_constraint": true,
+      "generated_file": "exec-51eec1b0-934c-41c6-9f20-c9a66c95759e.png"
+    },
+    {
+      "id": "r1c4",
+      "edge_constraint": true,
+      "generated_file": "exec-c0c67a11-bdb7-4a6e-8629-74360addbd6a.png"
+    },
+    {
+      "id": "r1c5",
+      "edge_constraint": true,
+      "generated_file": "exec-f5331903-4296-4cc8-83dc-f32cfa2f5a7d.png"
+    },
+    {
+      "id": "r1c6",
+      "edge_constraint": true,
+      "generated_file": "exec-a32b2d0e-c7a8-4909-9987-f37a3bf52206.png"
+    },
+    {
+      "id": "r2c1",
+      "edge_constraint": true,
+      "generated_file": "exec-e3bd65a1-0899-45b5-909a-f4ef6ef38bc5.png"
+    },
+    {
+      "id": "r2c2",
+      "edge_constraint": true,
+      "generated_file": "exec-357b06e4-64dc-45a5-964d-05e9120aa20c.png"
+    },
+    {
+      "id": "r2c3",
+      "edge_constraint": true,
+      "generated_file": "exec-612b1a93-ada5-4a91-884a-d94b62ade628.png"
+    },
+    {
+      "id": "r2c4",
+      "edge_constraint": true,
+      "generated_file": "exec-eb107d27-f785-43dd-9b0a-24ee78d59476.png"
+    },
+    {
+      "id": "r2c5",
+      "edge_constraint": true,
+      "generated_file": "exec-86901058-26cd-4e8f-a0bf-7c7a227baff1.png"
+    },
+    {
+      "id": "r2c6",
+      "edge_constraint": true,
+      "generated_file": "exec-d54da256-cc47-4c28-baf9-7167556d1390.png"
+    },
+    {
+      "id": "r3c0",
+      "edge_constraint": true,
+      "generated_file": "exec-bb807275-f7e2-4392-94b5-6e038e8dd2e7.png"
+    },
+    {
+      "id": "r3c1",
+      "edge_constraint": true,
+      "generated_file": "exec-3b719ce5-cd7f-4ba2-875d-e44bb59baa59.png"
+    },
+    {
+      "id": "r3c4",
+      "edge_constraint": true,
+      "generated_file": "exec-881bf8cf-500c-4dbc-9302-c9007feeb54d.png"
+    },
+    {
+      "id": "r3c5",
+      "edge_constraint": true,
+      "generated_file": "exec-20abff04-5d75-4e28-a0e0-c657f4dd18d3.png"
+    }
+  ],
+  "probe": {
+    "source_rect": [
+      965,
+      80,
+      250,
+      250
+    ],
+    "selected_render": "density-candidate-mine-palette64-4x.png",
+    "generated_file": "exec-8e19ecbc-2f05-4191-b8c1-94208f8ee4de.png",
+    "input": "probe/larger-source.png",
+    "output": "probe/larger-detail.png",
+    "prompt": "larger-probe.prompt.txt",
+    "source_sha256": "dc5e160538a3d99c1c163d1af43080010eab85326a42076a59655df00c414359",
+    "generated_sha256": "354ab7aaebbf45b1a0b21cbd322b588f8becd07af73f433817b539c5490ecd6a",
+    "purpose": "Larger crop actual4x clarity gate; not composited into master"
+  },
+  "retained_master_sha256": "08b7e53eac003b2803732f2831922761352b693c909dd9c6c6cf3bb249d7ec8a"
+}

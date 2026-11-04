@@ -1,0 +1,188 @@
+{
+  "schema": 1,
+  "status": "Native complete props; actual placement and visual review required",
+  "source": "Built-in imagegen wall sheet v2, whole nonresampled exports; exact prompts and source preserved in art_sources/valtherian-mines/native-walls/",
+  "cleanup": "PixelLab free deterministic edit: alpha1-127 selection, masked eraser. Foreground RGBA128-255 byte-identical to native source; no regrid, scaling, recolour or blur.",
+  "units": [
+    {
+      "id": "WallBackA",
+      "texture": "res://Assets/Maps/ValtherianMines/Props/WallBackA.png",
+      "scene": "res://scenes/MapProps/ValtherianMines/WallBackA.tscn",
+      "native_size": [
+        560,
+        512
+      ],
+      "anchor": [
+        280,
+        504
+      ],
+      "world_pixels_per_source_pixel": 0.125,
+      "visible_source_bounds": [
+        36,
+        54,
+        529,
+        501
+      ],
+      "sha256": "f7de80f7c6b07291838c1a0530e7ffeb2f7e725f0959932db28914760e80e5d4",
+      "whole_sheet_region_xywh": [
+        0,
+        0,
+        560,
+        512
+      ],
+      "pixellab_edit_id": "abe3cef3-3c8e-4529-b8e6-6425ae791535",
+      "alpha_reason": "Stone surfaces retain original near-opaque alpha252-254 and narrow silhouette coverage alpha128-251. PixelLab removed the observed alpha1-127 background matte; the remaining silhouette is one connected component. Review on light/dark/ground and real4x is recorded separately.",
+      "physics": "Nonblocking wall cladding. Actual continuous CaveBoundary owns the solid footprint; never stack duplicate collision bases."
+    },
+    {
+      "id": "WallBackB",
+      "texture": "res://Assets/Maps/ValtherianMines/Props/WallBackB.png",
+      "scene": "res://scenes/MapProps/ValtherianMines/WallBackB.tscn",
+      "native_size": [
+        504,
+        512
+      ],
+      "anchor": [
+        248,
+        504
+      ],
+      "world_pixels_per_source_pixel": 0.125,
+      "visible_source_bounds": [
+        25,
+        67,
+        475,
+        501
+      ],
+      "sha256": "065308cead44e10f36655686a53ebc766bcd9725653035ef77441d7601770cdc",
+      "whole_sheet_region_xywh": [
+        560,
+        0,
+        504,
+        512
+      ],
+      "pixellab_edit_id": "0c7ec68f-4149-42ce-9b1f-b2c6b22b4002",
+      "alpha_reason": "Stone surfaces retain original near-opaque alpha252-254 and narrow silhouette coverage alpha128-251. PixelLab removed the observed alpha1-127 background matte; the remaining silhouette is one connected component. Review on light/dark/ground and real4x is recorded separately.",
+      "physics": "Nonblocking wall cladding. Actual continuous CaveBoundary owns the solid footprint; never stack duplicate collision bases."
+    },
+    {
+      "id": "WallBackC",
+      "texture": "res://Assets/Maps/ValtherianMines/Props/WallBackC.png",
+      "scene": "res://scenes/MapProps/ValtherianMines/WallBackC.tscn",
+      "native_size": [
+        472,
+        512
+      ],
+      "anchor": [
+        232,
+        504
+      ],
+      "world_pixels_per_source_pixel": 0.125,
+      "visible_source_bounds": [
+        35,
+        55,
+        436,
+        501
+      ],
+      "sha256": "ca687692d38228531e3b876d8dcb55a7c61d62573413f7ca0b52a3acd9aeb919",
+      "whole_sheet_region_xywh": [
+        1064,
+        0,
+        472,
+        512
+      ],
+      "pixellab_edit_id": "1fbc8fef-5c5a-4e58-bffe-1e42df22a161",
+      "alpha_reason": "Stone surfaces retain original near-opaque alpha252-254 and narrow silhouette coverage alpha128-251. PixelLab removed the observed alpha1-127 background matte; the remaining silhouette is one connected component. Review on light/dark/ground and real4x is recorded separately.",
+      "physics": "Nonblocking wall cladding. Actual continuous CaveBoundary owns the solid footprint; never stack duplicate collision bases."
+    },
+    {
+      "id": "WallFrontLow",
+      "texture": "res://Assets/Maps/ValtherianMines/Props/WallFrontLow.png",
+      "scene": "res://scenes/MapProps/ValtherianMines/WallFrontLow.tscn",
+      "native_size": [
+        632,
+        512
+      ],
+      "anchor": [
+        320,
+        432
+      ],
+      "world_pixels_per_source_pixel": 0.125,
+      "visible_source_bounds": [
+        36,
+        210,
+        606,
+        428
+      ],
+      "sha256": "8d7211e7f5251f9834e8ccc13dd08458fc1bb8217294c655d507b02ef22aa598",
+      "whole_sheet_region_xywh": [
+        0,
+        512,
+        632,
+        512
+      ],
+      "pixellab_edit_id": "226687be-6101-405e-8a71-8b1dd4a8ea3b",
+      "alpha_reason": "Stone surfaces retain original near-opaque alpha252-254 and narrow silhouette coverage alpha128-251. PixelLab removed the observed alpha1-127 background matte; the remaining silhouette is one connected component. Review on light/dark/ground and real4x is recorded separately.",
+      "physics": "Nonblocking wall cladding. Actual continuous CaveBoundary owns the solid footprint; never stack duplicate collision bases."
+    },
+    {
+      "id": "WallSide",
+      "texture": "res://Assets/Maps/ValtherianMines/Props/WallSide.png",
+      "scene": "res://scenes/MapProps/ValtherianMines/WallSide.tscn",
+      "native_size": [
+        408,
+        512
+      ],
+      "anchor": [
+        192,
+        440
+      ],
+      "world_pixels_per_source_pixel": 0.125,
+      "visible_source_bounds": [
+        36,
+        39,
+        349,
+        433
+      ],
+      "sha256": "9a9921dc79b217828171aed1d96e261b5541bf7ae6d7e941fb2272e5e35ff411",
+      "whole_sheet_region_xywh": [
+        632,
+        512,
+        408,
+        512
+      ],
+      "pixellab_edit_id": "ff3a450a-62c9-41e0-bdc6-78afe0d6f525",
+      "alpha_reason": "Stone surfaces retain original near-opaque alpha252-254 and narrow silhouette coverage alpha128-251. PixelLab removed the observed alpha1-127 background matte; the remaining silhouette is one connected component. Review on light/dark/ground and real4x is recorded separately.",
+      "physics": "Nonblocking wall cladding. Actual continuous CaveBoundary owns the solid footprint; never stack duplicate collision bases."
+    },
+    {
+      "id": "WallCorner",
+      "texture": "res://Assets/Maps/ValtherianMines/Props/WallCorner.png",
+      "scene": "res://scenes/MapProps/ValtherianMines/WallCorner.tscn",
+      "native_size": [
+        496,
+        512
+      ],
+      "anchor": [
+        248,
+        440
+      ],
+      "world_pixels_per_source_pixel": 0.125,
+      "visible_source_bounds": [
+        41,
+        104,
+        460,
+        440
+      ],
+      "sha256": "cd2431b8122c7747068ea89fd820f93e8a1800fe107c4dc10c6ab7f2993853fd",
+      "whole_sheet_region_xywh": [
+        1040,
+        512,
+        496,
+        512
+      ],
+      "pixellab_edit_id": "9705f738-8f75-4036-9772-70d12237dd3e",
+      "alpha_reason": "Stone surfaces retain original near-opaque alpha252-254 and narrow silhouette coverage alpha128-251. PixelLab removed the observed alpha1-127 background matte; the remaining silhouette is one connected component. Review on light/dark/ground and real4x is recorded separately.",
+      "physics": "Nonblocking wall cladding. Actual continuous CaveBoundary owns the solid footprint; never stack duplicate collision bases."
+    }
+  ]
+}

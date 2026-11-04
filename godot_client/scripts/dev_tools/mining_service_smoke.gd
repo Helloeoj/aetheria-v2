@@ -39,7 +39,7 @@ func setup(probability: float = 1.0) -> void:
 	rng.seed = 123
 	service = load("res://scripts/mining_service.gd").new()
 	service.configure(defs, context, reward, rng)
-	service.register_deposit("bronze", 235)
+	service.register_deposit("bronze", 330)
 
 func context(id: String, _deposit: String) -> Dictionary:
 	return {"player": players.get(id), "eligible": eligible, "in_range": in_range, "paused": paused}
@@ -48,7 +48,7 @@ func reward(id: String, event: Dictionary) -> void:
 	check(not service.active("a") and not service.active("b"), "Competing sessions close before callback")
 	check(service.deposit_snapshots()[0].state == "depleted", "Claim precedes callback")
 	events.append(event)
-	check(players[id].backpack.get("Bronze Ore", 0) > 0, "Inventory grant precedes notification")
+	check(players[id].backpack.get("Copper Ore", 0) > 0, "Inventory grant precedes notification")
 
 func advance(seconds: float) -> void:
 	var remaining := seconds
@@ -67,7 +67,7 @@ func _run() -> void:
 	check(players.a.backpack.is_empty() and players.a.get_skill_experience("mining") == 0, "Full interval before first roll")
 	check(begin().ok, "Repeated target accepted")
 	advance(0.1)
-	check(players.a.backpack.get("Bronze Ore", 0) == 1 and players.a.get_skill_experience("mining") == 121, "One Bronze ore and configured XP")
+	check(players.a.backpack.get("Copper Ore", 0) == 1 and players.a.get_skill_experience("mining") == 121, "One Bronze ore and configured XP")
 	check(events.size() == 1 and events[0].experience_gained == 121, "One post-grant event with actual XP")
 	check(not service.active("a") and service.deposit_snapshots()[0].generation == 1, "Success depletes and cancels")
 	check(not begin().ok, "Replayed generation cannot reward")
@@ -76,7 +76,7 @@ func _run() -> void:
 	advance(0.1)
 	check(service.deposit_snapshots()[0].state == "available" and service.deposit_snapshots()[0].generation == 2, "Respawn advances generation")
 	check(not begin().ok and service.start("a", "bronze", 2).ok, "Only fresh generation restarts")
-	check(not service.register_deposit("bronze", 235).ok, "Duplicate deposit rejected")
+	check(not service.register_deposit("bronze", 330).ok, "Duplicate deposit rejected")
 
 	setup(0.000001)
 	begin()
@@ -87,7 +87,7 @@ func _run() -> void:
 	begin("a")
 	begin("b")
 	advance(3.0)
-	check(int(players.a.backpack.get("Bronze Ore", 0)) + int(players.b.backpack.get("Bronze Ore", 0)) == 1, "Two simultaneous miners get one total ore")
+	check(int(players.a.backpack.get("Copper Ore", 0)) + int(players.b.backpack.get("Copper Ore", 0)) == 1, "Two simultaneous miners get one total ore")
 	check(players.a.get_skill_experience("mining") + players.b.get_skill_experience("mining") == 121 and events.size() == 1, "One total XP award per generation")
 
 	for interruption: String in ["range", "eligibility", "death", "movement", "tool", "equipment", "full", "missing"]:
@@ -100,12 +100,12 @@ func _run() -> void:
 			"movement": players.a.x += 0.2
 			"tool": defs.owned = false
 			"equipment": players.a.equipment.weapon = GameData.get_item_by_name("Bronze Dagger")
-			"full": players.a.backpack["Bronze Ore"] = CharacterCodec.MAX_COUNT
+			"full": players.a.backpack["Copper Ore"] = CharacterCodec.MAX_COUNT
 			"missing": players.erase("a")
 		advance(0.1)
 		check(not service.active("a") and events.is_empty() and service.deposit_snapshots()[0].state == "available", "Interrupt without reward/depletion: " + interruption)
 	setup()
-	players.a.backpack["Bronze Ore"] = CharacterCodec.MAX_COUNT
+	players.a.backpack["Copper Ore"] = CharacterCodec.MAX_COUNT
 	check(not begin().ok, "Full stack rejected before start")
 	setup()
 	defs.tool_level = 18
@@ -114,7 +114,7 @@ func _run() -> void:
 	defs.owned = false
 	check(not begin().ok, "Missing pickaxe rejected")
 	setup()
-	defs._ores[235].required_level = 12
+	defs._ores[330].required_level = 12
 	check(not begin().ok, "Ore requirement independent of tool")
 	setup()
 	begin()

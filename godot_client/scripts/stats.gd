@@ -82,7 +82,9 @@ static func valid_styles_for_weapon(weapon: Dictionary) -> Array[String]:
 	for style: String in ALL_STYLES:
 		if int(bonuses.get(style, 0)) > 0:
 			styles.append(style)
-	return styles if not styles.is_empty() else ["blunt"]
+	if styles.is_empty():
+		styles.append("blunt")
+	return styles
 
 static func weapon_speed_rating(weapon: Dictionary) -> int:
 	if weapon.is_empty():

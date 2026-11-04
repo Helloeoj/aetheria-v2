@@ -60,3 +60,12 @@ Match this dungeon's current restored art and shared crisp material. It is an in
 - Editable content: `res://scenes/GolemKingdomContent.tscn`. Keep floor/decks/stairs on their ground draw plane. Terrain painting does not automatically update authored barriers.
 
 Read [the dungeon asset guide](../../Assets/Maps/GolemKingdom/README.md) only for dungeon-specific implementation. For overworld details use [MapEditing.md](../MapEditing.md). The older WorldChunkSetup guide is not the current map-layout authority.
+
+## Profile: valtherian-mines
+
+- Preserve the approved V3 geography and original 1703×924 PNG/hash in `Approved/`. The user approved finer linework; current `Detail/master-linework.png` is 8192×4438 over the unchanged 6144×3328 world, approximately 0.75 world pixels per texel, matching the player.
+- The 2026-10-29 user clarification permits built-in imagegen with the approved whole-image workflow. The modular rebuild was rejected for poor art/geometry, not generator exclusivity. Keep other generation holds, environment-only images and original room shapes.
+- Hidden 32px movement grid at (0,0), 24px body, painted-floor trace, collision, routes and travel are unchanged. Artwork resolution never redraws the floor to fit the grid. The 92 foreground bands retain original geometry/sort feet and exact new master RGB; map-only palette material never affects actors/UI.
+- Exactly 29 marked nodes: 12 Blackstone, 7 Coal, 4 Mithril, 2 Adamantite, 4 Iron. Grey means Coal. Canonical ore art is now 128px native at Visual scale 0.75, with root scale 1, native anchor (64,96), unchanged 96px world canvas/world anchor (48,72) and original bases. Preserve every marked root and approach.
+- Portable sources/prompts/registration: `art_sources/valtherian-mines/detail-v1/` and `art_sources/ore-nodes/detail-v1/`. Lossless/no-mipmap imports and nearest filtering are required. Inspect actual 4× detail beside the unchanged player; source dimensions or automatic tests alone are insufficient.
+- Runtime: `res://scenes/ValtherianMinesContent.tscn`, existing wrapper `res://scenes/ValtherianMines.tscn`. See [ValtherianMines.md](../ValtherianMines.md). Original provenance, current imported RGBA identity, actual wall/prop clearance, full-body paths/approaches, foreground alignment, travel and real 4× review remain separate checks. User-approved style, final artwork review and installation remain separate statuses.

@@ -54,3 +54,7 @@ For ongoing work, keep one small task record with selected asset paths, exact pr
 Suggested request: **“Use Aetheria's saved map-art workflow. Repair [area/detail], preserve its layout, reuse existing assets, and show the local before/after.”**
 
 No token-saving percentage has been measured. The savings target is fewer repository reads, fewer generation attempts, smaller edit regions and reusable imports.
+
+## PixelLab-only map generation
+
+The user rejected the2026-10-28 Valtherian modular rebuild. Use PixelLab for future new map/environment artwork. Do not use built-in imagegen, procedural replacement art or a generic wall/floor kit as a fallback. If PixelLab is unavailable or out of credits, stop generation rather than spending elsewhere. Existing user-approved images may be installed and layered losslessly when explicitly requested; preserve their visible design. A32px movement/placement grid does not authorize changing the approved artwork into rectangular rooms. Technical tests never substitute for visual approval.

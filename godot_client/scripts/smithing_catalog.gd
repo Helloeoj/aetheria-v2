@@ -10,8 +10,10 @@ static func category(item: Dictionary) -> String:
 	if bool(item.get("legacy_placeholder", false)):
 		return ""
 	var name_key := str(item.get("name", ""))
-	if name_key == "Coal" and item.get("type") == "Crafting":
+	if name_key in ["Coal", "Copper Ore", "Tin Ore", "Blackstone"] and item.get("type") == "Crafting":
 		return "ore"
+	if name_key == "Bronze Pickaxe" and item.get("type") == "Tool" and item.get("slot") == "weapon":
+		return "weapon"
 	var material := str(item.get("material", ""))
 	if material not in METALS or int(item.get("tier", 0)) != METALS.find(material) + 1:
 		return ""

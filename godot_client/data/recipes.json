@@ -3455,5 +3455,45 @@
       "Celestial Magic Staff (Hurricane)"
     ],
     "reason": "Higher-tier staff body materials, log species, tier mapping and quantities await approval."
+  },
+  {
+    "id": "smelt_bronze_copper_tin",
+    "name": "Bronze Ingots (Copper + Tin)",
+    "station": "furnace",
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Copper Ore",
+        "quantity": 1
+      },
+      {
+        "item": "Tin Ore",
+        "quantity": 1
+      }
+    ],
+    "outputs": [
+      {
+        "item": "Bronze Ingot",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": "bronze_pickaxe",
+    "name": "Bronze Pickaxe",
+    "station": "anvil",
+    "enabled": true,
+    "inputs": [
+      {
+        "item": "Bronze Ingot",
+        "quantity": 2
+      }
+    ],
+    "outputs": [
+      {
+        "item": "Bronze Pickaxe",
+        "quantity": 1
+      }
+    ]
   }
 ]

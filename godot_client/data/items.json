@@ -3475,7 +3475,7 @@
   },
   {
     "id": 157,
-    "name": "Galehunter’s Garb Mask",
+    "name": "Galehunter\u00e2\u20ac\u2122s Garb Mask",
     "type": "Armor",
     "material": "Artifact",
     "tier": 10,
@@ -3494,13 +3494,13 @@
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
-    "set_name": "Galehunter’s Garb",
+    "set_name": "Galehunter\u00e2\u20ac\u2122s Garb",
     "special_effect": null,
     "combat_role": "ranged"
   },
   {
     "id": 158,
-    "name": "Galehunter’s Garb Vest",
+    "name": "Galehunter\u00e2\u20ac\u2122s Garb Vest",
     "type": "Armor",
     "material": "Artifact",
     "tier": 10,
@@ -3519,13 +3519,13 @@
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
-    "set_name": "Galehunter’s Garb",
+    "set_name": "Galehunter\u00e2\u20ac\u2122s Garb",
     "special_effect": null,
     "combat_role": "ranged"
   },
   {
     "id": 159,
-    "name": "Galehunter’s Garb Striders",
+    "name": "Galehunter\u00e2\u20ac\u2122s Garb Striders",
     "type": "Armor",
     "material": "Artifact",
     "tier": 10,
@@ -3544,7 +3544,7 @@
     "accuracy_bonus": 0.0,
     "speed": null,
     "rarity": "artifact",
-    "set_name": "Galehunter’s Garb",
+    "set_name": "Galehunter\u00e2\u20ac\u2122s Garb",
     "special_effect": null,
     "combat_role": "ranged"
   },
@@ -5302,9 +5302,10 @@
     "tier": 1,
     "slot": null,
     "rarity": "common",
-    "generic_loot": true,
+    "generic_loot": false,
     "craftable": false,
-    "description": "Smelt at a blacksmith furnace. Gathering deposits are future content."
+    "description": "Historical Bronze Ore retained for saved inventories. Mine Copper and Tin to smelt Bronze.",
+    "legacy_placeholder": true
   },
   {
     "id": 236,
@@ -6935,6 +6936,58 @@
     "generic_loot": true,
     "craftable": false,
     "description": "Combine with Iron Ore at a blacksmith furnace to make Steel Ingots. Gathering deposits are future content."
+  },
+  {
+    "id": 330,
+    "name": "Copper Ore",
+    "type": "Crafting",
+    "material": "Copper",
+    "tier": 1,
+    "slot": null,
+    "rarity": "common",
+    "generic_loot": true,
+    "craftable": false,
+    "description": "Extract from its matching mining deposit."
+  },
+  {
+    "id": 331,
+    "name": "Tin Ore",
+    "type": "Crafting",
+    "material": "Tin",
+    "tier": 1,
+    "slot": null,
+    "rarity": "common",
+    "generic_loot": true,
+    "craftable": false,
+    "description": "Extract from its matching mining deposit."
+  },
+  {
+    "id": 332,
+    "name": "Blackstone",
+    "type": "Crafting",
+    "material": "Blackstone",
+    "tier": 4,
+    "slot": null,
+    "rarity": "common",
+    "generic_loot": true,
+    "craftable": false,
+    "description": "Extract from its matching mining deposit."
+  },
+  {
+    "id": 333,
+    "name": "Bronze Pickaxe",
+    "type": "Tool",
+    "material": "Bronze",
+    "tier": 1,
+    "slot": "weapon",
+    "rarity": "common",
+    "generic_loot": false,
+    "craftable": true,
+    "description": "Reusable Mining tool. Carry in your backpack or equip; requires Mining level 1.",
+    "tool_skill": "mining",
+    "tool_type": "pickaxe",
+    "damage": 1,
+    "attack_speed": 3.0
   },
   {
     "id": 9001,
