@@ -54,7 +54,7 @@ func _run() -> void:
 	menu.configure(game)
 	menu.visible = true
 	menu.select_page(5)
-	check(menu.selected_page == 5 and menu.tabs.get_tab_count() == 6, "ledger is selectable after the five preserved journal pages")
+	check(menu.selected_page == 5 and menu.tabs.get_tab_count() == 7, "ledger retains its page ID alongside Summoning and the five original pages")
 	check(labels(menu).contains("No active orders"), "empty ledger explains the absence of active orders")
 	if menu.selected_page != 5:
 		game.queue_free()

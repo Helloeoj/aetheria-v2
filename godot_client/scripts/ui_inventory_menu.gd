@@ -1,10 +1,11 @@
 class_name InventoryMenu
 extends Control
 
-enum Page { INVENTORY, SKILLS, SPELLS, EQUIPMENT, COMBAT, ORDERS }
+enum Page { INVENTORY, SKILLS, SPELLS, EQUIPMENT, COMBAT, ORDERS, SUMMONING }
 
-const PAGE_NAMES := ["Inventory", "Skills", "Spells", "Equipment", "Combat", "Captain's Ledger"]
-const PAGE_ICONS := ["bag", "skills", "spells", "equipment", "combat", "bag"]
+const PAGE_NAMES := ["Inventory", "Skills", "Spells", "Summoning", "Equipment", "Combat", "Captain's Ledger"]
+const PAGE_ICONS := ["bag", "skills", "spells", "magic", "equipment", "combat", "bag"]
+const TAB_PAGES := [Page.INVENTORY, Page.SKILLS, Page.SPELLS, Page.SUMMONING, Page.EQUIPMENT, Page.COMBAT, Page.ORDERS]
 const SLOT_LAYOUT := [
 	["Head", "head"], ["Neck", "neck"], ["Cape", "cape"], ["Chest", "chest"],
 	["Legs", "legs"], ["Weapon", "weapon"], ["Shield", "shield"],
@@ -31,6 +32,8 @@ var panel: Panel
 var tabs: TabBar
 var selected_page := Page.INVENTORY
 var selected_item_name := ""
+var selected_summon_id := "lesser_imp"
+var summon_catalog: Array = []
 var selected_inventory_slot_index := -1
 var selected_equipment_slot := ""
 var status_text := "Choose a tab to manage your adventurer."
@@ -47,9 +50,19 @@ var _skill_session_label: Label
 var _skill_session_labels: Dictionary = {}
 var _orders_ledger := preload("res://scripts/orders/orders_ledger.gd").new()
 var _order_reader := preload("res://scripts/orders/orders_reader.gd").new()
+var _summoning_page := preload("res://scripts/ui_summoning_page.gd").new()
+var _journal_overlay: CanvasLayer
 
 func configure(game_ref: Node) -> void:
 	game = game_ref
+	# The persistent social HUD uses layer 80; journal controls must stay above it.
+	if not is_instance_valid(_journal_overlay) and get_parent() != null:
+		_journal_overlay = CanvasLayer.new()
+		_journal_overlay.name = "JournalOverlay"
+		_journal_overlay.layer = 81
+		get_parent().add_child(_journal_overlay)
+		reparent(_journal_overlay, false)
+	summon_catalog = JSON.parse_string(FileAccess.get_file_as_string("res://data/summons.json"))
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	if not _built:
@@ -108,10 +121,11 @@ func on_mouse_press(position: Vector2) -> bool:
 	return visible and panel != null and panel.get_global_rect().has_point(position)
 
 func select_page(index: int) -> void:
-	selected_page = clampi(index, Page.INVENTORY, Page.ORDERS)
-	if tabs != null and tabs.current_tab != selected_page:
+	selected_page = clampi(index, Page.INVENTORY, Page.SUMMONING)
+	var tab_index := TAB_PAGES.find(selected_page)
+	if tabs != null and tabs.current_tab != tab_index:
 		tabs.set_block_signals(true)
-		tabs.current_tab = selected_page
+		tabs.current_tab = tab_index
 		tabs.set_block_signals(false)
 	refresh_view()
 
@@ -138,6 +152,8 @@ func refresh_view() -> void:
 			_build_skills(player)
 		Page.SPELLS:
 			_build_spells(player)
+		Page.SUMMONING:
+			_summoning_page.build(self)
 		Page.EQUIPMENT:
 			_build_equipment(player)
 		Page.COMBAT:
@@ -148,6 +164,14 @@ func refresh_view() -> void:
 	_order_reader.refresh(self)
 	_last_signature = _state_signature()
 	_restore_scroll.call_deferred()
+
+func select_summon(summon_id: String) -> void:
+	for summon: Dictionary in summon_catalog:
+		if String(summon.id) == summon_id:
+			selected_summon_id = summon_id
+			_set_status("Viewing %s." % String(summon.name))
+			refresh_view()
+			return
 
 func select_spell(spell_id: String) -> bool:
 	if Network.online():
@@ -217,11 +241,11 @@ func _build_shell() -> void:
 	content.add_child(header_stats)
 	tabs = TabBar.new()
 	tabs.name = "JournalTabs"
-	tabs.clip_tabs = false
+	tabs.clip_tabs = true
 	for index in range(PAGE_NAMES.size()):
 		tabs.add_tab(String(PAGE_NAMES[index]), FantasyUI.icon(String(PAGE_ICONS[index])))
 		tabs.set_tab_icon_max_width(index, 22)
-	tabs.tab_changed.connect(select_page)
+	tabs.tab_changed.connect(func(index: int) -> void: select_page(TAB_PAGES[index]))
 	content.add_child(tabs)
 	body = HBoxContainer.new()
 	body.name = "JournalContent"

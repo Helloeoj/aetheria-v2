@@ -1,0 +1,228 @@
+{
+  "usage": "Journal portraits only; summon gameplay remains unimplemented",
+  "source_pack": "2026-11-03-revisions-v2",
+  "source_direction": "south-east",
+  "pixel_changes": false,
+  "files": [
+    {
+      "source": "characters/lesser_imp/animations/idle/south-east/frame_000.png",
+      "installed": "Assets/Characters/SummonPortraits/lesser_imp/frame_000.png",
+      "sha256": "9af5b84f90cafd58618fcdb63cbcd0f26f0ff86539c83f1d99b19c0be17cfc71"
+    },
+    {
+      "source": "characters/lesser_imp/animations/idle/south-east/frame_001.png",
+      "installed": "Assets/Characters/SummonPortraits/lesser_imp/frame_001.png",
+      "sha256": "67c012ac159cb77ed27981ca42ee0983e40d90fdb1227ab32942d9c35390970c"
+    },
+    {
+      "source": "characters/lesser_imp/animations/idle/south-east/frame_002.png",
+      "installed": "Assets/Characters/SummonPortraits/lesser_imp/frame_002.png",
+      "sha256": "e9ab8c17a66e059b0a51c314f1bb8576f7d8863b36e2461350e32733e8acf673"
+    },
+    {
+      "source": "characters/lesser_imp/animations/idle/south-east/frame_003.png",
+      "installed": "Assets/Characters/SummonPortraits/lesser_imp/frame_003.png",
+      "sha256": "6f2b38d2a202c45072d06d028961504a11340d5b563353e74262b4348e409671"
+    },
+    {
+      "source": "characters/skeleton/animations/idle/south-east/frame_000.png",
+      "installed": "Assets/Characters/SummonPortraits/skeleton/frame_000.png",
+      "sha256": "f1a92849f7bc6eece2e503d250aa9784c9f7eff6a9fd1a5c47ad7d7bc84c26ef"
+    },
+    {
+      "source": "characters/skeleton/animations/idle/south-east/frame_001.png",
+      "installed": "Assets/Characters/SummonPortraits/skeleton/frame_001.png",
+      "sha256": "f1a92849f7bc6eece2e503d250aa9784c9f7eff6a9fd1a5c47ad7d7bc84c26ef"
+    },
+    {
+      "source": "characters/skeleton/animations/idle/south-east/frame_002.png",
+      "installed": "Assets/Characters/SummonPortraits/skeleton/frame_002.png",
+      "sha256": "4aa6b2ce6bee4a9446754ae76534ef26c43c8433a265b5879bd0115c2ea4d4eb"
+    },
+    {
+      "source": "characters/skeleton/animations/idle/south-east/frame_003.png",
+      "installed": "Assets/Characters/SummonPortraits/skeleton/frame_003.png",
+      "sha256": "4aa6b2ce6bee4a9446754ae76534ef26c43c8433a265b5879bd0115c2ea4d4eb"
+    },
+    {
+      "source": "characters/skeleton/animations/idle/south-east/frame_004.png",
+      "installed": "Assets/Characters/SummonPortraits/skeleton/frame_004.png",
+      "sha256": "f1a92849f7bc6eece2e503d250aa9784c9f7eff6a9fd1a5c47ad7d7bc84c26ef"
+    },
+    {
+      "source": "characters/skeleton/animations/idle/south-east/frame_005.png",
+      "installed": "Assets/Characters/SummonPortraits/skeleton/frame_005.png",
+      "sha256": "f1a92849f7bc6eece2e503d250aa9784c9f7eff6a9fd1a5c47ad7d7bc84c26ef"
+    },
+    {
+      "source": "characters/skeleton/animations/idle/south-east/frame_006.png",
+      "installed": "Assets/Characters/SummonPortraits/skeleton/frame_006.png",
+      "sha256": "40b5dfc6715e2b7193d06de9292c3a91256b566b2fbd93c773af7f89c022dae4"
+    },
+    {
+      "source": "characters/skeleton/animations/idle/south-east/frame_007.png",
+      "installed": "Assets/Characters/SummonPortraits/skeleton/frame_007.png",
+      "sha256": "f1a92849f7bc6eece2e503d250aa9784c9f7eff6a9fd1a5c47ad7d7bc84c26ef"
+    },
+    {
+      "source": "characters/hellhound/animations/idle/south-east/frame_000.png",
+      "installed": "Assets/Characters/SummonPortraits/hellhound/frame_000.png",
+      "sha256": "3da0e51d1fa4d57216d2c163900bef2649698ea5da4276a043e59b7b7b55b0f0"
+    },
+    {
+      "source": "characters/hellhound/animations/idle/south-east/frame_001.png",
+      "installed": "Assets/Characters/SummonPortraits/hellhound/frame_001.png",
+      "sha256": "3da0e51d1fa4d57216d2c163900bef2649698ea5da4276a043e59b7b7b55b0f0"
+    },
+    {
+      "source": "characters/hellhound/animations/idle/south-east/frame_002.png",
+      "installed": "Assets/Characters/SummonPortraits/hellhound/frame_002.png",
+      "sha256": "d260b366f22f4e614552b9683b384c8a63704dd11c11fe878e77017d4b87acd7"
+    },
+    {
+      "source": "characters/hellhound/animations/idle/south-east/frame_003.png",
+      "installed": "Assets/Characters/SummonPortraits/hellhound/frame_003.png",
+      "sha256": "d260b366f22f4e614552b9683b384c8a63704dd11c11fe878e77017d4b87acd7"
+    },
+    {
+      "source": "characters/hellhound/animations/idle/south-east/frame_004.png",
+      "installed": "Assets/Characters/SummonPortraits/hellhound/frame_004.png",
+      "sha256": "d260b366f22f4e614552b9683b384c8a63704dd11c11fe878e77017d4b87acd7"
+    },
+    {
+      "source": "characters/hellhound/animations/idle/south-east/frame_005.png",
+      "installed": "Assets/Characters/SummonPortraits/hellhound/frame_005.png",
+      "sha256": "3da0e51d1fa4d57216d2c163900bef2649698ea5da4276a043e59b7b7b55b0f0"
+    },
+    {
+      "source": "characters/hellhound/animations/idle/south-east/frame_006.png",
+      "installed": "Assets/Characters/SummonPortraits/hellhound/frame_006.png",
+      "sha256": "3da0e51d1fa4d57216d2c163900bef2649698ea5da4276a043e59b7b7b55b0f0"
+    },
+    {
+      "source": "characters/hellhound/animations/idle/south-east/frame_007.png",
+      "installed": "Assets/Characters/SummonPortraits/hellhound/frame_007.png",
+      "sha256": "3da0e51d1fa4d57216d2c163900bef2649698ea5da4276a043e59b7b7b55b0f0"
+    },
+    {
+      "source": "characters/shadow_wolf/animations/idle/south-east/frame_000.png",
+      "installed": "Assets/Characters/SummonPortraits/shadow_wolf/frame_000.png",
+      "sha256": "8b2885c38c7b91da1cb1dca0e1b99c5bbf00e5f4d6b7222e4dad3ccb67c1f5fa"
+    },
+    {
+      "source": "characters/shadow_wolf/animations/idle/south-east/frame_001.png",
+      "installed": "Assets/Characters/SummonPortraits/shadow_wolf/frame_001.png",
+      "sha256": "13e02f5f11869d84fe0c70c39445dd9a433d027d9dcf0abdcec88161eae45f18"
+    },
+    {
+      "source": "characters/shadow_wolf/animations/idle/south-east/frame_002.png",
+      "installed": "Assets/Characters/SummonPortraits/shadow_wolf/frame_002.png",
+      "sha256": "c8346146ecee75743c2434524c5b7d573642eed5b1b77a86cad40a0275acb679"
+    },
+    {
+      "source": "characters/shadow_wolf/animations/idle/south-east/frame_003.png",
+      "installed": "Assets/Characters/SummonPortraits/shadow_wolf/frame_003.png",
+      "sha256": "b3bff85b2f1f08d8ce45875f35f297fb0122ca6f2cd571e9e517c6627c353779"
+    },
+    {
+      "source": "characters/shadow_wolf/animations/idle/south-east/frame_004.png",
+      "installed": "Assets/Characters/SummonPortraits/shadow_wolf/frame_004.png",
+      "sha256": "60ca64c4d070e6ea828accae7c27644f77d6ded4b63c2173819003ea17f6329c"
+    },
+    {
+      "source": "characters/shadow_wolf/animations/idle/south-east/frame_005.png",
+      "installed": "Assets/Characters/SummonPortraits/shadow_wolf/frame_005.png",
+      "sha256": "fb3174dffddd43d719d991931560906d392e3df5445b286d5183c8ea20354d3c"
+    },
+    {
+      "source": "characters/shadow_wolf/animations/idle/south-east/frame_006.png",
+      "installed": "Assets/Characters/SummonPortraits/shadow_wolf/frame_006.png",
+      "sha256": "14698ce75599ea2a894580c97f51531ba72b2d5b4fcf5d35582a765f4f8e1de4"
+    },
+    {
+      "source": "characters/shadow_wolf/animations/idle/south-east/frame_007.png",
+      "installed": "Assets/Characters/SummonPortraits/shadow_wolf/frame_007.png",
+      "sha256": "af664e6fa048b481f03db6a2342a2f7d97f45c512beb691ea7b9213daf3658d0"
+    },
+    {
+      "source": "characters/dread_wraith/animations/idle/south-east/frame_000.png",
+      "installed": "Assets/Characters/SummonPortraits/dread_wraith/frame_000.png",
+      "sha256": "2617980aaa9e29293333c40643b6df038f6cd6e7b89608d609559414836df5be"
+    },
+    {
+      "source": "characters/dread_wraith/animations/idle/south-east/frame_001.png",
+      "installed": "Assets/Characters/SummonPortraits/dread_wraith/frame_001.png",
+      "sha256": "849b51b96f9a905cf40369617d0d12c3909a1ca075b8f49b18f4ae89db6f15a8"
+    },
+    {
+      "source": "characters/dread_wraith/animations/idle/south-east/frame_002.png",
+      "installed": "Assets/Characters/SummonPortraits/dread_wraith/frame_002.png",
+      "sha256": "951096753247c0b2deaf257042993b1a827eab62b22e98b72c6ca9071abd63b5"
+    },
+    {
+      "source": "characters/dread_wraith/animations/idle/south-east/frame_003.png",
+      "installed": "Assets/Characters/SummonPortraits/dread_wraith/frame_003.png",
+      "sha256": "849b51b96f9a905cf40369617d0d12c3909a1ca075b8f49b18f4ae89db6f15a8"
+    },
+    {
+      "source": "characters/dread_wraith/animations/idle/south-east/frame_004.png",
+      "installed": "Assets/Characters/SummonPortraits/dread_wraith/frame_004.png",
+      "sha256": "2617980aaa9e29293333c40643b6df038f6cd6e7b89608d609559414836df5be"
+    },
+    {
+      "source": "characters/dread_wraith/animations/idle/south-east/frame_005.png",
+      "installed": "Assets/Characters/SummonPortraits/dread_wraith/frame_005.png",
+      "sha256": "5c969a54aee88bbf8a3be5abed860ff79329c271cf9681b60b090879d9625af4"
+    },
+    {
+      "source": "characters/dread_wraith/animations/idle/south-east/frame_006.png",
+      "installed": "Assets/Characters/SummonPortraits/dread_wraith/frame_006.png",
+      "sha256": "5c969a54aee88bbf8a3be5abed860ff79329c271cf9681b60b090879d9625af4"
+    },
+    {
+      "source": "characters/dread_wraith/animations/idle/south-east/frame_007.png",
+      "installed": "Assets/Characters/SummonPortraits/dread_wraith/frame_007.png",
+      "sha256": "2617980aaa9e29293333c40643b6df038f6cd6e7b89608d609559414836df5be"
+    },
+    {
+      "source": "characters/death_knight/animations/idle/south-east/frame_000.png",
+      "installed": "Assets/Characters/SummonPortraits/death_knight/frame_000.png",
+      "sha256": "0daf94e3fb04dd616bfa6646b54d30009cec184a4720a334b490adda69bc73ba"
+    },
+    {
+      "source": "characters/death_knight/animations/idle/south-east/frame_001.png",
+      "installed": "Assets/Characters/SummonPortraits/death_knight/frame_001.png",
+      "sha256": "edd3c17391cdf4a12b542850dd978ece2d6ba0c8b899715b915d880fa88f2386"
+    },
+    {
+      "source": "characters/death_knight/animations/idle/south-east/frame_002.png",
+      "installed": "Assets/Characters/SummonPortraits/death_knight/frame_002.png",
+      "sha256": "3befedb51d20d39e204fe06bec4f257bfbff2ad8d50eb72437fcf17a45b7e3e9"
+    },
+    {
+      "source": "characters/death_knight/animations/idle/south-east/frame_003.png",
+      "installed": "Assets/Characters/SummonPortraits/death_knight/frame_003.png",
+      "sha256": "01993fa5492058fe5fa2ec80e14bae0ce468383b93b201bd941c96533b8e7ebc"
+    },
+    {
+      "source": "characters/abyssal_fiend/animations/idle/south-east/frame_000.png",
+      "installed": "Assets/Characters/SummonPortraits/abyssal_fiend/frame_000.png",
+      "sha256": "32d992d009fd980139460c2bb0544fb830b4f2db8e34c889c84dc1a2751f7103"
+    },
+    {
+      "source": "characters/abyssal_fiend/animations/idle/south-east/frame_001.png",
+      "installed": "Assets/Characters/SummonPortraits/abyssal_fiend/frame_001.png",
+      "sha256": "a41ac4442513a27d935771b392be35458e13927970facca36a0ad577386d87fa"
+    },
+    {
+      "source": "characters/abyssal_fiend/animations/idle/south-east/frame_002.png",
+      "installed": "Assets/Characters/SummonPortraits/abyssal_fiend/frame_002.png",
+      "sha256": "7e5f158cca5fbd221dde92a087894a41810316dc339c8e141bc2b30b44a4985b"
+    },
+    {
+      "source": "characters/abyssal_fiend/animations/idle/south-east/frame_003.png",
+      "installed": "Assets/Characters/SummonPortraits/abyssal_fiend/frame_003.png",
+      "sha256": "d4f9c772f004f11448c52832265e09a555e0d565d3f9500d3c94e6b9bdb113d7"
+    }
+  ]
+}

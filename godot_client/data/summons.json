@@ -1,0 +1,475 @@
+[
+  {
+    "id": "lesser_imp",
+    "name": "Lesser Imp",
+    "attack": "Fireball caster",
+    "description": "Casts fireballs at its target.",
+    "preview": {
+      "fps": 6,
+      "frames": [
+        {
+          "src": "res://Assets/Characters/SummonPortraits/lesser_imp/frame_000.png",
+          "w": 64,
+          "h": 64,
+          "anchor": [
+            32.0,
+            54.0
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/lesser_imp/frame_001.png",
+          "w": 64,
+          "h": 64,
+          "anchor": [
+            32.0,
+            54.0
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/lesser_imp/frame_002.png",
+          "w": 64,
+          "h": 64,
+          "anchor": [
+            32.0,
+            54.0
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/lesser_imp/frame_003.png",
+          "w": 64,
+          "h": 64,
+          "anchor": [
+            32.0,
+            54.0
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "skeleton",
+    "name": "Skeleton",
+    "attack": "Sword and shield",
+    "description": "Fights with a sword and buckler.",
+    "preview": {
+      "fps": 6,
+      "frames": [
+        {
+          "src": "res://Assets/Characters/SummonPortraits/skeleton/frame_000.png",
+          "w": 80,
+          "h": 80,
+          "anchor": [
+            40,
+            65
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/skeleton/frame_001.png",
+          "w": 80,
+          "h": 80,
+          "anchor": [
+            40,
+            65
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/skeleton/frame_002.png",
+          "w": 80,
+          "h": 80,
+          "anchor": [
+            40,
+            65
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/skeleton/frame_003.png",
+          "w": 80,
+          "h": 80,
+          "anchor": [
+            40,
+            65
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/skeleton/frame_004.png",
+          "w": 80,
+          "h": 80,
+          "anchor": [
+            40,
+            65
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/skeleton/frame_005.png",
+          "w": 80,
+          "h": 80,
+          "anchor": [
+            40,
+            65
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/skeleton/frame_006.png",
+          "w": 80,
+          "h": 80,
+          "anchor": [
+            40,
+            65
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/skeleton/frame_007.png",
+          "w": 80,
+          "h": 80,
+          "anchor": [
+            40,
+            65
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "hellhound",
+    "name": "Hellhound",
+    "attack": "Pounce and claws",
+    "description": "Pounces forward and rakes its target with its front claws.",
+    "preview": {
+      "fps": 6,
+      "frames": [
+        {
+          "src": "res://Assets/Characters/SummonPortraits/hellhound/frame_000.png",
+          "w": 80,
+          "h": 80,
+          "anchor": [
+            40,
+            67
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/hellhound/frame_001.png",
+          "w": 80,
+          "h": 80,
+          "anchor": [
+            40,
+            67
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/hellhound/frame_002.png",
+          "w": 80,
+          "h": 80,
+          "anchor": [
+            40,
+            67
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/hellhound/frame_003.png",
+          "w": 80,
+          "h": 80,
+          "anchor": [
+            40,
+            67
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/hellhound/frame_004.png",
+          "w": 80,
+          "h": 80,
+          "anchor": [
+            40,
+            67
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/hellhound/frame_005.png",
+          "w": 80,
+          "h": 80,
+          "anchor": [
+            40,
+            67
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/hellhound/frame_006.png",
+          "w": 80,
+          "h": 80,
+          "anchor": [
+            40,
+            67
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/hellhound/frame_007.png",
+          "w": 80,
+          "h": 80,
+          "anchor": [
+            40,
+            67
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "shadow_wolf",
+    "name": "Shadow Wolf",
+    "attack": "Pouncing strike",
+    "description": "A shadowy wolf that lunges at its target.",
+    "preview": {
+      "fps": 6,
+      "frames": [
+        {
+          "src": "res://Assets/Characters/SummonPortraits/shadow_wolf/frame_000.png",
+          "w": 64,
+          "h": 64,
+          "anchor": [
+            32.0,
+            57.0
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/shadow_wolf/frame_001.png",
+          "w": 64,
+          "h": 64,
+          "anchor": [
+            32.0,
+            57.0
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/shadow_wolf/frame_002.png",
+          "w": 64,
+          "h": 64,
+          "anchor": [
+            32.0,
+            57.0
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/shadow_wolf/frame_003.png",
+          "w": 64,
+          "h": 64,
+          "anchor": [
+            32.0,
+            57.0
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/shadow_wolf/frame_004.png",
+          "w": 64,
+          "h": 64,
+          "anchor": [
+            32.0,
+            57.0
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/shadow_wolf/frame_005.png",
+          "w": 64,
+          "h": 64,
+          "anchor": [
+            32.0,
+            57.0
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/shadow_wolf/frame_006.png",
+          "w": 64,
+          "h": 64,
+          "anchor": [
+            32.0,
+            57.0
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/shadow_wolf/frame_007.png",
+          "w": 64,
+          "h": 64,
+          "anchor": [
+            32.0,
+            57.0
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "dread_wraith",
+    "name": "Dread Wraith",
+    "attack": "Dark Bolt and debuff",
+    "description": "Floats above the ground, casting Dark Bolt and weakening its target's defense.",
+    "preview": {
+      "fps": 6,
+      "frames": [
+        {
+          "src": "res://Assets/Characters/SummonPortraits/dread_wraith/frame_000.png",
+          "w": 80,
+          "h": 80,
+          "anchor": [
+            40,
+            77
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/dread_wraith/frame_001.png",
+          "w": 80,
+          "h": 80,
+          "anchor": [
+            40,
+            77
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/dread_wraith/frame_002.png",
+          "w": 80,
+          "h": 80,
+          "anchor": [
+            40,
+            77
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/dread_wraith/frame_003.png",
+          "w": 80,
+          "h": 80,
+          "anchor": [
+            40,
+            77
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/dread_wraith/frame_004.png",
+          "w": 80,
+          "h": 80,
+          "anchor": [
+            40,
+            77
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/dread_wraith/frame_005.png",
+          "w": 80,
+          "h": 80,
+          "anchor": [
+            40,
+            77
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/dread_wraith/frame_006.png",
+          "w": 80,
+          "h": 80,
+          "anchor": [
+            40,
+            77
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/dread_wraith/frame_007.png",
+          "w": 80,
+          "h": 80,
+          "anchor": [
+            40,
+            77
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "death_knight",
+    "name": "Death Knight",
+    "attack": "Overhead sword strike",
+    "description": "Carries its sword over its right shoulder while moving and attacks with a downward overhead slash.",
+    "preview": {
+      "fps": 6,
+      "frames": [
+        {
+          "src": "res://Assets/Characters/SummonPortraits/death_knight/frame_000.png",
+          "w": 64,
+          "h": 64,
+          "anchor": [
+            32.0,
+            60.0
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/death_knight/frame_001.png",
+          "w": 64,
+          "h": 64,
+          "anchor": [
+            32.0,
+            60.0
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/death_knight/frame_002.png",
+          "w": 64,
+          "h": 64,
+          "anchor": [
+            32.0,
+            60.0
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/death_knight/frame_003.png",
+          "w": 64,
+          "h": 64,
+          "anchor": [
+            32.0,
+            60.0
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "abyssal_fiend",
+    "name": "Abyssal Fiend",
+    "attack": "Heavy strike",
+    "description": "Delivers a committed heavy strike with a full follow-through.",
+    "preview": {
+      "fps": 6,
+      "frames": [
+        {
+          "src": "res://Assets/Characters/SummonPortraits/abyssal_fiend/frame_000.png",
+          "w": 64,
+          "h": 64,
+          "anchor": [
+            32.0,
+            58.0
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/abyssal_fiend/frame_001.png",
+          "w": 64,
+          "h": 64,
+          "anchor": [
+            32.0,
+            58.0
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/abyssal_fiend/frame_002.png",
+          "w": 64,
+          "h": 64,
+          "anchor": [
+            32.0,
+            58.0
+          ]
+        },
+        {
+          "src": "res://Assets/Characters/SummonPortraits/abyssal_fiend/frame_003.png",
+          "w": 64,
+          "h": 64,
+          "anchor": [
+            32.0,
+            58.0
+          ]
+        }
+      ]
+    }
+  }
+]
