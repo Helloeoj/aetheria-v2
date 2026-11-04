@@ -6,6 +6,7 @@ var directions: Array[String] = ["south-east"]
 var loadouts: Array[String] = ["armor"]
 var selected_frames: Array[int] = []
 var tier := "Bronze"
+var combat_option := ""
 var game: Node
 var actor: ActorSprite
 var camera: Camera2D
@@ -28,6 +29,7 @@ func run() -> void:
 		elif arg.begins_with("--world-motion-directions="): directions.assign(arg.trim_prefix("--world-motion-directions=").split(",",false))
 		elif arg.begins_with("--world-motion-loadouts="): loadouts.assign(arg.trim_prefix("--world-motion-loadouts=").split(",",false))
 		elif arg.begins_with("--world-motion-tier="): tier=arg.trim_prefix("--world-motion-tier=").capitalize()
+		elif arg.begins_with("--world-motion-option="): combat_option=arg.trim_prefix("--world-motion-option=")
 		elif arg.begins_with("--world-motion-frames="):
 			for value: String in arg.trim_prefix("--world-motion-frames=").split(",",false): selected_frames.append(int(value))
 	if destination.is_empty() or not CharacterWeaponMotion.enabled():
@@ -183,6 +185,7 @@ func review_case(family: String, loadout: String, direction: String) -> void:
 	# Exercise Main's actual presentation event route with zero damage.
 	var event_type:="projectile_spawned" if family in ["bow","crossbow"] else "entity_hit"
 	var events: Array[Dictionary]=[{"type":event_type,"attacker_id":game.get("player").entity_id,"damage":0}]
+	if not combat_option.is_empty(): events[0]["combat_option"]=combat_option
 	game.call("_handle_combat_events",events)
 	check(String(actor.animated_sprite.animation)=="attack_"+direction and not actor._fallback_attack,"Main combat event route triggered actual family attack")
 	check(actor.weapon_animation_family()==family,"combat route retained requested weapon family")

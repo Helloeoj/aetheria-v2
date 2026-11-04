@@ -10,6 +10,7 @@ var item_definition: Dictionary = {}
 var part_skeleton: Skeleton2D
 var current_pose_key := ""
 var authored_pose := false
+static var blade_axes: Dictionary={}
 
 func get_weapon_profile(direction: String) -> Dictionary:
 	FittedEquipmentLibrary.initialize()
@@ -21,6 +22,19 @@ func get_weapon_profile(direction: String) -> Dictionary:
 	var pivot := FittedEquipmentLibrary.point(part.pivot)
 	var support := pivot+Vector2(0,-9)
 	var texture := FittedEquipmentLibrary.texture(part.file)
+	var blade_axis:=Vector2.UP
+	if family=="longsword":
+		if not blade_axes.has(part.file):
+			var source:=texture.get_image()
+			var longest:=0.0
+			for y in range(source.get_height()):
+				for x in range(source.get_width()):
+					var delta:=Vector2(x,y)-pivot
+					if source.get_pixel(x,y).a>0.0 and delta.length_squared()>longest:
+						longest=delta.length_squared()
+						blade_axis=delta.normalized()
+			blade_axes[part.file]=blade_axis
+		blade_axis=blade_axes[part.file]
 	var tips: Array=[]
 	if family=="bow":
 		var width := texture.get_width()
@@ -30,7 +44,7 @@ func get_weapon_profile(direction: String) -> Dictionary:
 		support=(tips[0]+tips[1])*0.5
 	elif family=="crossbow":
 		support=pivot+Vector2.DOWN.rotated(-CharacterSpriteLibrary.DIRECTIONS.find(direction)*PI/4.0)*7.0
-	return {"family":family,"texture":texture,"source_key":part.file,"pivot":pivot,"support_grip":support,"string_tips":tips,"source_scale":1.0,"carry_rotation":float(part.get("carryRotation",0.0))}
+	return {"family":family,"texture":texture,"source_key":part.file,"pivot":pivot,"support_grip":support,"blade_axis":blade_axis,"string_tips":tips,"source_scale":1.0,"carry_rotation":float(part.get("carryRotation",0.0))}
 
 func bow_source(profile: Dictionary, motion: Dictionary) -> Dictionary:
 	var key:="bow-string/"+String(profile.source_key)+"/"+str(motion.frame)+"/"+str(motion.is_attack)

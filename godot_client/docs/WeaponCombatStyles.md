@@ -4,7 +4,12 @@ Research guide, 2026-11-04. Mechanics verified against indexed OSRS Wiki text;
 direct wiki page/media access was blocked. The user-supplied scimitar GIF was
 downloaded and inspected frame by frame. Animation directions below are proposed
 Aetheria adaptations, not claims that RuneScape gives each option a unique clip.
-This document does not mean the gameplay changes have been implemented.
+Animation implementation status: Bronze-authored Chop, Slash, Lunge and
+Defensive longsword tracks, and Whack, Batter and Defensive warmaul tracks now
+share their poses with Iron/Steel. ActorSprite accepts a named combat option;
+the current gameplay Slash/Stab inputs select Slash/Lunge, and a generic crush
+attack selects Whack. The full training-option selector and XP/stat routing
+below are still pending; authoring the motions does not complete those rules.
 
 ## Sources
 

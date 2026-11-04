@@ -243,6 +243,7 @@ func _fitted_context() -> Dictionary:
 	if _visual != null and _visual.sprite_frames != null and _visual.sprite_frames.has_animation(_visual.animation):
 		texture = _visual.sprite_frames.get_frame_texture(_visual.animation, _visual.frame)
 	var context := {
+		"combat_option": String(_visual.get_meta("combat_option","")),
 		"pose": current_pose, "direction": _current_facing,
 		"source_pose": _pose_catalog.get("skins", {}).get(_skin_id, {}).get("poses", {}).get(current_frame_path, {}),
 		"action": String(_visual.animation).get_slice("_", 0) if _visual != null else "idle",

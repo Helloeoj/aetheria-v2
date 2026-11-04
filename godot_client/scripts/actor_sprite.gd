@@ -174,10 +174,11 @@ func face_direction(screen_direction: Vector2) -> void:
 		_play_locomotion()
 
 
-func play_attack(screen_direction: Vector2 = Vector2.ZERO) -> void:
+func play_attack(screen_direction: Vector2 = Vector2.ZERO, combat_option: String = "") -> void:
 	if dead:
 		return
 	_ensure_nodes()
+	animated_sprite.set_meta("combat_option",CharacterWeaponMotion.style_for(_weapon_family,combat_option))
 	_attack_remaining = 0.0
 	face_direction(screen_direction)
 	_attack_direction = screen_direction.normalized() if not screen_direction.is_zero_approx() else _facing_vector()
@@ -188,7 +189,9 @@ func play_attack(screen_direction: Vector2 = Vector2.ZERO) -> void:
 		_play_animation(CharacterSpriteLibrary.animation_name("idle", facing), true)
 	else:
 		var frames := animated_sprite.sprite_frames
-		_attack_duration = float(frames.get_frame_count(animation)) / frames.get_animation_speed(animation)
+		_attack_duration = 0.0
+		for frame in frames.get_frame_count(animation):
+			_attack_duration += frames.get_frame_duration(animation, frame) / frames.get_animation_speed(animation)
 		_play_animation(animation, true)
 	_attack_remaining = maxf(_attack_duration, 0.05)
 	queue_redraw()

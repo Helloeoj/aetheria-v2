@@ -1537,7 +1537,7 @@ func _show_combat_sprite_event(event: Dictionary) -> void:
 			var direction := Vector2.ZERO
 			if target != null and source != null:
 				direction = _screen_position(target.x, target.y) - _screen_position(source.x, source.y)
-			attacker.play_attack(direction)
+			attacker.play_attack(direction,String(event.get("combat_option",source.attack_style if source!=null else "")))
 	if event_type in ["entity_hit", "projectile_hit", "spell_area_hit"] and int(event.get("damage", 0)) > 0:
 		var victim: ActorSprite = actor_sprites.get(String(event.get("target_id", "")))
 		if victim != null:

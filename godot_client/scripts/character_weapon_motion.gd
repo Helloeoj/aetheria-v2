@@ -35,8 +35,13 @@ static func install_attacks(source: SpriteFrames, family: String) -> SpriteFrame
 		result.set_animation_loop(attack,false)
 		result.set_animation_speed(attack,8.0/float(clip.duration))
 		for _frame in range(8):
-			result.add_frame(attack,source.get_frame_texture(idle,0))
+			result.add_frame(attack,source.get_frame_texture(idle,0),float(clip.get("frame_weights",[1,1,1,1,1,1,1,1])[_frame]))
 	return result
+
+static func style_for(family: String, requested: String) -> String:
+	var base:=definition(family)
+	if family=="longsword" and requested=="stab": requested="lunge"
+	return requested if base.get("styles",{}).has(requested) else String(base.get("default_style",""))
 
 static func sample(context: Dictionary, profile: Dictionary, shield: bool) -> Dictionary:
 	var family := String(profile.get("family",""))
@@ -44,8 +49,14 @@ static func sample(context: Dictionary, profile: Dictionary, shield: bool) -> Di
 	if clip.is_empty() or not enabled():
 		return {}
 	var attack := String(context.action)=="attack"
+	var option:=style_for(family,String(context.get("combat_option","")))
+	if attack and clip.get("styles",{}).has(option):
+		clip=clip.duplicate(true)
+		clip.merge(clip.styles[option],true)
 	var two := family in TWO_HANDS or (family=="crossbow" and not shield)
 	var result := {"active":attack or two,"family":family,"template":"bronze/"+family,"two_handed":two,"is_attack":attack,"frame":int(context.frame),"torso_shift":Vector2.ZERO,"rotation":float(profile.get("carry_rotation",0.0))}
+	result["combat_option"]=option
+	result["style_template"]="bronze/"+family+"/"+option
 	if not result.active:
 		return result
 	var joints := FittedEquipmentLibrary.source_joints(context)
@@ -100,9 +111,27 @@ static func sample(context: Dictionary, profile: Dictionary, shield: bool) -> Di
 	if attack:
 		primary += forward*float(control[2])+Vector2(0,float(control[1]))
 		angle += deg_to_rad(float(control[0]))*sign
+		if family=="warmaul" and int(context.frame) in [1,2]:
+			var outward: float=signf(raw_forward.x) if absf(raw_forward.x)>0.1 else (-1.0 if direction=="north" else 1.0)
+			angle=support_delta.angle_to(Vector2(outward*0.9,-0.6))
 		result.torso_shift = (forward*float(control[3])).round()
 		primary += result.torso_shift
 		result.head_offset+=result.torso_shift
+		if clip.has("hand_track"):
+			var track: Array=clip.hand_track[clampi(int(context.frame),0,7)]
+			var shoulder:=FittedEquipmentLibrary.point(joints.shoulder_right)
+			var outward:=signf(shoulder.x-chest.x)
+			if is_zero_approx(outward): outward=1.0 if raw_forward.x>=0 else -1.0
+			primary=shoulder+Vector2(outward*float(track[0]),float(track[1]))+forward.normalized()*float(track[2])+Vector2(result.torso_shift)
+			var blade: Vector2=profile.get("blade_axis",Vector2.UP)
+			var sweep: float=signf(raw_forward.x) if absf(raw_forward.x)>0.1 else (1.0 if direction=="north" else -1.0)
+			var aim:=forward.normalized().rotated(deg_to_rad(float(clip.blade_track[clampi(int(context.frame),0,7)]))*sweep)
+			if option!="lunge" and int(context.frame) in [1,2]:
+				aim=Vector2(outward*0.5,-1).normalized()
+			angle=blade.angle_to(aim)
+			if int(context.frame) in [0,7]:
+				primary=FittedEquipmentLibrary.point(joints.hand_right)+Vector2(result.torso_shift)
+				angle=float(profile.get("carry_rotation",0.0))
 	for joint: String in ["chest","neck","head","back","shoulder_right","shoulder_left","hand_right","hand_left","elbow_right","elbow_left"]:
 		var point := FittedEquipmentLibrary.point(joints.get(joint,joints.chest))+Vector2(result.torso_shift)
 		joints[joint]=[point.x,point.y]
